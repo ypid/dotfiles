@@ -1,0 +1,1 @@
+download_script.php?src_id=14758: call delete('/home/rsadmin/.vim/plugin/delimitMate.vim')|call delete('/home/rsadmin/.vim/autoload/delimitMate.vim')|call delete('/home/rsadmin/.vim/doc/delimitMate.txt')
