@@ -3,7 +3,7 @@
 autocmd! bufwritepost .vimrc source %
 
 
-" Better copy & paste
+" Better copy and paste
 " When you want to paste large blocks of code into vim, press F2 before you
 " paste. At the bottom you should see ``-- INSERT (paste) --``.
 set pastetoggle=<F2>
@@ -121,7 +121,6 @@ highlight ColorColumn ctermbg=233
 "" set shiftround
 "" set expandtab
 
-map <F5> :w!<CR>:!aspell --lang=de check %<CR>:e! %<CR>
 hi Search guibg=LightBlue
 set ai
 set tabstop=4

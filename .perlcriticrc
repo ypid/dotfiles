@@ -1,0 +1,36 @@
+severity				= 2
+color-severity-medium	= blue
+#verbose				= 8 ## to get for example ControlStructures::ProhibitPostfixControls
+verbose					= %s: %m at line %l, column %c. %e\n
+#force					= 1
+color					= 1
+
+## theme iknow: I should know if I have to use it or if I should make an excption
+
+[Subroutines::RequireFinalReturn]
+add_themes	= iknow
+severity	= 1
+
+[ErrorHandling::RequireUseOfExceptions]
+add_themes	= iknow
+severity	= 1
+
+
+## "die" used instead of "croak"
+[ErrorHandling::RequireCarping]
+add_themes	= iknow
+severity	= 1
+
+[ControlStructures::ProhibitUnlessBlocks]
+add_themes	= iknow
+severity	= 1
+
+
+## post if
+[ControlStructures::ProhibitPostfixControls]
+allow = if unless
+
+## These policies are disabled
+[-Miscellanea::RequireRcsKeywords]
+[-Modules::RequireVersionVar]
+[-Editor::RequireEmacsFileVariables]

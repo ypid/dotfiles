@@ -1,0 +1,17 @@
+[user]
+	name = Robin Schneider
+	email = ypid23@aol.de
+[color]
+	ui = auto
+	status = auto
+	branch = auto
+[pack]
+	threads = 0
+[alias]
+	wdiff = diff --color-words
+	st = status
+	ci = commit
+	co = checkout
+	br = branch --all
+	lgn = log --pretty=oneline --abbrev-commit --show-notes=*
+	lg = log --graph --pretty=format:'%Cred%h..%Creset - %s %Cgreen(%cr)%Creset - %an' --abbrev-commit --date=relative
