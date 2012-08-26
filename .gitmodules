@@ -1,0 +1,9 @@
+[submodule ".vim/bundle/tComment"]
+	path = .vim/bundle/tComment
+	url = https://github.com/vim-scripts/tComment
+[submodule ".vim/bundle/vim-autoclose"]
+	path = .vim/bundle/vim-autoclose
+	url = git://github.com/Townk/vim-autoclose
+[submodule ".vim/bundle/nerdcommenter"]
+	path = .vim/bundle/nerdcommenter
+	url = https://github.com/scrooloose/nerdcommenter.git

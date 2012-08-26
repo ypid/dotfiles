@@ -23,20 +23,31 @@ let mapleader = ","
 " Bind nohl
 " Removes highlight of your last search
 " ``<C>`` stands for ``CTRL`` and therefore ``<C-n>`` stands for ``CTRL+n``
-noremap <Leader>n :nohl<CR>
-vnoremap <Leader>n :nohl<CR>
-inoremap <Leader>n <ESC>:nohl<CR>i
+noremap <Leader>b :nohl<CR>
+vnoremap <Leader>b :nohl<CR>
+inoremap <Leader>b <ESC>:nohl<CR>i
+
+" Spellcheck
+set spelllang=en_us
+noremap <Leader>c :set spell!<CR>
+vnoremap <Leader>c :set spell!<CR>
+inoremap <Leader>c <ESC>:set spell!<CR>i
 
 " Update
 noremap <Leader>s :update<CR>
 vnoremap <Leader>s :update<CR>
 inoremap <Leader>s <ESC>:update<CR>i
 
+" Save and exit
+noremap <Leader>x :x<CR>
+vnoremap <Leader>x :x<CR>
+inoremap <Leader>x <ESC>:x<CR>
+
 " Quick quit command
 noremap <Leader>e :quit<CR>  " Quit current window
 noremap <Leader>E :qa!<CR>   " Quit all windows
 
-
+"
 " bind Ctrl+<movement> keys to move around the windows, instead of using Ctrl+w + <movement>
 " Every unnecessary keystroke that can be saved is good for your health :)
 map <c-j> <c-w>j
@@ -49,6 +60,10 @@ map <c-h> <c-w>h
 map <Leader>n <esc>:tabprevious<CR>
 map <Leader>m <esc>:tabnext<CR>
 
+" set the executable bit
+noremap <Leader>y :w!<CR>:!chmod +x %<CR>:e! %<CR>
+vnoremap <Leader>y :w!<CR>:!chmod +x %<CR>:e! %<CR>
+inoremap <Leader>y <ESC>:w!<CR>:!chmod +x %<CR>:e! %<CR>
 
 " map sort function to a key
 "vnoremap <Leader> :sort<CR>
@@ -75,8 +90,8 @@ color wombat256mod
 
 " Enable syntax highlighting
 " You need to reload this file for the change to apply
-"" filetype off
-"" filetype plugin indent on
+filetype on
+filetype plugin indent on
 syntax on
 
 
@@ -107,13 +122,12 @@ highlight ColorColumn ctermbg=233
 "" set expandtab
 
 map <F5> :w!<CR>:!aspell --lang=de check %<CR>:e! %<CR>
-map <F9> :w!<CR>:!chmod +x %<CR>:e! %<CR>
 hi Search guibg=LightBlue
-"set ai
-"set tabstop=4
+set ai
+set tabstop=4
 set pastetoggle=<F2>
 autocmd FileType perl setlocal expandtab shiftwidth=4 softtabstop=4
-filetype plugin indent on
+autocmd FileType tex setlocal expandtab shiftwidth=2 softtabstop=2
 
 filetype plugin on
 if has('gui_running')
