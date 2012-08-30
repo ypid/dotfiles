@@ -15,3 +15,5 @@
 	br = branch --all
 	lgn = log --pretty=oneline --abbrev-commit --show-notes=*
 	lg = log --graph --pretty=format:'%Cred%h..%Creset - %s %Cgreen(%cr)%Creset - %an' --abbrev-commit --date=relative
+[core]
+	excludesfile = /home/rsadmin/.gitignore_global
