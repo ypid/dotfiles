@@ -61,9 +61,9 @@ map <Leader>n <esc>:tabprevious<CR>
 map <Leader>m <esc>:tabnext<CR>
 
 " set the executable bit
-noremap <Leader>y :w!<CR>:!chmod +x %<CR>:e! %<CR>
-vnoremap <Leader>y :w!<CR>:!chmod +x %<CR>:e! %<CR>
-inoremap <Leader>y <ESC>:w!<CR>:!chmod +x %<CR>:e! %<CR>
+noremap <Leader>y :w!<CR>:!chmod +x %<CR>:q<CR>
+vnoremap <Leader>y :w!<CR>:!chmod +x %<CR>:q<CR>
+inoremap <Leader>y <ESC>:w!<CR>:!chmod +x %<CR>:q<CR>
 
 " map sort function to a key
 "vnoremap <Leader> :sort<CR>
@@ -77,23 +77,21 @@ vnoremap > >gv  " better indentation
 
 " Show whitespace
 " MUST be inserted BEFORE the colorscheme command
-"autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red 
-"au InsertLeave * match ExtraWhitespace /\s\+$/
+" autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red 
+" au InsertLeave * match ExtraWhitespace /\s\+$/
 
 
 " Color scheme
 " mkdir -p ~/.vim/colors && cd ~/.vim/colors
 " wget -O wombat256mod.vim http://www.vim.org/scripts/download_script.php?src_id=13400
-set t_Co=256
-color wombat256mod
-
+" set t_Co=256
+" color wombat256mod
 
 " Enable syntax highlighting
 " You need to reload this file for the change to apply
 filetype on
 filetype plugin indent on
 syntax on
-
 
 " Showing line numbers and length
 set number  " show line numbers

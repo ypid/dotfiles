@@ -1,0 +1,8 @@
+#!/bin/sh
+
+cd "`dirname "$0"`"
+git submodule update --init --recursive
+
+ls -A1|grep -Pv '^(.git$|\w)'|while read file; do
+	ln -s "$PWD/$file" "$HOME/$file"
+done
