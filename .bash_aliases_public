@@ -14,4 +14,5 @@ alias l='ls -CF'
 alias gits='git status'
 alias gitl='git log'
 alias gitw='git wdiff'
-#
+## LaTeX
+alias sty2dtx='sty2dtx -F ~/.sty2dtx -T ~/Dokumente/LaTeX/typesetting/docstrip-template/template.ins -t ~/Dokumente/LaTeX/typesetting/docstrip-template/template.dtx --date=`date +%Y/%m/%d`'

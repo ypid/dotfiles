@@ -9,7 +9,6 @@ HISTCONTROL=ignoredups:ignorespace
 
 # append to the history file, don't overwrite it
 shopt -s histappend
-
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=5230000
 HISTFILESIZE=5230000
@@ -63,11 +62,14 @@ xterm*|rxvt*)
     ;;
 esac
 
-if [ -f ~/.bash_aliases_privat ]; then
-    . ~/.bash_aliases_privat
+if [ -f ~/.bash_aliases_public ]; then
+    . ~/.bash_aliases_public
 fi
 if [ -f ~/.bash_aliases_privat ]; then
     . ~/.bash_aliases_privat
+fi
+if [ -f ~/.bash_aliases_local ]; then
+    . ~/.bash_aliases_local
 fi
 
 # enable programmable completion features (you don't need to enable

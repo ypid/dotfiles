@@ -9,7 +9,6 @@ autocmd! bufwritepost .vimrc source %
 set pastetoggle=<F2>
 set clipboard=unnamed
 
-
 " Mouse and backspace
 "set mouse=a  " on OSX press ALT and click
 
@@ -25,13 +24,13 @@ let mapleader = ","
 " ``<C>`` stands for ``CTRL`` and therefore ``<C-n>`` stands for ``CTRL+n``
 noremap <Leader>b :nohl<CR>
 vnoremap <Leader>b :nohl<CR>
-inoremap <Leader>b <ESC>:nohl<CR>i
+inoremap <Leader>b <ESC>:nohl<CR>a
 
 " Spellcheck
 set spelllang=en_us
 noremap <Leader>c :set spell!<CR>
 vnoremap <Leader>c :set spell!<CR>
-inoremap <Leader>c <ESC>:set spell!<CR>i
+inoremap <Leader>c <ESC>:set spell!<CR>a
 
 " Update
 noremap <Leader>s :update<CR>
@@ -86,6 +85,8 @@ vnoremap > >gv  " better indentation
 " wget -O wombat256mod.vim http://www.vim.org/scripts/download_script.php?src_id=13400
 " set t_Co=256
 " color wombat256mod
+colorscheme delek
+colorscheme default
 
 " Enable syntax highlighting
 " You need to reload this file for the change to apply
@@ -101,7 +102,7 @@ set fo-=t   " don't automatically wrap text when typing
 if version >= 703
 	set colorcolumn=+1
 endif
-highlight ColorColumn ctermbg=233
+" highlight ColorColumn ctermbg=233
 
 
 " easier formatting of paragraphs

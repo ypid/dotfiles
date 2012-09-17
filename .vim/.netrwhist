@@ -1,7 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_cnt =6
 let g:netrw_dirhist_1='/usr/share/vim/vim73/plugin'
 let g:netrw_dirhist_2='/home/rsadmin/Sync/Projekte/dotfiles/.vim/indent'
 let g:netrw_dirhist_3='/home/rsadmin/Sync/Dokumente/LaTeX/typesetting/MyPackages'
 let g:netrw_dirhist_4='/home/rsadmin/Sync/Skripte'
 let g:netrw_dirhist_5='/tmp/test'
+let g:netrw_dirhist_6='/usr/share/vim/vim73/colors'
