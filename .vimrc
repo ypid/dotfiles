@@ -2,8 +2,17 @@
 " Automatic reloading of .vimrc
 autocmd! bufwritepost .vimrc source %
 
+" Setup Pathogen to manage your plugins
+" mkdir -p ~/.vim/autoload ~/.vim/bundle
+" curl -so ~/.vim/autoload/pathogen.vim https://raw.github.com/tpope/vim-pathogen/HEAD/autoload/pathogen.vim
+" Now you can install any plugin into a .vim/bundle/plugin-name/ folder
+call pathogen#infect()
 
-" Better copy and paste
+" Settings for vim-easymotion
+let g:EasyMotion_leader_key = '<Leader>j'
+
+
+" , Better copy and paste
 " When you want to paste large blocks of code into vim, press F2 before you
 " paste. At the bottom you should see ``-- INSERT (paste) --``.
 set pastetoggle=<F2>
@@ -25,6 +34,11 @@ let mapleader = ","
 noremap <Leader>b :nohl<CR>
 vnoremap <Leader>b :nohl<CR>
 inoremap <Leader>b <ESC>:nohl<CR>a
+
+" Bind set list
+noremap <Leader>l :set list!<CR>
+vnoremap <Leader>l :set list!<CR>
+inoremap <Leader>l <ESC>:set list!<CR>a
 
 " Spellcheck
 set spelllang=en_us
@@ -155,14 +169,6 @@ set smartcase
 "" set nobackup
 "" set nowritebackup
 "" set noswapfile
-
-
-" Setup Pathogen to manage your plugins
-" mkdir -p ~/.vim/autoload ~/.vim/bundle
-" curl -so ~/.vim/autoload/pathogen.vim https://raw.github.com/tpope/vim-pathogen/HEAD/autoload/pathogen.vim
-" Now you can install any plugin into a .vim/bundle/plugin-name/ folder
-call pathogen#infect()
-
 
 " Settings for vim-powerline
 " cd ~/.vim/bundle
