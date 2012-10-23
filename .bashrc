@@ -68,8 +68,8 @@ fi
 if [ -f ~/.bash_aliases_privat ]; then
     . ~/.bash_aliases_privat
 fi
-if [ -f ~/.bash_aliases_local ]; then
-    . ~/.bash_aliases_local
+if [ -f ~/.bash_local ]; then
+    . ~/.bash_local
 fi
 
 # enable programmable completion features (you don't need to enable

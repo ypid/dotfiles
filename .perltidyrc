@@ -1,9 +1,10 @@
-#--entab-leading-whitespace=4					## use tabs
---standard-error-output							## errors to standard error output
---warning-output								## show all warnings
---nospace-after-keyword=="my local our"			## 'my()' not 'my ()'
+#--entab-leading-whitespace=4              ## use tabs
+--standard-error-output                    ## errors to standard error output
+--warning-output                           ## show all warnings
+--nospace-after-keyword=="my local our"    ## 'my()' not 'my ()'
 --maximum-line-length=120
 --minimum-space-to-comment=1
+# --fixed-position-side-comment=1
 --closing-side-comments
 --closing-side-comment-interval=20
 --noblanks-before-comments

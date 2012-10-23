@@ -10,9 +10,12 @@ fi
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+alias +='pushd'
+alias ,='popd'
+alias d='dirs -v'
 ## Git
 alias gits='git status'
 alias gitl='git log'
 alias gitw='git wdiff'
 ## LaTeX
-alias sty2dtx='sty2dtx -F ~/.sty2dtx -T ~/Dokumente/LaTeX/typesetting/docstrip-template/template.ins -t ~/Dokumente/LaTeX/typesetting/docstrip-template/template.dtx --date=`date +%Y/%m/%d`'
+alias sty2dtx='~/Projekte/src/sty2dtx/sty2dtx.pl'
