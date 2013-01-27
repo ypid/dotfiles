@@ -8,6 +8,11 @@ autocmd! bufwritepost .vimrc source %
 " Now you can install any plugin into a .vim/bundle/plugin-name/ folder
 call pathogen#infect()
 
+" Rebind <Leader> key
+" I like to have it here becuase it is easier to reach than the default and
+" it is next to ``m`` and ``n`` which I use for navigating between tabs.
+let mapleader = ","
+
 " Settings for vim-easymotion
 let g:EasyMotion_leader_key = '<Leader>j'
 
@@ -21,16 +26,13 @@ set clipboard=unnamed
 " Mouse and backspace
 "set mouse=a  " on OSX press ALT and click
 
-
-" Rebind <Leader> key
-" I like to have it here becuase it is easier to reach than the default and
-" it is next to ``m`` and ``n`` which I use for navigating between tabs.
-let mapleader = ","
-
+" Filetype detact
+noremap <Leader>f :filetype detect<CR>
+vnoremap <Leader>f :filetype detect<CR>
+inoremap <Leader>fd <ESC>:filetype detect<CR>a
 
 " Bind nohl
 " Removes highlight of your last search
-" ``<C>`` stands for ``CTRL`` and therefore ``<C-n>`` stands for ``CTRL+n``
 noremap <Leader>b :nohl<CR>
 vnoremap <Leader>b :nohl<CR>
 inoremap <Leader>b <ESC>:nohl<CR>a
@@ -39,6 +41,9 @@ inoremap <Leader>b <ESC>:nohl<CR>a
 noremap <Leader>l :set list!<CR>
 vnoremap <Leader>l :set list!<CR>
 inoremap <Leader>l <ESC>:set list!<CR>a
+
+" Insert current full path of the file
+inoremap <Leader>fn <ESC>:put =expand('%:p')<CR>a
 
 " Spellcheck
 set spelllang=en_us
@@ -60,7 +65,7 @@ inoremap <Leader>x <ESC>:x<CR>
 noremap <Leader>e :quit<CR>  " Quit current window
 noremap <Leader>E :qa!<CR>   " Quit all windows
 
-"
+" ``<C>`` stands for ``CTRL`` and therefore ``<C-n>`` stands for ``CTRL+n``
 " bind Ctrl+<movement> keys to move around the windows, instead of using Ctrl+w + <movement>
 " Every unnecessary keystroke that can be saved is good for your health :)
 map <c-j> <c-w>j
