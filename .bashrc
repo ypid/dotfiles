@@ -12,6 +12,7 @@ shopt -s histappend
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=5230000
 HISTFILESIZE=5230000
+# export HISTTIMEFORMAT='%F %T '
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -62,11 +63,11 @@ xterm*|rxvt*)
     ;;
 esac
 
-if [ -f ~/.bash_aliases_public ]; then
-    . ~/.bash_aliases_public
+if [ -f ~/.bash_public ]; then
+    . ~/.bash_public
 fi
-if [ -f ~/.bash_aliases_privat ]; then
-    . ~/.bash_aliases_privat
+if [ -f ~/.bash_privat ]; then
+    . ~/.bash_privat
 fi
 if [ -f ~/.bash_local ]; then
     . ~/.bash_local
@@ -91,7 +92,7 @@ fi
 export PATH="$PATH:$HOME/.cpan/perl5/bin:$HOME/.User-bin/gnuarm/bin";
 
 if [ -d "$HOME/Skripte" ] ; then
-    PATH="$HOME/Skripte:$PATH"
+    PATH="$HOME/Skripte:$HOME/Skripte/repoitory:$PATH"
 fi
 
 function up {
