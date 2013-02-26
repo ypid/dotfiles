@@ -1,6 +1,7 @@
 severity				= 2
 color-severity-medium	= blue
-#verbose				= 8 ## to get for example ControlStructures::ProhibitPostfixControls
+# verbose				= 8
+## to get for example ControlStructures::ProhibitPostfixControls
 verbose					= %s: %m at line %l, column %c. %e\n
 #force					= 1
 color					= 1
@@ -22,6 +23,10 @@ add_themes	= iknow
 severity	= 1
 
 [ControlStructures::ProhibitUnlessBlocks]
+add_themes	= iknow
+severity	= 1
+
+[Variables::ProhibitPunctuationVars]
 add_themes	= iknow
 severity	= 1
 

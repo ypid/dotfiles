@@ -16,3 +16,6 @@
 [submodule ".vim/bundle/vim-easymotion"]
 	path = .vim/bundle/vim-easymotion
 	url = git://github.com/Lokaltog/vim-easymotion.git
+[submodule ".vim/bundle/vim-visual-star-search"]
+	path = .vim/bundle/vim-visual-star-search
+	url = git://github.com/bronson/vim-visual-star-search.git

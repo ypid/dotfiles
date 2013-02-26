@@ -146,6 +146,7 @@ set ai
 set tabstop=8
 set pastetoggle=<F2>
 autocmd FileType perl setlocal expandtab shiftwidth=4 softtabstop=4
+autocmd FileType python setlocal shiftwidth=4 tabstop=4
 autocmd FileType tex setlocal expandtab shiftwidth=2 softtabstop=2
 
 filetype plugin on
