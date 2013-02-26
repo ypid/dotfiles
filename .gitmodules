@@ -16,3 +16,6 @@
 [submodule ".vim/bundle/vim-visual-star-search"]
 	path = .vim/bundle/vim-visual-star-search
 	url = git://github.com/bronson/vim-visual-star-search.git
+[submodule ".vim/bundle/tComment"]
+	path = .vim/bundle/tComment
+	url = git://github.com/tomtom/tcomment_vim.git
