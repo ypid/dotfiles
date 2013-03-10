@@ -9,6 +9,7 @@
 	threads = 0
 [alias]
 	wdiff = diff --color-words
+	re = remote -v
 	st = status
 	ci = commit
 	co = checkout

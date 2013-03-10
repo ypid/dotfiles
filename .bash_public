@@ -16,6 +16,7 @@ alias bc='bc -q'
 alias +='pushd'
 alias ,='popd'
 alias d='dirs -v'
+alias ts='date "+%Y-%m-%d_%H:%M"'
 ## Git
 alias gits='git status'
 alias gitl='git log'
@@ -37,6 +38,8 @@ PATH="$PATH:$HOME/.cpan/perl5/bin";
 if [ -d "$HOME/Skripte/repository" ] ; then
     PATH="$HOME/Skripte:$HOME/Skripte/repository:$PATH"
 fi
+export PYTHONSTARTUP="$HOME/.pystartup"
+
 function up {
 [ "${1/[^0-9]/}" == "$1" ] && {
 	local ups=""
@@ -46,4 +49,9 @@ function up {
 	done
 	cd $ups
 	} || echo "usage: up INTEGER"
+}
+
+# Create a new directory and enter it
+function md() {
+	mkdir -p "$@" && cd "$@"
 }
