@@ -16,6 +16,8 @@ let mapleader = ","
 " Settings for vim-easymotion
 let g:EasyMotion_leader_key = '<Leader>j'
 
+" Settings for command-t
+let g:CommandTAcceptSelectionSplitMap = '<C-o>'
 
 " , Better copy and paste
 " When you want to paste large blocks of code into vim, press F2 before you
@@ -26,20 +28,19 @@ set clipboard=unnamed
 " Mouse and backspace
 "set mouse=a  " on OSX press ALT and click
 
+"" map: nvo
+"" map!: ic
 " Filetype detact
-noremap <Leader>f :filetype detect<CR>
-vnoremap <Leader>f :filetype detect<CR>
+map <Leader>f :filetype detect<CR>
 inoremap <Leader>fd <ESC>:filetype detect<CR>a
 
 " Bind nohl
 " Removes highlight of your last search
-noremap <Leader>b :nohl<CR>
-vnoremap <Leader>b :nohl<CR>
+map <Leader>b :nohl<CR>
 inoremap <Leader>b <ESC>:nohl<CR>a
 
 " Bind set list
-noremap <Leader>l :set list!<CR>
-vnoremap <Leader>l :set list!<CR>
+map <Leader>l :set list!<CR>
 inoremap <Leader>l <ESC>:set list!<CR>a
 
 " Insert current full path of the file
@@ -47,23 +48,20 @@ inoremap <Leader>fn <ESC>:put =expand('%:p')<CR>a
 
 " Spellcheck
 set spelllang=en_us
-noremap <Leader>c :set spell!<CR>
-vnoremap <Leader>c :set spell!<CR>
+map <Leader>c :set spell!<CR>
 inoremap <Leader>c <ESC>:set spell!<CR>a
 
 " Update
-noremap <Leader>s :update<CR>
-vnoremap <Leader>s :update<CR>
-inoremap <Leader>s <ESC>:update<CR>i
+map <Leader>s :update<CR>
+inoremap <Leader>s <ESC>:update<CR>a
 
 " Save and exit
-noremap <Leader>x :x<CR>
-vnoremap <Leader>x :x<CR>
+map <Leader>x :x<CR>
 inoremap <Leader>x <ESC>:x<CR>
 
 " Quick quit command
-noremap <Leader>e :quit<CR>  " Quit current window
-noremap <Leader>E :qa!<CR>   " Quit all windows
+nnoremap <Leader>e :quit<CR>  " Quit current window
+nnoremap <Leader>E :qa!<CR>   " Quit all windows
 
 " ``<C>`` stands for ``CTRL`` and therefore ``<C-n>`` stands for ``CTRL+n``
 " bind Ctrl+<movement> keys to move around the windows, instead of using Ctrl+w + <movement>
@@ -73,14 +71,12 @@ map <c-k> <c-w>k
 map <c-l> <c-w>l
 map <c-h> <c-w>h
 
-
 " easier moving between tabs
 map <Leader>n <esc>:tabprevious<CR>
 map <Leader>m <esc>:tabnext<CR>
 
 " set the executable bit
-noremap <Leader>y :w!<CR>:!chmod +x %<CR>:q<CR>
-vnoremap <Leader>y :w!<CR>:!chmod +x %<CR>:q<CR>
+map <Leader>y :w!<CR>:!chmod +x %<CR>:q<CR>
 inoremap <Leader>y <ESC>:w!<CR>:!chmod +x %<CR>:q<CR>
 
 " map sort function to a key
@@ -92,20 +88,13 @@ inoremap <Leader>y <ESC>:w!<CR>:!chmod +x %<CR>:q<CR>
 vnoremap < <gv  " better indentation
 vnoremap > >gv  " better indentation
 
-
-" Show whitespace
-" MUST be inserted BEFORE the colorscheme command
-" autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red 
-" au InsertLeave * match ExtraWhitespace /\s\+$/
-
-
 " Color scheme
 " mkdir -p ~/.vim/colors && cd ~/.vim/colors
 " wget -O wombat256mod.vim http://www.vim.org/scripts/download_script.php?src_id=13400
 " set t_Co=256
 " color wombat256mod
-colorscheme delek
-colorscheme default
+" colorscheme delek
+" colorscheme default
 
 " Enable syntax highlighting
 " You need to reload this file for the change to apply
@@ -176,21 +165,7 @@ set smartcase
 "" set nowritebackup
 "" set noswapfile
 
-" Settings for vim-powerline
-" cd ~/.vim/bundle
-" git clone git://github.com/Lokaltog/vim-powerline.git
-"set laststatus=2
-
-
-" Settings for ctrlp
-" cd ~/.vim/bundle
-" git clone https://github.com/kien/ctrlp.vim.git
-"" let g:ctrlp_max_height = 30
-"" set wildignore+=*.pyc
-"" set wildignore+=*_build/*
-"" set wildignore+=*/coverage/*
-
 " Python folding
 " mkdir -p ~/.vim/ftplugin
 " wget -O ~/.vim/ftplugin/python_editing.vim http://www.vim.org/scripts/download_script.php?src_id=5492
-"" set nofoldenable
+set nofoldenable
