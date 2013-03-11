@@ -13,7 +13,7 @@ call pathogen#infect()
 set clipboard=unnamed
 
 "" Mouse and backspace. I don’t really like that and I don’t need it either.
-" set mouse=a  " on OSX press ALT and click
+" set mouse=a
 
 "" Mappings {{{1
 let mapleader = ','
@@ -63,8 +63,10 @@ map <Leader>x :x<CR>
 inoremap <Leader>x <ESC>:x<CR>
 
 "" Quick quit command
-nnoremap <Leader>e :quit<CR>  "" Quit current window
-nnoremap <Leader>E :qa!<CR>   "" Quit all windows
+nnoremap <Leader>e :quit<CR>
+"" Quit current window
+nnoremap <Leader>E :qa!<CR>
+"" Quit all windows
 
 "" ``<C>`` stands for ``CTRL`` and therefore ``<C-n>`` stands for ``CTRL+n``
 "" bind Ctrl+<movement> keys to move around the windows, instead of using Ctrl+w + <movement>
@@ -135,7 +137,6 @@ endif
 " set shiftround
 " set expandtab
 
-hi Search guibg=LightBlue
 set ai
 set tabstop=8
 set pastetoggle=<F2>
