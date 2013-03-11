@@ -30,6 +30,10 @@ let g:CommandTAcceptSelectionSplitMap = '<C-o>'
 "" Setting for Gundo
 nnoremap <Leader>g :GundoToggle<CR>
 
+"" Settings for mru
+map <Leader>r :MRU<CR>
+inoremap <Leader>r <ESC>:MRU<CR>a
+
 "" Personal mappings {{{2
 "" map: nvo
 "" map!: ic
