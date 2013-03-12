@@ -1,11 +1,33 @@
 "" vim: foldmethod=marker
 "set encoding=utf-8
 
-"" Setup Pathogen to manage your plugins
-"" mkdir -p ~/.vim/autoload ~/.vim/bundle
-"" curl -so ~/.vim/autoload/pathogen.vim https://raw.github.com/tpope/vim-pathogen/HEAD/autoload/pathogen.vim
-"" Now you can install any plugin into a .vim/bundle/plugin-name/ folder
-call pathogen#infect()
+set nocompatible               " be iMproved
+filetype off                   " required!
+
+"" let Vundle manage Vundle
+"" 
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+let g:vundle_default_git_proto = 'git'
+
+"" required! 
+Bundle 'gmarik/vundle'
+
+"" My Bundles here:
+"
+"" original repos on github
+Bundle 'tpope/vim-fugitive'
+Bundle 'tomtom/tcomment_vim'
+Bundle 'sjl/gundo.vim'
+Bundle 'Townk/vim-autoclose'
+Bundle 'bronson/vim-visual-star-search'
+Bundle 'tpope/vim-repeat'
+Bundle 'bitc/vim-bad-whitespace'
+Bundle 'plasticboy/vim-markdown'
+Bundle 'lokaltog/vim-easymotion'
+Bundle 'tpope/vim-surround'
+Bundle 'command-t'
+Bundle 'mru.vim'
 
 "" Better copy and paste
 "" When you want to paste large blocks of code into vim, press F2 before you
