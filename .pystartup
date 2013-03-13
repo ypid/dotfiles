@@ -13,6 +13,7 @@ import os
 import readline
 import rlcompleter
 import sys
+import re
 
 # change autocomplete to tab
 readline.parse_and_bind("tab: complete")

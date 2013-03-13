@@ -3,74 +3,88 @@
 
 set nocompatible               " be iMproved
 filetype off                   " required!
+let mapleader = ','
 
+"" Plugins {{{1
 "" let Vundle manage Vundle
-"" 
+"" git://github.com/gmarik/vundle.git
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 let g:vundle_default_git_proto = 'git'
 
-"" required! 
+"" required!
 Bundle 'gmarik/vundle'
 
 "" My Bundles here:
-"
 "" original repos on github
 Bundle 'tpope/vim-fugitive'
 Bundle 'tomtom/tcomment_vim'
-Bundle 'sjl/gundo.vim'
 Bundle 'Townk/vim-autoclose'
 Bundle 'bronson/vim-visual-star-search'
 Bundle 'tpope/vim-repeat'
 Bundle 'bitc/vim-bad-whitespace'
 Bundle 'plasticboy/vim-markdown'
-Bundle 'lokaltog/vim-easymotion'
 Bundle 'tpope/vim-surround'
-Bundle 'command-t'
-Bundle 'mru.vim'
 
-"" Better copy and paste
-"" When you want to paste large blocks of code into vim, press F2 before you
-"" paste. At the bottom you should see ``-- INSERT (paste) --``.
-set clipboard=unnamed
+Bundle "MarcWeber/vim-addon-mw-utils"
+Bundle "tomtom/tlib_vim"
+Bundle "honza/snipmate-snippets"
+Bundle 'garbas/vim-snipmate'
 
-"" Mouse and backspace. I don’t really like that and I don’t need it either.
-" set mouse=a
+Bundle 'scrooloose/nerdtree'
+map <c-n> :NERDTreeToggle<CR>
+inoremap <c-n> <ESC>:NERDTreeToggle<CR>a
 
-"" Mappings {{{1
-let mapleader = ','
+"" CtrlP
+Bundle 'kien/ctrlp.vim'
+let g:ctrlp_show_hidden = 1
+let g:ctrlp_mruf_save_on_update = 0
+let g:ctrlp_extensions = ['line']
+let g:ctrlp_open_new_file = 'h'
+nmap <Leader>r :CtrlPMRUFiles<CR>
 
-set pastetoggle=<F2>
-
-"" Plugins {{{2
-"" Settings for easymotion
-let g:EasyMotion_leader_key = '<Leader>j'
-
-"" Settings for command-t
-let g:CommandTAcceptSelectionSplitMap = '<C-o>'
-
-"" Setting for Gundo
+"" gundo
+Bundle 'sjl/gundo.vim'
 nnoremap <Leader>g :GundoToggle<CR>
 
-"" Settings for mru
-map <Leader>r :MRU<CR>
-inoremap <Leader>r <ESC>:MRU<CR>a
+"" easymotion
+Bundle 'Lokaltog/vim-easymotion'
+let g:EasyMotion_leader_key = '<Leader>j'
+
+"" translate
+"" you can print the last translated word with ""p
+Bundle 'mattn/webapi-vim'
+let g:trans_has_python = 0
+Bundle 'Rykka/trans.vim'
+let g:trans_default_lang = 'de'
+let g:trans_map_trans = '<Leader>tr'
+
+"" Mappings {{{1
+set pastetoggle=<F2>
 
 "" Personal mappings {{{2
 "" map: nvo
 "" map!: ic
 "" Filetype detact
-map <Leader>f :filetype detect<CR>
+map <Leader>fd :filetype detect<CR>
 inoremap <Leader>fd <ESC>:filetype detect<CR>a
 
-"" Bind nohl
-"" Removes highlight of your last search
+"" erase bad whitespace from vim-bad-whitespace
+map <Leader>fc :EraseBadWhitespace<CR>
+inoremap <Leader>fc <ESC>:EraseBadWhitespace<<CR>a
+
+"" Toggle highlight search
 map <Leader>b :nohl<CR>
 inoremap <Leader>b <ESC>:nohl<CR>a
+
+map <Leader>a :set number!<CR>
+inoremap <Leader>a <ESC>:set number!<CR>a
 
 "" Bind set list
 map <Leader>l :set list!<CR>
 inoremap <Leader>l <ESC>:set list!<CR>a
+" map <c-i> :set list!<CR>
+" inoremap <c-i> <ESC>:set list!<CR>a
 
 "" Insert current full path of the file
 inoremap <Leader>fn <ESC>:put =expand('%:p')<CR>a
@@ -80,9 +94,9 @@ set spelllang=en_us
 map <Leader>c :set spell!<CR>
 inoremap <Leader>c <ESC>:set spell!<CR>a
 
-"" Save
+"" Save and go to normal mode
 map <Leader>s :update<CR>
-inoremap <Leader>s <ESC>:update<CR>a
+inoremap <Leader>s <ESC>:update<CR>l
 
 "" Save and exit
 map <Leader>x :x<CR>
@@ -91,7 +105,7 @@ inoremap <Leader>x <ESC>:x<CR>
 "" Quick quit command
 nnoremap <Leader>e :quit<CR>
 "" Quit current window
-nnoremap <Leader>E :qa!<CR>
+" nnoremap <Leader>E :qa!<CR>
 "" Quit all windows
 
 "" ``<C>`` stands for ``CTRL`` and therefore ``<C-n>`` stands for ``CTRL+n``
@@ -140,6 +154,7 @@ set number  " show line numbers
 set tw=79   " width of document (used by gd)
 "set nowrap  " don't automatically wrap on load
 set fo-=t   " don't automatically wrap text when typing
+set autochdir
 if version >= 703
 	set colorcolumn=+1
 endif
@@ -166,9 +181,11 @@ endif
 set ai
 set tabstop=8
 set pastetoggle=<F2>
-if has("autocmd") && !exists("autocommands_loaded")
+" && !exists("autocommands_loaded")
+if has("autocmd")
 	autocmd bufwritepost .vimrc source %
 	autocmd FileType perl setlocal expandtab shiftwidth=4 softtabstop=4
+	autocmd FileType vim setlocal expandtab shiftwidth=4 softtabstop=4
 	autocmd FileType python setlocal shiftwidth=4 tabstop=4
 	autocmd FileType tex setlocal expandtab shiftwidth=2 softtabstop=2
 	let autocommands_loaded = 1
@@ -193,6 +210,14 @@ set hlsearch
 set incsearch
 set ignorecase
 set smartcase
+
+"" Better copy and paste
+"" When you want to paste large blocks of code into vim, press F2 before you
+"" paste. At the bottom you should see ``-- INSERT (paste) --``.
+set clipboard=unnamed
+
+"" Mouse and backspace. I don’t really like that and I don’t need it either.
+" set mouse=a
 
 "" Disable stupid backup and swap files - they trigger too many events
 "" for file system watchers
