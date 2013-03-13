@@ -25,12 +25,15 @@ Bundle 'tpope/vim-repeat'
 Bundle 'bitc/vim-bad-whitespace'
 Bundle 'plasticboy/vim-markdown'
 Bundle 'tpope/vim-surround'
+" Bundle 'matchit.zip'
+" Bundle 'indenthtml.vim'
 
 Bundle "MarcWeber/vim-addon-mw-utils"
 Bundle "tomtom/tlib_vim"
 Bundle "honza/snipmate-snippets"
 Bundle 'garbas/vim-snipmate'
 
+"" NERDTree
 Bundle 'scrooloose/nerdtree'
 map <c-n> :NERDTreeToggle<CR>
 inoremap <c-n> <ESC>:NERDTreeToggle<CR>a
@@ -62,9 +65,13 @@ let g:trans_map_trans = '<Leader>tr'
 "" Mappings {{{1
 set pastetoggle=<F2>
 
-"" Personal mappings {{{2
 "" map: nvo
 "" map!: ic
+
+"" I use this so that Ctrl-c also works in the command-line window like Escape.
+"" Does not work
+" map! <c-c> <ESC>
+
 "" Filetype detact
 map <Leader>fd :filetype detect<CR>
 inoremap <Leader>fd <ESC>:filetype detect<CR>a
@@ -77,8 +84,9 @@ inoremap <Leader>fc <ESC>:EraseBadWhitespace<<CR>a
 map <Leader>b :nohl<CR>
 inoremap <Leader>b <ESC>:nohl<CR>a
 
-map <Leader>a :set number!<CR>
-inoremap <Leader>a <ESC>:set number!<CR>a
+"" <Leader>a does interfere <c-a>
+map <Leader>p :set number!<CR>
+inoremap <Leader>p <ESC>:set number!<CR>a
 
 "" Bind set list
 map <Leader>l :set list!<CR>
@@ -131,22 +139,28 @@ inoremap <Leader>y <ESC>:w!<CR>:!chmod +x %<CR>:q<CR>a
 vnoremap < <gv
 vnoremap > >gv
 
-"" Color scheme {{{1
+"" easier formatting of paragraphs
+" vmap Q gq
+" nmap Q gqap
+
+"" How vim should look like {{{1
 "" mkdir -p ~/.vim/colors && cd ~/.vim/colors
 "" wget -O wombat256mod.vim http://www.vim.org/scripts/download_script.php?src_id=13400
 "" set t_Co=256
 "" color wombat256mod
+" highlight ColorColumn ctermbg=233
 "" colorscheme delek
 "" colorscheme default
 " set listchars=tab:-
 set listchars=tab:→\ ,eol:$,trail:.,extends:>,precedes:<,nbsp:_
+syntax on
 
-"" Enable syntax highlighting
+"" Behavior {{{1
 "" You need to reload this file for the change to apply
 filetype on
 filetype plugin indent on
-syntax on
 
+set nofoldenable
 "" Showing line numbers and length
 set number  " show line numbers
 " set relativenumber
@@ -158,52 +172,6 @@ set autochdir
 if version >= 703
 	set colorcolumn=+1
 endif
-" highlight ColorColumn ctermbg=233
-
-
-"" easier formatting of paragraphs
-" vmap Q gq
-" nmap Q gqap
-
-
-"" Useful settings
-" set history=700
-" set undolevels=700
-
-
-"" Real programmers don't use TABs but spaces
-" set tabstop=4
-" set softtabstop=4
-" set shiftwidth=4
-" set shiftround
-" set expandtab
-
-set ai
-set tabstop=8
-set pastetoggle=<F2>
-" && !exists("autocommands_loaded")
-if has("autocmd")
-	autocmd bufwritepost .vimrc source %
-	autocmd FileType perl setlocal expandtab shiftwidth=4 softtabstop=4
-	autocmd FileType vim setlocal expandtab shiftwidth=4 softtabstop=4
-	autocmd FileType python setlocal shiftwidth=4 tabstop=4
-	autocmd FileType tex setlocal expandtab shiftwidth=2 softtabstop=2
-	let autocommands_loaded = 1
-endif
-
-filetype plugin on
-if has('gui_running')
-    set grepprg=grep\ -nH\ $*
-    filetype indent on
-    let g:tex_flavor='latex'
-endif
-
-au BufEnter *.tex set autowrite
-let g:Tex_DefaultTargetFormat = 'pdf'
-let g:Tex_MultipleCompileFormats = 'pdf'
-let g:Tex_CompileRule_pdf = 'pdflatex -interaction=nonstopmode $*'
-let g:Tex_GotoError = 0
-let g:Tex_ViewRule_pdf = 'evince'
 
 "" Make search case insensitive
 set hlsearch
@@ -225,7 +193,30 @@ set clipboard=unnamed
 " set nowritebackup
 " set noswapfile
 
+"" Useful settings
+" set history=700
+" set undolevels=700
+
+
+"" Real programmers don't use TABs but spaces
+" set tabstop=4
+" set softtabstop=4
+" set shiftwidth=4
+" set shiftround
+" set expandtab
+
+set autoindent
+set tabstop=8
+" && !exists("autocommands_loaded")
+if has("autocmd")
+	autocmd bufwritepost .vimrc source %
+	autocmd FileType perl setlocal expandtab shiftwidth=4 softtabstop=4
+	autocmd FileType vim setlocal expandtab shiftwidth=4 softtabstop=4
+	autocmd FileType python setlocal shiftwidth=4 tabstop=4
+	autocmd FileType tex setlocal expandtab shiftwidth=2 softtabstop=2
+	let autocommands_loaded = 1
+endif
+
 "" Python folding
 "" mkdir -p ~/.vim/ftplugin
 "" wget -O ~/.vim/ftplugin/python_editing.vim http://www.vim.org/scripts/download_script.php?src_id=5492
-set nofoldenable
