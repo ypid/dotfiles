@@ -2,11 +2,6 @@
 
 cd "`dirname "$0"`"
 git submodule update --init --recursive
-pushd .vim/bundle/command-t/ruby/command-t
-ruby extconf.rb
-make
-popd
-
 
 ls -A1|grep -Pv '^(.git$|\w)'|while read file
 do	ln -Ts "$PWD/$file" "$HOME/$file"

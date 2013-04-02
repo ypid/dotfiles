@@ -17,9 +17,10 @@ Bundle 'gmarik/vundle'
 
 "" My Bundles here:
 "" original repos on github
+Bundle 'thanthese/Tortoise-Typing'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tomtom/tcomment_vim'
-Bundle 'Townk/vim-autoclose'
+Bundle 'jiangmiao/auto-pairs'
 Bundle 'bronson/vim-visual-star-search'
 Bundle 'tpope/vim-repeat'
 Bundle 'bitc/vim-bad-whitespace'
@@ -30,8 +31,15 @@ Bundle 'tpope/vim-surround'
 
 Bundle "MarcWeber/vim-addon-mw-utils"
 Bundle "tomtom/tlib_vim"
+
 Bundle "honza/snipmate-snippets"
 Bundle 'garbas/vim-snipmate'
+" Bundle 'SirVer/ultisnips'
+"" I will switch if I really need the features
+
+" Bundle 'skammer/vim-css-color'
+Bundle 'HTML-AutoCloseTag'
+Bundle 'dahu/LearnVim'
 
 "" NERDTree
 Bundle 'scrooloose/nerdtree'
@@ -72,6 +80,9 @@ set pastetoggle=<F2>
 "" Does not work
 " map! <c-c> <ESC>
 
+"" Map leader
+" inoremap <Leader>  ,
+
 "" Filetype detact
 map <Leader>fd :filetype detect<CR>
 inoremap <Leader>fd <ESC>:filetype detect<CR>a
@@ -95,10 +106,14 @@ inoremap <Leader>l <ESC>:set list!<CR>a
 " inoremap <c-i> <ESC>:set list!<CR>a
 
 "" Insert current full path of the file
-inoremap <Leader>fn <ESC>:put =expand('%:p')<CR>a
+inoremap <Leader>fp <ESC>:put =expand('%:p')<CR>kJA
+"" Insert current file name
+inoremap <Leader>fn <ESC>:put =expand('%:t:r')<CR>kJA
 
 "" Spellcheck
 set spelllang=en_us
+hi clear SpellBad
+hi SpellBad cterm=underline
 map <Leader>c :set spell!<CR>
 inoremap <Leader>c <ESC>:set spell!<CR>a
 
@@ -206,7 +221,9 @@ set clipboard=unnamed
 " set expandtab
 
 set autoindent
-set tabstop=8
+set softtabstop=4
+set tabstop=4
+set shiftwidth=4
 " && !exists("autocommands_loaded")
 if has("autocmd")
 	autocmd bufwritepost .vimrc source %
@@ -214,6 +231,7 @@ if has("autocmd")
 	autocmd FileType vim setlocal expandtab shiftwidth=4 softtabstop=4
 	autocmd FileType python setlocal shiftwidth=4 tabstop=4
 	autocmd FileType tex setlocal expandtab shiftwidth=2 softtabstop=2
+	autocmd FileType c setlocal expandtab shiftwidth=4 softtabstop=4
 	let autocommands_loaded = 1
 endif
 

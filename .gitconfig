@@ -12,6 +12,8 @@
 	re = remote -v
 	st = status
 	ci = commit
+	cio = commit --reedit-message=HEAD --reset-author
+	## use last commit message
 	co = checkout
 	br = branch --all
 	lgn = log --pretty=oneline --abbrev-commit --show-notes=*

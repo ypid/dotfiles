@@ -22,7 +22,7 @@ alias vim='vim -X'
 alias vi='vim'
 ## Git
 alias gits='git status'
-alias gitl='git log'
+alias gitl='git log --stat'
 alias gitw='git wdiff'
 ## LaTeX
 alias sty2dtx='~/Projekte/src/sty2dtx/sty2dtx.pl'

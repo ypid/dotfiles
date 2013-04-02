@@ -6,6 +6,7 @@ snippet #!/
 	use autodie;
 	use feature qw(say);
 	use utf8;
+	use open qw(:std :utf8);
 	binmode STDOUT, ':encoding(UTF-8)';
 
 	${1}
@@ -13,3 +14,10 @@ snippet #!/
 	# x: Extended Formatting
 	# m: Line Boundaries (^ and $ -> \n matching)
 	# s: Matching Anything with the .	[^\n]
+
+
+# While Loop
+snippet whi
+	while (${1:<>}) {
+		${2:# body...}
+	}$1
