@@ -1,0 +1,16 @@
+snippet #! "My shebang" !b
+#!/usr/bin/env perl
+use strict;
+use warnings;
+use autodie;
+use feature qw(say);
+use utf8;
+use open qw(:std :utf8);
+binmode STDOUT, ':encoding(UTF-8)';
+
+${1:
+# /something/xms
+# x: Extended Formatting
+# m: Line Boundaries (^ and $ -> \n matching)
+# s: Matching Anything with the .	[^\n]}
+endsnippet
