@@ -22,6 +22,9 @@ Bundle 'bronson/vim-visual-star-search'
 Bundle 'Lokaltog/vim-easymotion'
 let g:EasyMotion_leader_key = '<Leader>j'
 
+"" Needs to be before syntax on …
+Bundle 'SirVer/ultisnips'
+
 "" translate
 "" you can print the last translated word with ""p
 " Bundle 'mattn/webapi-vim'
@@ -52,13 +55,8 @@ set pastetoggle=<F2>
 "" colorscheme default
 " set listchars=tab:-
 set listchars=tab:→\ ,eol:$,trail:.,extends:>,precedes:<,nbsp:_
-syntax on
 
 "" Behavior {{{1
-"" You need to reload this file for the change to apply
-filetype on
-filetype plugin indent on
-
 set nofoldenable
 "" Showing line numbers and length
 set number  " show line numbers
@@ -68,9 +66,6 @@ set tw=79   " width of document (used by gd)
 "set nowrap  " don't automatically wrap on load
 set fo-=t   " don't automatically wrap text when typing
 set autochdir
-
-"" Map leader
-" inoremap <Leader>  ,
 
 "" Filetype detact
 map <Leader>fd :filetype detect<CR>
@@ -152,51 +147,5 @@ set hlsearch
 set incsearch
 set ignorecase
 set smartcase
-
-"" Better copy and paste
-"" When you want to paste large blocks of code into vim, press F2 before you
-"" paste. At the bottom you should see ``-- INSERT (paste) --``.
-set clipboard=unnamed
-
-"" Mouse and backspace. I don’t really like that and I don’t need it either.
-" set mouse=a
-
-"" Disable stupid backup and swap files - they trigger too many events
-"" for file system watchers
-" set nobackup
-" set nowritebackup
-" set noswapfile
-
-"" Useful settings
-" set history=700
-" set undolevels=700
-
-
-"" Real programmers don't use TABs but spaces
-" set tabstop=4
-" set softtabstop=4
-" set shiftwidth=4
-" set shiftround
-" set expandtab
-
-set autoindent
-set softtabstop=4
-set tabstop=4
-set shiftwidth=4
-" && !exists("autocommands_loaded")
-if has("autocmd")
-	autocmd bufwritepost .vimrc source %
-	autocmd BufRead,BufNewFile .vimpagerrc set ft=vim
-	autocmd FileType perl setlocal expandtab shiftwidth=4 softtabstop=4
-	autocmd FileType vim setlocal expandtab shiftwidth=4 softtabstop=4
-	autocmd FileType python setlocal shiftwidth=4 tabstop=4
-	autocmd FileType tex setlocal expandtab shiftwidth=2 softtabstop=2
-	autocmd FileType c setlocal expandtab shiftwidth=4 softtabstop=4
-	let autocommands_loaded = 1
-endif
-
-"" Python folding
-"" mkdir -p ~/.vim/ftplugin
-"" wget -O ~/.vim/ftplugin/python_editing.vim http://www.vim.org/scripts/download_script.php?src_id=5492
 
 source ~/.vimrc_private
