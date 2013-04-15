@@ -15,6 +15,7 @@ let g:vundle_default_git_proto = 'git'
 "" required!
 Bundle 'gmarik/vundle'
 
+" Bundle 'ZoomWin'
 Bundle 'dahu/LearnVim'
 Bundle 'bronson/vim-visual-star-search'
 
@@ -22,24 +23,26 @@ Bundle 'bronson/vim-visual-star-search'
 Bundle 'Lokaltog/vim-easymotion'
 let g:EasyMotion_leader_key = '<Leader>j'
 
-"" Needs to be before syntax on …
-Bundle 'SirVer/ultisnips'
+if has("python")
+    "" Needs to be before syntax on …
+    Bundle 'SirVer/ultisnips'
 
-"" translate
-"" you can print the last translated word with ""p
-" Bundle 'mattn/webapi-vim'
-" let g:trans_has_python = 0
-" Bundle 'Rykka/trans.vim'
-" let g:trans_default_lang = 'de'
-" let g:trans_map_trans = '<Leader>tr'
-Bundle 'lookup.vim'
-" Bundle 'ypid/lookup.vim'
-" let g:lookup_dict_para = []
-" nmap <Leader>tr :call LookupCurWord()<CR>'
-" vmap <Leader>tv :call LookupVisual()<CR>'
-nmap <Leader>tr :Lookup<CR>
-vmap <Leader>tv :call LookupVisual()<CR>
-inoremap <Leader>tr <ESC>:Lookup<CR>a
+    "" translate
+    "" you can print the last translated word with ""p
+    " Bundle 'mattn/webapi-vim'
+    " let g:trans_has_python = 0
+    " Bundle 'Rykka/trans.vim'
+    " let g:trans_default_lang = 'de'
+    " let g:trans_map_trans = '<Leader>tr'
+    " Bundle 'lookup.vim'
+    Bundle 'ypid/lookup.vim'
+    " let g:lookup_dict_para = []
+    " nmap <Leader>tr :call LookupCurWord()<CR>'
+    " vmap <Leader>tv :call LookupVisual()<CR>'
+    nmap <Leader>tr :Lookup<CR>
+    vmap <Leader>tv :call LookupVisual()<CR>
+    inoremap <Leader>tr <ESC>:Lookup<CR>a
+endif
 
 "" Mappings {{{1
 set pastetoggle=<F2>
@@ -91,8 +94,10 @@ inoremap <Leader>l <ESC>:set list!<CR>a
 
 "" Insert current full path of the file
 inoremap <Leader>fp <ESC>:put =expand('%:p')<CR>kJA
+
 "" Insert current file name
-inoremap <Leader>fn <ESC>:put =expand('%:t:r')<CR>kJA
+" inoremap <Leader>fn <ESC>"%p<CR>g;
+"" Just use Ctrl-r%
 
 "" Spellcheck
 set spelllang=en_us
@@ -126,6 +131,9 @@ map <c-h> <c-w>h
 "" easier moving between tabs
 map <Leader>n <esc>:tabprevious<CR>
 map <Leader>m <esc>:tabnext<CR>
+
+"" easier moving between buffers
+map <Leader>w <esc>:bNext<CR>
 
 "" set the executable bit
 map <Leader>y :w!<CR>:!chmod +x %<CR>:q<CR>

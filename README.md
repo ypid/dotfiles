@@ -6,7 +6,7 @@ This git repo tracks a few of my personal config files for some programs
 > Bash alias and other settings
 
 `.bashrc`
-> .bashrc to enable color read other files and so on
+> .bashrc to enable color, read other files and so on
 
 `.gitconfig`
 > Configuration for git including a few aliases
@@ -34,6 +34,9 @@ This git repo tracks a few of my personal config files for some programs
 
 `.vimrc`
 > My vimrc (work in progress)
+
+`.vimpagerrc`
+> Lightweight Vim configuration for using Vim as pager
 
 `.Xmodmap`
 > Some keyboard mappings. This fixed the *problem* with entering ^

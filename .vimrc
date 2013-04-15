@@ -17,6 +17,7 @@ Bundle 'plasticboy/vim-markdown'
 Bundle 'tpope/vim-surround'
 " Bundle 'matchit.zip'
 " Bundle 'indenthtml.vim'
+" Bundle 'Lokaltog/powerline'
 
 Bundle "MarcWeber/vim-addon-mw-utils"
 Bundle "tomtom/tlib_vim"
@@ -49,7 +50,7 @@ Bundle 'sjl/gundo.vim'
 nnoremap <Leader>g :GundoToggle<CR>
 
 if version >= 703
-	set colorcolumn=+1
+    set colorcolumn=+1
 endif
 
 "" Better copy and paste
@@ -100,8 +101,10 @@ set tabstop=4
 if has("autocmd") && !exists("autocommands_loaded")
     " set verbose=9
     filetype on
-    autocmd bufwritepost .vimrc source %
+    autocmd BufWritePost .vimrc source %
+    autocmd BufWritePost .vimpagerrc source %
     autocmd BufRead,BufNewFile .vimpagerrc set ft=vim
+    au VimLeave * if filereadable($HOME."/.vim/bundle/vundle/.netrwhist")|call delete($HOME."/.vim/bundle/vundle/.netrwhist")|endif
     autocmd FileType perl setlocal expandtab tabstop=4
     autocmd FileType vim setlocal expandtab tabstop=4
     autocmd FileType python setlocal tabstop=4
@@ -109,8 +112,9 @@ if has("autocmd") && !exists("autocommands_loaded")
     autocmd FileType c setlocal noexpandtab tabstop=4
     " autocmd BufRead,BufNewFile * call DetectIndentIfNotEmptyBuf()
     autocmd BufRead * DetectIndent
+    " autocmd BufWritePost * echo &ff
     autocmd BufRead,BufNewFile * call SetShiftwidthAndTabstop()
-    " let autocommands_loaded = 1
+    let autocommands_loaded = 1
 endif
 
 "" Python folding
