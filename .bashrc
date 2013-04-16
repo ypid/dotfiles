@@ -76,6 +76,8 @@ fi
 set -o vi
 bind -m vi-insert "\C-o":dynamic-complete-history
 bind -m vi-insert "\C-l":clear-screen
+bind -m vi-insert "\C-p":previous-history
+bind -m vi-insert "\C-n":next-history
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
