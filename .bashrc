@@ -10,7 +10,7 @@ HISTCONTROL=ignoredups:ignorespace
 # append to the history file, don't overwrite it
 shopt -s histappend
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=5230000
+HISTSIZE=52300000
 # export HISTTIMEFORMAT='%F %T '
 
 # check the window size after each command and, if necessary,
@@ -71,6 +71,11 @@ fi
 if [ -f ~/.bash_local ]; then
     . ~/.bash_local
 fi
+
+## Set the thing to vi editing mode :)
+set -o vi
+bind -m vi-insert "\C-o":dynamic-complete-history
+bind -m vi-insert "\C-l":clear-screen
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile

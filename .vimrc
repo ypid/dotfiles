@@ -9,6 +9,7 @@ source ~/.vimpagerrc
 "" My Bundles here:
 "" original repos on github
 Bundle 'tpope/vim-fugitive'
+Bundle 'int3/vim-extradite'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'jiangmiao/auto-pairs'
 Bundle 'tpope/vim-repeat'
@@ -83,8 +84,10 @@ filetype plugin indent on
 
 "" Set shiftwidth and softtabstop to the value of tabstop
 function! SetShiftwidthAndTabstop()
-    let &l:sts = &l:ts
-    let &l:sw  = &l:ts
+    " let &l:sts = &l:ts
+    " let &l:sw  = &l:ts
+    let &l:ts  = &l:sw
+    let &l:sts = &l:sw
 endfunction
 
 " function! DetectIndentIfNotEmptyBuf()
@@ -105,14 +108,16 @@ if has("autocmd") && !exists("autocommands_loaded")
     autocmd BufWritePost .vimpagerrc source %
     autocmd BufRead,BufNewFile .vimpagerrc set ft=vim
     au VimLeave * if filereadable($HOME."/.vim/bundle/vundle/.netrwhist")|call delete($HOME."/.vim/bundle/vundle/.netrwhist")|endif
-    autocmd FileType perl setlocal expandtab tabstop=4
-    autocmd FileType vim setlocal expandtab tabstop=4
-    autocmd FileType python setlocal tabstop=4
-    autocmd FileType tex setlocal expandtab tabstop=2
-    autocmd FileType c setlocal noexpandtab tabstop=4
+    autocmd FileType perl setlocal expandtab shiftwidth=4
+    autocmd FileType vim setlocal expandtab shiftwidth=4
+    autocmd FileType python setlocal shiftwidth=4
+    autocmd FileType tex setlocal expandtab shiftwidth=2
+    autocmd FileType c setlocal noexpandtab shiftwidth=4
     " autocmd BufRead,BufNewFile * call DetectIndentIfNotEmptyBuf()
     autocmd BufRead * DetectIndent
     " autocmd BufWritePost * echo &ff
+    autocmd BufEnter *.html compiler tidy
+    autocmd QuickFixCmdPost make cwindow
     autocmd BufRead,BufNewFile * call SetShiftwidthAndTabstop()
     let autocommands_loaded = 1
 endif
