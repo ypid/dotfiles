@@ -125,7 +125,3 @@ if has("autocmd") && !exists("autocommands_loaded")
     autocmd BufRead,BufNewFile * call SetShiftwidthAndTabstop()
     let autocommands_loaded = 1
 endif
-
-"" Python folding
-"" mkdir -p ~/.vim/ftplugin
-"" wget -O ~/.vim/ftplugin/python_editing.vim http://www.vim.org/scripts/download_script.php?src_id=5492
