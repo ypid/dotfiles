@@ -39,7 +39,7 @@ nmap <Leader>to :ToggleWord<CR>
 "" DetectIndent
 Bundle 'ciaranm/detectindent'
 let g:detectindent_preferred_expandtab = 1
-let g:detectindent_preferred_indent = 8
+let g:detectindent_preferred_indent = 4
 
 "" NERDTree
 Bundle 'scrooloose/nerdtree'
@@ -84,13 +84,6 @@ set clipboard=unnamed
 syntax on
 filetype plugin indent on
 
-"" Real programmers don't use TABs but spaces
-" set tabstop=4
-" set softtabstop=4
-" set shiftwidth=4
-" set shiftround
-" set expandtab
-
 "" Set shiftwidth and softtabstop to the value of tabstop
 function! SetShiftwidthAndTabstop()
     " let &l:sts = &l:ts
@@ -109,7 +102,6 @@ endfunction
 " endfunction
 
 set autoindent
-set tabstop=4
 if has("autocmd") && !exists("autocommands_loaded")
     " set verbose=9
     filetype on
