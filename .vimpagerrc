@@ -23,8 +23,10 @@ Bundle 'bronson/vim-visual-star-search'
 Bundle 'Lokaltog/vim-easymotion'
 let g:EasyMotion_leader_key = '<Leader>j'
 
-"" Needs to be before syntax on …
-Bundle 'SirVer/ultisnips'
+if has("python3")
+    "" Needs to be before syntax on …
+    Bundle 'SirVer/ultisnips'
+endif
 
 "" translate
 "" you can print the last translated word with ""p
@@ -39,7 +41,7 @@ Bundle 'ypid/lookup.vim'
 " nmap <Leader>tr :call LookupCurWord()<CR>'
 " vmap <Leader>tv :call LookupVisual()<CR>'
 nmap <Leader>tr :Lookup<CR>
-vmap <Leader>tv :call LookupVisual()<CR>
+vmap <Leader>tr :call LookupVisual()<CR>
 inoremap <Leader>tr <ESC>:Lookup<CR>a
 
 "" Mappings {{{1

@@ -8,8 +8,6 @@ source ~/.vimpagerrc
 
 "" My Bundles here:
 "" original repos on github
-Bundle 'tpope/vim-fugitive'
-Bundle 'int3/vim-extradite'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'jiangmiao/auto-pairs'
 Bundle 'tpope/vim-repeat'
@@ -26,6 +24,17 @@ Bundle "tomtom/tlib_vim"
 " Bundle 'skammer/vim-css-color'
 Bundle 'HTML-AutoCloseTag'
 " Bundle 'thanthese/Tortoise-Typing'
+
+"" Git
+Bundle 'tpope/vim-fugitive'
+Bundle 'int3/vim-extradite'
+let g:extradite_showhash = 1
+command! Gloge Extradite
+
+
+"" Toggle words
+Bundle 'toggle_words.vim'
+nmap <Leader>to :ToggleWord<CR>
 
 "" DetectIndent
 Bundle 'ciaranm/detectindent'
