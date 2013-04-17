@@ -14,6 +14,7 @@ Bundle 'tpope/vim-repeat'
 Bundle 'bitc/vim-bad-whitespace'
 Bundle 'plasticboy/vim-markdown'
 Bundle 'tpope/vim-surround'
+Bundle 'powerman/vim-plugin-viewdoc'
 " Bundle 'matchit.zip'
 " Bundle 'indenthtml.vim'
 " Bundle 'Lokaltog/powerline'
@@ -31,6 +32,8 @@ Bundle 'int3/vim-extradite'
 let g:extradite_showhash = 1
 command! Gloge Extradite
 
+"" Needs to be before syntax on …
+Bundle 'SirVer/ultisnips'
 
 "" Toggle words
 Bundle 'toggle_words.vim'

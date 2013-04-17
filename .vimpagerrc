@@ -23,11 +23,6 @@ Bundle 'bronson/vim-visual-star-search'
 Bundle 'Lokaltog/vim-easymotion'
 let g:EasyMotion_leader_key = '<Leader>j'
 
-if has("python3")
-    "" Needs to be before syntax on …
-    Bundle 'SirVer/ultisnips'
-endif
-
 "" translate
 "" you can print the last translated word with ""p
 " Bundle 'mattn/webapi-vim'
