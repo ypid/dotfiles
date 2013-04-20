@@ -13,6 +13,7 @@
 	st = status
 	ci = commit
 	cio = commit --reedit-message=HEAD --reset-author
+	cii = commit --all -m 'Initial commit.'
 	## use last commit message
 	co = checkout
 	br = branch --all

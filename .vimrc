@@ -8,7 +8,6 @@ source ~/.vimpagerrc
 
 "" My Bundles here:
 "" original repos on github
-Bundle 'tomtom/tcomment_vim'
 Bundle 'jiangmiao/auto-pairs'
 Bundle 'tpope/vim-repeat'
 Bundle 'bitc/vim-bad-whitespace'
@@ -18,6 +17,9 @@ Bundle 'powerman/vim-plugin-viewdoc'
 " Bundle 'matchit.zip'
 " Bundle 'indenthtml.vim'
 " Bundle 'Lokaltog/powerline'
+
+Bundle 'tomtom/tcomment_vim'
+let g:tcommentOptions = {'strip_whitespace': 1}
 
 Bundle "MarcWeber/vim-addon-mw-utils"
 Bundle "tomtom/tlib_vim"
@@ -46,8 +48,8 @@ let g:detectindent_preferred_indent = 4
 
 "" NERDTree
 Bundle 'scrooloose/nerdtree'
-map <c-n> :NERDTreeToggle<CR>
-inoremap <c-n> <ESC>:NERDTreeToggle<CR>a
+map <Leader>v :NERDTreeToggle<CR>
+inoremap <Leader>v <ESC>:NERDTreeToggle<CR>a
 
 "" CtrlP
 Bundle 'kien/ctrlp.vim'

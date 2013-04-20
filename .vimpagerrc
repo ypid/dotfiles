@@ -125,6 +125,18 @@ map <c-k> <c-w>k
 map <c-l> <c-w>l
 map <c-h> <c-w>h
 
+"" Insert newline without entering insert mode
+map <Leader><Enter> O<Esc>
+map <CR> o<Esc>
+
+"" Unbind the cursor keys in insert, normal and visual modes.
+"" Luckily I do not use them anymore.
+for prefix in ['i', 'n', 'v']
+    for key in ['<Up>', '<Down>', '<Left>', '<Right>']
+        exe prefix . "noremap " . key . " <Nop>"
+    endfor
+endfor
+
 "" easier moving between tabs
 map <Leader>n <esc>:tabprevious<CR>
 map <Leader>m <esc>:tabnext<CR>
