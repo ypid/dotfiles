@@ -1,3 +1,8 @@
 keycode 35 = plus asterisk plus asterisk asciitilde dead_macron dead_tilde dead_macron plus asterisk dead_tilde dead_macron
 keycode 49 = asciicircum degree dead_circumflex degree U2032 U2033 U2032
 keysym ssharp = ssharp question backslash U1E9E backslash U1E9E
+keycode 133 = Mode_switch
+keysym j = j J Down
+keysym l = l L Right
+keysym h = h H Left
+keysym k = k K Up

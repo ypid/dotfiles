@@ -18,6 +18,7 @@ Bundle 'gmarik/vundle'
 " Bundle 'ZoomWin'
 Bundle 'dahu/LearnVim'
 Bundle 'bronson/vim-visual-star-search'
+Bundle 'matchit.zip'
 
 "" easymotion
 Bundle 'Lokaltog/vim-easymotion'
@@ -28,16 +29,14 @@ let g:EasyMotion_leader_key = '<Leader>j'
 " Bundle 'mattn/webapi-vim'
 " let g:trans_has_python = 0
 " Bundle 'Rykka/trans.vim'
-" let g:trans_default_lang = 'de'
-" let g:trans_map_trans = '<Leader>tr'
+" let g:trans_default_lang = 'en'
+""  let g:trans_map_trans = '<Leader>tt'
+
 " Bundle 'lookup.vim'
 Bundle 'ypid/lookup.vim'
 " let g:lookup_dict_para = []
-" nmap <Leader>tr :call LookupCurWord()<CR>'
-" vmap <Leader>tv :call LookupVisual()<CR>'
 nmap <Leader>tr :Lookup<CR>
 vmap <Leader>tr :call LookupVisual()<CR>
-inoremap <Leader>tr <ESC>:Lookup<CR>a
 
 "" Mappings {{{1
 set pastetoggle=<F2>
@@ -65,7 +64,7 @@ set tw=79   " width of document (used by gd)
 set fo-=t   " don't automatically wrap text when typing
 set autochdir
 set ruler
-set rulerformat=%55(%{strftime('%a\ %b\ %e\ %I:%M\ %p')}\ %5l,%-6(%c%V%)\ %P%)
+set rulerformat=%55(%{strftime('%a\ %b\ %e\ %H:%M\ %p')}\ %5l,%-6(%c%V%)\ %P%)
 
 "" Filetype detact
 map <Leader>fd :filetype detect<CR>
@@ -126,8 +125,8 @@ map <c-l> <c-w>l
 map <c-h> <c-w>h
 
 "" Insert newline without entering insert mode
-map <Leader><Enter> O<Esc>
-map <CR> o<Esc>
+map <Leader>Q O<Esc>
+map <Leader>q o<Esc>
 
 "" Unbind the cursor keys in insert, normal and visual modes.
 "" Luckily I do not use them anymore.

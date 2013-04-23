@@ -14,8 +14,7 @@ Bundle 'bitc/vim-bad-whitespace'
 Bundle 'plasticboy/vim-markdown'
 Bundle 'tpope/vim-surround'
 Bundle 'powerman/vim-plugin-viewdoc'
-" Bundle 'matchit.zip'
-" Bundle 'indenthtml.vim'
+Bundle 'indenthtml.vim'
 " Bundle 'Lokaltog/powerline'
 
 Bundle 'tomtom/tcomment_vim'
@@ -35,6 +34,7 @@ let g:extradite_showhash = 1
 command! Gloge Extradite
 
 "" Needs to be before syntax on …
+let g:UltiSnipsListSnippets = "<Leader><tab>"
 Bundle 'SirVer/ultisnips'
 
 "" Toggle words
@@ -112,7 +112,7 @@ if has("autocmd") && !exists("autocommands_loaded")
     filetype on
     autocmd BufWritePost .vimrc source %
     autocmd BufWritePost .vimpagerrc source %
-    autocmd BufRead,BufNewFile .vimpagerrc set ft=vim
+    autocmd BufRead,BufNewFile .vimpagerrc setlocal filetype=vim
     au VimLeave * if filereadable($HOME."/.vim/bundle/vundle/.netrwhist")|call delete($HOME."/.vim/bundle/vundle/.netrwhist")|endif
     autocmd FileType perl setlocal expandtab shiftwidth=4
     autocmd FileType vim setlocal expandtab shiftwidth=4
@@ -122,7 +122,8 @@ if has("autocmd") && !exists("autocommands_loaded")
     " autocmd BufRead,BufNewFile * call DetectIndentIfNotEmptyBuf()
     autocmd BufRead * DetectIndent
     " autocmd BufWritePost * echo &ff
-    autocmd BufEnter *.html compiler tidy
+    autocmd BufRead,BufNewFile *.html compiler tidy
+    " autocmd BufRead,BufNewFile /etc/*.conf setlocal filetype=conf
     autocmd QuickFixCmdPost make cwindow
     autocmd BufRead,BufNewFile * call SetShiftwidthAndTabstop()
     let autocommands_loaded = 1

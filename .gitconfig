@@ -8,7 +8,7 @@
 [pack]
 	threads = 0
 [alias]
-	wdiff = diff --color-words
+	wd = diff --color-words
 	re = remote -v
 	st = status
 	ci = commit
