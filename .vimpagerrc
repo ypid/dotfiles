@@ -6,11 +6,13 @@ filetype off                   " required!
 let mapleader = ','
 
 
-"" let Vundle manage Vundle
-"" git://github.com/gmarik/vundle.git
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-let g:vundle_default_git_proto = 'git'
+if !exists("vundle_default_git_proto")
+    "" let Vundle manage Vundle
+    "" git://github.com/gmarik/vundle.git
+    set rtp+=~/.vim/bundle/vundle/
+    call vundle#rc()
+    let g:vundle_default_git_proto = 'git'
+endif
 
 "" required!
 Bundle 'gmarik/vundle'
@@ -19,6 +21,7 @@ Bundle 'gmarik/vundle'
 Bundle 'dahu/LearnVim'
 Bundle 'bronson/vim-visual-star-search'
 Bundle 'matchit.zip'
+Bundle 'skammer/vim-css-color'
 
 "" easymotion
 Bundle 'Lokaltog/vim-easymotion'
@@ -26,7 +29,7 @@ let g:EasyMotion_leader_key = '<Leader>j'
 
 "" translate
 "" you can print the last translated word with ""p
-" Bundle 'mattn/webapi-vim'
+Bundle 'mattn/webapi-vim'
 " let g:trans_has_python = 0
 " Bundle 'Rykka/trans.vim'
 " let g:trans_default_lang = 'en'
@@ -37,6 +40,66 @@ Bundle 'ypid/lookup.vim'
 " let g:lookup_dict_para = []
 nmap <Leader>tr :Lookup<CR>
 vmap <Leader>tr :call LookupVisual()<CR>
+
+
+" Vim UI {
+
+" Bundle 'altercation/vim-colors-solarized'
+" if filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
+"     let g:solarized_termcolors=256
+"     color solarized                 " Load a colorscheme
+" endif
+" let g:solarized_termtrans=1
+" let g:solarized_contrast="high"
+" let g:solarized_visibility="high"
+" set tabpagemax=15               " Only show 15 tabs
+" set showmode                    " Display the current mode
+
+" set cursorline                  " Highlight current line
+
+" highlight clear SignColumn      " SignColumn should match background for
+" things like vim-gitgutter
+
+if has("python") || has("python3")
+    Bundle 'Lokaltog/powerline', {'rtp':'/powerline/bindings/vim'}
+else
+    Bundle 'Lokaltog/vim-powerline'
+endif
+if has('cmdline_info')
+    set ruler                   " Show the ruler
+    set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%) " A ruler on steroids
+    set showcmd                 " Show partial commands in status line and
+    " Selected characters/lines in visual mode
+endif
+
+if has('statusline')
+    set laststatus=2
+
+    " Broken down into easily includeable segments
+    set statusline=%<%f\                     " Filename
+    set statusline+=%w%h%m%r                 " Options
+    set statusline+=%{fugitive#statusline()} " Git Hotness
+    set statusline+=\ [%{&ff}/%Y]            " Filetype
+    set statusline+=\ [%{getcwd()}]          " Current dir
+    set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
+endif
+
+" set backspace=indent,eol,start  " Backspace for dummies
+" set linespace=0                 " No extra spaces between rows
+set incsearch                   " Find as you type search
+set hlsearch                    " Highlight search terms
+set winminheight=0              " Windows can be 0 line high
+set ignorecase                  " Case insensitive search
+set smartcase                   " Case sensitive when uc present
+set wildmenu                    " Show list instead of just completing
+set wildmode=list:longest,full  " Command <Tab> completion, list matches, then longest common part, then all.
+set whichwrap=b,s,h,l,<,>,[,]   " Backspace and cursor keys wrap too
+set scrolljump=5                " Lines to scroll when cursor leaves screen
+set scrolloff=3                 " Minimum lines to keep above and below cursor
+set foldenable                  " Auto fold code
+set list
+set listchars=tab:→\ ,eol:$,trail:.,extends:>,precedes:<,nbsp:_
+" }
 
 "" Mappings {{{1
 set pastetoggle=<F2>
@@ -50,8 +113,6 @@ set pastetoggle=<F2>
 
 "" colorscheme delek
 "" colorscheme default
-" set listchars=tab:-
-set listchars=tab:→\ ,eol:$,trail:.,extends:>,precedes:<,nbsp:_
 
 "" Behavior {{{1
 set nofoldenable
@@ -158,11 +219,6 @@ vnoremap > >gv
 " vmap Q gq
 " nmap Q gqap
 
-"" Make search case insensitive
-set hlsearch
-set incsearch
-set ignorecase
-set smartcase
 
 if filereadable($HOME.'/.vimrc_private')
     source ~/.vimrc_private

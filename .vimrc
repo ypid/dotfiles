@@ -20,7 +20,7 @@ Bundle 'indenthtml.vim'
 Bundle 'tomtom/tcomment_vim'
 let g:tcommentOptions = {'strip_whitespace': 1}
 
-Bundle "MarcWeber/vim-addon-mw-utils"
+" Bundle "MarcWeber/vim-addon-mw-utils"
 Bundle "tomtom/tlib_vim"
 
 " Bundle 'skammer/vim-css-color'
@@ -29,6 +29,7 @@ Bundle 'HTML-AutoCloseTag'
 
 "" Git
 Bundle 'tpope/vim-fugitive'
+" Bundle 'mattn/gist-vim'
 Bundle 'int3/vim-extradite'
 let g:extradite_showhash = 1
 command! Gloge Extradite
@@ -63,6 +64,22 @@ nmap <Leader>r :CtrlPMRUFiles<CR>
 "" gundo
 Bundle 'sjl/gundo.vim'
 nnoremap <Leader>g :GundoToggle<CR>
+
+" Tabularize {
+Bundle 'godlygeek/tabular'
+nmap <Leader>a& :Tabularize /&<CR>
+vmap <Leader>a& :Tabularize /&<CR>
+nmap <Leader>a= :Tabularize /=<CR>
+vmap <Leader>a= :Tabularize /=<CR>
+nmap <Leader>a: :Tabularize /:<CR>
+vmap <Leader>a: :Tabularize /:<CR>
+nmap <Leader>a:: :Tabularize /:\zs<CR>
+vmap <Leader>a:: :Tabularize /:\zs<CR>
+nmap <Leader>a, :Tabularize /,<CR>
+vmap <Leader>a, :Tabularize /,<CR>
+nmap <Leader>a<Bar> :Tabularize /<Bar><CR>
+vmap <Leader>a<Bar> :Tabularize /<Bar><CR>
+" }
 
 if version >= 703
     set colorcolumn=+1
