@@ -35,8 +35,28 @@
     " map <C-L> <C-W>l<C-W>_
     " map <C-H> <C-W>h<C-W>_
 
-    " function! ToggleCopyPaste()
-
+    let g:CopyPasteMode = 1
+    function! ToggleCopyPaste()
+        if g:CopyPasteMode
+            set nopaste
+            set number
+            set mouse=n
+            let g:CopyPasteMode = 0
+        else
+            set paste
+            set nonumber
+            set mouse=
+            let g:CopyPasteMode = 1
+        endif
+    endfunction
+            set nopaste
+            set number
+            set mouse=n
+    command! ToggleCopyPaste call ToggleCopyPaste()
+    nmap <F2> :ToggleCopyPaste<CR>
+    imap <F2> :ToggleCopyPaste<CR>
+    nmap <Leader>p :ToggleCopyPaste<CR>
+    imap <Leader>p <ESC>:ToggleCopyPaste<CR>a
 
     " Wrapped lines goes down/up to next row, rather than next line in file.
     nnoremap j gj
@@ -88,10 +108,6 @@
     nmap <Leader>b :nohl<CR>
     imap <Leader>b <ESC>:nohl<CR>a
 
-    " <Leader>a does interfere <c-a>
-    map <Leader>p :set number!<CR>
-    imap <Leader>p <ESC>:set number!<CR>a
-
     " Bind set list
     map <Leader>l :set list!<CR>
     imap <Leader>l <ESC>:set list!<CR>a
@@ -106,9 +122,9 @@
     " Just use Ctrl-r%
 
     " Spellcheck {
-    set spelllang=en_us
-    map <Leader>c :set spell!<CR>
-    imap <Leader>c <ESC>:set spell!<CR>a
+        set spelllang=en_us
+        map <Leader>c :set spell!<CR>
+        imap <Leader>c <ESC>:set spell!<CR>a
     " }
 
     " Save and go to normal mode
@@ -182,7 +198,7 @@
             Bundle 'spf13/vim-colors'
             Bundle 'tpope/vim-surround'
             " Bundle 'spf13/vim-autoclose'
-            " Bundle 'jiangmiao/auto-pairs'
+            Bundle 'jiangmiao/auto-pairs'
 
             " CtrlP {
             Bundle 'kien/ctrlp.vim'
@@ -464,7 +480,9 @@
             " AutoCloseTag {
             " Bundle 'karuna/HTML-AutoCloseTag'
             " Bundle 'amirh/HTML-AutoCloseTag'
-            Bundle 'sukima/xmledit'
+            Bundle 'ypid/HTML-AutoCloseTag'
+            " Bundle 'sukima/xmledit'
+            " Bundle 'closetag.vim'
             " Make it so AutoCloseTag works for xml and xhtml files as well
             " au FileType xhtml,xml ru ftplugin/html/autoclosetag.vim
             " nmap <Leader>ac <Plug>ToggleAutoCloseMappings
@@ -514,9 +532,6 @@
     endif
     filetype plugin indent on   " Automatically detect file types.
     syntax on                   " Syntax highlighting
-    if has('mouse')
-        set mouse=n
-    endif
     set mousehide               " Hide the mouse cursor while typing
     scriptencoding utf-8
 
@@ -597,7 +612,7 @@ endif
 
     set backspace=indent,eol,start  " Backspace for dummies
     set linespace=0                 " No extra spaces between rows
-    set number                      " Line numbers on
+    ToggleCopyPaste
     set showmatch                   " Show matching brackets/parenthesis
     set incsearch                   " Find as you type search
     set hlsearch                    " Highlight search terms
