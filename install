@@ -6,3 +6,5 @@ git submodule update --init --recursive
 ls -A1|grep -Pv '^(.git$|\w)'|while read file
 do	ln -Ts "$PWD/$file" "$HOME/$file"
 done
+
+mkdir "$HOME/.vimundo"

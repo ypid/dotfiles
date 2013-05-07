@@ -310,9 +310,10 @@
             nmap <Leader>to :ToggleWord<CR>
 
             " DetectIndent
-            Bundle 'ciaranm/detectindent'
+            " Bundle 'ciaranm/detectindent'
+            Bundle 'ypid/detectindent'
             let g:detectindent_preferred_expandtab = 1
-            let g:detectindent_preferred_indent = 4
+            let g:detectindent_preferred_indent = 8
 
             if executable('ctags')
                 Bundle 'majutsushi/tagbar'
@@ -479,7 +480,8 @@
             Bundle 'ypid/HTML-AutoCloseTag'
             let g:closetag_html_style=1
             " Bundle 'closetag.vim'
-            Bundle 'inkarkat/closetag.vim'
+            " Bundle 'inkarkat/closetag.vim'
+            Bundle 'ypid/closetag.vim'
             inoremap <expr> <Leader>at <SID>GetCloseTag('i')
             nnoremap <expr> <Leader>at <SID>GetCloseTag('n')
 
@@ -567,7 +569,7 @@
         set backupdir=~/.vimswap,/var/tmp,/tmp,.
         if has('persistent_undo')
             set undofile                " So is persistent undo ...
-            set undodir=~/.vim/undodir
+            set undodir=~/.vimundo/
             set undolevels=1000         " Maximum number of changes that can be undone
             set undoreload=10000        " Maximum number lines to save for undo on a buffer reload
         endif
@@ -605,6 +607,7 @@ endif
 
     highlight clear SignColumn      " SignColumn should match background for
                                     " things like vim-gitgutter
+    highlight ExtraWhitespace ctermbg=red guibg=red
 
     if has('cmdline_info')
         set ruler                   " Show the ruler
@@ -640,7 +643,7 @@ endif
     set scrolljump=5                " Lines to scroll when cursor leaves screen
     set scrolloff=3                 " Minimum lines to keep above and below cursor
     set foldenable                  " Auto fold code
-    " set list
+    set nolist
     set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
 
 " }
@@ -695,7 +698,7 @@ endif
         autocmd BufRead,BufNewFile *.html compiler tidy
         autocmd BufRead,BufNewFile /etc/*/apt.conf setlocal filetype=conf
         autocmd QuickFixCmdPost make cwindow
-        autocmd BufRead,BufNewFile * call SetIndentWidth()
+        " autocmd BufRead,BufNewFile * call SetIndentWidth()
         autocmd FileType c,cpp,java,go,php,javascript,python,twig,xml,yml autocmd BufWritePre <buffer> EraseBadWhitespace
 
         " Always switch to the current file directory
