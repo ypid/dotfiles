@@ -7,4 +7,4 @@ ls -A1|grep -Pv '^(.git$|\w)'|while read file
 do	ln -Ts "$PWD/$file" "$HOME/$file"
 done
 
-mkdir "$HOME/.vimundo"
+mkdir -p "$HOME/.vimundo"
