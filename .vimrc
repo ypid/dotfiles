@@ -3,7 +3,6 @@
 " Environment {
     " Basics {
         set nocompatible        " must be first line
-        set background=dark     " Assume a dark background
     " }
 
     " Windows Compatible {
@@ -35,28 +34,7 @@
     " map <C-L> <C-W>l<C-W>_
     " map <C-H> <C-W>h<C-W>_
 
-    let g:CopyPasteMode = 1
-    function! ToggleCopyPaste()
-        if g:CopyPasteMode
-            set nopaste
-            set number
-            set mouse=n
-            let g:CopyPasteMode = 0
-        else
-            set paste
-            set nonumber
-            set mouse=
-            let g:CopyPasteMode = 1
-        endif
-    endfunction
-            set nopaste
-            set number
-            set mouse=n
-    command! ToggleCopyPaste call ToggleCopyPaste()
-    nmap <F2> :ToggleCopyPaste<CR>
-    imap <F2> :ToggleCopyPaste<CR>
-    nmap <Leader>p :ToggleCopyPaste<CR>
-    imap <Leader>p <ESC>:ToggleCopyPaste<CR>a
+    set pastetoggle=<F2>           " pastetoggle (sane indentation on pastes)
 
     " Wrapped lines goes down/up to next row, rather than next line in file.
     nnoremap j gj
@@ -123,6 +101,7 @@
 
     " Spellcheck {
         set spelllang=en_us
+        set spellfile=~/.vim/spell/en.utf-8.add
         map <Leader>c :set spell!<CR>
         imap <Leader>c <ESC>:set spell!<CR>a
     " }
@@ -172,7 +151,12 @@
 " }
 
 " Bundles {
-    " Deps
+    " let g:spf13_bundle_groups=['general', 'neocomplcache',
+    " 'programming', 'ruby', 'python', 'go', 'twig', 'javascript', 'html',
+    " 'misc', 'scala', 'games']
+    let g:spf13_bundle_groups=['general', 'programming', 'python', 'javascript', 'html', 'misc', 'scala', 'snipmate']
+
+    " Deps {
         Bundle 'gmarik/vundle'
         Bundle 'MarcWeber/vim-addon-mw-utils'
         Bundle 'tomtom/tlib_vim'
@@ -185,11 +169,9 @@
             Bundle 'mileszs/ack.vim'
             let g:ackprg = 'ag --nogroup --nocolor --column'
         endif
+    " }
 
-        " let g:spf13_bundle_groups=['general', 'neocomplcache', 'programming', 'ruby', 'python', 'go', 'twig', 'javascript', 'html', 'misc', 'scala']
-        let g:spf13_bundle_groups=['general', 'programming', 'python', 'javascript', 'html', 'misc', 'scala', 'snipmate']
-
-    " General
+    " General {
         if count(g:spf13_bundle_groups, 'general')
             Bundle 'scrooloose/nerdtree'
             map <Leader>v :NERDTreeToggle<CR>
@@ -201,13 +183,13 @@
             Bundle 'jiangmiao/auto-pairs'
 
             " CtrlP {
-            Bundle 'kien/ctrlp.vim'
-            let g:ctrlp_show_hidden = 1
-            let g:ctrlp_mruf_save_on_update = 0
-            let g:ctrlp_extensions = ['line']
-            let g:ctrlp_open_new_file = 'h'
-            let g:ctrlp_mruf_max = 2000
-            nmap <Leader>r :CtrlPMRUFiles<CR>
+                Bundle 'kien/ctrlp.vim'
+                let g:ctrlp_show_hidden = 1
+                let g:ctrlp_mruf_save_on_update = 0
+                let g:ctrlp_extensions = ['line']
+                let g:ctrlp_open_new_file = 'h'
+                let g:ctrlp_mruf_max = 2000
+                nmap <Leader>r :CtrlPMRUFiles<CR>
             " }
 
             " Bundle 'vim-scripts/sessionman.vim'
@@ -218,7 +200,7 @@
             nmap <Leader>fc :EraseBadWhitespace<CR>
             " }
 
-            " Bundle 'tpope/vim-repeat'
+            Bundle 'tpope/vim-repeat'
 
             " Translate {
             Bundle 'ypid/lookup.vim'
@@ -266,12 +248,19 @@
             Bundle 'airblade/vim-gitgutter'
             Bundle 'tpope/vim-abolish.git'
         endif
+    " }
 
-    " General Programming
+    " General Programming {
         if count(g:spf13_bundle_groups, 'programming')
             " Pick one of the checksyntax, jslint, or syntastic
-            " Bundle 'tpope/vim-repeat'
             Bundle 'scrooloose/syntastic'
+            Bundle 'vivien/vim-addon-linux-coding-style'
+
+            " More text objects {
+                " http://blog.carbonfive.com/2011/10/17/vim-text-objects-the-definitive-guide/
+                Bundle 'argtextobj.vim'
+                Bundle 'michaeljsmith/vim-indent-object'
+            " }
 
             " Fugitive {
             Bundle 'tpope/vim-fugitive'
@@ -307,6 +296,8 @@
             vmap <Leader>a, :Tabularize /,<CR>
             nmap <Leader>a" :Tabularize /"<CR>
             vmap <Leader>a" :Tabularize /"<CR>
+            nmap <Leader>a<Space> :Tabularize /\s\+<CR>
+            vmap <Leader>a<Space> :Tabularize /\s\+<CR>
             nmap <Leader>a<Bar> :Tabularize /<Bar><CR>
             vmap <Leader>a<Bar> :Tabularize /<Bar><CR>
             " }
@@ -327,8 +318,9 @@
                 Bundle 'majutsushi/tagbar'
             endif
         endif
+    " }
 
-    " Snippets & AutoComplete
+    " Snippets & AutoComplete {
         if count(g:spf13_bundle_groups, 'snipmate')
             " Needs to be before syntax on …
             Bundle 'SirVer/ultisnips'
@@ -450,8 +442,9 @@
                 set completeopt-=preview
             " }
         endif
+    " }
 
-    " Python
+    " Python {
         if count(g:spf13_bundle_groups, 'python')
             " Pick either python-mode or pyflakes & pydoc
             " Bundle 'klen/python-mode'
@@ -459,8 +452,9 @@
             " Bundle 'python_match.vim'
             " Bundle 'pythoncomplete'
         endif
+    " }
 
-    " Javascript
+    " Javascript {
         if count(g:spf13_bundle_groups, 'javascript')
             " Bundle 'leshill/vim-json'
             " Bundle 'groenewege/vim-less'
@@ -468,46 +462,55 @@
             " Bundle 'briancollins/vim-jst'
             " Bundle 'kchmck/vim-coffee-script'
         endif
+    " }
 
-    " Java
+    " Java {
         if count(g:spf13_bundle_groups, 'scala')
             " Bundle 'derekwyatt/vim-scala'
             " Bundle 'derekwyatt/vim-sbt'
         endif
+    " }
 
-    " HTML
+    " HTML {
         if count(g:spf13_bundle_groups, 'html')
             " AutoCloseTag {
             " Bundle 'karuna/HTML-AutoCloseTag'
             " Bundle 'amirh/HTML-AutoCloseTag'
             Bundle 'ypid/HTML-AutoCloseTag'
+            let g:closetag_html_style=1
+            " Bundle 'closetag.vim'
+            Bundle 'inkarkat/closetag.vim'
+            inoremap <expr> <Leader>at <SID>GetCloseTag('i')
+            nnoremap <expr> <Leader>at <SID>GetCloseTag('n')
+
             " Bundle 'sukima/xmledit'
             " Bundle 'closetag.vim'
             " Make it so AutoCloseTag works for xml and xhtml files as well
             " au FileType xhtml,xml ru ftplugin/html/autoclosetag.vim
-            " nmap <Leader>ac <Plug>ToggleAutoCloseMappings
-            " imap <Leader>ac <ESC><Plug>ToggleAutoCloseMappings<CR>a
             " }
 
             " Bundle 'hail2u/vim-css3-syntax'
             " Bundle 'tpope/vim-haml'
         endif
+    " }
 
-    " Ruby
+    " Ruby {
         if count(g:spf13_bundle_groups, 'ruby')
             Bundle 'tpope/vim-rails'
             let g:rubycomplete_buffer_loading = 1
             "let g:rubycomplete_classes_in_global = 1
             "let g:rubycomplete_rails = 1
         endif
+    " }
 
-    " Go Lang
+    " Go Lang {
         if count(g:spf13_bundle_groups, 'go')
             Bundle 'jnwhiteh/vim-golang'
             Bundle 'spf13/vim-gocode'
         endif
+    " }
 
-    " Misc
+    " Misc {
         if count(g:spf13_bundle_groups, 'misc')
             Bundle 'dahu/LearnVim'
             Bundle 'tpope/vim-markdown'
@@ -516,13 +519,22 @@
             " Bundle 'tpope/vim-cucumber'
             " Bundle 'quentindecock/vim-cucumber-align-pipes'
             Bundle 'Puppet-Syntax-Highlighting'
+            " Bundle 'mattn/calendar-vim'
         endif
+    " }
 
+    " Games {
+        if count(g:spf13_bundle_groups, 'games')
+            Bundle 'TeTrIs.vim'
+            Bundle 'sokoban.vim'
+        endif
+    " }
 
-    " Twig
+    " Twig {
         if count(g:spf13_bundle_groups, 'twig')
             Bundle 'beyondwords/vim-twig'
         endif
+    " }
 " }
 
 " General {
@@ -544,15 +556,18 @@
     "set autowrite                       " Automatically write a file when leaving a modified buffer
     set shortmess+=filmnrxoOtT          " Abbrev. of messages (avoids 'hit enter')
     set viewoptions=folds,options,cursor,unix,slash " Better Unix / Windows compatibility
-    set virtualedit=onemore             " Allow for cursor beyond last character
+    " set virtualedit=onemore             " Allow for cursor beyond last character
     set history=1000                    " Store a ton of history (default is 20)
     set spell                           " Spell checking on
     " set hidden                          " Allow buffer switching without saving
 
     " Setting up the directories {
         set backup                  " Backups are nice ...
+        set directory=~/.vimswap,/var/tmp,/tmp,.
+        set backupdir=~/.vimswap,/var/tmp,/tmp,.
         if has('persistent_undo')
             set undofile                " So is persistent undo ...
+            set undodir=~/.vim/undodir
             set undolevels=1000         " Maximum number of changes that can be undone
             set undoreload=10000        " Maximum number lines to save for undo on a buffer reload
         endif
@@ -612,7 +627,7 @@ endif
 
     set backspace=indent,eol,start  " Backspace for dummies
     set linespace=0                 " No extra spaces between rows
-    ToggleCopyPaste
+    set number
     set showmatch                   " Show matching brackets/parenthesis
     set incsearch                   " Find as you type search
     set hlsearch                    " Highlight search terms
@@ -625,21 +640,20 @@ endif
     set scrolljump=5                " Lines to scroll when cursor leaves screen
     set scrolloff=3                 " Minimum lines to keep above and below cursor
     set foldenable                  " Auto fold code
-    set list
+    " set list
     set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
 
 " }
 
 " Formatting {
 
-    set nowrap                      " Wrap long lines
+    set wrap                      " Wrap long lines
     set autoindent                  " Indent at the same level of the previous line
     set shiftwidth=4                " Use indents of 4 spaces
     set expandtab                   " Tabs are spaces, not tabs
     set tabstop=4                   " An indentation every four columns
     set softtabstop=4               " Let backspace delete indent
     "set matchpairs+=<:>             " Match, to be used with %
-    " set pastetoggle=<F2>           " pastetoggle (sane indentation on pastes)
     "set comments=sl:/*,mb:*,elx:*/  " auto format comment blocks
     " Remove trailing whitespaces and ^M chars
 
@@ -674,6 +688,7 @@ endif
         autocmd FileType python setlocal shiftwidth=4
         autocmd FileType tex setlocal expandtab shiftwidth=2
         autocmd FileType c setlocal noexpandtab shiftwidth=4
+        autocmd FileType html setlocal expandtab shiftwidth=2
         " autocmd BufRead,BufNewFile * call DetectIndentIfNotEmptyBuf()
         autocmd BufRead * DetectIndent
         " autocmd BufWritePost * echo &ff

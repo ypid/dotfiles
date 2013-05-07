@@ -17,8 +17,6 @@ alias +='pushd'
 alias ,='popd'
 alias d='dirs -v'
 alias ts='date "+%Y-%m-%d_%H:%M"'
-## increases performance
-alias vim='vim -X'
 alias vi='vim'
 alias less='vim -c "w! /tmp/.vimpager" -'
 ## Git

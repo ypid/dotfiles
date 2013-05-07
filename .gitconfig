@@ -12,7 +12,7 @@
 	re = remote -v
 	st = status
 	ci = commit
-	cio = commit --reedit-message=HEAD --reset-author
+	cil = commit --reedit-message=HEAD --reset-author
 	cii = commit --all -m 'Initial commit.'
 	## use last commit message
 	co = checkout
@@ -21,3 +21,5 @@
 	lg = log --graph --pretty=format:'%Cred%h..%Creset - %s %Cgreen(%cr)%Creset - %an' --abbrev-commit --date=relative
 [core]
 	excludesfile = /home/rsadmin/.gitignore_global
+[github]
+	user = ypid
