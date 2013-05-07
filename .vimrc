@@ -99,9 +99,6 @@
     " imap <Leader>fn <ESC>"%p<CR>g;
     " Just use Ctrl-r%
 
-    " Translate the current word (unix time stamp) to a human readable time
-    nmap <Leader>td :echo system('date -d @'.expand('<cword>'))<CR>
-
     " Spellcheck {
         set spelllang=en_us
         set spellfile=~/.vim/spell/en.utf-8.add
@@ -541,25 +538,29 @@
         endif
     " }
     " To small for a plugin {
-        command! -complete=shellcmd -nargs=+ Shell call s:RunShellCommand(<q-args>)
-        function! s:RunShellCommand(cmdline)
-            echo a:cmdline
-            let expanded_cmdline = a:cmdline
-            for part in split(a:cmdline, ' ')
-                if part[0] =~ '\v[%#<]'
-                    let expanded_part = fnameescape(expand(part))
-                    let expanded_cmdline = substitute(expanded_cmdline, part, expanded_part, '')
-                endif
-            endfor
-            botright new
-            setlocal buftype=nofile bufhidden=wipe nobuflisted noswapfile nowrap
-            call setline(1, 'You entered:    ' . a:cmdline)
-            call setline(2, 'Expanded Form:  ' .expanded_cmdline)
-            call setline(3,substitute(getline(2),'.','=','g'))
-            execute '$read !'. expanded_cmdline
-            setlocal nomodifiable
-            1
+        function! s:ExecuteInShell(command)
+            let command = join(map(split(a:command), 'expand(v:val)'))
+            let winnr = bufwinnr('^' . command . '$')
+            silent! execute  winnr < 0 ? 'botright new ' . fnameescape(command) : winnr . 'wincmd w'
+            setlocal buftype=nowrite bufhidden=wipe nobuflisted noswapfile nowrap number
+            echo 'Execute ' . command . '...'
+            silent! execute 'silent %!'. command
+            silent! execute 'resize ' . line('$')
+            silent! redraw
+            silent! execute 'au BufUnload <buffer> execute bufwinnr(' . bufnr('#') . ') . ''wincmd w'''
+            silent! execute 'nnoremap <silent> <buffer> <LocalLeader>r :call <SID>ExecuteInShell(''' . command . ''')<CR>'
+            echo 'Shell command ' . command . ' executed.'
         endfunction
+        command! -complete=shellcmd -nargs=+ Shell call s:ExecuteInShell(<q-args>)
+
+        function! TranslateDateVisual()
+            sil! norm! gv"ty
+            echo system('date -d @'. @t)
+        endfunction
+
+        " Translate the current word (unix time stamp) to a human readable time
+        nmap <Leader>td :echo system('date -d @'.expand('<cword>'))<CR>
+        vmap <Leader>td :call TranslateDateVisual()<CR>
     " }
 " }
 
