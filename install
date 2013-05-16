@@ -7,4 +7,6 @@ ls -A1|grep -Pv '^(.git$|\w)'|while read file
 do	ln -Ts "$PWD/$file" "$HOME/$file"
 done
 
-mkdir -p "$HOME/.vimundo"
+for file in {en,de}.utf-8.{spl,sug};do
+        wget -c "ftp://ftp.vim.org/pub/vim/runtime/spell/$file" -O "$HOME/.vim/spell/"
+done

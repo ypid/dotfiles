@@ -100,7 +100,7 @@
     " Just use Ctrl-r%
 
     " Spellcheck {
-        set spelllang=en_us
+        set spelllang=en_us,de_de
         set spellfile=~/.vim/spell/en.utf-8.add
         map <Leader>c :set spell!<CR>
         imap <Leader>c <ESC>:set spell!<CR>a
@@ -296,6 +296,8 @@
             vmap <Leader>a, :Tabularize /,<CR>
             nmap <Leader>a" :Tabularize /"<CR>
             vmap <Leader>a" :Tabularize /"<CR>
+            nmap <Leader>a# :Tabularize /#<CR>
+            vmap <Leader>a# :Tabularize /#<CR>
             nmap <Leader>a<Space> :Tabularize /\s\+<CR>
             vmap <Leader>a<Space> :Tabularize /\s\+<CR>
             nmap <Leader>a<Bar> :Tabularize /<Bar><CR>
@@ -313,7 +315,8 @@
             " Bundle 'ciaranm/detectindent'
             Bundle 'ypid/detectindent'
             let g:detectindent_preferred_expandtab = 1
-            let g:detectindent_preferred_indent = 8
+            let g:detectindent_preferred_indent = 4
+            let g:detectindent_min_indent = 2
 
             if executable('ctags')
                 Bundle 'majutsushi/tagbar'
@@ -482,8 +485,6 @@
             " Bundle 'closetag.vim'
             " Bundle 'inkarkat/closetag.vim'
             Bundle 'ypid/closetag.vim'
-            inoremap <expr> <Leader>at <SID>GetCloseTag('i')
-            nnoremap <expr> <Leader>at <SID>GetCloseTag('n')
 
             " Bundle 'sukima/xmledit'
             " Bundle 'closetag.vim'
@@ -561,6 +562,17 @@
         " Translate the current word (unix time stamp) to a human readable time
         nmap <Leader>td :echo system('date -d @'.expand('<cword>'))<CR>
         vmap <Leader>td :call TranslateDateVisual()<CR>
+
+        function! EnsureDirExists (dir)
+            if !isdirectory(a:dir)
+                if exists("*mkdir")
+                    call mkdir(a:dir,'p')
+                    echo "Created directory: " . a:dir
+                else
+                    echo "Please create directory: " . a:dir
+                endif
+            endif
+        endfunction
     " }
 " }
 
@@ -589,12 +601,15 @@
     " set hidden                          " Allow buffer switching without saving
 
     " Setting up the directories {
+        call EnsureDirExists($HOME . '/.vimswap')
         set backup                  " Backups are nice ...
         set directory=~/.vimswap,/var/tmp,/tmp,.
         set backupdir=~/.vimswap,/var/tmp,/tmp,.
         if has('persistent_undo')
+            call EnsureDirExists($HOME . '/.vimundo')
             set undofile                " So is persistent undo ...
             set undodir=~/.vimundo/
+            " silent !mkdir -p ~/.vimundo
             set undolevels=1000         " Maximum number of changes that can be undone
             set undoreload=10000        " Maximum number lines to save for undo on a buffer reload
         endif
@@ -668,6 +683,7 @@ endif
     set scrolljump=5                " Lines to scroll when cursor leaves screen
     set scrolloff=3                 " Minimum lines to keep above and below cursor
     set foldenable                  " Auto fold code
+    set foldopen+=search
     set nolist
     set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
 
@@ -722,6 +738,9 @@ endif
         " autocmd BufWritePost * echo &ff
         autocmd BufRead,BufNewFile *.html compiler tidy
         autocmd BufRead,BufNewFile /etc/*/apt.conf setlocal filetype=conf
+        autocmd BufRead,BufNewFile *.mk setlocal filetype=python
+        " check_mk
+
         autocmd QuickFixCmdPost make cwindow
         " autocmd BufRead,BufNewFile * call SetIndentWidth()
         autocmd FileType c,cpp,java,go,php,javascript,python,twig,xml,yml autocmd BufWritePre <buffer> EraseBadWhitespace
