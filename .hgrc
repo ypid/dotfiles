@@ -1,2 +1,8 @@
 [ui]
 username = Robin Schneider <ypid23@aol.de>
+
+[pager]
+pager = LESS='FRX' less
+
+[extensions]
+pager =

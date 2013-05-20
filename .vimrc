@@ -152,9 +152,9 @@
 
 " Bundles {
     " let g:spf13_bundle_groups=['general', 'neocomplcache',
-    " 'programming', 'ruby', 'python', 'go', 'twig', 'javascript', 'html',
+    " 'programming', 'ruby', 'python', 'perl', 'go', 'twig', 'javascript', 'html',
     " 'misc', 'scala', 'games']
-    let g:spf13_bundle_groups=['general', 'programming', 'python', 'javascript', 'html', 'misc', 'scala', 'snipmate']
+    let g:spf13_bundle_groups=['general', 'programming', 'python', 'perl', 'javascript', 'html', 'misc', 'scala', 'snipmate']
 
     " Deps {
         Bundle 'gmarik/vundle'
@@ -277,6 +277,8 @@
             command! Gloge Extradite
 
             Bundle 'powerman/vim-plugin-viewdoc'
+            let g:manpageview_options_pl = ";-f;-q;-t;"
+
             Bundle 'bronson/vim-visual-star-search'
 
             Bundle 'mattn/webapi-vim'
@@ -304,8 +306,17 @@
             vmap <Leader>a<Bar> :Tabularize /<Bar><CR>
             " }
 
+            " Yes I am using both in parallel
             Bundle 'tomtom/tcomment_vim'
             let g:tcommentOptions = {'strip_whitespace': 1}
+            Bundle 'scrooloose/nerdcommenter'
+            let NERDSpaceDelims = 1
+            " noremap gcc :call NERDComment('n', 'Toggle')<CR>
+            " vnoremap gc gcc
+
+            " Highlight brackets
+            Bundle 'kien/rainbow_parentheses.vim'
+            nnoremap <Leader>R :RainbowParenthesesToggle<CR>
 
             " Toggle words
             Bundle 'toggle_words.vim'
@@ -458,6 +469,12 @@
         endif
     " }
 
+    " Perl {
+        if count(g:spf13_bundle_groups, 'perl')
+            Bundle 'perlcritic-compiler-script'
+        endif
+    " }
+
     " Javascript {
         if count(g:spf13_bundle_groups, 'javascript')
             " Bundle 'leshill/vim-json'
@@ -538,6 +555,7 @@
             Bundle 'beyondwords/vim-twig'
         endif
     " }
+
     " To small for a plugin {
         function! s:ExecuteInShell(command)
             let command = join(map(split(a:command), 'expand(v:val)'))
@@ -592,7 +610,7 @@
         set clipboard=unnamed
     endif
 
-    "set autowrite                       " Automatically write a file when leaving a modified buffer
+    set autowrite                       " Automatically write a file when leaving a modified buffer
     set shortmess+=filmnrxoOtT          " Abbrev. of messages (avoids 'hit enter')
     set viewoptions=folds,options,cursor,unix,slash " Better Unix / Windows compatibility
     " set virtualedit=onemore             " Allow for cursor beyond last character
@@ -684,6 +702,7 @@ endif
     set scrolloff=3                 " Minimum lines to keep above and below cursor
     set foldenable                  " Auto fold code
     set foldopen+=search
+    set foldmethod=marker
     set nolist
     set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
 
@@ -728,19 +747,23 @@ endif
         autocmd BufRead,BufNewFile .vimpagerrc setlocal filetype=vim
         au VimLeave * if filereadable($HOME."/.vim/bundle/vundle/.netrwhist")|call delete($HOME."/.vim/bundle/vundle/.netrwhist")|endif
         autocmd FileType perl setlocal expandtab shiftwidth=4
+        autocmd FileType perl compiler perlcritic
         autocmd FileType vim setlocal expandtab shiftwidth=4
         autocmd FileType python setlocal shiftwidth=4
         autocmd FileType tex setlocal expandtab shiftwidth=2
         autocmd FileType c setlocal noexpandtab shiftwidth=4
         autocmd FileType html setlocal expandtab shiftwidth=2
+        autocmd FileType html compiler tidy
+        " au VimEnter * RainbowParenthesesToggle
+        au Syntax * RainbowParenthesesLoadRound
+        au Syntax * RainbowParenthesesLoadSquare
+        au Syntax * RainbowParenthesesLoadBraces
         " autocmd BufRead,BufNewFile * call DetectIndentIfNotEmptyBuf()
         autocmd BufRead * DetectIndent
         " autocmd BufWritePost * echo &ff
-        autocmd BufRead,BufNewFile *.html compiler tidy
         autocmd BufRead,BufNewFile /etc/*/apt.conf setlocal filetype=conf
         autocmd BufRead,BufNewFile *.mk setlocal filetype=python
         " check_mk
-
         autocmd QuickFixCmdPost make cwindow
         " autocmd BufRead,BufNewFile * call SetIndentWidth()
         autocmd FileType c,cpp,java,go,php,javascript,python,twig,xml,yml autocmd BufWritePre <buffer> EraseBadWhitespace

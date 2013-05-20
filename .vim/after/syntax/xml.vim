@@ -1,0 +1,2 @@
+syntax spell toplevel
+redraw
