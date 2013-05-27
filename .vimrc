@@ -100,10 +100,10 @@
     " Just use Ctrl-r%
 
     " Spellcheck {
-        set spelllang=en_us,de_de
         set spellfile=~/.vim/spell/en.utf-8.add
-        map <Leader>c :set spell!<CR>
-        imap <Leader>c <ESC>:set spell!<CR>a
+        set spelllang=en_us,de_de
+        map <Leader>cd :set spell!<CR>
+        imap <Leader>cd <ESC>:set spell!<CR>a
     " }
 
     " Save and go to normal mode
@@ -292,8 +292,8 @@
             vmap <Leader>a= :Tabularize /=<CR>
             nmap <Leader>a: :Tabularize /:<CR>
             vmap <Leader>a: :Tabularize /:<CR>
-            nmap <Leader>a:: :Tabularize /:\zs<CR>
-            vmap <Leader>a:: :Tabularize /:\zs<CR>
+            nmap <Leader>a:t :Tabularize /:\zs<CR>
+            vmap <Leader>a:t :Tabularize /:\zs<CR>
             nmap <Leader>a, :Tabularize /,<CR>
             vmap <Leader>a, :Tabularize /,<CR>
             nmap <Leader>a" :Tabularize /"<CR>

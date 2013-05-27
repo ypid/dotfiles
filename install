@@ -7,6 +7,8 @@ ls -A1|grep -Pv '^(.git$|\w)'|while read file
 do	ln -Ts "$PWD/$file" "$HOME/$file"
 done
 
+vim_spell="$HOME/.vim/spell"
+mkdir -p "$vim_spell"
 for file in {en,de}.utf-8.{spl,sug};do
-        wget -c "ftp://ftp.vim.org/pub/vim/runtime/spell/$file" -O "$HOME/.vim/spell/"
+        wget -c "ftp://ftp.vim.org/pub/vim/runtime/spell/$file" -O "$vim_spell/$file"
 done
