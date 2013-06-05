@@ -148,6 +148,8 @@
     map <Leader>y :w!<CR>:!chmod +x %<CR>:q<CR>
     imap <Leader>y <ESC>:w!<CR>:!chmod +x %<CR>:q<CR>a
 
+    nmap <Leader>d :echo strftime("%Y-%m-%d_%H:%M")<CR>
+
 " }
 
 " Bundles {
@@ -511,6 +513,11 @@
 
             " Bundle 'hail2u/vim-css3-syntax'
             " Bundle 'tpope/vim-haml'
+
+            Bundle 'inkarkat/SyntaxAttr.vim'
+            nmap <Leader>ti :call SyntaxAttr()<CR>
+
+            Bundle 'SrchRplcHiGrp.vim'
         endif
     " }
 
