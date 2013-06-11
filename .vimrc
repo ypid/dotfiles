@@ -154,11 +154,10 @@
 " }
 
 " Bundles {
-    " Bundles 'vim-hamcos'
     " let g:spf13_bundle_groups=['general', 'neocomplcache',
     " 'programming', 'ruby', 'python', 'perl', 'go', 'twig', 'javascript', 'html',
     " 'misc', 'scala', 'games']
-    let g:spf13_bundle_groups=['general', 'programming', 'python', 'perl', 'javascript', 'html', 'misc', 'scala', 'snipmate']
+    let g:spf13_bundle_groups=['general', 'work', 'programming', 'python', 'perl', 'javascript', 'html', 'misc', 'scala', 'snipmate']
 
     " Deps {
         Bundle 'gmarik/vundle'
@@ -172,6 +171,12 @@
         elseif executable('ag')
             Bundle 'mileszs/ack.vim'
             let g:ackprg = 'ag --nogroup --nocolor --column'
+        endif
+    " }
+
+    " Work {
+        if count(g:spf13_bundle_groups, 'work')
+        Bundle 'hamcos/vim-hamcos'
         endif
     " }
 

@@ -43,6 +43,17 @@ if [ -d "$HOME/Skripte/repository" ] ; then
 fi
 export PYTHONSTARTUP="$HOME/.pystartup"
 
+function up {
+[[ "${1/[^0-9]/}" == "$1" ]] && {
+	local ups=""
+	for i in $(seq 1 $1)
+	do
+		ups=$ups"../"
+	done
+	cd $ups
+	} || echo "usage: up INTEGER"
+}
+
 # Create a new directory and enter it
 function md() {
 	mkdir -p "$@" && cd "$@"

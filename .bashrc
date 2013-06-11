@@ -81,19 +81,9 @@ source ~/.shellrc
 
 alias +='pushd'
 
-function up {
-[ "${1/[^0-9]/}" == "$1" ] && {
-	local ups=""
-	for i in $(seq 1 $1)
-	do
-		ups=$ups"../"
-	done
-	cd $ups
-	} || echo "usage: up INTEGER"
-}
-
 ## Set the thing to vi editing mode :)
 set -o vi
+
 bind -m vi-insert "\C-o":dynamic-complete-history
 bind -m vi-insert "\C-l":clear-screen
 bind -m vi-insert "\C-p":previous-history
