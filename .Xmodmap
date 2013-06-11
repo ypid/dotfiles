@@ -6,3 +6,11 @@ keysym j = j J Down
 keysym l = l L Right
 keysym h = h H Left
 keysym k = k K Up
+
+clear Lock
+keycode 0x42 = Escape
+
+remove lock = Caps_Lock
+! keycode 66 =
+! Disable caps look
+! Thanks http://mathias-kettner.de/lw_capslock_deaktivieren.html

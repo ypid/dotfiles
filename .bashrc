@@ -21,7 +21,7 @@ log_bash_eternal_history()
 	local command_part="${BASH_REMATCH[2]}"
 	if [ "$command_part" != "$ETERNAL_HISTORY_LAST" -a "$command_part" != "ls" -a "$command_part" != "ll" ]
 	then
-		echo $date_part $HOSTNAME $rc "$command_part" >> ~/.bash_eternal_history
+		echo $date_part $HOSTNAME $rc "$command_part" >> ~/.shell_eternal_history
 		export ETERNAL_HISTORY_LAST="$command_part"
 	fi
 }
@@ -77,15 +77,20 @@ xterm*|rxvt*)
     ;;
 esac
 
-if [ -f ~/.bash_public ]; then
-    . ~/.bash_public
-fi
-if [ -f ~/.bash_privat ]; then
-    . ~/.bash_privat
-fi
-if [ -f ~/.bash_local ]; then
-    . ~/.bash_local
-fi
+source ~/.shellrc
+
+alias +='pushd'
+
+function up {
+[ "${1/[^0-9]/}" == "$1" ] && {
+	local ups=""
+	for i in $(seq 1 $1)
+	do
+		ups=$ups"../"
+	done
+	cd $ups
+	} || echo "usage: up INTEGER"
+}
 
 ## Set the thing to vi editing mode :)
 set -o vi

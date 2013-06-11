@@ -101,6 +101,7 @@
 
     " Spellcheck {
         set spellfile=~/.vim/spell/en.utf-8.add
+        set dictionary+=/usr/share/dict/words
         set spelllang=en_us,de_de
         map <Leader>cd :set spell!<CR>
         imap <Leader>cd <ESC>:set spell!<CR>a
@@ -153,6 +154,7 @@
 " }
 
 " Bundles {
+    " Bundles 'vim-hamcos'
     " let g:spf13_bundle_groups=['general', 'neocomplcache',
     " 'programming', 'ruby', 'python', 'perl', 'go', 'twig', 'javascript', 'html',
     " 'misc', 'scala', 'games']
@@ -545,7 +547,7 @@
             Bundle 'greyblake/vim-preview'
             " Bundle 'tpope/vim-cucumber'
             " Bundle 'quentindecock/vim-cucumber-align-pipes'
-            Bundle 'Puppet-Syntax-Highlighting'
+            " Bundle 'Puppet-Syntax-Highlighting'
             " Bundle 'mattn/calendar-vim'
         endif
     " }

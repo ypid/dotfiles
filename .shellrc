@@ -1,0 +1,14 @@
+#!/bin/bash
+# sourced bash and zsh
+if [ -f ~/.shell_public ]; then
+    . ~/.shell_public
+fi
+if [ -f ~/.shell_local ]; then
+    . ~/.shell_local
+fi
+if [ -f ~/.shell_privat ]; then
+    . ~/.shell_privat
+fi
+if [ -f ~/.bash_local ]; then
+    . ~/.bash_local
+fi
