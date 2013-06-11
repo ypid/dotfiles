@@ -47,5 +47,6 @@ source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 source ~/.shellrc
+source ~/.zsh_bindings
 
 source ~
