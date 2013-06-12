@@ -6,7 +6,8 @@ ZSH=$HOME/.oh-my-zsh
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 # ZSH_THEME="robbyrussell"
-ZSH_THEME="random"
+# ZSH_THEME="random"
+ZSH_THEME="josh" # But does not work nice with my colorschema in Vim
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -41,12 +42,13 @@ ZSH_THEME="random"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git command-not-found)
+plugins=(git command-not-found autojump)
 
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-source ~/.shellrc
-source ~/.zsh_bindings
 
 source ~
+unalias md
+source ~/.shellrc
+source ~/.zsh_bindings
