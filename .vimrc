@@ -24,6 +24,10 @@
 " }
 
 " Key (re)Mappings {
+    " Overwrite default Vim mappings {
+        map gf :sp <cfile><CR>
+
+    " }
 
     let mapleader = ','
 
@@ -121,10 +125,10 @@
     " nmap <Leader>E :qa!<CR>
 
     " Every unnecessary keystroke that can be saved is good for your health :)
-    map <c-j> <c-w>j
-    map <c-k> <c-w>k
-    map <c-l> <c-w>l
-    map <c-h> <c-w>h
+    noremap <c-j> <c-w>j
+    noremap <c-k> <c-w>k
+    noremap <c-l> <c-w>l
+    noremap <c-h> <c-w>h
 
     " Insert newline without entering insert mode
     map <Leader>Q O<Esc>
@@ -153,9 +157,10 @@
 
 " }
 
-" Bundles {
+" Bundles and plugins {
     " let g:spf13_bundle_groups=['general', 'neocomplcache',
-    " 'programming', 'ruby', 'python', 'perl', 'go', 'twig', 'javascript', 'html',
+    " 'programming', 'ruby', 'python', 'perl', 'go', 'twig', 'javascript',
+    " 'html', 'latex',
     " 'misc', 'scala', 'games']
     let g:spf13_bundle_groups=['general', 'work', 'programming', 'python', 'perl', 'javascript', 'html', 'misc', 'scala', 'snipmate']
 
@@ -226,6 +231,7 @@
 
             Bundle 'Lokaltog/vim-easymotion'
             let g:EasyMotion_leader_key = '<Leader>j'
+            " Bundle 'python.vim--Herzog'
 
             Bundle 'godlygeek/csapprox'
             " Bundle 'jistr/vim-nerdtree-tabs'
@@ -501,6 +507,21 @@
         endif
     " }
 
+    " LaTeX {
+        if count(g:spf13_bundle_groups, 'latex')
+            " IMPORTANT: grep will sometimes skip displaying the file name if you
+            " search in a singe file. This will confuse Latex-Suite. Set your grep
+            " program to always generate a file-name.
+            set grepprg=grep\ -nH\ $*
+
+            " OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
+            " 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
+            " The following changes the default filetype back to 'tex':
+            let g:tex_flavor='latex'
+            imap <Leader>Y <Plug>IMAP_JumpForward
+        endif
+    " }
+
     " HTML {
         if count(g:spf13_bundle_groups, 'html')
             " AutoCloseTag {
@@ -631,6 +652,7 @@
     set history=1000                    " Store a ton of history (default is 20)
     set spell                           " Spell checking on
     " set hidden                          " Allow buffer switching without saving
+    set splitbelow                      " Open new splits below (for Gdiff)
 
     " Setting up the directories {
         call EnsureDirExists($HOME . '/.vimswap')
@@ -724,6 +746,7 @@ endif
 
 " Formatting {
 
+    set formatoptions+=or
     set wrap                      " Wrap long lines
     set autoindent                  " Indent at the same level of the previous line
     set shiftwidth=4                " Use indents of 4 spaces
@@ -777,10 +800,11 @@ endif
         " autocmd BufWritePost * echo &ff
         autocmd BufRead,BufNewFile /etc/*/apt.conf setlocal filetype=conf
         autocmd BufRead,BufNewFile *.mk setlocal filetype=python
+        autocmd BufRead,BufNewFile *.ldf setlocal filetype=tex
         " check_mk
         autocmd QuickFixCmdPost make cwindow
         " autocmd BufRead,BufNewFile * call SetIndentWidth()
-        autocmd FileType c,cpp,java,go,php,javascript,python,twig,xml,yml autocmd BufWritePre <buffer> EraseBadWhitespace
+        autocmd FileType c,cpp,go,php,javascript,python,twig,xml,yml autocmd BufWritePre <buffer> EraseBadWhitespace
 
         " Always switch to the current file directory
         autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif

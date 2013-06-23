@@ -6,8 +6,16 @@ ZSH=$HOME/.oh-my-zsh
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 # ZSH_THEME="robbyrussell"
-# ZSH_THEME="random"
-ZSH_THEME="josh" # But does not work nice with my colorschema in Vim
+ZSH_THEME="random"
+# ZSH_THEME="fino"
+# ZSH_THEME="josh"
+# ZSH_THEME="dieter"
+# ZSH_THEME="rixius"
+# ZSH_THEME="fishy"
+# ZSH_THEME="jonathan"
+# ZSH_THEME="xiong-chiamiov-plus"
+# ZSH_THEME="blinks"
+# ZSH_THEME="fwalch"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -50,5 +58,6 @@ source $ZSH/oh-my-zsh.sh
 
 source ~
 unalias md
+setopt no_share_history
 source ~/.shellrc
 source ~/.zsh_bindings

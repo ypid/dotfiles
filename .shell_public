@@ -17,8 +17,14 @@ alias bc='bc -q'
 alias ,='popd'
 alias d='dirs -v'
 alias ts='date "+%Y-%m-%d_%H:%M"'
-alias vi='vim'
+
+# Vim stuff
+alias vi='vim --servername VIM'
+alias vir='vi --remote'
+alias ,e='exit'
+alias ,r='vi'
 alias less='vim -c "w! /tmp/.vimpager" -'
+
 alias ssh-only-pw='ssh -o PubkeyAuthentication=no'
 alias tmux='TERM=screen-256color-bce tmux'
 ## Git # try to use the shortcuts from oh-my-zsh
@@ -28,6 +34,7 @@ alias gitw='git wdiff'
 ## LaTeX
 alias sty2dtx='~/Projekte/src/sty2dtx/sty2dtx.pl'
 
+alias xgettext='xgettext --copyright-holder="`git config --get user.name` <`git config --get user.email`>" --msgid-bugs-address="`git config --get user.email`>"'
 export PERL_LOCAL_LIB_ROOT="$HOME/.cpan/perl5";
 export PERL_MB_OPT="--install_base $HOME/.cpan/perl5";
 export PERL_MM_OPT="INSTALL_BASE=$HOME/.cpan/perl5";

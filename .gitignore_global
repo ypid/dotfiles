@@ -15,6 +15,8 @@
 *.run.xml
 #*.ctr
 *.CountCompile
+*.fls
+*.fdb_latexmk
 *.glg
 *.glo
 *.gls
