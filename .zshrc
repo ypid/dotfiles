@@ -5,17 +5,37 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-# ZSH_THEME="robbyrussell"
 ZSH_THEME="random"
+
+# ordered after preference.
+ZSH_THEME="bira"
 # ZSH_THEME="fino"
+# ZSH_THEME="pygmalion"
+# ZSH_THEME="funky"
 # ZSH_THEME="josh"
 # ZSH_THEME="dieter"
+# ZSH_THEME="dallas"
+# ZSH_THEME="robbyrussell"
 # ZSH_THEME="rixius"
 # ZSH_THEME="fishy"
 # ZSH_THEME="jonathan"
 # ZSH_THEME="xiong-chiamiov-plus"
 # ZSH_THEME="blinks"
 # ZSH_THEME="fwalch"
+# ZSH_THEME="blinks"
+# ZSH_THEME="jnrowe"
+# ZSH_THEME="steeef"
+# ZSH_THEME="dpoggi"
+# ZSH_THEME="cypher"
+#
+# ZSH_THEME="dpoggi"
+#
+# ZSH_THEME="trapd00r"            # prompt_jnrowe_precmd:20: command not found: zsh_path
+# ZSH_THEME="miloshadzic"         # no full path
+# ZSH_THEME="jnrowe"              # uses yellow
+# ZSH_THEME="dogenpunk"           # too slow
+# ZSH_THEME="frisk"               # too slow
+#
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"

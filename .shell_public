@@ -29,7 +29,7 @@ alias ssh-only-pw='ssh -o PubkeyAuthentication=no'
 alias tmux='TERM=screen-256color-bce tmux'
 ## Git # try to use the shortcuts from oh-my-zsh
 alias gits='git status'
-alias gitl='git log --stat'
+alias gitl='git log --stat --decorate=short'
 alias gitw='git wdiff'
 ## LaTeX
 alias sty2dtx='~/Projekte/src/sty2dtx/sty2dtx.pl'

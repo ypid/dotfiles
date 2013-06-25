@@ -29,6 +29,7 @@
 *.ind
 *.lis
 *.lof
+*.lol
 *.log
 *.lot
 *.lox
@@ -58,6 +59,7 @@
 *.stderr
 *.stdout
 *.bashful
+*.pyg
 ## C files
 *.o
 *.d
