@@ -3,6 +3,9 @@
 cd "`dirname "$0"`"
 git submodule update --init --recursive
 
+# inside another submodule …
+git clone git://github.com/zsh-users/zsh-syntax-highlighting.git .oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+
 ls -A1|grep -Pv '^(.git$|\w)'|while read file;do
     ln -Ts "$PWD/$file" "$HOME/$file"
 done
