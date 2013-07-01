@@ -76,6 +76,9 @@ source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 
+# like eternal history
+SAVEHIST=100000000
+
 source ~
 unalias md
 setopt no_share_history

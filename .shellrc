@@ -1,5 +1,5 @@
 #!/bin/bash
-# sourced bash and zsh
+# sourced by bash and zsh
 if [ -f ~/.shell_public ]; then
     . ~/.shell_public
 fi

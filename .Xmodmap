@@ -1,3 +1,9 @@
+! 1 die Taste wird alleine gedrückt
+! 2 die Taste wird mit Shift gedrückt
+! 3 die Taste wird mit Mode_switch gedrückt
+! 4 die Taste wird mit Mode_switch und Shift gedrückt
+! 5 die Taste wird mit AltGr gedrückt
+! 6 die Taste wird mit AltGr und Shift gedrückt
 keycode 35 = plus asterisk plus asterisk asciitilde dead_macron dead_tilde dead_macron plus asterisk dead_tilde dead_macron
 keycode 49 = asciicircum degree dead_circumflex degree U2032 U2033 U2032
 keysym ssharp = ssharp question backslash U1E9E backslash U1E9E
@@ -5,12 +11,20 @@ keysym ssharp = ssharp question backslash U1E9E backslash U1E9E
 ! Set Super key to mode switch.
 keycode 133 = Mode_switch
 
-keysym j = j J Down
+keysym j = j J Down Return Return Prior
 keysym l = l L Right
 keysym h = h H Left
 keysym k = k K Up
 
+keysym x = x X BackSpace
+
+keysym u = u U Prior
+keysym d = d D Next
+
+! How to send the Keysequenz Alt+F4 with Super+q ?
+! keysym q = q Q F4
+
 ! Remap Caps_Look to behave like Escape.
 clear Lock
 keycode 0x42 = Escape
-remove lock  = Caps_Lock
+! remove lock  = Caps_Lock

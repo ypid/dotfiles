@@ -49,6 +49,8 @@
     " map <S-H> gT
     " map <S-L> gt
 
+    " imap <c-j> <return> " please use Alt-Gr+j
+
     " Code folding options
     " nmap <leader>f0 :set foldlevel=0<CR>
     " Use zM for this
@@ -768,13 +770,14 @@ endif
 
     set formatoptions+=or
     set wrap                      " Wrap long lines
+    set textwidth=80
     set autoindent                  " Indent at the same level of the previous line
     set shiftwidth=4                " Use indents of 4 spaces
     set expandtab                   " Tabs are spaces, not tabs
     set tabstop=4                   " An indentation every four columns
     set softtabstop=4               " Let backspace delete indent
-    "set matchpairs+=<:>             " Match, to be used with %
-    "set comments=sl:/*,mb:*,elx:*/  " auto format comment blocks
+    " set matchpairs+=<:>             " Match, to be used with %
+    " set comments=sl:/*,mb:*,elx:*/  " auto format comment blocks
     " Remove trailing whitespaces and ^M chars
 
     " Set tabstop and softtabstop to the value of shiftwidth
@@ -876,3 +879,5 @@ endif
     endif
 
 " }
+
+" set nospell

@@ -60,6 +60,7 @@
 *.stdout
 *.bashful
 *.pyg
+*.pyc
 ## C files
 *.o
 *.d
