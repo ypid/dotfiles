@@ -28,9 +28,12 @@ alias less='vim -c "w! /tmp/.vimpager" -'
 
 alias ssh-only-pw='ssh -o PubkeyAuthentication=no'
 alias tmux='TERM=screen-256color-bce tmux'
+alias tm=tmux
 ## Git # try to use the shortcuts from oh-my-zsh
 alias gits='git status'
 alias gitl='git log --stat --decorate=short'
+# overwrite alias from oh-my-zsh
+alias glg='git log --stat --decorate=short'
 alias gitw='git wdiff'
 ## LaTeX
 alias sty2dtx='~/Projekte/src/sty2dtx/sty2dtx.pl'

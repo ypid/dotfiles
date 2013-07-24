@@ -73,6 +73,10 @@
     vnoremap < <gv
     vnoremap > >gv
 
+    " http://vim.wikia.com/wiki/Recover_from_accidental_Ctrl-U
+    inoremap <c-u> <c-g>u<c-u>
+    inoremap <c-w> <c-g>u<c-w>
+
     " For when you forget to sudo.. Really Write the file.
     cmap w!! w !sudo tee % >/dev/null
 
@@ -108,7 +112,8 @@
     " Spellcheck {
         set spellfile=~/.vim/spell/en.utf-8.add
         set dictionary+=/usr/share/dict/words
-        set spelllang=en_us,de_de
+        " set spelllang=en_us,de_de
+        set spelllang=en_us
         map <Leader>cd :set spell!<CR>
         imap <Leader>cd <ESC>:set spell!<CR>a
     " }
@@ -629,6 +634,7 @@
             endif
         endfunction
 
+        " Marking duplicate lines
         function! HighlightRepeats() range
           let lineCounts = {}
           let lineNum = a:firstline
@@ -769,8 +775,9 @@ endif
 " Formatting {
 
     set formatoptions+=or
-    set wrap                      " Wrap long lines
+    set wrap linebreak              " Wrap long lines between words</Tab>
     set textwidth=80
+    set linebreak
     set autoindent                  " Indent at the same level of the previous line
     set shiftwidth=4                " Use indents of 4 spaces
     set expandtab                   " Tabs are spaces, not tabs
@@ -806,6 +813,14 @@ endif
         autocmd BufWritePost $HOME/.vimpagerrc source %
         autocmd BufRead,BufNewFile .vimpagerrc setlocal filetype=vim
         au VimLeave * if filereadable($HOME."/.vim/bundle/vundle/.netrwhist")|call delete($HOME."/.vim/bundle/vundle/.netrwhist")|endif
+        " Adjust the filetype for some files
+        autocmd BufRead,BufNewFile /etc/*/apt.conf setlocal filetype=conf
+        autocmd BufRead,BufNewFile *.mk setlocal filetype=python
+        autocmd BufRead,BufNewFile *.ldf setlocal filetype=tex
+        autocmd BufRead,BufNewFile *.tex setlocal filetype=tex
+            " I already use the "wrong" file suffix for all my LaTeX files
+        " check_mk
+        " Set Language specific indention stuff
         autocmd FileType perl setlocal expandtab shiftwidth=4
         autocmd FileType perl compiler perlcritic
         autocmd FileType vim setlocal expandtab shiftwidth=4
@@ -821,12 +836,6 @@ endif
         " autocmd BufRead,BufNewFile * call DetectIndentIfNotEmptyBuf()
         autocmd BufRead * DetectIndent
         " autocmd BufWritePost * echo &ff
-        autocmd BufRead,BufNewFile /etc/*/apt.conf setlocal filetype=conf
-        autocmd BufRead,BufNewFile *.mk setlocal filetype=python
-        autocmd BufRead,BufNewFile *.ldf setlocal filetype=tex
-        autocmd BufRead,BufNewFile *.ltx setlocal filetype=tex
-            " I already use the "wrong" file suffix for all my LaTeX files
-        " check_mk
         autocmd QuickFixCmdPost make cwindow
         " autocmd BufRead,BufNewFile * call SetIndentWidth()
         autocmd FileType c,cpp,go,php,javascript,python,twig,xml,yml autocmd BufWritePre <buffer> EraseBadWhitespace
@@ -879,5 +888,3 @@ endif
     endif
 
 " }
-
-" set nospell

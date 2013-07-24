@@ -11,7 +11,7 @@
 	wd = diff --color-words
 	re = remote -v
 	st = status
-	ci = commit
+	ci = commit -v
 	cil = commit --reedit-message=HEAD --reset-author
 	cii = commit --all -m 'Initial commit.'
 	## use last commit message
