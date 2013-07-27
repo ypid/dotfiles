@@ -39,4 +39,4 @@ This git repo tracks a few of my personal config files for some programs
 > Lightweight Vim configuration for using Vim as pager
 
 `.Xmodmap`
-> Some keyboard mappings. This fixed the *problem* with entering ^
+> I use Neo2 but with the normal qwertz layout.
