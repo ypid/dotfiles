@@ -23,3 +23,5 @@
 	excludesfile = /home/rsadmin/.gitignore_global
 [github]
 	user = ypid
+[log]
+	date = local
