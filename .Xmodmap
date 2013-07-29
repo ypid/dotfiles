@@ -9,7 +9,6 @@
 ! 6 die Taste wird mit AltGr und Shift gedrückt
 
 ! keycode 35 = plus asterisk plus asterisk asciitilde dead_macron dead_tilde dead_macron plus asterisk dead_tilde dead_macron
-! keycode 49 = asciicircum degree dead_circumflex degree U2032 U2033 U2032
 ! keysym ssharp = ssharp question backslash U1E9E backslash U1E9E
 
 ! Set Super key to mode switch.
@@ -153,7 +152,7 @@ keycode 36 = Return		Return		Return		Return		KP_Enter	KP_Enter	Return		Return
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !            Ebene1		Ebene2		Ebene3		Ebene5		Ebene4		Ebene4+Sh	Ebene6		Ebene7
 
-keycode 49 = dead_circumflex	dead_caron	U21BB		U02DE		dead_abovedot Pointer_EnableKeys dead_belowdot	NoSymbol
+keycode 49 = asciicircum	dead_caron	U21BB		U02DE		dead_abovedot Pointer_EnableKeys dead_belowdot	NoSymbol
 ! called T1	¿		¿		¿		¿		¿	     (keypad-mouse mode) .
 keycode 21 = dead_grave		dead_cedilla	dead_abovering	dead_dasia	dead_diaeresis	NoSymbol	dead_macron	NoSymbol
 ! called T2	`		¸		¿		¿ dasia (asper)	¨				¯

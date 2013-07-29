@@ -19,8 +19,12 @@ alias d='dirs -v'
 alias ts='date "+%Y-%m-%d_%H:%M"'
 
 # Vim stuff
-alias vi='vim --servername VIM'
-alias vir='vi --remote'
+if [[ $USER == root ]]; then
+    alias vi='vim'
+else
+    alias vi='vim --servername VIM'
+    alias vir='vi --remote'
+fi
 alias ,e='exit'
 alias ,x='exit'
 alias ,r='vi'
