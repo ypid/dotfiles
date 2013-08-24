@@ -27,9 +27,16 @@
     " Overwrite default Vim mappings {
         map gf :sp <cfile><CR>
 
-    " }
+        let mapleader = ','
 
-    let mapleader = ','
+        " Wrapped lines goes down/up to next row, rather than next line in file.
+        noremap j gj
+        noremap k gk
+
+        " Visual shifting (does not exit Visual mode)
+        vnoremap < <gv
+        vnoremap > >gv
+    " }
 
     " Easier moving in tabs and windows
     " The lines conflict with the default digraph mapping of <C-K>
@@ -39,10 +46,6 @@
     " map <C-H> <C-W>h<C-W>_
 
     set pastetoggle=<F2>           " pastetoggle (sane indentation on pastes)
-
-    " Wrapped lines goes down/up to next row, rather than next line in file.
-    noremap j gj
-    noremap k gk
 
     " The following two lines conflict with moving to top and
     " bottom of the screen
@@ -69,10 +72,6 @@
     cmap cwd lcd %:p:h
     cmap cd. lcd %:p:h
 
-    " Visual shifting (does not exit Visual mode)
-    vnoremap < <gv
-    vnoremap > >gv
-
     " http://vim.wikia.com/wiki/Recover_from_accidental_Ctrl-U
     inoremap <c-u> <c-g>u<c-u>
     inoremap <c-w> <c-g>u<c-w>
@@ -93,8 +92,9 @@
     imap <Leader>fd <ESC>:filetype detect<CR>a
 
     " Toggle highlight search
-    nmap <Leader>b :nohl<CR>
-    imap <Leader>b <ESC>:nohl<CR>a
+    let hlstate=0
+    nmap <Leader>b :if (hlstate%2 == 0) \| nohlsearch \| else \| set hlsearch \| endif \| let hlstate=hlstate+1<CR>:echo "toggled visibility for hlsearch"<CR>
+    imap <Leader>b <ESC>:if (hlstate%2 == 0) \| nohlsearch \| else \| set hlsearch \| endif \| let hlstate=hlstate+1<CR>:echo "toggled visibility for hlsearch"<CR>a
 
     " Bind set list
     map <Leader>l :set list!<CR>
@@ -129,7 +129,7 @@
     " Quick quit command
     nmap <Leader>e :quit<CR>
     " Quit all windows
-    " nmap <Leader>E :qa!<CR>
+    nmap <Leader>E :q!<CR>
 
     " Every unnecessary keystroke that can be saved is good for your health :)
     noremap <c-j> <c-w>j
@@ -142,12 +142,13 @@
     map <Leader>q o<Esc>
 
     " Unbind the cursor keys in insert, normal and visual modes.
-    " Luckily I do not use them anymore.
-    for prefix in ['i', 'n', 'v']
-        for key in ['<Up>', '<Down>', '<Left>', '<Right>']
-            exe prefix . "map " . key . " <Nop>"
-        endfor
-    endfor
+    " Luckily I do not use them anymore because they are so far away.
+    " But there are better ways to send those keycodes.
+    " for prefix in ['i', 'n', 'v']
+    "     for key in ['<Up>', '<Down>', '<Left>', '<Right>']
+    "         exe prefix . "map " . key . " <Nop>"
+    "     endfor
+    " endfor
 
     " easier moving between tabs
     map <Leader>n <esc>:tabprevious<CR>
@@ -201,7 +202,12 @@
             Bundle 'spf13/vim-colors'
             Bundle 'tpope/vim-surround'
             " Bundle 'spf13/vim-autoclose'
+            " let g:AutoPairShortcutToggle = '<Leader>ac'
             Bundle 'jiangmiao/auto-pairs'
+            let g:AutoPairsFlyMode = 1
+            nmap <silent> <Leader>ac :call AutoPairsToggle()<CR>
+            imap <silent> <Leader>ac <ESC>:call AutoPairsToggle()<CR>a
+
 
             " CtrlP {
                 Bundle 'kien/ctrlp.vim'
@@ -282,6 +288,13 @@
                 " http://blog.carbonfive.com/2011/10/17/vim-text-objects-the-definitive-guide/
                 Bundle 'argtextobj.vim'
                 Bundle 'michaeljsmith/vim-indent-object'
+            " }
+
+            " Taglist {
+            Bundle 'taglist.vim'
+            map <Leader>cq :TlistToggle<cr>
+            map <Leader>cr :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<cr>
+            let Tlist_WinWidth = 30
             " }
 
             " Fugitive {
@@ -369,10 +382,7 @@
             Bundle 'honza/vim-snippets'
            " OmniComplete {
                 if has("autocmd") && exists("+omnifunc")
-                    autocmd Filetype *
-                        \if &omnifunc == " |
-                        \setlocal omnifunc=syntaxcomplete#Complete |
-                        \endif
+                    autocmd Filetype *if &omnifunc == " |setlocal omnifunc=syntaxcomplete#Complete |endif
                 endif
 
                 hi Pmenu  guifg=#000000 guibg=#F8F8F8 ctermfg=black ctermbg=Lightgray
@@ -403,17 +413,11 @@
                 let g:neocomplcache_force_overwrite_completefunc = 1
 
                 " SuperTab like snippets behavior.
-                imap <silent><expr><TAB> neosnippet#expandable() ?
-                            \ "\<Plug>(neosnippet_expand_or_jump)" : (pumvisible() ?
-                            \ "\<C-e>" : "\<TAB>")
+                imap <silent><expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" : (pumvisible() ? "\<C-e>" : "\<TAB>")
                 smap <TAB> <Right><Plug>(neosnippet_jump_or_expand)
 
                 " Define dictionary.
-                let g:neocomplcache_dictionary_filetype_lists = {
-                            \ 'default' : '',
-                            \ 'vimshell' : $HOME.'/.vimshell_hist',
-                            \ 'scheme' : $HOME.'/.gosh_completions'
-                            \ }
+                let g:neocomplcache_dictionary_filetype_lists = { 'default' : '', 'vimshell' : $HOME.'/.vimshell_hist', 'scheme' : $HOME.'/.gosh_completions' }
 
                 " Define keyword.
                 if !exists('g:neocomplcache_keyword_patterns')
@@ -829,6 +833,7 @@ endif
         autocmd FileType c setlocal noexpandtab shiftwidth=4
         autocmd FileType html setlocal expandtab shiftwidth=2
         autocmd FileType html compiler tidy
+        autocmd FileType sh setlocal textwidth=0
         " au VimEnter * RainbowParenthesesToggle
         au Syntax * RainbowParenthesesLoadRound
         au Syntax * RainbowParenthesesLoadSquare

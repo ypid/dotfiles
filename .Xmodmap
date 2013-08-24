@@ -109,12 +109,13 @@ keysym less = less	greater	ISO_Level3_Lock	NoSymbol
 ! !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 ! ! Tab key
 ! !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-! keycode 23 = Tab  ISO_Left_Tab  Multi_key  ISO_Level3_Lock
+keycode 23 = Tab  ISO_Left_Tab  Multi_key  ISO_Level3_Lock
 !
 ! !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 ! ! Space and Return key
 ! !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-! keycode 65 = space		space		space		nobreakspace	KP_0		KP_0		U202F		NoSymbol
+! KP_0 does not work in other modes?
+keycode 65 = space		space		KP_0		nobreakspace	KP_0		KP_0		U202F		NoSymbol
 ! keycode 36 = Return		Return		Return		Return		KP_Enter	KP_Enter	Return		Return
 !
 ! !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -155,7 +156,7 @@ keycode 49 = asciicircum	dead_caron	U21BB		U02DE		dead_abovedot Pointer_EnableKe
 ! !				¿		¿		¿ (bra)						¿
 ! keycode 18 = 	9   leftdoublequotemark   leftsinglequotemark rightanglebracket KP_Divide	KP_Divide	variation	NoSymbol
 ! !				¿		¿		¿ (ket)		/		/		¿ proportional to
-! keycode 19 = 	0   rightdoublequotemark  rightsinglequotemark  zerosubscript	KP_Multiply	KP_Multiply	emptyset	NoSymbol
+keycode 19 = 	0   rightdoublequotemark  rightsinglequotemark  zerosubscript	KP_Multiply	KP_Multiply	emptyset	NoSymbol
 ! !			¿			¿		¿		*		*		¿
 ! keycode 20 = ssharp		emdash		NoSymbol	U2011		KP_Subtract	KP_Subtract	hyphen		NoSymbol
 ! !		-		¿				¿ non-breaking	-		-		­ soft hyphen
@@ -339,7 +340,7 @@ keycode 61 = 	minus	underscore		semicolon	Greek_theta	semicolon	NoSymbol	Greek_T
 ! keysym ssharp = ssharp question backslash U1E9E backslash U1E9E
 
 ! Set Super key to mode switch.
-! keycode 133 = Mode_switch
+! keycode 133 = ISO_Level3_Shift
 
 ! How to send the Keysequenz Alt+F4 with Super+q ?
 ! keysym q = q Q F4
