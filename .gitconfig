@@ -25,3 +25,5 @@
 	user = ypid
 [log]
 	date = local
+[push]
+	default = simple

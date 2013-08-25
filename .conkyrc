@@ -1,0 +1,176 @@
+# Conky settings #
+background no
+update_interval 1
+
+cpu_avg_samples 2
+net_avg_samples 2
+
+override_utf8_locale yes
+
+double_buffer yes
+no_buffers yes
+
+text_buffer_size 2048
+#imlib_cache_size 0
+
+# temperature_unit fahrenheit
+
+# Window specifications #
+own_window yes
+own_window_type override
+own_window_transparent #000000
+own_window_transparent no
+own_window_hints undecorate,sticky,skip_taskbar,skip_pager,below
+
+border_inner_margin 0
+border_outer_margin 5
+
+minimum_size 250 300
+maximum_width 250
+
+# alignment tr
+gap_x 10
+# gap_y 0
+alignment top_right
+# gap_x 50
+gap_y 40
+
+# Graphics settings #
+draw_shades no
+draw_outline no
+draw_borders no
+draw_graph_borders no
+
+# Text settings #
+use_xft yes
+xftfont caviar dreams:size=8
+xftalpha 0.5
+
+uppercase no
+
+temperature_unit celsius
+
+default_color FFFFF5
+
+# Lua Load  #
+# lua_load ~/.fluxbox/conky/conky_blue/clock_rings.lua
+# lua_draw_hook_pre clock_rings
+
+TEXT
+# #					         Time and date
+${font Verdana:style=Bold:size=16}${color #009bf9}${alignc}${time %a %d. %b %k:%M}$font
+# $color${alignc}Feisty Fawn $kernel
+${color #009bf9}$stippled_hr
+# # ${voffset 7}${font Radio Space:size=16}${color 0ABFFF}${time %A}${font}$color${font Radio Space:size=38}${goto 167}${voffset -8} ${time %e}${font}
+# ${font Radio Space:size=18}${voffset -30}${time %b}${font}${voffset -3} ${font Radio Space:size=20}${time %Y}${font}${color 0ABFFF} ${hr 1}
+${color 0ABFFF}Battery: ${color}${battery_percent}% $alignr${color 0ABFFF}${font caviar dreams:size=8}Uptime: ${color}${uptime_short}
+# #----------------------------------------------------------------------------------------------------------------------------------------
+# #						Weather
+# #----------------------------------------------------------------------------------------------------------------------------------------
+# # ${font conkyweather:size=35}${color FFFFFF}${execpi 6000  sed -n '2p' ~/.fluxbox/conky/conky_blue/accu_weather/rss/weather}$color${font}${font Radio Space:size=11}${color 0ABFFF}HOME
+# # ${execi 600 bash ~/.fluxbox/conky/conky_blue/accu_weather/rss/acc_rss}${font Radio Space:size=15}${execpi 600 sed -n '1p' ~/.fluxbox/conky/conky_blue/accu_weather/rss/weather|awk '{print $NF}'}${font}$color
+# #----------------------------------------------------------------------------------------------------------------------------------------
+# ${color 0ABFFF}${voffset 2}${hr 1}${voffset 5}
+${color 0ABFFF}Hostname:$color${nodename} ${alignr}${color 0ABFFF}OS:$color${pre_exec cat /etc/issue.net} $machine
+# ${color 0ABFFF}Kernel:$color${alignr}${kernel}$color
+#
+# #					           CPU usage
+${color #009bf9}$stippled_hr$color
+# ${color #0ABFFF}${hr 1}$color
+${color #0ABFFF}${voffset 6}Temp: $color ${acpitemp}°C ${alignr}$color $processes ${color #0ABFFF}< Processes
+# ${color #0ABFFF}${voffset 6}Running: $color  $running_processes
+# ${goto 116}${voffset 8}${cpu cpu0}% ${color 0ABFFF}${goto 116}${voffset 13}CPU1$color${goto 191}${voffset -12}${cpu cpu1}% ${color 0ABFFF}${goto 191}${voffset 12}CPU2$color
+# ${color #0ABFFF}${voffset -12}FREQ:$color ${freq}MHz
+${color #0ABFFF}Load:$color ${loadavg} ${alignr}$color ${freq} MHz ${color #0ABFFF}< Freq
+# #----------------------------------------------------------------------------------------------------------------------------------------
+# #						Network
+# #----------------------------------------------------------------------------------------------------------------------------------------
+# ${color 0ABFFF}${voffset 2}${hr 1}
+# ${color 0ABFFF}${voffset 5}Hostname: $color$alignr$nodename
+# ${color 0ABFFF}wlan1: $color$alignr${addr wlan0}
+# ${color 0ABFFF}Current: $color${alignr}${execi 10 /sbin/iwconfig wlan1|grep Rate|cut -d"M" -f1|cut -b20-24} Mbits/sec
+# ${color #0ABFFF}Down: $color${downspeed wlan1} k/s ${alignr}${color #0ABFFF}Up:$color ${upspeed wlan0} k/s
+# ${downspeedgraph wlan1 30,120 000000 0ABFFF} ${alignr}${upspeedgraph wlan1 30,120 000000 0ABFFF}$color
+#
+# ${color 0ABFFF}eth1: $color$alignr${addr eth1}
+# ${downspeedgraph eth1 30,120 000000 0ABFFF} ${alignr}${upspeedgraph eth1 30,120 000000 0ABFFF}$color
+# ${color #0ABFFF}Total:$color ${totaldown wlan0} ${alignr}${color #0ABFFF}Total:$color ${totalup wlan0}
+# #----------------------------------------------------------------------------------------------------------------------------------------
+# #					DISK/RAM/SWAP usage
+# #----------------------------------------------------------------------------------------------------------------------------------------
+# ${color 0ABFFF}${voffset 2}${hr 1}
+# ${color FFFFFF}${goto 7}${voffset 39}${fs_used_perc /}%
+# ${color 0ABFFF}${goto 7}DISK
+# ${color FFFFFF}${goto 102}${voffset -27}${memperc}%
+# ${color 0ABFFF}${goto 102}RAM
+# ${color FFFFFF}${goto 192}${voffset -26}${swapperc}%
+# ${color 0ABFFF}${goto 191}SWAP
+# #----------------------------------------------------------------------------------------------------------------------------------------
+# #					   Running processes
+# #----------------------------------------------------------------------------------------------------------------------------------------
+# ${color 0ABFFF}${voffset 2} ${hr 1}
+# ${color #0ABFFF}${voffset 5}NAME${goto 122}PID${goto 163}CPU%${goto 210}MEM%$color${voffset 5}
+# ${top name 1}${goto 115}${top pid 1}${goto 160}${top cpu 1}${goto 205}${top mem 1}
+# ${top name 2}${goto 115}${top pid 2}${goto 160}${top cpu 2}${goto 205}${top mem 2}
+# ${top name 3}${goto 115}${top pid 3}${goto 160}${top cpu 3}${goto 205}${top mem 3}
+# ${top name 5}${goto 115}${top pid 5}${goto 160}${top cpu 5}${goto 205}${top mem 5}
+# ${top name 6}${goto 115}${top pid 6}${goto 160}${top cpu 6}${goto 205}${top mem 6}
+# ${top name 7}${goto 115}${top pid 7}${goto 160}${top cpu 7}${goto 205}${top mem 7}
+# ${top name 8}${goto 115}${top pid 8}${goto 160}${top cpu 8}${goto 205}${top mem 8}
+#
+${color 0ABFFF}Processes:$color $processes   ${color 0ABFFF}Running:$color $running_processes
+# ${color lightgrey}Up: $color $uptime
+
+${color #009bf9}CPU: $cpu% ${cpubar}
+${font Monospace:size=8}${color}Name                   PID    CPU%   MEM%
+${font Monospace:size=8}${color lightgrey}${top name 1}     ${top pid 1}  ${top cpu 1}  ${top mem 1}
+${color lightgrey}${top name 2}     ${top pid 2}  ${top cpu 2}  ${top mem 2}
+${color lightgrey}${top name 3}     ${top pid 3}  ${top cpu 3}  ${top mem 3}
+
+${cpugraph 48,250 009bf9 ffffff}
+${color #009bf9}$stippled_hr$color
+
+$font${color #009bf9}RAM: $memperc% (of $memmax) ${alignr 105}${membar}
+${color #009bf9}Swap: $swapperc% (of $swapmax) ${alignr 105}${swapbar}
+# ${color}Name              PID     CPU%   MEM%
+# ${font Monospace:size=8}${color lightgrey}${top_mem name 1}     ${top_mem pid 1}  ${top_mem cpu 1}  ${top_mem mem 1}
+# ${color lightgrey}${top_mem name 2}     ${top_mem pid 2}  ${top_mem cpu 2}  ${top_mem mem 2}
+# ${color lightgrey}${top_mem name 3}     ${top_mem pid 3}  ${top_mem cpu 3}  ${top_mem mem 3}
+# $font${color #009bf9}$stippled_hr
+${color #009bf9}/:  ${fs_used /}/${fs_size /}  ${alignr 105}${fs_bar /}
+
+${color #009bf9}$stippled_hr$color
+$font${color #009bf9}Connections${alignr}${color #009bf9}In:$color ${tcp_portmon 1 32767 count}  ${color #009bf9}Out:$color ${tcp_portmon 32768 61000 count}   ${color #009bf9}ALL:$color ${tcp_portmon 1 65535 count}
+
+${color 0ABFFF}eth1: $color ${addrs eth1}
+# ${offset 20} ${execi 7200 ~/.conky/publicip.sh}
+${color lightgrey}Down:$color ${downspeed eth1}${color lightgrey} ${alignr}Up:$color ${upspeed eth1}
+${downspeedgraph eth1 32,115 009bf9 ffffff} ${alignr}${upspeedgraph eth1 32,115 009bf9 ffffff}
+
+${color 0ABFFF}wlan1: $color ${addrs wlan1}
+# ${offset 20} ${execi 7200 ~/.conky/publicip.sh}
+${color lightgrey}Down:$color ${downspeed wlan1}${color lightgrey} ${alignr}Up:$color ${upspeed wlan1}
+${downspeedgraph wlan1 32,115 009bf9 ffffff} ${alignr}${upspeedgraph wlan1 32,115 009bf9 ffffff}
+#
+${color #009bf9}$stippled_hr
+# ${color lightgrey}$stippled_hr
+${color #009bf9}Inbound Connection ${alignr} Local Service/Port$color
+${font Monospace:size=8} ${tcp_portmon 1 32767 rhost 0} ${alignr} ${tcp_portmon 1 32767 lservice 0}
+ ${tcp_portmon 1 32767 rhost 1} ${alignr} ${tcp_portmon 1 32767 lservice 1}
+ ${tcp_portmon 1 32767 rhost 2} ${alignr} ${tcp_portmon 1 32767 lservice 2}
+ ${tcp_portmon 1 32767 rhost 3} ${alignr} ${tcp_portmon 1 32767 lservice 3}
+ ${tcp_portmon 1 32767 rhost 4} ${alignr} ${tcp_portmon 1 32767 lservice 4}
+ ${tcp_portmon 1 32767 rhost 5} ${alignr} ${tcp_portmon 1 32767 lservice 5}
+$font${color #009bf9}Outbound Connection ${alignr} Remote Service/Port$color
+${font Monospace:size=8} ${tcp_portmon 32768 61000 rhost 0} ${alignr} ${tcp_portmon 32768 61000 rservice 0}
+ ${tcp_portmon 32768 61000 rhost 1} ${alignr} ${tcp_portmon 32768 61000 rservice 1}
+ ${tcp_portmon 32768 61000 rhost 2} ${alignr} ${tcp_portmon 32768 61000 rservice 2}
+ ${tcp_portmon 32768 61000 rhost 3} ${alignr} ${tcp_portmon 32768 61000 rservice 3}
+ ${tcp_portmon 32768 61000 rhost 4} ${alignr} ${tcp_portmon 32768 61000 rservice 4}
+ ${tcp_portmon 32768 61000 rhost 5} ${alignr} ${tcp_portmon 32768 61000 rservice 5}
+# #						Logging
+# #----------------------------------------------------------------------------------------------------------------------------------------
+# ${color #009bf9}${voffset -5}${hr 1}$color
+${color #009bf9}$stippled_hr
+${color #009bf9}${alignc}Syslog:$color
+${voffset 5}${execi 10 tail -n3 /var/log/syslog | awk '{print " ",$5,$6,$7,$8,$9,$10}' | fold -w40}
