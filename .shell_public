@@ -22,8 +22,9 @@ alias ts='date "+%Y-%m-%d_%H:%M"'
 if [[ $USER == root ]]; then
     alias vi='vim'
 else
-    alias vi='vim --servername VIM'
-    alias vir='vi --remote'
+    # alias vi='vim --servername VIM'
+    # alias vir='vi --remote'
+    alias vi='vim'
 fi
 alias ,e='exit'
 alias ,x='exit'
@@ -34,11 +35,9 @@ alias ssh-only-pw='ssh -o PubkeyAuthentication=no'
 alias tmux='TERM=screen-256color-bce tmux'
 alias tm=tmux
 ## Git # try to use the shortcuts from oh-my-zsh
-alias gits='git status'
 alias gitl='git log --stat --decorate=short'
 # overwrite alias from oh-my-zsh
 alias glg='git log --stat --decorate=short'
-alias gitw='git wdiff'
 ## LaTeX
 alias sty2dtx='~/Projekte/src/sty2dtx/sty2dtx.pl'
 

@@ -201,12 +201,14 @@
             Bundle 'altercation/vim-colors-solarized'
             Bundle 'spf13/vim-colors'
             Bundle 'tpope/vim-surround'
-            " Bundle 'spf13/vim-autoclose'
+            " Bundle 'spf13/vim-autoclose' " Too simple, no indent stuff
             " let g:AutoPairShortcutToggle = '<Leader>ac'
-            Bundle 'jiangmiao/auto-pairs'
-            let g:AutoPairsFlyMode = 1
-            nmap <silent> <Leader>ac :call AutoPairsToggle()<CR>
-            imap <silent> <Leader>ac <ESC>:call AutoPairsToggle()<CR>a
+            " Bundle 'jiangmiao/auto-pairs' " Could not get inserting new closing brackets and jumping to existing once to work
+            " let g:AutoPairsFlyMode = 1
+            " nmap <silent> <Leader>ac :call AutoPairsToggle()<CR>
+            " imap <silent> <Leader>ac <ESC>:call AutoPairsToggle()<CR>a
+            Bundle 'Raimondi/delimitMate'
+            let delimitMate_expand_cr = 1
 
 
             " CtrlP {
@@ -281,20 +283,13 @@
     " General Programming {
         if count(g:spf13_bundle_groups, 'programming')
             " Pick one of the checksyntax, jslint, or syntastic
-            Bundle 'scrooloose/syntastic'
+            " Bundle 'scrooloose/syntastic' " Too slow
             Bundle 'vivien/vim-addon-linux-coding-style'
 
             " More text objects {
                 " http://blog.carbonfive.com/2011/10/17/vim-text-objects-the-definitive-guide/
                 Bundle 'argtextobj.vim'
                 Bundle 'michaeljsmith/vim-indent-object'
-            " }
-
-            " Taglist {
-            Bundle 'taglist.vim'
-            map <Leader>cq :TlistToggle<cr>
-            map <Leader>cr :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<cr>
-            let Tlist_WinWidth = 30
             " }
 
             " Fugitive {
@@ -315,9 +310,6 @@
             let g:manpageview_options_pl = ";-f;-q;-t;"
 
             Bundle 'bronson/vim-visual-star-search'
-
-            Bundle 'mattn/webapi-vim'
-            Bundle 'mattn/gist-vim'
 
             " Tabularize {
             Bundle 'godlygeek/tabular'
@@ -349,10 +341,6 @@
             " noremap gcc :call NERDComment('n', 'Toggle')<CR>
             " vnoremap gc gcc
 
-            " Highlight brackets
-            Bundle 'kien/rainbow_parentheses.vim'
-            nnoremap <Leader>R :RainbowParenthesesToggle<CR>
-
             " Toggle words
             Bundle 'toggle_words.vim'
             nmap <Leader>to :ToggleWord<CR>
@@ -364,9 +352,28 @@
             let g:detectindent_preferred_indent = 4
             let g:detectindent_min_indent = 2
 
-            if executable('ctags')
-                Bundle 'majutsushi/tagbar'
-            endif
+            " Highlight brackets
+            Bundle 'kien/rainbow_parentheses.vim'
+            nnoremap <Leader>R :RainbowParenthesesToggle<CR>
+
+            " if executable('ctags')
+            "     Bundle 'majutsushi/tagbar'
+            " endif
+
+            " " Taglist {
+            " Bundle 'taglist.vim'
+            " map <Leader>cq :TlistToggle<cr>
+            " map <Leader>cr :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<cr>
+            " let Tlist_WinWidth = 30
+            " " }
+        endif
+    " }
+
+    " General Programming (not often used) {
+        if count(g:spf13_bundle_groups, 'programming_not_often_used')
+
+            Bundle 'mattn/webapi-vim'
+            Bundle 'mattn/gist-vim'
         endif
     " }
 
@@ -780,7 +787,7 @@ endif
 
     set formatoptions+=or
     set wrap linebreak              " Wrap long lines between words</Tab>
-    set textwidth=80
+    set textwidth=0
     set linebreak
     set autoindent                  " Indent at the same level of the previous line
     set shiftwidth=4                " Use indents of 4 spaces
@@ -829,21 +836,22 @@ endif
         autocmd FileType perl compiler perlcritic
         autocmd FileType vim setlocal expandtab shiftwidth=4
         autocmd FileType python setlocal shiftwidth=4
+        autocmd FileType python let b:delimitMate_nesting_quotes = ['"']
         autocmd FileType tex setlocal expandtab shiftwidth=2
         autocmd FileType c setlocal noexpandtab shiftwidth=4
         autocmd FileType html setlocal expandtab shiftwidth=2
         autocmd FileType html compiler tidy
         autocmd FileType sh setlocal textwidth=0
-        " au VimEnter * RainbowParenthesesToggle
-        au Syntax * RainbowParenthesesLoadRound
-        au Syntax * RainbowParenthesesLoadSquare
-        au Syntax * RainbowParenthesesLoadBraces
+        " autocmd VimEnter * RainbowParenthesesToggle " enable by defalut
+        " autocmd Syntax * RainbowParenthesesLoadRound " default
+        autocmd VimEnter,BufRead,BufNewFile * RainbowParenthesesLoadSquare
+        autocmd VimEnter,BufRead,BufNewFile * RainbowParenthesesLoadBraces
         " autocmd BufRead,BufNewFile * call DetectIndentIfNotEmptyBuf()
         autocmd BufRead * DetectIndent
         " autocmd BufWritePost * echo &ff
         autocmd QuickFixCmdPost make cwindow
         " autocmd BufRead,BufNewFile * call SetIndentWidth()
-        autocmd FileType c,cpp,go,php,javascript,python,twig,xml,yml autocmd BufWritePre <buffer> EraseBadWhitespace
+        " autocmd FileType c,cpp,go,php,javascript,python,twig,xml,yml autocmd BufWritePre <buffer> EraseBadWhitespace
 
         " Always switch to the current file directory
         autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
