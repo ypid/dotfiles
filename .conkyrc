@@ -87,14 +87,14 @@ ${color #0ABFFF}Load:$color ${loadavg} ${alignr}$color ${freq} MHz ${color #0ABF
 # #----------------------------------------------------------------------------------------------------------------------------------------
 # ${color 0ABFFF}${voffset 2}${hr 1}
 # ${color 0ABFFF}${voffset 5}Hostname: $color$alignr$nodename
-# ${color 0ABFFF}wlan1: $color$alignr${addr wlan0}
+# ${color 0ABFFF}wlan1: $color$alignr${addr wlan1}
 # ${color 0ABFFF}Current: $color${alignr}${execi 10 /sbin/iwconfig wlan1|grep Rate|cut -d"M" -f1|cut -b20-24} Mbits/sec
-# ${color #0ABFFF}Down: $color${downspeed wlan1} k/s ${alignr}${color #0ABFFF}Up:$color ${upspeed wlan0} k/s
+# ${color #0ABFFF}Down: $color${downspeed wlan1} k/s ${alignr}${color #0ABFFF}Up:$color ${upspeed wlan1} k/s
 # ${downspeedgraph wlan1 30,120 000000 0ABFFF} ${alignr}${upspeedgraph wlan1 30,120 000000 0ABFFF}$color
 #
-# ${color 0ABFFF}eth1: $color$alignr${addr eth1}
-# ${downspeedgraph eth1 30,120 000000 0ABFFF} ${alignr}${upspeedgraph eth1 30,120 000000 0ABFFF}$color
-# ${color #0ABFFF}Total:$color ${totaldown wlan0} ${alignr}${color #0ABFFF}Total:$color ${totalup wlan0}
+# ${color 0ABFFF}wlan0: $color$alignr${addr wlan0}
+# ${downspeedgraph wlan0 30,120 000000 0ABFFF} ${alignr}${upspeedgraph wlan0 30,120 000000 0ABFFF}$color
+# ${color #0ABFFF}Total:$color ${totaldown wlan1} ${alignr}${color #0ABFFF}Total:$color ${totalup wlan1}
 # #----------------------------------------------------------------------------------------------------------------------------------------
 # #					DISK/RAM/SWAP usage
 # #----------------------------------------------------------------------------------------------------------------------------------------
@@ -142,10 +142,10 @@ ${color #009bf9}/:  ${fs_used /}/${fs_size /}  ${alignr 105}${fs_bar /}
 ${color #009bf9}$stippled_hr$color
 $font${color #009bf9}Connections${alignr}${color #009bf9}In:$color ${tcp_portmon 1 32767 count}  ${color #009bf9}Out:$color ${tcp_portmon 32768 61000 count}   ${color #009bf9}ALL:$color ${tcp_portmon 1 65535 count}
 
-${color 0ABFFF}eth1: $color ${addrs eth1}
+${color 0ABFFF}wlan0: $color ${addrs wlan0}
 # ${offset 20} ${execi 7200 ~/.conky/publicip.sh}
-${color lightgrey}Down:$color ${downspeed eth1}${color lightgrey} ${alignr}Up:$color ${upspeed eth1}
-${downspeedgraph eth1 32,115 009bf9 ffffff} ${alignr}${upspeedgraph eth1 32,115 009bf9 ffffff}
+${color lightgrey}Down:$color ${downspeed wlan0}${color lightgrey} ${alignr}Up:$color ${upspeed wlan0}
+${downspeedgraph wlan0 32,115 009bf9 ffffff} ${alignr}${upspeedgraph wlan0 32,115 009bf9 ffffff}
 
 ${color 0ABFFF}wlan1: $color ${addrs wlan1}
 # ${offset 20} ${execi 7200 ~/.conky/publicip.sh}

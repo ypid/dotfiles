@@ -329,6 +329,10 @@
             vmap <Leader>a# :Tabularize /#<CR>
             nmap <Leader>a<Space> :Tabularize /\s\+<CR>
             vmap <Leader>a<Space> :Tabularize /\s\+<CR>
+            " http://stackoverflow.com/questions/10287919/use-vims-tabularize-plugin-to-only-match-the-first-occurance-of-a-delimiter
+            nmap <Leader>af<Space> :Tabularize /^\s*\w*<CR>
+            vmap <Leader>af<Space> :Tabularize /^\s*\w*<CR>
+            vmap <Leader>a<Space> :Tabularize /\s\+<CR>
             nmap <Leader>a<Bar> :Tabularize /<Bar><CR>
             vmap <Leader>a<Bar> :Tabularize /<Bar><CR>
             " }
@@ -564,6 +568,8 @@
             nmap <Leader>ti :call SyntaxAttr()<CR>
 
             Bundle 'SrchRplcHiGrp.vim'
+
+            " Bundle 'greyblake/vim-preview' " configure Browser
         endif
     " }
 
@@ -588,7 +594,6 @@
             Bundle 'dahu/LearnVim'
             Bundle 'tpope/vim-markdown'
             " Bundle 'spf13/vim-preview'
-            Bundle 'greyblake/vim-preview'
             " Bundle 'tpope/vim-cucumber'
             " Bundle 'quentindecock/vim-cucumber-align-pipes'
             " Bundle 'Puppet-Syntax-Highlighting'
@@ -837,6 +842,8 @@ endif
         autocmd FileType vim setlocal expandtab shiftwidth=4
         autocmd FileType python setlocal shiftwidth=4
         autocmd FileType python let b:delimitMate_nesting_quotes = ['"']
+        autocmd FileType mkd let b:delimitMate_nesting_quotes = ['`']
+        autocmd FileType vim let b:delimitMate_quotes = "' `"
         autocmd FileType tex setlocal expandtab shiftwidth=2
         autocmd FileType c setlocal noexpandtab shiftwidth=4
         autocmd FileType html setlocal expandtab shiftwidth=2
