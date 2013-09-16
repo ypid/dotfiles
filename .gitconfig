@@ -21,6 +21,7 @@
 	lg = log --graph --pretty=format:'%Cred%h..%Creset - %s %Cgreen(%cr)%Creset - %an' --abbrev-commit --date=relative
 [core]
 	excludesfile = /home/rsadmin/.gitignore_global
+	editor = vi
 [github]
 	user = ypid
 [log]

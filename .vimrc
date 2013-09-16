@@ -92,9 +92,8 @@
     imap <Leader>fd <ESC>:filetype detect<CR>a
 
     " Toggle highlight search
-    let hlstate=0
-    nmap <Leader>b :if (hlstate%2 == 0) \| nohlsearch \| else \| set hlsearch \| endif \| let hlstate=hlstate+1<CR>:echo "toggled visibility for hlsearch"<CR>
-    imap <Leader>b <ESC>:if (hlstate%2 == 0) \| nohlsearch \| else \| set hlsearch \| endif \| let hlstate=hlstate+1<CR>:echo "toggled visibility for hlsearch"<CR>a
+    nmap <Leader>B :set invhlsearch<CR>
+    nmap <Leader>b :nohlsearch<CR>
 
     " Bind set list
     map <Leader>l :set list!<CR>
@@ -509,6 +508,8 @@
     " Perl {
         if count(g:spf13_bundle_groups, 'perl')
             Bundle 'perlcritic-compiler-script'
+            Bundle 'vim-perl/vim-perl'
+            " Bundle 'c9s/perlomni.vim'
         endif
     " }
 
@@ -670,6 +671,28 @@
         endfunction
 
         command! -range=% HighlightRepeats <line1>,<line2>call HighlightRepeats()
+
+        " Toggle word highlighting on and off but and don’t get confused if a
+        " new search was issued.
+        " Does not work. If you fix it please open a pull request :)
+        let hlstate=0
+        let lastsearchstring = @/
+        function! Togglehlsearch()
+            if (lastsearchstring == @/)
+                nohlsearch
+                let lastsearchstring = @/
+            else
+                set hlsearch
+            endif
+            let hlstate= &hlstate + 1
+            echo "toggled visibility for hlsearch"
+        endfunction
+
+        " Toggle highlight search
+        " let hlstate=0
+        " let lastsearchstring = @/
+        " nmap <Leader>b :call Togglehlsearch()<CR>
+
     " }
 " }
 
@@ -678,7 +701,7 @@
     if !has('gui')
         "set term=$TERM          " Make arrow and other keys work
     endif
-    filetype plugin indent on   " Automatically detect file types.
+    filetype indent plugin on   " Automatically detect file types.
     syntax on                   " Syntax highlighting
     set mousehide               " Hide the mouse cursor while typing
     scriptencoding utf-8
