@@ -185,9 +185,10 @@ keycode 31 = 	i		I		greater		Greek_gamma	KP_8		KP_8		Greek_GAMMA	Greek_GAMMA
 !						>		¿						¿		¿
 keycode 32 = 	o		O		equal		Greek_phi	KP_9		KP_9		Greek_PHI	Greek_PHI
 !						=		¿ 						¿		¿
-keycode 33 = 	p		P		ampersand	U03D5		KP_Add		KP_Add		U211A		NoSymbol
+! keycode 33 = 	p		P		ampersand	U03D5		KP_Add		KP_Add		U211A		NoSymbol
+keycode 33 = 	p		P		ampersand	U03D5		plus		plus		U211A       NoSymbol
 !						&		¿ Greek_phi	+		+		¿ rational
-! keycode 34 = udiaeresis		Udiaeresis		U017F	 Greek_finalsmallsigma  U2212		NoSymbol	jot		NoSymbol
+keycode 34 = udiaeresis		Udiaeresis		U017F	 Greek_finalsmallsigma  U2212		NoSymbol	jot		NoSymbol
 !	     	ß		¿ Capital ß	¿ long s	¿		¿ real minus			¿ ring operator
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!

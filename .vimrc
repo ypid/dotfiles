@@ -348,6 +348,8 @@
             Bundle 'toggle_words.vim'
             nmap <Leader>to :ToggleWord<CR>
 
+            Bundle 'tpope/vim-endwise'
+
             " DetectIndent
             " Bundle 'ciaranm/detectindent'
             Bundle 'ypid/detectindent'
