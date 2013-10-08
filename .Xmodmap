@@ -152,13 +152,14 @@ keycode 49 = asciicircum	dead_caron	U21BB		U02DE		dead_abovedot Pointer_EnableKe
 !
 ! keycode 16 = 	7		EuroSign	yen		U03F0		currency	NoSymbol	rightarrow	NoSymbol
 ! !				¿		¥		¿ Greek_kappa	¤				¿
-! keycode 17 = 	8   doublelowquotemark    singlelowquotemark  leftanglebracket	Tab		ISO_Left_Tab	infinity	NoSymbol
-! !				¿		¿		¿ (bra)						¿
-! keycode 18 = 	9   leftdoublequotemark   leftsinglequotemark rightanglebracket KP_Divide	KP_Divide	variation	NoSymbol
+keycode 17 = 	8   doublelowquotemark    singlelowquotemark  leftanglebracket	Tab		ISO_Left_Tab	infinity	NoSymbol
+!				¿		¿		¿ (bra)						¿
+keycode 18 = 	9   leftdoublequotemark   leftsinglequotemark rightanglebracket KP_Divide	KP_Divide	variation	NoSymbol
 ! !				¿		¿		¿ (ket)		/		/		¿ proportional to
 keycode 19 = 	0   rightdoublequotemark  rightsinglequotemark  zerosubscript	KP_Multiply	KP_Multiply	emptyset	NoSymbol
 ! !			¿			¿		¿		*		*		¿
 ! keycode 20 = ssharp		emdash		NoSymbol	U2011		KP_Subtract	KP_Subtract	hyphen		NoSymbol
+keycode 20 = ssharp		endash		NoSymbol	U2011		KP_Subtract	KP_Subtract	hyphen		NoSymbol
 ! !		-		¿				¿ non-breaking	-		-		­ soft hyphen
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!

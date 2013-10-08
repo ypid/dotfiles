@@ -121,6 +121,10 @@
     map <Leader>s :update<CR>
     imap <Leader>s <ESC>:update<CR>l
 
+    " Save and make
+    map <Leader>as :SCCompileRun<CR>
+    imap <Leader>as <ESC>:SCCompileRun<CR>a
+
     " Save and exit
     map <Leader>x :x<CR>
     imap <Leader>x <ESC>:x<CR>
@@ -364,6 +368,17 @@
             " if executable('ctags')
             "     Bundle 'majutsushi/tagbar'
             " endif
+
+            Bundle 'xuhdev/SingleCompile'
+            let g:SingleCompile_alwayscompile = 0
+            call SingleCompile#SetCompilerTemplate('mkd', 'markdown',
+                        \ 'text-to-HTML conversion tool', 'markdown',
+                        \ '> $(FILE_TITLE)$.html', 'true' )
+            " call SingleCompile#SetPriority('mkd', 'markdown', 50)
+
+            call SingleCompile#ChooseCompiler('mkd', 'markdown')
+
+
 
             " " Taglist {
             " Bundle 'taglist.vim'
