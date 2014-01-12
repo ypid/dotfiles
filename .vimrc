@@ -173,21 +173,21 @@
     " 'programming', 'ruby', 'python', 'perl', 'go', 'twig', 'javascript',
     " 'html', 'latex',
     " 'misc', 'scala', 'games']
-    let g:spf13_bundle_groups=['general', 'work', 'programming', 'python', 'perl', 'javascript', 'html', 'misc', 'scala', 'snipmate']
+    let g:spf13_bundle_groups=['general', 'work', 'programming', 'python', 'perl', 'javascript', 'html', 'misc', 'snipmate']
 
     " Deps {
         Bundle 'gmarik/vundle'
         Bundle 'MarcWeber/vim-addon-mw-utils'
         Bundle 'tomtom/tlib_vim'
-        if executable('ack-grep')
-            let g:ackprg="ack-grep -H --nocolor --nogroup --column"
-            Bundle 'mileszs/ack.vim'
-        elseif executable('ack')
-            Bundle 'mileszs/ack.vim'
-        elseif executable('ag')
-            Bundle 'mileszs/ack.vim'
-            let g:ackprg = 'ag --nogroup --nocolor --column'
-        endif
+        " if executable('ack-grep')
+        "     let g:ackprg="ack-grep -H --nocolor --nogroup --column"
+        "     Bundle 'mileszs/ack.vim'
+        " elseif executable('ack')
+        "     Bundle 'mileszs/ack.vim'
+        " elseif executable('ag')
+        "     Bundle 'mileszs/ack.vim'
+        "     let g:ackprg = 'ag --nogroup --nocolor --column'
+        " endif
     " }
 
     " Work {
@@ -206,7 +206,7 @@
             Bundle 'tpope/vim-surround'
             " Bundle 'spf13/vim-autoclose' " Too simple, no indent stuff
             " let g:AutoPairShortcutToggle = '<Leader>ac'
-            " Bundle 'jiangmiao/auto-pairs' " Could not get inserting new closing brackets and jumping to existing once to work
+            " Bundle 'jiangmiao/auto-pairs' " Could not get inserting new closing brackets and jumping to existing brackets at once to work
             " let g:AutoPairsFlyMode = 1
             " nmap <silent> <Leader>ac :call AutoPairsToggle()<CR>
             " imap <silent> <Leader>ac <ESC>:call AutoPairsToggle()<CR>a
@@ -226,6 +226,7 @@
 
             " Bundle 'vim-scripts/sessionman.vim'
             Bundle 'matchit.zip'
+            " Extended matching with "%"
 
             " vim-bad-whitespace {
             Bundle 'bitc/vim-bad-whitespace'
@@ -247,8 +248,10 @@
                 Bundle 'Lokaltog/vim-powerline'
             endif
 
-            Bundle 'Lokaltog/vim-easymotion'
-            let g:EasyMotion_leader_key = '<Leader>j'
+            " Bundle 'Lokaltog/vim-easymotion'
+            " let g:EasyMotion_leader_key = '<Leader>j'
+            " Don’t really using it for now.
+            
             " Bundle 'python.vim--Herzog'
 
             Bundle 'godlygeek/csapprox'
@@ -278,8 +281,11 @@
             if !exists('g:spf13_no_views')
                 Bundle 'vim-scripts/restore_view.vim'
             endif
-            Bundle 'airblade/vim-gitgutter'
-            Bundle 'tpope/vim-abolish.git'
+            " Bundle 'airblade/vim-gitgutter'
+            " Show changes in working copy with plus sign, start of the line
+
+            " Bundle 'tpope/vim-abolish.git'
+            " Don’t really using it for now.
         endif
     " }
 
@@ -340,11 +346,13 @@
             vmap <Leader>a<Bar> :Tabularize /<Bar><CR>
             " }
 
-            " Yes I am using both in parallel
             Bundle 'tomtom/tcomment_vim'
             let g:tcommentOptions = {'strip_whitespace': 1}
-            Bundle 'scrooloose/nerdcommenter'
-            let NERDSpaceDelims = 1
+
+            " Yes I am using both in parallel
+            " Bundle 'scrooloose/nerdcommenter'
+            " let NERDSpaceDelims = 1
+
             " noremap gcc :call NERDComment('n', 'Toggle')<CR>
             " vnoremap gc gcc
 
@@ -872,16 +880,18 @@ endif
         " Adjust the filetype for some files
         autocmd BufRead,BufNewFile /etc/*/apt.conf setlocal filetype=conf
         autocmd BufRead,BufNewFile *.mk setlocal filetype=python
+        " http://mathias-kettner.de/checkmk_configfiles.html
         autocmd BufRead,BufNewFile *.ldf setlocal filetype=tex
         autocmd BufRead,BufNewFile *.tex setlocal filetype=tex
-            " I already use the "wrong" file suffix for all my LaTeX files
-        " check_mk
-        " Set Language specific indention stuff
+        " I already use the "wrong" file suffix for all my LaTeX files
+        " Set language specific indention stuff
         autocmd FileType perl setlocal expandtab shiftwidth=4
         autocmd FileType perl compiler perlcritic
         autocmd FileType vim setlocal expandtab shiftwidth=4
         autocmd FileType python setlocal shiftwidth=4
         autocmd FileType python let b:delimitMate_nesting_quotes = ['"']
+        autocmd FileType python set makeprg=pylint\ --reports=n\ --output-format=parseable\ %:p
+        autocmd FileType python set efm=%A%f:%l:\ [%t%.%#]\ %m,%Z%p^^,%-C%.%#
         autocmd FileType mkd let b:delimitMate_nesting_quotes = ['`']
         autocmd FileType vim let b:delimitMate_quotes = "' `"
         autocmd FileType tex setlocal expandtab shiftwidth=2

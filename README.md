@@ -1,12 +1,21 @@
-This git repo tracks a few of my personal config files for some programs
+This git repo tracks a few of my personal config files for some programs.
 
 # Contents
 
-`.bash_public`
-> Bash alias and other settings
+`.zshrc`
+> My ZSH configuration, mostly based on [oh-my-zsh][]
+
+` .zsh_bindings`
+> My key bindings for ZSH. Mainly history-beginning-search and all that good stuff.
 
 `.bashrc`
 > .bashrc to enable color, read other files and so on
+
+` .shellrc`
+> Common configuration parsed by all shells (Bash and ZSH)
+
+`.shell_public`
+> Shell alias and other settings
 
 `.gitconfig`
 > Configuration for git including a few aliases
@@ -39,4 +48,7 @@ This git repo tracks a few of my personal config files for some programs
 > Lightweight Vim configuration for using Vim as pager
 
 `.Xmodmap`
-> I use Neo2 but with the normal qwertz layout.
+> I use [Neo2][] but with the normal qwertz layout.
+
+[oh-my-zsh]: http://github.com/robbyrussell/oh-my-zsh
+[Neo2]: http://www.neo-layout.org/

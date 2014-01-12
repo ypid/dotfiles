@@ -9,6 +9,8 @@ fi
 if [ -f ~/.shell_privat ]; then
     . ~/.shell_privat
 fi
+
+# legacy support
 if [ -f ~/.bash_local ]; then
     . ~/.bash_local
 fi

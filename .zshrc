@@ -1,18 +1,21 @@
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
+DISABLE_AUTO_UPDATE=true
+
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="random"
+# ZSH_THEME="random"
 
 # ordered after preference.
 ZSH_THEME="bira"
+# ZSH_THEME="josh"
+# ZSH_THEME="cypher"
 # ZSH_THEME="fino"
 # ZSH_THEME="pygmalion"
 # ZSH_THEME="funky"
-# ZSH_THEME="josh"
 # ZSH_THEME="dieter"
 # ZSH_THEME="dallas"
 # ZSH_THEME="robbyrussell"
@@ -26,7 +29,7 @@ ZSH_THEME="bira"
 # ZSH_THEME="jnrowe"
 # ZSH_THEME="steeef"
 # ZSH_THEME="dpoggi"
-# ZSH_THEME="cypher"
+# ZSH_THEME="trapd00r"
 #
 # ZSH_THEME="dpoggi"
 #
@@ -70,17 +73,51 @@ ZSH_THEME="bira"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git command-not-found autojump zsh-syntax-highlighting)
+#
+# Mandatory
+plugins=(gitfast autojump)
+
+# Nice to have
+plugins+=(command-not-found zsh-syntax-highlighting)
+plugins+=(last-working-dir)
+
+# Additional functions
+plugins+=(debian)
+plugins+=(encode64)
+plugins+=(urltools)
+
+# Testing
+plugins+=(git-flow)
+
+# Not tested enough, might be useful
+: <<'END'
+plugins+=(tmux)
+plugins+=(vi-mode)
+
+END
+
+# Not needed
+: <<'END'
+plugins+=(lol)
+plugins+=(per-directory-history)
+plugins+=(rand-quote)
+
+END
+
+# echo "Loaded plugins: $plugins"
 
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 
 # like eternal history
-SAVEHIST=100000000
+# SAVEHIST=100000000
+# huge performance killer!
 
-source ~
-unalias md
+# source ~
+# what was that for??
+
+# unalias md
 setopt no_share_history
 source ~/.shellrc
 source ~/.zsh_bindings
