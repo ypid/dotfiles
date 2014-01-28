@@ -79,7 +79,6 @@ plugins=(gitfast autojump)
 
 # Nice to have
 plugins+=(command-not-found zsh-syntax-highlighting)
-plugins+=(last-working-dir)
 
 # Additional functions
 plugins+=(debian)
@@ -103,6 +102,13 @@ plugins+=(per-directory-history)
 plugins+=(rand-quote)
 
 END
+
+# tested and decided not to use
+: <<'END'
+plugins+=(last-working-dir) # does break 'open in Terminal' of nautilus and nemo
+
+END
+
 
 # echo "Loaded plugins: $plugins"
 

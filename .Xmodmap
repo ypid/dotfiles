@@ -137,7 +137,7 @@ keycode 49 = asciicircum	dead_caron	U21BB		U02DE		dead_abovedot Pointer_EnableKe
 ! !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 ! !            Ebene1		Ebene2		Ebene3		Ebene5		Ebene4		Ebene4+Sh	Ebene6		Ebene7
 !
-! keycode 10 = 	1		degree		onesuperior	onesubscript	ordfeminine	NoSymbol	notsign		NoSymbol
+!keycode 10 = 	1		degree		onesuperior	onesubscript	ordfeminine	NoSymbol	notsign		NoSymbol
 ! !				°		¹	  	¿		ª	  			¬
 keycode 11 = 	2		section		twosuperior	twosubscript	masculine	NoSymbol	logicalor	NoSymbol
 ! !				§		²	  	¿		º				¿

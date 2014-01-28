@@ -382,7 +382,7 @@
             call SingleCompile#SetCompilerTemplate('mkd', 'markdown',
                         \ 'text-to-HTML conversion tool', 'markdown',
                         \ '> $(FILE_TITLE)$.html', 'true' )
-            " call SingleCompile#SetPriority('mkd', 'markdown', 50)
+            call SingleCompile#SetPriority('mkd', 'markdown', 50)
 
             call SingleCompile#ChooseCompiler('mkd', 'markdown')
 
