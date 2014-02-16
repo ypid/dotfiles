@@ -137,11 +137,11 @@ keycode 49 = asciicircum	dead_caron	U21BB		U02DE		dead_abovedot Pointer_EnableKe
 ! !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 ! !            Ebene1		Ebene2		Ebene3		Ebene5		Ebene4		Ebene4+Sh	Ebene6		Ebene7
 !
-!keycode 10 = 	1		degree		onesuperior	onesubscript	ordfeminine	NoSymbol	notsign		NoSymbol
+! keycode 10 = 	1		degree		onesuperior	onesubscript	ordfeminine	NoSymbol	notsign		NoSymbol
 ! !				°		¹	  	¿		ª	  			¬
-keycode 11 = 	2		section		twosuperior	twosubscript	masculine	NoSymbol	logicalor	NoSymbol
+! keycode 11 = 	2		section		twosuperior	twosubscript	masculine	NoSymbol	logicalor	NoSymbol
 ! !				§		²	  	¿		º				¿
-keycode 12 = 	3		U2113		threesuperior	threesubscript	numerosign	NoSymbol	logicaland	NoSymbol
+! keycode 12 = 	3		U2113		threesuperior	threesubscript	numerosign	NoSymbol	logicaland	NoSymbol
 ! !				¿ liter		³	  	¿		¿				¿
 ! keycode 13 = 	4		guillemotright	U203A		femalesymbol	NoSymbol	NoSymbol	U22A5		NoSymbol
 ! !				»		¿		¿						¿ perpendicular
@@ -152,14 +152,13 @@ keycode 12 = 	3		U2113		threesuperior	threesubscript	numerosign	NoSymbol	logical
 !
 ! keycode 16 = 	7		EuroSign	yen		U03F0		currency	NoSymbol	rightarrow	NoSymbol
 ! !				¿		¥		¿ Greek_kappa	¤				¿
-keycode 17 = 	8   doublelowquotemark    singlelowquotemark  leftanglebracket	Tab		ISO_Left_Tab	infinity	NoSymbol
-!				¿		¿		¿ (bra)						¿
-keycode 18 = 	9   leftdoublequotemark   leftsinglequotemark rightanglebracket KP_Divide	KP_Divide	variation	NoSymbol
+! keycode 17 = 	8   doublelowquotemark    singlelowquotemark  leftanglebracket	Tab		ISO_Left_Tab	infinity	NoSymbol
+! !				¿		¿		¿ (bra)						¿
+! keycode 18 = 	9   leftdoublequotemark   leftsinglequotemark rightanglebracket KP_Divide	KP_Divide	variation	NoSymbol
 ! !				¿		¿		¿ (ket)		/		/		¿ proportional to
 keycode 19 = 	0   rightdoublequotemark  rightsinglequotemark  zerosubscript	KP_Multiply	KP_Multiply	emptyset	NoSymbol
 ! !			¿			¿		¿		*		*		¿
 ! keycode 20 = ssharp		emdash		NoSymbol	U2011		KP_Subtract	KP_Subtract	hyphen		NoSymbol
-keycode 20 = ssharp		endash		NoSymbol	U2011		KP_Subtract	KP_Subtract	hyphen		NoSymbol
 ! !		-		¿				¿ non-breaking	-		-		­ soft hyphen
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -186,10 +185,9 @@ keycode 31 = 	i		I		greater		Greek_gamma	KP_8		KP_8		Greek_GAMMA	Greek_GAMMA
 !						>		¿						¿		¿
 keycode 32 = 	o		O		equal		Greek_phi	KP_9		KP_9		Greek_PHI	Greek_PHI
 !						=		¿ 						¿		¿
-! keycode 33 = 	p		P		ampersand	U03D5		KP_Add		KP_Add		U211A		NoSymbol
-keycode 33 = 	p		P		ampersand	U03D5		plus		plus		U211A       NoSymbol
+keycode 33 = 	p		P		ampersand	U03D5		KP_Add		KP_Add		U211A		NoSymbol
 !						&		¿ Greek_phi	+		+		¿ rational
-keycode 34 = udiaeresis		Udiaeresis		U017F	 Greek_finalsmallsigma  U2212		NoSymbol	jot		NoSymbol
+! keycode 34 = udiaeresis		Udiaeresis		U017F	 Greek_finalsmallsigma  U2212		NoSymbol	jot		NoSymbol
 !	     	ß		¿ Capital ß	¿ long s	¿		¿ real minus			¿ ring operator
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!

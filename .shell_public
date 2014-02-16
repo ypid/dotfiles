@@ -16,6 +16,7 @@ alias sl='ls'
 alias bc='bc -q'
 alias ,='popd'
 alias d='dirs -v'
+alias as='aptitude search'
 alias ts='date "+%Y-%m-%d_%H:%M"'
 
 # Vim stuff
@@ -38,6 +39,7 @@ alias tm=tmux
 alias gitl='git log --stat --decorate=short'
 # overwrite alias from oh-my-zsh
 alias glg='git log --stat --decorate=short'
+alias a='git annex'
 ## LaTeX
 alias sty2dtx='~/Projekte/src/sty2dtx/sty2dtx.pl'
 

@@ -17,3 +17,11 @@ for file in {en,de}.utf-8.{spl,sug};do
         wget -c "ftp://ftp.vim.org/pub/vim/runtime/spell/$file" -O "$vim_spell/$file"
     fi
 done
+
+# Improves performance of ZSH. Functions not needed or not used (yet).
+pushd .oh-my-zsh/lib/
+rm aliases.zsh bzr.zsh correction.zsh grep.zsh key-bindings.zsh misc.zsh nvm.zsh rbenv.zsh rvm.zsh spectrum.zsh termsupport.zsh directories.zsh functions.zsh
+
+# git commit -am 'Improves performance of ZSH. Functions not needed or not used (yet).'
+# Leave submodule dirty.
+popd
