@@ -3,11 +3,14 @@
 if [ -f ~/.shell_public ]; then
     . ~/.shell_public
 fi
-if [ -f ~/.shell_local ]; then
-    . ~/.shell_local
+if [ -f ~/.shell_work ]; then
+    . ~/.shell_work
 fi
 if [ -f ~/.shell_privat ]; then
     . ~/.shell_privat
+fi
+if [ -f ~/.shell_local ]; then
+    . ~/.shell_local
 fi
 
 # legacy support

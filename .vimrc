@@ -350,10 +350,10 @@
             let g:tcommentOptions = {'strip_whitespace': 1}
 
             " Yes I am using both in parallel
-            " Bundle 'scrooloose/nerdcommenter'
-            " let NERDSpaceDelims = 1
+            Bundle 'scrooloose/nerdcommenter'
+            let NERDSpaceDelims = 1
 
-            " noremap gcc :call NERDComment('n', 'Toggle')<CR>
+            noremap gcc :call NERDComment('n', 'Toggle')<CR>
             " vnoremap gc gcc
 
             " Toggle words
@@ -879,6 +879,8 @@ endif
         au VimLeave * if filereadable($HOME."/.vim/bundle/vundle/.netrwhist")|call delete($HOME."/.vim/bundle/vundle/.netrwhist")|endif
         " Adjust the filetype for some files
         autocmd BufRead,BufNewFile /etc/*/apt.conf setlocal filetype=conf
+        autocmd BufRead,BufNewFile $HOME/.ssh/*.config setlocal filetype=sshconfig
+        autocmd BufRead,BufNewFile $HOME/.unison/* setlocal filetype=conf
         autocmd BufRead,BufNewFile *.mk setlocal filetype=python
         " http://mathias-kettner.de/checkmk_configfiles.html
         autocmd BufRead,BufNewFile *.ldf setlocal filetype=tex
