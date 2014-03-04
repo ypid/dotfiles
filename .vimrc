@@ -161,8 +161,8 @@
     map <Leader>w <esc>:bNext<CR>
 
     " set the executable bit
-    map <Leader>y :w!<CR>:!chmod +x %<CR>:q<CR>
-    imap <Leader>y <ESC>:w!<CR>:!chmod +x %<CR>:q<CR>a
+    map <Leader>y :w!<CR>:!chmod +x %<CR>
+    imap <Leader>y <ESC>:w!<CR>:!chmod +x %<CR>a
 
     nmap <Leader>d :echo strftime("%Y-%m-%d_%H:%M")<CR>
 
@@ -236,10 +236,12 @@
             Bundle 'tpope/vim-repeat'
 
             " Translate {
-            Bundle 'ypid/lookup.vim'
-            " let g:lookup_dict_para = []
-            nmap <Leader>tr :Lookup<CR>
-            vmap <Leader>tr :call LookupVisual()<CR>
+            if has("python")
+                Bundle 'ypid/lookup.vim'
+                " let g:lookup_dict_para = []
+                nmap <Leader>tr :Lookup<CR>
+                vmap <Leader>tr :call LookupVisual()<CR>
+                endif
             " }
 
             if has("python") || has("python3")
@@ -407,10 +409,12 @@
 
     " Snippets & AutoComplete {
         if count(g:spf13_bundle_groups, 'snipmate')
-            " Needs to be before syntax on …
-            Bundle 'SirVer/ultisnips'
-            " let g:UltiSnipsListSnippets = "<Leader><tab>"
-            nmap <Leader><tab> :call UltiSnips_ListSnippets()<cr>
+            if has("python")
+                " Needs to be before syntax on …
+                Bundle 'SirVer/ultisnips'
+                " let g:UltiSnipsListSnippets = "<Leader><tab>"
+                nmap <Leader><tab> :call UltiSnips_ListSnippets()<cr>
+            endif
         elseif count(g:spf13_bundle_groups, 'neocomplcache')
             Bundle 'Shougo/neocomplcache'
             Bundle 'Shougo/neosnippet'
@@ -771,10 +775,6 @@
         endif
     " }
 
-if filereadable(expand("~/.vimrc.local"))
-    source ~/.vimrc.local
-endif
-
 " }
 
 " Vim UI {
@@ -901,6 +901,8 @@ endif
         autocmd FileType html setlocal expandtab shiftwidth=2
         autocmd FileType html compiler tidy
         autocmd FileType sh setlocal textwidth=0
+        " autocmd FileType xml setlocal foldmethod=syntax " does not work
+        autocmd FileType xml setlocal foldmethod=indent
         " autocmd VimEnter * RainbowParenthesesToggle " enable by defalut
         " autocmd Syntax * RainbowParenthesesLoadRound " default
         autocmd VimEnter,BufRead,BufNewFile * RainbowParenthesesLoadSquare
@@ -916,6 +918,7 @@ endif
         autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
         let autocommands_loaded = 1
     endif
+    let xml_syntax_folding=1      " XML
 
 " }
 
@@ -960,3 +963,11 @@ endif
     endif
 
 " }
+
+" Machine specific configuration {{{
+" Synced on trusted systems. On others it can be created and the
+" content will not be synced.
+if filereadable(expand("~/.vimrc.local"))
+    source ~/.vimrc.local
+endif
+" }}}

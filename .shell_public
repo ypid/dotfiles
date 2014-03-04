@@ -16,7 +16,8 @@ alias sl='ls'
 alias bc='bc -q'
 alias ,='popd'
 alias d='dirs -v'
-alias as='aptitude search'
+# alias as='aptitude search'
+alias as='apt-cache search' # Much faster. I normally don’t need to know if the thing is installed, respectively I can check that later with aptitude install.
 alias ts='date "+%Y-%m-%d_%H:%M"'
 
 # Vim stuff
@@ -31,6 +32,7 @@ alias ,e='exit'
 alias ,x='exit'
 alias ,r='vi'
 alias less='vim -c "w! /tmp/.vimpager" -'
+alias xclip-primary-to-clipboard='xclip -out |xclip -in -selection clipboard'
 
 alias ssh-only-pw='ssh -o PubkeyAuthentication=no'
 alias tmux='TERM=screen-256color-bce tmux'
@@ -39,6 +41,7 @@ alias tm=tmux
 alias gitl='git log --stat --decorate=short'
 # overwrite alias from oh-my-zsh
 alias glg='git log --stat --decorate=short'
+alias gl='git pull --tags'
 alias a='git annex'
 ## LaTeX
 alias sty2dtx='~/Projekte/src/sty2dtx/sty2dtx.pl'
@@ -59,6 +62,7 @@ if [ -d "$HOME/Skripte/repository" ]; then
     PATH="$HOME/Skripte:$HOME/Skripte/repository:$PATH"
 fi
 export PYTHONSTARTUP="$HOME/.pystartup"
+export PYTHONPATH='.'
 
 function up {
 [[ "${1/[^0-9]/}" == "$1" ]] && {

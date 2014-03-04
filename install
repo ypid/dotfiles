@@ -7,7 +7,9 @@ git submodule update --init --recursive
 git clone git://github.com/zsh-users/zsh-syntax-highlighting.git .oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 
 ls -A1|grep -Pv '^(.git$|\w)'|while read file;do
-    ln -Ts "$PWD/$file" "$HOME/$file"
+    target="$PWD/$file"
+    target=${target#$HOME/}
+    ln -Ts "$target" "$HOME/$file"
 done
 
 vim_spell="$HOME/.vim/spell"
