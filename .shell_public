@@ -12,13 +12,24 @@ fi
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+alias 6s='ls'
 alias sl='ls'
 alias bc='bc -q'
 alias ,='popd'
 alias d='dirs -v'
+alias ts='date "+%Y-%m-%d_%H:%M"'
+
+alias mount='sudo mount'
+alias umount='sudo umount'
+alias aptitude='sudo aptitude'
 # alias as='aptitude search'
 alias as='apt-cache search' # Much faster. I normally don’t need to know if the thing is installed, respectively I can check that later with aptitude install.
-alias ts='date "+%Y-%m-%d_%H:%M"'
+alias apt-add--repository='sudo apt-add--repository'
+
+# Vim stuff
+# if [[ -e "$HOME/Projekte/src/vim/src/vim" ]]; then
+	alias vim="/usr/bin/vim"
+# fi
 
 # Vim stuff
 if [[ $USER == root ]]; then
