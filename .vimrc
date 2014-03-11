@@ -770,7 +770,8 @@
             " Add exclusions to mkview and loadview
             " eg: *.*, svn-commit.tmp
             let g:skipview_files = [
-                \ '\[example pattern\]'
+                \ '*sec*',
+                \ '*crypt*'
                 \ ]
         endif
     " }
@@ -875,9 +876,10 @@
         filetype on
         autocmd BufWritePost $MYVIMRC source %
         autocmd BufWritePost $HOME/.vimpagerrc source %
-        autocmd BufRead,BufNewFile .vimpagerrc setlocal filetype=vim
         au VimLeave * if filereadable($HOME."/.vim/bundle/vundle/.netrwhist")|call delete($HOME."/.vim/bundle/vundle/.netrwhist")|endif
-        " Adjust the filetype for some files
+
+        " Adjust the filetype for some files {{{
+        autocmd BufRead,BufNewFile .vimpagerrc setlocal filetype=vim
         autocmd BufRead,BufNewFile /etc/*/apt.conf setlocal filetype=conf
         autocmd BufRead,BufNewFile $HOME/.ssh/*.config setlocal filetype=sshconfig
         autocmd BufRead,BufNewFile $HOME/.unison/* setlocal filetype=conf
@@ -886,7 +888,13 @@
         autocmd BufRead,BufNewFile *.ldf setlocal filetype=tex
         autocmd BufRead,BufNewFile *.tex setlocal filetype=tex
         " I already use the "wrong" file suffix for all my LaTeX files
-        " Set language specific indention stuff
+        " }}}
+        au BufWritePre /tmp/*  setlocal noundofile
+        au BufWritePre *sec*   setlocal noundofile
+        au BufWritePre *crypt* setlocal noundofile
+        au BufWritePre *mnt*   setlocal noundofile
+
+        " Set language specific stuff {{{
         autocmd FileType perl setlocal expandtab shiftwidth=4
         autocmd FileType perl compiler perlcritic
         autocmd FileType vim setlocal expandtab shiftwidth=4
@@ -903,6 +911,7 @@
         autocmd FileType sh setlocal textwidth=0
         " autocmd FileType xml setlocal foldmethod=syntax " does not work
         autocmd FileType xml setlocal foldmethod=indent
+        " }}}
         " autocmd VimEnter * RainbowParenthesesToggle " enable by defalut
         " autocmd Syntax * RainbowParenthesesLoadRound " default
         autocmd VimEnter,BufRead,BufNewFile * RainbowParenthesesLoadSquare

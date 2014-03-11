@@ -20,7 +20,7 @@
 	lgn = log --pretty=oneline --abbrev-commit --show-notes=*
 	lg = log --graph --pretty=format:'%Cred%h..%Creset - %s %Cgreen(%cr)%Creset - %an' --abbrev-commit --date=relative
 [core]
-	excludesfile = $HOME/.gitignore_global
+	excludesfile = ~/.gitignore_global
 	editor = vi
 [github]
 	user = ypid
@@ -31,3 +31,4 @@
 [annex]
 	backends = SHA512E
 	diskreserve = 600 megabyte
+	largefiles = not include=*.git*
