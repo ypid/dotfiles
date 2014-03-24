@@ -753,11 +753,13 @@
     " Setting up the directories {
         call EnsureDirExists($HOME . '/.vimswap')
         set backup                  " Backups are nice ...
-        set directory=~/.vimswap,/var/tmp,/tmp,.
-        set backupdir=~/.vimswap,/var/tmp,/tmp,.
+        " Slow for some reason. {{{
+            " set directory=~/.vimswap,/var/tmp,/tmp,.
+            " set backupdir=~/.vimswap,/var/tmp,/tmp,.
+        " }}}
         if has('persistent_undo')
             call EnsureDirExists($HOME . '/.vimundo')
-            set undofile                " So is persistent undo ...
+            set undofile
             set undodir=~/.vimundo/
             " silent !mkdir -p ~/.vimundo
             set undolevels=1000         " Maximum number of changes that can be undone

@@ -52,7 +52,6 @@ alias tm=tmux
 alias gitl='git log --stat --decorate=short'
 # overwrite alias from oh-my-zsh
 alias glg='git log --stat --decorate=short'
-alias gl='git pull --tags'
 alias a='git annex'
 ## LaTeX
 alias sty2dtx='~/Projekte/src/sty2dtx/sty2dtx.pl'
@@ -87,6 +86,7 @@ function up {
 }
 
 # Create a new directory and enter it
+unalias md
 function md() {
     mkdir -p "$@" && cd "$@"
 }

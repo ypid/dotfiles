@@ -86,12 +86,14 @@ plugins+=(encode64)
 plugins+=(urltools)
 
 # Testing
-plugins+=(git-flow)
 
 # Not tested enough, might be useful
 : <<'END'
 plugins+=(tmux)
 plugins+=(vi-mode)
+
+plugins+=(git-flow)
+# I only maintain small projects for which it is not worth the cost (yet?). Also a concern is that contributers might get confused and will not use the same development model.
 
 END
 
