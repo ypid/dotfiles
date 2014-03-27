@@ -161,8 +161,8 @@
     map <Leader>w <esc>:bNext<CR>
 
     " set the executable bit
-    map <Leader>y :w!<CR>:!chmod +x %<CR>
-    imap <Leader>y <ESC>:w!<CR>:!chmod +x %<CR>a
+    map <Leader>y :w!<CR>:!chmod +x "%"<CR>
+    imap <Leader>y <ESC>:w!<CR>:!chmod +x "%"<CR>a
 
     nmap <Leader>d :echo strftime("%Y-%m-%d_%H:%M")<CR>
 
@@ -593,6 +593,17 @@
 
             " Bundle 'hail2u/vim-css3-syntax'
             " Bundle 'tpope/vim-haml'
+            Bundle 'groenewege/vim-less'
+            Bundle 'parkr/vim-jekyll'
+            let g:jekyll_post_extension = '.md'
+            let g:jekyll_post_template =  [
+              \ '---',
+              \ 'layout: post',
+              \ 'title: JEKYLL_TITLE',
+              \ 'description:',
+              \ 'tags: [intro, beginner, jekyll, tutorial]',
+              \ '---',
+              \ '']
 
             Bundle 'inkarkat/SyntaxAttr.vim'
             nmap <Leader>ti :call SyntaxAttr()<CR>
@@ -649,7 +660,7 @@
             let command = join(map(split(a:command), 'expand(v:val)'))
             let winnr = bufwinnr('^' . command . '$')
             silent! execute  winnr < 0 ? 'botright new ' . fnameescape(command) : winnr . 'wincmd w'
-            setlocal buftype=nowrite bufhidden=wipe nobuflisted noswapfile nowrap number
+            setlocal buftype=nowrite bufhidden=wipe nobuflisted nowrap number
             echo 'Execute ' . command . '...'
             silent! execute 'silent %!'. command
             silent! execute 'resize ' . line('$')
@@ -752,11 +763,16 @@
 
     " Setting up the directories {
         call EnsureDirExists($HOME . '/.vimswap')
-        set backup                  " Backups are nice ...
-        " Slow for some reason. {{{
-            " set directory=~/.vimswap,/var/tmp,/tmp,.
-            " set backupdir=~/.vimswap,/var/tmp,/tmp,.
-        " }}}
+        set directory=~/.vimswap/
+        set writebackup
+        " call EnsureDirExists($HOME . '/.vimbackup')
+        " set backup                  " Backups are nice ...
+        " set backupskip=/tmp/*,crypt,sec,mnt
+        " set backupdir=~/.vimbackup,/var/tmp,/tmp,.
+
+        call EnsureDirExists($HOME . '/.vimview')
+        set viewdir=~/.vimview/
+
         if has('persistent_undo')
             call EnsureDirExists($HOME . '/.vimundo')
             set undofile

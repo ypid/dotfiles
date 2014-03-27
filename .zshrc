@@ -78,7 +78,7 @@ ZSH_THEME="bira"
 plugins=(gitfast autojump)
 
 # Nice to have
-plugins+=(command-not-found zsh-syntax-highlighting)
+plugins+=(command-not-found zsh-syntax-highlighting mosh)
 
 # Additional functions
 plugins+=(debian)
