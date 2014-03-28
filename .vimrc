@@ -604,6 +604,7 @@
               \ 'tags: [intro, beginner, jekyll, tutorial]',
               \ '---',
               \ '']
+              " \ 'date: "JEKYLL_DATE"',
 
             Bundle 'inkarkat/SyntaxAttr.vim'
             nmap <Leader>ti :call SyntaxAttr()<CR>
@@ -906,6 +907,8 @@
         autocmd BufRead,BufNewFile *.ldf setlocal filetype=tex
         autocmd BufRead,BufNewFile *.tex setlocal filetype=tex
         " I already use the "wrong" file suffix for all my LaTeX files
+        autocmd BufRead,BufNewFile *.nse setlocal filetype=lua
+        autocmd BufRead,BufNewFile /usr/share/X11/xkb/* setlocal filetype=xkb
         " }}}
         au BufWritePre /tmp/*  setlocal noundofile
         au BufWritePre *sec*   setlocal noundofile
