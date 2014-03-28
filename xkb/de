@@ -39,7 +39,7 @@ xkb_symbols "basic" {
     key <AB02>	{ [         x,          X,        guillemotleft,    U2039 	] };
     key <AB04>	{ [         v,          V,   doublelowquotemark, singlelowquotemark ]	};
     key <AB05>	{ [         b,          B,  leftdoublequotemark, leftsinglequotemark ] };
-    key <AB06>	{ [         n,          N, rightdoublequotemark, rightsinglequotemark ]	};    
+    key <AB06>	{ [         n,          N, rightdoublequotemark, rightsinglequotemark ]	};
     key <AB08>  { [     comma,  semicolon,       periodcentered,     multiply	] };
     key <AB09>	{ [    period,      colon,                U2026,     division 	] };
     key <AB10>	{ [     minus, underscore,               endash,     emdash	] };
@@ -129,11 +129,11 @@ xkb_symbols "ro_nodeadkeys" {
 };
 
 // German Dvorak keymap by Thorsten Staerk (www.staerk.de/thorsten)
-// Have acute and grave as dead keys, tilde and circumflex alive as they are needed 
+// Have acute and grave as dead keys, tilde and circumflex alive as they are needed
 // in many programming languages.
 // to use this keymap, use a 105-key-keyboard and the command setxkbmap -model pc105 -layout dvorak -variant de
 // source: http://www-lehre.informatik.uni-osnabrueck.de/~rfreund/dvorak.php
-partial alphanumeric_keys 
+partial alphanumeric_keys
 xkb_symbols "dvorak" {
     include "us(dvorak)"
 
@@ -211,7 +211,7 @@ xkb_symbols "sundeadkeys" {
 // adopted 2004 by Hanno Behrens <Hanno.Behrens@gmx.de>
 // inspired by Dvorak/de-ergo  http://www.goebel-consult.de/de-ergo/
 //
-// Authors: 
+// Authors:
 //      Stephan Hilb <stephan at ehilb dot de>
 //      <lucky at zankt dot net>
 //      Benjamin Kellermann <Benjamin dot Kellermann at gmx dot Germany>
@@ -240,12 +240,12 @@ xkb_symbols "neo_base" {
 
     // Legend
     // ===============
-    // Levels in Xkbmap jargon to be found here in the definitions. 
+    // Levels in Xkbmap jargon to be found here in the definitions.
     // These are the levels used, and Xorg's translations:
     // --------------------------------------------------------------
-    // Xorg:       Level1                   Level2                   Level3                   Level4                   Level5                   Level6                   Level7                   Level8                   
-    // Neo:        Ebene1                   Ebene2                   Ebene3                   Ebene5                   Ebene4                   Pseudo-Ebene             Ebene6                   ???                      
-    // Keys (Neo): None                     Shift                    Mod3                     Mod3 + Shift             Mod4                     Mod4 + Shift             Mod3 + Mod4              Mod3 + Mod4 + Shift      
+    // Xorg:       Level1                   Level2                   Level3                   Level4                   Level5                   Level6                   Level7                   Level8
+    // Neo:        Ebene1                   Ebene2                   Ebene3                   Ebene5                   Ebene4                   Pseudo-Ebene             Ebene6                   ???
+    // Keys (Neo): None                     Shift                    Mod3                     Mod3 + Shift             Mod4                     Mod4 + Shift             Mod3 + Mod4              Mod3 + Mod4 + Shift
 
 
     // Alphanumeric-keys
@@ -391,7 +391,7 @@ xkb_symbols "neo" {
 // Copied from macintosh_vndr/de
 // olh@suse.de   very close to MacOS map
 
-partial alphanumeric_keys 
+partial alphanumeric_keys
 xkb_symbols "mac" {
 
     include "de"
@@ -409,7 +409,7 @@ xkb_symbols "mac" {
     key <AD07>	{ [         u,          U,    diaeresis,       Aacute ]	};
     key <AD08>	{ [         i,          I,        slash,  Ucircumflex ]	};
     key <AD11>	{ [ udiaeresis, Udiaeresis, periodcentered,    degree ]	};
-    key <AD12>	{ [      plus,   asterisk,   asciitilde       ]	}; 
+    key <AD12>	{ [      plus,   asterisk,   asciitilde       ]	};
     key <AC01>	{ [         a,          A,        aring,        Aring ]	};
     key <AC05>	{ [         g,          G,    copyright       ]	};
     key <AC06>	{ [         h,          H,  ordfeminine       ]	};
@@ -419,7 +419,7 @@ xkb_symbols "mac" {
 
 };
 
-partial alphanumeric_keys 
+partial alphanumeric_keys
 xkb_symbols "mac_nodeadkeys" {
     // modify the standard German mac layout to not have any dead keys
     include "de(mac)"
@@ -492,7 +492,7 @@ partial alphanumeric_keys
 xkb_symbols "ru" {
 
     include "de(basic)"
- 
+
     name[Group1]= "Russian (Germany, phonetic)";
 
 key.type[group1]="FOUR_LEVEL_ALPHABETIC";
@@ -622,6 +622,6 @@ xkb_symbols "hu" {
     key <AE12> { [     acute,      grave,        oacute,      Oacute ] };
     key <BKSL> { [numbersign, apostrophe,         grave,       grave ] };
     key <TLDE> { [asciicircum,    degree,       notsign,     notsign ] };
-    
-    
+
+
 };
