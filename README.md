@@ -47,8 +47,8 @@ This git repo tracks a few of my personal config files for some programs.
 `.vimpagerrc`
 > Lightweight Vim configuration for using Vim as pager
 
-`.Xmodmap`
-> I use [Neo2][] but with the normal qwertz layout.
+`(xkb/)[tree/master/xkb]`
+> My keyboard layout (mix between qwertz and [Neo2][]).
 
 [oh-my-zsh]: http://github.com/robbyrussell/oh-my-zsh
 [Neo2]: http://www.neo-layout.org/
