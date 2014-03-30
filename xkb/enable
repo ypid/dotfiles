@@ -1,0 +1,4 @@
+#!/bin/bash
+
+source /etc/default/keyboard
+setxkbmap -layout "$XKBLAYOUT" -variant "$XKBVARIANT" -options "$XKBOPTIONS"
