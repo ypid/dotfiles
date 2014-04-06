@@ -273,7 +273,8 @@ xkb_symbols "neo_base" {
     key <AE09> { [ 9,                       leftdoublequotemark,     leftsinglequotemark,     U27E9,                   slash,                   slash,               variation,               NoSymbol                 ] };
     key <AE10> { [ 0,                       rightdoublequotemark,    rightsinglequotemark,    zerosubscript,           asterisk,                asterisk,             emptyset,                NoSymbol                 ] };
 
-    key <AE11> { [ minus,                   emdash,                  NoSymbol,                U2011,                   minus,                   minus,             hyphen,                  NoSymbol                 ] };
+    key <AE11> { [ ssharp,                  U1E9E,                   emdash,                   Greek_finalsmallsigma,   U2212,                   NoSymbol,                jot,                     NoSymbol                 ] };
+//    key <AE11> { [ minus,                   emdash,                  NoSymbol,                U2011,                   minus,                   minus,             hyphen,                  NoSymbol                 ] };
     key <AE12> { [ dead_grave,              dead_cedilla,            dead_abovering,          dead_dasia,              dead_diaeresis,          NoSymbol,                dead_macron,             NoSymbol                 ] };
 
     // Top row
@@ -327,7 +328,7 @@ xkb_symbols "neo_base" {
     key <AB08> { [ comma,                   endash,                  quotedbl,                U03F1,                   2,                    2,                    U21D2,                   NoSymbol                 ] };
     key <AB09> { [ period,                  enfilledcircbullet,      apostrophe,              U03D1,                   3,                    3,                    U21A6,                   NoSymbol                 ] };
     key.type[Group1] = "EIGHT_LEVEL_ALPHABETIC_LEVEL_FIVE_LOCK";
-    key <AB10> { [ j,                       J,                       semicolon,               Greek_theta,             semicolon,               NoSymbol,                Greek_THETA,             NoSymbol                 ] };
+    key <AB10> { [ minus,              underscore,                       semicolon,               Greek_theta,             semicolon,               NoSymbol,                Greek_THETA,             NoSymbol                 ] };
     key.type[Group1] = "EIGHT_LEVEL_LEVEL_FIVE_LOCK";
 
     // Space key

@@ -23,7 +23,9 @@
 *.gls
 *.gnuplot
 *.hd
-*.idx
+# *.idx
+# File suffix not used by LaTeX alone …
+#
 *.ilg
 *.ist
 *.lg

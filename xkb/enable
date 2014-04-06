@@ -1,4 +1,3 @@
 #!/bin/bash
 
-source /etc/default/keyboard
-setxkbmap -layout "$XKBLAYOUT" -variant "$XKBVARIANT" -options "$XKBOPTIONS"
+setxkbmap -layout "de,de" -variant "neo,basic" -option "grp:sclk_toggle,grp_led:scroll"
