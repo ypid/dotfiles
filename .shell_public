@@ -24,6 +24,7 @@ alias umount='sudo umount'
 alias aptitude='sudo aptitude'
 # alias as='aptitude search'
 alias as='apt-cache search' # Much faster. I normally don’t need to know if the thing is installed, respectively I can check that later with aptitude install.
+alias ash='/usr/bin/aptitude show' # does not need to run as root
 alias apt-add--repository='sudo apt-add--repository'
 
 # Vim stuff
@@ -50,10 +51,12 @@ alias scp-only-pw='scp -o PubkeyAuthentication=no'
 # alias ssh-copy-ids='ssh-copy-id -o PubkeyAuthentication=no'
 alias tmux='TERM=screen-256color-bce tmux'
 alias tm=tmux
-## Git # try to use the shortcuts from oh-my-zsh
-alias gitl='git log --stat --decorate=short'
-# overwrite alias from oh-my-zsh
-alias glg='git log --stat --decorate=short'
+alias dmesg='dmesg --show-delta'
+## Git use the shortcuts from oh-my-zsh
+# overwrite alias from oh-my-zsh {{{
+alias glg='git log --stat --decorate=short' # full history
+# }}}
+
 alias a='git annex'
 alias m='mosh'
 if which compdef >/dev/zero 2>&1; then

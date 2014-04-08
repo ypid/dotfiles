@@ -66,5 +66,8 @@
 *.pyc
 ## C files
 *.o
-*.d
+
+# *.d
+# Widely used for .d directories in /etc …
+
 *.lst
