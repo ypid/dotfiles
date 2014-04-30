@@ -4,7 +4,7 @@ I highly customized my keyboard layout for optimal efficiency and ergonomics. It
 
 I started with a .Xmodmap file and it did almost all what I wanted but certain things could not be accomplished with xmodmap:
 
-* Settings like producing the symbol '0' with <pre><Alt Gr> + <space></pre> did not work.
+* Settings like producing the symbol '0' with <pre>\<Alt Gr\> + \<space\></pre> did not work.
 * Xmodmap settings where reseted when switching to another virtual consoles.
 * No easy and/or fast way to switch to the normal qwertz layout (the xmodmap command usually took this 5 seconds to terminate).
 * Could only be used when logged in not before (I had to remember if my settings where already in effect when typing in passwords).
