@@ -745,6 +745,7 @@
     filetype indent plugin on   " Automatically detect file types.
     syntax on                   " Syntax highlighting
     set mousehide               " Hide the mouse cursor while typing
+    set mouse=a                 " Enable mouse wheel scrolling
     scriptencoding utf-8
 
     if has ('x') && has ('gui') " On Linux use + register for copy-paste
@@ -761,6 +762,7 @@
     set spell                           " Spell checking on
     " set hidden                          " Allow buffer switching without saving
     set splitbelow                      " Open new splits below (for Gdiff)
+    set wildignorecase                  " Comes in very handy when your are used to ZSH.
 
     " Setting up the directories {
         call EnsureDirExists($HOME . '/.vimswap')

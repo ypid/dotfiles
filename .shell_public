@@ -17,22 +17,25 @@ alias sl='ls'
 alias bc='bc -q'
 alias ,='popd'
 alias d='dirs -v'
-alias ts='date "+%Y-%m-%d_%H:%M"'
+alias h='htop'
+alias ts='date "+%F_%T"'
+
+# http://stackoverflow.com/questions/16787916/difference-between-2-directories-in-linux
+alias diff-dir='diff -arq'
 
 alias mount='sudo mount'
 alias umount='sudo umount'
 alias aptitude='sudo aptitude'
-# alias as='aptitude search'
+alias ass='aptitude search'
 alias as='apt-cache search' # Much faster. I normally don’t need to know if the thing is installed, respectively I can check that later with aptitude install.
 alias ash='/usr/bin/aptitude show' # does not need to run as root
 alias apt-add--repository='sudo apt-add--repository'
 
-# Vim stuff
+# Vim stuff {{{
 # if [[ -e "$HOME/Projekte/src/vim/src/vim" ]]; then
-	alias vim="/usr/bin/vim"
+	# alias vim="/usr/bin/vim"
 # fi
 
-# Vim stuff
 if [[ $USER == root ]]; then
     alias vi='vim'
 else
@@ -43,16 +46,18 @@ fi
 alias ,e='exit'
 alias ,x='exit'
 alias ,r='vi'
-alias less='vim -c "w! /tmp/.vimpager" -'
+# alias less='vim -c "w! /tmp/.vimpager" -'
+# }}}
+
 alias xclip-primary-to-clipboard='xclip -out |xclip -in -selection clipboard'
 
 alias ssh-only-pw='ssh -o PubkeyAuthentication=no'
 alias scp-only-pw='scp -o PubkeyAuthentication=no'
 # alias ssh-copy-ids='ssh-copy-id -o PubkeyAuthentication=no'
 alias tmux='TERM=screen-256color-bce tmux'
-alias tm=tmux
+alias t='tmux'
 alias dmesg='dmesg --show-delta'
-## Git use the shortcuts from oh-my-zsh
+## Use the shortcuts from oh-my-zsh for git
 # overwrite alias from oh-my-zsh {{{
 alias glg='git log --stat --decorate=short' # full history
 # }}}

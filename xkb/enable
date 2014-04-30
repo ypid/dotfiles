@@ -1,3 +1,0 @@
-#!/bin/bash
-
-setxkbmap -layout "de,de" -variant "neo,basic" -option "grp:sclk_toggle,grp_led:scroll"
