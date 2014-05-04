@@ -1,5 +1,6 @@
-#!/bin/bash
-# enable color support of ls and also add handy aliases
+## Stuff for programs which should be available everywhere {{{
+
+## Enable color support of ls and also add handy aliases {{{
 if [ -x /usr/bin/dircolors ]; then
     export LS_OPTIONS='--color=auto'
     eval "`dircolors`"
@@ -17,77 +18,10 @@ alias sl='ls'
 alias bc='bc -q'
 alias ,='popd'
 alias d='dirs -v'
-alias h='htop'
 alias ts='date "+%F_%T"'
+## }}}
 
-# http://stackoverflow.com/questions/16787916/difference-between-2-directories-in-linux
-alias diff-dir='diff -arq'
-
-alias mount='sudo mount'
-alias umount='sudo umount'
-alias aptitude='sudo aptitude'
-alias ass='aptitude search'
-alias as='apt-cache search' # Much faster. I normally don’t need to know if the thing is installed, respectively I can check that later with aptitude install.
-alias ash='/usr/bin/aptitude show' # does not need to run as root
-alias apt-add--repository='sudo apt-add--repository'
-
-# Vim stuff {{{
-# if [[ -e "$HOME/Projekte/src/vim/src/vim" ]]; then
-	# alias vim="/usr/bin/vim"
-# fi
-
-if [[ $USER == root ]]; then
-    alias vi='vim'
-else
-    # alias vi='vim --servername VIM'
-    # alias vir='vi --remote'
-    alias vi='vim'
-fi
-alias ,e='exit'
-alias ,x='exit'
-alias ,r='vi'
-# alias less='vim -c "w! /tmp/.vimpager" -'
-# }}}
-
-alias xclip-primary-to-clipboard='xclip -out |xclip -in -selection clipboard'
-
-alias ssh-only-pw='ssh -o PubkeyAuthentication=no'
-alias scp-only-pw='scp -o PubkeyAuthentication=no'
-# alias ssh-copy-ids='ssh-copy-id -o PubkeyAuthentication=no'
-alias tmux='TERM=screen-256color-bce tmux'
-alias t='tmux'
-alias dmesg='dmesg --show-delta'
-## Use the shortcuts from oh-my-zsh for git
-# overwrite alias from oh-my-zsh {{{
-alias glg='git log --stat --decorate=short' # full history
-# }}}
-
-alias a='git annex'
-alias m='mosh'
-if which compdef >/dev/zero 2>&1; then
-    compdef m=mosh
-fi
-## LaTeX
-alias sty2dtx='~/Projekte/src/sty2dtx/sty2dtx.pl'
-
-alias xgettext='xgettext --copyright-holder="`git config --get user.name` <`git config --get user.email`>" --msgid-bugs-address="`git config --get user.email`>"'
-export PERL_LOCAL_LIB_ROOT="$HOME/.cpan/perl5";
-export PERL_MB_OPT="--install_base $HOME/.cpan/perl5";
-export PERL_MM_OPT="INSTALL_BASE=$HOME/.cpan/perl5";
-export PERL5LIB="$HOME/Projekte/Programmiersprachen/Perl/lib:$HOME/.cpan/perl5/lib/perl5";
-if [[ `getconf LONG_BIT` == 64 ]]; then # Running under a 64 Bit Kernel
-    PERL5LIB="$HOME/.cpan/perl5/lib/perl5/x86_64-linux-gnu-thread-multi:$PERL5LIB"
-else
-    PERL5LIB="$HOME/.cpan/perl5/lib/perl5/i486-linux-gnu-thread-multi::$PERL5LIB"
-fi
-PATH="$PATH:$HOME/.cpan/perl5/bin";
-
-if [ -d "$HOME/Skripte/repository" ]; then
-    PATH="$HOME/Skripte:$HOME/Skripte/repository:$PATH"
-fi
-export PYTHONSTARTUP="$HOME/.pystartup"
-export PYTHONPATH='.'
-
+## Little functions {{{
 function up {
 [[ "${1/[^0-9]/}" == "$1" ]] && {
     local ups=""
@@ -99,8 +33,85 @@ function up {
     } || echo "usage: up INTEGER"
 }
 
-# Create a new directory and enter it
+## Create a new directory and enter it.
 unalias md 2>/dev/zero
 function md() {
     mkdir -p "$@" && cd "$@"
 }
+## }}}
+
+## Vim stuff {{{
+# if [[ -e "$HOME/Projekte/src/vim/src/vim" ]]; then
+	# alias vim="/usr/bin/vim"
+# fi
+
+if [[ "$USER" == 'root' ]]; then
+    alias vi='vim'
+else
+    # alias vi='vim --servername VIM'
+    # alias vir='vi --remote'
+    alias vi='vim'
+fi
+alias ,e='exit'
+alias ,x='exit'
+alias ,r='vi'
+# alias less='vim -c "w! /tmp/.vimpager" -'
+## }}}
+
+alias ssh-only-pw='ssh -o PubkeyAuthentication=no'
+alias scp-only-pw='scp -o PubkeyAuthentication=no'
+# alias ssh-copy-ids='ssh-copy-id -o PubkeyAuthentication=no'
+alias m='mosh'
+if which compdef >/dev/zero 2>&1; then
+    compdef m=mosh
+fi
+alias tmux='TERM=screen-256color-bce tmux'
+alias t='tmux'
+alias dmesg='dmesg --show-delta'
+
+alias h='htop'
+
+## Use the shortcuts from oh-my-zsh for git
+# overwrite alias from oh-my-zsh {{{
+alias glg='git log --stat --decorate=short' # full history
+# }}}
+## }}}
+
+alias a='git annex'
+
+# http://stackoverflow.com/questions/16787916/difference-between-2-directories-in-linux
+alias diff-dir='diff -arq'
+
+alias ass='aptitude search'
+alias as='apt-cache search' ## Much faster. I normally don’t need to know if the thing is installed, respectively I can check that later with aptitude install.
+alias ash='/usr/bin/aptitude show' ## Does not need to run as root.
+if [[ "$USER" != 'root' ]]; then
+    alias mount='sudo mount'
+    alias umount='sudo umount'
+    alias aptitude='sudo aptitude'
+    alias apt-add--repository='sudo apt-add--repository'
+fi
+
+alias xclip-primary-to-clipboard='xclip -out |xclip -in -selection clipboard'
+
+## TeX and LaTeX {{{
+alias sty2dtx='~/Projekte/src/sty2dtx/sty2dtx.pl'
+alias xgettext='xgettext --copyright-holder="`git config --get user.name` <`git config --get user.email`>" --msgid-bugs-address="`git config --get user.email`"'
+## }}}
+
+export PERL_LOCAL_LIB_ROOT="$HOME/.cpan/perl5";
+export PERL_MB_OPT="--install_base $HOME/.cpan/perl5";
+export PERL_MM_OPT="INSTALL_BASE=$HOME/.cpan/perl5";
+export PERL5LIB="$HOME/Projekte/Programmiersprachen/Perl/lib:$HOME/.cpan/perl5/lib/perl5";
+if [[ `getconf LONG_BIT` == 64 ]]; then ## Running under a 64 Bit Kernel
+    PERL5LIB="$HOME/.cpan/perl5/lib/perl5/x86_64-linux-gnu-thread-multi:$PERL5LIB"
+else
+    PERL5LIB="$HOME/.cpan/perl5/lib/perl5/i486-linux-gnu-thread-multi::$PERL5LIB"
+fi
+PATH="$PATH:$HOME/.cpan/perl5/bin";
+
+if [ -d "$HOME/Skripte/repository" ]; then
+    PATH="$HOME/Skripte:$HOME/Skripte/repository:$PATH"
+fi
+export PYTHONSTARTUP="$HOME/.pystartup"
+export PYTHONPATH='.'
