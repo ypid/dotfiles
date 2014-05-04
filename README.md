@@ -47,7 +47,7 @@ This git repo tracks a few of my personal config files for some programs.
 `.vimpagerrc`
 > Lightweight Vim configuration for using Vim as pager
 
-`[xkb/](tree/master/xkb)`
+`xkb/`
 > My keyboard layout (mix between qwertz and [Neo2][]).
 
 [oh-my-zsh]: http://github.com/robbyrussell/oh-my-zsh

@@ -8,7 +8,7 @@ I started with a .Xmodmap file and it did almost all what I wanted but certain t
 * Xmodmap settings where reseted when switching to another virtual consoles.
 * No easy and/or fast way to switch to the normal qwertz layout (the xmodmap command usually took this 5 seconds to terminate).
 * Could only be used when logged in not before (I had to remember if my settings where already in effect when typing in passwords).
-* It feels like Level [234] locks work much better.
+* It feels like Level [234] work better.
 
 So I decided to implement my layout using xkb.
 
