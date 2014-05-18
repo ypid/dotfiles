@@ -9,7 +9,7 @@
         " On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
         " across (heterogeneous) systems easier.
         if has('win32') || has('win64')
-          set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
+            set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
         endif
     " }
     "
@@ -19,15 +19,17 @@
         set rtp+=~/.vim/bundle/vundle
         let g:vundle_default_git_proto = 'git'
         call vundle#rc()
+        Bundle 'gmarik/vundle'
     " }
 
 " }
 
 " Key (re)Mappings {
+    " Mappings which only work with plugins enabled should be placed in the
+    " Plugin section.
+
     " Overwrite default Vim mappings {
         map gf :sp <cfile><CR>
-
-        let mapleader = ','
 
         " Wrapped lines goes down/up to next row, rather than next line in file.
         noremap j gj
@@ -38,23 +40,30 @@
         vnoremap > >gv
     " }
 
-    " Easier moving in tabs and windows
-    " The lines conflict with the default digraph mapping of <C-K>
-    " map <C-J> <C-W>j<C-W>_
-    " map <C-K> <C-W>k<C-W>_
-    " map <C-L> <C-W>l<C-W>_
-    " map <C-H> <C-W>h<C-W>_
 
     set pastetoggle=<F2>           " pastetoggle (sane indentation on pastes)
 
-    " The following two lines conflict with moving to top and
-    " bottom of the screen
-    " map <S-H> gT
-    " map <S-L> gt
+    " Map leader mappings {{{
+    let mapleader = ','
 
-    " imap <c-j> <return> " please use Alt-Gr+j
+    " Save and go to normal mode
+    map <Leader>s :update<CR>
+    imap <Leader>s <ESC>:update<CR>l
 
-    " Code folding options
+    " Filetype detact
+    map <Leader>fd :filetype detect<CR>
+    imap <Leader>fd <ESC>:filetype detect<CR>a
+
+    " Save and exit
+    map <Leader>x :x<CR>
+    imap <Leader>x <ESC>:x<CR>
+
+    " Quick quit command
+    nmap <Leader>e :quit<CR>
+    " Quit all windows
+    nmap <Leader>E :q!<CR>
+
+    " Code folding options {{{
     " nmap <leader>f0 :set foldlevel=0<CR>
     " Use zM for this
     nmap <leader>f1 :set foldlevel=1<CR>
@@ -66,30 +75,7 @@
     nmap <leader>f7 :set foldlevel=7<CR>
     nmap <leader>f8 :set foldlevel=8<CR>
     nmap <leader>f9 :set foldlevel=9<CR>
-
-    " Shortcuts
-    " Change Working Directory to that of the current file
-    cmap cwd lcd %:p:h
-    cmap cd. lcd %:p:h
-
-    " http://vim.wikia.com/wiki/Recover_from_accidental_Ctrl-U
-    inoremap <c-u> <c-g>u<c-u>
-    inoremap <c-w> <c-g>u<c-w>
-
-    " For when you forget to sudo.. Really Write the file.
-    cmap w!! w !sudo tee % >/dev/null
-
-    " Easier horizontal scrolling
-    map zl zL
-    map zh zH
-
-    " I use this so that Ctrl-c also works in the command-line window like Escape.
-    " Does not work
-    map! <c-c> <ESC>
-
-    " Filetype detact
-    map <Leader>fd :filetype detect<CR>
-    imap <Leader>fd <ESC>:filetype detect<CR>a
+    " }}}
 
     " Toggle highlight search
     nmap <Leader>B :set invhlsearch<CR>
@@ -98,8 +84,6 @@
     " Bind set list
     map <Leader>l :set list!<CR>
     imap <Leader>l <ESC>:set list!<CR>a
-    " map <c-i> :set list!<CR>
-    " imap <c-i> <ESC>:set list!<CR>a
 
     " Insert current full path of the file
     imap <Leader>fp <ESC>:put =expand('%:p')<CR>kJA
@@ -117,41 +101,9 @@
         imap <Leader>cd <ESC>:set spell!<CR>a
     " }
 
-    " Save and go to normal mode
-    map <Leader>s :update<CR>
-    imap <Leader>s <ESC>:update<CR>l
-
-    " Save and make
-    map <Leader>as :SCCompileRun<CR>
-    imap <Leader>as <ESC>:SCCompileRun<CR>a
-
-    " Save and exit
-    map <Leader>x :x<CR>
-    imap <Leader>x <ESC>:x<CR>
-
-    " Quick quit command
-    nmap <Leader>e :quit<CR>
-    " Quit all windows
-    nmap <Leader>E :q!<CR>
-
-    " Every unnecessary keystroke that can be saved is good for your health :)
-    noremap <c-j> <c-w>j
-    noremap <c-k> <c-w>k
-    noremap <c-l> <c-w>l
-    noremap <c-h> <c-w>h
-
     " Insert newline without entering insert mode
     map <Leader>Q O<Esc>
     map <Leader>q o<Esc>
-
-    " Unbind the cursor keys in insert, normal and visual modes.
-    " Luckily I do not use them anymore because they are so far away.
-    " But there are better ways to send those keycodes.
-    " for prefix in ['i', 'n', 'v']
-    "     for key in ['<Up>', '<Down>', '<Left>', '<Right>']
-    "         exe prefix . "map " . key . " <Nop>"
-    "     endfor
-    " endfor
 
     " easier moving between tabs
     map <Leader>n <esc>:tabprevious<CR>
@@ -165,7 +117,62 @@
     imap <Leader>y <ESC>:w!<CR>:!chmod +x "%"<CR>a
 
     nmap <Leader>d :echo strftime("%Y-%m-%d_%H:%M")<CR>
+    " }}}
 
+    " Other mappings {{{
+        " Easier horizontal scrolling
+        map zl zL
+        map zh zH
+
+        " Every unnecessary keystroke that can be saved is good for your health :)
+        noremap <c-j> <c-w>j
+        noremap <c-k> <c-w>k
+        noremap <c-l> <c-w>l
+        noremap <c-h> <c-w>h
+
+        " http://vim.wikia.com/wiki/Recover_from_accidental_Ctrl-U
+        inoremap <c-u> <c-g>u<c-u>
+        inoremap <c-w> <c-g>u<c-w>
+
+        " Shortcuts
+        " Change Working Directory to that of the current file
+        cmap cwd lcd %:p:h
+        cmap cd. lcd %:p:h
+
+        " For when you forget to sudo.. Really Write the file.
+        cmap w!! w !sudo tee % >/dev/null
+
+        " I use this so that Ctrl-c also works in the command-line window like Escape.
+        " Does not work
+        map! <c-c> <ESC>
+    " }}}
+
+    " Disabled (mostly because of incompatibilities {{{
+        " Easier moving in tabs and windows
+        " The lines conflict with the default digraph mapping of <C-K>
+        " map <C-J> <C-W>j<C-W>_
+        " map <C-K> <C-W>k<C-W>_
+        " map <C-L> <C-W>l<C-W>_
+        " map <C-H> <C-W>h<C-W>_
+
+        " The following two lines conflict with moving to top and
+        " bottom of the screen
+        " map <S-H> gT
+        " map <S-L> gt
+
+        " Unbind the cursor keys in insert, normal and visual modes.
+        " Luckily I do not use them anymore because they are so far away.
+        " But there are better ways to send those keycodes.
+        " for prefix in ['i', 'n', 'v']
+        "     for key in ['<Up>', '<Down>', '<Left>', '<Right>']
+        "         exe prefix . "map " . key . " <Nop>"
+        "     endfor
+        " endfor
+        "
+        " imap <c-j> <return> " please use Alt-Gr+v (Neo2)
+        " map <c-i> :set list!<CR>
+        " imap <c-i> <ESC>:set list!<CR>a
+    " }}}
 " }
 
 " Bundles and plugins {
@@ -173,10 +180,9 @@
     " 'programming', 'ruby', 'python', 'perl', 'go', 'twig', 'javascript',
     " 'html', 'latex',
     " 'misc', 'scala', 'games']
-    let g:spf13_bundle_groups=['general', 'work', 'programming', 'python', 'perl', 'javascript', 'html', 'misc', 'snipmate']
+    let g:spf13_bundle_groups=['general', 'work', 'programming', 'python', 'perl', 'javascript', 'html', 'snipmate']
 
     " Deps {
-        Bundle 'gmarik/vundle'
         Bundle 'MarcWeber/vim-addon-mw-utils'
         Bundle 'tomtom/tlib_vim'
         " if executable('ack-grep')
@@ -201,6 +207,7 @@
             Bundle 'scrooloose/nerdtree'
             map <Leader>v :NERDTreeToggle<CR>
 
+            " Require it here, but configure it later.
             Bundle 'altercation/vim-colors-solarized'
             Bundle 'spf13/vim-colors'
             Bundle 'tpope/vim-surround'
@@ -236,7 +243,7 @@
             Bundle 'tpope/vim-repeat'
 
             " Translate {
-            if has("python")
+            if has("python") && executable('python')
                 Bundle 'ypid/lookup.vim'
                 " let g:lookup_dict_para = []
                 nmap <Leader>tr :Lookup<CR>
@@ -244,7 +251,7 @@
                 endif
             " }
 
-            if has("python") || has("python3")
+            if (has("python") && executable('python')) || (has("python3") && executable('python3'))
                 Bundle 'Lokaltog/powerline', {'rtp':'/powerline/bindings/vim'}
             else
                 Bundle 'Lokaltog/vim-powerline'
@@ -253,12 +260,14 @@
             " Bundle 'Lokaltog/vim-easymotion'
             " let g:EasyMotion_leader_key = '<Leader>j'
             " Don’t really using it for now.
-            
+
             " Bundle 'python.vim--Herzog'
 
-            Bundle 'godlygeek/csapprox'
-            " Bundle 'jistr/vim-nerdtree-tabs'
-            Bundle 'flazz/vim-colorschemes'
+            " Replaced by solarized {{{
+                " Bundle 'godlygeek/csapprox'
+                " Bundle 'jistr/vim-nerdtree-tabs'
+                " Bundle 'flazz/vim-colorschemes'
+            " }}}
 
             Bundle 'sjl/gundo.vim'
             nnoremap <Leader>ga :GundoToggle<CR>
@@ -288,6 +297,8 @@
 
             " Bundle 'tpope/vim-abolish.git'
             " Don’t really using it for now.
+
+            Bundle 'tpope/vim-markdown'
         endif
     " }
 
@@ -303,19 +314,21 @@
                 Bundle 'michaeljsmith/vim-indent-object'
             " }
 
-            " Fugitive {
-            Bundle 'tpope/vim-fugitive'
-            nnoremap <silent> <leader>gs :Gstatus<CR>
-            nnoremap <silent> <leader>gd :Gdiff<CR>
-            nnoremap <silent> <leader>gc :Gcommit<CR>
-            nnoremap <silent> <leader>gb :Gblame<CR>
-            nnoremap <silent> <leader>gl :Glog<CR>
-            nnoremap <silent> <leader>gp :Git push<CR>
-            " }
+            " Git {{{
+                " Fugitive {
+                    Bundle 'tpope/vim-fugitive'
+                    nnoremap <silent> <leader>gs :Gstatus<CR>
+                    nnoremap <silent> <leader>gd :Gdiff<CR>
+                    nnoremap <silent> <leader>gc :Gcommit<CR>
+                    nnoremap <silent> <leader>gb :Gblame<CR>
+                    nnoremap <silent> <leader>gl :Glog<CR>
+                    nnoremap <silent> <leader>gp :Git push<CR>
+                " }
 
-            Bundle 'int3/vim-extradite'
-            let g:extradite_showhash = 1
-            command! Gloge Extradite
+                Bundle 'int3/vim-extradite'
+                let g:extradite_showhash = 1
+                command! Gloge Extradite
+            " }}}
 
             Bundle 'powerman/vim-plugin-viewdoc'
             let g:manpageview_options_pl = ";-f;-q;-t;"
@@ -323,37 +336,36 @@
             Bundle 'bronson/vim-visual-star-search'
 
             " Tabularize {
-            Bundle 'godlygeek/tabular'
-            nmap <Leader>a& :Tabularize /&<CR>
-            vmap <Leader>a& :Tabularize /&<CR>
-            nmap <Leader>a= :Tabularize /=<CR>
-            vmap <Leader>a= :Tabularize /=<CR>
-            nmap <Leader>a: :Tabularize /:<CR>
-            vmap <Leader>a: :Tabularize /:<CR>
-            nmap <Leader>a:t :Tabularize /:\zs<CR>
-            vmap <Leader>a:t :Tabularize /:\zs<CR>
-            nmap <Leader>a,:Tabularize /,<CR>
-            vmap <Leader>a,:Tabularize /,<CR>
-            nmap <Leader>a/ :Tabularize /\zs\/\//<CR>
-            vmap <Leader>a/ :Tabularize /\/ <CR>
-            nmap <Leader>a" :Tabularize /"<CR>
-            vmap <Leader>a" :Tabularize /"<CR>
-            nmap <Leader>a# :Tabularize /#<CR>
-            vmap <Leader>a# :Tabularize /#<CR>
-            nmap <Leader>a<Space> :Tabularize /\s\+<CR>
-            vmap <Leader>a<Space> :Tabularize /\s\+<CR>
-            " http://stackoverflow.com/questions/10287919/use-vims-tabularize-plugin-to-only-match-the-first-occurance-of-a-delimiter
-            nmap <Leader>af<Space> :Tabularize /^\s*\w*<CR>
-            vmap <Leader>af<Space> :Tabularize /^\s*\w*<CR>
-            vmap <Leader>a<Space> :Tabularize /\s\+<CR>
-            nmap <Leader>a<Bar> :Tabularize /<Bar><CR>
-            vmap <Leader>a<Bar> :Tabularize /<Bar><CR>
+                Bundle 'godlygeek/tabular'
+                nmap <Leader>a& :Tabularize /&<CR>
+                vmap <Leader>a& :Tabularize /&<CR>
+                nmap <Leader>a= :Tabularize /=<CR>
+                vmap <Leader>a= :Tabularize /=<CR>
+                nmap <Leader>a: :Tabularize /:<CR>
+                vmap <Leader>a: :Tabularize /:<CR>
+                nmap <Leader>a:t :Tabularize /:\zs<CR>
+                vmap <Leader>a:t :Tabularize /:\zs<CR>
+                nmap <Leader>a,:Tabularize /,<CR>
+                vmap <Leader>a,:Tabularize /,<CR>
+                nmap <Leader>a/ :Tabularize /\zs\/\//<CR>
+                vmap <Leader>a/ :Tabularize /\/ <CR>
+                nmap <Leader>a" :Tabularize /"<CR>
+                vmap <Leader>a" :Tabularize /"<CR>
+                nmap <Leader>a# :Tabularize /#<CR>
+                vmap <Leader>a# :Tabularize /#<CR>
+                nmap <Leader>a<Space> :Tabularize /\s\+<CR>
+                vmap <Leader>a<Space> :Tabularize /\s\+<CR>
+                " http://stackoverflow.com/questions/10287919/use-vims-tabularize-plugin-to-only-match-the-first-occurance-of-a-delimiter
+                nmap <Leader>af<Space> :Tabularize /^\s*\w*<CR>
+                vmap <Leader>af<Space> :Tabularize /^\s*\w*<CR>
+                vmap <Leader>a<Space> :Tabularize /\s\+<CR>
+                nmap <Leader>a<Bar> :Tabularize /<Bar><CR>
+                vmap <Leader>a<Bar> :Tabularize /<Bar><CR>
             " }
 
-            Bundle 'tomtom/tcomment_vim'
+            " Bundle 'tomtom/tcomment_vim'
             let g:tcommentOptions = {'strip_whitespace': 1}
 
-            " Yes I am using both in parallel
             Bundle 'scrooloose/nerdcommenter'
             let NERDSpaceDelims = 1
 
@@ -366,12 +378,13 @@
 
             Bundle 'tpope/vim-endwise'
 
-            " DetectIndent
-            " Bundle 'ciaranm/detectindent'
-            Bundle 'ypid/detectindent'
-            let g:detectindent_preferred_expandtab = 1
-            let g:detectindent_preferred_indent = 4
-            let g:detectindent_min_indent = 2
+            " DetectIndent {{{
+                " Bundle 'ciaranm/detectindent'
+                Bundle 'ypid/detectindent'
+                let g:detectindent_preferred_expandtab = 1
+                let g:detectindent_preferred_indent = 4
+                let g:detectindent_min_indent = 2
+            " }}}
 
             " Highlight brackets
             Bundle 'kien/rainbow_parentheses.vim'
@@ -381,16 +394,19 @@
             "     Bundle 'majutsushi/tagbar'
             " endif
 
-            Bundle 'xuhdev/SingleCompile'
-            let g:SingleCompile_alwayscompile = 0
-            call SingleCompile#SetCompilerTemplate('mkd', 'markdown',
-                        \ 'text-to-HTML conversion tool', 'markdown',
-                        \ '> $(FILE_TITLE)$.html', 'true' )
-            call SingleCompile#SetPriority('mkd', 'markdown', 50)
+            " Save and run {{{
+                Bundle 'xuhdev/SingleCompile'
+                let g:SingleCompile_alwayscompile = 0
+                call SingleCompile#SetCompilerTemplate('mkd', 'markdown',
+                            \ 'text-to-HTML conversion tool', 'markdown',
+                            \ '> $(FILE_TITLE)$.html', 'true' )
+                call SingleCompile#SetPriority('mkd', 'markdown', 50)
 
-            call SingleCompile#ChooseCompiler('mkd', 'markdown')
+                call SingleCompile#ChooseCompiler('mkd', 'markdown')
 
-
+                map <Leader>as :SCCompileRun<CR>
+                imap <Leader>as <ESC>:SCCompileRun<CR>a
+            " }}}
 
             " " Taglist {
             " Bundle 'taglist.vim'
@@ -406,12 +422,17 @@
 
             Bundle 'mattn/webapi-vim'
             Bundle 'mattn/gist-vim'
+
+            Bundle 'inkarkat/SyntaxAttr.vim'
+            nmap <Leader>ti :call SyntaxAttr()<CR>
+
+            Bundle 'SrchRplcHiGrp.vim'
         endif
     " }
 
     " Snippets & AutoComplete {
         if count(g:spf13_bundle_groups, 'snipmate')
-            if has("python")
+            if has("python") && executable('python')
                 " Needs to be before syntax on …
                 Bundle 'SirVer/ultisnips'
                 " let g:UltiSnipsListSnippets = "<Leader><tab>"
@@ -439,7 +460,7 @@
                 inoremap <expr> <C-u>      pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<C-u>"
 
                 " Automatically open and close the popup menu / preview window
-                au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
+                autocmd CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
                 set completeopt=menu,preview,longest
             " }
 
@@ -533,6 +554,19 @@
             " Bundle 'python.vim'
             " Bundle 'python_match.vim'
             " Bundle 'pythoncomplete'
+
+            " PyMode {
+                let g:pymode_lint_checker = "pyflakes"
+                let g:pymode_utils_whitespaces = 0
+                let g:pymode_options = 0
+            " }
+
+            " PythonMode {
+            " Disable if python support not present
+                if !has('python')
+                    let g:pymode = 1
+                endif
+            " }
         endif
     " }
 
@@ -590,7 +624,7 @@
             " Bundle 'sukima/xmledit'
             " Bundle 'closetag.vim'
             " Make it so AutoCloseTag works for xml and xhtml files as well
-            " au FileType xhtml,xml ru ftplugin/html/autoclosetag.vim
+            " autocmd FileType xhtml,xml ru ftplugin/html/autoclosetag.vim
             " }
 
             " Bundle 'hail2u/vim-css3-syntax'
@@ -607,11 +641,6 @@
               \ '---',
               \ '']
               " \ 'date: "JEKYLL_DATE"',
-
-            Bundle 'inkarkat/SyntaxAttr.vim'
-            nmap <Leader>ti :call SyntaxAttr()<CR>
-
-            Bundle 'SrchRplcHiGrp.vim'
 
             " Bundle 'greyblake/vim-preview' " configure Browser
         endif
@@ -636,7 +665,6 @@
     " Misc {
         if count(g:spf13_bundle_groups, 'misc')
             Bundle 'dahu/LearnVim'
-            Bundle 'tpope/vim-markdown'
             " Bundle 'spf13/vim-preview'
             " Bundle 'tpope/vim-cucumber'
             " Bundle 'quentindecock/vim-cucumber-align-pipes'
@@ -668,7 +696,7 @@
             silent! execute 'silent %!'. command
             silent! execute 'resize ' . line('$')
             silent! redraw
-            silent! execute 'au BufUnload <buffer> execute bufwinnr(' . bufnr('#') . ') . ''wincmd w'''
+            silent! execute 'autocmd BufUnload <buffer> execute bufwinnr(' . bufnr('#') . ') . ''wincmd w'''
             silent! execute 'nnoremap <silent> <buffer> <LocalLeader>r :call <SID>ExecuteInShell(''' . command . ''')<CR>'
             echo 'Shell command ' . command . ' executed.'
         endfunction
@@ -736,14 +764,30 @@
         " let lastsearchstring = @/
         " nmap <Leader>b :call Togglehlsearch()<CR>
 
+        " Set tabstop and softtabstop to the value of shiftwidth
+        function! SetIndentWidth()
+            " let &l:sts = &l:ts
+            " let &l:sw  = &l:ts
+            let &l:ts  = &l:sw
+            let &l:sts = &l:sw
+        endfunction
+
+        " Append modeline after last line in buffer.
+        " Use substitute() instead of printf() to handle '%%s' modeline in LaTeX
+        " files.
+        function! AppendModeline()
+            let l:modeline = printf("vim: set ts=%d sw=%d tw=%d %set :",
+                        \ &tabstop, &shiftwidth, &textwidth, &expandtab ? '' : 'no')
+            call append(line("$"), l:modeline)
+            normal '.gcc
+            "" Use tcomment to comment the thing out
+        endfunction
+        nnoremap <silent> <Leader>am :call AppendModeline()<CR>
     " }
 " }
 
 " General {
-    set background=light         " Assume a dark background
-    if !has('gui')
-        "set term=$TERM          " Make arrow and other keys work
-    endif
+    " set background=light         " Assume a dark background
     filetype indent plugin on   " Automatically detect file types.
     syntax on                   " Syntax highlighting
     set mousehide               " Hide the mouse cursor while typing
@@ -782,34 +826,26 @@
             call EnsureDirExists($HOME . '/.vimundo')
             set undofile
             set undodir=~/.vimundo/
-            " silent !mkdir -p ~/.vimundo
             set undolevels=1000         " Maximum number of changes that can be undone
             set undoreload=10000        " Maximum number lines to save for undo on a buffer reload
         endif
 
-        " To disable views add the following to your .vimrc.bundles.local file:
-        "   let g:spf13_no_views = 1
-        if !exists('g:spf13_no_views')
-            " Add exclusions to mkview and loadview
-            " eg: *.*, svn-commit.tmp
-            let g:skipview_files = [
-                \ '*sec*',
-                \ '*crypt*'
-                \ ]
-        endif
+        let g:skipview_files = [
+            \ '*sec*',
+            \ '*crypt*'
+            \ ]
     " }
-
 " }
 
 " Vim UI {
 
     if filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
         let g:solarized_termcolors=256
-        color solarized                 " Load a colorscheme
-    endif
         let g:solarized_termtrans=1
         let g:solarized_contrast="high"
         let g:solarized_visibility="high"
+        color solarized             " Load a colorscheme
+    endif
     set tabpagemax=15               " Only show 15 tabs
     set showmode                    " Display the current mode
 
@@ -841,10 +877,10 @@
     set backspace=indent,eol,start  " Backspace for dummies
     set linespace=0                 " No extra spaces between rows
     set number
+    set winminheight=0              " Windows can be 0 line high
     set showmatch                   " Show matching brackets/parenthesis
     set incsearch                   " Find as you type search
     set hlsearch                    " Highlight search terms
-    set winminheight=0              " Windows can be 0 line high
     set ignorecase                  " Case insensitive search
     set smartcase                   " Case sensitive when uc present
     set wildmenu                    " Show list instead of just completing
@@ -857,11 +893,9 @@
     set foldmethod=marker
     set nolist
     set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
-
 " }
 
 " Formatting {
-
     set formatoptions+=or
     set wrap linebreak              " Wrap long lines between words</Tab>
     set textwidth=0
@@ -875,68 +909,53 @@
     " set comments=sl:/*,mb:*,elx:*/  " auto format comment blocks
     " Remove trailing whitespaces and ^M chars
 
-    " Set tabstop and softtabstop to the value of shiftwidth
-    function! SetIndentWidth()
-        " let &l:sts = &l:ts
-        " let &l:sw  = &l:ts
-        let &l:ts  = &l:sw
-        let &l:sts = &l:sw
-    endfunction
-
-    " Append modeline after last line in buffer.
-    " Use substitute() instead of printf() to handle '%%s' modeline in LaTeX
-    " files.
-    function! AppendModeline()
-        let l:modeline = printf("vim: set ts=%d sw=%d tw=%d %set :",
-                    \ &tabstop, &shiftwidth, &textwidth, &expandtab ? '' : 'no')
-        call append(line("$"), l:modeline)
-        normal '.gcc
-        "" Use tcomment to comment the thing out
-    endfunction
-    nnoremap <silent> <Leader>am :call AppendModeline()<CR>
-
     if has("autocmd") && !exists("autocommands_loaded")
         filetype on
-        autocmd BufWritePost $MYVIMRC source %
-        autocmd BufWritePost $HOME/.vimpagerrc source %
-        au VimLeave * if filereadable($HOME."/.vim/bundle/vundle/.netrwhist")|call delete($HOME."/.vim/bundle/vundle/.netrwhist")|endif
+        " autocmd BufWritePost $MYVIMRC source %
+        " autocmd BufWritePost $HOME/.vimpagerrc source %
+        autocmd VimLeave * if filereadable($HOME."/.vim/bundle/vundle/.netrwhist")|call delete($HOME."/.vim/bundle/vundle/.netrwhist")|endif
 
         " Adjust the filetype for some files {{{
-        autocmd BufRead,BufNewFile .vimpagerrc setlocal filetype=vim
-        autocmd BufRead,BufNewFile /etc/*/apt.conf setlocal filetype=conf
-        autocmd BufRead,BufNewFile $HOME/.ssh/*.config setlocal filetype=sshconfig
-        autocmd BufRead,BufNewFile $HOME/.unison/* setlocal filetype=conf
-        autocmd BufRead,BufNewFile *.mk setlocal filetype=python
-        " http://mathias-kettner.de/checkmk_configfiles.html
-        autocmd BufRead,BufNewFile *.ldf setlocal filetype=tex
-        autocmd BufRead,BufNewFile *.tex setlocal filetype=tex
-        " I already use the "wrong" file suffix for all my LaTeX files
-        autocmd BufRead,BufNewFile *.nse setlocal filetype=lua
-        autocmd BufRead,BufNewFile /usr/share/X11/xkb/* setlocal filetype=xkb
+            autocmd BufRead,BufNewFile .vimpagerrc setlocal filetype=vim
+            autocmd BufRead,BufNewFile /etc/*/apt.conf setlocal filetype=conf
+            autocmd BufRead,BufNewFile $HOME/.ssh/*.config setlocal filetype=sshconfig
+            autocmd BufRead,BufNewFile $HOME/.unison/* setlocal filetype=conf
+
+            " http://mathias-kettner.de/checkmk_configfiles.html
+            autocmd BufRead,BufNewFile *.mk setlocal filetype=python
+
+            " I already use the "wrong" file suffix for all my LaTeX files
+            autocmd BufRead,BufNewFile *.tex setlocal filetype=tex
+            autocmd BufRead,BufNewFile *.ldf setlocal filetype=tex
+
+            autocmd BufRead,BufNewFile *.nse setlocal filetype=lua
+            autocmd BufRead,BufNewFile /usr/share/X11/xkb/* setlocal filetype=xkb
         " }}}
-        au BufWritePre /tmp/*  setlocal noundofile
-        au BufWritePre *sec*   setlocal noundofile
-        au BufWritePre *crypt* setlocal noundofile
-        au BufWritePre *mnt*   setlocal noundofile
+
+        autocmd BufWritePre /tmp/*  setlocal noundofile
+        autocmd BufWritePre *sec*   setlocal noundofile
+        autocmd BufWritePre *crypt* setlocal noundofile
+        autocmd BufWritePre *mnt*   setlocal noundofile
 
         " Set language specific stuff {{{
-        autocmd FileType perl setlocal expandtab shiftwidth=4
-        autocmd FileType perl compiler perlcritic
-        autocmd FileType vim setlocal expandtab shiftwidth=4
-        autocmd FileType python setlocal shiftwidth=4
-        autocmd FileType python let b:delimitMate_nesting_quotes = ['"']
-        autocmd FileType python set makeprg=pylint\ --reports=n\ --output-format=parseable\ %:p
-        autocmd FileType python set efm=%A%f:%l:\ [%t%.%#]\ %m,%Z%p^^,%-C%.%#
-        autocmd FileType mkd let b:delimitMate_nesting_quotes = ['`']
-        autocmd FileType vim let b:delimitMate_quotes = "' `"
-        autocmd FileType tex setlocal expandtab shiftwidth=2
-        autocmd FileType c setlocal noexpandtab shiftwidth=4
-        autocmd FileType html setlocal expandtab shiftwidth=2
-        autocmd FileType html compiler tidy
-        autocmd FileType sh setlocal textwidth=0
-        " autocmd FileType xml setlocal foldmethod=syntax " does not work
-        autocmd FileType xml setlocal foldmethod=indent
+            autocmd FileType perl setlocal expandtab shiftwidth=4
+            autocmd FileType perl compiler perlcritic
+            autocmd FileType vim setlocal expandtab shiftwidth=4
+            autocmd FileType python setlocal shiftwidth=4
+            autocmd FileType python let b:delimitMate_nesting_quotes = ['"']
+            autocmd FileType python set makeprg=pylint\ --reports=n\ --output-format=parseable\ %:p
+            autocmd FileType python set efm=%A%f:%l:\ [%t%.%#]\ %m,%Z%p^^,%-C%.%#
+            autocmd FileType mkd let b:delimitMate_nesting_quotes = ['`']
+            autocmd FileType vim let b:delimitMate_quotes = "' `"
+            autocmd FileType tex setlocal expandtab shiftwidth=2
+            autocmd FileType c setlocal noexpandtab shiftwidth=4
+            autocmd FileType html setlocal expandtab shiftwidth=2
+            autocmd FileType html compiler tidy
+            autocmd FileType sh setlocal textwidth=0
+            " autocmd FileType xml setlocal foldmethod=syntax " does not work
+            autocmd FileType xml setlocal foldmethod=indent
         " }}}
+
         " autocmd VimEnter * RainbowParenthesesToggle " enable by defalut
         " autocmd Syntax * RainbowParenthesesLoadRound " default
         autocmd VimEnter,BufRead,BufNewFile * RainbowParenthesesLoadSquare
@@ -953,28 +972,9 @@
         let autocommands_loaded = 1
     endif
     let xml_syntax_folding=1      " XML
-
-" }
-
-" Plugins {
-
-    " PyMode {
-        let g:pymode_lint_checker = "pyflakes"
-        let g:pymode_utils_whitespaces = 0
-        let g:pymode_options = 0
-    " }
-
-    " PythonMode {
-    " Disable if python support not present
-        if !has('python')
-            let g:pymode = 1
-        endif
-    " }
-
 " }
 
 " GUI Settings {
-
     " GVIM- (here instead of .gvimrc)
     if has('gui_running')
         set guioptions-=T           " Remove the toolbar
@@ -995,13 +995,16 @@
         endif
         "set term=builtin_ansi       " Make arrow and other keys work
     endif
-
 " }
 
 " Machine specific configuration {{{
-" Synced on trusted systems. On others it can be created and the
-" content will not be synced.
-if filereadable(expand("~/.vimrc.local"))
-    source ~/.vimrc.local
-endif
+    if filereadable(expand("~/.vimrc.private"))
+        " Synced on trusted systems. On others it can be created and the
+        " content will not be synced.
+        source ~/.vimrc.private
+    endif
+    if filereadable(expand("~/.vimrc.local"))
+        " Machine specific.
+        source ~/.vimrc.local
+    endif
 " }}}
