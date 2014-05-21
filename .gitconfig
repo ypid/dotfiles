@@ -27,7 +27,7 @@
 [log]
 	date = local
 [push]
-	default = simple
+	; default = simple
 [annex]
 	backends = SHA512E
 	diskreserve = 600 megabyte

@@ -60,20 +60,19 @@ alias ,r='vi'
 
 alias ssh-only-pw='ssh -o PubkeyAuthentication=no'
 alias scp-only-pw='scp -o PubkeyAuthentication=no'
-# alias ssh-copy-ids='ssh-copy-id -o PubkeyAuthentication=no'
+alias ssh-copy-id='ssh-copy-id -o PubkeyAuthentication=no'
 alias m='mosh'
-if which compdef >/dev/zero 2>&1; then
+if which compdef >/dev/null 2>&1 && which mosh >/dev/null 2>&1; then
     compdef m=mosh
 fi
 alias tmux='TERM=screen-256color-bce tmux'
 alias t='tmux'
-alias dmesg='dmesg --show-delta'
-
 alias h='htop'
 
 ## Use the shortcuts from oh-my-zsh for git
 # overwrite alias from oh-my-zsh {{{
 alias glg='git log --stat --decorate=short' # full history
+alias gp='git push --tags'
 # }}}
 ## }}}
 
