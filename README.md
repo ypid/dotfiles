@@ -39,7 +39,7 @@ This git repo tracks a few of my personal config files for some programs.
 > Use some key mappings from screen
 
 `.vim`
-> All my plugins and stuff like this for the *best* and *only* text editor
+> All my plugins and stuff like
 
 `.vimrc`
 > My vimrc (work in progress)
