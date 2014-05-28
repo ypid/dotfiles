@@ -75,7 +75,7 @@ ZSH_THEME="bira"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 #
 # Mandatory
-plugins=(gitfast autojump)
+plugins=(gitfast autojump git-annex)
 
 # Nice to have
 plugins+=(command-not-found zsh-syntax-highlighting mosh)
