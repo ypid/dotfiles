@@ -17,7 +17,7 @@
     " The next three lines ensure that the ~/.vim/bundle/ system works
         filetype off
         set rtp+=~/.vim/bundle/vundle
-        let g:vundle_default_git_proto = 'git'
+        " let g:vundle_default_git_proto = 'git'
         call vundle#rc()
         Bundle 'gmarik/vundle'
     " }
@@ -980,7 +980,7 @@
         set guioptions-=T           " Remove the toolbar
         set lines=40                " 40 lines of text instead of 24
         if has("gui_gtk2")
-            set guifont=Andale\ Mono\ Regular\ 16,Menlo\ Regular\ 15,Consolas\ Regular\ 16,Courier\ New\ Regular\ 18
+            set guifont=Andale\ Mono\ Regular\ 15,Menlo\ Regular\ 15,Consolas\ Regular\ 16,Courier\ New\ Regular\ 18
         elseif has("gui_mac")
             set guifont=Andale\ Mono\ Regular:h16,Menlo\ Regular:h15,Consolas\ Regular:h16,Courier\ New\ Regular:h18
         elseif has("gui_win32")
