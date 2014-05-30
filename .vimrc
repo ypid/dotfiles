@@ -435,13 +435,13 @@
             if has("python") && executable('python')
                 " Needs to be before syntax on …
                 Bundle 'SirVer/ultisnips'
+                Bundle 'honza/vim-snippets'
                 " let g:UltiSnipsListSnippets = "<Leader><tab>"
                 nmap <Leader><tab> :call UltiSnips_ListSnippets()<cr>
             endif
         elseif count(g:spf13_bundle_groups, 'neocomplcache')
             Bundle 'Shougo/neocomplcache'
             Bundle 'Shougo/neosnippet'
-            Bundle 'honza/vim-snippets'
            " OmniComplete {
                 if has("autocmd") && exists("+omnifunc")
                     autocmd Filetype *if &omnifunc == " |setlocal omnifunc=syntaxcomplete#Complete |endif

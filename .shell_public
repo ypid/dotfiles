@@ -13,12 +13,17 @@ fi
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
-alias 6s='ls'
-alias sl='ls'
 alias bc='bc -q'
 alias ,='popd'
 alias d='dirs -v'
 alias ts='date "+%F_%T"'
+
+## Ignore typos {{{
+alias 6s='ls'
+alias sl='ls'
+alias fgfg='fg'
+## }}}
+
 ## }}}
 
 ## Little functions {{{
@@ -70,6 +75,7 @@ alias t='tmux'
 alias h='htop'
 
 ## Use the shortcuts from oh-my-zsh for git
+alias wd='git diff --color-words --no-index'
 # overwrite alias from oh-my-zsh {{{
 alias glg='git log --stat --decorate=short' # full history
 alias gp='git push --tags -v'
