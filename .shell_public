@@ -78,7 +78,14 @@ alias h='htop'
 alias wd='git diff --color-words --no-index'
 # overwrite alias from oh-my-zsh {{{
 alias glg='git log --stat --decorate=short' # full history
-alias gp='git push --tags -v'
+unalias gp 2>/dev/zero
+function gp {
+    if [[ "$PWD" =~ "$HOME/Beruf" ]]; then
+        gitw push --tags -v
+    else
+        git push --tags -v
+    fi
+}
 # }}}
 ## }}}
 
