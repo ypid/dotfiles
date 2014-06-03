@@ -361,8 +361,8 @@
                 nmap <Leader>af<Space> :Tabularize /^\s*\w*<CR>
                 vmap <Leader>af<Space> :Tabularize /^\s*\w*<CR>
                 vmap <Leader>a<Space> :Tabularize /\s\+<CR>
-                nmap <Leader>a<Bar> :Tabularize /<Bar><CR>
-                vmap <Leader>a<Bar> :Tabularize /<Bar><CR>
+                nmap <Leader>a<Bar> :Tabularize /[^\\]\zs<Bar><CR>
+                vmap <Leader>a<Bar> :Tabularize /[^\\]\zs<Bar><CR>
             " }
 
             " Bundle 'tomtom/tcomment_vim'

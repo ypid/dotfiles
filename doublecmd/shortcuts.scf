@@ -92,6 +92,10 @@
         <Command>cm_Refresh</Command>
       </Hotkey>
       <Hotkey>
+        <Shortcut>Ctrl+N</Shortcut>
+        <Command>cm_NewTab</Command>
+      </Hotkey>
+      <Hotkey>
         <Shortcut>Ctrl+T</Shortcut>
         <Command>cm_NewTab</Command>
       </Hotkey>
@@ -216,7 +220,7 @@
         <Command>cm_OperationsViewer</Command>
       </Hotkey>
       <Hotkey>
-        <Shortcut>Alt+X</Shortcut>
+        <Shortcut>Ctrl+q</Shortcut>
         <Command>cm_Exit</Command>
       </Hotkey>
       <Hotkey>

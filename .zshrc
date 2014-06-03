@@ -120,6 +120,8 @@ source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 
+export DISABLE_AUTO_TITLE=true
+
 # like eternal history
 # SAVEHIST=100000000
 # huge performance killer!
