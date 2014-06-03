@@ -204,8 +204,8 @@
 
     " General {
         if count(g:spf13_bundle_groups, 'general')
-            Bundle 'scrooloose/nerdtree'
-            map <Leader>v :NERDTreeToggle<CR>
+            " Bundle 'scrooloose/nerdtree'
+            " map <Leader>v :NERDTreeToggle<CR>
 
             " Require it here, but configure it later.
             Bundle 'altercation/vim-colors-solarized'

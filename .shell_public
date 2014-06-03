@@ -1,5 +1,7 @@
 ## Stuff for programs which should be available everywhere {{{
 
+export EDITOR=vim
+
 ## Enable color support of ls and also add handy aliases {{{
 if [ -x /usr/bin/dircolors ]; then
     export LS_OPTIONS='--color=auto'
@@ -81,9 +83,10 @@ alias glg='git log --stat --decorate=short' # full history
 unalias gp 2>/dev/zero
 function gp {
     if [[ "$PWD" =~ "$HOME/Beruf" ]]; then
-        gitw push --tags -v
+        echo "Work"
+        gitw push -v
     else
-        git push --tags -v
+        git push -v
     fi
 }
 # }}}

@@ -52,3 +52,25 @@ This git repo tracks a few of my personal config files for some programs.
 
 [oh-my-zsh]: http://github.com/robbyrussell/oh-my-zsh
 [Neo2]: http://www.neo-layout.org/
+
+# Shortcuts
+
+Here are some common shortcuts that I use and which I configure in every program which makes sense and allows to do so.
+
+C: Control
+
+## Windows and taps
+
+Shortcut      | Function                                                 | Comment
+------------- | -------------                                            | -------------
+C-w           | Closes the tap in a GUI program                          | Should be default in all program
+C-n           | Opens a new (preferably empty) tap in a GUI program      | Easier to reach than C-t
+Alt-m         | Switch to tap 1                                          | See [Neo2 layer4][Neo2]
+Alt-,         | Switch to tap 2                                          |
+Alt-.         | Switch to tap 3                                          |
+Alt-j         | Switch to tap 4                                          |
+Alt-k         | Switch to tap 5                                          |
+Alt-l         | Switch to tap 6                                          |
+Alt-u         | Switch to tap 7                                          |
+Alt-i         | Switch to tap 8                                          |
+Alt-o         | Switch to tap 9                                          |

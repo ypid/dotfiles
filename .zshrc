@@ -76,6 +76,8 @@ ZSH_THEME="bira"
 #
 # Mandatory
 plugins=(gitfast autojump git-annex)
+# plugins=(tmuxinator)
+source ~/gems/gems/tmuxinator-0.6.8/completion/tmuxinator.zsh
 
 # Nice to have
 plugins+=(command-not-found zsh-syntax-highlighting mosh)
@@ -89,7 +91,6 @@ plugins+=(urltools)
 
 # Not tested enough, might be useful
 : <<'END'
-plugins+=(tmux)
 plugins+=(vi-mode)
 
 plugins+=(git-flow)
@@ -107,6 +108,7 @@ END
 
 # tested and decided not to use
 : <<'END'
+plugins+=(tmux) # Did not work
 plugins+=(last-working-dir) # does break 'open in Terminal' of nautilus and nemo
 
 END
@@ -122,10 +124,6 @@ source $ZSH/oh-my-zsh.sh
 # SAVEHIST=100000000
 # huge performance killer!
 
-# source ~
-# what was that for??
-
-# unalias md
 setopt no_share_history
 source ~/.shellrc
 source ~/.zsh_bindings
