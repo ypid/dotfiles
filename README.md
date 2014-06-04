@@ -65,11 +65,13 @@ Left hand only: Should be easy to use with the left hand, because it is often us
 ## Special keys
 Key name      | Comment
 ------------- | -------------
-Level5 Shift  | This key is in my configuration the <>\| button.
+Level5 Shift  | This key is in my configuration the <> button.
 +             | Seperator for keys
 anything else | is either a usual key name or a regular expression to specific a range of keys
 
 ## Window manager (Gnome3)
+
+Own shortcuts for the window manager should include the Super key which is normally not used by applications.
 
 ### Navigation
 
@@ -119,20 +121,20 @@ Ctrl+Alt+d    | View split on right    | Yes            |
 
 ### Custom shortcuts
 
-Shortcut         | Function                                  | Left hand only | Comment
--------------    | -------------                             | -------------  | -------------
-Ctrl+Super+s     | Start program `x-terminal-emulator`       | Yes            |
-Ctrl+Super+[1-9] | Start program `$1`                        | Yes and no     | Start some programs
-Ctrl+Alt+x       | `rhythmbox-client --play-pause`           | Of course      | Play or pause music
-Ctrl+Super+x     | `rhythmbox-client --next`                 | Of course      | Play next music file
-Ctrl+Alt+O       | Start program `eject`                     | No             | eject removable media
-Ctrl+Alt+c       | Start [script][suspend-script] to suspend | Yes            |
+Shortcut         | Function                                   | Left hand only | Comment
+-------------    | -------------                              | -------------  | -------------
+Ctrl+Super+s     | Launch program `x-terminal-emulator`       | Yes            |
+Ctrl+Super+[1-9] | Launch custom program or script            | Yes and no     |
+Ctrl+Alt+x       | `rhythmbox-client --play-pause`            | Of course      | Play or pause music
+Ctrl+Super+x     | `rhythmbox-client --next`                  | Of course      | Play next music file
+Ctrl+Alt+O       | Launch program `eject`                     | No             | eject removable media
+Ctrl+Alt+c       | Launch [script][suspend-script] to suspend | Yes            |
 
 ## GUI applications
 
 ### Windows and tabs
 
-Applies for: firefox, gnome-terminal, Double Commander (not full yet because some are not configurable)
+Applies for: firefox, gnome-terminal, Double Commander (not fully yet because some are not configurable)
 
 Ctrl commands have to be used with Shift in the terminal emulator.
 
