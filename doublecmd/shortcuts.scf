@@ -23,7 +23,7 @@
         <Command>cm_Edit</Command>
       </Hotkey>
       <Hotkey>
-        <Shortcut>Ctrl+E</Shortcut>
+        <Shortcut>Shift+Alt+C</Shortcut>
         <Command>cm_Copy</Command>
       </Hotkey>
       <Hotkey>
@@ -31,7 +31,7 @@
         <Command>cm_Copy</Command>
       </Hotkey>
       <Hotkey>
-        <Shortcut>Ctrl+Shift+Y</Shortcut>
+        <Shortcut>Shift+Alt+Y</Shortcut>
         <Command>cm_MakeDir</Command>
       </Hotkey>
       <Hotkey>
@@ -39,7 +39,7 @@
         <Command>cm_MakeDir</Command>
       </Hotkey>
       <Hotkey>
-        <Shortcut>Ctrl+Shift+D</Shortcut>
+        <Shortcut>Shift+Alt+D</Shortcut>
         <Command>cm_Delete</Command>
       </Hotkey>
       <Hotkey>
@@ -66,10 +66,6 @@
       <Hotkey>
         <Shortcut>Ctrl+H</Shortcut>
         <Command>cm_DirHistory</Command>
-      </Hotkey>
-      <Hotkey>
-        <Shortcut>Ctrl+Shift+L</Shortcut>
-        <Command>cm_CalculateSpace</Command>
       </Hotkey>
       <Hotkey>
         <Shortcut>Ctrl+M</Shortcut>
@@ -200,10 +196,6 @@
         <Command>cm_ShowSysFiles</Command>
       </Hotkey>
       <Hotkey>
-        <Shortcut>Ctrl+L</Shortcut>
-        <Command>cm_FocusCmdLine</Command>
-      </Hotkey>
-      <Hotkey>
         <Shortcut>Shift+F2</Shortcut>
         <Command>cm_FocusCmdLine</Command>
       </Hotkey>
@@ -308,7 +300,7 @@
         <Command>cm_MarkMinus</Command>
       </Hotkey>
       <Hotkey>
-        <Shortcut>Ctrl+Shift+R</Shortcut>
+        <Shortcut>Shift+Alt+Y</Shortcut>
         <Command>cm_Rename</Command>
       </Hotkey>
       <Hotkey>
@@ -341,6 +333,14 @@
       <Hotkey>
         <Shortcut>Num/</Shortcut>
         <Command>cm_QuickSearch</Command>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Ctrl+L</Shortcut>
+        <Command>cm_FocusCmdLine</Command>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Shift+Alt+Y</Shortcut>
+        <Command>cm_Rename</Command>
       </Hotkey>
       <Hotkey>
         <Shortcut>Del</Shortcut>

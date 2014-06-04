@@ -956,6 +956,7 @@
             autocmd FileType sh setlocal textwidth=0
             " autocmd FileType xml setlocal foldmethod=syntax " does not work
             autocmd FileType xml setlocal foldmethod=indent
+            autocmd FileType gitcommit normal gg
         " }}}
 
         " autocmd VimEnter * RainbowParenthesesToggle " enable by defalut

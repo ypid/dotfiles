@@ -165,9 +165,10 @@ Shortcut      | Function      | Left hand only                | Comment
 ------------- | ------------- | -------------                 | -------------
 /             | Quick search  | Yes (maybe copy paste search) | Entered with Mod3 (caps lock key) and s
 ö             | Quick search  | Yes (maybe copy paste search) | Currently used
-Ctrl+e        | Copy          | Yes                           |
-Ctrl+D        | Delete        | Yes                           |
-Ctrl+Y        | MakeDir       | Yes                           |
+Alt+Y         | MakeDir       | Yes                           |
+Alt+X         | Rename        | Yes                           |
+Alt+C         | Copy          | Yes                           |
+Alt+D         | Delete        | Yes                           |
 Ctrl+a        | MarkAll       | Yes                           |
 Ctrl+A        | UnmarkAll     | Yes                           | Default behavior from Gimp
 Ctrl+S        | RunTerm       | Not really                    | Like Ctrl+Super+s but with the current directory
