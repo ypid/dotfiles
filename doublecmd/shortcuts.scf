@@ -68,7 +68,7 @@
         <Command>cm_DirHistory</Command>
       </Hotkey>
       <Hotkey>
-        <Shortcut>Ctrl+L</Shortcut>
+        <Shortcut>Ctrl+Shift+L</Shortcut>
         <Command>cm_CalculateSpace</Command>
       </Hotkey>
       <Hotkey>
@@ -198,6 +198,10 @@
       <Hotkey>
         <Shortcut>Ctrl+.</Shortcut>
         <Command>cm_ShowSysFiles</Command>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Ctrl+L</Shortcut>
+        <Command>cm_FocusCmdLine</Command>
       </Hotkey>
       <Hotkey>
         <Shortcut>Shift+F2</Shortcut>

@@ -59,6 +59,9 @@ Here are some common shortcuts that I use and which I configure in every program
 
 The use of the shift modifier key is not explicitly written down (-> case sensitive).
 
+Left hand only: Should be easy to use with the left hand, because it is often used during work with the mouse. For example switching windows or Ctrl+c to copy to the clipboard.
+
+
 ## Special keys
 Key name      | Comment
 ------------- | -------------
@@ -70,59 +73,60 @@ anything else | is either a usual key name or a regular expression to specific a
 
 ### Navigation
 
-Shortcut                              | Function                               | Comment
--------------                         | -------------                          | -------------
-Alt+A                                 | Move window one workspace to the left  |
-Alt+D                                 | Move window one workspace to the right |
-Alt+W                                 | Move window one workspace up           |
-Alt+S                                 | Move window one workspace down         |
-Alt+[Level5 Shift][special-keys]      | Switch windows                         | Easier to reach than Alt-Tab
-Super+j                               | Switch to next windows                 | See [shellshape][].
-Super+k                               | Switch to previous windows             | See [shellshape][].
-Ctrl-Alt+y                            | Switch to workspace 1                  |
-Ctrl-Alt+[Level5 Shift][special-keys] | Switch to workspace 2                  |
+Shortcut                              | Function                               | Left hand only | Comment
+-------------                         | -------------                          | -------------  | -------------
+Alt+A                                 | Move window one workspace to the left  | Yes            | Currently not used, just defined to be consistent.
+Alt+D                                 | Move window one workspace to the right | Yes            | Currently not used, just defined to be consistent.
+Alt+W                                 | Move window one workspace up           | Yes            |
+Alt+S                                 | Move window one workspace down         | Yes            |
+Alt+[Level5 Shift][special-keys]      | Switch windows                         | Of course      | Easier to reach than Alt-Tab
+Super+j                               | Switch to next windows                 | No             | See [shellshape][].
+Super+k                               | Switch to previous windows             | No             | See [shellshape][].
+Ctrl-Alt+y                            | Switch to workspace 1                  | Of course      |
+Ctrl-Alt+[Level5 Shift][special-keys] | Switch to workspace 2                  | Of course      |
 
 [shellshape]: https://extensions.gnome.org/extension/294/shellshape/
 
 ### Sound and Media
 
-Shortcut                                | Function      | Comment
--------------                           | ------------- | -------------
-Ctrl+Super+y                            | Volume up     | FIXME
-Ctrl+Super+[Level5 Shift][special-keys] | Volume down   | FIXME
+Shortcut                                | Function      | Left hand only | Comment
+-------------                           | ------------- | -------------  | -------------
+Ctrl+Super+y                            | Volume up     | Yes            | Maybe other shortcut?
+Ctrl+Super+[Level5 Shift][special-keys] | Volume down   | Yes            | Maybe other shortcut?
 
 ### System
 
-Shortcut        | Function      | Comment
--------------   | ------------- | -------------
-Ctrl+Super+a    | Lock screen   |
-Ctrl+Alt+Delete | Log out       |
+Shortcut        | Function      | Left hand only | Comment
+-------------   | ------------- | -------------  | -------------
+Ctrl+Super+a    | Lock screen   | Yes            |
+Ctrl+Alt+Delete | Log out       | No             | Not really used yet
 
 ### Typing
 
-Shortcut      | Function                                            | Comment
-------------- | -------------                                       | -------------
-Alt+Super+c   | Switch to next input source (e.g. qNeo2 and qwertz) |
+Shortcut      | Function                                            | Left hand only | Comment
+------------- | -------------                                       | -------------  | -------------
+Alt+Super+c   | Switch to next input source (e.g. qNeo2 and qwertz) | Yes            |
 
 ### Windows
 
-Shortcut      | Function               | Comment
-------------- | -------------          | -------------
-Ctrl+Q        | Close window           | If Ctrl-q does not work, defined in gnome-terminal by default
-Ctrl+Alt+f    | Toggle fullscreen mode | If Alt-f does not work
-Ctrl+Alt+w    | Maximize window        |
-Ctrl+Alt+a    | View split on left     |
-Ctrl+Alt+d    | View split on right    |
+Shortcut      | Function               | Left hand only | Comment
+------------- | -------------          | -------------  | -------------
+Ctrl+Q        | Close window           | Yes            | If Ctrl-q does not work, defined in gnome-terminal by default
+Ctrl+Alt+f    | Toggle fullscreen mode | Yes            | If Alt-f does not work
+Ctrl+Alt+w    | Maximize window        | Yes            |
+Ctrl+Alt+a    | View split on left     | Yes            |
+Ctrl+Alt+d    | View split on right    | Yes            |
 
 ### Custom shortcuts
 
-Shortcut         | Function                            | Comment
--------------    | -------------                       | -------------
-Ctrl+Super+s     | Start program `x-terminal-emulator` |
-Ctrl+Super+[1-9] | Start program `$1`                  | Start some programs
-Ctrl+Alt+x       | `rhythmbox-client --play-pause`     | Play or pause music
-Ctrl+Super+x     | `rhythmbox-client --next`           | Play next music file
-Ctrl+Alt+O       | Start program `eject`               | eject removable media
+Shortcut         | Function                                  | Left hand only | Comment
+-------------    | -------------                             | -------------  | -------------
+Ctrl+Super+s     | Start program `x-terminal-emulator`       | Yes            |
+Ctrl+Super+[1-9] | Start program `$1`                        | Yes and no     | Start some programs
+Ctrl+Alt+x       | `rhythmbox-client --play-pause`           | Of course      | Play or pause music
+Ctrl+Super+x     | `rhythmbox-client --next`                 | Of course      | Play next music file
+Ctrl+Alt+O       | Start program `eject`                     | No             | eject removable media
+Ctrl+Alt+c       | Start [script][suspend-script] to suspend | Yes            |
 
 ## GUI applications
 
@@ -132,38 +136,42 @@ Applies for: firefox, gnome-terminal, Double Commander (not full yet because som
 
 Ctrl commands have to be used with Shift in the terminal emulator.
 
-Shortcut      | Function                           | Comment
-------------- | -------------                      | -------------
-Ctrl+n        | Opens a new (preferably empty) tab | Easier to reach than C-t
-Alt+m         | Switch to tab 1                    | See [Neo2 layer4][Neo2]
-Alt+,         | Switch to tab 2                    |
-Alt+.         | Switch to tab 3                    |
-Alt+j         | Switch to tab 4                    |
-Alt+k         | Switch to tab 5                    |
-Alt+l         | Switch to tab 6                    |
-Alt+u         | Switch to tab 7                    |
-Alt+i         | Switch to tab 8                    |
-Alt+o         | Switch to tab 9                    |
-Ctrl+w        | Closes the tab                     | Should be default in all program
-Ctrl+q        | Closes the application             | Should be default in all program
+Shortcut      | Function                           | Left hand only | Comment
+------------- | -------------                      | -------------  | -------------
+Ctrl+n        | Opens a new (preferably empty) tab | No             | Easier to reach than C-t
+Alt+m         | Switch to tab 1                    | No             | See [Neo2 layer4][Neo2]
+Alt+,         | Switch to tab 2                    | No             |
+Alt+.         | Switch to tab 3                    | No             |
+Alt+j         | Switch to tab 4                    | No             |
+Alt+k         | Switch to tab 5                    | No             |
+Alt+l         | Switch to tab 6                    | No             |
+Alt+u         | Switch to tab 7                    | No             |
+Alt+i         | Switch to tab 8                    | No             |
+Alt+o         | Switch to tab 9                    | No             |
+Ctrl+w        | Closes the tab                     | Of course      | Should be default in all program
+Ctrl+q        | Closes the application             | Of course      | Should be default in all program
 
 ### Firefox
 
 I use [VimFx][] with a few modified and additional shortcuts …
 
-### Double Commander
+### Double Commander (DC)
 
 See the manual for the default shortcuts. I added my own which I think are more convenient (I left the original onces pretty much untouched):
 
-Shortcut      | Function      | Comment
-------------- | ------------- | -------------
-/             | Quick search  | Entered with Mod3 (caps lock key) and s
-Ctrl+e        | Copy          |
-Ctrl+D        | Delete        |
-Ctrl+Y        | MakeDir       |
-Ctrl+a        | MarkAll       |
-Ctrl+A        | UnmarkAll     | Default behavior from Gimp
-Ctrl+S        | RunTerm       | Like Ctrl+Super+s but with the current directory
+Shortcut      | Function      | Left hand only                | Comment
+------------- | ------------- | -------------                 | -------------
+/             | Quick search  | Yes (maybe copy paste search) | Entered with Mod3 (caps lock key) and s
+ö             | Quick search  | Yes (maybe copy paste search) | Currently used
+Ctrl+e        | Copy          | Yes                           |
+Ctrl+D        | Delete        | Yes                           |
+Ctrl+Y        | MakeDir       | Yes                           |
+Ctrl+a        | MarkAll       | Yes                           |
+Ctrl+A        | UnmarkAll     | Yes                           | Default behavior from Gimp
+Ctrl+S        | RunTerm       | Not really                    | Like Ctrl+Super+s but with the current directory
+Ctrl+l        | FocusCmdLine  | Not really                    | Was mapped to Shift+F2 but Ctrl+l is more confinient because it works be default in firefox. Overwrites CalculateSpace in DC.
+
+Note: Double Commander works quite nicely together with [Neo2][] …
 
 ## Terminal programs
 
@@ -179,5 +187,6 @@ See [.vimrc][] (Folds *Key (re)Mappings* and *Bundles and plugins*) …
 
 [VimFx]: www.github.com/akhodakivskiy/VimFx
 [special-keys]: #special-keys
-[.vimrc]: blob/master/.vimrc
-[.tmux.conf]: blob/master/.tmux.conf
+[.vimrc]: /.vimrc
+[.tmux.conf]: /.tmux.conf
+[suspend-script]: https://github.com/ypid/scripts/blob/master/suspend-via-gnome
