@@ -3,6 +3,14 @@
   <Hotkeys Version="17">
     <Form Name="Main">
       <Hotkey>
+        <Shortcut>Ctrl+Q</Shortcut>
+        <Command>cm_Exit</Command>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Alt+X</Shortcut>
+        <Command>cm_Exit</Command>
+      </Hotkey>
+      <Hotkey>
         <Shortcut>F1</Shortcut>
         <Command>cm_About</Command>
       </Hotkey>
@@ -31,7 +39,7 @@
         <Command>cm_Copy</Command>
       </Hotkey>
       <Hotkey>
-        <Shortcut>Shift+Alt+Y</Shortcut>
+        <Shortcut>Shift+Alt+J</Shortcut>
         <Command>cm_MakeDir</Command>
       </Hotkey>
       <Hotkey>
@@ -39,7 +47,7 @@
         <Command>cm_MakeDir</Command>
       </Hotkey>
       <Hotkey>
-        <Shortcut>Shift+Alt+D</Shortcut>
+        <Shortcut>Shift+Alt+Y</Shortcut>
         <Command>cm_Delete</Command>
       </Hotkey>
       <Hotkey>
@@ -76,7 +84,7 @@
         <Command>cm_AddPathToCmdLine</Command>
       </Hotkey>
       <Hotkey>
-        <Shortcut>Ctrl+Q</Shortcut>
+        <Shortcut>Shift+Alt+Q</Shortcut>
         <Command>cm_QuickView</Command>
       </Hotkey>
       <Hotkey>
@@ -216,10 +224,6 @@
         <Command>cm_OperationsViewer</Command>
       </Hotkey>
       <Hotkey>
-        <Shortcut>Ctrl+q</Shortcut>
-        <Command>cm_Exit</Command>
-      </Hotkey>
-      <Hotkey>
         <Shortcut>Alt+Z</Shortcut>
         <Command>cm_TargetEqualSource</Command>
       </Hotkey>
@@ -236,7 +240,7 @@
         <Command>cm_PackFiles</Command>
       </Hotkey>
       <Hotkey>
-        <Shortcut>Shift+Alt+F</Shortcut>
+        <Shortcut>Ctrl+Alt+F</Shortcut>
         <Command>cm_Search</Command>
       </Hotkey>
       <Hotkey>
@@ -300,7 +304,7 @@
         <Command>cm_MarkMinus</Command>
       </Hotkey>
       <Hotkey>
-        <Shortcut>Shift+Alt+Y</Shortcut>
+        <Shortcut>Shift+Alt+X</Shortcut>
         <Command>cm_Rename</Command>
       </Hotkey>
       <Hotkey>
@@ -339,8 +343,12 @@
         <Command>cm_FocusCmdLine</Command>
       </Hotkey>
       <Hotkey>
-        <Shortcut>Shift+Alt+Y</Shortcut>
+        <Shortcut>Shift+Alt+B</Shortcut>
         <Command>cm_Rename</Command>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Shift+Alt+E</Shortcut>
+        <Command>cm_SymLink</Command>
       </Hotkey>
       <Hotkey>
         <Shortcut>Del</Shortcut>
@@ -457,10 +465,6 @@
       <Hotkey>
         <Shortcut>Alt+End</Shortcut>
         <Command>cm_LastDifference</Command>
-      </Hotkey>
-      <Hotkey>
-        <Shortcut>Alt+X</Shortcut>
-        <Command>cm_Exit</Command>
       </Hotkey>
       <Hotkey>
         <Shortcut>Alt+Left</Shortcut>

@@ -141,7 +141,7 @@ Ctrl commands have to be used with Shift in the terminal emulator.
 Shortcut      | Function                           | Left hand only | Comment
 ------------- | -------------                      | -------------  | -------------
 Ctrl+n        | Opens a new (preferably empty) tab | No             | Easier to reach than C-t
-Alt+m         | Switch to tab 1                    | No             | See [Neo2 layer4][Neo2]
+Alt+m         | Switch to tab 1                    | No             | See [Neo2 layer4][Neo2]. Maybe blocks the use of Alt+[a-z]. I hope that most applications use letters which would be on the left side of qwertz
 Alt+,         | Switch to tab 2                    | No             |
 Alt+.         | Switch to tab 3                    | No             |
 Alt+j         | Switch to tab 4                    | No             |
@@ -165,10 +165,12 @@ Shortcut      | Function      | Left hand only                | Comment
 ------------- | ------------- | -------------                 | -------------
 /             | Quick search  | Yes (maybe copy paste search) | Entered with Mod3 (caps lock key) and s
 ö             | Quick search  | Yes (maybe copy paste search) | Currently used
-Alt+Y         | MakeDir       | Yes                           |
+Alt+Y         | Delete        | Yes                           |
 Alt+X         | Rename        | Yes                           |
 Alt+C         | Copy          | Yes                           |
-Alt+D         | Delete        | Yes                           |
+Alt+E         | Symlink       | Yes                           |
+Alt+Q         | QuickView     | Yes                           |
+Alt+J         | MakeDir       | Not really                    | I suppose I will have to type a directory name then
 Ctrl+a        | MarkAll       | Yes                           |
 Ctrl+A        | UnmarkAll     | Yes                           | Default behavior from Gimp
 Ctrl+S        | RunTerm       | Not really                    | Like Ctrl+Super+s but with the current directory
