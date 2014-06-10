@@ -1,2 +1,7 @@
+## Jekyll output directory:
 --ignore-directory=_site
-# Jekyll output directory.
+## TeX/LaTeX {{{
+--ignore-file=match:\.aux$
+## Ignore TeX files created by Kile:
+--ignore-file=match:\.tex\.backup$
+## }}}

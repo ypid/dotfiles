@@ -129,6 +129,7 @@ Ctrl+Alt+x       | `rhythmbox-client --play-pause`            | Of course      |
 Ctrl+Super+x     | `rhythmbox-client --next`                  | Of course      | Play next music file
 Ctrl+Alt+O       | Launch program `eject`                     | No             | eject removable media
 Ctrl+Alt+c       | Launch [script][suspend-script] to suspend | Yes            |
+Ctrl+Alt+v       | poweroff                                   | Yes            |
 
 ## GUI applications
 
@@ -150,6 +151,7 @@ Alt+l         | Switch to tab 6                    | No             |
 Alt+u         | Switch to tab 7                    | No             |
 Alt+i         | Switch to tab 8                    | No             |
 Alt+o         | Switch to tab 9                    | No             |
+Ctrl+[+-]     | Increase/Decrease font size        | Nice to have   | Level 3 [Neo2][] plus and minus do not work in firefox. Using Level 4 once (which currently don’t works with gnome-terminal).
 Ctrl+w        | Closes the tab                     | Of course      | Should be default in all program
 Ctrl+q        | Closes the application             | Of course      | Should be default in all program
 
@@ -171,6 +173,10 @@ Alt+C         | Copy          | Yes                           |
 Alt+E         | Symlink       | Yes                           |
 Alt+Q         | QuickView     | Yes                           |
 Alt+J         | MakeDir       | Not really                    | I suppose I will have to type a directory name then
+Ctrl+J        | SortByName    | Nice to have                 |
+Ctrl+K        | SortByExt     | Nice to have                 |
+Ctrl+L        | SortBySize    | Nice to have                 |
+Ctrl+U        | SortByDate    | Nice to have                 |
 Ctrl+a        | MarkAll       | Yes                           |
 Ctrl+A        | UnmarkAll     | Yes                           | Default behavior from Gimp
 Ctrl+S        | RunTerm       | Not really                    | Like Ctrl+Super+s but with the current directory
@@ -187,6 +193,13 @@ See [.tmux.conf][] …
 ### Vim
 
 See [.vimrc][] (Folds *Key (re)Mappings* and *Bundles and plugins*) …
+
+#### Free shortcuts
+List of free shortcuts (they may have a default mapping but there are better shortcuts for those actions so that the shortcuts are available to be mapped to a different action).
+
+##### Normal mode
+
+* Shift+Space
 
 <!-- links -->
 
