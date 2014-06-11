@@ -79,7 +79,8 @@ alias h='htop'
 ## Use the shortcuts from oh-my-zsh for git
 alias wd='git diff --color-words --no-index'
 # overwrite alias from oh-my-zsh {{{
-alias glg='git log --stat --decorate=short' # full history
+# alias glg='git log --stat --decorate=short' # full history
+alias glg='tig' # full history
 unalias gp 2>/dev/zero
 function gp {
     if [[ "$PWD" =~ "$HOME/Beruf" ]]; then

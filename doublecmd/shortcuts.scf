@@ -128,20 +128,36 @@
         <Command>cm_ColumnsView</Command>
       </Hotkey>
       <Hotkey>
+        <Shortcut>Ctrl+Shift+J</Shortcut>
+        <Command>cm_SortByName</Command>
+      </Hotkey>
+      <Hotkey>
         <Shortcut>Ctrl+F3</Shortcut>
         <Command>cm_SortByName</Command>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Ctrl+Shift+K</Shortcut>
+        <Command>cm_SortByExt</Command>
       </Hotkey>
       <Hotkey>
         <Shortcut>Ctrl+F4</Shortcut>
         <Command>cm_SortByExt</Command>
       </Hotkey>
       <Hotkey>
-        <Shortcut>Ctrl+F5</Shortcut>
-        <Command>cm_SortByDate</Command>
+        <Shortcut>Ctrl+Shift+L</Shortcut>
+        <Command>cm_SortBySize</Command>
       </Hotkey>
       <Hotkey>
         <Shortcut>Ctrl+F6</Shortcut>
         <Command>cm_SortBySize</Command>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Ctrl+Shift+U</Shortcut>
+        <Command>cm_SortByDate</Command>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Ctrl+F5</Shortcut>
+        <Command>cm_SortByDate</Command>
       </Hotkey>
       <Hotkey>
         <Shortcut>Ctrl+Enter</Shortcut>
@@ -300,10 +316,6 @@
         <Command>cm_MarkPlus</Command>
       </Hotkey>
       <Hotkey>
-        <Shortcut>Ctrl+Shift+J</Shortcut>
-        <Command>cm_MarkMinus</Command>
-      </Hotkey>
-      <Hotkey>
         <Shortcut>Shift+Alt+X</Shortcut>
         <Command>cm_Rename</Command>
       </Hotkey>
@@ -316,26 +328,22 @@
         <Command>cm_RenameOnly</Command>
       </Hotkey>
       <Hotkey>
-        <Shortcut>Ctrl+Shift+U</Shortcut>
+        <Shortcut>Ctrl+Shift+I</Shortcut>
         <Command>cm_PanelsSplitterPerPos</Command>
         <Param>splitpct=50</Param>
       </Hotkey>
       <Hotkey>
-        <Shortcut>Ctrl+Shift+I</Shortcut>
+        <Shortcut>Ctrl+Shift+O</Shortcut>
         <Command>cm_PanelsSplitterPerPos</Command>
         <Param>splitpct=70</Param>
       </Hotkey>
       <Hotkey>
-        <Shortcut>Ctrl+Shift+O</Shortcut>
+        <Shortcut>Ctrl+Shift+P</Shortcut>
         <Command>cm_PanelsSplitterPerPos</Command>
         <Param>splitpct=100</Param>
       </Hotkey>
       <Hotkey>
         <Shortcut>ö</Shortcut>
-        <Command>cm_QuickSearch</Command>
-      </Hotkey>
-      <Hotkey>
-        <Shortcut>Num/</Shortcut>
         <Command>cm_QuickSearch</Command>
       </Hotkey>
       <Hotkey>
@@ -349,6 +357,14 @@
       <Hotkey>
         <Shortcut>Shift+Alt+E</Shortcut>
         <Command>cm_SymLink</Command>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Shift+Alt+F</Shortcut>
+        <Command>cm_CountDirContent</Command>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Shift+Alt+U</Shortcut>
+        <Command>cm_CopyNamesToClip</Command>
       </Hotkey>
       <Hotkey>
         <Shortcut>Del</Shortcut>
@@ -424,6 +440,11 @@
       <Hotkey>
         <Shortcut>Ctrl+Right</Shortcut>
         <Command>cm_TransferRight</Command>
+        <Control>Files Panel</Control>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Num/</Shortcut>
+        <Command>cm_QuickSearch</Command>
         <Control>Files Panel</Control>
       </Hotkey>
     </Form>

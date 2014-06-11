@@ -61,6 +61,14 @@ The use of the shift modifier key is not explicitly written down (-> case sensit
 
 Left hand only: Should be easy to use with the left hand, because it is often used during work with the mouse. For example switching windows or Ctrl+c to copy to the clipboard.
 
+## Advises: Shortcuts done right
+
+Here are some advices regarding shortcuts for programmers or UI designers which I would like to see implemented:
+
+* Allow more than one shortcut for one action!
+* Allow to reconfigure *everything*.
+* Make it easy to track the configuration files (which contain the shortcuts) with version control.
+* Do not reinvent the wheel!
 
 ## Special keys
 Key name      | Comment
@@ -75,17 +83,39 @@ Own shortcuts for the window manager should include the Super key which is norma
 
 ### Navigation
 
-Shortcut                              | Function                               | Left hand only | Comment
--------------                         | -------------                          | -------------  | -------------
-Alt+A                                 | Move window one workspace to the left  | Yes            | Currently not used, just defined to be consistent.
-Alt+D                                 | Move window one workspace to the right | Yes            | Currently not used, just defined to be consistent.
-Alt+W                                 | Move window one workspace up           | Yes            |
-Alt+S                                 | Move window one workspace down         | Yes            |
-Alt+[Level5 Shift][special-keys]      | Switch windows                         | Of course      | Easier to reach than Alt-Tab
-Super+j                               | Switch to next windows                 | No             | See [shellshape][].
-Super+k                               | Switch to previous windows             | No             | See [shellshape][].
-Ctrl-Alt+y                            | Switch to workspace 1                  | Of course      |
-Ctrl-Alt+[Level5 Shift][special-keys] | Switch to workspace 2                  | Of course      |
+Shortcut                              | Function                                  | Left hand only | Comment
+-------------                         | -------------                             | -------------  | -------------
+Alt+A                                 | Move window one workspace to the left     | Yes            | Currently not used, just defined to be consistent.
+Alt+D                                 | Move window one workspace to the right    | Yes            | Currently not used, just defined to be consistent.
+Alt+W                                 | Move window one workspace up              | Yes            |
+Alt+S                                 | Move window one workspace down            | Yes            |
+Alt+[Level5 Shift][special-keys]      | Switch windows                            | Of course      | Easier to reach than Alt-Tab
+Super+j                               | Switch to next windows                    | No             | See [shellshape][].
+Super+k                               | Switch to previous windows                | No             | See [shellshape][].
+Super+d                               | switch workspace to vertical tiled mode   | Yes            | See [shellshape][].
+Super+f                               | switch workspace to floating mode         | Yes            | See [shellshape][].
+Super+g                               | switch workspace to horizontal tiled mode | Yes            | See [shellshape][].
+Super+J                               | swap with next window                     | No             | See [shellshape][].
+Super+K                               | swap with previous window                 | No             | See [shellshape][].
+Super+m                               | minimize window                           | No             | See [shellshape][].
+Super+M                               | un-minimize last window                   | No             | See [shellshape][].
+Super+h                               | shrink master area                        | No             | See [shellshape][].
+Super+l                               | grow master area                          | No             | See [shellshape][].
+Super+u                               | shrink a slave area                       | No             | See [shellshape][].
+Super+i                               | grow a slave area                         | No             | See [shellshape][].
+Super+H                               | decrease window's width                   | No             | See [shellshape][].
+Super+L                               | increase window's width                   | No             | See [shellshape][].
+Super+U                               | decrease window's height                  | No             | See [shellshape][].
+Super+I                               | increase window's height                  | No             | See [shellshape][].
+Super+z                               | toggle window maximized state             | No             | See [shellshape][].
+Alt+Super+j                           | go to workspace below                     | No             | See [shellshape][].
+Alt+Super+k                           | go to workspace above                     | No             | See [shellshape][].
+Alt+Super+J                           | move window to workspace below            | No             | See [shellshape][].
+Alt+Super+K                           | move window to workspace above            | No             | See [shellshape][]. Could release Alt+[WASD]?
+Super+a                               | bring window to front / send to back      | No             | See [shellshape][].
+Super+C                               | close window                              | No             | See [shellshape][]. Does not work. Not using it.
+Ctrl-Alt+y                            | Switch to workspace 1                     | Of course      |
+Ctrl-Alt+[Level5 Shift][special-keys] | Switch to workspace 2                     | Of course      |
 
 [shellshape]: https://extensions.gnome.org/extension/294/shellshape/
 
@@ -114,7 +144,7 @@ Alt+Super+c   | Switch to next input source (e.g. qNeo2 and qwertz) | Yes       
 Shortcut      | Function               | Left hand only | Comment
 ------------- | -------------          | -------------  | -------------
 Ctrl+Q        | Close window           | Yes            | If Ctrl-q does not work, defined in gnome-terminal by default
-Ctrl+Alt+f    | Toggle fullscreen mode | Yes            | If Alt-f does not work
+Ctrl+Alt+f    | Toggle fullscreen mode | Yes            | If Alt-f does not work. Try to use Ctrl+Alt+f because it is more generic.
 Ctrl+Alt+w    | Maximize window        | Yes            |
 Ctrl+Alt+a    | View split on left     | Yes            |
 Ctrl+Alt+d    | View split on right    | Yes            |
@@ -131,17 +161,31 @@ Ctrl+Alt+O       | Launch program `eject`                     | No             |
 Ctrl+Alt+c       | Launch [script][suspend-script] to suspend | Yes            |
 Ctrl+Alt+v       | poweroff                                   | Yes            |
 
+### Autokey
+
+Here are the shortcuts I use to trigger [autokey][] actions.
+
+#### Emitted keystrokes
+
+Shortcut      | Function      | Left hand only | Comment
+------------- | ------------- | -------------  | -------------
+Super+v       | enter         | Yes            | Emit enter. If AltGr+v does not work (unfortunately AltGr can currently not be used in autokey).
+
 ## GUI applications
 
 ### Windows and tabs
 
 Applies for: firefox, gnome-terminal, Double Commander (not fully yet because some are not configurable)
 
+For gnome-terminal, each shortcut requires the use of the Shift modifier key.
+
 Ctrl commands have to be used with Shift in the terminal emulator.
 
 Shortcut      | Function                           | Left hand only | Comment
 ------------- | -------------                      | -------------  | -------------
 Ctrl+n        | Opens a new (preferably empty) tab | No             | Easier to reach than C-t
+Ctrl+j        | Swtich to left tab                 | Not really     |
+Ctrl+k        | Swtich to right tab                | Not really     |
 Alt+m         | Switch to tab 1                    | No             | See [Neo2 layer4][Neo2]. Maybe blocks the use of Alt+[a-z]. I hope that most applications use letters which would be on the left side of qwertz
 Alt+,         | Switch to tab 2                    | No             |
 Alt+.         | Switch to tab 3                    | No             |
@@ -151,7 +195,7 @@ Alt+l         | Switch to tab 6                    | No             |
 Alt+u         | Switch to tab 7                    | No             |
 Alt+i         | Switch to tab 8                    | No             |
 Alt+o         | Switch to tab 9                    | No             |
-Ctrl+[+-]     | Increase/Decrease font size        | Nice to have   | Level 3 [Neo2][] plus and minus do not work in firefox. Using Level 4 once (which currently don’t works with gnome-terminal).
+Ctrl+[+-]     | Increase/Decrease font size        | Nice to have   | Level 3 [Neo2][] plus and minus do not work in firefox. Using Level 4 once (which currently don’t work with gnome-terminal).
 Ctrl+w        | Closes the tab                     | Of course      | Should be default in all program
 Ctrl+q        | Closes the application             | Of course      | Should be default in all program
 
@@ -165,7 +209,7 @@ See the manual for the default shortcuts. I added my own which I think are more 
 
 Shortcut      | Function      | Left hand only                | Comment
 ------------- | ------------- | -------------                 | -------------
-/             | Quick search  | Yes (maybe copy paste search) | Entered with Mod3 (caps lock key) and s
+/             | Quick search  | Yes (maybe copy paste search) | Entered with Mod3 (caps lock key) and s.
 ö             | Quick search  | Yes (maybe copy paste search) | Currently used
 Alt+Y         | Delete        | Yes                           |
 Alt+X         | Rename        | Yes                           |
@@ -173,16 +217,25 @@ Alt+C         | Copy          | Yes                           |
 Alt+E         | Symlink       | Yes                           |
 Alt+Q         | QuickView     | Yes                           |
 Alt+J         | MakeDir       | Not really                    | I suppose I will have to type a directory name then
-Ctrl+J        | SortByName    | Nice to have                 |
-Ctrl+K        | SortByExt     | Nice to have                 |
-Ctrl+L        | SortBySize    | Nice to have                 |
-Ctrl+U        | SortByDate    | Nice to have                 |
+Ctrl+J        | SortByName    | Nice to have                  |
+Ctrl+K        | SortByExt     | Nice to have                  |
+Ctrl+L        | SortBySize    | Nice to have                  |
+Ctrl+U        | SortByDate    | Nice to have                  |
 Ctrl+a        | MarkAll       | Yes                           |
 Ctrl+A        | UnmarkAll     | Yes                           | Default behavior from Gimp
 Ctrl+S        | RunTerm       | Not really                    | Like Ctrl+Super+s but with the current directory
 Ctrl+l        | FocusCmdLine  | Not really                    | Was mapped to Shift+F2 but Ctrl+l is more confinient because it works be default in firefox. Overwrites CalculateSpace in DC.
 
 Note: Double Commander works quite nicely together with [Neo2][] …
+
+### ERP system Steps Ahead
+
+This section describes some mapping which I added to make working with the ERP system [Steps Ahead][] more pleasant. I am relaying on one ugly hack to achieve this because [Steps Ahead][] (even in the current version 9.5.3) does not allow to remap or add shortcuts to actions which already have a default shortcut … So I use [autokey][] to do this anyway. It works the following: When autokey intercepts one of the following shortcuts it emits the shortcut on which Steps Ahead triggers the desired action.
+
+Shortcut      | Function                          | Left hand only | Comment
+------------- | -------------                     | -------------  | -------------
+Super+s       | Clone dataset (copy and paste it) | Yes            | Emits Shift+F6 followed by enter (to acknowledge the „Do you really want to copy …“ dialog).
+Super+r       | Reload                            | Yes            | Emits F5. Could also be useful for other applications.
 
 ## Terminal programs
 
@@ -208,3 +261,5 @@ List of free shortcuts (they may have a default mapping but there are better sho
 [.vimrc]: /.vimrc
 [.tmux.conf]: /.tmux.conf
 [suspend-script]: https://github.com/ypid/scripts/blob/master/suspend-via-gnome
+[autokey]: https://code.google.com/p/autokey/
+[Steps Ahead]: https://de.wikipedia.org/wiki/Steps_Ahead
