@@ -77,7 +77,7 @@ ZSH_THEME="bira"
 # Mandatory
 plugins=(gitfast autojump git-annex)
 # plugins=(tmuxinator)
-source ~/gems/gems/tmuxinator-0.6.8/completion/tmuxinator.zsh
+[[ -e ~/gems/gems/tmuxinator-0.6.8/completion/tmuxinator.zsh ]] && source ~/gems/gems/tmuxinator-0.6.8/completion/tmuxinator.zsh
 
 # Nice to have
 plugins+=(command-not-found zsh-syntax-highlighting mosh)
