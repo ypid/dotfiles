@@ -209,8 +209,8 @@ See the manual for the default shortcuts. I added my own which I think are more 
 
 Shortcut      | Function      | Left hand only                | Comment
 ------------- | ------------- | -------------                 | -------------
-/             | Quick search  | Yes (maybe copy paste search) | Entered with Mod3 (caps lock key) and s.
-ö             | Quick search  | Yes (maybe copy paste search) | Currently used
+/             | Quick search  | Yes (maybe copy paste search) | Not used. Configured DC so that every letter typed will open the quick search.
+ö             | Quick search  | Yes (maybe copy paste search) | Not used. Configured DC so that every letter typed will open the quick search.
 Alt+Y         | Delete        | Yes                           |
 Alt+X         | Rename        | Yes                           |
 Alt+C         | Copy          | Yes                           |
@@ -230,7 +230,7 @@ Note: Double Commander works quite nicely together with [Neo2][] …
 
 ### ERP system Steps Ahead
 
-This section describes some mapping which I added to make working with the ERP system [Steps Ahead][] more pleasant. I am relaying on one ugly hack to achieve this because [Steps Ahead][] (even in the current version 9.5.3) does not allow to remap or add shortcuts to actions which already have a default shortcut … So I use [autokey][] to do this anyway. It works the following: When autokey intercepts one of the following shortcuts it emits the shortcut on which Steps Ahead triggers the desired action.
+This section describes some mapping which I added to make working with the ERP system [Steps Ahead][] more pleasant. I am relaying on an ugly hack to achieve this because [Steps Ahead][] (even in the current version 9.5.3) does not allow to remap or add shortcuts to actions which already have a default shortcut … So I use [autokey][] to do this anyway. It works the following: When autokey intercepts one of the following shortcuts it emits the shortcut on which Steps Ahead triggers the desired action.
 
 Shortcut      | Function                          | Left hand only | Comment
 ------------- | -------------                     | -------------  | -------------
