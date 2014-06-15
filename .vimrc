@@ -57,80 +57,105 @@
     set pastetoggle=<F2>           " pastetoggle (sane indentation on pastes)
 
     " Map leader mappings {{{
-    let mapleader = ','
+        let mapleader = ','
 
-    " Save and go to normal mode
-    nmap <Leader>s :update<CR>
-    imap <Leader>s <ESC>:update<CR>l
+        " Save and go to normal mode
+        nmap <Leader>s :update<CR>
+        imap <Leader>s <ESC>:update<CR>l
 
-    " Filetype detact
-    nmap <Leader>fd :filetype detect<CR>
-    imap <Leader>fd <c-o>:filetype detect<CR>
+        " Filetype detact
+        nmap <Leader>fd :filetype detect<CR>
+        imap <Leader>fd <c-o>:filetype detect<CR>
 
-    " Save and exit
-    nmap <Leader>x :x<CR>
-    imap <Leader>x <ESC>:x<CR>
+        " Save and exit
+        nmap <Leader>x :x<CR>
+        imap <Leader>x <ESC>:x<CR>
 
-    " Quick quit command
-    nmap <Leader>e :quit<CR>
-    " Quit all windows
-    nmap <Leader>E :q!<CR>
+        " Quick quit command
+        nmap <Leader>e :quit<CR>
+        " Quit all windows
+        nmap <Leader>E :q!<CR>
 
-    " Code folding options {{{
-        " nmap <leader>f0 :set foldlevel=0<CR>
-        " Use zM for this
-        nmap <leader>f1 :set foldlevel=1<CR>
-        nmap <leader>f2 :set foldlevel=2<CR>
-        nmap <leader>f3 :set foldlevel=3<CR>
-        nmap <leader>f4 :set foldlevel=4<CR>
-        nmap <leader>f5 :set foldlevel=5<CR>
-        nmap <leader>f6 :set foldlevel=6<CR>
-        nmap <leader>f7 :set foldlevel=7<CR>
-        nmap <leader>f8 :set foldlevel=8<CR>
-        nmap <leader>f9 :set foldlevel=9<CR>
-    " }}}
+        " Code folding options {{{
+            " nmap <leader>f0 :set foldlevel=0<CR>
+            " Use zM for this
+            nmap <leader>f1 :set foldlevel=1<CR>
+            nmap <leader>f2 :set foldlevel=2<CR>
+            nmap <leader>f3 :set foldlevel=3<CR>
+            nmap <leader>f4 :set foldlevel=4<CR>
+            nmap <leader>f5 :set foldlevel=5<CR>
+            nmap <leader>f6 :set foldlevel=6<CR>
+            nmap <leader>f7 :set foldlevel=7<CR>
+            nmap <leader>f8 :set foldlevel=8<CR>
+            nmap <leader>f9 :set foldlevel=9<CR>
+        " }}}
 
-    " Toggle highlight search
-    nmap <Leader>B :set invhlsearch<CR>
-    imap <Leader>B <c-o>:set invhlsearch<CR>
-    nmap <Leader>b :set nohlsearch<CR>
-    imap <Leader>b <c-o>:set nohlsearch<CR>
+        " Toggle highlight search
+        nmap <Leader>B :set invhlsearch<CR>
+        imap <Leader>B <c-o>:set invhlsearch<CR>
+        nmap <Leader>b :set nohlsearch<CR>
+        imap <Leader>b <c-o>:set nohlsearch<CR>
 
-    " Bind set list
-    nmap <Leader>l :set list!<CR>
-    imap <Leader>l <c-o>:set list!<CR>
+        " let hlstate=0
+        " let lastsearchstring = @/
+        " nmap <Leader>b :call Togglehlsearch()<CR>
 
-    " Insert current full path of the file
-    imap <Leader>fp <ESC>:put =expand('%:p')<CR>kJA
+        " Bind set list
+        nmap <Leader>l :set list!<CR>
+        imap <Leader>l <c-o>:set list!<CR>
 
-    " Insert current file name
-    " imap <Leader>fn <ESC>"%p<CR>g;
-    " Just use Ctrl-r%
+        " Insert current full path of the file
+        imap <Leader>fp <ESC>:put =expand('%:p')<CR>kJA
 
-    " Spellcheck { set spellfile=~/.vim/spell/en.utf-8.add set dictionary+=/usr/share/dict/words
-        set spelllang=en_us,de_de
-        " set spelllang=en_us
-        nmap <Leader>cd :set spell!<CR>
-        imap <Leader>cd <c-o>:set spell!<CR>
-    " }
+        " Insert current file name
+        " imap <Leader>fn <ESC>"%p<CR>g;
+        " Just use Ctrl-r%
 
-    " Insert newline without entering insert mode
-    map <Leader>Q O<Esc>
-    map <Leader>q o<Esc>
+        " Spellcheck { set spellfile=~/.vim/spell/en.utf-8.add set dictionary+=/usr/share/dict/words
+            set spelllang=en_us,de_de
+            " set spelllang=en_us
+            nmap <Leader>cd :set spell!<CR>
+            imap <Leader>cd <c-o>:set spell!<CR>
+        " }
 
-    " easier moving between tabs
-    " map <Leader>n <esc>:tabprevious<CR>
-    " map <Leader>m <esc>:tabnext<CR>
-    " Use the default gt and gT
+        " Insert newline without entering insert mode
+        map <Leader>Q O<Esc>
+        map <Leader>q o<Esc>
 
-    " easier moving between buffers
-    map <Leader>w <esc>:bNext<CR>
+        " easier moving between tabs
+        " map <Leader>n <esc>:tabprevious<CR>
+        " map <Leader>m <esc>:tabnext<CR>
+        " Use the default gt and gT
 
-    " set the executable bit
-    nmap <Leader>y :w!<CR>:!chmod +x "%"<CR>:quit<CR>
-    imap <Leader>y <ESC>:w!<CR>:!chmod +x "%"<CR>:quit<CR>
+        " easier moving between buffers
+        map <Leader>w <esc>:bNext<CR>
 
-    nmap <Leader>d :echo strftime("%Y-%m-%d_%H:%M")<CR>
+        " set the executable bit
+        nmap <Leader>y :w!<CR>:!chmod +x "%"<CR>:quit<CR>
+        imap <Leader>y <ESC>:w!<CR>:!chmod +x "%"<CR>:quit<CR>
+
+        nmap <Leader>d :echo strftime("%Y-%m-%d_%H:%M")<CR>
+
+        function! TranslateDateVisual()
+            sil! norm! gv"ty
+            echo system('date -d @'. @t)
+        endfunction
+
+        " Translate the current word (Unix time stamp) to a human readable time.
+        nmap <Leader>td :echo system('date -d @'.expand('<cword>'))<CR>
+        vmap <Leader>td :call TranslateDateVisual()<CR>
+
+        " Append modeline after last line in buffer.
+        " Use substitute() instead of printf() to handle '%%s' modeline in LaTeX
+        " files.
+        function! AppendModeline()
+            let l:modeline = printf("vim: set ts=%d sw=%d tw=%d %set :",
+                        \ &tabstop, &shiftwidth, &textwidth, &expandtab ? '' : 'no')
+            call append(line("$"), l:modeline)
+            normal '.
+            call NERDComment('n', 'Toggle')
+        endfunction
+        nnoremap <silent> <Leader>am :call AppendModeline()<CR>
     " }}}
 
     " Other mappings {{{
@@ -228,16 +253,13 @@
         " noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
         " noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
         " noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
-    " }
+    " }}}
 
     " General {
         if count(g:spf13_bundle_groups, 'general')
             " Bundle 'scrooloose/nerdtree'
             " map <Leader>v :NERDTreeToggle<CR>
 
-            " Require it here, but configure it later.
-            Bundle 'altercation/vim-colors-solarized'
-            Bundle 'spf13/vim-colors'
             Bundle 'tpope/vim-surround'
             " Bundle 'spf13/vim-autoclose' " Too simple, no indent stuff
             " let g:AutoPairShortcutToggle = '<Leader>ac'
@@ -264,18 +286,18 @@
             " Extended matching with "%"
 
             " vim-bad-whitespace {
-            Bundle 'bitc/vim-bad-whitespace'
-            nmap <Leader>fc :EraseBadWhitespace<CR>
+                Bundle 'bitc/vim-bad-whitespace'
+                nmap <Leader>fc :EraseBadWhitespace<CR>
             " }
 
             Bundle 'tpope/vim-repeat'
 
             " Translate {
-            if has("python") && executable('python')
-                Bundle 'ypid/lookup.vim'
-                " let g:lookup_dict_para = []
-                nmap <Leader>tr :Lookup<CR>
-                vmap <Leader>tr :call LookupVisual()<CR>
+                if has("python") && executable('python')
+                    Bundle 'ypid/lookup.vim'
+                    " let g:lookup_dict_para = []
+                    nmap <Leader>tr :Lookup<CR>
+                    vmap <Leader>tr :call LookupVisual()<CR>
                 endif
             " }
 
@@ -291,12 +313,6 @@
 
             " Bundle 'python.vim--Herzog'
 
-            " Replaced by solarized {{{
-                " Bundle 'godlygeek/csapprox'
-                " Bundle 'jistr/vim-nerdtree-tabs'
-                " Bundle 'flazz/vim-colorschemes'
-            " }}}
-
             Bundle 'sjl/gundo.vim'
             nnoremap <Leader>ga :GundoToggle<CR>
 
@@ -304,29 +320,26 @@
             " Bundle 'myusuf3/numbers.vim'
 
             " indent_guides {
-            Bundle 'nathanaelkane/vim-indent-guides'
-            if !exists('g:spf13_no_indent_guides_autocolor')
-                let g:indent_guides_auto_colors = 1
-            else
-                " For some colorschemes, autocolor will not work (eg: 'desert', 'ir_black')
-                autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#212121 ctermbg=3
-                autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#404040 ctermbg=4
-            endif
-            let g:indent_guides_start_level = 2
-            let g:indent_guides_guide_size = 1
-            let g:indent_guides_enable_on_vim_startup = 1
+                Bundle 'nathanaelkane/vim-indent-guides'
+                if !exists('g:spf13_no_indent_guides_autocolor')
+                    let g:indent_guides_auto_colors = 1
+                else
+                    " For some colorschemes, autocolor will not work (eg: 'desert', 'ir_black')
+                    autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#212121 ctermbg=3
+                    autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#404040 ctermbg=4
+                endif
+                let g:indent_guides_start_level = 2
+                let g:indent_guides_guide_size = 1
+                let g:indent_guides_enable_on_vim_startup = 1
             " }
 
             if !exists('g:spf13_no_views')
                 Bundle 'vim-scripts/restore_view.vim'
             endif
-            " Bundle 'airblade/vim-gitgutter'
-            " Show changes in working copy with plus sign, start of the line
-
-            " Bundle 'tpope/vim-abolish.git'
-            " Don’t really using it for now.
 
             Bundle 'tpope/vim-markdown'
+
+            Bundle 'bronson/vim-visual-star-search'
         endif
     " }
 
@@ -356,51 +369,44 @@
                 Bundle 'int3/vim-extradite'
                 let g:extradite_showhash = 1
                 command! Gloge Extradite
+
+                " Bundle 'airblade/vim-gitgutter'
+                " Show changes in working copy with plus sign, start of the line
+
+                " Bundle 'tpope/vim-abolish.git'
+                " Don’t really using it for now.
             " }}}
 
             Bundle 'powerman/vim-plugin-viewdoc'
             let g:manpageview_options_pl = ";-f;-q;-t;"
 
-            Bundle 'bronson/vim-visual-star-search'
-
             " Tabularize {
                 Bundle 'godlygeek/tabular'
-                nmap <Leader>a& :Tabularize /&<CR>
-                vmap <Leader>a& :Tabularize /&<CR>
-                nmap <Leader>a= :Tabularize /=<CR>
-                vmap <Leader>a= :Tabularize /=<CR>
-                nmap <Leader>a: :Tabularize /:<CR>
-                vmap <Leader>a: :Tabularize /:<CR>
-                nmap <Leader>a:: :Tabularize /:\zs<CR>
-                vmap <Leader>a:: :Tabularize /:\zs<CR>
-                nmap <Leader>a, :Tabularize /,<CR>
-                vmap <Leader>a, :Tabularize /,<CR>
-                nmap <Leader>a/ :Tabularize /\zs\/\//<CR>
-                vmap <Leader>a/ :Tabularize /\/ <CR>
-                nmap <Leader>a" :Tabularize /"<CR>
-                vmap <Leader>a" :Tabularize /"<CR>
-                nmap <Leader>a' :Tabularize /:\zs \+'/l0r0<CR>
-                vmap <Leader>a' :Tabularize /:\zs \+'/l0r0<CR>
-                nmap <Leader>a# :Tabularize /#<CR>
-                vmap <Leader>a# :Tabularize /#<CR>
-                nmap <Leader>a<Space> :Tabularize /\s\+<CR>
-                vmap <Leader>a<Space> :Tabularize /\s\+<CR>
+                map <Leader>a& :Tabularize /&<CR>
+                map <Leader>a= :Tabularize /=<CR>
+                map <Leader>a: :Tabularize /:<CR>
+                map <Leader>a:: :Tabularize /:\zs<CR>
+                map <Leader>a, :Tabularize /,<CR>
+                map <Leader>a/ :Tabularize /\zs\/\//<CR>
+                map <Leader>a" :Tabularize /"<CR>
+                map <Leader>a' :Tabularize /:\zs \+'/l0r0<CR>
+                map <Leader>a# :Tabularize /#<CR>
+                map <Leader>a<Space> :Tabularize /\s\+<CR>
                 " http://stackoverflow.com/questions/10287919/use-vims-tabularize-plugin-to-only-match-the-first-occurance-of-a-delimiter
-                nmap <Leader>af<Space> :Tabularize /^\s*\w*<CR>
-                vmap <Leader>af<Space> :Tabularize /^\s*\w*<CR>
-                vmap <Leader>a<Space> :Tabularize /\s\+<CR>
-                nmap <Leader>a<Bar> :Tabularize /[^\\]\zs<Bar><CR>
-                vmap <Leader>a<Bar> :Tabularize /[^\\]\zs<Bar><CR>
+                map <Leader>af<Space> :Tabularize /^\s*\w*<CR>
+                map <Leader>a<Bar> :Tabularize /[^\\]\zs<Bar><CR>
             " }
 
-            " Bundle 'tomtom/tcomment_vim'
-            let g:tcommentOptions = {'strip_whitespace': 1}
+            " Handling comments {{{
+                " Bundle 'tomtom/tcomment_vim'
+                " let g:tcommentOptions = {'strip_whitespace': 1}
 
-            Bundle 'scrooloose/nerdcommenter'
-            let NERDSpaceDelims = 1
+                Bundle 'scrooloose/nerdcommenter'
+                let NERDSpaceDelims = 1
 
-            noremap gcc :call NERDComment('n', 'Toggle')<CR>
-            " vnoremap gc gcc
+                noremap gcc :call NERDComment('n', 'Toggle')<CR>
+                " Use default <leader> mappings.
+            " }}}
 
             " Toggle words
             Bundle 'toggle_words.vim'
@@ -412,8 +418,8 @@
                 " Bundle 'ciaranm/detectindent'
                 Bundle 'ypid/detectindent'
                 let g:detectindent_preferred_expandtab = 1
-                let g:detectindent_preferred_indent = 4
-                let g:detectindent_min_indent = 2
+                let g:detectindent_preferred_indent    = 4
+                let g:detectindent_min_indent          = 2
             " }}}
 
             " Highlight brackets
@@ -643,19 +649,16 @@
     " HTML {
         if count(g:spf13_bundle_groups, 'html')
             " AutoCloseTag {
-            " Bundle 'karuna/HTML-AutoCloseTag'
-            " Bundle 'amirh/HTML-AutoCloseTag'
-            Bundle 'ypid/HTML-AutoCloseTag'
-            let g:closetag_html_style=1
-            " Bundle 'closetag.vim'
-            " Bundle 'inkarkat/closetag.vim'
-            Bundle 'ypid/closetag.vim'
+                " Bundle 'karuna/HTML-AutoCloseTag'
+                " Bundle 'amirh/HTML-AutoCloseTag'
+                Bundle 'ypid/HTML-AutoCloseTag'
+                let g:closetag_html_style=1
+                " Bundle 'closetag.vim'
+                " Bundle 'inkarkat/closetag.vim'
+                Bundle 'ypid/closetag.vim'
+            " }
 
             " Bundle 'sukima/xmledit'
-            " Bundle 'closetag.vim'
-            " Make it so AutoCloseTag works for xml and xhtml files as well
-            " autocmd FileType xhtml,xml ru ftplugin/html/autoclosetag.vim
-            " }
 
             " Bundle 'hail2u/vim-css3-syntax'
             " Bundle 'tpope/vim-haml'
@@ -717,6 +720,7 @@
     " }
 
     " To small for a plugin {
+        " http://vim.wikia.com/wiki/Display_output_of_shell_commands_in_new_window
         function! s:ExecuteInShell(command)
             let command = join(map(split(a:command), 'expand(v:val)'))
             let winnr = bufwinnr('^' . command . '$')
@@ -732,15 +736,6 @@
         endfunction
         command! -complete=shellcmd -nargs=+ Shell call s:ExecuteInShell(<q-args>)
 
-        function! TranslateDateVisual()
-            sil! norm! gv"ty
-            echo system('date -d @'. @t)
-        endfunction
-
-        " Translate the current word (unix time stamp) to a human readable time
-        nmap <Leader>td :echo system('date -d @'.expand('<cword>'))<CR>
-        vmap <Leader>td :call TranslateDateVisual()<CR>
-
         function! EnsureDirExists (dir)
             if !isdirectory(a:dir)
                 if exists("*mkdir")
@@ -753,6 +748,7 @@
         endfunction
 
         " Marking duplicate lines
+        " https://stackoverflow.com/questions/1268032/marking-duplicate-lines
         function! HighlightRepeats() range
           let lineCounts = {}
           let lineNum = a:firstline
@@ -770,29 +766,7 @@
             endif
           endfor
         endfunction
-
         command! -range=% HighlightRepeats <line1>,<line2>call HighlightRepeats()
-
-        " Toggle word highlighting on and off but and don’t get confused if a
-        " new search was issued.
-        " Does not work. If you fix it please open a pull request :)
-        let hlstate=0
-        let lastsearchstring = @/
-        function! Togglehlsearch()
-            if (lastsearchstring == @/)
-                nohlsearch
-                let lastsearchstring = @/
-            else
-                set hlsearch
-            endif
-            let hlstate= &hlstate + 1
-            echo "toggled visibility for hlsearch"
-        endfunction
-
-        " Toggle highlight search
-        " let hlstate=0
-        " let lastsearchstring = @/
-        " nmap <Leader>b :call Togglehlsearch()<CR>
 
         " Set tabstop and softtabstop to the value of shiftwidth
         function! SetIndentWidth()
@@ -801,18 +775,6 @@
             let &l:ts  = &l:sw
             let &l:sts = &l:sw
         endfunction
-
-        " Append modeline after last line in buffer.
-        " Use substitute() instead of printf() to handle '%%s' modeline in LaTeX
-        " files.
-        function! AppendModeline()
-            let l:modeline = printf("vim: set ts=%d sw=%d tw=%d %set :",
-                        \ &tabstop, &shiftwidth, &textwidth, &expandtab ? '' : 'no')
-            call append(line("$"), l:modeline)
-            normal '.gcc
-            "" Use tcomment to comment the thing out
-        endfunction
-        nnoremap <silent> <Leader>am :call AppendModeline()<CR>
     " }
 " }
 
@@ -869,6 +831,9 @@
 
 " Vim UI {
 
+    " Bundle 'flazz/vim-colorschemes'
+    " Bundle 'spf13/vim-colors'
+    Bundle 'altercation/vim-colors-solarized'
     if filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
         let g:solarized_termcolors=256
         let g:solarized_termtrans=1
@@ -993,9 +958,9 @@
         autocmd VimEnter,BufRead,BufNewFile * RainbowParenthesesLoadBraces
         " autocmd BufRead,BufNewFile * call DetectIndentIfNotEmptyBuf()
         autocmd BufRead * DetectIndent
+        " autocmd BufRead,BufNewFile * call SetIndentWidth()
         " autocmd BufWritePost * echo &ff
         autocmd QuickFixCmdPost make cwindow
-        " autocmd BufRead,BufNewFile * call SetIndentWidth()
         " autocmd FileType c,cpp,go,php,javascript,python,twig,xml,yml autocmd BufWritePre <buffer> EraseBadWhitespace
 
         " Always switch to the current file directory

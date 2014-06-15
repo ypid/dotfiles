@@ -1,0 +1,16 @@
+# Based on http://nakkaya.com/2013/10/23/notes-on-synchronization-and-backup-of-home-using-git-git-annex-and-mr/
+[DEFAULT]
+git_sync = git annex sync "$@"
+git_push = git fast-push
+git_pull = git annex sync
+git_status = git na-status
+git_drop = git git-drop-unused here 0
+git_dead = git annex dead "$@"
+git_missing = echo "Nothing todo.";true
+git_ffsck = echo "Nothing todo.";true
+git_free = git annex drop .
+
+lib =
+    enableGitAnnex() {
+       git annex init "`hostname`"
+    }
