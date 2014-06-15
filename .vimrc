@@ -12,7 +12,7 @@
             set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
         endif
     " }
-    "
+
     " Setup Bundle Support {
     " The next three lines ensure that the ~/.vim/bundle/ system works
         filetype off
@@ -29,7 +29,8 @@
     " Plugin section.
 
     " Overwrite default Vim mappings {
-        map gf :sp <cfile><CR>
+        " Also open not existing files.
+        map gf :sp <cfile><cR>
 
         " Wrapped lines goes down/up to next row, rather than next line in file.
         noremap j gj
@@ -53,22 +54,21 @@
         nnoremap <silent> <expr> <Space> Highlighting()
     " }
 
-
     set pastetoggle=<F2>           " pastetoggle (sane indentation on pastes)
 
     " Map leader mappings {{{
     let mapleader = ','
 
     " Save and go to normal mode
-    map <Leader>s :update<CR>
+    nmap <Leader>s :update<CR>
     imap <Leader>s <ESC>:update<CR>l
 
     " Filetype detact
-    map <Leader>fd :filetype detect<CR>
-    imap <Leader>fd <ESC>:filetype detect<CR>a
+    nmap <Leader>fd :filetype detect<CR>
+    imap <Leader>fd <c-o>:filetype detect<CR>
 
     " Save and exit
-    map <Leader>x :x<CR>
+    nmap <Leader>x :x<CR>
     imap <Leader>x <ESC>:x<CR>
 
     " Quick quit command
@@ -77,26 +77,28 @@
     nmap <Leader>E :q!<CR>
 
     " Code folding options {{{
-    " nmap <leader>f0 :set foldlevel=0<CR>
-    " Use zM for this
-    nmap <leader>f1 :set foldlevel=1<CR>
-    nmap <leader>f2 :set foldlevel=2<CR>
-    nmap <leader>f3 :set foldlevel=3<CR>
-    nmap <leader>f4 :set foldlevel=4<CR>
-    nmap <leader>f5 :set foldlevel=5<CR>
-    nmap <leader>f6 :set foldlevel=6<CR>
-    nmap <leader>f7 :set foldlevel=7<CR>
-    nmap <leader>f8 :set foldlevel=8<CR>
-    nmap <leader>f9 :set foldlevel=9<CR>
+        " nmap <leader>f0 :set foldlevel=0<CR>
+        " Use zM for this
+        nmap <leader>f1 :set foldlevel=1<CR>
+        nmap <leader>f2 :set foldlevel=2<CR>
+        nmap <leader>f3 :set foldlevel=3<CR>
+        nmap <leader>f4 :set foldlevel=4<CR>
+        nmap <leader>f5 :set foldlevel=5<CR>
+        nmap <leader>f6 :set foldlevel=6<CR>
+        nmap <leader>f7 :set foldlevel=7<CR>
+        nmap <leader>f8 :set foldlevel=8<CR>
+        nmap <leader>f9 :set foldlevel=9<CR>
     " }}}
 
     " Toggle highlight search
     nmap <Leader>B :set invhlsearch<CR>
-    nmap <Leader>b :nohlsearch<CR>
+    imap <Leader>B <c-o>:set invhlsearch<CR>
+    nmap <Leader>b :set nohlsearch<CR>
+    imap <Leader>b <c-o>:set nohlsearch<CR>
 
     " Bind set list
-    map <Leader>l :set list!<CR>
-    imap <Leader>l <ESC>:set list!<CR>a
+    nmap <Leader>l :set list!<CR>
+    imap <Leader>l <c-o>:set list!<CR>
 
     " Insert current full path of the file
     imap <Leader>fp <ESC>:put =expand('%:p')<CR>kJA
@@ -105,13 +107,11 @@
     " imap <Leader>fn <ESC>"%p<CR>g;
     " Just use Ctrl-r%
 
-    " Spellcheck {
-        set spellfile=~/.vim/spell/en.utf-8.add
-        set dictionary+=/usr/share/dict/words
-        " set spelllang=en_us,de_de
-        set spelllang=en_us
-        map <Leader>cd :set spell!<CR>
-        imap <Leader>cd <ESC>:set spell!<CR>a
+    " Spellcheck { set spellfile=~/.vim/spell/en.utf-8.add set dictionary+=/usr/share/dict/words
+        set spelllang=en_us,de_de
+        " set spelllang=en_us
+        nmap <Leader>cd :set spell!<CR>
+        imap <Leader>cd <c-o>:set spell!<CR>
     " }
 
     " Insert newline without entering insert mode
@@ -119,15 +119,16 @@
     map <Leader>q o<Esc>
 
     " easier moving between tabs
-    map <Leader>n <esc>:tabprevious<CR>
-    map <Leader>m <esc>:tabnext<CR>
+    " map <Leader>n <esc>:tabprevious<CR>
+    " map <Leader>m <esc>:tabnext<CR>
+    " Use the default gt and gT
 
     " easier moving between buffers
     map <Leader>w <esc>:bNext<CR>
 
     " set the executable bit
-    map <Leader>y :w!<CR>:!chmod +x "%"<CR>
-    imap <Leader>y <ESC>:w!<CR>:!chmod +x "%"<CR>a
+    nmap <Leader>y :w!<CR>:!chmod +x "%"<CR>:quit<CR>
+    imap <Leader>y <ESC>:w!<CR>:!chmod +x "%"<CR>:quit<CR>
 
     nmap <Leader>d :echo strftime("%Y-%m-%d_%H:%M")<CR>
     " }}}
@@ -136,6 +137,11 @@
         " Easier horizontal scrolling
         map zl zL
         map zh zH
+
+        " https://superuser.com/questions/277787/vim-map-a-key-combination-while-in-insert-mode
+        " <c-tab> did not work.
+        nmap <Tab> :tabn<CR>
+        imap <Tab> <c-o>:tabn<CR>
 
         " Every unnecessary keystroke that can be saved is good for your health :)
         noremap <c-j> <c-w>j
@@ -157,16 +163,17 @@
 
         " I use this so that Ctrl-c also works in the command-line window like Escape.
         " Does not work
+        " Try to use Neo2 Escape.
         map! <c-c> <ESC>
     " }}}
 
     " Disabled (mostly because of incompatibilities {{{
         " Easier moving in tabs and windows
-        " The lines conflict with the default digraph mapping of <C-K>
-        " map <C-J> <C-W>j<C-W>_
-        " map <C-K> <C-W>k<C-W>_
-        " map <C-L> <C-W>l<C-W>_
-        " map <C-H> <C-W>h<C-W>_
+        " The lines conflict with the default digraph mapping of <c-K>
+        " map <c-J> <c-W>j<c-W>_
+        " map <c-K> <c-W>k<c-W>_
+        " map <c-L> <c-W>l<c-W>_
+        " map <c-H> <c-W>h<c-W>_
 
         " The following two lines conflict with moving to top and
         " bottom of the screen
@@ -211,8 +218,16 @@
 
     " Work {
         if count(g:spf13_bundle_groups, 'work')
-        Bundle 'hamcos/vim-hamcos'
+            Bundle 'hamcos/vim-hamcos'
         endif
+    " }
+
+    " Testing {{{
+        " Bundle 'terryma/vim-smooth-scroll'
+        " noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
+        " noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
+        " noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
+        " noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
     " }
 
     " General {
@@ -419,8 +434,8 @@
 
                 call SingleCompile#ChooseCompiler('mkd', 'markdown')
 
-                map <Leader>as :SCCompileRun<CR>
-                imap <Leader>as <ESC>:SCCompileRun<CR>a
+                nmap <Leader>as :SCCompileRun<CR>
+                imap <Leader>as <c-o>:SCCompileRun<CR>
             " }}}
 
             " " Taglist {
@@ -467,12 +482,12 @@
                 hi PmenuThumb  guifg=#F8F8F8 guibg=#8A95A7 gui=NONE ctermfg=lightgray ctermbg=darkcyan cterm=NONE
 
                 " Some convenient mappings
-                inoremap <expr> <Esc>      pumvisible() ? "\<C-e>" : "\<Esc>"
-                inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
-                inoremap <expr> <Down>     pumvisible() ? "\<C-n>" : "\<Down>"
-                inoremap <expr> <Up>       pumvisible() ? "\<C-p>" : "\<Up>"
-                inoremap <expr> <C-d>      pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<C-d>"
-                inoremap <expr> <C-u>      pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<C-u>"
+                inoremap <expr> <Esc>      pumvisible() ? "\<c-e>" : "\<Esc>"
+                inoremap <expr> <CR>       pumvisible() ? "\<c-y>" : "\<CR>"
+                inoremap <expr> <Down>     pumvisible() ? "\<c-n>" : "\<Down>"
+                inoremap <expr> <Up>       pumvisible() ? "\<c-p>" : "\<Up>"
+                inoremap <expr> <c-d>      pumvisible() ? "\<PageDown>\<c-p>\<c-n>" : "\<c-d>"
+                inoremap <expr> <c-u>      pumvisible() ? "\<PageUp>\<c-p>\<c-n>" : "\<c-u>"
 
                 " Automatically open and close the popup menu / preview window
                 autocmd CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
@@ -490,7 +505,7 @@
                 let g:neocomplcache_force_overwrite_completefunc = 1
 
                 " SuperTab like snippets behavior.
-                imap <silent><expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" : (pumvisible() ? "\<C-e>" : "\<TAB>")
+                imap <silent><expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" : (pumvisible() ? "\<c-e>" : "\<TAB>")
                 smap <TAB> <Right><Plug>(neosnippet_jump_or_expand)
 
                 " Define dictionary.
@@ -504,26 +519,26 @@
 
                 " Plugin key-mappings.
 
-                " These two lines conflict with the default digraph mapping of <C-K>
-                imap <C-l> <Plug>(neosnippet_expand_or_jump)
-                smap <C-l> <Plug>(neosnippet_expand_or_jump)
+                " These two lines conflict with the default digraph mapping of <c-K>
+                imap <c-l> <Plug>(neosnippet_expand_or_jump)
+                smap <c-l> <Plug>(neosnippet_expand_or_jump)
 
-                " inoremap <expr><C-g> neocomplcache#undo_completion()
-                " inoremap <expr><C-l> neocomplcache#complete_common_string()
+                " inoremap <expr><c-g> neocomplcache#undo_completion()
+                " inoremap <expr><c-l> neocomplcache#complete_common_string()
                 inoremap <expr><CR> neocomplcache#complete_common_string()
 
                 " <TAB>: completion.
-                " inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-                " inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<TAB>"
+                " inoremap <expr><TAB> pumvisible() ? "\<c-n>" : "\<TAB>"
+                " inoremap <expr><S-TAB> pumvisible() ? "\<c-p>" : "\<TAB>"
 
                 " <CR>: close popup
                 " <s-CR>: close popup and save indent.
                 inoremap <expr><s-CR> pumvisible() ? neocomplcache#close_popup()"\<CR>" : "\<CR>"
                 inoremap <expr><CR> pumvisible() ? neocomplcache#close_popup() : "\<CR>"
 
-                " <C-h>, <BS>: close popup and delete backword char.
-                inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
-                inoremap <expr><C-y> neocomplcache#close_popup()
+                " <c-h>, <BS>: close popup and delete backword char.
+                inoremap <expr><BS> neocomplcache#smart_close_popup()."\<c-h>"
+                inoremap <expr><c-y> neocomplcache#close_popup()
 
                 " Enable omni completion.
                 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS

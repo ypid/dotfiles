@@ -70,6 +70,10 @@ Here are some advices regarding shortcuts for programmers or UI designers which 
 * Make it easy to track the configuration files (which contain the shortcuts) with version control.
 * Do not reinvent the wheel!
 
+Additionally, some thoughts:
+
+* Every application which works with text or has and text input field should support Ctrl+u in the way Vim does it. (I am often trying to delete the complete text in the URL Bar in Firefox with Ctrl+u …)
+
 ## Special keys
 Key name      | Comment
 ------------- | -------------
@@ -181,23 +185,24 @@ For gnome-terminal, each shortcut requires the use of the Shift modifier key.
 
 Ctrl commands have to be used with Shift in the terminal emulator.
 
-Shortcut      | Function                           | Left hand only | Comment
-------------- | -------------                      | -------------  | -------------
-Ctrl+n        | Opens a new (preferably empty) tab | No             | Easier to reach than C-t
-Ctrl+j        | Swtich to left tab                 | Not really     |
-Ctrl+k        | Swtich to right tab                | Not really     |
-Alt+m         | Switch to tab 1                    | No             | See [Neo2 layer4][Neo2]. Maybe blocks the use of Alt+[a-z]. I hope that most applications use letters which would be on the left side of qwertz
-Alt+,         | Switch to tab 2                    | No             |
-Alt+.         | Switch to tab 3                    | No             |
-Alt+j         | Switch to tab 4                    | No             |
-Alt+k         | Switch to tab 5                    | No             |
-Alt+l         | Switch to tab 6                    | No             |
-Alt+u         | Switch to tab 7                    | No             |
-Alt+i         | Switch to tab 8                    | No             |
-Alt+o         | Switch to tab 9                    | No             |
-Ctrl+[+-]     | Increase/Decrease font size        | Nice to have   | Level 3 [Neo2][] plus and minus do not work in firefox. Using Level 4 once (which currently don’t work with gnome-terminal).
-Ctrl+w        | Closes the tab                     | Of course      | Should be default in all program
-Ctrl+q        | Closes the application             | Of course      | Should be default in all program
+Shortcut      | Function                                | Left hand only | Comment
+------------- | -------------                           | -------------  | -------------
+Ctrl+n        | Opens a new (preferably empty) tab      | No             | Easier to reach than C-t
+Ctrl+tab      | Swtich to right tab, cicle through tabs | Yes            |
+Ctrl+j        | Swtich to left tab                      | Not really     |
+Ctrl+k        | Swtich to right tab                     | Not really     |
+Alt+m         | Switch to tab 1                         | No             | See [Neo2 layer4][Neo2]. Maybe blocks the use of Alt+[a-z]. I hope that most applications use letters which would be on the left side of qwertz
+Alt+,         | Switch to tab 2                         | No             |
+Alt+.         | Switch to tab 3                         | No             |
+Alt+j         | Switch to tab 4                         | No             |
+Alt+k         | Switch to tab 5                         | No             |
+Alt+l         | Switch to tab 6                         | No             |
+Alt+u         | Switch to tab 7                         | No             |
+Alt+i         | Switch to tab 8                         | No             |
+Alt+o         | Switch to tab 9                         | No             |
+Ctrl+[+-]     | Increase/Decrease font size             | Nice to have   | Level 3 [Neo2][] plus and minus do not work in firefox. Using Level 4 once (which currently don’t work with gnome-terminal).
+Ctrl+w        | Closes the tab                          | Of course      | Should be default in all program
+Ctrl+q        | Closes the application                  | Of course      | Should be default in all program
 
 ### Firefox
 
