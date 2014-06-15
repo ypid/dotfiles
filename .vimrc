@@ -225,20 +225,32 @@
     " 'programming', 'ruby', 'python', 'perl', 'go', 'twig', 'javascript',
     " 'html', 'latex',
     " 'misc', 'scala', 'games']
-    let g:spf13_bundle_groups=['general', 'work', 'programming', 'python', 'perl', 'javascript', 'html', 'snipmate']
+    let g:spf13_bundle_groups = []
+    call add(g:spf13_bundle_groups, 'dependencies')
+    call add(g:spf13_bundle_groups, 'general')
+    call add(g:spf13_bundle_groups, 'work')
+    call add(g:spf13_bundle_groups, 'programming')
+    " call add(g:spf13_bundle_groups, 'python')
+    " call add(g:spf13_bundle_groups, 'perl')
+    " call add(g:spf13_bundle_groups, 'javascript')
+    " call add(g:spf13_bundle_groups, 'snipmate')
+    " call add(g:spf13_bundle_groups, 'html')
+    " call add(g:spf13_bundle_groups, 'latex')
 
     " Deps {
-        Bundle 'MarcWeber/vim-addon-mw-utils'
-        Bundle 'tomtom/tlib_vim'
-        " if executable('ack-grep')
-        "     let g:ackprg="ack-grep -H --nocolor --nogroup --column"
-        "     Bundle 'mileszs/ack.vim'
-        " elseif executable('ack')
-        "     Bundle 'mileszs/ack.vim'
-        " elseif executable('ag')
-        "     Bundle 'mileszs/ack.vim'
-        "     let g:ackprg = 'ag --nogroup --nocolor --column'
-        " endif
+        if count(g:spf13_bundle_groups, 'dependencies')
+            Bundle 'MarcWeber/vim-addon-mw-utils'
+            Bundle 'tomtom/tlib_vim'
+            " if executable('ack-grep')
+            "     let g:ackprg="ack-grep -H --nocolor --nogroup --column"
+            "     Bundle 'mileszs/ack.vim'
+            " elseif executable('ack')
+            "     Bundle 'mileszs/ack.vim'
+            " elseif executable('ag')
+            "     Bundle 'mileszs/ack.vim'
+            "     let g:ackprg = 'ag --nogroup --nocolor --column'
+            " endif
+        endif
     " }
 
     " Work {
@@ -261,14 +273,17 @@
             " map <Leader>v :NERDTreeToggle<CR>
 
             Bundle 'tpope/vim-surround'
-            " Bundle 'spf13/vim-autoclose' " Too simple, no indent stuff
-            " let g:AutoPairShortcutToggle = '<Leader>ac'
-            " Bundle 'jiangmiao/auto-pairs' " Could not get inserting new closing brackets and jumping to existing brackets at once to work
-            " let g:AutoPairsFlyMode = 1
-            " nmap <silent> <Leader>ac :call AutoPairsToggle()<CR>
-            " imap <silent> <Leader>ac <ESC>:call AutoPairsToggle()<CR>a
-            Bundle 'Raimondi/delimitMate'
-            let delimitMate_expand_cr = 1
+
+            " Auto close opening characters like '(' with ')' {{{
+                " Bundle 'spf13/vim-autoclose' " Too simple, no indent stuff
+                " let g:AutoPairShortcutToggle = '<Leader>ac'
+                " Bundle 'jiangmiao/auto-pairs' " Could not get inserting new closing brackets and jumping to existing brackets at once to work
+                " let g:AutoPairsFlyMode = 1
+                " nmap <silent> <Leader>ac :call AutoPairsToggle()<CR>
+                " imap <silent> <Leader>ac <ESC>:call AutoPairsToggle()<CR>a
+                Bundle 'Raimondi/delimitMate'
+                let delimitMate_expand_cr = 1
+            " }}}
 
 
             " CtrlP {
@@ -954,10 +969,9 @@
 
         " autocmd VimEnter * RainbowParenthesesToggle " enable by defalut
         " autocmd Syntax * RainbowParenthesesLoadRound " default
-        autocmd VimEnter,BufRead,BufNewFile * RainbowParenthesesLoadSquare
-        autocmd VimEnter,BufRead,BufNewFile * RainbowParenthesesLoadBraces
-        " autocmd BufRead,BufNewFile * call DetectIndentIfNotEmptyBuf()
-        autocmd BufRead * DetectIndent
+        autocmd VimEnter,BufRead,BufNewFile * if exists(":RainbowParenthesesLoadSquare")|exe "RainbowParenthesesLoadSquare"|endif
+        autocmd VimEnter,BufRead,BufNewFile * if exists(":RainbowParenthesesLoadBraces")|exe "RainbowParenthesesLoadBraces"|endif
+        autocmd BufRead * if exists(":DetectIndent")|exe "DetectIndent"|endif
         " autocmd BufRead,BufNewFile * call SetIndentWidth()
         " autocmd BufWritePost * echo &ff
         autocmd QuickFixCmdPost make cwindow
