@@ -73,8 +73,6 @@
         nnoremap <silent> <expr> <Space> Highlighting()
     " }
 
-    set pastetoggle=<F2>           " pastetoggle (sane indentation on pastes)
-
     " Map leader mappings {{{
         let mapleader = ','
 
@@ -178,9 +176,16 @@
     " }}}
 
     " Other mappings {{{
+        set pastetoggle=<F2>           " pastetoggle (sane indentation on pastes)
+
         " Easier horizontal scrolling
         map zl zL
         map zh zH
+
+        " Ctrl+a is used by tmux and screen
+        noremap <c-s> <c-a>
+        noremap <c-a> <Nop>
+        " Don‘t use Ctrl+a even if not in tmux.
 
         " https://superuser.com/questions/277787/vim-map-a-key-combination-while-in-insert-mode
         " <c-tab> did not work.
@@ -212,13 +217,6 @@
     " }}}
 
     " Disabled (mostly because of incompatibilities {{{
-        " Easier moving in tabs and windows
-        " The lines conflict with the default digraph mapping of <c-K>
-        " map <c-J> <c-W>j<c-W>_
-        " map <c-K> <c-W>k<c-W>_
-        " map <c-L> <c-W>l<c-W>_
-        " map <c-H> <c-W>h<c-W>_
-
         " The following two lines conflict with moving to top and
         " bottom of the screen
         " map <S-H> gT
@@ -232,10 +230,6 @@
         "         exe prefix . "map " . key . " <Nop>"
         "     endfor
         " endfor
-        "
-        " imap <c-j> <return> " please use Alt-Gr+v (Neo2)
-        " map <c-i> :set list!<CR>
-        " imap <c-i> <ESC>:set list!<CR>a
     " }}}
 " }
 
@@ -245,7 +239,7 @@
     " 'html', 'latex',
     " 'misc', 'scala', 'games']
     let g:spf13_bundle_groups = []
-    call add(g:spf13_bundle_groups, 'dependencies')
+    " call add(g:spf13_bundle_groups, 'dependencies')
     " call add(g:spf13_bundle_groups, 'testing')
     call add(g:spf13_bundle_groups, 'general_important')
     call add(g:spf13_bundle_groups, 'general')
@@ -303,6 +297,18 @@
                 nmap <Leader>r :CtrlPMRUFiles<CR>
             " }
 
+            " Handling comments {{{
+                " Bundle 'tomtom/tcomment_vim'
+                " let g:tcommentOptions = {'strip_whitespace': 1}
+
+                Bundle 'scrooloose/nerdcommenter'
+                let NERDSpaceDelims = 1
+
+                " nmap gcc :call NERDComment('n', 'Toggle')<CR>
+                " nmap <Leader>d :call NERDComment('n', 'Toggle')<CR>
+                map <Bar> :call NERDComment('n', 'Toggle')<CR>
+            " }}}
+
         endif
     " }}}
 
@@ -347,19 +353,6 @@
             else
                 Bundle 'Lokaltog/vim-powerline'
             endif
-
-            " Handling comments {{{
-                " Bundle 'tomtom/tcomment_vim'
-                " let g:tcommentOptions = {'strip_whitespace': 1}
-
-                Bundle 'scrooloose/nerdcommenter'
-                let NERDSpaceDelims = 1
-
-                " nmap gcc :call NERDComment('n', 'Toggle')<CR>
-                " nmap <Leader>d :call NERDComment('n', 'Toggle')<CR>
-                map <Bar> :call NERDComment('n', 'Toggle')<CR>
-            " }}}
-
 
             " Bundle 'Lokaltog/vim-easymotion'
             " let g:EasyMotion_leader_key = '<Leader>j'
@@ -907,7 +900,9 @@
         " Broken down into easily includeable segments
         set statusline=%<%f\                     " Filename
         set statusline+=%w%h%m%r                 " Options
-        set statusline+=%{fugitive#statusline()} " Git Hotness
+        if count(g:spf13_bundle_groups, 'programming')
+            set statusline+=%{fugitive#statusline()} " Git Hotness
+        endif
         set statusline+=\ [%{&ff}/%Y]            " Filetype
         set statusline+=\ [%{getcwd()}]          " Current dir
         set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info

@@ -126,6 +126,10 @@ export DISABLE_AUTO_TITLE=true
 # SAVEHIST=100000000
 # huge performance killer!
 
+# http://vim.1045645.n5.nabble.com/vim-ctrl-s-mapping-does-not-work-td1147525.html
+stty -ixon -ixoff
+# I use tmux copy mode for this anyway.
+
 setopt no_share_history
 source ~/.shellrc
 source ~/.zsh_bindings
