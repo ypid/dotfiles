@@ -257,6 +257,7 @@ List of free shortcuts (they may have a default mapping but there are better sho
 
 ##### Normal mode
 
+* Umlauts
 * Shift+Space
 
 <!-- links -->

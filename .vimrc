@@ -28,13 +28,32 @@
     " Mappings which only work with plugins enabled should be placed in the
     " Plugin section.
 
+    " Hack to make mappings using the Alt or Meta key working {{{
+    " http://stackoverflow.com/a/10216459/2239985
+        " let c='a'
+        " while c <= 'z'
+            " exec "set <A-".c.">=\e".c
+            " exec "imap \e".c." <A-".c.">"
+            " let c = nr2char(1+char2nr(c))
+        " endw
+
+        " set timeout ttimeoutlen=50
+        " " these two work in vim
+        " " shrtcut with alt key: press Ctrl-v then Alt-k
+        " " ATTENTION: the following two lines should not be
+        " " edited under other editors like gedit. ^[k and ^[j will be broken!
+        " nnoremap ^[k :set paste<CR>m`O<Esc>``:set nopaste<CR>
+        " nnoremap ^[j :set paste<CR>m`o<Esc>``:set nopaste<CR>
+    " }}}
+
     " Overwrite default Vim mappings {
         " Also open not existing files.
         map gf :sp <cfile><cR>
 
         " Wrapped lines goes down/up to next row, rather than next line in file.
-        noremap j gj
-        noremap k gk
+        " Does this slow down the scrolling in my configuration?
+        " noremap j gj
+        " noremap k gk
 
         " Visual shifting (does not exit Visual mode)
         vnoremap < <gv
@@ -134,7 +153,7 @@
         nmap <Leader>y :w!<CR>:!chmod +x "%"<CR>:quit<CR>
         imap <Leader>y <ESC>:w!<CR>:!chmod +x "%"<CR>:quit<CR>
 
-        nmap <Leader>d :echo strftime("%Y-%m-%d_%H:%M")<CR>
+        " nmap <Leader>d :echo strftime("%Y-%m-%d_%H:%M")<CR>
 
         function! TranslateDateVisual()
             sil! norm! gv"ty
@@ -227,9 +246,11 @@
     " 'misc', 'scala', 'games']
     let g:spf13_bundle_groups = []
     call add(g:spf13_bundle_groups, 'dependencies')
+    " call add(g:spf13_bundle_groups, 'testing')
+    call add(g:spf13_bundle_groups, 'general_important')
     call add(g:spf13_bundle_groups, 'general')
-    call add(g:spf13_bundle_groups, 'work')
-    call add(g:spf13_bundle_groups, 'programming')
+    " call add(g:spf13_bundle_groups, 'work')
+    " call add(g:spf13_bundle_groups, 'programming')
     " call add(g:spf13_bundle_groups, 'python')
     " call add(g:spf13_bundle_groups, 'perl')
     " call add(g:spf13_bundle_groups, 'javascript')
@@ -260,19 +281,35 @@
     " }
 
     " Testing {{{
-        " Bundle 'terryma/vim-smooth-scroll'
-        " noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
-        " noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
-        " noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
-        " noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
+        if count(g:spf13_bundle_groups, 'testing')
+            Bundle 'terryma/vim-smooth-scroll'
+            noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 4)<CR>
+            noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 4)<CR>
+            noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
+            noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
+        endif
+    " }}}
+
+    " General important {{{
+    " Used multiple times *every* Vim session.
+        if count(g:spf13_bundle_groups, 'general_important')
+            " CtrlP {
+                Bundle 'kien/ctrlp.vim'
+                let g:ctrlp_show_hidden = 1
+                let g:ctrlp_mruf_save_on_update = 0
+                let g:ctrlp_extensions = ['line']
+                let g:ctrlp_open_new_file = 'h'
+                let g:ctrlp_mruf_max = 2000
+                nmap <Leader>r :CtrlPMRUFiles<CR>
+            " }
+
+        endif
     " }}}
 
     " General {
         if count(g:spf13_bundle_groups, 'general')
             " Bundle 'scrooloose/nerdtree'
             " map <Leader>v :NERDTreeToggle<CR>
-
-            Bundle 'tpope/vim-surround'
 
             " Auto close opening characters like '(' with ')' {{{
                 " Bundle 'spf13/vim-autoclose' " Too simple, no indent stuff
@@ -284,17 +321,6 @@
                 Bundle 'Raimondi/delimitMate'
                 let delimitMate_expand_cr = 1
             " }}}
-
-
-            " CtrlP {
-                Bundle 'kien/ctrlp.vim'
-                let g:ctrlp_show_hidden = 1
-                let g:ctrlp_mruf_save_on_update = 0
-                let g:ctrlp_extensions = ['line']
-                let g:ctrlp_open_new_file = 'h'
-                let g:ctrlp_mruf_max = 2000
-                nmap <Leader>r :CtrlPMRUFiles<CR>
-            " }
 
             " Bundle 'vim-scripts/sessionman.vim'
             Bundle 'matchit.zip'
@@ -321,6 +347,19 @@
             else
                 Bundle 'Lokaltog/vim-powerline'
             endif
+
+            " Handling comments {{{
+                " Bundle 'tomtom/tcomment_vim'
+                " let g:tcommentOptions = {'strip_whitespace': 1}
+
+                Bundle 'scrooloose/nerdcommenter'
+                let NERDSpaceDelims = 1
+
+                " nmap gcc :call NERDComment('n', 'Toggle')<CR>
+                " nmap <Leader>d :call NERDComment('n', 'Toggle')<CR>
+                map <Bar> :call NERDComment('n', 'Toggle')<CR>
+            " }}}
+
 
             " Bundle 'Lokaltog/vim-easymotion'
             " let g:EasyMotion_leader_key = '<Leader>j'
@@ -363,6 +402,7 @@
             " Pick one of the checksyntax, jslint, or syntastic
             " Bundle 'scrooloose/syntastic' " Too slow
             Bundle 'vivien/vim-addon-linux-coding-style'
+            Bundle 'tpope/vim-surround'
 
             " More text objects {
                 " http://blog.carbonfive.com/2011/10/17/vim-text-objects-the-definitive-guide/
@@ -411,17 +451,6 @@
                 map <Leader>af<Space> :Tabularize /^\s*\w*<CR>
                 map <Leader>a<Bar> :Tabularize /[^\\]\zs<Bar><CR>
             " }
-
-            " Handling comments {{{
-                " Bundle 'tomtom/tcomment_vim'
-                " let g:tcommentOptions = {'strip_whitespace': 1}
-
-                Bundle 'scrooloose/nerdcommenter'
-                let NERDSpaceDelims = 1
-
-                noremap gcc :call NERDComment('n', 'Toggle')<CR>
-                " Use default <leader> mappings.
-            " }}}
 
             " Toggle words
             Bundle 'toggle_words.vim'
