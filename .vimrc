@@ -33,7 +33,7 @@
         " let c='a'
         " while c <= 'z'
             " exec "set <A-".c.">=\e".c
-            " exec "imap \e".c." <A-".c.">"
+            " exec "inoremap \e".c." <A-".c.">"
             " let c = nr2char(1+char2nr(c))
         " endw
 
@@ -48,7 +48,7 @@
 
     " Overwrite default Vim mappings {
         " Also open not existing files.
-        map gf :sp <cfile><cR>
+        noremap gf :sp <cfile><cR>
 
         " Wrapped lines goes down/up to next row, rather than next line in file.
         " Does this slow down the scrolling in my configuration?
@@ -77,81 +77,81 @@
         let mapleader = ','
 
         " Save and go to normal mode
-        nmap <Leader>s :update<CR>
-        imap <Leader>s <ESC>:update<CR>l
+        noremap <Leader>s :update<CR>
+        inoremap <Leader>s <ESC>:update<CR>l
 
         " Filetype detact
-        nmap <Leader>fd :filetype detect<CR>
-        imap <Leader>fd <c-o>:filetype detect<CR>
+        noremap <Leader>fd :filetype detect<CR>
+        inoremap <Leader>fd <c-o>:filetype detect<CR>
 
         " Save and exit
-        nmap <Leader>x :x<CR>
-        imap <Leader>x <ESC>:x<CR>
+        noremap <Leader>x :x<CR>
+        inoremap <Leader>x <ESC>:x<CR>
 
         " Quick quit command
-        nmap <Leader>e :quit<CR>
+        noremap <Leader>e :quit<CR>
         " Quit all windows
-        nmap <Leader>E :q!<CR>
+        noremap <Leader>E :q!<CR>
 
         " Code folding options {{{
-            " nmap <leader>f0 :set foldlevel=0<CR>
+            " noremap <leader>f0 :set foldlevel=0<CR>
             " Use zM for this
-            nmap <leader>f1 :set foldlevel=1<CR>
-            nmap <leader>f2 :set foldlevel=2<CR>
-            nmap <leader>f3 :set foldlevel=3<CR>
-            nmap <leader>f4 :set foldlevel=4<CR>
-            nmap <leader>f5 :set foldlevel=5<CR>
-            nmap <leader>f6 :set foldlevel=6<CR>
-            nmap <leader>f7 :set foldlevel=7<CR>
-            nmap <leader>f8 :set foldlevel=8<CR>
-            nmap <leader>f9 :set foldlevel=9<CR>
+            noremap <leader>f1 :set foldlevel=1<CR>
+            noremap <leader>f2 :set foldlevel=2<CR>
+            noremap <leader>f3 :set foldlevel=3<CR>
+            noremap <leader>f4 :set foldlevel=4<CR>
+            noremap <leader>f5 :set foldlevel=5<CR>
+            noremap <leader>f6 :set foldlevel=6<CR>
+            noremap <leader>f7 :set foldlevel=7<CR>
+            noremap <leader>f8 :set foldlevel=8<CR>
+            noremap <leader>f9 :set foldlevel=9<CR>
         " }}}
 
         " Toggle highlight search
-        nmap <Leader>B :set invhlsearch<CR>
-        imap <Leader>B <c-o>:set invhlsearch<CR>
-        nmap <Leader>b :set nohlsearch<CR>
-        imap <Leader>b <c-o>:set nohlsearch<CR>
+        noremap <Leader>B :set invhlsearch<CR>
+        inoremap <Leader>B <c-o>:set invhlsearch<CR>
+        noremap <Leader>b :set nohlsearch<CR>
+        inoremap <Leader>b <c-o>:set nohlsearch<CR>
 
         " let hlstate=0
         " let lastsearchstring = @/
-        " nmap <Leader>b :call Togglehlsearch()<CR>
+        " noremap <Leader>b :call Togglehlsearch()<CR>
 
         " Bind set list
-        nmap <Leader>l :set list!<CR>
-        imap <Leader>l <c-o>:set list!<CR>
+        noremap <Leader>l :set list!<CR>
+        inoremap <Leader>l <c-o>:set list!<CR>
 
         " Insert current full path of the file
-        imap <Leader>fp <ESC>:put =expand('%:p')<CR>kJA
+        inoremap <Leader>fp <ESC>:put =expand('%:p')<CR>kJA
 
         " Insert current file name
-        " imap <Leader>fn <ESC>"%p<CR>g;
+        " inoremap <Leader>fn <ESC>"%p<CR>g;
         " Just use Ctrl-r%
 
         " Spellcheck { set spellfile=~/.vim/spell/en.utf-8.add set dictionary+=/usr/share/dict/words
             set spelllang=en_us,de_de
             " set spelllang=en_us
-            nmap <Leader>cd :set spell!<CR>
-            imap <Leader>cd <c-o>:set spell!<CR>
+            noremap <Leader>cd :set spell!<CR>
+            inoremap <Leader>cd <c-o>:set spell!<CR>
         " }
 
         " Insert newline without entering insert mode
-        map <Leader>Q O<Esc>
-        map <Leader>q o<Esc>
+        noremap <Leader>Q O<Esc>
+        noremap <Leader>q o<Esc>
 
         " easier moving between tabs
-        " map <Leader>n <esc>:tabprevious<CR>
-        " map <Leader>m <esc>:tabnext<CR>
+        " noremap <Leader>n <esc>:tabprevious<CR>
+        " noremap <Leader>m <esc>:tabnext<CR>
         " Use the default gt and gT
 
         " easier moving between buffers
-        map <Leader>w <esc>:bNext<CR>
+        noremap <Leader>w <esc>:bNext<CR>
 
         " set the executable bit
-        nmap <Leader>y :w!<CR>:!chmod +x "%"<CR>:quit<CR>
-        imap <Leader>y <ESC>:w!<CR>:!chmod +x "%"<CR>:quit<CR>
+        noremap <Leader>y :w!<CR>:!chmod +x "%"<CR>:quit<CR>
+        inoremap <Leader>y <ESC>:w!<CR>:!chmod +x "%"<CR>:quit<CR>
 
-        " nmap <Leader>d :echo strftime("%Y-%m-%d_%H:%M")<CR>
+        " noremap <Leader>d :echo strftime("%Y-%m-%d_%H:%M")<CR>
 
         function! TranslateDateVisual()
             sil! norm! gv"ty
@@ -159,7 +159,7 @@
         endfunction
 
         " Translate the current word (Unix time stamp) to a human readable time.
-        nmap <Leader>td :echo system('date -d @'.expand('<cword>'))<CR>
+        noremap <Leader>td :echo system('date -d @'.expand('<cword>'))<CR>
         vmap <Leader>td :call TranslateDateVisual()<CR>
 
         " Append modeline after last line in buffer.
@@ -179,8 +179,8 @@
         set pastetoggle=<F2>           " pastetoggle (sane indentation on pastes)
 
         " Easier horizontal scrolling
-        map zl zL
-        map zh zH
+        noremap zl zL
+        noremap zh zH
 
         " Ctrl+a is used by tmux and screen
         noremap <c-s> <c-a>
@@ -189,8 +189,8 @@
 
         " https://superuser.com/questions/277787/vim-map-a-key-combination-while-in-insert-mode
         " <c-tab> did not work.
-        nmap <Tab> :tabn<CR>
-        imap <Tab> <c-o>:tabn<CR>
+        noremap <Tab> :tabn<CR>
+        inoremap <Tab> <c-o>:tabn<CR>
 
         " Every unnecessary keystroke that can be saved is good for your health :)
         noremap <c-j> <c-w>j
@@ -213,21 +213,21 @@
         " I use this so that Ctrl-c also works in the command-line window like Escape.
         " Does not work
         " Try to use Neo2 Escape.
-        map! <c-c> <ESC>
+        noremap! <c-c> <ESC>
     " }}}
 
     " Disabled (mostly because of incompatibilities {{{
         " The following two lines conflict with moving to top and
         " bottom of the screen
-        " map <S-H> gT
-        " map <S-L> gt
+        " noremap <S-H> gT
+        " noremap <S-L> gt
 
         " Unbind the cursor keys in insert, normal and visual modes.
         " Luckily I do not use them anymore because they are so far away.
         " But there are better ways to send those keycodes.
         " for prefix in ['i', 'n', 'v']
         "     for key in ['<Up>', '<Down>', '<Left>', '<Right>']
-        "         exe prefix . "map " . key . " <Nop>"
+        "         exe prefix . "noremap " . key . " <Nop>"
         "     endfor
         " endfor
     " }}}
@@ -243,13 +243,13 @@
     " call add(g:spf13_bundle_groups, 'testing')
     call add(g:spf13_bundle_groups, 'general_important')
     call add(g:spf13_bundle_groups, 'general')
-    " call add(g:spf13_bundle_groups, 'work')
-    " call add(g:spf13_bundle_groups, 'programming')
-    " call add(g:spf13_bundle_groups, 'python')
-    " call add(g:spf13_bundle_groups, 'perl')
-    " call add(g:spf13_bundle_groups, 'javascript')
-    " call add(g:spf13_bundle_groups, 'snipmate')
-    " call add(g:spf13_bundle_groups, 'html')
+    call add(g:spf13_bundle_groups, 'work')
+    call add(g:spf13_bundle_groups, 'programming')
+    call add(g:spf13_bundle_groups, 'python')
+    call add(g:spf13_bundle_groups, 'perl')
+    call add(g:spf13_bundle_groups, 'javascript')
+    call add(g:spf13_bundle_groups, 'snipmate')
+    call add(g:spf13_bundle_groups, 'html')
     " call add(g:spf13_bundle_groups, 'latex')
 
     " Deps {
@@ -294,7 +294,7 @@
                 let g:ctrlp_extensions = ['line']
                 let g:ctrlp_open_new_file = 'h'
                 let g:ctrlp_mruf_max = 2000
-                nmap <Leader>r :CtrlPMRUFiles<CR>
+                noremap <Leader>r :CtrlPMRUFiles<CR>
             " }
 
             " Handling comments {{{
@@ -304,8 +304,8 @@
                 Bundle 'scrooloose/nerdcommenter'
                 let NERDSpaceDelims = 1
 
-                " nmap gcc :call NERDComment('n', 'Toggle')<CR>
-                " nmap <Leader>d :call NERDComment('n', 'Toggle')<CR>
+                " noremap gcc :call NERDComment('n', 'Toggle')<CR>
+                " noremap <Leader>d :call NERDComment('n', 'Toggle')<CR>
                 map <Bar> :call NERDComment('n', 'Toggle')<CR>
             " }}}
 
@@ -322,8 +322,8 @@
                 " let g:AutoPairShortcutToggle = '<Leader>ac'
                 " Bundle 'jiangmiao/auto-pairs' " Could not get inserting new closing brackets and jumping to existing brackets at once to work
                 " let g:AutoPairsFlyMode = 1
-                " nmap <silent> <Leader>ac :call AutoPairsToggle()<CR>
-                " imap <silent> <Leader>ac <ESC>:call AutoPairsToggle()<CR>a
+                " noremap <silent> <Leader>ac :call AutoPairsToggle()<CR>
+                " inoremap <silent> <Leader>ac <ESC>:call AutoPairsToggle()<CR>a
                 Bundle 'Raimondi/delimitMate'
                 let delimitMate_expand_cr = 1
             " }}}
@@ -334,7 +334,7 @@
 
             " vim-bad-whitespace {
                 Bundle 'bitc/vim-bad-whitespace'
-                nmap <Leader>fc :EraseBadWhitespace<CR>
+                noremap <Leader>fc :EraseBadWhitespace<CR>
             " }
 
             Bundle 'tpope/vim-repeat'
@@ -343,7 +343,7 @@
                 if has("python") && executable('python')
                     Bundle 'ypid/lookup.vim'
                     " let g:lookup_dict_para = []
-                    nmap <Leader>tr :Lookup<CR>
+                    noremap <Leader>tr :Lookup<CR>
                     vmap <Leader>tr :call LookupVisual()<CR>
                 endif
             " }
@@ -447,7 +447,7 @@
 
             " Toggle words
             Bundle 'toggle_words.vim'
-            nmap <Leader>to :ToggleWord<CR>
+            noremap <Leader>to :ToggleWord<CR>
 
             Bundle 'tpope/vim-endwise'
 
@@ -477,8 +477,8 @@
 
                 call SingleCompile#ChooseCompiler('mkd', 'markdown')
 
-                nmap <Leader>as :SCCompileRun<CR>
-                imap <Leader>as <c-o>:SCCompileRun<CR>
+                noremap <Leader>as :SCCompileRun<CR>
+                inoremap <Leader>as <c-o>:SCCompileRun<CR>
             " }}}
 
             " " Taglist {
@@ -497,7 +497,7 @@
             Bundle 'mattn/gist-vim'
 
             Bundle 'inkarkat/SyntaxAttr.vim'
-            nmap <Leader>ti :call SyntaxAttr()<CR>
+            noremap <Leader>ti :call SyntaxAttr()<CR>
 
             Bundle 'SrchRplcHiGrp.vim'
         endif
@@ -510,7 +510,7 @@
                 Bundle 'SirVer/ultisnips'
                 Bundle 'honza/vim-snippets'
                 " let g:UltiSnipsListSnippets = "<Leader><tab>"
-                nmap <Leader><tab> :call UltiSnips_ListSnippets()<cr>
+                noremap <Leader><tab> :call UltiSnips_ListSnippets()<cr>
             endif
         elseif count(g:spf13_bundle_groups, 'neocomplcache')
             Bundle 'Shougo/neocomplcache'
@@ -548,7 +548,7 @@
                 let g:neocomplcache_force_overwrite_completefunc = 1
 
                 " SuperTab like snippets behavior.
-                imap <silent><expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" : (pumvisible() ? "\<c-e>" : "\<TAB>")
+                inoremap <silent><expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" : (pumvisible() ? "\<c-e>" : "\<TAB>")
                 smap <TAB> <Right><Plug>(neosnippet_jump_or_expand)
 
                 " Define dictionary.
@@ -563,7 +563,7 @@
                 " Plugin key-mappings.
 
                 " These two lines conflict with the default digraph mapping of <c-K>
-                imap <c-l> <Plug>(neosnippet_expand_or_jump)
+                inoremap <c-l> <Plug>(neosnippet_expand_or_jump)
                 smap <c-l> <Plug>(neosnippet_expand_or_jump)
 
                 " inoremap <expr><c-g> neocomplcache#undo_completion()
@@ -679,7 +679,7 @@
             " 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
             " The following changes the default filetype back to 'tex':
             let g:tex_flavor='latex'
-            imap <Leader>Y <Plug>IMAP_JumpForward
+            inoremap <Leader>Y <Plug>inoremap_JumpForward
         endif
     " }
 
