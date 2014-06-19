@@ -18,7 +18,7 @@
 	## use last commit message
 	co = checkout
 	br = branch --all
-	lgn = log --pretty=oneline --abbrev-commit --show-notes=*
+	lgn = log --pretty=oneline --abbrev-commit --show-notes=* --show-signature
 	; lg = log --graph --pretty=format:'%Cred%h..%Creset - %s %Cgreen(%cr)%Creset - %an' --abbrev-commit --date=relative
 	v = fsck --full --unreachable --strict --no-dangling
 [core]

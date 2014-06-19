@@ -75,12 +75,13 @@ fi
 alias tmux='TERM=screen-256color-bce tmux'
 alias t='tmux'
 alias h='htop'
+alias '*'='dict'
 
 ## Use the shortcuts from oh-my-zsh for git
 alias wd='git diff --color-words --no-index'
 # overwrite alias from oh-my-zsh {{{
-# alias glg='git log --stat --decorate=short' # full history
-alias glg='tig' # full history
+alias glg='git log --stat --decorate=short --show-signature' # full history
+# alias glg='tig --show-signature' # full history
 unalias gp 2>/dev/zero
 function gp {
     if [[ "$PWD" =~ "$HOME/Beruf" ]]; then
@@ -143,3 +144,8 @@ if [ -d "$HOME/Skripte/repository" ]; then
 fi
 export PYTHONSTARTUP="$HOME/.pystartup"
 export PYTHONPATH='.'
+user_install_dir="$HOME/.usr/bin"
+if [ -d "$user_install_dir" ]; then
+    PATH="$user_install_dir:$PATH"
+    PYTHONPATH="$user_install_dir/lib/python2.7/site-packages:$PYTHONPATH"
+fi
