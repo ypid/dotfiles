@@ -52,8 +52,8 @@
 
         " Wrapped lines goes down/up to next row, rather than next line in file.
         " Does this slow down the scrolling in my configuration?
-        " noremap j gj
-        " noremap k gk
+        noremap j gj
+        noremap k gk
 
         " Visual shifting (does not exit Visual mode)
         vnoremap < <gv
@@ -83,6 +83,9 @@
         " Filetype detact
         noremap <Leader>fd :filetype detect<CR>
         inoremap <Leader>fd <c-o>:filetype detect<CR>
+
+        " Open my .vimrc
+        noremap <Leader>ff :sp $MYVIMRC<CR>
 
         " Save and exit
         noremap <Leader>x :x<CR>
@@ -189,8 +192,9 @@
 
         " https://superuser.com/questions/277787/vim-map-a-key-combination-while-in-insert-mode
         " <c-tab> did not work.
-        noremap <Tab> :tabn<CR>
-        inoremap <Tab> <c-o>:tabn<CR>
+        " noremap <Tab> :tabn<CR>
+        " Does interfere with c-i ?
+        " inoremap <Tab> <c-o>:tabn<CR>
 
         " Every unnecessary keystroke that can be saved is good for your health :)
         noremap <c-j> <c-w>j
@@ -214,6 +218,9 @@
         " Does not work
         " Try to use Neo2 Escape.
         noremap! <c-c> <ESC>
+
+        nnoremap <c-n> <c-]>
+        nnoremap <c-m> <c-t>
     " }}}
 
     " Disabled (mostly because of incompatibilities {{{
@@ -239,9 +246,9 @@
     " 'html', 'latex',
     " 'misc', 'scala', 'games']
     let g:spf13_bundle_groups = []
-    " call add(g:spf13_bundle_groups, 'dependencies')
-    " call add(g:spf13_bundle_groups, 'testing')
+    call add(g:spf13_bundle_groups, 'dependencies')
     call add(g:spf13_bundle_groups, 'general_important')
+    call add(g:spf13_bundle_groups, 'testing')
     call add(g:spf13_bundle_groups, 'general')
     call add(g:spf13_bundle_groups, 'work')
     call add(g:spf13_bundle_groups, 'programming')
@@ -256,15 +263,6 @@
         if count(g:spf13_bundle_groups, 'dependencies')
             Bundle 'MarcWeber/vim-addon-mw-utils'
             Bundle 'tomtom/tlib_vim'
-            " if executable('ack-grep')
-            "     let g:ackprg="ack-grep -H --nocolor --nogroup --column"
-            "     Bundle 'mileszs/ack.vim'
-            " elseif executable('ack')
-            "     Bundle 'mileszs/ack.vim'
-            " elseif executable('ag')
-            "     Bundle 'mileszs/ack.vim'
-            "     let g:ackprg = 'ag --nogroup --nocolor --column'
-            " endif
         endif
     " }
 
@@ -276,11 +274,11 @@
 
     " Testing {{{
         if count(g:spf13_bundle_groups, 'testing')
-            Bundle 'terryma/vim-smooth-scroll'
-            noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 4)<CR>
-            noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 4)<CR>
-            noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
-            noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
+            " Bundle 'terryma/vim-smooth-scroll'
+            " noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 4)<CR>
+            " noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 4)<CR>
+            " noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
+            " noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
         endif
     " }}}
 
@@ -295,6 +293,7 @@
                 let g:ctrlp_open_new_file = 'h'
                 let g:ctrlp_mruf_max = 2000
                 noremap <Leader>r :CtrlPMRUFiles<CR>
+                " noremap <Leader>ff :CtrlPMRUFiles<CR>
             " }
 
             " Handling comments {{{
@@ -326,6 +325,12 @@
                 " inoremap <silent> <Leader>ac <ESC>:call AutoPairsToggle()<CR>a
                 Bundle 'Raimondi/delimitMate'
                 let delimitMate_expand_cr = 1
+
+                Bundle 'lfilho/cosco.vim'
+                noremap <silent> <Leader>, :call cosco#commaOrSemiColon()<CR>
+                inoremap <silent> <Leader>, <c-o>:call cosco#commaOrSemiColon()<CR>
+                " Bundle 'oinksoft/endline.vim'
+                " let g:EndlineInsertMapping = '<Leader>,'
             " }}}
 
             " Bundle 'vim-scripts/sessionman.vim'
@@ -367,6 +372,7 @@
             " Bundle 'myusuf3/numbers.vim'
 
             " indent_guides {
+                " Bundle 'Yggdroot/indentLine'
                 Bundle 'nathanaelkane/vim-indent-guides'
                 if !exists('g:spf13_no_indent_guides_autocolor')
                     let g:indent_guides_auto_colors = 1
@@ -384,7 +390,8 @@
                 Bundle 'vim-scripts/restore_view.vim'
             endif
 
-            Bundle 'tpope/vim-markdown'
+            " Bundle 'tpope/vim-markdown'
+            Bundle 'jtratner/vim-flavored-markdown'
 
             Bundle 'bronson/vim-visual-star-search'
         endif
@@ -394,7 +401,7 @@
         if count(g:spf13_bundle_groups, 'programming')
             " Pick one of the checksyntax, jslint, or syntastic
             " Bundle 'scrooloose/syntastic' " Too slow
-            Bundle 'vivien/vim-addon-linux-coding-style'
+            " Bundle 'vivien/vim-addon-linux-coding-style'
             Bundle 'tpope/vim-surround'
 
             " More text objects {
@@ -435,7 +442,7 @@
                 map <Leader>a: :Tabularize /:<CR>
                 map <Leader>a:: :Tabularize /:\zs<CR>
                 map <Leader>a, :Tabularize /,<CR>
-                map <Leader>a/ :Tabularize /\zs\/\//<CR>
+                map <Leader>a/ :Tabularize /\zs\(\/\/\\|\/\*\)/<CR>
                 map <Leader>a" :Tabularize /"<CR>
                 map <Leader>a' :Tabularize /:\zs \+'/l0r0<CR>
                 map <Leader>a# :Tabularize /#<CR>
@@ -459,13 +466,29 @@
                 let g:detectindent_min_indent          = 2
             " }}}
 
+            " Ack {{{
+                if executable('ack-grep')
+                    let g:ackprg="ack-grep -H --nocolor --nogroup --column"
+                    Bundle 'mileszs/ack.vim'
+                elseif executable('ack')
+                    Bundle 'mileszs/ack.vim'
+                elseif executable('ag')
+                    let g:ackprg = 'ag --nogroup --nocolor --column'
+                    Bundle 'mileszs/ack.vim'
+                endif
+            " }}}
+
+            Bundle 'derekwyatt/vim-fswitch'
+            nnoremap <Leader>h :FSSplitBelow<cr>
+
             " Highlight brackets
             Bundle 'kien/rainbow_parentheses.vim'
             nnoremap <Leader>R :RainbowParenthesesToggle<CR>
 
-            " if executable('ctags')
-            "     Bundle 'majutsushi/tagbar'
-            " endif
+            if executable('ctags')
+                Bundle 'majutsushi/tagbar'
+                nnoremap <Leader>ft :TagbarToggle<cr>
+            endif
 
             " Save and run {{{
                 Bundle 'xuhdev/SingleCompile'
@@ -838,6 +861,8 @@
     " set hidden                          " Allow buffer switching without saving
     set splitbelow                      " Open new splits below (for Gdiff)
     set wildignorecase                  " Comes in very handy when your are used to ZSH.
+    set tags=./tags;/                   " Look in all upper Directorys for tags files
+    " Did not work. http://stackoverflow.com/a/741486
 
     " Setting up the directories {
         call EnsureDirExists($HOME . '/.vimswap')
@@ -972,22 +997,22 @@
         autocmd BufWritePre *mnt*   setlocal noundofile
 
         " Set language specific stuff {{{
+            autocmd FileType vim setlocal expandtab shiftwidth=4
+            autocmd FileType vim let b:delimitMate_quotes = "' `"
+            autocmd FileType sh setlocal textwidth=0
             autocmd FileType perl setlocal expandtab shiftwidth=4
             autocmd FileType perl compiler perlcritic
-            autocmd FileType vim setlocal expandtab shiftwidth=4
             autocmd FileType python setlocal shiftwidth=4
             autocmd FileType python let b:delimitMate_nesting_quotes = ['"']
             autocmd FileType python set makeprg=pylint\ --reports=n\ --output-format=parseable\ %:p
             autocmd FileType python set efm=%A%f:%l:\ [%t%.%#]\ %m,%Z%p^^,%-C%.%#
             autocmd FileType mkd let b:delimitMate_nesting_quotes = ['`']
-            autocmd FileType vim let b:delimitMate_quotes = "' `"
             autocmd FileType tex setlocal expandtab shiftwidth=2
             autocmd FileType c setlocal noexpandtab shiftwidth=4
             autocmd FileType html setlocal expandtab shiftwidth=2
             autocmd FileType html compiler tidy
-            autocmd FileType sh setlocal textwidth=0
-            " autocmd FileType xml setlocal foldmethod=syntax " does not work
             autocmd FileType xml setlocal foldmethod=indent
+            " autocmd FileType xml setlocal foldmethod=syntax " does not work
             autocmd FileType gitcommit normal gg
         " }}}
 

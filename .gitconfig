@@ -14,7 +14,7 @@
 	ci = commit -v
 	cil = commit --reedit-message=HEAD --reset-author
 	cii = commit --all -m 'Initial commit.'
-	cia = commit --all -m 'Auto commit without message.'
+	cia = commit --all -m 'Auto commit without commit message.'
 	## use last commit message
 	co = checkout
 	br = branch --all
@@ -34,3 +34,5 @@
 	backends = SHA512E
 	diskreserve = 600 megabyte
 	largefiles = not include=*.git*
+[tig]
+	show-line-numbers = yes

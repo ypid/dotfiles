@@ -71,3 +71,4 @@
 # Widely used for .d directories in /etc …
 
 *.lst
+tags

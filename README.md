@@ -70,9 +70,18 @@ Here are some advices regarding shortcuts for programmers or UI designers which 
 * Make it easy to track the configuration files (which contain the shortcuts) with version control.
 * Do not reinvent the wheel!
 
-Additionally, some thoughts:
+Additionally, some thoughts (or personal wishes):
 
 * Every application which works with text or has and text input field should support Ctrl+u in the way Vim does it. (I am often trying to delete the complete text in the URL Bar in Firefox with Ctrl+u …)
+
+## Shortcut “Namespaces”
+
+Which shortcuts should be used where? – Some thoughts …
+
+Super key:
+
+* Without other modifiers only for the Window manager or AutoKey
+
 
 ## Special keys
 Key name      | Comment
