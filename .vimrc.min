@@ -50,10 +50,6 @@
         " Also open not existing files.
         noremap gf :sp <cfile><cR>
 
-        " Save and exit
-        noremap <c-q> :x<CR>
-        inoremap <c-q> <ESC>:x<CR>
-
         " Wrapped lines goes down/up to next row, rather than next line in file.
         " Does this slow down the scrolling in my configuration?
         noremap j gj
@@ -64,17 +60,18 @@
         vnoremap > >gv
 
         " http://vim.wikia.com/wiki/Highlight_all_search_pattern_matches#Highlight_matches_without_moving
-        let g:highlighting = 0
-        function! Highlighting()
-          if g:highlighting == 1 && @/ =~ '^\\<'.expand('<cword>').'\\>$'
-            let g:highlighting = 0
-            return ":silent nohlsearch\<CR>"
-          endif
-          let @/ = '\<'.expand('<cword>').'\>'
-          let g:highlighting = 1
-          return ":silent set hlsearch\<CR>"
-        endfunction
-        nnoremap <silent> <expr> <Space> Highlighting()
+        " let g:highlighting = 0
+        " function! Highlighting()
+          " if g:highlighting == 1 && @/ =~ '^\\<'.expand('<cword>').'\\>$'
+            " let g:highlighting = 0
+            " return ":silent nohlsearch\<CR>"
+          " endif
+          " let @/ = '\<'.expand('<cword>').'\>'
+          " let g:highlighting = 1
+          " return ":silent set hlsearch\<CR>"
+        " endfunction
+        " nnoremap <silent> <expr> <Space> Highlighting()
+        " Replaced by 'https://github.com/t9md/vim-quickhl'
     " }
 
     " Map leader mappings {{{
@@ -97,9 +94,12 @@
 
         " Quick quit command
         noremap <Leader>e :quit<CR>
+        noremap ❤ :q!<CR>
+        " Shift+Layer3Mod+w
+
         " Quit all windows
-        noremap <Leader>E :q!<CR>
-        noremap <Leader>λ :q!<CR>
+        noremap <Leader>E :quit!<CR>
+        noremap λ :quit!<CR>
         " Shift+Layer3Mod+e
 
         " Code folding options {{{
@@ -149,9 +149,9 @@
         noremap <Leader>q o<Esc>
 
         " easier moving between tabs
-        " noremap <Leader>n <esc>:tabprevious<CR>
-        " noremap <Leader>m <esc>:tabnext<CR>
-        " Use the default gt and gT
+        noremap σ :tabprevious<CR>
+        noremap τ :tabnext<CR>
+        " Or use the default gt and gT
 
         " easier moving between buffers
         noremap <Leader>w <esc>:bNext<CR>
@@ -185,7 +185,7 @@
     " }}}
 
     " Other mappings {{{
-        set pastetoggle=<F2>           " pastetoggle (sane indentation on pastes)
+        set pastetoggle=♡           " pastetoggle (sane indentation on pastes)
 
         " Easier horizontal scrolling
         noremap zl zL

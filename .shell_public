@@ -1,6 +1,7 @@
 ## Stuff for programs which should be available everywhere {{{
 
 export EDITOR=vim
+alias e='editor'
 
 ## Enable color support of ls and also add handy aliases {{{
 if [ -x /usr/bin/dircolors ]; then

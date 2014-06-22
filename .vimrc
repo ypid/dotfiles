@@ -20,7 +20,7 @@ source ~/.vimrc.min
     call add(g:spf13_bundle_groups, 'dependencies')
     call add(g:spf13_bundle_groups, 'general_important')
     call add(g:spf13_bundle_groups, 'general')
-    " call add(g:spf13_bundle_groups, 'ui')
+    call add(g:spf13_bundle_groups, 'ui')
     " call add(g:spf13_bundle_groups, 'work')
     call add(g:spf13_bundle_groups, 'programming')
     call add(g:spf13_bundle_groups, 'perl')
@@ -56,6 +56,19 @@ source ~/.vimrc.min
     " Testing {{{
         if count(g:spf13_bundle_groups, 'testing')
             Bundle 'terryma/vim-multiple-cursors'
+            Bundle 't9md/vim-quickhl'
+            " xmap <Space>m <Plug>(quickhl-manual-this)
+            nmap μ <Plug>(quickhl-manual-this)
+            " Shift+Layer3Mod+m
+            "
+            " xmap <Space>M <Plug>(quickhl-manual-reset)
+            nmap β <Plug>(quickhl-manual-reset)
+            " Shift+Layer3Mod+n
+
+            nmap <Leader>m <Plug>(quickhl-cword-toggle)
+            " nmap μ <Plug>(quickhl-tag-toggle)
+            " map H <Plug>(operator-quickhl-manual-this-motion)
+
         endif
         if count(g:spf13_bundle_groups, 'tested_not_using')
             " I don‘t really like this behavior
@@ -173,11 +186,31 @@ source ~/.vimrc.min
     " UI enhancements {
         if count(g:spf13_bundle_groups, 'ui')
             " Powerline {
-                if (has("python") && executable('python')) || (has("python3") && executable('python3'))
-                    Bundle 'Lokaltog/powerline', {'rtp':'/powerline/bindings/vim'}
-                else
-                    Bundle 'Lokaltog/vim-powerline'
-                endif
+                " if (has("python") && executable('python')) || (has("python3") && executable('python3'))
+                    " Bundle 'Lokaltog/powerline', {'rtp':'/powerline/bindings/vim'}
+                " else
+                    " Bundle 'Lokaltog/vim-powerline'
+                " endif
+                Bundle 'bling/vim-airline'
+                " So much faster than Powerline …
+                " let g:airline#extensions#tabline#enabled = 1
+                " function! AccentDemo()
+                    " let keys = ['a','b','c','d','e','f','g','h']
+                    " for k in keys
+                        " call airline#parts#define_text(k, k)
+                    " endfor
+                    " call airline#parts#define_accent('a', 'red')
+                    " call airline#parts#define_accent('b', 'green')
+                    " call airline#parts#define_accent('c', 'blue')
+                    " call airline#parts#define_accent('d', 'yellow')
+                    " call airline#parts#define_accent('e', 'orange')
+                    " call airline#parts#define_accent('f', 'purple')
+                    " call airline#parts#define_accent('g', 'bold')
+                    " call airline#parts#define_accent('h', 'italic')
+                    " let g:airline_section_a = airline#section#create(keys)
+                " endfunction
+                " autocmd VimEnter * call AccentDemo()
+                let g:airline_section_z='%3p%% %#__accent_bold#%#__accent_yellow#%4l%#__restore__#:%3v'
             " }
         endif
     " }
@@ -542,6 +575,7 @@ source ~/.vimrc.min
         if count(g:spf13_bundle_groups, 'games')
             Bundle 'TeTrIs.vim'
             Bundle 'sokoban.vim'
+            Bundle 'koron/nyancat-vim'
         endif
     " }
 
@@ -677,6 +711,7 @@ source ~/.vimrc.min
     else
         set cursorline                  " Highlight current line
         " Bundle 'flazz/vim-colorschemes'
+        " Bundle 'nanotech/jellybeans.vim'
         " Bundle 'spf13/vim-colors'
         " set background=light
     endif
