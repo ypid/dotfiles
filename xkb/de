@@ -281,7 +281,7 @@ xkb_symbols "neo_base" {
     // --------------------------------------------------------------
     key.type[Group1] = "EIGHT_LEVEL_ALPHABETIC_LEVEL_FIVE_LOCK";
     key <AD01> { [ q,                       Q,                       ellipsis,                Greek_xi,                Prior,                   Prior,                   Greek_XI,                NoSymbol                 ] };
-    key <AD02> { [ w,                       W,                       underscore,              NoSymbol,                BackSpace,               BackSpace,               radical,                 NoSymbol                 ] };
+    key <AD02> { [ w,                       W,                       underscore,              U2764,                BackSpace,               BackSpace,               radical,                 NoSymbol                 ] };
     key <AD03> { [ e,                       E,                       bracketleft,             Greek_lambda,            Up,                      Up,                      Greek_LAMBDA,            NoSymbol                 ] };
     key <AD04> { [ r,                       R,                       bracketright,            Greek_chi,               Delete,                  Delete,                  U2102,                   NoSymbol                 ] };
     key <AD05> { [ t,                       T,                       asciicircum,             Greek_omega,             Next,                    Next,                    Greek_OMEGA,             NoSymbol                 ] };
@@ -300,7 +300,7 @@ xkb_symbols "neo_base" {
     // Middle row
     // --------------------------------------------------------------
     key.type[Group1] = "EIGHT_LEVEL_ALPHABETIC_LEVEL_FIVE_LOCK";
-    key <AC01> { [ a,                       A,                       backslash,               NoSymbol,                Home,                    Home,                    includedin,              NoSymbol                 ] };
+    key <AC01> { [ a,                       A,                       backslash,               U2661,                Home,                    Home,                    includedin,              NoSymbol                 ] };
     key <AC02> { [ s,                       S,                       slash,                   Greek_iota,              Left,                    Left,                    integral,                NoSymbol                 ] };
     key <AC03> { [ d,                       D,                       braceleft,               Greek_alpha,             Down,                    Down,                    U2200,                   NoSymbol                 ] };
     key <AC04> { [ f,                       F,                       braceright,              Greek_epsilon,           Right,                   Right,                   U2203,                   NoSymbol                 ] };
