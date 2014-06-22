@@ -1,0 +1,241 @@
+" vim: set sw=4 ts=4 sts=4 et tw=78 foldmarker={,} foldlevel=0 foldmethod=marker spell:
+
+" Environment {
+    " Basics {
+        set nocompatible        " must be first line
+    " }
+
+    " Windows Compatible {
+        " On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
+        " across (heterogeneous) systems easier.
+		if has('win32') || has('win64')
+			set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
+		endif
+    " }
+
+    " Setup Bundle Support {
+    " The next three lines ensure that the ~/.vim/bundle/ system works
+        filetype off
+        set rtp+=~/.vim/bundle/vundle
+        " let g:vundle_default_git_proto = 'git'
+        call vundle#rc()
+        Bundle 'gmarik/vundle'
+    " }
+
+" }
+
+" Key (re)Mappings {
+    " Mappings which only work with plugins enabled should be placed in the
+    " Plugin section.
+
+    " Hack to make mappings using the Alt or Meta key working {{{
+    " http://stackoverflow.com/a/10216459/2239985
+        " let c='a'
+        " while c <= 'z'
+            " exec "set <A-".c.">=\e".c
+            " exec "inoremap \e".c." <A-".c.">"
+            " let c = nr2char(1+char2nr(c))
+        " endw
+
+        " set timeout ttimeoutlen=50
+        " " these two work in vim
+        " " shrtcut with alt key: press Ctrl-v then Alt-k
+        " " ATTENTION: the following two lines should not be
+        " " edited under other editors like gedit. ^[k and ^[j will be broken!
+        " nnoremap ^[k :set paste<CR>m`O<Esc>``:set nopaste<CR>
+        " nnoremap ^[j :set paste<CR>m`o<Esc>``:set nopaste<CR>
+    " }}}
+
+    " Overwrite default Vim mappings {
+        " Also open not existing files.
+        noremap gf :sp <cfile><cR>
+
+        " Wrapped lines goes down/up to next row, rather than next line in file.
+        " Does this slow down the scrolling in my configuration?
+        noremap j gj
+        noremap k gk
+
+        " Visual shifting (does not exit Visual mode)
+        vnoremap < <gv
+        vnoremap > >gv
+
+        " http://vim.wikia.com/wiki/Highlight_all_search_pattern_matches#Highlight_matches_without_moving
+        let g:highlighting = 0
+        function! Highlighting()
+          if g:highlighting == 1 && @/ =~ '^\\<'.expand('<cword>').'\\>$'
+            let g:highlighting = 0
+            return ":silent nohlsearch\<CR>"
+          endif
+          let @/ = '\<'.expand('<cword>').'\>'
+          let g:highlighting = 1
+          return ":silent set hlsearch\<CR>"
+        endfunction
+        nnoremap <silent> <expr> <Space> Highlighting()
+    " }
+
+    " Map leader mappings {{{
+        let mapleader = ','
+
+        " Save and go to normal mode
+        noremap <Leader>s :update<CR>
+        inoremap <Leader>s <ESC>:update<CR>l
+
+        " Filetype detact
+        noremap <Leader>fd :filetype detect<CR>
+        inoremap <Leader>fd <c-o>:filetype detect<CR>
+
+        " Open my .vimrc
+        noremap <Leader>ff :sp $MYVIMRC<CR>
+
+        " Save and exit
+        noremap <Leader>x :x<CR>
+        inoremap <Leader>x <ESC>:x<CR>
+
+        " Quick quit command
+        noremap <Leader>e :quit<CR>
+        " Quit all windows
+        noremap <Leader>E :q!<CR>
+
+        " Code folding options {{{
+            " noremap <leader>f0 :set foldlevel=0<CR>
+            " Use zM for this
+            noremap <leader>f1 :set foldlevel=1<CR>
+            noremap <leader>f2 :set foldlevel=2<CR>
+            noremap <leader>f3 :set foldlevel=3<CR>
+            noremap <leader>f4 :set foldlevel=4<CR>
+            noremap <leader>f5 :set foldlevel=5<CR>
+            noremap <leader>f6 :set foldlevel=6<CR>
+            noremap <leader>f7 :set foldlevel=7<CR>
+            noremap <leader>f8 :set foldlevel=8<CR>
+            noremap <leader>f9 :set foldlevel=9<CR>
+        " }}}
+
+        " Toggle highlight search
+        noremap <Leader>B :set invhlsearch<CR>
+        inoremap <Leader>B <c-o>:set invhlsearch<CR>
+        noremap <Leader>b :set nohlsearch<CR>
+        inoremap <Leader>b <c-o>:set nohlsearch<CR>
+
+        " let hlstate=0
+        " let lastsearchstring = @/
+        " noremap <Leader>b :call Togglehlsearch()<CR>
+
+        " Bind set list
+        noremap <Leader>l :set list!<CR>
+        inoremap <Leader>l <c-o>:set list!<CR>
+
+        " Insert current full path of the file
+        inoremap <Leader>fp <ESC>:put =expand('%:p')<CR>kJA
+
+        " Insert current file name
+        " inoremap <Leader>fn <ESC>"%p<CR>g;
+        " Just use Ctrl-r%
+
+        " Spellcheck { set spellfile=~/.vim/spell/en.utf-8.add set dictionary+=/usr/share/dict/words
+            set spelllang=en_us,de_de
+            " set spelllang=en_us
+            noremap <Leader>cd :set spell!<CR>
+            inoremap <Leader>cd <c-o>:set spell!<CR>
+        " }
+
+        " Insert newline without entering insert mode
+        noremap <Leader>Q O<Esc>
+        noremap <Leader>q o<Esc>
+
+        " easier moving between tabs
+        " noremap <Leader>n <esc>:tabprevious<CR>
+        " noremap <Leader>m <esc>:tabnext<CR>
+        " Use the default gt and gT
+
+        " easier moving between buffers
+        noremap <Leader>w <esc>:bNext<CR>
+
+        " set the executable bit
+        noremap <Leader>y :w!<CR>:!chmod +x "%"<CR>:quit<CR>
+        inoremap <Leader>y <ESC>:w!<CR>:!chmod +x "%"<CR>:quit<CR>
+
+        " noremap <Leader>d :echo strftime("%Y-%m-%d_%H:%M")<CR>
+
+        function! TranslateDateVisual()
+            sil! norm! gv"ty
+            echo system('date -d @'. @t)
+        endfunction
+
+        " Translate the current word (Unix time stamp) to a human readable time.
+        noremap <Leader>td :echo system('date -d @'.expand('<cword>'))<CR>
+        vmap <Leader>td :call TranslateDateVisual()<CR>
+
+        " Append modeline after last line in buffer.
+        " Use substitute() instead of printf() to handle '%%s' modeline in LaTeX
+        " files.
+        function! AppendModeline()
+            let l:modeline = printf("vim: set ts=%d sw=%d tw=%d %set :",
+                        \ &tabstop, &shiftwidth, &textwidth, &expandtab ? '' : 'no')
+            call append(line("$"), l:modeline)
+            normal '.
+            call NERDComment('n', 'Toggle')
+        endfunction
+        nnoremap <silent> <Leader>am :call AppendModeline()<CR>
+    " }}}
+
+    " Other mappings {{{
+        set pastetoggle=<F2>           " pastetoggle (sane indentation on pastes)
+
+        " Easier horizontal scrolling
+        noremap zl zL
+        noremap zh zH
+
+        " Ctrl+a is used by tmux and screen
+        noremap <c-s> <c-a>
+        noremap <c-a> <Nop>
+        " Don‘t use Ctrl+a even if not in tmux.
+
+        " https://superuser.com/questions/277787/vim-map-a-key-combination-while-in-insert-mode
+        " <c-tab> did not work.
+        " noremap <Tab> :tabn<CR>
+        " Does interfere with c-i ?
+        " inoremap <Tab> <c-o>:tabn<CR>
+
+        " Every unnecessary keystroke that can be saved is good for your health :)
+        noremap <c-j> <c-w>j
+        noremap <c-k> <c-w>k
+        noremap <c-l> <c-w>l
+        noremap <c-h> <c-w>h
+
+        " http://vim.wikia.com/wiki/Recover_from_accidental_Ctrl-U
+        inoremap <c-u> <c-g>u<c-u>
+        inoremap <c-w> <c-g>u<c-w>
+
+        " Shortcuts
+        " Change Working Directory to that of the current file
+        cmap cwd lcd %:p:h
+        cmap cd. lcd %:p:h
+
+        " For when you forget to sudo.. Really Write the file.
+        cmap w!! w !sudo tee % >/dev/null
+
+        " I use this so that Ctrl-c also works in the command-line window like Escape.
+        " Does not work
+        " Try to use Neo2 Escape.
+        noremap! <c-c> <ESC>
+
+        nnoremap <c-n> <c-]>
+        nnoremap <c-m> <c-t>
+    " }}}
+
+    " Disabled (mostly because of incompatibilities {{{
+        " The following two lines conflict with moving to top and
+        " bottom of the screen
+        " noremap <S-H> gT
+        " noremap <S-L> gt
+
+        " Unbind the cursor keys in insert, normal and visual modes.
+        " Luckily I do not use them anymore because they are so far away.
+        " But there are better ways to send those keycodes.
+        " for prefix in ['i', 'n', 'v']
+        "     for key in ['<Up>', '<Down>', '<Left>', '<Right>']
+        "         exe prefix . "noremap " . key . " <Nop>"
+        "     endfor
+        " endfor
+    " }}}
+" }

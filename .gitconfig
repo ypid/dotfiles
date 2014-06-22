@@ -36,3 +36,5 @@
 	largefiles = not include=*.git*
 [tig]
 	show-line-numbers = yes
+[commit]
+	gpgsign = true

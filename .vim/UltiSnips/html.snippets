@@ -5,3 +5,12 @@ endsnippet
 snippet fc "Fold close" !w
 <!-- }}} -->
 endsnippet
+
+snippet headj "XHTML <head>"
+<head>
+	<meta charset="utf-8">
+	<title>${1:`!p snip.rv = snip.basename or "Page Title"`}</title>
+    $2
+</head>
+$0
+endsnippet
