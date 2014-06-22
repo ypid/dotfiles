@@ -50,6 +50,10 @@
         " Also open not existing files.
         noremap gf :sp <cfile><cR>
 
+        " Save and exit
+        noremap <c-q> :x<CR>
+        inoremap <c-q> <ESC>:x<CR>
+
         " Wrapped lines goes down/up to next row, rather than next line in file.
         " Does this slow down the scrolling in my configuration?
         noremap j gj
@@ -95,6 +99,8 @@
         noremap <Leader>e :quit<CR>
         " Quit all windows
         noremap <Leader>E :q!<CR>
+        noremap <Leader>λ :q!<CR>
+        " Shift+Layer3Mod+e
 
         " Code folding options {{{
             " noremap <leader>f0 :set foldlevel=0<CR>
@@ -217,7 +223,9 @@
         " I use this so that Ctrl-c also works in the command-line window like Escape.
         " Does not work
         " Try to use Neo2 Escape.
-        noremap! <c-c> <ESC>
+        " noremap <c-c> <ESC>
+        " noremap <c-c> <Nop>
+        " Use Neo2 Escape
 
         nnoremap <c-n> <c-]>
         nnoremap <c-m> <c-t>
@@ -238,4 +246,12 @@
         "     endfor
         " endfor
     " }}}
+" }
+
+" Settings if used standalone {
+    if !exists('g:config_section_enable')
+        syntax on
+        hi clear SpellBad
+        hi SpellBad cterm=underline
+    endif
 " }

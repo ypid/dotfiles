@@ -8,7 +8,7 @@ call add(g:config_section_enable, 'solarized')
 call add(g:config_section_enable, 'formating_config')
 call add(g:config_section_enable, 'gui_config')
 call add(g:config_section_enable, 'machine_spesific')
-let g:spf13_no_views = 1
+" let g:spf13_no_views = 1
 " For working on Vim configuration.
 
 source ~/.vimrc.min
@@ -23,23 +23,21 @@ source ~/.vimrc.min
     " call add(g:spf13_bundle_groups, 'ui')
     " call add(g:spf13_bundle_groups, 'work')
     call add(g:spf13_bundle_groups, 'programming')
-    " call add(g:spf13_bundle_groups, 'python')
-    " call add(g:spf13_bundle_groups, 'perl')
-    " call add(g:spf13_bundle_groups, 'snipmate')
-    " call add(g:spf13_bundle_groups, 'html')
+    call add(g:spf13_bundle_groups, 'perl')
+    call add(g:spf13_bundle_groups, 'snipmate')
+    call add(g:spf13_bundle_groups, 'html')
 
     " call add(g:spf13_bundle_groups, 'misc')
     " call add(g:spf13_bundle_groups, 'games')
 
     " Not often used, not properly tested.
-    " call add(g:spf13_bundle_groups, 'testing')
+    call add(g:spf13_bundle_groups, 'testing')
     " call add(g:spf13_bundle_groups, 'neocomplcache')
     " call add(g:spf13_bundle_groups, 'latex')
     " call add(g:spf13_bundle_groups, 'javascript')
     " call add(g:spf13_bundle_groups, 'scala')
     " call add(g:spf13_bundle_groups, 'ruby')
     " call add(g:spf13_bundle_groups, 'python')
-    " call add(g:spf13_bundle_groups, 'perl')
     " call add(g:spf13_bundle_groups, 'go')
 
     " Deps {
@@ -57,11 +55,15 @@ source ~/.vimrc.min
 
     " Testing {{{
         if count(g:spf13_bundle_groups, 'testing')
+            Bundle 'terryma/vim-multiple-cursors'
+        endif
+        if count(g:spf13_bundle_groups, 'tested_not_using')
+            " I don‘t really like this behavior
             " Bundle 'terryma/vim-smooth-scroll'
-            " noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 4)<CR>
-            " noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 4)<CR>
-            " noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
-            " noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
+            " noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 3)<CR>
+            " noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
+            " noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 2)<CR>
+            " noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 2)<CR>
         endif
     " }}}
 
@@ -137,6 +139,8 @@ source ~/.vimrc.min
 
             Bundle 'sjl/gundo.vim'
             nnoremap <Leader>ga :GundoToggle<CR>
+            nnoremap ψ :GundoToggle<CR>
+            " Shift+Layer3Mod+u
 
             " indent_guides {
                 " Bundle 'Yggdroot/indentLine'
@@ -150,12 +154,13 @@ source ~/.vimrc.min
                 endif
                 let g:indent_guides_start_level = 2
                 let g:indent_guides_guide_size = 1
+                " let g:indent_guides_guide_size = 2
                 let g:indent_guides_enable_on_vim_startup = 1
+                let g:indent_guides_soft_pattern = ' '
             " }
 
             if !exists('g:spf13_no_views')
                 Bundle 'vim-scripts/restore_view.vim'
-                echo 'on'
             endif
 
             " Bundle 'tpope/vim-markdown'
@@ -181,6 +186,7 @@ source ~/.vimrc.min
         if count(g:spf13_bundle_groups, 'programming')
             " Pick one of the checksyntax, jslint, or syntastic
             Bundle 'scrooloose/syntastic'
+            highlight SyntasticErrorSign guifg=red guibg=red
             " Bundle 'Valloric/YouCompleteMe'
             " Much dependencies
             " Bundle 'vivien/vim-addon-linux-coding-style'
@@ -196,6 +202,12 @@ source ~/.vimrc.min
                 " http://blog.carbonfive.com/2011/10/17/vim-text-objects-the-definitive-guide/
                 Bundle 'argtextobj.vim'
                 Bundle 'michaeljsmith/vim-indent-object'
+
+                Bundle 'terryma/vim-expand-region'
+                map ν <Plug>(expand_region_expand)
+                " Shift+Layer3Mod+j
+                map ρ <Plug>(expand_region_shrink)
+                " Shift+Layer3Mod+k
             " }
 
             " Git {{{
@@ -239,6 +251,7 @@ source ~/.vimrc.min
                 " http://stackoverflow.com/questions/10287919/use-vims-tabularize-plugin-to-only-match-the-first-occurance-of-a-delimiter
                 map <Leader>af<Space> :Tabularize /^\s*\w*<CR>
                 map <Leader>a<Bar> :Tabularize /[^\\]\zs<Bar><CR>
+                map <Leader>ae :Tabularize /\s\{2,\}\zs<CR>
             " }
 
             " Toggle words
@@ -730,15 +743,14 @@ source ~/.vimrc.min
             hi PmenuThumb  guifg=#F8F8F8 guibg=#8A95A7 gui=NONE ctermfg=lightgray ctermbg=darkcyan cterm=NONE
 
             " Some convenient mappings
-            inoremap <expr> <Esc>      pumvisible() ? "\<c-e>" : "\<Esc>"
-            inoremap <expr> <CR>       pumvisible() ? "\<c-y>" : "\<CR>"
-            inoremap <expr> <Down>     pumvisible() ? "\<c-n>" : "\<Down>"
-            inoremap <expr> <Up>       pumvisible() ? "\<c-p>" : "\<Up>"
-            inoremap <expr> <c-d>      pumvisible() ? "\<PageDown>\<c-p>\<c-n>" : "\<c-d>"
-            inoremap <expr> <c-u>      pumvisible() ? "\<PageUp>\<c-p>\<c-n>" : "\<c-u>"
+            " inoremap <expr> <Esc>      pumvisible() ? "\<c-e>" : "\<Esc>"
+            " inoremap <expr> <CR>       pumvisible() ? "\<c-y>" : "\<CR>"
+            " inoremap <expr> <Down>     pumvisible() ? "\<c-n>" : "\<Down>"
+            " inoremap <expr> <Up>       pumvisible() ? "\<c-p>" : "\<Up>"
+            " inoremap <expr> <c-d>      pumvisible() ? "\<PageDown>\<c-p>\<c-n>" : "\<c-d>"
+            " inoremap <expr> <c-u>      pumvisible() ? "\<PageUp>\<c-p>\<c-n>" : "\<c-u>"
 
             " Automatically open and close the popup menu / preview window
-            autocmd CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
             set completeopt=menu,preview,longest
         endif
     " }
