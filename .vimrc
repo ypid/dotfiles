@@ -8,7 +8,7 @@ call add(g:config_section_enable, 'solarized')
 call add(g:config_section_enable, 'formating_config')
 call add(g:config_section_enable, 'gui_config')
 call add(g:config_section_enable, 'machine_spesific')
-" let g:spf13_no_views = 1
+let g:spf13_no_views = 1
 " For working on Vim configuration.
 
 source ~/.vimrc.min
@@ -17,27 +17,27 @@ source ~/.vimrc.min
     let g:spf13_bundle_groups = []
 
     " Default
-    call add(g:spf13_bundle_groups, 'dependencies')
+    " call add(g:spf13_bundle_groups, 'dependencies')
     call add(g:spf13_bundle_groups, 'general_important')
-    call add(g:spf13_bundle_groups, 'general')
-    call add(g:spf13_bundle_groups, 'ui')
+    " call add(g:spf13_bundle_groups, 'general')
+    " call add(g:spf13_bundle_groups, 'ui')
     " call add(g:spf13_bundle_groups, 'work')
-    call add(g:spf13_bundle_groups, 'programming')
-    call add(g:spf13_bundle_groups, 'perl')
-    call add(g:spf13_bundle_groups, 'snipmate')
-    call add(g:spf13_bundle_groups, 'html')
+    " call add(g:spf13_bundle_groups, 'programming')
+    " call add(g:spf13_bundle_groups, 'perl')
+    " call add(g:spf13_bundle_groups, 'snipmate')
+    " call add(g:spf13_bundle_groups, 'html')
+    " call add(g:spf13_bundle_groups, 'python')
 
     " call add(g:spf13_bundle_groups, 'misc')
     " call add(g:spf13_bundle_groups, 'games')
 
     " Not often used, not properly tested.
-    call add(g:spf13_bundle_groups, 'testing')
+    " call add(g:spf13_bundle_groups, 'testing')
     " call add(g:spf13_bundle_groups, 'neocomplcache')
     " call add(g:spf13_bundle_groups, 'latex')
     " call add(g:spf13_bundle_groups, 'javascript')
     " call add(g:spf13_bundle_groups, 'scala')
     " call add(g:spf13_bundle_groups, 'ruby')
-    " call add(g:spf13_bundle_groups, 'python')
     " call add(g:spf13_bundle_groups, 'go')
 
     " Deps {
@@ -141,8 +141,11 @@ source ~/.vimrc.min
                 if has("python") && executable('python')
                     Bundle 'ypid/lookup.vim'
                     " let g:lookup_dict_para = []
-                    noremap <Leader>tr :Lookup<CR>
-                    vmap <Leader>tr :call LookupVisual()<CR>
+                    " noremap <Leader>tr :Lookup<CR>
+                    " vmap <Leader>tr :call LookupVisual()<CR>
+                    noremap ι :Lookup<CR>
+                    vmap ι :call LookupVisual()<CR>
+                    " Shift+Layer3Mod+s
                 endif
             " }
 
@@ -320,10 +323,10 @@ source ~/.vimrc.min
             Bundle 'kien/rainbow_parentheses.vim'
             nnoremap <Leader>R :RainbowParenthesesToggle<CR>
 
-            if executable('ctags')
-                Bundle 'majutsushi/tagbar'
-                nnoremap <Leader>ft :TagbarToggle<cr>
-            endif
+            " if executable('ctags')
+                " Bundle 'majutsushi/tagbar'
+                " nnoremap <Leader>ft :TagbarToggle<cr>
+            " endif
 
             " Save and run {{{
                 Bundle 'xuhdev/SingleCompile'
@@ -450,7 +453,12 @@ source ~/.vimrc.min
     " Python {
         if count(g:spf13_bundle_groups, 'python')
             " Pick either python-mode or pyflakes & pydoc
-            " Bundle 'klen/python-mode'
+            Bundle 'klen/python-mode'
+            let g:pymode_folding = 1
+            let g:pymode_doc = 0
+            let g:pymode_run_bind = '<leader>aa'
+            let g:pymode_lint_cwindow = 1
+            " I use powerman/vim-plugin-viewdoc for that kind of thing.
             " Bundle 'python.vim'
             " Bundle 'python_match.vim'
             " Bundle 'pythoncomplete'
@@ -843,7 +851,7 @@ source ~/.vimrc.min
                 autocmd FileType python let b:delimitMate_nesting_quotes = ['"', "'"]
                 autocmd FileType python set makeprg=pylint\ --reports=n\ --output-format=parseable\ %:p
                 autocmd FileType python set efm=%A%f:%l:\ [%t%.%#]\ %m,%Z%p^^,%-C%.%#
-                autocmd FileType mkd let b:delimitMate_nesting_quotes = ['`']
+                autocmd FileType markdown let b:delimitMate_nesting_quotes = ["`"]
                 autocmd FileType tex setlocal expandtab shiftwidth=2
                 autocmd FileType c setlocal noexpandtab shiftwidth=4
                 autocmd FileType html setlocal expandtab shiftwidth=2

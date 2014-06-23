@@ -208,6 +208,9 @@
         noremap <c-l> <c-w>l
         noremap <c-h> <c-w>h
 
+        noremap α <c-w>_
+        " Shift+Layer3Mod+d
+
         " http://vim.wikia.com/wiki/Recover_from_accidental_Ctrl-U
         inoremap <c-u> <c-g>u<c-u>
         inoremap <c-w> <c-g>u<c-w>

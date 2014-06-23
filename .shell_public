@@ -80,6 +80,8 @@ alias '*'='dict'
 
 ## Use the shortcuts from oh-my-zsh for git
 alias wd='git diff --color-words --no-index'
+alias ι='git status' # Shift+Level3Mod+s
+# alias gst='echo "use ι (Shift+Level3Mod+s)"'
 # overwrite alias from oh-my-zsh {{{
 alias glg='git log --stat --decorate=short --show-signature' # full history
 # alias glg='tig --show-signature' # full history
