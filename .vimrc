@@ -19,14 +19,14 @@ source ~/.vimrc.min
     " Default
     " call add(g:spf13_bundle_groups, 'dependencies')
     call add(g:spf13_bundle_groups, 'general_important')
-    " call add(g:spf13_bundle_groups, 'general')
-    " call add(g:spf13_bundle_groups, 'ui')
-    " call add(g:spf13_bundle_groups, 'work')
-    " call add(g:spf13_bundle_groups, 'programming')
-    " call add(g:spf13_bundle_groups, 'perl')
-    " call add(g:spf13_bundle_groups, 'snipmate')
-    " call add(g:spf13_bundle_groups, 'html')
-    " call add(g:spf13_bundle_groups, 'python')
+    call add(g:spf13_bundle_groups, 'general')
+    call add(g:spf13_bundle_groups, 'ui')
+    call add(g:spf13_bundle_groups, 'work')
+    call add(g:spf13_bundle_groups, 'programming')
+    call add(g:spf13_bundle_groups, 'perl')
+    call add(g:spf13_bundle_groups, 'snipmate')
+    call add(g:spf13_bundle_groups, 'html')
+    call add(g:spf13_bundle_groups, 'python')
 
     " call add(g:spf13_bundle_groups, 'misc')
     " call add(g:spf13_bundle_groups, 'games')
@@ -851,6 +851,9 @@ source ~/.vimrc.min
                 autocmd FileType python let b:delimitMate_nesting_quotes = ['"', "'"]
                 autocmd FileType python set makeprg=pylint\ --reports=n\ --output-format=parseable\ %:p
                 autocmd FileType python set efm=%A%f:%l:\ [%t%.%#]\ %m,%Z%p^^,%-C%.%#
+                if count(g:spf13_bundle_groups, 'python')
+                    autocmd FileType python let g:syntastic_check_on_wq = 0
+                endif
                 autocmd FileType markdown let b:delimitMate_nesting_quotes = ["`"]
                 autocmd FileType tex setlocal expandtab shiftwidth=2
                 autocmd FileType c setlocal noexpandtab shiftwidth=4

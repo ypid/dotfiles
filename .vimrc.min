@@ -230,8 +230,9 @@
         " noremap <c-c> <Nop>
         " Use Neo2 Escape
 
+        " noremap <c-m> <c-t>
+        " Does also remap <return> to <c-t>
         nnoremap <c-n> <c-]>
-        nnoremap <c-m> <c-t>
     " }}}
 
     " Disabled (mostly because of incompatibilities {{{
