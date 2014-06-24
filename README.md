@@ -72,15 +72,15 @@ Here are some advices regarding shortcuts for programmers or UI designers which 
 
 Additionally, some thoughts (or personal wishes):
 
-* Every application which works with text or has and text input field should support Ctrl+u in the way Vim does it. (I am often trying to delete the complete text in the URL Bar in Firefox with Ctrl+u …)
+* Every application which works with text or has and text input field should support Ctrl+u in the way Vim does it. (I am often trying to delete the complete text in the URL Bar in Firefox with Ctrl+u … → Disabled action of Ctrl+u in firefox)
 
 ## Shortcut “Namespaces”
 
 Which shortcuts should be used where? – Some thoughts …
 
-Super key:
+* Shift+Super: Dedicated for AutoKey
 
-* Without other modifiers only for the Window manager or AutoKey
+    * Can also be used over RDP on Windows machines without interfering with MS Windows mappings of the Super key.
 
 
 ## Special keys
@@ -93,6 +93,12 @@ anything else | is either a usual key name or a regular expression to specific a
 ## Window manager (Gnome3)
 
 Own shortcuts for the window manager should include the Super key which is normally not used by applications.
+
+### GTK+
+
+Shortcut      | Function                | Left hand only | Comment
+------------- | -------------           | -------------  | -------------
+Ctrl+U        | Enter Unicode hex value | No             |
 
 ### Navigation
 
@@ -209,7 +215,7 @@ Alt+l         | Switch to tab 6                         | No             |
 Alt+u         | Switch to tab 7                         | No             |
 Alt+i         | Switch to tab 8                         | No             |
 Alt+o         | Switch to tab 9                         | No             |
-Ctrl+[+-]     | Increase/Decrease font size             | Nice to have   | Level 3 [Neo2][] plus and minus do not work in firefox. Using Level 4 once (which currently don’t work with gnome-terminal).
+Ctrl+[+-]     | Increase/Decrease (zoom) font size      | Nice to have   | Level 3 [Neo2][] plus and minus do not work in firefox. Using Level 4 once (which currently don’t work with gnome-terminal).
 Ctrl+w        | Closes the tab                          | Of course      | Should be default in all program
 Ctrl+q        | Closes the application                  | Of course      | Should be default in all program
 
@@ -260,6 +266,8 @@ See [.tmux.conf][] …
 ### Vim
 
 See [.vimrc][] (Folds *Key (re)Mappings* and *Bundles and plugins*) …
+
+Use Neo2 bindings where possible. Don‘t use `$`, use Mod4+g.
 
 #### Free shortcuts
 List of free shortcuts (they may have a default mapping but there are better shortcuts for those actions so that the shortcuts are available to be mapped to a different action).

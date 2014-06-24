@@ -47,6 +47,17 @@
     " }}}
 
     " Overwrite default Vim mappings {
+        " Function to overwrite build-in commands {{{
+            " http://vim.wikia.com/wiki/Replace_a_builtin_command_using_cabbrev
+            " function! CommandCabbr(abbreviation, expansion) execute 'cabbr ' . a:abbreviation . ' <c-r>=getcmdpos() == 1 && getcmdtype() == ":" ? "' . a:expansion . '" : "' . a:abbreviation . '"<CR>'
+            " endfunction
+            " command! -nargs=+ CommandCabbr call CommandCabbr(<f-args>)
+        " }}}
+
+        " Use it on itself to define a simpler abbreviation for itself.
+        " CommandCabbr s perldo
+        " command! s echo "Use perldo"
+
         " Also open not existing files.
         noremap gf :sp <cfile><cR>
 
@@ -151,6 +162,7 @@
         " easier moving between tabs
         noremap σ :tabprevious<CR>
         noremap τ :tabnext<CR>
+        " Shift+Layer3Mod+h and Shift+Layer3Mod+l
         " Or use the default gt and gT
 
         " easier moving between buffers
@@ -186,6 +198,8 @@
 
     " Other mappings {{{
         set pastetoggle=♡           " pastetoggle (sane indentation on pastes)
+        " Shift+Layer3Mod+a
+
 
         " Easier horizontal scrolling
         noremap zl zL
@@ -233,6 +247,8 @@
         " noremap <c-m> <c-t>
         " Does also remap <return> to <c-t>
         nnoremap <c-n> <c-]>
+
+        command! -complete=file -nargs=? O tabnew <args>
     " }}}
 
     " Disabled (mostly because of incompatibilities {{{

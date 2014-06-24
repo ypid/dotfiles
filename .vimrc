@@ -270,6 +270,8 @@ source ~/.vimrc.min
 
             Bundle 'powerman/vim-plugin-viewdoc'
             let g:manpageview_options_pl = ";-f;-q;-t;"
+            let g:no_viewdoc_maps = 1
+            nnoremap <unique> K :let @/ = '\<'.expand('<cword>').'\>'<CR>:call ViewDoc('new', '<cword>')<CR>
 
             " Tabularize {
                 Bundle 'godlygeek/tabular'
@@ -458,6 +460,7 @@ source ~/.vimrc.min
             let g:pymode_doc = 0
             let g:pymode_run_bind = '<leader>aa'
             let g:pymode_lint_cwindow = 1
+            " let g:pymode_folding = 0
             " I use powerman/vim-plugin-viewdoc for that kind of thing.
             " Bundle 'python.vim'
             " Bundle 'python_match.vim'
@@ -849,8 +852,8 @@ source ~/.vimrc.min
                 autocmd FileType perl compiler perlcritic
                 autocmd FileType python setlocal shiftwidth=4
                 autocmd FileType python let b:delimitMate_nesting_quotes = ['"', "'"]
-                autocmd FileType python set makeprg=pylint\ --reports=n\ --output-format=parseable\ %:p
-                autocmd FileType python set efm=%A%f:%l:\ [%t%.%#]\ %m,%Z%p^^,%-C%.%#
+                autocmd FileType python setlocal makeprg=pylint\ --reports=n\ --output-format=parseable\ %:p
+                autocmd FileType python setlocal efm=%A%f:%l:\ [%t%.%#]\ %m,%Z%p^^,%-C%.%#
                 if count(g:spf13_bundle_groups, 'python')
                     autocmd FileType python let g:syntastic_check_on_wq = 0
                 endif
