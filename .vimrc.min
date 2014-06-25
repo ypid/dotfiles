@@ -194,6 +194,13 @@
             call NERDComment('n', 'Toggle')
         endfunction
         nnoremap <silent> <Leader>am :call AppendModeline()<CR>
+
+        " Copy the hole puffer to primary system clipboard, without the
+        " newline at the end …
+        " I am using this to write my texts in Vim and copy them in all sorts
+        " of text boxes.
+        noremap η :normal gg0vG$h"+yg;<CR>
+        " Shift+Layer3Mod+c
     " }}}
 
     " Other mappings {{{
@@ -241,7 +248,8 @@
         " Does not work
         " Try to use Neo2 Escape.
         " noremap <c-c> <ESC>
-        " noremap <c-c> <Nop>
+        "
+        inoremap <c-c> <Nop>
         " Use Neo2 Escape
 
         " noremap <c-m> <c-t>

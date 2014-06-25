@@ -82,7 +82,6 @@ Which shortcuts should be used where? – Some thoughts …
 
     * Can also be used over RDP on Windows machines without interfering with MS Windows mappings of the Super key.
 
-
 ## Special keys
 Key name      | Comment
 ------------- | -------------
@@ -286,3 +285,4 @@ List of free shortcuts (they may have a default mapping but there are better sho
 [suspend-script]: https://github.com/ypid/scripts/blob/master/suspend-via-gnome
 [autokey]: https://code.google.com/p/autokey/
 [Steps Ahead]: https://de.wikipedia.org/wiki/Steps_Ahead
+[freerdp]: https://github.com/FreeRDP/FreeRDP

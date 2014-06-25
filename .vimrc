@@ -32,7 +32,7 @@ source ~/.vimrc.min
     " call add(g:spf13_bundle_groups, 'games')
 
     " Not often used, not properly tested.
-    " call add(g:spf13_bundle_groups, 'testing')
+    call add(g:spf13_bundle_groups, 'testing')
     " call add(g:spf13_bundle_groups, 'neocomplcache')
     " call add(g:spf13_bundle_groups, 'latex')
     " call add(g:spf13_bundle_groups, 'javascript')
@@ -154,7 +154,7 @@ source ~/.vimrc.min
             " Don’t really using it for now.
 
             Bundle 'sjl/gundo.vim'
-            nnoremap <Leader>ga :GundoToggle<CR>
+            " nnoremap <Leader>ga :GundoToggle<CR>
             nnoremap ψ :GundoToggle<CR>
             " Shift+Layer3Mod+u
 
@@ -244,6 +244,16 @@ source ~/.vimrc.min
                 " Shift+Layer3Mod+j
                 map ρ <Plug>(expand_region_shrink)
                 " Shift+Layer3Mod+k
+
+                " http://stackoverflow.com/a/6589216
+                nnoremap di\| T\|d,
+                nnoremap da\| F\|d,
+                nnoremap ci\| T\|c,
+                nnoremap ca\| F\|c,
+                nnoremap yi\| T\|y,
+                nnoremap ya\| F\|y,
+                nnoremap vi\| T\|v,
+                nnoremap va\| F\|v,
             " }
 
             " Git {{{
@@ -263,15 +273,15 @@ source ~/.vimrc.min
 
                 " Bundle 'airblade/vim-gitgutter'
                 " Show changes in working copy with plus sign, start of the line
-
-                " Bundle 'tpope/vim-abolish.git'
-                " Don’t really using it for now.
             " }}}
 
             Bundle 'powerman/vim-plugin-viewdoc'
             let g:manpageview_options_pl = ";-f;-q;-t;"
-            let g:no_viewdoc_maps = 1
-            nnoremap <unique> K :let @/ = '\<'.expand('<cword>').'\>'<CR>:call ViewDoc('new', '<cword>')<CR>
+            let g:viewdoc_openempty = 1
+            let g:viewdoc_copy_to_search_reg = 1
+
+            let g:viewdoc_prevtabonclose = 1
+            " testing
 
             " Tabularize {
                 Bundle 'godlygeek/tabular'
