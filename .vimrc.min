@@ -199,7 +199,7 @@
         " newline at the end …
         " I am using this to write my texts in Vim and copy them in all sorts
         " of text boxes.
-        noremap η :normal gg0vG$h"+yg;<CR>
+        noremap η :normal gg0vG$h"+y<CR>:echo "Copied buffer content to primary clipboard"<CR>
         " Shift+Layer3Mod+c
     " }}}
 

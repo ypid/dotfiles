@@ -82,6 +82,9 @@ Which shortcuts should be used where? – Some thoughts …
 
     * Can also be used over RDP on Windows machines without interfering with MS Windows mappings of the Super key.
 
+## Free shortcuts
+List of free shortcuts (they may have a default mapping but there are better shortcuts for those actions so that the shortcuts are available to be mapped to a different action).
+
 ## Special keys
 Key name      | Comment
 ------------- | -------------
@@ -159,13 +162,14 @@ Alt+Super+c   | Switch to next input source (e.g. qNeo2 and qwertz) | Yes       
 
 ### Windows
 
-Shortcut      | Function               | Left hand only | Comment
-------------- | -------------          | -------------  | -------------
-Ctrl+Q        | Close window           | Yes            | If Ctrl-q does not work, defined in gnome-terminal by default
-Ctrl+Alt+f    | Toggle fullscreen mode | Yes            | If Alt-f does not work. Try to use Ctrl+Alt+f because it is more generic.
-Ctrl+Alt+w    | Maximize window        | Yes            |
-Ctrl+Alt+a    | View split on left     | Yes            |
-Ctrl+Alt+d    | View split on right    | Yes            |
+Shortcut      | Function                        | Left hand only | Comment
+------------- | -------------                   | -------------  | -------------
+Ctrl+Q        | Close window                    | Yes            | If Ctrl-q does not work, defined in gnome-terminal by default
+Ctrl+Alt+f    | Toggle fullscreen mode          | Yes            | If Alt-f does not work. Try to use Ctrl+Alt+f because it is more generic. Use Shift+Super+f to emit F11.
+Ctrl+Alt+w    | Restore previous size of window | Yes            |
+Ctrl+Alt+w    | Maximize window                 | Yes            |
+Ctrl+Alt+a    | View split on left              | Yes            |
+Ctrl+Alt+d    | View split on right             | Yes            |
 
 ### Custom shortcuts
 
@@ -185,9 +189,12 @@ Here are the shortcuts I use to trigger [autokey][] actions.
 
 #### Emitted keystrokes
 
+The keystrokes are intended for the application and not to be trapped by the window manager.
+
 Shortcut      | Function      | Left hand only | Comment
 ------------- | ------------- | -------------  | -------------
 Super+v       | enter         | Yes            | Emit enter. If AltGr+v does not work (unfortunately AltGr can currently not be used in autokey).
+Shift+Super+f | F11           | Yes            | Emit F11. Causes most applications to go in full screen.
 
 ## GUI applications
 
@@ -233,6 +240,7 @@ Shortcut      | Function      | Left hand only                | Comment
 Alt+Y         | Delete        | Yes                           |
 Alt+X         | Rename        | Yes                           |
 Alt+C         | Copy          | Yes                           |
+Ctrl+o        | Copy          | No (alternative mapping)      |
 Alt+E         | Symlink       | Yes                           |
 Alt+Q         | QuickView     | Yes                           |
 Alt+J         | MakeDir       | Not really                    | I suppose I will have to type a directory name then
@@ -243,9 +251,17 @@ Ctrl+U        | SortByDate    | Nice to have                  |
 Ctrl+a        | MarkAll       | Yes                           |
 Ctrl+A        | UnmarkAll     | Yes                           | Default behavior from Gimp
 Ctrl+S        | RunTerm       | Not really                    | Like Ctrl+Super+s but with the current directory
-Ctrl+l        | FocusCmdLine  | Not really                    | Was mapped to Shift+F2 but Ctrl+l is more confinient because it works be default in firefox. Overwrites CalculateSpace in DC.
+Ctrl+l        | FocusCmdLine  | Not really                    | Was mapped to Shift+F2 but Ctrl+l is more convenient because it works be default in firefox. Overwrites CalculateSpace in DC.
+Ctrl+i        | RenameOnly    | Not really                    |
 
 Note: Double Commander works quite nicely together with [Neo2][] …
+
+#### Free shortcuts
+
+* Ctrl+s
+* Shift+[a-z]
+
+    Note: Dones not work for all letters?
 
 ### ERP system Steps Ahead
 
@@ -269,7 +285,6 @@ See [.vimrc][] (Folds *Key (re)Mappings* and *Bundles and plugins*) …
 Use Neo2 bindings where possible. Don‘t use `$`, use Mod4+g.
 
 #### Free shortcuts
-List of free shortcuts (they may have a default mapping but there are better shortcuts for those actions so that the shortcuts are available to be mapped to a different action).
 
 ##### Normal mode
 

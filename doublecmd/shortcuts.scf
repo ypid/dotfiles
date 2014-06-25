@@ -15,6 +15,10 @@
         <Command>cm_About</Command>
       </Hotkey>
       <Hotkey>
+        <Shortcut>Ctrl+I</Shortcut>
+        <Command>cm_RenameOnly</Command>
+      </Hotkey>
+      <Hotkey>
         <Shortcut>F2</Shortcut>
         <Command>cm_RenameOnly</Command>
       </Hotkey>
@@ -29,6 +33,10 @@
       <Hotkey>
         <Shortcut>F4</Shortcut>
         <Command>cm_Edit</Command>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Ctrl+O</Shortcut>
+        <Command>cm_Copy</Command>
       </Hotkey>
       <Hotkey>
         <Shortcut>Shift+Alt+C</Shortcut>
@@ -106,10 +114,6 @@
       <Hotkey>
         <Shortcut>Ctrl+U</Shortcut>
         <Command>cm_Exchange</Command>
-      </Hotkey>
-      <Hotkey>
-        <Shortcut>Ctrl+W</Shortcut>
-        <Command>cm_CloseTab</Command>
       </Hotkey>
       <Hotkey>
         <Shortcut>Ctrl+Z</Shortcut>
@@ -324,10 +328,6 @@
         <Command>cm_Rename</Command>
       </Hotkey>
       <Hotkey>
-        <Shortcut>Ctrl+Shift+F</Shortcut>
-        <Command>cm_RenameOnly</Command>
-      </Hotkey>
-      <Hotkey>
         <Shortcut>Ctrl+Shift+I</Shortcut>
         <Command>cm_PanelsSplitterPerPos</Command>
         <Param>splitpct=50</Param>
@@ -365,6 +365,10 @@
       <Hotkey>
         <Shortcut>Shift+Alt+U</Shortcut>
         <Command>cm_CopyNamesToClip</Command>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Shift+W</Shortcut>
+        <Command>cm_CloseTab</Command>
       </Hotkey>
       <Hotkey>
         <Shortcut>Del</Shortcut>
@@ -446,6 +450,19 @@
         <Shortcut>Num/</Shortcut>
         <Command>cm_QuickSearch</Command>
         <Control>Files Panel</Control>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Ctrl+E</Shortcut>
+        <Command>cm_Edit</Command>
+        <Control>Files Panel</Control>
+        <Control>Quick Search</Control>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Ctrl+W</Shortcut>
+        <Command>cm_CloseTab</Command>
+        <Control>Files Panel</Control>
+        <Control>Quick Search</Control>
+        <Control>Command Line</Control>
       </Hotkey>
     </Form>
     <Form Name="Viewer">
