@@ -67,12 +67,12 @@ Here are some advices regarding shortcuts for programmers or UI designers which 
 
 * Allow more than one shortcut for one action!
 * Allow to reconfigure *everything*.
-* Make it easy to track the configuration files (which contain the shortcuts) with version control.
+* Make it easy to track the configuration files (which contain the shortcuts) with version control. This also means not to store the shortcuts together with things that you don‘t want to track (like recent files or usernames and passwords).
 * Do not reinvent the wheel!
 
 Additionally, some thoughts (or personal wishes):
 
-* Every application which works with text or has and text input field should support Ctrl+u in the way Vim does it. (I am often trying to delete the complete text in the URL Bar in Firefox with Ctrl+u … → Disabled action of Ctrl+u in firefox)
+* Every application which works with text or has an text input field should support Ctrl+u in the way Vim does it. (I am often trying to delete the complete text in the URL Bar in Firefox with Ctrl+u … → Disabled action of Ctrl+u in firefox)
 
 ## Shortcut “Namespaces”
 
@@ -89,8 +89,8 @@ List of free shortcuts (they may have a default mapping but there are better sho
 Key name      | Comment
 ------------- | -------------
 Level5 Shift  | This key is in my configuration the <> button.
-+             | Seperator for keys
-anything else | is either a usual key name or a regular expression to specific a range of keys
++             | Separator for keys
+anything else | is either a usual key name or a regular expression to specify a range of keys
 
 ## Window manager (Gnome3)
 
@@ -166,8 +166,8 @@ Shortcut      | Function                        | Left hand only | Comment
 ------------- | -------------                   | -------------  | -------------
 Ctrl+Q        | Close window                    | Yes            | If Ctrl-q does not work, defined in gnome-terminal by default
 Ctrl+Alt+f    | Toggle fullscreen mode          | Yes            | If Alt-f does not work. Try to use Ctrl+Alt+f because it is more generic. Use Shift+Super+f to emit F11.
-Ctrl+Alt+w    | Restore previous size of window | Yes            |
 Ctrl+Alt+w    | Maximize window                 | Yes            |
+Ctrl+Alt+s    | Restore previous size of window | Yes            |
 Ctrl+Alt+a    | View split on left              | Yes            |
 Ctrl+Alt+d    | View split on right             | Yes            |
 
@@ -183,36 +183,21 @@ Ctrl+Alt+O       | Launch program `eject`                     | No             |
 Ctrl+Alt+c       | Launch [script][suspend-script] to suspend | Yes            |
 Ctrl+Alt+v       | poweroff                                   | Yes            |
 
-### Autokey
-
-Here are the shortcuts I use to trigger [autokey][] actions.
-
-#### Emitted keystrokes
-
-The keystrokes are intended for the application and not to be trapped by the window manager.
-
-Shortcut      | Function      | Left hand only | Comment
-------------- | ------------- | -------------  | -------------
-Super+v       | enter         | Yes            | Emit enter. If AltGr+v does not work (unfortunately AltGr can currently not be used in autokey).
-Shift+Super+f | F11           | Yes            | Emit F11. Causes most applications to go in full screen.
-
 ## GUI applications
 
 ### Windows and tabs
 
 Applies for: firefox, gnome-terminal, Double Commander (not fully yet because some are not configurable)
 
-For gnome-terminal, each shortcut requires the use of the Shift modifier key.
-
-Ctrl commands have to be used with Shift in the terminal emulator.
+For gnome-terminal, each shortcut requires additionally the use of the Shift modifier key.
 
 Shortcut      | Function                                | Left hand only | Comment
 ------------- | -------------                           | -------------  | -------------
-Ctrl+n        | Opens a new (preferably empty) tab      | No             | Easier to reach than C-t
+Ctrl+n        | Opens a new tab                         | No             | Easier to reach than C-t
 Ctrl+tab      | Swtich to right tab, cicle through tabs | Yes            |
 Ctrl+j        | Swtich to left tab                      | Not really     |
 Ctrl+k        | Swtich to right tab                     | Not really     |
-Alt+m         | Switch to tab 1                         | No             | See [Neo2 layer4][Neo2]. Maybe blocks the use of Alt+[a-z]. I hope that most applications use letters which would be on the left side of qwertz
+Alt+m         | Switch to tab 1                         | No             | See [Neo2 layer4][Neo2]. Maybe blocks the use of Alt+[a-z]. I hope that most applications use letters which would be on the left side of a qwertz keyboard.
 Alt+,         | Switch to tab 2                         | No             |
 Alt+.         | Switch to tab 3                         | No             |
 Alt+j         | Switch to tab 4                         | No             |
@@ -261,16 +246,29 @@ Note: Double Commander works quite nicely together with [Neo2][] …
 * Ctrl+s
 * Shift+[a-z]
 
-    Note: Dones not work for all letters?
+    Note: Does not work for all letters?
 
-### ERP system Steps Ahead
+### Autokey
+
+Here are the shortcuts I use to trigger [autokey][] actions.
+
+#### Emitted keystrokes
+
+The keystrokes are intended for the application and not to be trapped by the window manager.
+
+Shortcut      | Function      | Left hand only | Comment
+------------- | ------------- | -------------  | -------------
+Super+v       | enter         | Yes            | Emit enter. If AltGr+v does not work (unfortunately AltGr can currently not be used in autokey).
+Shift+Super+f | F11           | Yes            | Emit F11. Causes most applications to go in full screen.
+Super+R       | Reload        | Yes            | Emits F5. Most applications will either reload or go to presentation mode.
+
+#### ERP system Steps Ahead
 
 This section describes some mapping which I added to make working with the ERP system [Steps Ahead][] more pleasant. I am relaying on an ugly hack to achieve this because [Steps Ahead][] (even in the current version 9.5.3) does not allow to remap or add shortcuts to actions which already have a default shortcut … So I use [autokey][] to do this anyway. It works the following: When autokey intercepts one of the following shortcuts it emits the shortcut on which Steps Ahead triggers the desired action.
 
 Shortcut      | Function                          | Left hand only | Comment
 ------------- | -------------                     | -------------  | -------------
-Super+s       | Clone dataset (copy and paste it) | Yes            | Emits Shift+F6 followed by enter (to acknowledge the „Do you really want to copy …“ dialog).
-Super+r       | Reload                            | Yes            | Emits F5. Could also be useful for other applications.
+Super+S       | Clone dataset (copy and paste it) | Yes            | Emits Shift+F6 followed by enter (to acknowledge the „Do you really want to copy …“ dialog).
 
 ## Terminal programs
 
