@@ -24,7 +24,7 @@
 
 " }
 
-" Key (re)Mappings {
+    " Key (re)Mappings {
     " Mappings which only work with plugins enabled should be placed in the
     " Plugin section.
 

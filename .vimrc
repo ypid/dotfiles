@@ -58,16 +58,18 @@ source ~/.vimrc.min
             Bundle 'terryma/vim-multiple-cursors'
             Bundle 't9md/vim-quickhl'
             " xmap <Space>m <Plug>(quickhl-manual-this)
-            nmap μ <Plug>(quickhl-manual-this)
+            nnoremap μ <Plug>(quickhl-manual-this)
             " Shift+Layer3Mod+m
             "
             " xmap <Space>M <Plug>(quickhl-manual-reset)
-            nmap β <Plug>(quickhl-manual-reset)
+            nnoremap β <Plug>(quickhl-manual-reset)
             " Shift+Layer3Mod+n
 
-            nmap <Leader>m <Plug>(quickhl-cword-toggle)
-            " nmap μ <Plug>(quickhl-tag-toggle)
-            " map H <Plug>(operator-quickhl-manual-this-motion)
+            nnoremap <Leader>m <Plug>(quickhl-cword-toggle)
+            " nnoremap μ <Plug>(quickhl-tag-toggle)
+            " noremap H <Plug>(operator-quickhl-manual-this-motion)
+
+            Bundle 'YankRing.vim'
 
         endif
         if count(g:spf13_bundle_groups, 'tested_not_using')
@@ -104,7 +106,7 @@ source ~/.vimrc.min
 
                 " noremap gcc :call NERDComment('n', 'Toggle')<CR>
                 " noremap <Leader>d :call NERDComment('n', 'Toggle')<CR>
-                map <Bar> :call NERDComment('n', 'Toggle')<CR>
+                noremap <Bar> :call NERDComment('n', 'Toggle')<CR>
             " }}}
 
         endif
@@ -113,7 +115,7 @@ source ~/.vimrc.min
     " General {
         if count(g:spf13_bundle_groups, 'general')
             " Bundle 'scrooloose/nerdtree'
-            " map <Leader>v :NERDTreeToggle<CR>
+            " noremap <Leader>v :NERDTreeToggle<CR>
 
             " Auto close opening characters like '(' with ')' {{{
                 " Bundle 'spf13/vim-autoclose' " Too simple, no indent stuff
@@ -240,9 +242,9 @@ source ~/.vimrc.min
                 Bundle 'michaeljsmith/vim-indent-object'
 
                 Bundle 'terryma/vim-expand-region'
-                map ν <Plug>(expand_region_expand)
+                noremap ν <Plug>(expand_region_expand)
                 " Shift+Layer3Mod+j
-                map ρ <Plug>(expand_region_shrink)
+                noremap ρ <Plug>(expand_region_shrink)
                 " Shift+Layer3Mod+k
 
                 " http://stackoverflow.com/a/6589216
@@ -285,21 +287,21 @@ source ~/.vimrc.min
 
             " Tabularize {
                 Bundle 'godlygeek/tabular'
-                map <Leader>a&  :Tabularize /&<CR>
-                map <Leader>a=  :Tabularize /=<CR>
-                map <Leader>a-  :Tabularize /-\w*<CR>
-                map <Leader>a:  :Tabularize /:<CR>
-                map <Leader>az: :Tabularize /:\zs<CR>
-                map <Leader>a,  :Tabularize /,<CR>
-                map <Leader>a/  :Tabularize /\zs\(\/\/\\|\/\*\)/<CR>
-                map <Leader>a"  :Tabularize /"<CR>
-                map <Leader>a'  :Tabularize /:\zs \+'/l0r0<CR>
-                map <Leader>a#  :Tabularize /#<CR>
-                map <Leader>a<Space> :Tabularize /\s\+<CR>
+                noremap <Leader>a&  :Tabularize /&<CR>
+                noremap <Leader>a=  :Tabularize /=<CR>
+                noremap <Leader>a-  :Tabularize /-\w*<CR>
+                noremap <Leader>a:  :Tabularize /:<CR>
+                noremap <Leader>az: :Tabularize /:\zs<CR>
+                noremap <Leader>a,  :Tabularize /,<CR>
+                noremap <Leader>a/  :Tabularize /\zs\(\/\/\\|\/\*\)/<CR>
+                noremap <Leader>a"  :Tabularize /"<CR>
+                noremap <Leader>a'  :Tabularize /:\zs \+'/l0r0<CR>
+                noremap <Leader>a#  :Tabularize /#<CR>
+                noremap <Leader>a<Space> :Tabularize /\s\+<CR>
                 " http://stackoverflow.com/questions/10287919/use-vims-tabularize-plugin-to-only-match-the-first-occurance-of-a-delimiter
-                map <Leader>af<Space> :Tabularize /^\s*\w*<CR>
-                map <Leader>a<Bar> :Tabularize /[^\\]\zs<Bar><CR>
-                map <Leader>ae :Tabularize /\s\{2,\}\zs<CR>
+                noremap <Leader>af<Space> :Tabularize /^\s*\w*<CR>
+                noremap <Leader>a<Bar> :Tabularize /[^\\]\zs<Bar><CR>
+                noremap <Leader>ae :Tabularize /\s\{2,\}\zs<CR>
             " }
 
             " Toggle words
@@ -356,8 +358,8 @@ source ~/.vimrc.min
 
             " " Taglist {
             " Bundle 'taglist.vim'
-            " map <Leader>cq :TlistToggle<cr>
-            " map <Leader>cr :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<cr>
+            " noremap <Leader>cq :TlistToggle<cr>
+            " noremap <Leader>cr :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<cr>
             " let Tlist_WinWidth = 30
             " " }
         endif
@@ -472,6 +474,8 @@ source ~/.vimrc.min
             let g:pymode_lint_cwindow = 1
             let g:pymode_breakpoint_bind = '<leader>ö'
             let g:pymode_rope_completion = 0
+            let g:pymode_lint_ignore="E302"
+            " E302: I use sometimes folds to group a few functions together.
             " let g:pymode_folding = 0
             " I use powerman/vim-plugin-viewdoc for that kind of thing.
             " Bundle 'python.vim'
@@ -611,7 +615,7 @@ source ~/.vimrc.min
     " To small for a plugin {
         " http://vim.wikia.com/wiki/Display_output_of_shell_commands_in_new_window
         function! s:ExecuteInShell(command)
-            let command = join(map(split(a:command), 'expand(v:val)'))
+            let command = join(noremap(split(a:command), 'expand(v:val)'))
             let winnr = bufwinnr('^' . command . '$')
             silent! execute  winnr < 0 ? 'botright new ' . fnameescape(command) : winnr . 'wincmd w'
             setlocal buftype=nowrite bufhidden=wipe nobuflisted nowrap number
