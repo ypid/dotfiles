@@ -246,15 +246,15 @@
 
         " I use this so that Ctrl-c also works in the command-line window like Escape.
         " Does not work
-        " Try to use Neo2 Escape.
         " noremap <c-c> <ESC>
         "
         inoremap <c-c> <Nop>
-        " Use Neo2 Escape
+        " Use Neo2 Escape because it works everywhere.
 
         " noremap <c-m> <c-t>
         " Does also remap <return> to <c-t>
-        nnoremap <c-n> <c-]>
+        " nnoremap <c-n> <c-]>
+        " Put it into .vim/after/overwrite.vim
 
         command! -complete=file -nargs=? O tabnew <args>
     " }}}
@@ -273,6 +273,13 @@
         "         exe prefix . "noremap " . key . " <Nop>"
         "     endfor
         " endfor
+    " }}}
+
+    " Avoid bad behavior {{{
+        " noremap <c-z> :echo "Use Ctrl+a m to create a new window in the same directory"<cr>
+        " inoremap <c-z> :echo "Use Ctrl+a m to create a new window in the same directory"<cr>
+        " Has many valid use cases.
+
     " }}}
 " }
 

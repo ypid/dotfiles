@@ -470,6 +470,8 @@ source ~/.vimrc.min
             let g:pymode_doc = 0
             let g:pymode_run_bind = '<leader>aa'
             let g:pymode_lint_cwindow = 1
+            let g:pymode_breakpoint_bind = '<leader>ö'
+            let g:pymode_rope_completion = 0
             " let g:pymode_folding = 0
             " I use powerman/vim-plugin-viewdoc for that kind of thing.
             " Bundle 'python.vim'
@@ -691,6 +693,9 @@ source ~/.vimrc.min
         set tags=./tags;/                   " Look in all upper Directorys for tags files
         " Did not work. http://stackoverflow.com/a/741486
 
+        set ttimeoutlen=5
+        " http://www.johnhawthorn.com/2012/09/vi-escape-delays/
+
         " Setting up the directories {
             call EnsureDirExists($HOME . '/.vimswap')
             set directory=~/.vimswap/
@@ -853,6 +858,8 @@ source ~/.vimrc.min
             autocmd BufWritePre *sec*   setlocal noundofile
             autocmd BufWritePre *crypt* setlocal noundofile
             autocmd BufWritePre *mnt*   setlocal noundofile
+
+            autocmd BufRead,BufNewFile /etc/* if &filetype=='python'|let g:pymode_run = 0|endif
 
             " Set language specific stuff {{{
                 autocmd FileType vim setlocal expandtab shiftwidth=4

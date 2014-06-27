@@ -40,6 +40,7 @@ function up {
     cd $ups
     } || echo "usage: up INTEGER"
 }
+alias b='up'
 
 ## Create a new directory and enter it.
 unalias md 2>/dev/zero
@@ -75,6 +76,7 @@ if which compdef >/dev/null 2>&1 && which mosh >/dev/null 2>&1; then
 fi
 alias tmux='TERM=screen-256color-bce tmux'
 alias t='tmux'
+alias f='tmux last-window'
 alias h='htop'
 alias '*'='dict'
 

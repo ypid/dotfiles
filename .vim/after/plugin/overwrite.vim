@@ -1,0 +1,1 @@
+nnoremap <c-n> <c-]>

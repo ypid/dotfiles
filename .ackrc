@@ -5,3 +5,4 @@
 ## Ignore TeX files created by Kile:
 --ignore-file=match:\.tex\.backup$
 ## }}}
+--smart-case
