@@ -94,6 +94,8 @@ source ~/.vimrc.min
                 let g:ctrlp_extensions = ['line']
                 let g:ctrlp_open_new_file = 'h'
                 let g:ctrlp_mruf_max = 2000
+                let g:ctrlp_mruf_exclude = '/tmp/.*\|/temp/.*\|vimrc*'
+                " Use <Leader>ff to open the vimrc …
                 noremap <Leader>r :CtrlPMRUFiles<CR>
             " }
 
@@ -743,7 +745,6 @@ source ~/.vimrc.min
             color solarized             " Load a colorscheme
         endif
     else
-        set cursorline                  " Highlight current line
         " Bundle 'flazz/vim-colorschemes'
         " Bundle 'nanotech/jellybeans.vim'
         " Bundle 'spf13/vim-colors'
@@ -752,31 +753,15 @@ source ~/.vimrc.min
 
     if count(g:config_section_enable, 'ui_config')
         set tabpagemax=15               " Only show 15 tabs
-        " set showmode                    " Display the current mode
+        set showmode                    " Display the current mode
+        set cursorline                  " Highlight current line
 
         highlight clear SignColumn      " SignColumn should match background for
                                         " things like vim-gitgutter
         highlight ExtraWhitespace ctermbg=red guibg=red
 
-        if has('cmdline_info')
-            set ruler                   " Show the ruler
-            set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%) " A ruler on steroids
-            set showcmd                 " Show partial commands in status line and
-                                        " Selected characters/lines in visual mode
-        endif
-
         if has('statusline')
-            set laststatus=2
-
-            " Broken down into easily includeable segments
-            set statusline=%<%f\                     " Filename
-            set statusline+=%w%h%m%r                 " Options
-            if count(g:config_section_enable, 'programming')
-                set statusline+=%{fugitive#statusline()} " Git Hotness
-            endif
-            set statusline+=\ [%{&ff}/%Y]            " Filetype
-            set statusline+=\ [%{getcwd()}]          " Current dir
-            set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
+            set laststatus=1
         endif
 
         set backspace=indent,eol,start  " Backspace for dummies

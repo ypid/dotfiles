@@ -97,20 +97,24 @@
         inoremap <Leader>fd <c-o>:filetype detect<CR>
 
         " Open my .vimrc
-        noremap <Leader>ff :sp $MYVIMRC<CR>
+        noremap <Leader>ff :tabnew $MYVIMRC<CR>
+        noremap <Leader>fm :tabnew $HOME/.vimrc.min<CR>
 
         " Save and exit
         noremap <Leader>x :x<CR>
         inoremap <Leader>x <ESC>:x<CR>
+        noremap ϵ :x<cr>
+        inoremap ϵ <ESC>:x<cr>
+        " Shift+Layer3Mod+x
 
         " Quick quit command
         noremap <Leader>e :quit<CR>
-        noremap ❤ :q!<CR>
+        noremap ❤ :quit<CR>
         " Shift+Layer3Mod+w
 
         " Quit all windows
         noremap <Leader>E :quit!<CR>
-        noremap λ :quit!<CR>
+        " noremap λ :quit!<CR>
         " Shift+Layer3Mod+e
 
         " Code folding options {{{
@@ -224,10 +228,10 @@
         " inoremap <Tab> <c-o>:tabn<CR>
 
         " Every unnecessary keystroke that can be saved is good for your health :)
-        noremap <c-j> <c-w>j
-        noremap <c-k> <c-w>k
-        noremap <c-l> <c-w>l
-        noremap <c-h> <c-w>h
+        noremap <silent> <c-j> <c-w>j
+        noremap <silent> <c-k> <c-w>k
+        noremap <silent> <c-l> <c-w>l
+        noremap <silent> <c-h> <c-w>h
 
         noremap α <c-w>_
         " Shift+Layer3Mod+d

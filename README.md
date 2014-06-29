@@ -282,6 +282,11 @@ See [.vimrc][] (Folds *Key (re)Mappings* and *Bundles and plugins*) …
 
 Use Neo2 bindings where possible. Don‘t use `$`, use Mod4+g.
 
+## Shortcut “Namespaces”
+
+* Use on key with modifiers for actions which might be used repeatable or
+  toggle something like | in normal mode which toggles comments for the line or ❤ (Shift+Layer3Mod+w) which closes one window or split.
+
 #### Free shortcuts
 
 ##### Normal mode
