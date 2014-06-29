@@ -57,17 +57,15 @@ source ~/.vimrc.min
         if count(g:spf13_bundle_groups, 'testing')
             Bundle 'terryma/vim-multiple-cursors'
             Bundle 't9md/vim-quickhl'
-            " xmap <Space>m <Plug>(quickhl-manual-this)
-            nnoremap μ <Plug>(quickhl-manual-this)
+            nmap μ <Plug>(quickhl-manual-this)
             " Shift+Layer3Mod+m
             "
             " xmap <Space>M <Plug>(quickhl-manual-reset)
-            nnoremap β <Plug>(quickhl-manual-reset)
+            nmap β :QuickhlManualReset<CR>
             " Shift+Layer3Mod+n
 
-            nnoremap <Leader>m <Plug>(quickhl-cword-toggle)
-            " nnoremap μ <Plug>(quickhl-tag-toggle)
-            " noremap H <Plug>(operator-quickhl-manual-this-motion)
+            " nmap μ <Plug>(quickhl-tag-toggle)
+            " Shift+Layer3Mod+μ
 
             Bundle 'YankRing.vim'
             " Bundle 'maxbrunsfeld/vim-yankstack'
@@ -245,9 +243,9 @@ source ~/.vimrc.min
                 Bundle 'michaeljsmith/vim-indent-object'
 
                 Bundle 'terryma/vim-expand-region'
-                noremap ν <Plug>(expand_region_expand)
+                nmap ν <Plug>(expand_region_expand)
                 " Shift+Layer3Mod+j
-                noremap ρ <Plug>(expand_region_shrink)
+                nmap ρ <Plug>(expand_region_shrink)
                 " Shift+Layer3Mod+k
 
                 " http://stackoverflow.com/a/6589216
@@ -295,7 +293,7 @@ source ~/.vimrc.min
                 noremap <Leader>a-  :Tabularize /-\w*<CR>
                 noremap <Leader>a:  :Tabularize /:<CR>
                 noremap <Leader>az: :Tabularize /:\zs<CR>
-                noremap <Leader>a,  :Tabularize /,<CR>
+                noremap <Leader>a,  :Tabularize /,/l0r1<CR>
                 noremap <Leader>a/  :Tabularize /\zs\(\/\/\\|\/\*\)/<CR>
                 noremap <Leader>a"  :Tabularize /"<CR>
                 noremap <Leader>a'  :Tabularize /:\zs \+'/l0r0<CR>
