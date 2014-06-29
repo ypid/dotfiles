@@ -70,6 +70,7 @@ source ~/.vimrc.min
             " noremap H <Plug>(operator-quickhl-manual-this-motion)
 
             Bundle 'YankRing.vim'
+            " Bundle 'maxbrunsfeld/vim-yankstack'
 
         endif
         if count(g:spf13_bundle_groups, 'tested_not_using')
@@ -94,7 +95,6 @@ source ~/.vimrc.min
                 let g:ctrlp_open_new_file = 'h'
                 let g:ctrlp_mruf_max = 2000
                 noremap <Leader>r :CtrlPMRUFiles<CR>
-                " noremap <Leader>ff :CtrlPMRUFiles<CR>
             " }
 
             " Handling comments {{{
@@ -106,7 +106,8 @@ source ~/.vimrc.min
 
                 " noremap gcc :call NERDComment('n', 'Toggle')<CR>
                 " noremap <Leader>d :call NERDComment('n', 'Toggle')<CR>
-                noremap <Bar> :call NERDComment('n', 'Toggle')<CR>
+                " noremap <Bar> :call NERDComment("n", "AlignLeft")<cr>
+                noremap <Bar> :call NERDComment('n', 'Toggle')<cr>
             " }}}
 
         endif
@@ -301,7 +302,7 @@ source ~/.vimrc.min
                 " http://stackoverflow.com/questions/10287919/use-vims-tabularize-plugin-to-only-match-the-first-occurance-of-a-delimiter
                 noremap <Leader>af<Space> :Tabularize /^\s*\w*<CR>
                 noremap <Leader>a<Bar> :Tabularize /[^\\]\zs<Bar><CR>
-                noremap <Leader>ae :Tabularize /\s\{2,\}\zs<CR>
+                " noremap <Leader>ae :Tabularize /\s\{2,\}\zs<CR>
             " }
 
             " Toggle words
@@ -540,13 +541,16 @@ source ~/.vimrc.min
     " HTML {
         if count(g:spf13_bundle_groups, 'html')
             " AutoCloseTag {
+                " Automatically closes HTML tag once you finish typing it with >.
                 " Bundle 'karuna/HTML-AutoCloseTag'
                 " Bundle 'amirh/HTML-AutoCloseTag'
                 Bundle 'ypid/HTML-AutoCloseTag'
                 let g:closetag_html_style=1
+
                 " Bundle 'closetag.vim'
                 " Bundle 'inkarkat/closetag.vim'
                 Bundle 'ypid/closetag.vim'
+                " Default mapping: inoremap <expr> <Leader>ae <SID>GetCloseTag('i')
             " }
 
             " Bundle 'sukima/xmledit'
