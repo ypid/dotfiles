@@ -70,6 +70,8 @@ source ~/.vimrc.min
             Bundle 'YankRing.vim'
             " Bundle 'maxbrunsfeld/vim-yankstack'
 
+            Bundle 'wellle/tmux-complete.vim'
+
         endif
         if count(g:spf13_bundle_groups, 'tested_not_using')
             " I don‘t really like this behavior
@@ -239,8 +241,13 @@ source ~/.vimrc.min
 
             " More text objects {
                 " http://blog.carbonfive.com/2011/10/17/vim-text-objects-the-definitive-guide/
-                Bundle 'argtextobj.vim'
                 Bundle 'michaeljsmith/vim-indent-object'
+
+                " Bundle 'wellle/targets.vim'
+
+                " Text object for [a]rgument in function. E.g. def " test(test='def', 24)
+                " Bundle 'argtextobj.vim'
+                Bundle 'b4winckler/vim-angry'
 
                 Bundle 'terryma/vim-expand-region'
                 map ν <Plug>(expand_region_expand)
@@ -759,7 +766,7 @@ source ~/.vimrc.min
         highlight ExtraWhitespace ctermbg=red guibg=red
 
         if has('statusline')
-            set laststatus=1
+            set laststatus=2
         endif
 
         set backspace=indent,eol,start  " Backspace for dummies

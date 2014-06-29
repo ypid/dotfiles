@@ -165,9 +165,11 @@
 
         " easier moving between tabs
         noremap σ :tabprevious<CR>
+        inoremap σ <c-o>:tabprevious<CR>
+        " Shift+Layer3Mod+h
         noremap τ :tabnext<CR>
-        " Shift+Layer3Mod+h and Shift+Layer3Mod+l
-        " Or use the default gt and gT
+        inoremap τ <c-o>:tabnext<CR>
+        " Shift+Layer3Mod+l
 
         " easier moving between buffers
         noremap <Leader>w <esc>:bNext<CR>
