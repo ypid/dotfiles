@@ -243,9 +243,9 @@ source ~/.vimrc.min
                 Bundle 'michaeljsmith/vim-indent-object'
 
                 Bundle 'terryma/vim-expand-region'
-                nmap ν <Plug>(expand_region_expand)
+                map ν <Plug>(expand_region_expand)
                 " Shift+Layer3Mod+j
-                nmap ρ <Plug>(expand_region_shrink)
+                map ρ <Plug>(expand_region_shrink)
                 " Shift+Layer3Mod+k
 
                 " http://stackoverflow.com/a/6589216
@@ -401,7 +401,7 @@ source ~/.vimrc.min
                 let g:neocomplcache_force_overwrite_completefunc = 1
 
                 " SuperTab like snippets behavior.
-                inoremap <silent><expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" : (pumvisible() ? "\<c-e>" : "\<TAB>")
+                imap <silent><expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" : (pumvisible() ? "\<c-e>" : "\<TAB>")
                 smap <TAB> <Right><Plug>(neosnippet_jump_or_expand)
 
                 " Define dictionary.
@@ -416,7 +416,7 @@ source ~/.vimrc.min
                 " Plugin key-mappings.
 
                 " These two lines conflict with the default digraph mapping of <c-K>
-                inoremap <c-l> <Plug>(neosnippet_expand_or_jump)
+                imap <c-l> <Plug>(neosnippet_expand_or_jump)
                 smap <c-l> <Plug>(neosnippet_expand_or_jump)
 
                 " inoremap <expr><c-g> neocomplcache#undo_completion()
@@ -534,7 +534,7 @@ source ~/.vimrc.min
             " 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
             " The following changes the default filetype back to 'tex':
             let g:tex_flavor='latex'
-            inoremap <Leader>Y <Plug>inoremap_JumpForward
+            imap <Leader>Y <Plug>inoremap_JumpForward
         endif
     " }
 
