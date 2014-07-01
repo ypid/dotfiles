@@ -28,7 +28,7 @@ source ~/.vimrc.min
     call add(g:spf13_bundle_groups, 'html')
     call add(g:spf13_bundle_groups, 'python')
 
-    " call add(g:spf13_bundle_groups, 'misc')
+    call add(g:spf13_bundle_groups, 'misc')
     " call add(g:spf13_bundle_groups, 'games')
 
     " Not often used, not properly tested.
@@ -72,6 +72,9 @@ source ~/.vimrc.min
 
             Bundle 'wellle/tmux-complete.vim'
 
+            Bundle 'chrisbra/Recover.vim'
+
+            Bundle 'TTCoach'
         endif
         if count(g:spf13_bundle_groups, 'tested_not_using')
             " I don‘t really like this behavior
@@ -178,6 +181,9 @@ source ~/.vimrc.min
                 " let g:indent_guides_guide_size = 2
                 let g:indent_guides_enable_on_vim_startup = 1
                 let g:indent_guides_soft_pattern = ' '
+
+                noremap <silent> γ :IndentGuidesToggle<CR>
+                " Shift+Layer3Mod+i
             " }
 
             if !exists('g:spf13_no_views')
@@ -228,6 +234,10 @@ source ~/.vimrc.min
             " Pick one of the checksyntax, jslint, or syntastic
             Bundle 'scrooloose/syntastic'
             highlight SyntasticErrorSign guifg=red guibg=red
+            " let g:syntastic_mode_map = { 'mode': 'active',
+            "                            \ 'active_filetypes': [],
+            "                            \ 'passive_filetypes': ['python'] }
+            let g:syntastic_ignore_files = ['\m^/etc/']
             " Bundle 'Valloric/YouCompleteMe'
             " Much dependencies
             " Bundle 'vivien/vim-addon-linux-coding-style'
@@ -781,7 +791,7 @@ source ~/.vimrc.min
         set wildmenu                    " Show list instead of just completing
         set wildmode=list:longest,full  " Command <Tab> completion, list matches, then longest common part, then all.
         set whichwrap=b,s,h,l,<,>,[,]   " Backspace and cursor keys wrap too
-        set scrolljump=5                " Lines to scroll when cursor leaves screen
+        set scrolljump=0                " Lines to scroll when cursor leaves screen
         set scrolloff=3                 " Minimum lines to keep above and below cursor
         set foldenable                  " Auto fold code
         set foldopen+=search
@@ -857,7 +867,8 @@ source ~/.vimrc.min
             autocmd BufWritePre *crypt* setlocal noundofile
             autocmd BufWritePre *mnt*   setlocal noundofile
 
-            autocmd BufRead,BufNewFile /etc/* if &filetype=='python'|let g:pymode_run = 0|endif
+            autocmd BufRead,BufNewFile /etc/* if &filetype=='python'|let g:pymode_lint = 0|endif
+            autocmd BufRead,BufNewFile /etc/* if &filetype=='python'|let g:pymode_rope = 0|endif
 
             " Set language specific stuff {{{
                 autocmd FileType vim setlocal expandtab shiftwidth=4
@@ -891,6 +902,7 @@ source ~/.vimrc.min
             " autocmd BufWritePost * echo &ff
             autocmd QuickFixCmdPost make cwindow
             " autocmd FileType c,cpp,go,php,javascript,python,twig,xml,yml autocmd BufWritePre <buffer> EraseBadWhitespace
+            autocmd VimEnter * if &diff | execute 'windo set wrap' | endif
 
             " Always switch to the current file directory
             autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif

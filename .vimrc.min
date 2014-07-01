@@ -46,6 +46,9 @@
         " nnoremap ^[j :set paste<CR>m`o<Esc>``:set nopaste<CR>
     " }}}
 
+    nnoremap <silent> n nzt
+    nnoremap <silent> N Nzb
+
     " Overwrite default Vim mappings {
         " Function to overwrite build-in commands {{{
             " http://vim.wikia.com/wiki/Replace_a_builtin_command_using_cabbrev

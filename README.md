@@ -206,7 +206,7 @@ Alt+l         | Switch to tab 6                         | No             |
 Alt+u         | Switch to tab 7                         | No             |
 Alt+i         | Switch to tab 8                         | No             |
 Alt+o         | Switch to tab 9                         | No             |
-Ctrl+[+-]     | Increase/Decrease (zoom) font size      | Nice to have   | Level 3 [Neo2][] plus and minus do not work in firefox. Using Level 4 once (which currently don’t work with gnome-terminal).
+Ctrl+[+-]     | Increase/Decrease (zoom) font size      | Nice to have   | Level 3 [Neo2][] plus and minus do not work in firefox (works nicely because the plus „p“ and the minus „ü“ are next to each other). Using Level 4 once (which currently don’t work with gnome-terminal. Using Level 4 plus and Level 1 hyphen for this.).
 Ctrl+w        | Closes the tab                          | Of course      | Should be default in all program
 Ctrl+q        | Closes the application                  | Of course      | Should be default in all program
 

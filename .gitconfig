@@ -22,6 +22,8 @@
 	; lg = log --graph --pretty=format:'%Cred%h..%Creset - %s %Cgreen(%cr)%Creset - %an' --abbrev-commit --date=relative
 	v = fsck --full --unreachable --strict --no-dangling
 	s = shortlog -sn
+	c = cal --unicode
+	; https://github.com/k4rthik/git-cal.git
 [core]
 	excludesfile = ~/.gitignore_global
 	editor = vi
