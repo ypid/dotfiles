@@ -47,6 +47,10 @@ unalias md 2>/dev/zero
 function md() {
     mkdir -p "$@" && cd "$@"
 }
+
+function run-c() {
+    echo "main(){ $@ }" | tcc -run -
+}
 ## }}}
 
 ## Vim stuff {{{
@@ -149,8 +153,8 @@ if [ -d "$HOME/Skripte/repository" ]; then
 fi
 export PYTHONSTARTUP="$HOME/.pystartup"
 export PYTHONPATH='.'
-user_install_dir="$HOME/.usr/bin"
+user_install_dir="$HOME/.usr"
 if [ -d "$user_install_dir" ]; then
-    PATH="$user_install_dir:$PATH"
+    PATH="$user_install_dir/bin:$PATH"
     PYTHONPATH="$user_install_dir/lib/python2.7/site-packages:$PYTHONPATH"
 fi

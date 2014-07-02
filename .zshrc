@@ -143,15 +143,15 @@ local git_branch='$(git_prompt_info)%{$reset_color%}'
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[yellow]%}‹"
 ZSH_THEME_GIT_PROMPT_SUFFIX="› %{$reset_color%}"
 
-PROMPT="╭─${time} ${user_host}${current_dir} ${git_branch}
-╰─%B$%b "
-
 # elaborate exitcode on the right when >0
 return_code_enabled="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
 return_code_disabled=
 return_code=$return_code_enabled
 
-RPS1='${return_code}'
+# RPS1='${return_code}'
+
+PROMPT="╭─${time} ${user_host}${current_dir} ${git_branch} ${return_code}
+╰─%B$%b "
 
 function accept-line-or-clear-warning () {
 	if [[ -z $BUFFER ]]; then

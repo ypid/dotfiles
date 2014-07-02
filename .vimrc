@@ -324,7 +324,7 @@ source ~/.vimrc.min
 
             " Toggle words
             Bundle 'toggle_words.vim'
-            noremap <Leader>to :ToggleWord<CR>
+            noremap δ :ToggleWord<CR>
 
             Bundle 'tpope/vim-endwise'
 
@@ -769,6 +769,7 @@ source ~/.vimrc.min
     if count(g:config_section_enable, 'ui_config')
         set tabpagemax=15               " Only show 15 tabs
         set showmode                    " Display the current mode
+        set showcmd                     " Display the good stuff ;) Like how many characters have been selected.
         set cursorline                  " Highlight current line
 
         highlight clear SignColumn      " SignColumn should match background for

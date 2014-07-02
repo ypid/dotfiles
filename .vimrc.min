@@ -46,9 +46,6 @@
         " nnoremap ^[j :set paste<CR>m`o<Esc>``:set nopaste<CR>
     " }}}
 
-    nnoremap <silent> n nzt
-    nnoremap <silent> N Nzb
-
     " Overwrite default Vim mappings {
         " Function to overwrite build-in commands {{{
             " http://vim.wikia.com/wiki/Replace_a_builtin_command_using_cabbrev
@@ -134,15 +131,18 @@
             noremap <leader>f9 :set foldlevel=9<CR>
         " }}}
 
-        " Toggle highlight search
+       " Toggle highlight search
         noremap <Leader>B :set invhlsearch<CR>
         inoremap <Leader>B <c-o>:set invhlsearch<CR>
-        noremap <Leader>b :set nohlsearch<CR>
-        inoremap <Leader>b <c-o>:set nohlsearch<CR>
+        noremap <Leader>b :nohlsearch<CR>
+        inoremap <Leader>b <c-o>:nohlsearch<CR>
 
         " let hlstate=0
         " let lastsearchstring = @/
         " noremap <Leader>b :call Togglehlsearch()<CR>
+
+        " let hlstate=0
+        " nnoremap  :if (hlstate%2 == 0) \| nohlsearch \| else \| set hlsearch \| endif \| let hlstate=hlstate+1<cr>
 
         " Bind set list
         noremap <Leader>l :set list!<CR>
@@ -268,7 +268,12 @@
         command! -complete=file -nargs=? O tabnew <args>
     " }}}
 
-    " Disabled (mostly because of incompatibilities {{{
+    " Disabled (because I did not like them) {{{
+        " nnoremap <silent> n nzt
+        " nnoremap <silent> N Nzb
+    " }}}
+
+    " Disabled (mostly because of incompatibilities) {{{
         " The following two lines conflict with moving to top and
         " bottom of the screen
         " noremap <S-H> gT
