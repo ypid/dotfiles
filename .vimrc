@@ -56,6 +56,9 @@ source ~/.vimrc.min
     " Testing {{{
         if count(g:spf13_bundle_groups, 'testing')
             Bundle 'terryma/vim-multiple-cursors'
+            let g:multi_cursor_next_key='<c-e>'
+            let g:multi_cursor_prev_key='<C-p>'
+
             Bundle 't9md/vim-quickhl'
             nmap μ <Plug>(quickhl-manual-this)
             " Shift+Layer3Mod+m
@@ -72,6 +75,7 @@ source ~/.vimrc.min
 
             Bundle 'wellle/tmux-complete.vim'
 
+            " Show diff for before recover
             Bundle 'chrisbra/Recover.vim'
 
             Bundle 'TTCoach'
@@ -118,7 +122,7 @@ source ~/.vimrc.min
         endif
     " }}}
 
-    " General {
+    " General {{{
         if count(g:spf13_bundle_groups, 'general')
             " Bundle 'scrooloose/nerdtree'
             " noremap <Leader>v :NERDTreeToggle<CR>
@@ -195,7 +199,7 @@ source ~/.vimrc.min
 
             Bundle 'bronson/vim-visual-star-search'
         endif
-    " }
+    " }}}
 
     " UI enhancements {
         if count(g:spf13_bundle_groups, 'ui')
@@ -224,7 +228,11 @@ source ~/.vimrc.min
                     " let g:airline_section_a = airline#section#create(keys)
                 " endfunction
                 " autocmd VimEnter * call AccentDemo()
-                let g:airline_section_z='%3p%% %#__accent_bold#%#__accent_yellow#%4l%#__restore__#:%3v'
+                " let g:airline_section_x = ['tagbar', 'filetype']
+                let g:airline#extensions#default#layout = [
+                            \ [ 'a', 'b', 'c', 'x' ],
+                            \ [ 'y', 'z', 'warning' ]
+                            \ ]
             " }
         endif
     " }
@@ -299,9 +307,7 @@ source ~/.vimrc.min
             let g:manpageview_options_pl = ";-f;-q;-t;"
             let g:viewdoc_openempty = 1
             let g:viewdoc_copy_to_search_reg = 1
-
             let g:viewdoc_prevtabonclose = 1
-            " testing
 
             " Tabularize {
                 Bundle 'godlygeek/tabular'
@@ -355,10 +361,10 @@ source ~/.vimrc.min
             Bundle 'kien/rainbow_parentheses.vim'
             nnoremap <Leader>R :RainbowParenthesesToggle<CR>
 
-            " if executable('ctags')
-                " Bundle 'majutsushi/tagbar'
-                " nnoremap <Leader>ft :TagbarToggle<cr>
-            " endif
+            if executable('ctags')
+                Bundle 'majutsushi/tagbar'
+                nnoremap <Leader>ft :TagbarToggle<cr>
+            endif
 
             " Save and run {{{
                 Bundle 'xuhdev/SingleCompile'
