@@ -132,10 +132,10 @@
         " }}}
 
        " Toggle highlight search
-        noremap <Leader>B :set invhlsearch<CR>
-        inoremap <Leader>B <c-o>:set invhlsearch<CR>
-        noremap <Leader>b :nohlsearch<CR>
-        inoremap <Leader>b <c-o>:nohlsearch<CR>
+        noremap <silent> <Leader>B :set invhlsearch<CR>
+        inoremap <silent> <Leader>B <c-o>:set invhlsearch<CR>
+        noremap <silent> <Leader>b :nohlsearch<CR>
+        inoremap <silent> <Leader>b <c-o>:nohlsearch<CR>
 
         " let hlstate=0
         " let lastsearchstring = @/
@@ -163,8 +163,9 @@
         " }
 
         " Insert newline without entering insert mode
-        noremap <Leader>Q O<Esc>
-        noremap <Leader>q o<Esc>
+        " noremap <Leader>Q O<Esc>
+        " noremap <Leader>q o<Esc>
+        " I don‘t really use it. I use 'o<ESC>' more often.
 
         " easier moving between tabs
         noremap σ :tabprevious<CR>
@@ -204,12 +205,16 @@
         endfunction
         nnoremap <silent> <Leader>am :call AppendModeline()<CR>
 
+        " nnoremap <silent> <Leader>ad :r!date<CR>
+
         " Copy the hole puffer to primary system clipboard, without the
         " newline at the end …
         " I am using this to write my texts in Vim and copy them in all sorts
         " of text boxes.
         noremap η :normal gg0vG$h"+y<CR>:echo "Copied buffer content to primary clipboard"<CR>
         " Shift+Layer3Mod+c
+
+        noremap <silent> <Leader>tp :split<CR>:resize 6<CR>hh<C-]><c-w><c-k>
     " }}}
 
     " Other mappings {{{

@@ -79,6 +79,10 @@ source ~/.vimrc.min
             Bundle 'chrisbra/Recover.vim'
 
             Bundle 'TTCoach'
+
+            Bundle 'rm-hull/vim-locate'
+
+            " Bundle 'autoproto.vim'
         endif
         if count(g:spf13_bundle_groups, 'tested_not_using')
             " I don‘t really like this behavior
@@ -364,6 +368,15 @@ source ~/.vimrc.min
             if executable('ctags')
                 Bundle 'majutsushi/tagbar'
                 nnoremap <Leader>ft :TagbarToggle<cr>
+
+                " Bundle 'craigemery/vim-autotag'
+                " Did not work. Using manual autocmd.
+                Bundle 'xolox/vim-misc'
+                Bundle 'xolox/vim-easytags'
+                let g:easytags_async = 1
+                " let g:easytags_file = '~/.vim/tags'
+                " let g:easytags_file = './tags'
+                let g:easytags_dynamic_files = 1
             endif
 
             " Save and run {{{
@@ -721,6 +734,7 @@ source ~/.vimrc.min
         " set hidden                          " Allow buffer switching without saving
         set splitbelow                      " Open new splits below (for Gdiff)
         set wildignorecase                  " Comes in very handy when your are used to ZSH.
+        set ignorecase                      " Comes in very handy when your are used to ZSH.
         set tags=./tags;/                   " Look in all upper Directorys for tags files
         " Did not work. http://stackoverflow.com/a/741486
 
@@ -898,13 +912,16 @@ source ~/.vimrc.min
                 autocmd FileType xml setlocal foldmethod=indent
                 " autocmd FileType xml setlocal foldmethod=syntax " does not work
                 autocmd FileType gitcommit normal gg
+                " au FileType {c,cpp} au BufWritePost <buffer> silent ! [ -e tags ] &&
+                    " \ ( awk -F'\t' '$2\!="%:gs/'/'\''/"{print}' tags ; ctags -f- '%:gs/'/'\''/' )
+                    " \ | sort -t$'\t' -k1,1 -o tags.new && mv tags.new tags
             " }}}
 
             " autocmd VimEnter * RainbowParenthesesToggle " enable by defalut
             " autocmd Syntax * RainbowParenthesesLoadRound " default
             autocmd VimEnter,BufRead,BufNewFile * if exists(":RainbowParenthesesLoadSquare")|exe "RainbowParenthesesLoadSquare"|endif
             autocmd VimEnter,BufRead,BufNewFile * if exists(":RainbowParenthesesLoadBraces")|exe "RainbowParenthesesLoadBraces"|endif
-            autocmd BufRead * if exists(":DetectIndent")|exe "DetectIndent"|endif
+            " autocmd BufRead * if exists(":DetectIndent")|exe "DetectIndent"|endif
             " autocmd BufRead,BufNewFile * call SetIndentWidth()
             " autocmd BufWritePost * echo &ff
             autocmd QuickFixCmdPost make cwindow
