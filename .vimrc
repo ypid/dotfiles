@@ -61,6 +61,7 @@ source ~/.vimrc.min
 
             Bundle 't9md/vim-quickhl'
             nmap μ <Plug>(quickhl-manual-this)
+            vmap μ <Plug>(quickhl-manual-this)
             " Shift+Layer3Mod+m
             "
             " xmap <Space>M <Plug>(quickhl-manual-reset)

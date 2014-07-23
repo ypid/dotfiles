@@ -36,10 +36,10 @@ This git repo tracks a few of my personal config files for some programs.
 > Enable history and load some common modules
 
 `.tmux.conf`
-> Use some key mappings from screen
+> Changed color stuff, show load and battery life and customized mappings
 
 `.vim`
-> All my plugins and stuff like
+> All my plugins and stuff like that
 
 `.vimrc`
 > My vimrc (work in progress)
@@ -68,11 +68,14 @@ Here are some advices regarding shortcuts for programmers or UI designers which 
 * Allow more than one shortcut for one action!
 * Allow to reconfigure *everything*.
 * Make it easy to track the configuration files (which contain the shortcuts) with version control. This also means not to store the shortcuts together with things that you don‘t want to track (like recent files or usernames and passwords).
+* The user types something in an input view then certain shortcuts are expected to work:
+  * Ctrl+z: Undo
+  * Ctrl+y: Redo
+  * Ctrl+u: Delete line
+  * Ctrl+w: Delete word
+  * Ctrl+h: Delete character
+
 * Do not reinvent the wheel!
-
-Additionally, some thoughts (or personal wishes):
-
-* Every application which works with text or has an text input field should support Ctrl+u in the way Vim does it. (I am often trying to delete the complete text in the URL Bar in Firefox with Ctrl+u … → Disabled action of Ctrl+u in firefox)
 
 ## Shortcut “Namespaces”
 
