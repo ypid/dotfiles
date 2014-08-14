@@ -184,7 +184,7 @@ Ctrl+Alt+x       | `rhythmbox-client --play-pause`            | Of course      |
 Ctrl+Super+x     | `rhythmbox-client --next`                  | Of course      | Play next music file
 Ctrl+Alt+O       | Launch program `eject`                     | No             | eject removable media
 Ctrl+Alt+c       | Launch [script][suspend-script] to suspend | Yes            |
-Ctrl+Alt+v       | poweroff                                   | Yes            |
+Ctrl+Alt+v       | `poweroff`                                 | Yes            |
 
 ## GUI applications
 
@@ -287,7 +287,7 @@ Use Neo2 bindings where possible. Don‘t use `$`, use Mod4+g.
 
 ## Shortcut “Namespaces”
 
-* Use on key with modifiers for actions which might be used repeatable or
+* Use one key with modifiers for actions which might be used repeatable or
   toggle something like | in normal mode which toggles comments for the line or ❤ (Shift+Layer3Mod+w) which closes one window or split.
 
 #### Free shortcuts
