@@ -6,9 +6,8 @@ I started with a .Xmodmap file and it did almost all what I wanted but certain t
 
 * Settings like producing the symbol '0' with <pre>\<Alt Gr\> + \<space\></pre> did not work.
 * Xmodmap settings where reseted when switching to another virtual consoles.
-* No easy and/or fast way to switch to the normal qwertz layout (the xmodmap command usually took this 5 seconds to terminate).
+* No easy and/or fast way to switch to the normal qwertz layout (the xmodmap command usually took it‘s 5 seconds to terminate).
 * Could only be used when logged in not before (I had to remember if my settings where already in effect when typing in passwords).
-* It feels like Level [234] work better.
 
 So I decided to implement my layout using xkb.
 
@@ -18,11 +17,11 @@ To use my modified version just run the deploy script as root:
 
 `./deploy`
 
-Then either enable 'German (Neo 2)' in your window manager (for example Gnome 3) or run `./enable` (in user space).
+Then either enable 'German (Neo 2)' in your window manager (for example Gnome 3) or run `./enable` (in as normal user).
 
 After enabling it, your default keyboard layout will be [Neo2] with the qwertz layout. The Gnome keyboard tool can show you the mapping for all keys. Also the program [NeoLayoutViewer][] can be used to quickly look up the [Neo2][] layout.
 
-Note that you can switch to the normal layout (as specified in the keyboard file) with the [scroll lock key](http://en.wikipedia.org/wiki/Scroll_lock) or with tools you window manager provides.
+Note that you can switch to the normal layout (as specified in the keyboard file) with the [scroll lock key](http://en.wikipedia.org/wiki/Scroll_lock) or with tools your window manager provides.
 
 [NeoLayoutViewer]: https://github.com/YggdrasiI/NeoLayoutViewer
 [Neo2]: http://www.neo-layout.org/

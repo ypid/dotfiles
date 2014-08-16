@@ -299,7 +299,7 @@ Use Neo2 bindings where possible. Don‘t use `$`, use Mod4+g.
 
 <!-- links -->
 
-[VimFx]: www.github.com/akhodakivskiy/VimFx
+[VimFx]: https://github.com/akhodakivskiy/VimFx
 [special-keys]: #special-keys
 [.vimrc]: /.vimrc
 [.tmux.conf]: /.tmux.conf

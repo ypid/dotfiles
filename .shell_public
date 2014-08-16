@@ -51,6 +51,9 @@ function md() {
 function run-c() {
     echo "main(){ $@ }" | tcc -run -
 }
+function gpg-load-all-signing-keys() {
+    gpg --list-sigs "$1" | perl -pe 's/.*(\w{8}) .*/$1/'|while read keyid; do gpg --recv-keys "$keyid"; done
+}
 ## }}}
 
 ## Vim stuff {{{
