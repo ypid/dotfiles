@@ -35,7 +35,7 @@ source ~/.vimrc.min
     call add(g:spf13_bundle_groups, 'testing')
     " call add(g:spf13_bundle_groups, 'neocomplcache')
     " call add(g:spf13_bundle_groups, 'latex')
-    " call add(g:spf13_bundle_groups, 'javascript')
+    call add(g:spf13_bundle_groups, 'javascript')
     " call add(g:spf13_bundle_groups, 'scala')
     " call add(g:spf13_bundle_groups, 'ruby')
     " call add(g:spf13_bundle_groups, 'go')
@@ -251,6 +251,9 @@ source ~/.vimrc.min
             "                            \ 'active_filetypes': [],
             "                            \ 'passive_filetypes': ['python'] }
             let g:syntastic_ignore_files = ['\m^/etc/']
+            let g:syntastic_check_on_wq = 0
+            " Too slow for some big files. I am looking at you opening_hours.js :-( ;-)
+            "
             " Bundle 'Valloric/YouCompleteMe'
             " Much dependencies
             " Bundle 'vivien/vim-addon-linux-coding-style'
@@ -545,6 +548,7 @@ source ~/.vimrc.min
 
     " Javascript {
         if count(g:spf13_bundle_groups, 'javascript')
+            Bundle 'Shutnik/jshint2.vim'
             " Bundle 'leshill/vim-json'
             " Bundle 'groenewege/vim-less'
             " Bundle 'pangloss/vim-javascript'
