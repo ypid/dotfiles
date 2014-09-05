@@ -215,7 +215,17 @@ Ctrl+q        | Closes the application                  | Of course      | Shoul
 
 ### Firefox
 
-I use [VimFx][] with a few modified and additional shortcuts …
+I use [VimFx][] to get all the Vim basics …
+
+To customize firefox even further I use [Customizable Shortcuts](https://addons.mozilla.org/de/firefox/addon/customizable-shortcuts/) and [keyconfig](http://kb.mozillazine.org/Keyconfig_extension).
+
+
+Shortcut      | Function                            | Left hand only | Comment
+------------- | -------------                       | -------------  | -------------
+Ctrl+u        | No action                           | No             | Disabled default "View page source" because I hit just Ctrl+u multiple times in the location bar to delete the line.
+Ctrl+S        | View page source                    | Yes            |
+S             | Toggle bookmarks toolbar on and off | Yes            | With keyconfig: `var toolbar = document.getElementById("PersonalToolbar");toolbar.collapsed = !toolbar.collapsed;document.persist(toolbar.id, "collapsed");`
+Ctrl+D        | Web console (d for Debug)           | Yes            |
 
 ### Double Commander (DC)
 
