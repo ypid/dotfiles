@@ -70,6 +70,7 @@ Here are some advices regarding shortcuts for programmers or UI designers which 
 * Make it easy to track the configuration files (which contain the shortcuts) with version control. This also means not to store the shortcuts together with things that you don‘t want to track (like recent files or usernames and passwords).
 * The user types something in an input view then certain shortcuts are expected to work:
   * Ctrl+z: Undo
+  * Ctrl+Y: Undo (Maybe worth a thought because it is way easier to reach then Ctrl+z)
   * Ctrl+y: Redo
   * Ctrl+u: Delete line
   * Ctrl+w: Delete word
@@ -81,6 +82,7 @@ Here are some advices regarding shortcuts for programmers or UI designers which 
 
 Which shortcuts should be used where? – Some thoughts …
 
+* Ctrl+Alt: Dedicated to window manager
 * Shift+Super: Dedicated for AutoKey
 
     * Can also be used over RDP on Windows machines without interfering with MS Windows mappings of the Super key.
@@ -138,8 +140,8 @@ Alt+Super+J                           | move window to workspace below          
 Alt+Super+K                           | move window to workspace above            | No             | See [shellshape][]. Could release Alt+[WASD]?
 Super+a                               | bring window to front / send to back      | No             | See [shellshape][].
 Super+C                               | close window                              | No             | See [shellshape][]. Does not work. Not using it.
-Ctrl-Alt+y                            | Switch to workspace 1                     | Of course      |
-Ctrl-Alt+[Level5 Shift][special-keys] | Switch to workspace 2                     | Of course      |
+Ctrl+Alt+y                            | Switch to workspace 1                     | Of course      |
+Ctrl+Alt+[Level5 Shift][special-keys] | Switch to workspace 2                     | Of course      |
 
 [shellshape]: https://extensions.gnome.org/extension/294/shellshape/
 
@@ -226,6 +228,15 @@ Ctrl+u        | No action                           | No             | Disabled 
 Ctrl+S        | View page source                    | Yes            |
 S             | Toggle bookmarks toolbar on and off | Yes            | With keyconfig: `var toolbar = document.getElementById("PersonalToolbar");toolbar.collapsed = !toolbar.collapsed;document.persist(toolbar.id, "collapsed");`
 Ctrl+D        | Web console (d for Debug)           | Yes            |
+
+### Gimp
+
+Shortcut      | Function      | Left hand only | Comment
+------------- | ------------- | -------------  | -------------
+W             | tools-move    | Yes            |
+Alt+C         | layers-new    | Yes            |
+Ctrl+y        | Undo          | Yes            | Just easier to reach
+Ctrl+Y        | Redo          | Yes            | Just easier to reach
 
 ### Double Commander (DC)
 
