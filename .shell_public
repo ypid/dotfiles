@@ -90,9 +90,19 @@ alias '*'='dict'
 ## Use the shortcuts from oh-my-zsh for git
 alias wd='git diff --color-words --no-index'
 alias ι='git status' # Shift+Level3Mod+s
-# alias gst='echo "use ι (Shift+Level3Mod+s)"'
 # overwrite alias from oh-my-zsh {{{
 alias glg='git log --stat --decorate=short --show-signature' # full history
+
+# Define important sortcuts here if under bash (are already defended by oh-my-zsh) {{{
+alias g='git'
+alias glg='git log'
+alias gst='git status'
+alias gco='git checkout'
+alias gca='git commit -a'
+alias gc='git commit'
+alias gb='git branch'
+# }}}
+
 # alias glg='tig --show-signature' # full history
 unalias gp 2>/dev/zero
 function gp {

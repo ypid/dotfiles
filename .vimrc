@@ -926,7 +926,7 @@ source ~/.vimrc.min
             " autocmd Syntax * RainbowParenthesesLoadRound " default
             autocmd VimEnter,BufRead,BufNewFile * if exists(":RainbowParenthesesLoadSquare")|exe "RainbowParenthesesLoadSquare"|endif
             autocmd VimEnter,BufRead,BufNewFile * if exists(":RainbowParenthesesLoadBraces")|exe "RainbowParenthesesLoadBraces"|endif
-            " autocmd BufRead * if exists(":DetectIndent")|exe "DetectIndent"|endif
+            autocmd BufRead * if exists(":DetectIndent")|exe "DetectIndent"|endif
             " autocmd BufRead,BufNewFile * call SetIndentWidth()
             " autocmd BufWritePost * echo &ff
             autocmd QuickFixCmdPost make cwindow
