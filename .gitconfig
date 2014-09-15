@@ -10,12 +10,9 @@
 [alias]
 	wd = diff --color-words
 	re = remote -v
-	st = status
-	ci = commit -v
 	cil = commit --reedit-message=HEAD --reset-author
 	cii = commit --all -m 'Initial commit.'
 	cia = commit --all -m 'Auto commit without commit message.'
-	## use last commit message
 	co = checkout
 	br = branch --all
 	lgn = log --pretty=oneline --abbrev-commit --show-notes=* --show-signature
