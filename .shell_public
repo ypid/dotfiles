@@ -98,8 +98,8 @@ alias g='git'
 alias glg='git log'
 alias gst='git status'
 alias gco='git checkout'
-alias gca='git commit -a'
-alias gc='git commit'
+alias gca='git commit -a -v'
+alias gc='git commit -v'
 alias gb='git branch'
 # }}}
 
