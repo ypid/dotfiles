@@ -92,10 +92,10 @@ alias wd='git diff --color-words --no-index'
 alias ι='git status' # Shift+Level3Mod+s
 # overwrite alias from oh-my-zsh {{{
 alias glg='git log --stat --decorate=short --show-signature' # full history
+# alias glg='tig --show-signature' # full history
 
 # Define important sortcuts here if under bash (are already defended by oh-my-zsh) {{{
 alias g='git'
-alias glg='git log --stat --max-count=10'
 alias gst='git status'
 alias gco='git checkout'
 alias gca='git commit -v -a'
@@ -103,7 +103,6 @@ alias gc='git commit -v'
 alias gb='git branch'
 # }}}
 
-# alias glg='tig --show-signature' # full history
 unalias gp 2>/dev/zero
 function gp {
     if [[ "$PWD" =~ "$HOME/Beruf" ]]; then
