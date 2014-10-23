@@ -26,7 +26,7 @@ log_bash_eternal_history()
 	fi
 }
 
-PROMPT_COMMAND="log_bash_eternal_history"
+# PROMPT_COMMAND="log_bash_eternal_history"
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
