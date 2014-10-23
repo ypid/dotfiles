@@ -149,8 +149,8 @@ Ctrl+Alt+[Level5 Shift][special-keys] | Switch to workspace 2                   
 
 Shortcut                                | Function      | Left hand only | Comment
 -------------                           | ------------- | -------------  | -------------
-Ctrl+Super+y                            | Volume up     | Yes            | Maybe other shortcut?
 Ctrl+Super+[Level5 Shift][special-keys] | Volume down   | Yes            | Maybe other shortcut?
+Ctrl+Super+y                            | Volume up     | Yes            | Maybe other shortcut?
 
 ### System
 
