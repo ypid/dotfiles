@@ -71,8 +71,8 @@ source ~/.vimrc.min
             " nmap μ <Plug>(quickhl-tag-toggle)
             " Shift+Layer3Mod+μ
 
-            " let g:yankring_history_dir = expand($HOME)
-            " Bundle 'YankRing.vim'
+            let g:yankring_history_dir = '$HOME/.vim'
+            Bundle 'YankRing.vim'
             " Bundle 'maxbrunsfeld/vim-yankstack'
 
             Bundle 'wellle/tmux-complete.vim'

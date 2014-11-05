@@ -3,4 +3,5 @@
 .vim/bundle/
 .vim/view
 .vim/spell/
+.vim/yankring_history_v2.txt
 tags

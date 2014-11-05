@@ -135,6 +135,11 @@ alias diff-dir='diff -arq'
 alias percent-encode='python -c "import urllib, sys; print urllib.quote(sys.argv[1])"'
 alias percent-decode='python -c "import urllib, sys; print urllib.unquote(sys.argv[1])"'
 
+## FIXME legacy
+if which ack-grep >/dev/null 2>&1; then
+    alias ack='ack-grep'
+fi
+
 alias ass='aptitude search'
 alias as='apt-cache search' ## Much faster. I normally don’t need to know if the thing is installed, respectively I can check that later with aptitude install.
 alias ash='/usr/bin/aptitude show' ## Does not need to run as root.
