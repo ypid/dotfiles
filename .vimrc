@@ -14,6 +14,15 @@ let g:spf13_no_views = 1
 source ~/.vimrc.min
 
 " Bundles and plugins {
+    " Setup Bundle Support {
+    " The next three lines ensure that the ~/.vim/bundle/ system works
+        filetype off
+        set rtp+=~/.vim/bundle/vundle
+        " let g:vundle_default_git_proto = 'git'
+        call vundle#rc()
+        Bundle 'gmarik/vundle'
+    " }
+
     let g:spf13_bundle_groups = []
 
     " Default
@@ -675,17 +684,6 @@ source ~/.vimrc.min
         endfunction
         command! -complete=shellcmd -nargs=+ Shell call s:ExecuteInShell(<q-args>)
 
-        function! EnsureDirExists (dir)
-            if !isdirectory(a:dir)
-                if exists("*mkdir")
-                    call mkdir(a:dir,'p')
-                    echo "Created directory: " . a:dir
-                else
-                    echo "Please create directory: " . a:dir
-                endif
-            endif
-        endfunction
-
         " Marking duplicate lines
         " https://stackoverflow.com/questions/1268032/marking-duplicate-lines
         function! HighlightRepeats() range
@@ -721,57 +719,6 @@ source ~/.vimrc.min
     if count(g:config_section_enable, 'general_config')
         filetype indent plugin on   " Automatically detect file types.
         syntax on                   " Syntax highlighting
-        set mousehide               " Hide the mouse cursor while typing
-        set mouse=a                 " Enable mouse wheel scrolling
-        scriptencoding utf-8
-
-        if has ('x') && has ('gui') " On Linux use + register for copy-paste
-            set clipboard=unnamedplus
-        elseif has ('gui')          " On mac and Windows, use * register for copy-paste
-            set clipboard=unnamed
-        endif
-
-        set autowrite                       " Automatically write a file when leaving a modified buffer
-        set shortmess+=filmnrxoOtT          " Abbrev. of messages (avoids 'hit enter')
-        set viewoptions=folds,options,cursor,unix,slash " Better Unix / Windows compatibility
-        " set virtualedit=onemore             " Allow for cursor beyond last character
-        set history=1000                    " Store a ton of history (default is 20)
-        set spell                           " Spell checking on
-        " set hidden                          " Allow buffer switching without saving
-        set splitbelow                      " Open new splits below (for Gdiff)
-        set wildignorecase                  " Comes in very handy when your are used to ZSH.
-        set ignorecase                      " Comes in very handy when your are used to ZSH.
-        set tags=./tags;/                   " Look in all upper Directorys for tags files
-        " Did not work. http://stackoverflow.com/a/741486
-
-        set ttimeoutlen=5
-        " http://www.johnhawthorn.com/2012/09/vi-escape-delays/
-
-        " Setting up the directories {
-            call EnsureDirExists($HOME . '/.vimswap')
-            set directory=~/.vimswap/
-            set writebackup
-            " call EnsureDirExists($HOME . '/.vimbackup')
-            " set backup                  " Backups are nice ...
-            " set backupskip=/tmp/*,crypt,sec,mnt
-            " set backupdir=~/.vimbackup,/var/tmp,/tmp,.
-
-            call EnsureDirExists($HOME . '/.vimview')
-            set viewdir=~/.vimview/
-
-            if has('persistent_undo')
-                call EnsureDirExists($HOME . '/.vimundo')
-                set undofile
-                set undodir=~/.vimundo/
-                set undolevels=1000         " Maximum number of changes that can be undone
-                set undoreload=10000        " Maximum number lines to save for undo on a buffer reload
-            endif
-
-            let g:skipview_files = [
-                \ '*sec*',
-                \ '*crypt*'
-                \ ]
-        " }
     endif
 " }
 
@@ -806,25 +753,6 @@ source ~/.vimrc.min
             set laststatus=2
         endif
 
-        set backspace=indent,eol,start  " Backspace for dummies
-        set linespace=0                 " No extra spaces between rows
-        set number
-        set winminheight=0              " Windows can be 0 line high
-        set showmatch                   " Show matching brackets/parenthesis
-        set incsearch                   " Find as you type search
-        set hlsearch                    " Highlight search terms
-        set ignorecase                  " Case insensitive search
-        set smartcase                   " Case sensitive when uc present
-        set wildmenu                    " Show list instead of just completing
-        set wildmode=list:longest,full  " Command <Tab> completion, list matches, then longest common part, then all.
-        set whichwrap=b,s,h,l,<,>,[,]   " Backspace and cursor keys wrap too
-        set scrolljump=0                " Lines to scroll when cursor leaves screen
-        set scrolloff=3                 " Minimum lines to keep above and below cursor
-        set foldenable                  " Auto fold code
-        set foldopen+=search
-        set foldmethod=marker
-        set nolist
-        set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
     endif
 " }
 
@@ -966,17 +894,3 @@ source ~/.vimrc.min
         endif
     endif
 " }
-
-" Machine specific configuration {{{
-    if count(g:config_section_enable, 'machine_spesific')
-        if filereadable(expand("~/.vimrc.private"))
-            " Synced on trusted systems. On others it can be created and the
-            " content will not be synced.
-            source ~/.vimrc.private
-        endif
-        if filereadable(expand("~/.vimrc.local"))
-            " Machine specific.
-            source ~/.vimrc.local
-        endif
-    endif
-" }}}
