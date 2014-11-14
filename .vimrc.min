@@ -389,16 +389,14 @@
     endif
 " }
 
-" Machine specific configuration {{{
-    if count(g:config_section_enable, 'machine_spesific')
-        if filereadable(expand("~/.vimrc.private"))
-            " Synced on trusted systems. On others it can be created and the
-            " content will not be synced.
-            source ~/.vimrc.private
-        endif
-        if filereadable(expand("~/.vimrc.local"))
-            " Machine specific.
-            source ~/.vimrc.local
-        endif
+" Machine specific configuration {
+    if filereadable(expand("~/.vimrc.private"))
+        " Synced on trusted systems. On others it can be created and the
+        " content will not be synced.
+        source ~/.vimrc.private
     endif
-" }}}
+    if filereadable(expand("~/.vimrc.local"))
+        " Machine specific.
+        source ~/.vimrc.local
+    endif
+" }
