@@ -16,7 +16,10 @@
 	co = checkout
 	br = branch --all
 	lgn = log --pretty=oneline --abbrev-commit --show-notes=* --show-signature
-	; lg = log --graph --pretty=format:'%Cred%h..%Creset - %s %Cgreen(%cr)%Creset - %an' --abbrev-commit --date=relative
+	lg1 = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(black)%s%C(reset) %C(dim black)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+	; from http://stackoverflow.com/a/9074343
+	;
+	lg = log --graph --pretty=format:'%Cred%h..%Creset - %s %Cgreen(%cr)%Creset - %an' --abbrev-commit --date=relative
 	v = fsck --full --unreachable --strict --no-dangling
 	s = shortlog -sn
 	c = cal --unicode
