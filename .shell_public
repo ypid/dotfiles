@@ -74,6 +74,7 @@ alias ,r='vi'
 # alias less='vim -c "w! /tmp/.vimpager" -'
 ## }}}
 
+alias rsync-only-pw='rsync -e "ssh -o PubkeyAuthentication=no"'
 alias ssh-only-pw='ssh -o PubkeyAuthentication=no'
 alias scp-only-pw='scp -o PubkeyAuthentication=no'
 alias ssh-copy-id='ssh-copy-id -o PubkeyAuthentication=no'

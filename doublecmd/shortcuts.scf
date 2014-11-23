@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<doublecmd DCVersion="0.5.10 beta">
+<doublecmd DCVersion="0.5.11 beta">
   <Hotkeys Version="17">
     <Form Name="Main">
       <Hotkey>
         <Shortcut>Ctrl+Q</Shortcut>
-        <Command>cm_Exit</Command>
-      </Hotkey>
-      <Hotkey>
-        <Shortcut>Alt+X</Shortcut>
         <Command>cm_Exit</Command>
       </Hotkey>
       <Hotkey>
@@ -55,7 +51,7 @@
         <Command>cm_MakeDir</Command>
       </Hotkey>
       <Hotkey>
-        <Shortcut>Shift+Alt+Y</Shortcut>
+        <Shortcut>Ctrl+D</Shortcut>
         <Command>cm_Delete</Command>
       </Hotkey>
       <Hotkey>
@@ -72,8 +68,13 @@
         <Command>cm_ShowCmdLineHistory</Command>
       </Hotkey>
       <Hotkey>
-        <Shortcut>Ctrl+D</Shortcut>
+        <Shortcut>Alt+Y</Shortcut>
         <Command>cm_DirHotList</Command>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Ctrl+Shift+D</Shortcut>
+        <Command>cm_Delete</Command>
+        <Param>trashcan=reversesetting</Param>
       </Hotkey>
       <Hotkey>
         <Shortcut>Ctrl+F</Shortcut>
@@ -320,7 +321,7 @@
         <Command>cm_MarkPlus</Command>
       </Hotkey>
       <Hotkey>
-        <Shortcut>Shift+Alt+X</Shortcut>
+        <Shortcut>Alt+X</Shortcut>
         <Command>cm_Rename</Command>
       </Hotkey>
       <Hotkey>
@@ -341,10 +342,6 @@
         <Shortcut>Ctrl+Shift+P</Shortcut>
         <Command>cm_PanelsSplitterPerPos</Command>
         <Param>splitpct=100</Param>
-      </Hotkey>
-      <Hotkey>
-        <Shortcut>ö</Shortcut>
-        <Command>cm_QuickSearch</Command>
       </Hotkey>
       <Hotkey>
         <Shortcut>Ctrl+L</Shortcut>

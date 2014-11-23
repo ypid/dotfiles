@@ -324,7 +324,9 @@
     set spell                           " Spell checking on
     " set hidden                          " Allow buffer switching without saving
     set splitbelow                      " Open new splits below (for Gdiff)
-    set wildignorecase                  " Comes in very handy when your are used to ZSH.
+    if exists("&fileignorecase")
+        set fileignorecase              " Comes in very handy when your are used to ZSH.
+    endif
     set ignorecase                      " Comes in very handy when your are used to ZSH.
     set tags=./tags;/                   " Look in all upper Directorys for tags files
     " Did not work. http://stackoverflow.com/a/741486

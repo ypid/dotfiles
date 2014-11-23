@@ -242,26 +242,35 @@ Ctrl+Y        | Redo          | Yes            | Just easier to reach
 
 See the manual for the default shortcuts. I added my own which I think are more convenient (I left the original onces pretty much untouched):
 
-Shortcut      | Function      | Left hand only                | Comment
-------------- | ------------- | -------------                 | -------------
-/             | Quick search  | Yes (maybe copy paste search) | Not used. Configured DC so that every letter typed will open the quick search.
-ö             | Quick search  | Yes (maybe copy paste search) | Not used. Configured DC so that every letter typed will open the quick search.
-Alt+Y         | Delete        | Yes                           |
-Alt+X         | Rename        | Yes                           |
-Alt+C         | Copy          | Yes                           |
-Ctrl+o        | Copy          | No (alternative mapping)      |
-Alt+E         | Symlink       | Yes                           |
-Alt+Q         | QuickView     | Yes                           |
-Alt+J         | MakeDir       | Not really                    | I suppose I will have to type a directory name then
-Ctrl+J        | SortByName    | Nice to have                  |
-Ctrl+K        | SortByExt     | Nice to have                  |
-Ctrl+L        | SortBySize    | Nice to have                  |
-Ctrl+U        | SortByDate    | Nice to have                  |
-Ctrl+a        | MarkAll       | Yes                           |
-Ctrl+A        | UnmarkAll     | Yes                           | Default behavior from Gimp
-Ctrl+S        | RunTerm       | Not really                    | Like Ctrl+Super+s but with the current directory
-Ctrl+l        | FocusCmdLine  | Not really                    | Was mapped to Shift+F2 but Ctrl+l is more convenient because it works be default in firefox. Overwrites CalculateSpace in DC.
-Ctrl+i        | RenameOnly    | Not really                    |
+Shortcut      | Function        | Left hand only                | Comment
+------------- | -------------   | -------------                 | -------------
+/             | Quick search    | Yes (maybe copy paste search) | Not used. Configured DC so that every letter typed will open the quick search.
+Alt+x         | Rename          | Yes                           |
+Ctrl+i        | RenameOnly      | Not really                    |
+Ctrl+o        | Copy            | No                            | Ctrl+o maybe use other shortcut?
+Alt+C         | Copy            | Yes  (alternative mapping)    |
+Alt+E         | Symlink         | Yes                           |
+Alt+Q         | QuickView       | Yes                           |
+Alt+J         | MakeDir         | Not really                    | I suppose I will have to type a directory name then
+Alt+F         | Search          | Not really                    | I suppose I will have to type a search pattern then
+Alt+y         | DirHotList      | Not really                    |
+Ctrl+F        | CountDirContent | Yes                           |
+Ctrl+J        | SortByName      | Nice to have                  |
+Ctrl+K        | SortByExt       | Nice to have                  |
+Ctrl+L        | SortBySize      | Nice to have                  |
+Ctrl+U        | SortByDate      | Nice to have                  |
+Ctrl+S        | RunTerm         | Not really                    | Like Ctrl+Super+s but with the current directory.
+Ctrl+l        | FocusCmdLine    | Not really                    | Was mapped to Shift+F2 but Ctrl+l is more convenient because it works be default in firefox. Overwrites CalculateSpace in DC.
+
+#### Assumed to be default
+Mappings which are default or which should be default.
+
+Shortcut      | Function        | Left hand only                | Comment
+------------- | -------------   | -------------                 | -------------
+Ctrl+a        | MarkAll         | Yes                           |
+Ctrl+A        | UnmarkAll       | Yes                           | Default behavior from Gimp.
+Ctrl+d        | Delete (Trash)  | Yes                           |
+Ctrl+D        | Delete          | Yes                           |
 
 Note: Double Commander works quite nicely together with [Neo2][] …
 
@@ -269,6 +278,8 @@ Note: Double Commander works quite nicely together with [Neo2][] …
 
 * Ctrl+s
 * Shift+[a-z]
+* Shift+Alt+Y
+* Alt+X
 
     Note: Does not work for all letters?
 
