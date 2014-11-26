@@ -57,7 +57,7 @@ This git repo tracks a few of my personal config files for some programs.
 
 Here are some common shortcuts that I use and which I configure in every program which makes sense and allows to do so.
 
-The use of the shift modifier key is not explicitly written down (-> case sensitive).
+The use of the shift modifier key is explicitly written down.
 
 Left hand only: Should be easy to use with the left hand, because it is often used during work with the mouse. For example switching windows or Ctrl+c to copy to the clipboard.
 
@@ -70,7 +70,7 @@ Here are some advices regarding shortcuts for programmers or UI designers which 
 * Make it easy to track the configuration files (which contain the shortcuts) with version control. This also means not to store the shortcuts together with things that you don‘t want to track (like recent files or usernames and passwords).
 * The user types something in an input view then certain shortcuts are expected to work:
   * Ctrl+z: Undo
-  * Ctrl+Y: Undo (Maybe worth a thought because it is way easier to reach then Ctrl+z)
+  * Shift+Ctrl+y: Undo (Maybe worth a thought because it is way easier to reach then Ctrl+z)
   * Ctrl+y: Redo
   * Ctrl+u: Delete line
   * Ctrl+w: Delete word
@@ -105,41 +105,41 @@ Own shortcuts for the window manager should include the Super key which is norma
 
 Shortcut      | Function                | Left hand only | Comment
 ------------- | -------------           | -------------  | -------------
-Ctrl+U        | Enter Unicode hex value | No             |
+Shift+Ctrl+u  | Enter Unicode hex value | No             |
 
 ### Navigation
 
 Shortcut                              | Function                                  | Left hand only | Comment
 -------------                         | -------------                             | -------------  | -------------
-Alt+A                                 | Move window one workspace to the left     | Yes            | Currently not used, just defined to be consistent.
-Alt+D                                 | Move window one workspace to the right    | Yes            | Currently not used, just defined to be consistent.
-Alt+W                                 | Move window one workspace up              | Yes            |
-Alt+S                                 | Move window one workspace down            | Yes            |
+Shift+Alt+a                           | Move window one workspace to the left     | Yes            | Currently not used, just defined to be consistent.
+Shift+Alt+d                           | Move window one workspace to the right    | Yes            | Currently not used, just defined to be consistent.
+Shift+Alt+w                           | Move window one workspace up              | Yes            |
+Shift+Alt+s                           | Move window one workspace down            | Yes            |
 Alt+[Level5 Shift][special-keys]      | Switch windows                            | Of course      | Easier to reach than Alt-Tab
 Super+j                               | Switch to next windows                    | No             | See [shellshape][].
 Super+k                               | Switch to previous windows                | No             | See [shellshape][].
 Super+d                               | switch workspace to vertical tiled mode   | Yes            | See [shellshape][].
 Super+f                               | switch workspace to floating mode         | Yes            | See [shellshape][].
 Super+g                               | switch workspace to horizontal tiled mode | Yes            | See [shellshape][].
-Super+J                               | swap with next window                     | No             | See [shellshape][].
-Super+K                               | swap with previous window                 | No             | See [shellshape][].
+Shift+Super+j                         | swap with next window                     | No             | See [shellshape][].
+Shift+Super+k                         | swap with previous window                 | No             | See [shellshape][].
 Super+m                               | minimize window                           | No             | See [shellshape][].
-Super+M                               | un-minimize last window                   | No             | See [shellshape][].
+Shift+Super+m                         | un-minimize last window                   | No             | See [shellshape][].
 Super+h                               | shrink master area                        | No             | See [shellshape][].
 Super+l                               | grow master area                          | No             | See [shellshape][].
 Super+u                               | shrink a slave area                       | No             | See [shellshape][].
 Super+i                               | grow a slave area                         | No             | See [shellshape][].
-Super+H                               | decrease window's width                   | No             | See [shellshape][].
-Super+L                               | increase window's width                   | No             | See [shellshape][].
-Super+U                               | decrease window's height                  | No             | See [shellshape][].
-Super+I                               | increase window's height                  | No             | See [shellshape][].
+Shift+Super+h                         | decrease window's width                   | No             | See [shellshape][].
+Shift+Super+l                         | increase window's width                   | No             | See [shellshape][].
+Shift+Super+u                         | decrease window's height                  | No             | See [shellshape][].
+Shift+Super+i                         | increase window's height                  | No             | See [shellshape][].
 Super+z                               | toggle window maximized state             | No             | See [shellshape][].
 Alt+Super+j                           | go to workspace below                     | No             | See [shellshape][].
 Alt+Super+k                           | go to workspace above                     | No             | See [shellshape][].
-Alt+Super+J                           | move window to workspace below            | No             | See [shellshape][].
-Alt+Super+K                           | move window to workspace above            | No             | See [shellshape][]. Could release Alt+[WASD]?
+Shift+Alt+Super+j                     | move window to workspace below            | No             | See [shellshape][].
+Shift+Alt+Super+k                     | move window to workspace above            | No             | See [shellshape][]. Could release Alt+[WASD]?
 Super+a                               | bring window to front / send to back      | No             | See [shellshape][].
-Super+C                               | close window                              | No             | See [shellshape][]. Does not work. Not using it.
+Shift+Super+c                         | close window                              | No             | See [shellshape][]. Does not work. Not using it.
 Ctrl+Alt+y                            | Switch to workspace 1                     | Of course      |
 Ctrl+Alt+[Level5 Shift][special-keys] | Switch to workspace 2                     | Of course      |
 
@@ -184,7 +184,7 @@ Ctrl+Super+s     | Launch program `x-terminal-emulator`       | Yes            |
 Ctrl+Super+[1-9] | Launch custom program or script            | Yes and no     |
 Ctrl+Alt+x       | `rhythmbox-client --play-pause`            | Of course      | Play or pause music
 Ctrl+Super+x     | `rhythmbox-client --next`                  | Of course      | Play next music file
-Ctrl+Alt+O       | Launch program `eject`                     | No             | eject removable media
+Shift+Ctrl+Alt+o | Launch program `eject`                     | No             | eject removable media
 Ctrl+Alt+c       | Launch [script][suspend-script] to suspend | Yes            |
 Ctrl+Alt+v       | `poweroff`                                 | Yes            |
 
@@ -225,18 +225,18 @@ To customize firefox even further I use [Customizable Shortcuts](https://addons.
 Shortcut      | Function                            | Left hand only | Comment
 ------------- | -------------                       | -------------  | -------------
 Ctrl+u        | No action                           | No             | Disabled default "View page source" because I hit just Ctrl+u multiple times in the location bar to delete the line.
-Ctrl+S        | View page source                    | Yes            |
+Shift+Ctrl+s  | View page source                    | Yes            |
 S             | Toggle bookmarks toolbar on and off | Yes            | With keyconfig: `var toolbar = document.getElementById("PersonalToolbar");toolbar.collapsed = !toolbar.collapsed;document.persist(toolbar.id, "collapsed");`
-Ctrl+D        | Web console (d for Debug)           | Yes            |
+Shift+Ctrl+d  | Web console (d for Debug)           | Yes            |
 
 ### Gimp
 
 Shortcut      | Function      | Left hand only | Comment
 ------------- | ------------- | -------------  | -------------
 W             | tools-move    | Yes            |
-Alt+C         | layers-new    | Yes            |
+Shift+Alt+c   | layers-new    | Yes            |
 Ctrl+y        | Undo          | Yes            | Just easier to reach
-Ctrl+Y        | Redo          | Yes            | Just easier to reach
+Shift+Ctrl+y  | Redo          | Yes            | Just easier to reach
 
 ### Double Commander (DC)
 
@@ -248,29 +248,29 @@ Shortcut      | Function        | Left hand only                | Comment
 Alt+x         | Rename          | Yes                           |
 Ctrl+i        | RenameOnly      | Not really                    |
 Ctrl+o        | Copy            | No                            | Ctrl+o maybe use other shortcut?
-Alt+C         | Copy            | Yes  (alternative mapping)    |
-Alt+E         | Symlink         | Yes                           |
-Alt+Q         | QuickView       | Yes                           |
-Alt+J         | MakeDir         | Not really                    | I suppose I will have to type a directory name then
-Alt+F         | Search          | Not really                    | I suppose I will have to type a search pattern then
+Shift+Alt+c   | Copy            | Yes  (alternative mapping)    |
+Shift+Alt+e   | Symlink         | Yes                           |
+Shift+Alt+q   | QuickView       | Yes                           |
+Shift+Alt+j   | MakeDir         | Not really                    | I suppose I will have to type a directory name then
+Shift+Alt+f   | Search          | Not really                    | I suppose I will have to type a search pattern then
 Alt+y         | DirHotList      | Not really                    |
-Ctrl+F        | CountDirContent | Yes                           |
-Ctrl+J        | SortByName      | Nice to have                  |
-Ctrl+K        | SortByExt       | Nice to have                  |
-Ctrl+L        | SortBySize      | Nice to have                  |
-Ctrl+U        | SortByDate      | Nice to have                  |
-Ctrl+S        | RunTerm         | Not really                    | Like Ctrl+Super+s but with the current directory.
+Shift+Ctrl+f  | CountDirContent | Yes                           |
+Shift+Ctrl+j  | SortByName      | Nice to have                  |
+Shift+Ctrl+k  | SortByExt       | Nice to have                  |
+Shift+Ctrl+l  | SortBySize      | Nice to have                  |
+Shift+Ctrl+u  | SortByDate      | Nice to have                  |
+Shift+Ctrl+s  | RunTerm         | Not really                    | Like Ctrl+Super+s but with the current directory.
 Ctrl+l        | FocusCmdLine    | Not really                    | Was mapped to Shift+F2 but Ctrl+l is more convenient because it works be default in firefox. Overwrites CalculateSpace in DC.
 
 #### Assumed to be default
 Mappings which are default or which should be default.
 
-Shortcut      | Function        | Left hand only                | Comment
-------------- | -------------   | -------------                 | -------------
-Ctrl+a        | MarkAll         | Yes                           |
-Ctrl+A        | UnmarkAll       | Yes                           | Default behavior from Gimp.
-Ctrl+d        | Delete (Trash)  | Yes                           |
-Ctrl+D        | Delete          | Yes                           |
+Shortcut      | Function       | Left hand only | Comment
+------------- | -------------  | -------------  | -------------
+Ctrl+a        | MarkAll        | Yes            |
+Shift+Ctrl+a  | UnmarkAll      | Yes            | Default behavior from Gimp.
+Ctrl+d        | Delete (Trash) | Yes            |
+Shift+Ctrl+d  | Delete         | Yes            |
 
 Note: Double Commander works quite nicely together with [Neo2][] …
 
@@ -287,15 +287,27 @@ Note: Double Commander works quite nicely together with [Neo2][] …
 
 Here are the shortcuts I use to trigger [autokey][] actions.
 
-#### Emitted keystrokes
+#### Emitting keystrokes
 
 The keystrokes are intended for the application and not to be trapped by the window manager.
 
+##### Global
+
 Shortcut      | Function      | Left hand only | Comment
 ------------- | ------------- | -------------  | -------------
-Super+v       | enter         | Yes            | Emit enter. If AltGr+v does not work (unfortunately AltGr can currently not be used in autokey).
+Shift+Super+v | enter         | Yes            | Emit enter. If AltGr+v does not work (unfortunately AltGr can currently not be used in autokey).
 Shift+Super+f | F11           | Yes            | Emit F11. Causes most applications to go in full screen.
-Super+R       | Reload        | Yes            | Emits F5. Most applications will either reload or go to presentation mode.
+Shift+Super+r | Reload        | Yes            | Emits F5. Most applications will either reload or go to presentation mode.
+Shift+Super+r | Reload        | Yes            | Emits F5. Most applications will either reload or go to presentation mode.
+
+##### Application specific
+
+###### Pidgin
+
+Shortcut      | Function              | Left hand only | Comment
+------------- | -------------         | -------------  | -------------
+Ctrl+h        | Change language to de | No             | See 
+Ctrl+l        | Change language to en | No             |
 
 #### ERP system Steps Ahead
 
@@ -303,7 +315,7 @@ This section describes some mapping which I added to make working with the ERP s
 
 Shortcut      | Function                          | Left hand only | Comment
 ------------- | -------------                     | -------------  | -------------
-Super+S       | Clone dataset (copy and paste it) | Yes            | Emits Shift+F6 followed by enter (to acknowledge the „Do you really want to copy …“ dialog).
+Shift+Super+s | Clone dataset (copy and paste it) | Yes            | Emits Shift+F6 followed by enter (to acknowledge the „Do you really want to copy …“ dialog).
 
 ## Terminal programs
 
