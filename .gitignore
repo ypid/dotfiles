@@ -5,3 +5,4 @@
 .vim/spell/
 .vim/yankring_history_v2.txt
 tags
+autokey/**/*.json
