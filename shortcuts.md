@@ -147,18 +147,52 @@ Ctrl+n        | Opens a new tab                         | No             | Easie
 Ctrl+tab      | Swtich to right tab, cicle through tabs | Yes            |
 Ctrl+j        | Swtich to left tab                      | Not really     |
 Ctrl+k        | Swtich to right tab                     | Not really     |
-Alt+m         | Switch to tab 1                         | No             | See [Neo2 layer4][Neo2]. Maybe blocks the use of Alt+[a-z]. I hope that most applications use letters which would be on the left side of a qwertz keyboard.
-Alt+,         | Switch to tab 2                         | No             |
-Alt+.         | Switch to tab 3                         | No             |
-Alt+j         | Switch to tab 4                         | No             |
-Alt+k         | Switch to tab 5                         | No             |
-Alt+l         | Switch to tab 6                         | No             |
-Alt+u         | Switch to tab 7                         | No             |
-Alt+i         | Switch to tab 8                         | No             |
-Alt+o         | Switch to tab 9                         | No             |
 Ctrl+[+-]     | Increase/Decrease (zoom) font size      | Nice to have   | Level 3 [Neo2][] plus and minus do not work in firefox (works nicely because the plus „p“ and the minus „ü“ are next to each other). Using Level 4 once (which currently don’t work with gnome-terminal. Using Level 4 plus and Level 1 hyphen for this.).
 Ctrl+w        | Closes the tab                          | Of course      | Should be default in all program
 Ctrl+q        | Closes the application                  | Of course      | Should be default in all program
+
+### Autokey
+
+Here are the shortcuts I use to trigger [autokey][] actions.
+
+#### Emitting keystrokes
+
+The keystrokes are intended for the application and not to be trapped by the window manager.
+
+##### Global
+
+Shortcut      | Function        | Left hand only | Comment
+------------- | -------------   | -------------  | -------------
+Shift+Super+v | enter           | Yes            | Emit enter. If AltGr+v does not work (unfortunately AltGr can currently not be used in autokey).
+Shift+Super+f | F11             | Yes            | Emit F11. Causes most applications to go in full screen.
+Shift+Super+r | Reload          | Yes            | Emits F5. Most applications will either reload or go to presentation mode.
+Shift+Super+r | Reload          | Yes            | Emits F5. Most applications will either reload or go to presentation mode.
+Alt+m         | Switch to tab 1 | No             | See [Neo2 layer4][Neo2]. Maybe blocks the use of Alt+[a-z]. I hope that most applications use letters which would be on the left side of a qwertz keyboard.
+Alt+,         | Switch to tab 2 | No             |
+Alt+.         | Switch to tab 3 | No             |
+Alt+j         | Switch to tab 4 | No             |
+Alt+k         | Switch to tab 5 | No             |
+Alt+l         | Switch to tab 6 | No             |
+Alt+u         | Switch to tab 7 | No             |
+Alt+i         | Switch to tab 8 | No             |
+Alt+o         | Switch to tab 9 | No             |
+
+##### Application specific
+
+###### Pidgin
+
+Shortcut      | Function              | Left hand only | Comment
+------------- | -------------         | -------------  | -------------
+Ctrl+h        | Change language to de | No             | See [script](/autokey/Emitting keystrokes/Pidgin/Change language in Pidgin to de.py)
+Ctrl+l        | Change language to en | No             | See [script](/autokey/Emitting keystrokes/Pidgin/Change language in Pidgin to en.py)
+
+#### ERP system Steps Ahead
+
+This section describes some mapping which I added to make working with the ERP system [Steps Ahead][] more pleasant. I am relaying on an ugly hack to achieve this because [Steps Ahead][] (even in the current version 9.5.3) does not allow to remap or add shortcuts to actions which already have a default shortcut … So I use [autokey][] to do this anyway. It works the following: When autokey intercepts one of the following shortcuts it emits the shortcut on which Steps Ahead triggers the desired action.
+
+Shortcut      | Function                          | Left hand only | Comment
+------------- | -------------                     | -------------  | -------------
+Shift+Super+s | Clone dataset (copy and paste it) | Yes            | Emits Shift+F6 followed by enter (to acknowledge the „Do you really want to copy …“ dialog).
 
 ### Firefox
 
@@ -227,40 +261,6 @@ Note: Double Commander works quite nicely together with [Neo2][] …
 * Alt+X
 
     Note: Does not work for all letters?
-
-### Autokey
-
-Here are the shortcuts I use to trigger [autokey][] actions.
-
-#### Emitting keystrokes
-
-The keystrokes are intended for the application and not to be trapped by the window manager.
-
-##### Global
-
-Shortcut      | Function      | Left hand only | Comment
-------------- | ------------- | -------------  | -------------
-Shift+Super+v | enter         | Yes            | Emit enter. If AltGr+v does not work (unfortunately AltGr can currently not be used in autokey).
-Shift+Super+f | F11           | Yes            | Emit F11. Causes most applications to go in full screen.
-Shift+Super+r | Reload        | Yes            | Emits F5. Most applications will either reload or go to presentation mode.
-Shift+Super+r | Reload        | Yes            | Emits F5. Most applications will either reload or go to presentation mode.
-
-##### Application specific
-
-###### Pidgin
-
-Shortcut      | Function              | Left hand only | Comment
-------------- | -------------         | -------------  | -------------
-Ctrl+h        | Change language to de | No             | See [script](/autokey/Emitting keystrokes/Pidgin/Change language in Pidgin to de.py)
-Ctrl+l        | Change language to en | No             | See [script](/autokey/Emitting keystrokes/Pidgin/Change language in Pidgin to en.py)
-
-#### ERP system Steps Ahead
-
-This section describes some mapping which I added to make working with the ERP system [Steps Ahead][] more pleasant. I am relaying on an ugly hack to achieve this because [Steps Ahead][] (even in the current version 9.5.3) does not allow to remap or add shortcuts to actions which already have a default shortcut … So I use [autokey][] to do this anyway. It works the following: When autokey intercepts one of the following shortcuts it emits the shortcut on which Steps Ahead triggers the desired action.
-
-Shortcut      | Function                          | Left hand only | Comment
-------------- | -------------                     | -------------  | -------------
-Shift+Super+s | Clone dataset (copy and paste it) | Yes            | Emits Shift+F6 followed by enter (to acknowledge the „Do you really want to copy …“ dialog).
 
 ## Terminal programs
 
