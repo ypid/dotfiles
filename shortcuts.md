@@ -144,9 +144,9 @@ For gnome-terminal, each shortcut requires additionally the use of the Shift mod
 Shortcut      | Function                                | Left hand only | Comment
 ------------- | -------------                           | -------------  | -------------
 Ctrl+n        | Opens a new tab                         | No             | Easier to reach than C-t
-Ctrl+tab      | Swtich to right tab, cicle through tabs | Yes            |
-Ctrl+j        | Swtich to left tab                      | Not really     |
-Ctrl+k        | Swtich to right tab                     | Not really     |
+Ctrl+tab      | Switch to right tab, cicle through tabs | Yes            |
+Ctrl+j        | Switch to left tab                      | Not really     |
+Ctrl+k        | Switch to right tab                     | Not really     |
 Ctrl+[+-]     | Increase/Decrease (zoom) font size      | Nice to have   | Level 3 [Neo2][] plus and minus do not work in firefox (works nicely because the plus „p“ and the minus „ü“ are next to each other). Using Level 4 once (which currently don’t work with gnome-terminal. Using Level 4 plus and Level 1 hyphen for this.).
 Ctrl+w        | Closes the tab                          | Of course      | Should be default in all program
 Ctrl+q        | Closes the application                  | Of course      | Should be default in all program
@@ -166,7 +166,6 @@ Shortcut      | Function        | Left hand only | Comment
 Shift+Super+v | enter           | Yes            | Emit enter. If AltGr+v does not work (unfortunately AltGr can currently not be used in autokey).
 Shift+Super+f | F11             | Yes            | Emit F11. Causes most applications to go in full screen.
 Shift+Super+r | Reload          | Yes            | Emits F5. Most applications will either reload or go to presentation mode.
-Shift+Super+r | Reload          | Yes            | Emits F5. Most applications will either reload or go to presentation mode.
 Alt+m         | Switch to tab 1 | No             | See [Neo2 layer4][Neo2]. Maybe blocks the use of Alt+[a-z]. I hope that most applications use letters which would be on the left side of a qwertz keyboard.
 Alt+,         | Switch to tab 2 | No             |
 Alt+.         | Switch to tab 3 | No             |
@@ -181,10 +180,10 @@ Alt+o         | Switch to tab 9 | No             |
 
 ###### Pidgin
 
-Shortcut      | Function              | Left hand only | Comment
-------------- | -------------         | -------------  | -------------
-Ctrl+h        | Change language to de | No             | See [script](/autokey/Emitting keystrokes/Pidgin/Change language in Pidgin to de.py)
-Ctrl+l        | Change language to en | No             | See [script](/autokey/Emitting keystrokes/Pidgin/Change language in Pidgin to en.py)
+Shortcut      | Function                          | Left hand only | Comment
+------------- | -------------                     | -------------  | -------------
+Ctrl+h        | Change spell check language to de | No             | See [script](/autokey/Emitting keystrokes/Pidgin/Change language in Pidgin to de.py)
+Ctrl+l        | Change spell check language to en | No             | See [script](/autokey/Emitting keystrokes/Pidgin/Change language in Pidgin to en.py)
 
 #### ERP system Steps Ahead
 
@@ -224,6 +223,7 @@ See the manual for the default shortcuts. I added my own which I think are more 
 Shortcut      | Function        | Left hand only                | Comment
 ------------- | -------------   | -------------                 | -------------
 /             | Quick search    | Yes (maybe copy paste search) | Not used. Configured DC so that every letter typed will open the quick search.
+Ctrl+f        | Search          | Not really                    |
 Alt+x         | Rename          | Yes                           |
 Ctrl+i        | RenameOnly      | Not really                    |
 Ctrl+o        | Copy            | No                            | Ctrl+o maybe use other shortcut?
@@ -233,7 +233,7 @@ Shift+Alt+q   | QuickView       | Yes                           |
 Shift+Alt+j   | MakeDir         | Not really                    | I suppose I will have to type a directory name then
 Shift+Alt+f   | Search          | Not really                    | I suppose I will have to type a search pattern then
 Alt+y         | DirHotList      | Not really                    |
-Shift+Ctrl+f  | CountDirContent | Yes                           |
+Shift+Alt+f   | CountDirContent | Yes                           |
 Shift+Ctrl+j  | SortByName      | Nice to have                  |
 Shift+Ctrl+k  | SortByExt       | Nice to have                  |
 Shift+Ctrl+l  | SortBySize      | Nice to have                  |

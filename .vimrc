@@ -803,6 +803,8 @@ source ~/.vimrc.min
             " Adjust the filetype for some files {{{
                 autocmd BufRead,BufNewFile .vimpagerrc setlocal filetype=vim
                 autocmd BufRead,BufNewFile /etc/*/apt.conf setlocal filetype=conf
+                autocmd BufRead,BufNewFile /etc/hosts setlocal filetype=conf
+                autocmd BufRead,BufNewFile /etc/NetworkManager/NetworkManager.conf setlocal filetype=conf
                 autocmd BufRead,BufNewFile $HOME/.ssh/*.config setlocal filetype=sshconfig
                 autocmd BufRead,BufNewFile $HOME/.unison/* setlocal filetype=conf
 
