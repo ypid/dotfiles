@@ -297,3 +297,7 @@ Use Neo2 bindings where possible. Don‘t use `$`, use Mod4+g.
 [Steps Ahead]: https://de.wikipedia.org/wiki/Steps_Ahead
 [freerdp]: https://github.com/FreeRDP/FreeRDP
 [Neo2]: http://www.neo-layout.org/
+
+## Miscellaneous
+
+For M$ Windows see [autohotkey](/autohotkey).

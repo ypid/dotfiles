@@ -7,3 +7,5 @@
 tags
 autokey/**/*.json
 autohotkey/copy
+autohotkey/put
+autohotkey/get
