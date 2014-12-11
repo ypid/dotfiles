@@ -125,6 +125,9 @@ function gl {
 # }}}
 ## }}}
 
+alias gpg-check-debian-iso='gpg --no-default-keyring --keyring /usr/share/keyrings/debian-role-keys.gpg --verify'
+alias gpg-sign='gpg --default-key 489A4D5EC353C98A --armor --detach-sig'
+
 alias a='git-annex'
 if which compdef >/dev/null 2>&1 && which git-annex >/dev/null 2>&1; then
     compdef a=git-annex

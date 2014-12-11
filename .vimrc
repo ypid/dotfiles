@@ -370,6 +370,7 @@ source ~/.vimrc.min
                     let g:ackprg = 'ag --nogroup --nocolor --column'
                     Bundle 'mileszs/ack.vim'
                 endif
+                " noremap α :echo system('date -d @'.expand('<cword>'))<CR>
             " }}}
 
             Bundle 'derekwyatt/vim-fswitch'
