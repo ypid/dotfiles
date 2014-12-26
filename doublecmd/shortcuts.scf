@@ -19,12 +19,6 @@
         <Command>cm_Edit</Command>
       </Hotkey>
       <Hotkey>
-        <Shortcut>Ctrl+Shift+E</Shortcut>
-        <Command>cm_Edit</Command>
-        <Control>Files Panel</Control>
-        <Control>Quick Search</Control>
-      </Hotkey>
-      <Hotkey>
         <Shortcut>Shift+W</Shortcut>
         <Command>cm_EditNew</Command>
       </Hotkey>
@@ -248,8 +242,16 @@
         <Command>cm_TargetEqualSource</Command>
       </Hotkey>
       <Hotkey>
+        <Shortcut>Ctrl+Alt+J</Shortcut>
+        <Command>cm_LeftOpenDrives</Command>
+      </Hotkey>
+      <Hotkey>
         <Shortcut>Alt+F1</Shortcut>
         <Command>cm_LeftOpenDrives</Command>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Ctrl+Alt+K</Shortcut>
+        <Command>cm_RightOpenDrives</Command>
       </Hotkey>
       <Hotkey>
         <Shortcut>Alt+F2</Shortcut>
@@ -405,6 +407,12 @@
       <Hotkey>
         <Shortcut>Shift+Alt+X</Shortcut>
         <Command>cm_MarkCurrentExtension</Command>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Ctrl+Shift+E</Shortcut>
+        <Command>cm_Edit</Command>
+        <Control>Files Panel</Control>
+        <Control>Quick Search</Control>
       </Hotkey>
       <Hotkey>
         <Shortcut>Num/</Shortcut>
