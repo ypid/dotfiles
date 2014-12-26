@@ -236,33 +236,34 @@ Shift+Ctrl+o  | ContextMenu    | Yes            | Open with
 
 
 #### Immutable
-Shortcut      | Function               | Left hand only                | Comment
-------------- | -------------          | -------------                 | -------------
-/             | Quick search           | Yes (maybe copy paste search) | Not used. Configured DC so that every letter typed will open the quick search.
-Ctrl+f        | QuickFilter            | Not really                    | filter=toggle
-Ctrl+s        | Search                 | Yes                           |
-Shift+s       | CountDirContent        | Yes                           |
-Shift+j       | SortByName             | Nice to have                  |
-Shift+k       | SortByExt              | Nice to have                  |
-Shift+l       | SortBySize             | Nice to have                  |
-Shift+ö       | SortByDate             | Nice to have                  |
-Shift+ä       | SortByAttr             | Nice to have                  |
-Shift+u       | BriefView              | Nice to have                  |
-Shift+i       | ColumnsView            | Nice to have                  |
-Shift+o       | ThumbnailsView         | Nice to have                  |
-Shift+Ctrl+s  | RunTerm                | Not really                    | Like Ctrl+Super+s but with the current directory.
-Ctrl+l        | FocusCmdLine           | Not really                    | Was mapped to Shift+F2 but Ctrl+l is more convenient because it works be default in firefox. Overwrites CalculateSpace in DC.
-Shift+Alt+x   | MarkCurrentExtension   | Nice to have                  |
-Shift+Alt+y   | UnmarkCurrentExtension | Nice to have                  |
-Shift+Ctrl+u  | PanelsSplitterPerPos   | Nice to have                  | splitpct=50
-Shift+Ctrl+i  | PanelsSplitterPerPos   | Nice to have                  | splitpct=70
-Shift+Ctrl+o  | PanelsSplitterPerPos   | Nice to have                  | splitpct=100
-Shift+i       | QuickView              | Yes                           |
-Shift+f       | DirHotList             | Not really                    |
-Shift+h       | ShowCmdLineHistory     | Not really                    |
-Shift+n       | OpenDirInNewTab        | Nice to have                  |
-Shift+a       | TransferLeft           | Nice to have                  |
-Shift+d       | TransferRight          | Nice to have                  |
+Shortcut      | Function                                | Left hand only                | Comment
+------------- | -------------                           | -------------                 | -------------
+/             | Quick search                            | Yes (maybe copy paste search) | Not used. Configured DC so that every letter typed will open the quick search.
+Ctrl+f        | QuickFilter                             | Not really                    | filter=toggle
+Ctrl+s        | Search                                  | Yes                           |
+Shift+s       | CountDirContent                         | Yes                           |
+Shift+j       | SortByName                              | Nice to have                  |
+Shift+k       | SortByExt                               | Nice to have                  |
+Shift+l       | SortBySize                              | Nice to have                  |
+Shift+ö       | SortByDate                              | Nice to have                  |
+Shift+ä       | SortByAttr                              | Nice to have                  |
+Shift+u       | BriefView                               | Nice to have                  |
+Shift+i       | ColumnsView                             | Nice to have                  |
+Shift+o       | ThumbnailsView                          | Nice to have                  |
+Shift+Ctrl+s  | RunTerm                                 | Not really                    | Like Ctrl+Super+s but with the current directory.
+Ctrl+l        | FocusCmdLine                            | Not really                    | Was mapped to Shift+F2 but Ctrl+l is more convenient because it works be default in firefox. Overwrites CalculateSpace in DC.
+Shift+Alt+x   | MarkCurrentExtension                    | Nice to have                  |
+Shift+Alt+y   | UnmarkCurrentExtension                  | Nice to have                  |
+Shift+Ctrl+u  | PanelsSplitterPerPos                    | Nice to have                  | splitpct=50
+Shift+Ctrl+i  | PanelsSplitterPerPos                    | Nice to have                  | splitpct=70
+Shift+Ctrl+o  | PanelsSplitterPerPos                    | Nice to have                  | splitpct=100
+Shift+i       | QuickView                               | Yes                           |
+Shift+f       | DirHotList                              | Not really                    |
+Shift+h       | ShowCmdLineHistory                      | Not really                    |
+Shift+n       | OpenDirInNewTab                         | Nice to have                  |
+Shift+a       | TransferLeft                            | Nice to have                  |
+Shift+d       | TransferRight                           | Nice to have                  |
+Tab           | Switch between left and right file list | Nice to have                  |
 
 #### Assumed to be default
 Mappings which are default or which should be default.

@@ -65,11 +65,6 @@
         <Param>trashcan=reversesetting</Param>
       </Hotkey>
       <Hotkey>
-        <Shortcut>Num/</Shortcut>
-        <Command>cm_QuickSearch</Command>
-        <Control>Files Panel</Control>
-      </Hotkey>
-      <Hotkey>
         <Shortcut>Ctrl+F</Shortcut>
         <Command>cm_QuickFilter</Command>
         <Param>filter=toggle</Param>
@@ -79,7 +74,7 @@
         <Command>cm_DirHistory</Command>
       </Hotkey>
       <Hotkey>
-        <Shortcut>Shift+Ctrl+R</Shortcut>
+        <Shortcut>Ctrl+Shift+R</Shortcut>
         <Command>cm_MultiRename</Command>
       </Hotkey>
       <Hotkey>
@@ -183,7 +178,7 @@
         <Command>cm_ShellExecute</Command>
       </Hotkey>
       <Hotkey>
-        <Shortcut>Shift+Ctrl+O</Shortcut>
+        <Shortcut>Ctrl+Shift+O</Shortcut>
         <Command>cm_ContextMenu</Command>
       </Hotkey>
       <Hotkey>
@@ -398,6 +393,15 @@
         <Command>cm_CopyNamesToClip</Command>
       </Hotkey>
       <Hotkey>
+        <Shortcut>Shift+Alt+X</Shortcut>
+        <Command>cm_MarkCurrentExtension</Command>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Num/</Shortcut>
+        <Command>cm_QuickSearch</Command>
+        <Control>Files Panel</Control>
+      </Hotkey>
+      <Hotkey>
         <Shortcut>Ctrl+W</Shortcut>
         <Command>cm_CloseTab</Command>
         <Control>Files Panel</Control>
@@ -429,10 +433,6 @@
         <Shortcut>Num+</Shortcut>
         <Command>cm_MarkPlus</Command>
         <Control>Files Panel</Control>
-      </Hotkey>
-      <Hotkey>
-        <Shortcut>Shift+Alt+X</Shortcut>
-        <Command>cm_MarkCurrentExtension</Command>
       </Hotkey>
       <Hotkey>
         <Shortcut>Shift+Num+</Shortcut>
@@ -500,7 +500,7 @@
         <Control>Files Panel</Control>
       </Hotkey>
       <Hotkey>
-        <Shortcut>Shift+Ctrl+E</Shortcut>
+        <Shortcut>Ctrl+Shift+E</Shortcut>
         <Command>cm_Edit</Command>
         <Control>Files Panel</Control>
         <Control>Quick Search</Control>
