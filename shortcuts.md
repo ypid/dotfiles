@@ -232,7 +232,9 @@ Ctrl+c        | Symlink        | Yes            |
 Shift+x       | FileProperties | Yes            |
 Ctrl+m        | MakeDir        | Yes            |
 Ctrl+o        | ShellExecute   | Yes            | Open
-Shift+Ctrl+o  | ContextMenu    | Yes            | Open with
+Ctrl+Alt+o    | ContextMenu    | Yes            | Open with
+Shift+E       | Edit           | No             |
+Shift+W       | EditNew        | No             |
 
 
 #### Immutable
@@ -257,7 +259,7 @@ Shift+Alt+y   | UnmarkCurrentExtension                  | Nice to have          
 Shift+Ctrl+u  | PanelsSplitterPerPos                    | Nice to have                  | splitpct=50
 Shift+Ctrl+i  | PanelsSplitterPerPos                    | Nice to have                  | splitpct=70
 Shift+Ctrl+o  | PanelsSplitterPerPos                    | Nice to have                  | splitpct=100
-Shift+i       | QuickView                               | Yes                           |
+Shift+q       | QuickView                               | Yes                           |
 Shift+f       | DirHotList                              | Not really                    |
 Shift+h       | ShowCmdLineHistory                      | Not really                    |
 Shift+n       | OpenDirInNewTab                         | Nice to have                  |
@@ -279,9 +281,6 @@ Note: Double Commander works quite nicely together with [Neo2][] …
 
 #### Free shortcuts
 
-* Shift+[qw] Better not use it because Ctrl+q would close Doublecmd.
-* Shift+[a-z]
-* Shift+Alt+Y
 * Alt+X
 * Ctrl+G
 * Ctrl+T

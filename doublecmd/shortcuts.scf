@@ -15,8 +15,26 @@
         <Command>cm_View</Command>
       </Hotkey>
       <Hotkey>
-        <Shortcut>F4</Shortcut>
+        <Shortcut>Shift+E</Shortcut>
         <Command>cm_Edit</Command>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Ctrl+Shift+E</Shortcut>
+        <Command>cm_Edit</Command>
+        <Control>Files Panel</Control>
+        <Control>Quick Search</Control>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Shift+W</Shortcut>
+        <Command>cm_EditNew</Command>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Shift+F4</Shortcut>
+        <Command>cm_EditNew</Command>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Ctrl+Z</Shortcut>
+        <Command>cm_EditComment</Command>
       </Hotkey>
       <Hotkey>
         <Shortcut>Shift+C</Shortcut>
@@ -82,7 +100,7 @@
         <Command>cm_AddPathToCmdLine</Command>
       </Hotkey>
       <Hotkey>
-        <Shortcut>Shift+I</Shortcut>
+        <Shortcut>Shift+Q</Shortcut>
         <Command>cm_QuickView</Command>
       </Hotkey>
       <Hotkey>
@@ -100,10 +118,6 @@
       <Hotkey>
         <Shortcut>Ctrl+U</Shortcut>
         <Command>cm_Exchange</Command>
-      </Hotkey>
-      <Hotkey>
-        <Shortcut>Ctrl+Z</Shortcut>
-        <Command>cm_EditComment</Command>
       </Hotkey>
       <Hotkey>
         <Shortcut>Shift+U</Shortcut>
@@ -178,7 +192,7 @@
         <Command>cm_ShellExecute</Command>
       </Hotkey>
       <Hotkey>
-        <Shortcut>Ctrl+Shift+O</Shortcut>
+        <Shortcut>Ctrl+Alt+O</Shortcut>
         <Command>cm_ContextMenu</Command>
       </Hotkey>
       <Hotkey>
@@ -216,10 +230,6 @@
       <Hotkey>
         <Shortcut>Shift+F2</Shortcut>
         <Command>cm_FocusCmdLine</Command>
-      </Hotkey>
-      <Hotkey>
-        <Shortcut>Shift+F4</Shortcut>
-        <Command>cm_EditNew</Command>
       </Hotkey>
       <Hotkey>
         <Shortcut>Shift+V</Shortcut>
@@ -498,12 +508,6 @@
         <Shortcut>Ctrl+Right</Shortcut>
         <Command>cm_TransferRight</Command>
         <Control>Files Panel</Control>
-      </Hotkey>
-      <Hotkey>
-        <Shortcut>Ctrl+Shift+E</Shortcut>
-        <Command>cm_Edit</Command>
-        <Control>Files Panel</Control>
-        <Control>Quick Search</Control>
       </Hotkey>
     </Form>
     <Form Name="Viewer">
