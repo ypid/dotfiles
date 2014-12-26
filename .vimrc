@@ -867,6 +867,8 @@ source ~/.vimrc.min
 
             " Always switch to the current file directory
             autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
+            " autocmd BufEnter * if expand("%:p") =~ "/.unison/" | lcd | endif
+            " Go to home for unison to use file completion easily.
             let autocommands_loaded = 1
         endif
         let xml_syntax_folding=1      " XML

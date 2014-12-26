@@ -220,26 +220,49 @@ Shift+Ctrl+y  | Redo          | Yes            | Just easier to reach
 
 See the manual for the default shortcuts. I added my own which I think are more convenient (I left the original onces pretty much untouched):
 
-Shortcut      | Function        | Left hand only                | Comment
-------------- | -------------   | -------------                 | -------------
-/             | Quick search    | Yes (maybe copy paste search) | Not used. Configured DC so that every letter typed will open the quick search.
-Ctrl+f        | Search          | Not really                    |
-Alt+x         | Rename          | Yes                           |
-Ctrl+i        | RenameOnly      | Not really                    |
-Ctrl+o        | Copy            | No                            | Ctrl+o maybe use other shortcut?
-Shift+Alt+c   | Copy            | Yes  (alternative mapping)    |
-Shift+Alt+e   | Symlink         | Yes                           |
-Shift+Alt+q   | QuickView       | Yes                           |
-Shift+Alt+j   | MakeDir         | Not really                    | I suppose I will have to type a directory name then
-Shift+Alt+f   | Search          | Not really                    | I suppose I will have to type a search pattern then
-Alt+y         | DirHotList      | Not really                    |
-Shift+Alt+f   | CountDirContent | Yes                           |
-Shift+Ctrl+j  | SortByName      | Nice to have                  |
-Shift+Ctrl+k  | SortByExt       | Nice to have                  |
-Shift+Ctrl+l  | SortBySize      | Nice to have                  |
-Shift+Ctrl+u  | SortByDate      | Nice to have                  |
-Shift+Ctrl+s  | RunTerm         | Not really                    | Like Ctrl+Super+s but with the current directory.
-Ctrl+l        | FocusCmdLine    | Not really                    | Was mapped to Shift+F2 but Ctrl+l is more convenient because it works be default in firefox. Overwrites CalculateSpace in DC.
+#### Mutable
+Shortcut      | Function       | Left hand only | Comment
+------------- | -------------  | -------------  | -------------
+Shift+m       | Rename         | Yes            |
+Shift+r       | RenameOnly     | Not really     |
+Shift+Ctrl+r  | MultiRename    | Not really     |
+Shift+c       | Copy           | No             |
+Shift+v       | CopySamePanel  | No             |
+Ctrl+c        | Symlink        | Yes            |
+Shift+x       | FileProperties | Yes            |
+Ctrl+m        | MakeDir        | Yes            |
+Ctrl+o        | ShellExecute   | Yes            | Open
+Shift+Ctrl+o  | ContextMenu    | Yes            | Open with
+
+
+#### Immutable
+Shortcut      | Function               | Left hand only                | Comment
+------------- | -------------          | -------------                 | -------------
+/             | Quick search           | Yes (maybe copy paste search) | Not used. Configured DC so that every letter typed will open the quick search.
+Ctrl+f        | QuickFilter            | Not really                    | filter=toggle
+Ctrl+s        | Search                 | Yes                           |
+Shift+s       | CountDirContent        | Yes                           |
+Shift+j       | SortByName             | Nice to have                  |
+Shift+k       | SortByExt              | Nice to have                  |
+Shift+l       | SortBySize             | Nice to have                  |
+Shift+ö       | SortByDate             | Nice to have                  |
+Shift+ä       | SortByAttr             | Nice to have                  |
+Shift+u       | BriefView              | Nice to have                  |
+Shift+i       | ColumnsView            | Nice to have                  |
+Shift+o       | ThumbnailsView         | Nice to have                  |
+Shift+Ctrl+s  | RunTerm                | Not really                    | Like Ctrl+Super+s but with the current directory.
+Ctrl+l        | FocusCmdLine           | Not really                    | Was mapped to Shift+F2 but Ctrl+l is more convenient because it works be default in firefox. Overwrites CalculateSpace in DC.
+Shift+Alt+x   | MarkCurrentExtension   | Nice to have                  |
+Shift+Alt+y   | UnmarkCurrentExtension | Nice to have                  |
+Shift+Ctrl+u  | PanelsSplitterPerPos   | Nice to have                  | splitpct=50
+Shift+Ctrl+i  | PanelsSplitterPerPos   | Nice to have                  | splitpct=70
+Shift+Ctrl+o  | PanelsSplitterPerPos   | Nice to have                  | splitpct=100
+Shift+i       | QuickView              | Yes                           |
+Shift+f       | DirHotList             | Not really                    |
+Shift+h       | ShowCmdLineHistory     | Not really                    |
+Shift+n       | OpenDirInNewTab        | Nice to have                  |
+Shift+a       | TransferLeft           | Nice to have                  |
+Shift+d       | TransferRight          | Nice to have                  |
 
 #### Assumed to be default
 Mappings which are default or which should be default.
@@ -255,12 +278,12 @@ Note: Double Commander works quite nicely together with [Neo2][] …
 
 #### Free shortcuts
 
-* Ctrl+s
+* Shift+[qw] Better not use it because Ctrl+q would close Doublecmd.
 * Shift+[a-z]
 * Shift+Alt+Y
 * Alt+X
-
-    Note: Does not work for all letters?
+* Ctrl+G
+* Ctrl+T
 
 ## Terminal programs
 
