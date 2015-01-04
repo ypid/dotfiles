@@ -192,6 +192,11 @@
             echo system('date -d @'. @t)
         endfunction
 
+        function! InsertDateVisual()
+            sil! norm! gv"ty
+            exec "normal! cw".system('date -d @'. @t)
+        endfunction
+
         " Translate the current word (Unix time stamp) to a human readable time.
         noremap <Leader>td :echo system('date -d @'.expand('<cword>'))<CR>
         vmap <Leader>td :call TranslateDateVisual()<CR>

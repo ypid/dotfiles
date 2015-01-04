@@ -1,5 +1,7 @@
 ## Stuff for programs which should be available everywhere {{{
 
+export BYOBU_PREFIX="/usr"
+export BYOBU_CONFIG_DIR="$HOME/.byobu"
 export EDITOR=vim
 alias e='editor'
 

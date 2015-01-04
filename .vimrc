@@ -623,6 +623,8 @@ source ~/.vimrc.min
               " \ 'date: "JEKYLL_DATE"',
 
             " Bundle 'greyblake/vim-preview' " configure Browser
+
+            Bundle 'guns/xterm-color-table.vim'
         endif
     " }
 
