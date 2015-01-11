@@ -214,6 +214,10 @@
         <Command>cm_AddPathAndFilenameToCmdLine</Command>
       </Hotkey>
       <Hotkey>
+        <Shortcut>Ctrl+Alt+L</Shortcut>
+        <Command>cm_ChangeDirToRoot</Command>
+      </Hotkey>
+      <Hotkey>
         <Shortcut>Ctrl+\</Shortcut>
         <Command>cm_ChangeDirToRoot</Command>
       </Hotkey>
@@ -350,10 +354,6 @@
         <Command>cm_MarkPlus</Command>
       </Hotkey>
       <Hotkey>
-        <Shortcut>Shift+R</Shortcut>
-        <Command>cm_RenameOnly</Command>
-      </Hotkey>
-      <Hotkey>
         <Shortcut>F2</Shortcut>
         <Command>cm_RenameOnly</Command>
       </Hotkey>
@@ -407,6 +407,12 @@
       <Hotkey>
         <Shortcut>Shift+Alt+X</Shortcut>
         <Command>cm_MarkCurrentExtension</Command>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Shift+R</Shortcut>
+        <Command>cm_RenameOnly</Command>
+        <Control>Files Panel</Control>
+        <Control>Quick Search</Control>
       </Hotkey>
       <Hotkey>
         <Shortcut>Ctrl+Shift+E</Shortcut>

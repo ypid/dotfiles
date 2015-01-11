@@ -128,6 +128,10 @@ source ~/.vimrc.min
                 Bundle 'scrooloose/nerdcommenter'
                 let NERDSpaceDelims = 1
 
+                let g:NERDCustomDelimiters = {
+                    \ 'sshdconfig': { 'left': '#' },
+                \ }
+
                 " noremap gcc :call NERDComment('n', 'Toggle')<CR>
                 " noremap <Leader>d :call NERDComment('n', 'Toggle')<CR>
                 " noremap <Bar> :call NERDComment("n", "AlignLeft")<cr>
@@ -653,6 +657,7 @@ source ~/.vimrc.min
             " Bundle 'quentindecock/vim-cucumber-align-pipes'
             " Bundle 'Puppet-Syntax-Highlighting'
             " Bundle 'mattn/calendar-vim'
+            Bundle 'logstash.vim'
         endif
     " }
 
@@ -884,7 +889,7 @@ source ~/.vimrc.min
             set guioptions-=T           " Remove the toolbar
             set lines=40                " 40 lines of text instead of 24
             if has("gui_gtk2")
-                set guifont=Andale\ Mono\ Regular\ 15,Menlo\ Regular\ 15,Consolas\ Regular\ 16,Courier\ New\ Regular\ 18
+                set guifont=Andale\ Mono\ Regular\ 15,Menlo\ Regular\ 15,Consolas\ Regular\ 16,Courier\ New\ Regular\ 12
             elseif has("gui_mac")
                 set guifont=Andale\ Mono\ Regular:h16,Menlo\ Regular:h15,Consolas\ Regular:h16,Courier\ New\ Regular:h18
             elseif has("gui_win32")

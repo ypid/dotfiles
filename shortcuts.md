@@ -267,6 +267,7 @@ Shift+a       | TransferLeft           | Nice to have                  |
 Shift+d       | TransferRight          | Nice to have                  |
 Ctrl+Alt+j    | LeftOpenDrives         | Nice to have                  |
 Ctrl+Alt+k    | RightOpenDrives        | Nice to have                  |
+Ctrl+Alt+l    | ChangeDirToRoot        | Nice to have                  |
 
 #### Assumed to be default
 Mappings which are default or which should be default.
@@ -287,6 +288,7 @@ Note: Double Commander works quite nicely together with [Neo2][] …
 * Ctrl+Alt+[a-z]
 * Ctrl+G
 * Ctrl+T
+* Ctrl+E
 
 ## Terminal programs
 

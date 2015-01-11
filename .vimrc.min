@@ -178,6 +178,12 @@
         inoremap τ <c-o>:tabnext<CR>
         " Shift+Layer3Mod+l
 
+        " https://superuser.com/questions/277787/vim-map-a-key-combination-while-in-insert-mode
+        " <c-tab> did not work.
+        " noremap <Tab> :tabn<CR>
+        " Does interfere with c-i ?
+        " inoremap <Tab> <c-o>:tabn<CR>
+
         " easier moving between buffers
         noremap <Leader>w <esc>:bNext<CR>
 
@@ -238,12 +244,6 @@
         noremap <c-s> <c-a>
         noremap <c-a> <Nop>
         " Don‘t use Ctrl+a even if not in tmux.
-
-        " https://superuser.com/questions/277787/vim-map-a-key-combination-while-in-insert-mode
-        " <c-tab> did not work.
-        " noremap <Tab> :tabn<CR>
-        " Does interfere with c-i ?
-        " inoremap <Tab> <c-o>:tabn<CR>
 
         " Every unnecessary keystroke that can be saved is good for your health :)
         noremap <silent> <c-j> <c-w>j
