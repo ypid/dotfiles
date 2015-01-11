@@ -56,6 +56,14 @@ function run-c() {
 function gpg-load-all-signing-keys() {
     gpg --list-sigs "$1" | perl -pe 's/.*(\w{8}) .*/$1/'|while read keyid; do gpg --recv-keys "$keyid"; done
 }
+
+function subnetcalc() {
+    if [[ $# == 0 ]]; then
+        /usr/bin/subnetcalc
+    else
+        /usr/bin/subnetcalc $@ -n
+    fi
+}
 ## }}}
 
 ## Vim stuff {{{
@@ -85,6 +93,8 @@ alias m='mosh'
 if which compdef >/dev/null 2>&1 && which mosh >/dev/null 2>&1; then
     compdef m=mosh
 fi
+alias ssh-keygen='ssh-keygen -b 4048'
+
 alias tmux='TERM=screen-256color-bce tmux'
 alias t='tmux'
 alias f='tmux last-window'
