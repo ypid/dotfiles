@@ -3,10 +3,10 @@
 cd "`dirname "$0"`"
 git submodule update --init --recursive
 
-ls -A1|grep -Pv '^(.git$|\w)'|while read file;do
+ls --almost-all -1 |grep --perl-regexp --invert-match '^(.git$|\w|.htoprc)'|while read file; do
     target="$PWD/$file"
     target=${target#$HOME/}
-    ln -Ts "$target" "$HOME/$file"
+    ln --symbolic --no-target-directory "$target" "$HOME/$file"
 done
 
 # inside another submodule …
@@ -14,10 +14,10 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/
 git clone https://github.com/Schnouki/git-annex-zsh-completion.git ~/.oh-my-zsh/custom/plugins/git-annex
 
 vim_spell="$HOME/.vim/spell"
-mkdir -p "$vim_spell"
+mkdir --parents "$vim_spell"
 for file in {en,de}.utf-8.{spl,sug};do
     if [ ! -e "$vim_spell/$file" ];then
-        wget -c "ftp://ftp.vim.org/pub/vim/runtime/spell/$file" -O "$vim_spell/$file"
+        wget --continue "ftp://ftp.vim.org/pub/vim/runtime/spell/$file" --output-document="$vim_spell/$file"
     fi
 done
 
