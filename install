@@ -9,6 +9,8 @@ ls --almost-all -1 |grep --perl-regexp --invert-match '^(.git$|\w|.htoprc)'|whil
     ln --symbolic --no-target-directory "$target" "$HOME/$file"
 done
 
+ln --symbolic --no-target-directory ../../Projekte/dotfiles/.htoprc "$HOME/.config/htop/htoprc"
+
 # inside another submodule …
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 git clone https://github.com/Schnouki/git-annex-zsh-completion.git ~/.oh-my-zsh/custom/plugins/git-annex
