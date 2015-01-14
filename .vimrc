@@ -1,4 +1,4 @@
-" vim: set sw=4 ts=4 sts=4 et tw=78 foldmarker={,} foldlevel=0 foldmethod=marker spell:
+" vim: set sw=4 ts=4 sts=4 et tw=78 foldmarker={{{,}}} foldlevel=0 foldmethod=marker spell:
 
 let g:config_section_enable = []
 call add(g:config_section_enable, 'general_config')
@@ -13,15 +13,15 @@ let g:spf13_no_views = 1
 
 source ~/.vimrc.min
 
-" Bundles and plugins {
-    " Setup Bundle Support {
+" Bundles and plugins {{{
+    " Setup Bundle Support {{{
     " The next three lines ensure that the ~/.vim/bundle/ system works
         filetype off
         set rtp+=~/.vim/bundle/vundle
         " let g:vundle_default_git_proto = 'git'
         call vundle#rc()
         Bundle 'gmarik/vundle'
-    " }
+    " }}}
 
     let g:spf13_bundle_groups = []
 
@@ -49,18 +49,18 @@ source ~/.vimrc.min
     " call add(g:spf13_bundle_groups, 'ruby')
     " call add(g:spf13_bundle_groups, 'go')
 
-    " Deps {
+    " Deps {{{
         if count(g:spf13_bundle_groups, 'dependencies')
             Bundle 'MarcWeber/vim-addon-mw-utils'
             Bundle 'tomtom/tlib_vim'
         endif
-    " }
+    " }}}
 
-    " Work {
+    " Work {{{
         if count(g:spf13_bundle_groups, 'work')
             Bundle 'hamcos/vim-hamcos'
         endif
-    " }
+    " }}}
 
     " Testing {{{
         if count(g:spf13_bundle_groups, 'testing')
@@ -108,7 +108,7 @@ source ~/.vimrc.min
     " General important {{{
     " Used multiple times *every* Vim session.
         if count(g:spf13_bundle_groups, 'general_important')
-            " CtrlP {
+            " CtrlP {{{
                 " Bundle 'wincent/Command-T'
                 Bundle 'kien/ctrlp.vim'
                 let g:ctrlp_show_hidden = 1
@@ -119,7 +119,7 @@ source ~/.vimrc.min
                 let g:ctrlp_mruf_exclude = '/tmp/.*\|/temp/.*\|vimrc*'
                 " Use <Leader>ff to open the vimrc …
                 noremap <Leader>r :CtrlPMRUFiles<CR>
-            " }
+            " }}}
 
             " Handling comments {{{
                 " Bundle 'tomtom/tcomment_vim'
@@ -161,14 +161,14 @@ source ~/.vimrc.min
             Bundle 'matchit.zip'
             " Extended matching with "%"
 
-            " vim-bad-whitespace {
+            " vim-bad-whitespace {{{
                 Bundle 'bitc/vim-bad-whitespace'
                 noremap <Leader>fc :EraseBadWhitespace<CR>
-            " }
+            " }}}
 
             Bundle 'tpope/vim-repeat'
 
-            " Translate {
+            " Translate {{{
                 if has("python") && executable('python')
                     Bundle 'ypid/lookup.vim'
                     " let g:lookup_dict_para = []
@@ -178,7 +178,7 @@ source ~/.vimrc.min
                     vmap ι :call LookupVisual()<CR>
                     " Shift+Layer3Mod+s
                 endif
-            " }
+            " }}}
 
             " Bundle 'Lokaltog/vim-easymotion'
             " let g:EasyMotion_leader_key = '<Leader>j'
@@ -189,7 +189,7 @@ source ~/.vimrc.min
             nnoremap ψ :GundoToggle<CR>
             " Shift+Layer3Mod+u
 
-            " indent_guides {
+            " indent_guides {{{
                 " Bundle 'Yggdroot/indentLine'
                 Bundle 'nathanaelkane/vim-indent-guides'
                 if !exists('g:spf13_no_indent_guides_autocolor')
@@ -207,22 +207,24 @@ source ~/.vimrc.min
 
                 noremap <silent> γ :IndentGuidesToggle<CR>
                 " Shift+Layer3Mod+i
-            " }
+            " }}}
 
             if !exists('g:spf13_no_views')
                 Bundle 'vim-scripts/restore_view.vim'
             endif
 
-            " Bundle 'tpope/vim-markdown'
+            let g:markdown_folding = 1
+            Bundle 'tpope/vim-markdown'
+            " Bundle 'plasticboy/vim-markdown'
             Bundle 'jtratner/vim-flavored-markdown'
 
             Bundle 'bronson/vim-visual-star-search'
         endif
     " }}}
 
-    " UI enhancements {
+    " UI enhancements {{{
         if count(g:spf13_bundle_groups, 'ui')
-            " Powerline {
+            " Powerline {{{
                 " if (has("python") && executable('python')) || (has("python3") && executable('python3'))
                     " Bundle 'Lokaltog/powerline', {'rtp':'/powerline/bindings/vim'}
                 " else
@@ -252,11 +254,11 @@ source ~/.vimrc.min
                             \ [ 'a', 'b', 'c', 'x' ],
                             \ [ 'y', 'z', 'warning' ]
                             \ ]
-            " }
+            " }}}
         endif
-    " }
+    " }}}
 
-    " General Programming {
+    " General Programming {{{
         if count(g:spf13_bundle_groups, 'programming')
             " Pick one of the checksyntax, jslint, or syntastic
             Bundle 'scrooloose/syntastic'
@@ -279,7 +281,7 @@ source ~/.vimrc.min
             " Bundle 'oinksoft/endline.vim'
             " let g:EndlineInsertMapping = '<Leader>,'
 
-            " More text objects {
+            " More text objects {{{
                 " http://blog.carbonfive.com/2011/10/17/vim-text-objects-the-definitive-guide/
                 Bundle 'michaeljsmith/vim-indent-object'
 
@@ -304,10 +306,10 @@ source ~/.vimrc.min
                 nnoremap ya\| F\|y,
                 nnoremap vi\| T\|v,
                 nnoremap va\| F\|v,
-            " }
+            " }}}
 
             " Git {{{
-                " Fugitive {
+                " Fugitive {{{
                     Bundle 'tpope/vim-fugitive'
                     nnoremap <silent> <leader>gs :Gstatus<CR>
                     nnoremap <silent> <leader>gd :Gdiff<CR>
@@ -315,7 +317,7 @@ source ~/.vimrc.min
                     nnoremap <silent> <leader>gb :Gblame<CR>
                     nnoremap <silent> <leader>gl :Glog<CR>
                     nnoremap <silent> <leader>gp :Git push<CR>
-                " }
+                " }}}
 
                 Bundle 'int3/vim-extradite'
                 let g:extradite_showhash = 1
@@ -331,7 +333,7 @@ source ~/.vimrc.min
             let g:viewdoc_copy_to_search_reg = 1
             let g:viewdoc_prevtabonclose = 1
 
-            " Tabularize {
+            " Tabularize {{{
                 Bundle 'godlygeek/tabular'
                 noremap <Leader>a&  :Tabularize /&<CR>
                 noremap <Leader>a=  :Tabularize /=<CR>
@@ -348,7 +350,7 @@ source ~/.vimrc.min
                 noremap <Leader>af<Space> :Tabularize /^\s*\w*<CR>
                 noremap <Leader>a<Bar> :Tabularize /[^\\]\zs<Bar><CR>
                 " noremap <Leader>ae :Tabularize /\s\{2,\}\zs<CR>
-            " }
+            " }}}
 
             " Toggle words
             Bundle 'toggle_words.vim'
@@ -412,16 +414,16 @@ source ~/.vimrc.min
                 inoremap <Leader>as <c-o>:SCCompileRun<CR>
             " }}}
 
-            " " Taglist {
+            " " Taglist {{{
             " Bundle 'taglist.vim'
             " noremap <Leader>cq :TlistToggle<cr>
             " noremap <Leader>cr :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<cr>
             " let Tlist_WinWidth = 30
-            " " }
+            " " }}}
         endif
-    " }
+    " }}}
 
-    " General Programming (not often used) {
+    " General Programming (not often used) {{{
         if count(g:spf13_bundle_groups, 'programming_not_often_used')
 
             Bundle 'mattn/webapi-vim'
@@ -432,9 +434,9 @@ source ~/.vimrc.min
 
             Bundle 'SrchRplcHiGrp.vim'
         endif
-    " }
+    " }}}
 
-    " Snippets & AutoComplete {
+    " Snippets & AutoComplete {{{
         if count(g:spf13_bundle_groups, 'snipmate')
             if has("python") && executable('python')
                 " Needs to be before syntax on …
@@ -445,7 +447,7 @@ source ~/.vimrc.min
             endif
         elseif count(g:spf13_bundle_groups, 'neocomplcache')
 
-            " neocomplcache {
+            " neocomplcache {{{
                 let g:acp_enableAtStartup = 0
                 let g:neocomplcache_enable_at_startup = 1
                 let g:neocomplcache_enable_camel_case_completion = 1
@@ -516,11 +518,11 @@ source ~/.vimrc.min
                 " When enabled, there can be too much visual noise
                 " especially when splits are used.
                 set completeopt-=preview
-            " }
+            " }}}
         endif
-    " }
+    " }}}
 
-    " Python {
+    " Python {{{
         if count(g:spf13_bundle_groups, 'python')
             " Pick either python-mode or pyflakes & pydoc
             Bundle 'klen/python-mode'
@@ -538,30 +540,30 @@ source ~/.vimrc.min
             " Bundle 'python_match.vim'
             " Bundle 'pythoncomplete'
 
-            " PyMode {
+            " PyMode {{{
                 let g:pymode_lint_checker = "pyflakes"
                 let g:pymode_utils_whitespaces = 0
                 let g:pymode_options = 0
-            " }
+            " }}}
 
-            " PythonMode {
+            " PythonMode {{{
             " Disable if python support not present
                 if !has('python')
                     let g:pymode = 1
                 endif
-            " }
+            " }}}
         endif
-    " }
+    " }}}
 
-    " Perl {
+    " Perl {{{
         if count(g:spf13_bundle_groups, 'perl')
             Bundle 'perlcritic-compiler-script'
             Bundle 'vim-perl/vim-perl'
             " Bundle 'c9s/perlomni.vim'
         endif
-    " }
+    " }}}
 
-    " Javascript {
+    " Javascript {{{
         if count(g:spf13_bundle_groups, 'javascript')
             Bundle 'Shutnik/jshint2.vim'
             " Bundle 'leshill/vim-json'
@@ -570,16 +572,16 @@ source ~/.vimrc.min
             " Bundle 'briancollins/vim-jst'
             " Bundle 'kchmck/vim-coffee-script'
         endif
-    " }
+    " }}}
 
-    " Java {
+    " Java {{{
         if count(g:spf13_bundle_groups, 'scala')
             " Bundle 'derekwyatt/vim-scala'
             " Bundle 'derekwyatt/vim-sbt'
         endif
-    " }
+    " }}}
 
-    " LaTeX {
+    " LaTeX {{{
         if count(g:spf13_bundle_groups, 'latex')
             " IMPORTANT: grep will sometimes skip displaying the file name if you
             " search in a singe file. This will confuse Latex-Suite. Set your grep
@@ -592,11 +594,11 @@ source ~/.vimrc.min
             let g:tex_flavor='latex'
             imap <Leader>Y <Plug>inoremap_JumpForward
         endif
-    " }
+    " }}}
 
-    " HTML {
+    " HTML {{{
         if count(g:spf13_bundle_groups, 'html')
-            " AutoCloseTag {
+            " AutoCloseTag {{{
                 " Automatically closes HTML tag once you finish typing it with >.
                 " Bundle 'karuna/HTML-AutoCloseTag'
                 " Bundle 'amirh/HTML-AutoCloseTag'
@@ -607,7 +609,7 @@ source ~/.vimrc.min
                 " Bundle 'inkarkat/closetag.vim'
                 Bundle 'ypid/closetag.vim'
                 " Default mapping: inoremap <expr> <Leader>ae <SID>GetCloseTag('i')
-            " }
+            " }}}
 
             " Bundle 'sukima/xmledit'
 
@@ -630,25 +632,25 @@ source ~/.vimrc.min
 
             Bundle 'guns/xterm-color-table.vim'
         endif
-    " }
+    " }}}
 
-    " Ruby {
+    " Ruby {{{
         if count(g:spf13_bundle_groups, 'ruby')
             Bundle 'tpope/vim-rails'
             let g:rubycomplete_buffer_loading = 1
             "let g:rubycomplete_classes_in_global = 1
             "let g:rubycomplete_rails = 1
         endif
-    " }
+    " }}}
 
-    " Go Lang {
+    " Go Lang {{{
         if count(g:spf13_bundle_groups, 'go')
             Bundle 'jnwhiteh/vim-golang'
             Bundle 'spf13/vim-gocode'
         endif
-    " }
+    " }}}
 
-    " Misc {
+    " Misc {{{
         if count(g:spf13_bundle_groups, 'misc')
             Bundle 'thanthese/Tortoise-Typing'
             Bundle 'dahu/LearnVim'
@@ -659,23 +661,23 @@ source ~/.vimrc.min
             " Bundle 'mattn/calendar-vim'
             Bundle 'logstash.vim'
         endif
-    " }
+    " }}}
 
-    " Games {
+    " Games {{{
         if count(g:spf13_bundle_groups, 'games')
             Bundle 'TeTrIs.vim'
             Bundle 'sokoban.vim'
             Bundle 'koron/nyancat-vim'
         endif
-    " }
+    " }}}
 
-    " Twig {
+    " Twig {{{
         if count(g:spf13_bundle_groups, 'twig')
             Bundle 'beyondwords/vim-twig'
         endif
-    " }
+    " }}}
 
-    " To small for a plugin {
+    " Too small for a plugin {{{
         " http://vim.wikia.com/wiki/Display_output_of_shell_commands_in_new_window
         function! s:ExecuteInShell(command)
             let command = join(noremap(split(a:command), 'expand(v:val)'))
@@ -720,17 +722,17 @@ source ~/.vimrc.min
             let &l:ts  = &l:sw
             let &l:sts = &l:sw
         endfunction
-    " }
-" }
+    " }}}
+" }}}
 
-" General {
+" General {{{
     if count(g:config_section_enable, 'general_config')
         filetype indent plugin on   " Automatically detect file types.
         syntax on                   " Syntax highlighting
     endif
-" }
+" }}}
 
-" Vim UI {
+" Vim UI {{{
     if count(g:config_section_enable, 'solarized')
         Bundle 'altercation/vim-colors-solarized'
         if filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
@@ -762,9 +764,9 @@ source ~/.vimrc.min
         endif
 
     endif
-" }
+" }}}
 
-   " OmniComplete {
+   " OmniComplete {{{
         if count(g:config_section_enable, 'omnicomplete')
             if has("autocmd") && exists("+omnifunc")
                 autocmd Filetype *if &omnifunc == " |setlocal omnifunc=syntaxcomplete#Complete |endif
@@ -785,9 +787,9 @@ source ~/.vimrc.min
             " Automatically open and close the popup menu / preview window
             set completeopt=menu,preview,longest
         endif
-    " }
+    " }}}
 
-" Formatting {
+" Formatting {{{
     if count(g:config_section_enable, 'formating_config')
         set formatoptions+=or
         set wrap linebreak              " Wrap long lines between words</Tab>
@@ -880,9 +882,9 @@ source ~/.vimrc.min
         endif
         let xml_syntax_folding=1      " XML
     endif
-" }
+" }}}
 
-" GUI Settings {
+" GUI Settings {{{
     " GVIM- (here instead of .gvimrc)
     if count(g:config_section_enable, 'gui_config')
         if has('gui_running')
@@ -905,4 +907,4 @@ source ~/.vimrc.min
             "set term=builtin_ansi       " Make arrow and other keys work
         endif
     endif
-" }
+" }}}

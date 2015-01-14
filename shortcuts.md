@@ -2,7 +2,7 @@
 
 Here are some common shortcuts that I use and which I configure in every program which makes sense and allows to do so.
 
-The use of the shift modifier key is explicitly written down.
+The use of the shift modifier key is explicitly written down. Modifier keys are written down from left to right e.g. shift+ctrl+super+alt.
 
 Left hand only: Should be easy to use with the left hand, because it is often used during work with the mouse. For example switching windows or Ctrl+c to copy to the clipboard.
 
@@ -27,7 +27,8 @@ Here are some advices regarding shortcuts for programmers or UI designers which 
 
 Which shortcuts should be used where? – Some thoughts …
 
-* Ctrl+Alt: Dedicated to window manager
+* Ctrl+Alt: Dedicated to window manager respectively shortcuts which can be triggered globally.
+  * Music player uses Ctrl+Alt except for Shift+Alt+x because of left hand use.
 * Shift+Super: Dedicated for AutoKey
 
     * Can also be used over RDP on Windows machines without interfering with MS Windows mappings of the Super key.
@@ -127,11 +128,25 @@ Shortcut         | Function                                   | Left hand only |
 -------------    | -------------                              | -------------  | -------------
 Ctrl+Super+s     | Launch program `x-terminal-emulator`       | Yes            |
 Ctrl+Super+[1-9] | Launch custom program or script            | Yes and no     |
-Ctrl+Alt+x       | `rhythmbox-client --play-pause`            | Of course      | Play or pause music
-Ctrl+Super+x     | `rhythmbox-client --next`                  | Of course      | Play next music file
 Shift+Ctrl+Alt+o | Launch program `eject`                     | No             | eject removable media
 Ctrl+Alt+c       | Launch [script][suspend-script] to suspend | Yes            |
 Ctrl+Alt+v       | `poweroff`                                 | Yes            |
+
+### Clementine
+
+Configured in clementine, but they apply globally.
+
+Shortcut      | Function                      | Left hand only | Comment
+------------- | -------------                 | -------------  | -------------
+Ctrl+Alt+x    | `clementine --play-pause`     | Of course      | Play or pause audio. Using command line to also allow to start the program if no instance is running.
+Shift+Alt+x   | `clementine --next`           | Of course      | Play next audio file
+Ctrl+Alt+n    | Seek backward                 | Nice to have   | Seek in audio file by *n* seconds.
+Ctrl+ALt+m    | Seek forward                  | Nice to have   | Seek in audio file by *n* seconds.
+Ctrl+Alt+z    | Rate the current song 1 star  | No             | I would prefer ¹ (entered with Mod3+1) but I did not find a way. Edit: ¹ not in global mode, so Ctrl+Alt+z is ok :)
+Ctrl+Alt+u    | Rate the current song 2 stars | No             |
+Ctrl+Alt+i    | Rate the current song 3 stars | No             |
+Ctrl+Alt+o    | Rate the current song 4 stars | No             |
+Ctrl+Alt+p    | Rate the current song 5 stars | No             |
 
 ## GUI applications
 
@@ -185,7 +200,7 @@ Shortcut      | Function                          | Left hand only | Comment
 Ctrl+h        | Change spell check language to de | No             | See [script](/autokey/Emitting keystrokes/Pidgin/Change language in Pidgin to de.py)
 Ctrl+l        | Change spell check language to en | No             | See [script](/autokey/Emitting keystrokes/Pidgin/Change language in Pidgin to en.py)
 
-#### ERP system Steps Ahead
+###### ERP system Steps Ahead
 
 This section describes some mapping which I added to make working with the ERP system [Steps Ahead][] more pleasant. I am relaying on an ugly hack to achieve this because [Steps Ahead][] (even in the current version 9.5.3) does not allow to remap or add shortcuts to actions which already have a default shortcut … So I use [autokey][] to do this anyway. It works the following: When autokey intercepts one of the following shortcuts it emits the shortcut on which Steps Ahead triggers the desired action.
 
@@ -202,7 +217,7 @@ To customize firefox even further I use [Customizable Shortcuts](https://addons.
 
 Shortcut      | Function                            | Left hand only | Comment
 ------------- | -------------                       | -------------  | -------------
-Ctrl+u        | No action                           | No             | Disabled default "View page source" because I hit just Ctrl+u multiple times in the location bar to delete the line.
+Ctrl+u        | No action                           | No             | Disabled default "View page source" because I hit Ctrl+u multiple times in the location bar to delete the line.
 Shift+Ctrl+s  | View page source                    | Yes            |
 S             | Toggle bookmarks toolbar on and off | Yes            | With keyconfig: `var toolbar = document.getElementById("PersonalToolbar");toolbar.collapsed = !toolbar.collapsed;document.persist(toolbar.id, "collapsed");`
 Shift+Ctrl+d  | Web console (d for Debug)           | Yes            |
@@ -240,7 +255,7 @@ Shift+W       | EditNew        | No             |
 #### Immutable
 Shortcut      | Function               | Left hand only                | Comment
 ------------- | -------------          | -------------                 | -------------
-/             | Quick search           | Yes (maybe copy paste search) | Not used. Configured DC so that every letter typed will open the quick search.
+/             | Quick search           | Yes (maybe copy paste search) | Not used. Configured DC so that every letter typed will open the quick filter.
 Ctrl+f        | QuickFilter            | Not really                    | filter=toggle
 Ctrl+s        | Search                 | Yes                           |
 Shift+s       | CountDirContent        | Yes                           |
@@ -285,7 +300,7 @@ Note: Double Commander works quite nicely together with [Neo2][] …
 #### Free shortcuts
 
 * Alt+X
-* Ctrl+Alt+[a-z]
+* Ctrl+Alt+[a-z], was dedicated to Window manager …
 * Ctrl+G
 * Ctrl+T
 * Ctrl+E
@@ -302,14 +317,12 @@ See [.vimrc][] (Folds *Key (re)Mappings* and *Bundles and plugins*) …
 
 Use Neo2 bindings where possible. Don‘t use `$`, use Mod4+g.
 
-## Shortcut “Namespaces”
-
 * Use one key with modifiers for actions which might be used repeatable or
   toggle something like | in normal mode which toggles comments for the line or ❤ (Shift+Layer3Mod+w) which closes one window or split.
 
 #### Free shortcuts
 
-##### Normal mode
+Normal mode:
 
 * Umlauts
 * Shift+Space

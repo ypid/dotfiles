@@ -1,19 +1,19 @@
-" vim: set sw=4 ts=4 sts=4 et tw=78 foldmarker={,} foldlevel=0 foldmethod=marker spell:
+" vim: set sw=4 ts=4 sts=4 et tw=78 foldmarker={{{,}}} foldlevel=0 foldmethod=marker spell:
 
-" Environment {
-    " Basics {
+" Environment {{{
+    " Basics {{{
         set nocompatible        " must be first line
-    " }
+    " }}}
 
-    " Windows Compatible {
+    " Windows Compatible {{{
         " On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
         " across (heterogeneous) systems easier.
 		if has('win32') || has('win64')
 			set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
 		endif
-    " }
+    " }}}
 
-    " Basic functions {
+    " Basic functions {{{
     function! EnsureDirExists (dir)
         if !isdirectory(a:dir)
             if exists("*mkdir")
@@ -24,10 +24,10 @@
             endif
         endif
     endfunction
-    " }
-" }
+    " }}}
+" }}}
 
-    " Key (re)Mappings {
+    " Key (re)Mappings {{{
     " Mappings which only work with plugins enabled should be placed in the
     " Plugin section.
 
@@ -49,7 +49,7 @@
         " nnoremap ^[j :set paste<CR>m`o<Esc>``:set nopaste<CR>
     " }}}
 
-    " Overwrite default Vim mappings {
+    " Overwrite default Vim mappings {{{
         " Function to overwrite build-in commands {{{
             " http://vim.wikia.com/wiki/Replace_a_builtin_command_using_cabbrev
             " function! CommandCabbr(abbreviation, expansion) execute 'cabbr ' . a:abbreviation . ' <c-r>=getcmdpos() == 1 && getcmdtype() == ":" ? "' . a:expansion . '" : "' . a:abbreviation . '"<CR>'
@@ -86,7 +86,7 @@
         " endfunction
         " nnoremap <silent> <expr> <Space> Highlighting()
         " Replaced by 'https://github.com/t9md/vim-quickhl'
-    " }
+    " }}}
 
     " Map leader mappings {{{
         let mapleader = ','
@@ -163,7 +163,7 @@
             " set spelllang=en_us
             noremap <Leader>cd :set spell!<CR>
             inoremap <Leader>cd <c-o>:set spell!<CR>
-        " }
+        " }}}
 
         " Insert newline without entering insert mode
         " noremap <Leader>Q O<Esc>
@@ -308,9 +308,9 @@
         " Has many valid use cases.
 
     " }}}
-" }
+" }}}
 
-" General {
+" General {{{
     set mousehide               " Hide the mouse cursor while typing
     set mouse=a                 " Enable mouse wheel scrolling
     scriptencoding utf-8
@@ -339,7 +339,7 @@
     set ttimeoutlen=5
     " http://www.johnhawthorn.com/2012/09/vi-escape-delays/
 
-    " Setting up the directories {
+    " Setting up the directories {{{
         call EnsureDirExists($HOME . '/.vimswap')
         set directory=~/.vimswap/
         set writebackup
@@ -363,10 +363,10 @@
             \ '*sec*',
             \ '*crypt*'
             \ ]
-    " }
-" }
+    " }}}
+" }}}
 
-" Vim UI {
+" Vim UI {{{
     set backspace=indent,eol,start  " Backspace for dummies
     set linespace=0                 " No extra spaces between rows
     set number
@@ -386,17 +386,17 @@
     set foldmethod=marker
     set nolist
     set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
-" }
+" }}}
 
-" Settings if used standalone {
+" Settings if used standalone {{{
     if !exists('g:config_section_enable')
         syntax on
         hi clear SpellBad
         hi SpellBad cterm=underline
     endif
-" }
+" }}}
 
-" Machine specific configuration {
+" Machine specific configuration {{{
     if filereadable(expand("~/.vimrc.private"))
         " Synced on trusted systems. On others it can be created and the
         " content will not be synced.
@@ -406,4 +406,4 @@
         " Machine specific.
         source ~/.vimrc.local
     endif
-" }
+" }}}
