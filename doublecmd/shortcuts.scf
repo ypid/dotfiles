@@ -214,7 +214,7 @@
         <Command>cm_AddPathAndFilenameToCmdLine</Command>
       </Hotkey>
       <Hotkey>
-        <Shortcut>Ctrl+Alt+L</Shortcut>
+        <Shortcut>Shift+Alt+L</Shortcut>
         <Command>cm_ChangeDirToRoot</Command>
       </Hotkey>
       <Hotkey>
@@ -246,7 +246,7 @@
         <Command>cm_TargetEqualSource</Command>
       </Hotkey>
       <Hotkey>
-        <Shortcut>Ctrl+Alt+J</Shortcut>
+        <Shortcut>Shift+Alt+J</Shortcut>
         <Command>cm_LeftOpenDrives</Command>
       </Hotkey>
       <Hotkey>
@@ -254,7 +254,7 @@
         <Command>cm_LeftOpenDrives</Command>
       </Hotkey>
       <Hotkey>
-        <Shortcut>Ctrl+Alt+K</Shortcut>
+        <Shortcut>Shift+Alt+K</Shortcut>
         <Command>cm_RightOpenDrives</Command>
       </Hotkey>
       <Hotkey>
@@ -395,6 +395,7 @@
       <Hotkey>
         <Shortcut>Ctrl+C</Shortcut>
         <Command>cm_SymLink</Command>
+        <Control>Files Panel</Control>
       </Hotkey>
       <Hotkey>
         <Shortcut>Shift+Alt+E</Shortcut>
@@ -409,10 +410,15 @@
         <Command>cm_MarkCurrentExtension</Command>
       </Hotkey>
       <Hotkey>
-        <Shortcut>Shift+R</Shortcut>
-        <Command>cm_RenameOnly</Command>
+        <Shortcut>Ctrl+W</Shortcut>
+        <Command>cm_CloseTab</Command>
         <Control>Files Panel</Control>
         <Control>Quick Search</Control>
+        <Control>Command Line</Control>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Alt+R</Shortcut>
+        <Command>cm_RenameOnly</Command>
       </Hotkey>
       <Hotkey>
         <Shortcut>Ctrl+Shift+E</Shortcut>
@@ -424,13 +430,6 @@
         <Shortcut>Num/</Shortcut>
         <Command>cm_QuickSearch</Command>
         <Control>Files Panel</Control>
-      </Hotkey>
-      <Hotkey>
-        <Shortcut>Ctrl+W</Shortcut>
-        <Command>cm_CloseTab</Command>
-        <Control>Files Panel</Control>
-        <Control>Quick Search</Control>
-        <Control>Command Line</Control>
       </Hotkey>
       <Hotkey>
         <Shortcut>Del</Shortcut>
@@ -491,7 +490,6 @@
       <Hotkey>
         <Shortcut>Ctrl+C</Shortcut>
         <Command>cm_CopyToClipboard</Command>
-        <Control>Files Panel</Control>
       </Hotkey>
       <Hotkey>
         <Shortcut>Ctrl+V</Shortcut>
@@ -521,6 +519,11 @@
       <Hotkey>
         <Shortcut>Ctrl+Right</Shortcut>
         <Command>cm_TransferRight</Command>
+        <Control>Files Panel</Control>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Ctrl+Home</Shortcut>
+        <Command>cm_ChangeDirToHome</Command>
         <Control>Files Panel</Control>
       </Hotkey>
     </Form>
@@ -571,11 +574,21 @@
         <Shortcut>Alt+Right</Shortcut>
         <Command>cm_CopyLeftToRight</Command>
       </Hotkey>
+      <Hotkey>
+        <Shortcut>Alt+X</Shortcut>
+        <Command>cm_Exit</Command>
+      </Hotkey>
     </Form>
     <Form Name="Copy/Move Dialog">
       <Hotkey>
         <Shortcut>F2</Shortcut>
         <Command>cm_AddToQueue</Command>
+      </Hotkey>
+    </Form>
+    <Form Name="Edit Comment Dialog">
+      <Hotkey>
+        <Shortcut>F2</Shortcut>
+        <Command>cm_SaveDescription</Command>
       </Hotkey>
     </Form>
   </Hotkeys>

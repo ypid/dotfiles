@@ -239,7 +239,7 @@ See the manual for the default shortcuts. I added my own which I think are more 
 Shortcut      | Function       | Left hand only | Comment
 ------------- | -------------  | -------------  | -------------
 Shift+m       | Rename         | Yes            |
-Shift+r       | RenameOnly     | Not really     |
+Alt+r         | RenameOnly     | Not really     |;
 Shift+Ctrl+r  | MultiRename    | Not really     |
 Shift+c       | Copy           | No             |
 Shift+v       | CopySamePanel  | No             |
@@ -280,9 +280,9 @@ Shift+h       | ShowCmdLineHistory     | Not really                    |
 Shift+n       | OpenDirInNewTab        | Nice to have                  |
 Shift+a       | TransferLeft           | Nice to have                  |
 Shift+d       | TransferRight          | Nice to have                  |
-Ctrl+Alt+j    | LeftOpenDrives         | Nice to have                  |
-Ctrl+Alt+k    | RightOpenDrives        | Nice to have                  |
-Ctrl+Alt+l    | ChangeDirToRoot        | Nice to have                  |
+Shift+Alt+j   | LeftOpenDrives         | Nice to have                  |
+Shift+Alt+k   | RightOpenDrives        | Nice to have                  |
+Shift+Alt+l   | ChangeDirToRoot        | Nice to have                  |
 
 #### Assumed to be default
 Mappings which are default or which should be default.
@@ -298,6 +298,8 @@ Tab           | Switch between left and right file list | Nice to have          
 Note: Double Commander works quite nicely together with [Neo2][] …
 
 #### Free shortcuts
+
+Use more shortcuts with alt modifier :)
 
 * Alt+X
 * Ctrl+Alt+[a-z], was dedicated to Window manager …
