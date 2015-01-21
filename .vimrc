@@ -94,6 +94,8 @@ source ~/.vimrc.min
             Bundle 'rm-hull/vim-locate'
 
             " Bundle 'autoproto.vim'
+
+            Bundle 'chase/vim-ansible-yaml'
         endif
         if count(g:spf13_bundle_groups, 'tested_not_using')
             " I don‘t really like this behavior
@@ -850,6 +852,9 @@ source ~/.vimrc.min
                 if count(g:spf13_bundle_groups, 'python')
                     autocmd FileType python let g:syntastic_check_on_wq = 0
                 endif
+                autocmd FileType ansible setlocal foldmarker=(((,)))
+                " Use this foldmarker to avoid folds when using Jinja2
+                " templates.
                 autocmd FileType markdown let b:delimitMate_nesting_quotes = ["`"]
                 autocmd FileType tex setlocal expandtab shiftwidth=2
                 autocmd FileType c setlocal noexpandtab shiftwidth=4

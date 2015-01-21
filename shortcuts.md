@@ -27,11 +27,24 @@ Here are some advices regarding shortcuts for programmers or UI designers which 
 
 Which shortcuts should be used where? – Some thoughts …
 
+* Shift+Alt: Shared between window manager and applications.
 * Ctrl+Alt: Dedicated to window manager respectively shortcuts which can be triggered globally.
   * Music player uses Ctrl+Alt except for Shift+Alt+x because of left hand use.
 * Shift+Super: Dedicated for AutoKey
-
     * Can also be used over RDP on Windows machines without interfering with MS Windows mappings of the Super key.
+
+
+### Free
+
+* Super (WinKey): Almost forgotten :)
+
+### Avoid
+
+* Remapping Alt+Letter
+
+### No goes
+
+* Never map Alt+Letter where Letter is a Character which is located on the left of a qwertz keyboard.
 
 ## Free shortcuts
 List of free shortcuts (they may have a default mapping but there are better shortcuts for those actions so that the shortcuts are available to be mapped to a different action).
@@ -238,8 +251,8 @@ See the manual for the default shortcuts. I added my own which I think are more 
 #### Mutable
 Shortcut      | Function       | Left hand only | Comment
 ------------- | -------------  | -------------  | -------------
-Shift+m       | Rename         | Yes            |
-Alt+r         | RenameOnly     | Not really     |;
+Super+m       | Rename         | Yes            |
+Super+r       | RenameOnly     | Not really     | ;
 Shift+Ctrl+r  | MultiRename    | Not really     |
 Shift+c       | Copy           | No             |
 Shift+v       | CopySamePanel  | No             |
@@ -258,31 +271,32 @@ Shortcut      | Function               | Left hand only                | Comment
 /             | Quick search           | Yes (maybe copy paste search) | Not used. Configured DC so that every letter typed will open the quick filter.
 Ctrl+f        | QuickFilter            | Not really                    | filter=toggle
 Ctrl+s        | Search                 | Yes                           |
-Shift+s       | CountDirContent        | Yes                           |
-Shift+j       | SortByName             | Nice to have                  |
-Shift+k       | SortByExt              | Nice to have                  |
-Shift+l       | SortBySize             | Nice to have                  |
-Shift+ö       | SortByDate             | Nice to have                  |
-Shift+ä       | SortByAttr             | Nice to have                  |
-Shift+u       | BriefView              | Nice to have                  |
-Shift+i       | ColumnsView            | Nice to have                  |
-Shift+o       | ThumbnailsView         | Nice to have                  |
+Super+s       | CountDirContent        | Yes                           |
+Super+j       | SortByName             | Nice to have                  |
+Super+k       | SortByExt              | Nice to have                  |
+Super+l       | SortBySize             | Nice to have                  |
+Super+ö       | SortByDate             | Nice to have                  |
+Super+ä       | SortByAttr             | Nice to have                  |
+Super+q       | QuickView              | Yes                           |
+Super+u       | BriefView              | Nice to have                  |
+Super+i       | ColumnsView            | Nice to have                  |
+Super+o       | ThumbnailsView         | Nice to have                  |
 Shift+Ctrl+s  | RunTerm                | Not really                    | Like Ctrl+Super+s but with the current directory.
 Ctrl+l        | FocusCmdLine           | Not really                    | Was mapped to Shift+F2 but Ctrl+l is more convenient because it works be default in firefox. Overwrites CalculateSpace in DC.
 Shift+Alt+x   | MarkCurrentExtension   | Nice to have                  |
 Shift+Alt+y   | UnmarkCurrentExtension | Nice to have                  |
+Shift+Alt+u   | CopyNamesToClip        | Nice to have                  |
 Shift+Ctrl+u  | PanelsSplitterPerPos   | Nice to have                  | splitpct=50
 Shift+Ctrl+i  | PanelsSplitterPerPos   | Nice to have                  | splitpct=70
 Shift+Ctrl+o  | PanelsSplitterPerPos   | Nice to have                  | splitpct=100
-Shift+q       | QuickView              | Yes                           |
 Shift+f       | DirHotList             | Not really                    |
 Shift+h       | ShowCmdLineHistory     | Not really                    |
 Shift+n       | OpenDirInNewTab        | Nice to have                  |
 Shift+a       | TransferLeft           | Nice to have                  |
 Shift+d       | TransferRight          | Nice to have                  |
-Shift+Alt+j   | LeftOpenDrives         | Nice to have                  |
-Shift+Alt+k   | RightOpenDrives        | Nice to have                  |
-Shift+Alt+l   | ChangeDirToRoot        | Nice to have                  |
+Super+h       | LeftOpenDrives         | Nice to have                  |
+Super+n       | RightOpenDrives        | Nice to have                  |
+Super+ü       | ChangeDirToRoot        | Nice to have                  |
 
 #### Assumed to be default
 Mappings which are default or which should be default.
@@ -299,7 +313,7 @@ Note: Double Commander works quite nicely together with [Neo2][] …
 
 #### Free shortcuts
 
-Use more shortcuts with alt modifier :)
+Use more shortcuts with WinKey modifier :)
 
 * Alt+X
 * Ctrl+Alt+[a-z], was dedicated to Window manager …

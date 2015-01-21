@@ -101,6 +101,7 @@ alias t='tmux'
 alias f='tmux last-window'
 alias h='htop'
 alias '*'='dict'
+alias con='ping -c 1 -w 2 heise.de'
 
 ## Use the shortcuts from oh-my-zsh for git
 alias wd='git diff --color-words --no-index'
@@ -174,27 +175,3 @@ alias xclip-primary-to-clipboard='xclip -out |xclip -in -selection clipboard'
 alias sty2dtx='~/Projekte/src/sty2dtx/sty2dtx.pl'
 alias xgettext='xgettext --copyright-holder="`git config --get user.name` <`git config --get user.email`>" --msgid-bugs-address="`git config --get user.email`"'
 ## }}}
-
-# export PERL_LOCAL_LIB_ROOT="$HOME/.cpan/perl5";
-# export PERL_MB_OPT="--install_base $HOME/.cpan/perl5";
-# export PERL_MM_OPT="INSTALL_BASE=$HOME/.cpan/perl5";
-# export PERL5LIB="$HOME/Projekte/Programmiersprachen/Perl/lib:$HOME/.cpan/perl5/lib/perl5";
-# if [[ `getconf LONG_BIT` == 64 ]]; then ## Running under a 64 Bit Kernel
-    # PERL5LIB="$HOME/.cpan/perl5/lib/perl5/x86_64-linux-gnu-thread-multi:$PERL5LIB"
-# else
-    # PERL5LIB="$HOME/.cpan/perl5/lib/perl5/i486-linux-gnu-thread-multi::$PERL5LIB"
-# fi
-# PATH="$PATH:$HOME/.cpan/perl5/bin";
-
-if [ -d "$HOME/Skripte/repository" ]; then
-    PATH="$HOME/Skripte:$HOME/Skripte/repository:$PATH"
-fi
-
-user_install_dir="$HOME/.local/usr"
-if [ -d "$user_install_dir" ]; then
-    PATH="$user_install_dir/bin:$PATH"
-    PYTHONPATH="$user_install_dir/lib/python2.7/site-packages:$PYTHONPATH"
-fi
-
-export PYTHONSTARTUP="$HOME/.pystartup"
-export PYTHONPATH='.'
