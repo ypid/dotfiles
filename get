@@ -16,7 +16,7 @@ for file in {en,de}.utf-8.{spl,sug};do
     fi
 done
 
-vi -c ':BundleInstall' -c ':q' -c ':q'
+vim -c ':BundleInstall' -c ':q' -c ':q' -u .vimrc
 
 # Improves performance of ZSH. Functions not needed or not used (yet).
 pushd .oh-my-zsh/lib/
