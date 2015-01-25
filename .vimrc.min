@@ -339,6 +339,8 @@
     set ttimeoutlen=5
     " http://www.johnhawthorn.com/2012/09/vi-escape-delays/
 
+    set iskeyword+=-
+
     " Setting up the directories {{{
         call EnsureDirExists($HOME . '/.vimswap')
         set directory=~/.vimswap/

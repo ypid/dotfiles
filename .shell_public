@@ -159,7 +159,7 @@ if which ack-grep >/dev/null 2>&1; then
     alias ack='ack-grep'
 fi
 
-alias ass='aptitude search'
+alias ass='wajig statussearch'
 alias as='apt-cache search' ## Much faster. I normally don’t need to know if the thing is installed, respectively I can check that later with aptitude install.
 alias ash='/usr/bin/aptitude show' ## Does not need to run as root.
 if [[ "$USER" != 'root' ]]; then

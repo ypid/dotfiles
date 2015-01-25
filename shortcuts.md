@@ -14,6 +14,8 @@ Here are some advices regarding shortcuts for programmers or UI designers which 
 * Allow to reconfigure *everything*.
 * Make it easy to track the configuration files (which contain the shortcuts) with version control. This also means not to store the shortcuts together with things that you don‘t want to track (like recent files or usernames and passwords).
 * The user types something in an input view then certain shortcuts are expected to work:
+  * Ctrl+a: Select all
+  * Shift+Ctrl+a: Select none
   * Ctrl+z: Undo
   * Shift+Ctrl+y: Undo (Maybe worth a thought because it is way easier to reach then Ctrl+z)
   * Ctrl+y: Redo

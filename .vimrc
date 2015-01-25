@@ -826,6 +826,7 @@ source ~/.vimrc.min
                 " I already use the "wrong" file suffix for all my LaTeX files
                 autocmd BufRead,BufNewFile *.tex setlocal filetype=tex
                 autocmd BufRead,BufNewFile *.ldf setlocal filetype=tex
+                " autocmd BufRead,BufNewFile source.list.* setlocal filetype=debsources
 
                 autocmd BufRead,BufNewFile *.nse setlocal filetype=lua
                 autocmd BufRead,BufNewFile /usr/share/X11/xkb/* setlocal filetype=xkb
@@ -838,6 +839,8 @@ source ~/.vimrc.min
 
             autocmd BufRead,BufNewFile /etc/* if &filetype=='python'|let g:pymode_lint = 0|endif
             autocmd BufRead,BufNewFile /etc/* if &filetype=='python'|let g:pymode_rope = 0|endif
+
+            autocmd BufRead,BufNewFile *ansible/* if &filetype=='yaml'|set filetype=ansible|endif
 
             " Set language specific stuff {{{
                 autocmd FileType vim setlocal expandtab shiftwidth=4
@@ -856,6 +859,7 @@ source ~/.vimrc.min
                 " Use this foldmarker to avoid folds when using Jinja2
                 " templates.
                 autocmd FileType markdown let b:delimitMate_nesting_quotes = ["`"]
+                autocmd FileType markdown setlocal expandtab shiftwidth=2
                 autocmd FileType tex setlocal expandtab shiftwidth=2
                 autocmd FileType c setlocal noexpandtab shiftwidth=4
                 autocmd FileType html setlocal expandtab shiftwidth=2
@@ -872,7 +876,7 @@ source ~/.vimrc.min
             " autocmd Syntax * RainbowParenthesesLoadRound " default
             autocmd VimEnter,BufRead,BufNewFile * if exists(":RainbowParenthesesLoadSquare")|exe "RainbowParenthesesLoadSquare"|endif
             autocmd VimEnter,BufRead,BufNewFile * if exists(":RainbowParenthesesLoadBraces")|exe "RainbowParenthesesLoadBraces"|endif
-            autocmd BufRead * if exists(":DetectIndent")|exe "DetectIndent"|endif
+            " autocmd BufRead * if exists(":DetectIndent")|exe "DetectIndent"|endif
             " autocmd BufRead,BufNewFile * call SetIndentWidth()
             " autocmd BufWritePost * echo &ff
             autocmd QuickFixCmdPost make cwindow
