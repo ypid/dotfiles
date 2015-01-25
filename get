@@ -3,13 +3,6 @@
 cd "`dirname "$0"`"
 git submodule update --init --recursive
 
-ls --almost-all -1 |grep --perl-regexp --invert-match '^(.git$|\w|.htoprc)'|while read file; do
-    target="$PWD/$file"
-    target=${target#$HOME/}
-    ln --symbolic --no-target-directory "$target" "$HOME/$file"
-done
-
-ln --symbolic --no-target-directory ../../Projekte/dotfiles/.htoprc "$HOME/.config/htop/htoprc"
 
 # inside another submodule …
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting

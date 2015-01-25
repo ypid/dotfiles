@@ -80,7 +80,7 @@ source ~/.vimrc.min
             " nmap μ <Plug>(quickhl-tag-toggle)
             " Shift+Layer3Mod+μ
 
-            let g:yankring_history_dir = '$HOME/.vim'
+            let g:yankring_history_dir = '$HOME/.vimswap'
             Bundle 'YankRing.vim'
             " Bundle 'maxbrunsfeld/vim-yankstack'
 
@@ -806,11 +806,14 @@ source ~/.vimrc.min
         " set comments=sl:/*,mb:*,elx:*/  " auto format comment blocks
         " Remove trailing whitespaces and ^M chars
 
+        let g:netrw_dirhistmax = 0
+
         if has("autocmd") && !exists("autocommands_loaded")
             filetype on
             " autocmd BufWritePost $MYVIMRC source %
             " autocmd BufWritePost $HOME/.vimpagerrc source %
             autocmd VimLeave * if filereadable($HOME."/.vim/bundle/vundle/.netrwhist")|call delete($HOME."/.vim/bundle/vundle/.netrwhist")|endif
+            autocmd VimLeave * if filereadable($HOME."/.vim/.netrwhist")|call delete($HOME."/.vim/.netrwhist")|endif
 
             " Adjust the filetype for some files {{{
                 autocmd BufRead,BufNewFile .vimpagerrc setlocal filetype=vim
@@ -826,7 +829,9 @@ source ~/.vimrc.min
                 " I already use the "wrong" file suffix for all my LaTeX files
                 autocmd BufRead,BufNewFile *.tex setlocal filetype=tex
                 autocmd BufRead,BufNewFile *.ldf setlocal filetype=tex
+
                 " autocmd BufRead,BufNewFile source.list.* setlocal filetype=debsources
+                autocmd BufRead,BufNewFile .gitignore setlocal filetype=conf
 
                 autocmd BufRead,BufNewFile *.nse setlocal filetype=lua
                 autocmd BufRead,BufNewFile /usr/share/X11/xkb/* setlocal filetype=xkb

@@ -1,5 +1,14 @@
 This git repo tracks a few of my personal config files for some programs.
 
+# Install
+
+To use this configuration run the following:
+
+```Shell
+./get    # Will download all the dependencies
+./deploy # Links the config from the repo to the current $HOME dir. **Warning:** Your configuration will be deleted!
+```
+
 # Contents
 
 `.zshrc`
