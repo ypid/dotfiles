@@ -85,12 +85,12 @@ HIST_STAMPS='yyyy-mm-dd'
 # Example format: plugins=(rails git textmate ruby lighthouse)
 #
 # Mandatory
-plugins=(gitfast autojump git-annex)
+plugins=(autojump git-annex)
 # plugins=(tmuxinator)
 # [[ -e ~/gems/gems/tmuxinator-0.6.8/completion/tmuxinator.zsh ]] && source ~/gems/gems/tmuxinator-0.6.8/completion/tmuxinator.zsh
 
 # Nice to have
-plugins+=(command-not-found zsh-syntax-highlighting mosh)
+plugins+=(zsh-syntax-highlighting mosh)
 
 # Additional functions
 plugins+=(debian)
@@ -98,10 +98,14 @@ plugins+=(encode64)
 plugins+=(urltools)
 
 # Testing
+plugins+=(colored-man)
+plugins+=(zsh_reload)
 
 # Not tested enough, might be useful
 : <<'END'
 plugins+=(vi-mode)
+plugins+=(gitfast)
+plugins+=(command-not-found)
 
 plugins+=(git-flow)
 # I only maintain small projects for which it is not worth the cost (yet?). Also a concern is that contributers might get confused and will not use the same development model.
@@ -113,6 +117,9 @@ END
 plugins+=(lol)
 plugins+=(per-directory-history)
 plugins+=(rand-quote)
+plugins+=(dircycle) ## Just use Neo2 :)
+plugins+=(jsontools) ## json from npm
+plugins+=(systemd)
 
 END
 
