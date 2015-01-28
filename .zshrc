@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh configuration.
-ZSH=$HOME/.oh-my-zsh
+ZSH="$HOME/.oh-my-zsh"
 
 # Themes {{{
 # Look in ~/.oh-my-zsh/themes/
@@ -75,6 +75,8 @@ COMPLETION_WAITING_DOTS="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 ZSH_CUSTOM="$HOME/.oh-my-zsh-custom"
+
+HIST_STAMPS='yyyy-mm-dd'
 # }}}
 
 # plugins {{{

@@ -20,7 +20,6 @@ alias la='ls -A'
 alias l='ls -CF'
 alias bc='bc -q'
 alias ,='popd'
-alias d='dirs -v'
 alias ts='date "+%F_%T"'
 
 ## Ignore typos {{{
