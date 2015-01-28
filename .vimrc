@@ -347,7 +347,7 @@ source ~/.vimrc.min
                 noremap <Leader>a"  :Tabularize /"<CR>
                 noremap <Leader>a'  :Tabularize /:\zs \+'/l0r0<CR>
                 noremap <Leader>a#  :Tabularize /#<CR>
-                noremap <Leader>a<Space> :Tabularize /\s\+<CR>
+                noremap <Leader>a<Space> :Tabularize /\s\+\zs/<CR>
                 " http://stackoverflow.com/questions/10287919/use-vims-tabularize-plugin-to-only-match-the-first-occurance-of-a-delimiter
                 noremap <Leader>af<Space> :Tabularize /^\s*\w*<CR>
                 noremap <Leader>a<Bar> :Tabularize /[^\\]\zs<Bar><CR>

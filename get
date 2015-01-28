@@ -3,11 +3,6 @@
 cd "`dirname "$0"`"
 git submodule update --init --recursive
 
-
-# inside another submodule …
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
-git clone https://github.com/Schnouki/git-annex-zsh-completion.git ~/.oh-my-zsh/custom/plugins/git-annex
-
 vim_spell="$HOME/.vim/spell"
 mkdir --parents "$vim_spell"
 for file in {en,de}.utf-8.{spl,sug};do

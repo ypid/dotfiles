@@ -73,6 +73,8 @@ COMPLETION_WAITING_DOTS="true"
 # VCS as dirty. This makes repository status check for large repositories much,
 # much faster.
 DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+ZSH_CUSTOM="$HOME/.oh-my-zsh-custom"
 # }}}
 
 # plugins {{{
@@ -83,7 +85,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Mandatory
 plugins=(gitfast autojump git-annex)
 # plugins=(tmuxinator)
-[[ -e ~/gems/gems/tmuxinator-0.6.8/completion/tmuxinator.zsh ]] && source ~/gems/gems/tmuxinator-0.6.8/completion/tmuxinator.zsh
+# [[ -e ~/gems/gems/tmuxinator-0.6.8/completion/tmuxinator.zsh ]] && source ~/gems/gems/tmuxinator-0.6.8/completion/tmuxinator.zsh
 
 # Nice to have
 plugins+=(command-not-found zsh-syntax-highlighting mosh)
@@ -122,7 +124,7 @@ END
 #
 # }}}
 
-source $ZSH/oh-my-zsh.sh
+source "$ZSH/oh-my-zsh.sh"
 
 # Customize to your needs...
 
@@ -177,4 +179,3 @@ stty -ixon -ixoff
 
 setopt no_share_history
 source ~/.shellrc
-source ~/.zsh_bindings
