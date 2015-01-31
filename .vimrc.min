@@ -99,6 +99,10 @@
         noremap <Leader>fd :filetype detect<CR>
         inoremap <Leader>fd <c-o>:filetype detect<CR>
 
+        " Run make, http://stackoverflow.com/a/11590512
+        noremap <Leader>fe :silent make\|redraw!\|cc<CR>
+        inoremap <Leader>fe <ESC>:silent make\|redraw!\|cc<CR>
+
         " Open my .vimrc
         noremap <Leader>ff :tabnew $MYVIMRC<CR>
         noremap <Leader>fm :tabnew $HOME/.vimrc.min<CR>

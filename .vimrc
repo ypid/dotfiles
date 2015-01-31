@@ -820,7 +820,7 @@ source ~/.vimrc.min
                 autocmd BufRead,BufNewFile /etc/*/apt.conf setlocal filetype=conf
                 autocmd BufRead,BufNewFile /etc/hosts setlocal filetype=conf
                 autocmd BufRead,BufNewFile /etc/NetworkManager/NetworkManager.conf setlocal filetype=conf
-                autocmd BufRead,BufNewFile $HOME/.ssh/*.config setlocal filetype=sshconfig
+                autocmd BufRead,BufNewFile $HOME/.ssh/*config* setlocal filetype=sshconfig
                 autocmd BufRead,BufNewFile $HOME/.unison/* setlocal filetype=conf
 
                 " http://mathias-kettner.de/checkmk_configfiles.html

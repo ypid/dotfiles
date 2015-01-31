@@ -1,5 +1,6 @@
 #!/bin/bash
 # sourced by bash and zsh
+
 if [ -f ~/.shell_public ]; then
     . ~/.shell_public
 fi
@@ -13,9 +14,4 @@ fi
 # Machine dependent, is not synced across the machines!
 if [ -f ~/.shell_local ]; then
     . ~/.shell_local
-fi
-
-# legacy support
-if [ -f ~/.bash_local ]; then
-    . ~/.bash_local
 fi

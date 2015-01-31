@@ -5,6 +5,10 @@ export BYOBU_CONFIG_DIR="$HOME/.byobu"
 export EDITOR=vim
 alias e='editor'
 
+export GITHUB_USER="ypid"
+# used in https://github.com/ypid/scripts/blob/master/git-setup-and-push-to-my-fork
+#
+
 ## Enable color support of ls and also add handy aliases {{{
 if [ -x /usr/bin/dircolors ]; then
     export LS_OPTIONS='--color=auto'

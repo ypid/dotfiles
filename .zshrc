@@ -77,6 +77,8 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 ZSH_CUSTOM="$HOME/.oh-my-zsh-custom"
 
 HIST_STAMPS='yyyy-mm-dd'
+
+ZSH_COMPDUMP="${ZDOTDIR:-${HOME}}/.zcompdump-${ZSH_VERSION}"
 # }}}
 
 # plugins {{{
@@ -86,6 +88,7 @@ HIST_STAMPS='yyyy-mm-dd'
 #
 # Mandatory
 plugins=(autojump git-annex)
+plugins+=(git)
 # plugins=(tmuxinator)
 # [[ -e ~/gems/gems/tmuxinator-0.6.8/completion/tmuxinator.zsh ]] && source ~/gems/gems/tmuxinator-0.6.8/completion/tmuxinator.zsh
 
@@ -96,10 +99,13 @@ plugins+=(zsh-syntax-highlighting mosh)
 plugins+=(debian)
 plugins+=(encode64)
 plugins+=(urltools)
+plugins+=(zsh_reload)
+plugins+=(vagrant)
+plugins+=(more-completions)
+plugins+=(zsh-compdef)
+plugins+=(zsh-completions)
 
 # Testing
-plugins+=(colored-man)
-plugins+=(zsh_reload)
 
 # Not tested enough, might be useful
 : <<'END'
@@ -120,6 +126,7 @@ plugins+=(rand-quote)
 plugins+=(dircycle) ## Just use Neo2 :)
 plugins+=(jsontools) ## json from npm
 plugins+=(systemd)
+plugins+=(colored-man)
 
 END
 
@@ -135,7 +142,9 @@ END
 
 source "$ZSH/oh-my-zsh.sh"
 
-# Customize to your needs...
+# Bug in oh-my-zsh. If a plugin changes fpath, it is not picked up by compinit because it is run first!1!?
+# Hopefully this will be fixed by one of the refactoring pull requests.
+autoload -U compinit && compinit
 
 # Own theme based on dieter and bira {{{
 
