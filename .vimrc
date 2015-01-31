@@ -96,6 +96,8 @@ source ~/.vimrc.min
             " Bundle 'autoproto.vim'
 
             Bundle 'chase/vim-ansible-yaml'
+
+            " Bundle 'Rykka/InstantRst'
         endif
         if count(g:spf13_bundle_groups, 'tested_not_using')
             " I don‘t really like this behavior
