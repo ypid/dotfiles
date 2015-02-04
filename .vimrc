@@ -848,6 +848,7 @@ source ~/.vimrc.min
             autocmd BufRead,BufNewFile /etc/* if &filetype=='python'|let g:pymode_rope = 0|endif
 
             autocmd BufRead,BufNewFile *ansible/* if &filetype=='yaml'|set filetype=ansible|endif
+            autocmd BufRead,BufNewFile *ansible/* if &filetype==''|set filetype=yaml|endif
 
             " Set language specific stuff {{{
                 autocmd FileType vim setlocal expandtab shiftwidth=4

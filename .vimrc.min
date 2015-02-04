@@ -192,8 +192,8 @@
         noremap <Leader>w <esc>:bNext<CR>
 
         " set the executable bit
-        noremap <Leader>y :w!<CR>:!chmod +x "%"<CR>:quit<CR>
-        inoremap <Leader>y <ESC>:w!<CR>:!chmod +x "%"<CR>:quit<CR>
+        noremap <Leader>y :w!<CR>:!chmod +x "%"<CR>
+        inoremap <Leader>y <ESC>:w!<CR>:!chmod +x "%"<CR>
 
         " noremap <Leader>d :echo strftime("%Y-%m-%d_%H:%M")<CR>
 

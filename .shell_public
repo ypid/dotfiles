@@ -67,6 +67,19 @@ function subnetcalc() {
         /usr/bin/subnetcalc $@ -n
     fi
 }
+
+## https://gist.github.com/CMCDragonkai/62c04977f62037285772
+function sed-keyword-escape {
+    echo $1 | sed -e 's/[]\/$*.^|[]/\\&/g'
+}
+
+function sed-replace-escape {
+    echo $1 | sed -e 's/[\/&]/\\&/g'
+}
+
+function sed-easy {
+    sed -i "s/$(sed-keyword-escape $1)/$(sed-replace-escape $2)/g" $3
+}
 ## }}}
 
 ## Vim stuff {{{
@@ -97,7 +110,7 @@ alias m='mosh'
 if which compdef >/dev/null 2>&1 && which mosh >/dev/null 2>&1; then
     compdef m=mosh
 fi
-alias ssh-keygen='ssh-keygen -b 4048'
+alias ssh-keygen='ssh-keygen -o -b 4096 -a 200 -t rsa'
 
 alias tmux='TERM=screen-256color-bce tmux'
 alias t='tmux'
