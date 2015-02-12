@@ -6,3 +6,4 @@
 --ignore-file=match:\.tex\.backup$
 ## }}}
 --smart-case
+--ignore-case

@@ -188,6 +188,5 @@ fi
 alias xclip-primary-to-clipboard='xclip -out |xclip -in -selection clipboard'
 
 ## TeX and LaTeX {{{
-alias sty2dtx='~/Projekte/src/sty2dtx/sty2dtx.pl'
 alias xgettext='xgettext --copyright-holder="`git config --get user.name` <`git config --get user.email`>" --msgid-bugs-address="`git config --get user.email`"'
 ## }}}

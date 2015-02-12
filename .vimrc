@@ -43,7 +43,7 @@ source ~/.vimrc.min
     " Not often used, not properly tested.
     call add(g:spf13_bundle_groups, 'testing')
     " call add(g:spf13_bundle_groups, 'neocomplcache')
-    " call add(g:spf13_bundle_groups, 'latex')
+    call add(g:spf13_bundle_groups, 'latex')
     call add(g:spf13_bundle_groups, 'javascript')
     " call add(g:spf13_bundle_groups, 'scala')
     " call add(g:spf13_bundle_groups, 'ruby')
@@ -80,9 +80,9 @@ source ~/.vimrc.min
             " nmap μ <Plug>(quickhl-tag-toggle)
             " Shift+Layer3Mod+μ
 
-            let g:yankring_history_dir = '$HOME/.vimswap'
-            Bundle 'YankRing.vim'
-            " Bundle 'maxbrunsfeld/vim-yankstack'
+            " let g:yankring_history_dir = '$HOME/.vimswap'
+            " Bundle 'YankRing.vim'
+            Bundle 'maxbrunsfeld/vim-yankstack'
 
             Bundle 'wellle/tmux-complete.vim'
 
@@ -133,7 +133,8 @@ source ~/.vimrc.min
                 let NERDSpaceDelims = 1
 
                 let g:NERDCustomDelimiters = {
-                    \ 'sshdconfig': { 'left': '#' },
+                    \ 'sshdconfig' : { 'left' : '#' },
+                    \ 'dnsmasq'    : { 'left' : '#' },
                 \ }
 
                 " noremap gcc :call NERDComment('n', 'Toggle')<CR>
@@ -273,6 +274,8 @@ source ~/.vimrc.min
             let g:syntastic_ignore_files = ['\m^/etc/']
             let g:syntastic_check_on_wq = 0
             " Too slow for some big files. I am looking at you opening_hours.js :-( ;-)
+            "
+            let g:syntastic_tex_checkers = ['chktex']
             "
             " Bundle 'Valloric/YouCompleteMe'
             " Much dependencies
@@ -597,6 +600,10 @@ source ~/.vimrc.min
             " The following changes the default filetype back to 'tex':
             let g:tex_flavor='latex'
             imap <Leader>Y <Plug>inoremap_JumpForward
+            inoremap <Leader>C <ESC>:LatexTOC<cr>
+            noremap <Leader>C :LatexTOC<cr>
+
+            Bundle 'LaTeX-Box-Team/LaTeX-Box'
         endif
     " }}}
 
@@ -867,11 +874,9 @@ source ~/.vimrc.min
                 " Use this foldmarker to avoid folds when using Jinja2
                 " templates.
                 autocmd FileType markdown let b:delimitMate_nesting_quotes = ["`"]
-                autocmd FileType markdown setlocal expandtab shiftwidth=2
-                autocmd FileType tex setlocal expandtab shiftwidth=2
-                autocmd FileType c setlocal noexpandtab shiftwidth=4
-                autocmd FileType html setlocal expandtab shiftwidth=2
+                autocmd FileType tex,html,markdown setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
                 autocmd FileType html compiler tidy
+                autocmd FileType c setlocal noexpandtab shiftwidth=4 tabstop=4 softtabstop=4
                 autocmd FileType xml setlocal foldmethod=indent
                 " autocmd FileType xml setlocal foldmethod=syntax " does not work
                 autocmd FileType gitcommit normal gg
@@ -895,6 +900,7 @@ source ~/.vimrc.min
             autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
             " autocmd BufEnter * if expand("%:p") =~ "/.unison/" | lcd | endif
             " Go to home for unison to use file completion easily.
+
             let autocommands_loaded = 1
         endif
         let xml_syntax_folding=1      " XML
