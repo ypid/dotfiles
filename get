@@ -3,7 +3,7 @@
 cd "`dirname "$0"`"
 git submodule update --init --recursive
 
-vim_spell="$HOME/.vim/spell"
+vim_spell=".vim/spell"
 mkdir --parents "$vim_spell"
 for file in {en,de}.utf-8.{spl,sug};do
     if [ ! -e "$vim_spell/$file" ];then
