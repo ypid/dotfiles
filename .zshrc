@@ -108,7 +108,7 @@ plugins+=(zsh-completions)
 # Testing
 
 ## gr {{{
-plugins+=(gr)
+# plugins+=(gr)
 # . <(gr completion)
 # Takes to long.
 ## }}}
