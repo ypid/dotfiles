@@ -107,6 +107,12 @@ plugins+=(zsh-completions)
 
 # Testing
 
+## gr {{{
+plugins+=(gr)
+# . <(gr completion)
+# Takes to long.
+## }}}
+
 # Not tested enough, might be useful
 : <<'END'
 plugins+=(vi-mode)
@@ -141,6 +147,8 @@ END
 # }}}
 
 source "$ZSH/oh-my-zsh.sh"
+
+unalias gr
 
 # Bug in oh-my-zsh. If a plugin changes fpath, it is not picked up by compinit because it is run first!1!?
 # Hopefully this will be fixed by one of the refactoring pull requests.
