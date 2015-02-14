@@ -1,0 +1,4 @@
+#!/bin/bash
+# Execute for other systems which use this configuration.
+
+git config --file .gitconfig commit.gpgsign false
