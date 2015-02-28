@@ -7,3 +7,4 @@
 ## }}}
 --smart-case
 --ignore-case
+--ignore-file=is:LICENSE

@@ -96,8 +96,9 @@ source ~/.vimrc.min
             " Bundle 'autoproto.vim'
 
             Bundle 'chase/vim-ansible-yaml'
-
-            " Bundle 'Rykka/InstantRst'
+            " Bundle 'Glench/Vim-Jinja2-Syntax'
+            " Bundle 'icook/Vim-Jinja2-Syntax'
+            Bundle 'chase/Vim-Jinja2-Syntax'
         endif
         if count(g:spf13_bundle_groups, 'tested_not_using')
             " I don‘t really like this behavior
@@ -139,7 +140,9 @@ source ~/.vimrc.min
 
                 " noremap gcc :call NERDComment('n', 'Toggle')<CR>
                 " noremap <Leader>d :call NERDComment('n', 'Toggle')<CR>
+
                 " noremap <Bar> :call NERDComment("n", "AlignLeft")<cr>
+                " Use <Leader>cb for this.
                 noremap <Bar> :call NERDComment('n', 'Toggle')<cr>
             " }}}
 
@@ -222,6 +225,9 @@ source ~/.vimrc.min
             Bundle 'tpope/vim-markdown'
             " Bundle 'plasticboy/vim-markdown'
             Bundle 'jtratner/vim-flavored-markdown'
+
+            Bundle 'Rykka/riv.vim'
+            " Bundle 'Rykka/InstantRst'
 
             Bundle 'bronson/vim-visual-star-search'
         endif
@@ -345,8 +351,8 @@ source ~/.vimrc.min
                 noremap <Leader>a&  :Tabularize /&<CR>
                 noremap <Leader>a=  :Tabularize /=<CR>
                 noremap <Leader>a-  :Tabularize /-\w*<CR>
-                noremap <Leader>a:  :Tabularize /:<CR>
-                noremap <Leader>az: :Tabularize /:\zs<CR>
+                noremap <Leader>a:  :Tabularize /: /<CR>
+                noremap <Leader>az: :Tabularize /: \zs<CR>
                 noremap <Leader>a,  :Tabularize /,/l0r1<CR>
                 noremap <Leader>a/  :Tabularize /\zs\(\/\/\\|\/\*\)/<CR>
                 noremap <Leader>a"  :Tabularize /"<CR>
@@ -623,6 +629,7 @@ source ~/.vimrc.min
             " }}}
 
             " Bundle 'sukima/xmledit'
+            let xml_syntax_folding=1
 
             " Bundle 'hail2u/vim-css3-syntax'
             " Bundle 'tpope/vim-haml'
@@ -829,6 +836,7 @@ source ~/.vimrc.min
                 autocmd BufRead,BufNewFile /etc/*/apt.conf setlocal filetype=conf
                 autocmd BufRead,BufNewFile /etc/hosts setlocal filetype=conf
                 autocmd BufRead,BufNewFile /etc/NetworkManager/NetworkManager.conf setlocal filetype=conf
+                autocmd BufRead,BufNewFile /usr/share/X11/xkb/* setlocal filetype=xkb
                 autocmd BufRead,BufNewFile $HOME/.ssh/*config* setlocal filetype=sshconfig
                 autocmd BufRead,BufNewFile $HOME/.unison/* setlocal filetype=conf
 
@@ -836,14 +844,18 @@ source ~/.vimrc.min
                 autocmd BufRead,BufNewFile *.mk setlocal filetype=python
 
                 " I already use the "wrong" file suffix for all my LaTeX files
-                autocmd BufRead,BufNewFile *.tex setlocal filetype=tex
+                " autocmd BufRead,BufNewFile *.tex setlocal filetype=tex
                 autocmd BufRead,BufNewFile *.ldf setlocal filetype=tex
+                autocmd BufRead,BufNewFile *.lco setlocal filetype=tex
 
                 " autocmd BufRead,BufNewFile source.list.* setlocal filetype=debsources
                 autocmd BufRead,BufNewFile .gitignore setlocal filetype=conf
 
                 autocmd BufRead,BufNewFile *.nse setlocal filetype=lua
-                autocmd BufRead,BufNewFile /usr/share/X11/xkb/* setlocal filetype=xkb
+
+                autocmd BufRead,BufNewFile *ansible/* if &filetype=='yaml'|set filetype=ansible|endif
+                autocmd BufRead,BufNewFile *ansible/* if &filetype==''|set filetype=yaml|endif
+                autocmd BufReadPost *.j2 setlocal filetype=jinja
             " }}}
 
             autocmd BufWritePre /tmp/*  setlocal noundofile
@@ -853,9 +865,6 @@ source ~/.vimrc.min
 
             autocmd BufRead,BufNewFile /etc/* if &filetype=='python'|let g:pymode_lint = 0|endif
             autocmd BufRead,BufNewFile /etc/* if &filetype=='python'|let g:pymode_rope = 0|endif
-
-            autocmd BufRead,BufNewFile *ansible/* if &filetype=='yaml'|set filetype=ansible|endif
-            autocmd BufRead,BufNewFile *ansible/* if &filetype==''|set filetype=yaml|endif
 
             " Set language specific stuff {{{
                 autocmd FileType vim setlocal expandtab shiftwidth=4
@@ -870,15 +879,20 @@ source ~/.vimrc.min
                 if count(g:spf13_bundle_groups, 'python')
                     autocmd FileType python let g:syntastic_check_on_wq = 0
                 endif
-                autocmd FileType ansible setlocal foldmarker=(((,)))
+
+                autocmd FileType ansible,jinja setlocal foldmarker=(((,)))
                 " Use this foldmarker to avoid folds when using Jinja2
                 " templates.
-                autocmd FileType markdown let b:delimitMate_nesting_quotes = ["`"]
-                autocmd FileType tex,html,markdown setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
-                autocmd FileType html compiler tidy
+                " autocmd Syntax jinja syntax enable
+
                 autocmd FileType c setlocal noexpandtab shiftwidth=4 tabstop=4 softtabstop=4
+
+                autocmd FileType html compiler tidy
                 autocmd FileType xml setlocal foldmethod=indent
                 " autocmd FileType xml setlocal foldmethod=syntax " does not work
+                autocmd FileType markdown let b:delimitMate_nesting_quotes = ["`"]
+                autocmd FileType tex,html,markdown,rst setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
+
                 autocmd FileType gitcommit normal gg
                 " au FileType {c,cpp} au BufWritePost <buffer> silent ! [ -e tags ] &&
                     " \ ( awk -F'\t' '$2\!="%:gs/'/'\''/"{print}' tags ; ctags -f- '%:gs/'/'\''/' )
@@ -889,7 +903,7 @@ source ~/.vimrc.min
             " autocmd Syntax * RainbowParenthesesLoadRound " default
             autocmd VimEnter,BufRead,BufNewFile * if exists(":RainbowParenthesesLoadSquare")|exe "RainbowParenthesesLoadSquare"|endif
             autocmd VimEnter,BufRead,BufNewFile * if exists(":RainbowParenthesesLoadBraces")|exe "RainbowParenthesesLoadBraces"|endif
-            " autocmd BufRead * if exists(":DetectIndent")|exe "DetectIndent"|endif
+            autocmd BufRead * if exists(":DetectIndent")|exe "DetectIndent"|endif
             " autocmd BufRead,BufNewFile * call SetIndentWidth()
             " autocmd BufWritePost * echo &ff
             autocmd QuickFixCmdPost make cwindow
@@ -903,7 +917,6 @@ source ~/.vimrc.min
 
             let autocommands_loaded = 1
         endif
-        let xml_syntax_folding=1      " XML
     endif
 " }}}
 
