@@ -250,22 +250,25 @@ Shift+Ctrl+y  | Redo          | Yes            | Just easier to reach
 
 See the manual for the default shortcuts. I added my own which I think are more convenient (I left the original onces pretty much untouched). Note that I make have use of Shift + letter mappings. This seems to break the RenameOnly function [currently](http://doublecmd.sourceforge.net/mantisbt/view.php?id=973).
 
+#### Name spaces
+
+* Ctrl + letter: File navigation and more
+
 #### Mutable
 Shortcut      | Function       | Left hand only | Comment
 ------------- | -------------  | -------------  | -------------
 Super+m       | Rename         | Yes            |
-Super+r       | RenameOnly     | Not really     | ;
+Ctrl+p        | RenameOnly     | Not really     |
 Shift+Ctrl+r  | MultiRename    | Not really     |
-Shift+c       | Copy           | No             |
-Shift+v       | CopySamePanel  | No             |
+Ctrl+Y        | Copy           | No             |
+Ctrl+Shift+V  | CopySamePanel  | No             |
 Ctrl+c        | Symlink        | Yes            |
-Shift+x       | FileProperties | Yes            |
-Ctrl+m        | MakeDir        | Yes            |
+Alt+Enter     | FileProperties | Yes            |
+Shift+r       | MakeDir        | Yes            |
 Ctrl+o        | ShellExecute   | Yes            | Open
-Ctrl+Alt+o    | ContextMenu    | Yes            | Open with
-Shift+E       | Edit           | No             |
+Shirt+Alt+o   | ContextMenu    | Yes            | Open with
+Ctrl+E        | Edit           | No             |
 Shift+W       | EditNew        | No             |
-
 
 #### Immutable
 Shortcut      | Function               | Left hand only                | Comment
@@ -273,55 +276,72 @@ Shortcut      | Function               | Left hand only                | Comment
 /             | Quick search           | Yes (maybe copy paste search) | Not used. Configured DC so that every letter typed will open the quick filter.
 Ctrl+f        | QuickFilter            | Not really                    | filter=toggle
 Ctrl+s        | Search                 | Yes                           |
-Super+s       | CountDirContent        | Yes                           |
+Ctrl+Shift+m  | CountDirContent        | Yes                           |
+Ctrl+.        | ShowSysFiles           | Nice to have                  |
+Shift+Ctrl+s  | RunTerm                | Not really                    | Like Ctrl+Super+s but with the current directory.
+Ctrl+l        | FocusCmdLine           | Not really                    | Was mapped to Shift+F2 but Ctrl+l is more convenient because it works be default in firefox. Overwrites CalculateSpace in DC.
+Shift+Alt+x   | MarkCurrentExtension   | Nice to have                  |
+Shift+Alt+y   | UnmarkCurrentExtension | Nice to have                  |
+-             | MarkMinus              | Nice to have                  |
+Ctrl+B        | MarkPlus               | Nice to have                  |
+Ctrl+Shift+x  | CopyNamesToClip        | Nice to have                  |
+Ctrl+Shift+c  | CopyFullNamesToClip    | Nice to have                  |
 Super+j       | SortByName             | Nice to have                  |
 Super+k       | SortByExt              | Nice to have                  |
 Super+l       | SortBySize             | Nice to have                  |
 Super+ö       | SortByDate             | Nice to have                  |
 Super+ä       | SortByAttr             | Nice to have                  |
-Super+q       | QuickView              | Yes                           |
-Super+u       | BriefView              | Nice to have                  |
-Super+i       | ColumnsView            | Nice to have                  |
-Super+o       | ThumbnailsView         | Nice to have                  |
-Shift+Ctrl+s  | RunTerm                | Not really                    | Like Ctrl+Super+s but with the current directory.
-Ctrl+l        | FocusCmdLine           | Not really                    | Was mapped to Shift+F2 but Ctrl+l is more convenient because it works be default in firefox. Overwrites CalculateSpace in DC.
-Shift+Alt+x   | MarkCurrentExtension   | Nice to have                  |
-Shift+Alt+y   | UnmarkCurrentExtension | Nice to have                  |
-Shift+Alt+u   | CopyNamesToClip        | Nice to have                  |
-Shift+Ctrl+u  | PanelsSplitterPerPos   | Nice to have                  | splitpct=50
-Shift+Ctrl+i  | PanelsSplitterPerPos   | Nice to have                  | splitpct=70
-Shift+Ctrl+o  | PanelsSplitterPerPos   | Nice to have                  | splitpct=100
+Ctrl+Shift+n  | QuickView              | Nice to have                  |
+Ctrl+Shift+j  | ColumnsView            | Nice to have                  |
+Ctrl+Shift+k  | BriefView              | Nice to have                  |
+Ctrl+Shift+l  | ThumbnailsView         | Nice to have                  |
+Ctrl+Shift+u  | PanelsSplitterPerPos   | Nice to have                  | splitpct=50
+Ctrl+Shift+i  | PanelsSplitterPerPos   | Nice to have                  | splitpct=70
+Ctrl+Shift+o  | PanelsSplitterPerPos   | Nice to have                  | splitpct=100
+Ctrl+Shift+h  | HorizontalFilePanels   | Nice to have                  |
 Shift+f       | DirHotList             | Not really                    |
+Ctrl+h        | DirHistory             | Not really                    |
 Shift+h       | ShowCmdLineHistory     | Not really                    |
-Shift+n       | OpenDirInNewTab        | Nice to have                  |
+Ctrl+N        | OpenDirInNewTab        | Nice to have                  |
+Ctrl+1        | NewTab                 | Nice to have                  |
 Shift+a       | TransferLeft           | Nice to have                  |
 Shift+d       | TransferRight          | Nice to have                  |
 Super+h       | LeftOpenDrives         | Nice to have                  |
 Super+n       | RightOpenDrives        | Nice to have                  |
-Super+ü       | ChangeDirToRoot        | Nice to have                  |
+Ctrl+,        | ChangeDirToHome        | Nice to have                  |
+Shift+Tab     | ChangeDirToRoot        | Nice to have                  |
 
 #### Assumed to be default
 Mappings which are default or which should be default.
 
 Shortcut      | Function       | Left hand only | Comment
 ------------- | -------------  | -------------  | -------------
-Ctrl+a        | MarkAll        | Yes            |
-Shift+Ctrl+a  | UnmarkAll      | Yes            | Default behavior from Gimp.
+Ctrl+a        | MarkMarkAll    | Yes            |
+Shift+Ctrl+a  | MarkUnmarkAll  | Yes            | Default behavior from Gimp.
+Ctrl+i        | MarkInvert     | Nice to have   | Default behavior from Gimp.
 Ctrl+d        | Delete (Trash) | Yes            |
 Shift+Ctrl+d  | Delete         | Yes            |
-Tab           | Switch between left and right file list | Nice to have                  |
 
 Note: Double Commander works quite nicely together with [Neo2][] …
 
 #### Free shortcuts
 
-Use more shortcuts with WinKey modifier :)
-
+* Shift+Alt+
+* Ctrl+Shift+
 * Alt+X
-* Ctrl+Alt+[a-z], was dedicated to Window manager …
 * Ctrl+G
 * Ctrl+T
 * Ctrl+E
+* Ctrl+Tab
+* Ctrl+B (default)
+* Shift+Alt+B
+* Ctrl+Z
+* Ctrl+Alt+,
+* Shift+Tab
+
+#### Does not work
+
+* Ctrl+Shift+,
 
 ## Terminal programs
 
