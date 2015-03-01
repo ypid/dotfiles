@@ -854,6 +854,7 @@ source ~/.vimrc.min
                 autocmd BufRead,BufNewFile *.nse setlocal filetype=lua
 
                 autocmd BufRead,BufNewFile *ansible/* if &filetype=='yaml'|set filetype=ansible|endif
+                autocmd BufRead,BufNewFile *ansible/*_vars/* set filetype=yaml
                 autocmd BufRead,BufNewFile *ansible/* if &filetype==''|set filetype=yaml|endif
                 autocmd BufReadPost *.j2 setlocal filetype=jinja
             " }}}
@@ -880,7 +881,7 @@ source ~/.vimrc.min
                     autocmd FileType python let g:syntastic_check_on_wq = 0
                 endif
 
-                autocmd FileType ansible,jinja setlocal foldmarker=(((,)))
+                autocmd FileType ansible,jinja,yaml setlocal foldmarker=(((,)))
                 " Use this foldmarker to avoid folds when using Jinja2
                 " templates.
                 " autocmd Syntax jinja syntax enable
