@@ -19,9 +19,12 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
+# List directory contents
+alias lsa='ls -lah'
+alias l='ls -lah'
+# alias ll='ls -lh' # Use l
+alias la='ls -lAh'
+
 alias bc='bc -q'
 alias ,='popd'
 alias ts='date "+%F_%T"'

@@ -35,7 +35,6 @@ Which shortcuts should be used where? – Some thoughts …
 * Shift+Super: Dedicated for AutoKey
     * Can also be used over RDP on Windows machines without interfering with MS Windows mappings of the Super key.
 
-
 ### Free
 
 * Super (WinKey): Almost forgotten :)
@@ -46,7 +45,17 @@ Which shortcuts should be used where? – Some thoughts …
 
 ### No goes
 
-* Never map Alt+Letter where Letter is a Character which is located on the left of a qwertz keyboard.
+* Never map Alt+Letter where letter is a character which is located on the left of a QWERTZ keyboard.
+
+## Shortcut key order
+
+To search for shortcuts, it is important to maintain a unique naming pattern. The following is which I use in this document. It is pretty much based on the order of [Double Commander]:
+
+* Ctrl
+* Shift
+* Super
+* Alt
+* `Non modifier keys` (letter, written in upper case for readability)
 
 ## Free shortcuts
 List of free shortcuts (they may have a default mapping but there are better shortcuts for those actions so that the shortcuts are available to be mapped to a different action).
@@ -72,10 +81,10 @@ Shift+Ctrl+u  | Enter Unicode hex value | No             |
 
 Shortcut                              | Function                                  | Left hand only | Comment
 -------------                         | -------------                             | -------------  | -------------
-Shift+Alt+a                           | Move window one workspace to the left     | Yes            | Currently not used, just defined to be consistent.
-Shift+Alt+d                           | Move window one workspace to the right    | Yes            | Currently not used, just defined to be consistent.
-Shift+Alt+w                           | Move window one workspace up              | Yes            |
-Shift+Alt+s                           | Move window one workspace down            | Yes            |
+Shift+Alt+A                           | Move window one workspace to the left     | Yes            | Currently not used, just defined to be consistent.
+Shift+Alt+D                           | Move window one workspace to the right    | Yes            | Currently not used, just defined to be consistent.
+Shift+Alt+W                           | Move window one workspace up              | Yes            |
+Shift+Alt+S                           | Move window one workspace down            | Yes            |
 Alt+[Level5 Shift][special-keys]      | Switch windows                            | Of course      | Easier to reach than Alt-Tab
 Super+j                               | Switch to next windows                    | No             | See [shellshape][].
 Super+k                               | Switch to previous windows                | No             | See [shellshape][].
@@ -147,6 +156,8 @@ Shift+Ctrl+Alt+o | Launch program `eject`                     | No             |
 Ctrl+Alt+c       | Launch [script][suspend-script] to suspend | Yes            |
 Ctrl+Alt+v       | `poweroff`                                 | Yes            |
 
+## GUI applications
+
 ### Clementine
 
 Configured in clementine, but they apply globally.
@@ -162,8 +173,6 @@ Ctrl+Alt+u    | Rate the current song 2 stars | No             |
 Ctrl+Alt+i    | Rate the current song 3 stars | No             |
 Ctrl+Alt+o    | Rate the current song 4 stars | No             |
 Ctrl+Alt+p    | Rate the current song 5 stars | No             |
-
-## GUI applications
 
 ### Windows and tabs
 
@@ -262,13 +271,13 @@ Ctrl+p        | RenameOnly     | Not really     |
 Shift+Ctrl+r  | MultiRename    | Not really     |
 Ctrl+Y        | Copy           | No             |
 Ctrl+Shift+V  | CopySamePanel  | No             |
-Ctrl+c        | Symlink        | Yes            |
+Shift+Alt+E   | Symlink        | Yes            |
 Alt+Enter     | FileProperties | Yes            |
-Shift+r       | MakeDir        | Yes            |
+Ctrl+M        | MakeDir        | Yes            |
 Ctrl+o        | ShellExecute   | Yes            | Open
 Shirt+Alt+o   | ContextMenu    | Yes            | Open with
 Ctrl+E        | Edit           | No             |
-Shift+W       | EditNew        | No             |
+Ctrl+Shift+E  | EditNew        | No             |
 
 #### Immutable
 Shortcut      | Function               | Left hand only                | Comment
@@ -276,40 +285,39 @@ Shortcut      | Function               | Left hand only                | Comment
 /             | Quick search           | Yes (maybe copy paste search) | Not used. Configured DC so that every letter typed will open the quick filter.
 Ctrl+f        | QuickFilter            | Not really                    | filter=toggle
 Ctrl+s        | Search                 | Yes                           |
-Ctrl+Shift+m  | CountDirContent        | Yes                           |
+Shift+Ctrl+m  | CountDirContent        | Yes                           |
+Shift+Ctrl+U
 Ctrl+.        | ShowSysFiles           | Nice to have                  |
 Shift+Ctrl+s  | RunTerm                | Not really                    | Like Ctrl+Super+s but with the current directory.
-Ctrl+l        | FocusCmdLine           | Not really                    | Was mapped to Shift+F2 but Ctrl+l is more convenient because it works be default in firefox. Overwrites CalculateSpace in DC.
+Ctrl+l        | FocusCmdLine           | Not really                    | Was mapped to Shift+F2 but Ctrl+l is more convenient because it works by default in firefox. Overwrites CalculateSpace in DC.
 Shift+Alt+x   | MarkCurrentExtension   | Nice to have                  |
 Shift+Alt+y   | UnmarkCurrentExtension | Nice to have                  |
 -             | MarkMinus              | Nice to have                  |
 Ctrl+B        | MarkPlus               | Nice to have                  |
 Ctrl+Shift+x  | CopyNamesToClip        | Nice to have                  |
 Ctrl+Shift+c  | CopyFullNamesToClip    | Nice to have                  |
-Super+j       | SortByName             | Nice to have                  |
-Super+k       | SortByExt              | Nice to have                  |
-Super+l       | SortBySize             | Nice to have                  |
-Super+ö       | SortByDate             | Nice to have                  |
-Super+ä       | SortByAttr             | Nice to have                  |
-Ctrl+Shift+n  | QuickView              | Nice to have                  |
-Ctrl+Shift+j  | ColumnsView            | Nice to have                  |
-Ctrl+Shift+k  | BriefView              | Nice to have                  |
-Ctrl+Shift+l  | ThumbnailsView         | Nice to have                  |
-Ctrl+Shift+u  | PanelsSplitterPerPos   | Nice to have                  | splitpct=50
-Ctrl+Shift+i  | PanelsSplitterPerPos   | Nice to have                  | splitpct=70
-Ctrl+Shift+o  | PanelsSplitterPerPos   | Nice to have                  | splitpct=100
-Ctrl+Shift+h  | HorizontalFilePanels   | Nice to have                  |
+Super+J       | SortByName             | Nice to have                  |
+Super+K       | SortByExt              | Nice to have                  |
+Super+L       | SortBySize             | Nice to have                  |
+Super+Ö       | SortByDate             | Nice to have                  |
+Super+Ä       | SortByAttr             | Nice to have                  |
+Ctrl+Shift+N  | QuickView              | Nice to have                  |
+Ctrl+Shift+J  | ColumnsView            | Nice to have                  |
+Ctrl+Shift+K  | BriefView              | Nice to have                  |
+Ctrl+Shift+L  | ThumbnailsView         | Nice to have                  |
+Ctrl+Shift+U  | PanelsSplitterPerPos   | Nice to have                  | splitpct=50
+Ctrl+Shift+I  | PanelsSplitterPerPos   | Nice to have                  | splitpct=70
+Ctrl+Shift+O  | PanelsSplitterPerPos   | Nice to have                  | splitpct=100
+Ctrl+Shift+H  | HorizontalFilePanels   | Nice to have                  |
 Shift+f       | DirHotList             | Not really                    |
 Ctrl+h        | DirHistory             | Not really                    |
-Shift+h       | ShowCmdLineHistory     | Not really                    |
+Ctrl+Alt+,    | ShowCmdLineHistory     | Not really                    |
 Ctrl+N        | OpenDirInNewTab        | Nice to have                  |
 Ctrl+1        | NewTab                 | Nice to have                  |
-Shift+a       | TransferLeft           | Nice to have                  |
-Shift+d       | TransferRight          | Nice to have                  |
 Super+h       | LeftOpenDrives         | Nice to have                  |
 Super+n       | RightOpenDrives        | Nice to have                  |
 Ctrl+,        | ChangeDirToHome        | Nice to have                  |
-Shift+Tab     | ChangeDirToRoot        | Nice to have                  |
+Ctrl+Tab      | ChangeDirToRoot        | Nice to have                  |
 
 #### Assumed to be default
 Mappings which are default or which should be default.
@@ -322,22 +330,21 @@ Ctrl+i        | MarkInvert     | Nice to have   | Default behavior from Gimp.
 Ctrl+d        | Delete (Trash) | Yes            |
 Shift+Ctrl+d  | Delete         | Yes            |
 
-Note: Double Commander works quite nicely together with [Neo2][] …
+Note: [Double Commander] works quite nicely together with [Neo2][] …
 
 #### Free shortcuts
 
-* Shift+Alt+
 * Ctrl+Shift+
+* Shift+Alt+
 * Alt+X
 * Ctrl+G
 * Ctrl+T
 * Ctrl+E
-* Ctrl+Tab
-* Ctrl+B (default)
 * Shift+Alt+B
-* Ctrl+Z
-* Ctrl+Alt+,
 * Shift+Tab
+* Shift+Alt+Enter (double)
+* Ctrl+B (default)
+* Ctrl+Z (default)
 
 #### Does not work
 
@@ -369,6 +376,7 @@ Normal mode:
 
 [VimFx]: https://github.com/akhodakivskiy/VimFx
 [special-keys]: #special-keys
+[Double Commander]: #double-commander-dc
 [.vimrc]: /.vimrc
 [.tmux.conf]: /.tmux.conf
 [suspend-script]: https://github.com/ypid/scripts/blob/master/suspend-via-gnome
