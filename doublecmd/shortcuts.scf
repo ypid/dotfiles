@@ -156,6 +156,10 @@
         <Command>cm_Wipe</Command>
       </Hotkey>
       <Hotkey>
+        <Shortcut>Ctrl+Shift+Space</Shortcut>
+        <Command>cm_CalculateSpace</Command>
+      </Hotkey>
+      <Hotkey>
         <Shortcut>Ctrl+Shift+M</Shortcut>
         <Command>cm_CountDirContent</Command>
       </Hotkey>
@@ -289,11 +293,6 @@
       <Hotkey>
         <Shortcut>WinKey+M</Shortcut>
         <Command>cm_Rename</Command>
-        <Control>Files Panel</Control>
-      </Hotkey>
-      <Hotkey>
-        <Shortcut>Ctrl+C</Shortcut>
-        <Command>cm_SymLink</Command>
         <Control>Files Panel</Control>
       </Hotkey>
       <Hotkey>

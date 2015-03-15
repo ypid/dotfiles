@@ -280,44 +280,44 @@ Ctrl+E        | Edit           | No             |
 Ctrl+Shift+E  | EditNew        | No             |
 
 #### Immutable
-Shortcut      | Function               | Left hand only                | Comment
-------------- | -------------          | -------------                 | -------------
-/             | Quick search           | Yes (maybe copy paste search) | Not used. Configured DC so that every letter typed will open the quick filter.
-Ctrl+F        | QuickFilter            | Not really                    | filter=toggle
-Ctrl+S        | Search                 | Yes                           |
-Shift+Ctrl+M  | CountDirContent        | Yes                           |
-Shift+Ctrl+U
-Ctrl+.        | ShowSysFiles           | Nice to have                  |
-Shift+Ctrl+S  | RunTerm                | Not really                    | Like Ctrl+Super+s but with the current directory.
-Ctrl+L        | FocusCmdLine           | Not really                    | Was mapped to Shift+F2 but Ctrl+l is more convenient because it works by default in firefox. Overwrites CalculateSpace in DC.
-Shift+Alt+X   | MarkCurrentExtension   | Nice to have                  |
-Shift+Alt+Y   | UnmarkCurrentExtension | Nice to have                  |
--             | MarkMinus              | Nice to have                  |
-Ctrl+B        | MarkPlus               | Nice to have                  |
-Ctrl+Shift+X  | CopyNamesToClip        | Nice to have                  |
-Ctrl+Shift+C  | CopyFullNamesToClip    | Nice to have                  |
-Super+J       | SortByName             | Nice to have                  |
-Super+K       | SortByExt              | Nice to have                  |
-Super+L       | SortBySize             | Nice to have                  |
-Super+Ö       | SortByDate             | Nice to have                  |
-Super+Ä       | SortByAttr             | Nice to have                  |
-Ctrl+Shift+N  | QuickView              | Nice to have                  |
-Ctrl+Shift+J  | ColumnsView            | Nice to have                  |
-Ctrl+Shift+K  | BriefView              | Nice to have                  |
-Ctrl+Shift+L  | ThumbnailsView         | Nice to have                  |
-Ctrl+Shift+U  | PanelsSplitterPerPos   | Nice to have                  | splitpct=50
-Ctrl+Shift+I  | PanelsSplitterPerPos   | Nice to have                  | splitpct=70
-Ctrl+Shift+O  | PanelsSplitterPerPos   | Nice to have                  | splitpct=100
-Ctrl+Shift+H  | HorizontalFilePanels   | Nice to have                  |
-Shift+F       | DirHotList             | Not really                    |
-Ctrl+H        | DirHistory             | Not really                    |
-Ctrl+Alt+,    | ShowCmdLineHistory     | Not really                    |
-Ctrl+N        | OpenDirInNewTab        | Nice to have                  |
-Ctrl+1        | NewTab                 | Nice to have                  |
-Super+H       | LeftOpenDrives         | Nice to have                  |
-Super+N       | RightOpenDrives        | Nice to have                  |
-Ctrl+,        | ChangeDirToHome        | Nice to have                  |
-Ctrl+Tab      | ChangeDirToRoot        | Nice to have                  |
+Shortcut         | Function               | Left hand only                | Comment
+-------------    | -------------          | -------------                 | -------------
+/                | Quick search           | Yes (maybe copy paste search) | Not used. Configured DC so that every letter typed will open the quick filter.
+Ctrl+F           | QuickFilter            | Not really                    | filter=toggle
+Ctrl+S           | Search                 | Yes                           |
+Ctrl+Shift+M     | CountDirContent        | Yes                           |
+Ctrl+Shift+Space | CalculateSpace         | Nice to have                  |
+Ctrl+.           | ShowSysFiles           | Nice to have                  |
+Ctrl+Shift+S     | RunTerm                | Not really                    | Like Ctrl+Super+s but with the current directory.
+Ctrl+L           | FocusCmdLine           | Not really                    | Was mapped to Shift+F2 but Ctrl+l is more convenient because it works by default in firefox. Overwrites default CalculateSpace in DC.
+Shift+Alt+X      | MarkCurrentExtension   | Nice to have                  |
+Shift+Alt+Y      | UnmarkCurrentExtension | Nice to have                  |
+-                | MarkMinus              | Nice to have                  |
+Ctrl+B           | MarkPlus               | Nice to have                  |
+Ctrl+Shift+X     | CopyNamesToClip        | Nice to have                  |
+Ctrl+Shift+C     | CopyFullNamesToClip    | Nice to have                  |
+Super+J          | SortByName             | Nice to have                  |
+Super+K          | SortByExt              | Nice to have                  |
+Super+L          | SortBySize             | Nice to have                  |
+Super+Ö          | SortByDate             | Nice to have                  |
+Super+Ä          | SortByAttr             | Nice to have                  |
+Ctrl+Shift+N     | QuickView              | Nice to have                  |
+Ctrl+Shift+J     | ColumnsView            | Nice to have                  |
+Ctrl+Shift+K     | BriefView              | Nice to have                  |
+Ctrl+Shift+L     | ThumbnailsView         | Nice to have                  |
+Ctrl+Shift+U     | PanelsSplitterPerPos   | Nice to have                  | splitpct=50
+Ctrl+Shift+I     | PanelsSplitterPerPos   | Nice to have                  | splitpct=70
+Ctrl+Shift+O     | PanelsSplitterPerPos   | Nice to have                  | splitpct=100
+Ctrl+Shift+H     | HorizontalFilePanels   | Nice to have                  |
+Shift+F          | DirHotList             | Not really                    |
+Ctrl+H           | DirHistory             | Not really                    |
+Ctrl+Alt+,       | ShowCmdLineHistory     | Not really                    |
+Ctrl+N           | OpenDirInNewTab        | Nice to have                  |
+Ctrl+1           | NewTab                 | Nice to have                  |
+Super+H          | LeftOpenDrives         | Nice to have                  |
+Super+N          | RightOpenDrives        | Nice to have                  |
+Ctrl+,           | ChangeDirToHome        | Nice to have                  |
+Ctrl+Tab         | ChangeDirToRoot        | Nice to have                  |
 
 #### Assumed to be default
 Mappings which are default or which should be default.
