@@ -59,9 +59,6 @@ function md() {
 function run-c() {
     echo "main(){ $@ }" | tcc -run -
 }
-function gpg-load-all-signing-keys() {
-    gpg --list-sigs "$1" | perl -pe 's/.*(\w{8}) .*/$1/'|while read keyid; do gpg --recv-keys "$keyid"; done
-}
 
 function subnetcalc() {
     if [[ $# == 0 ]]; then
@@ -103,7 +100,7 @@ alias ,r='vi'
 # alias less='vim -c "w! /tmp/.vimpager" -'
 ## }}}
 
-ssh_only_parms="-o PubkeyAuthentication=no -o UserKnownHostsFile=$HOME/.ssh/tmp_known_hosts"
+ssh_only_parms="-o PubkeyAuthentication=no -o MACs=hmac-sha2-512,hmac-sha2-256,hmac-sha1-96,hmac-sha1,hmac-md5 -o UserKnownHostsFile=$HOME/.ssh/tmp_known_hosts"
 alias sshfs='sshfs -o transform_symlinks'
 alias rsync-only-pw="rsync -e \"ssh $ssh_only_parms\""
 alias ssh-only-pw="ssh $ssh_only_parms"
@@ -177,6 +174,8 @@ alias percent-decode='python -c "import urllib, sys; print urllib.unquote(sys.ar
 if which ack-grep >/dev/null 2>&1; then
     alias ack='ack-grep'
 fi
+
+alias badblocks='echo "Use badblocks_and_secure_erase."'
 
 alias ass='wajig statussearch'
 alias as='apt-cache search' ## Much faster. I normally don’t need to know if the thing is installed, respectively I can check that later with aptitude install.
