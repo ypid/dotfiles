@@ -114,7 +114,7 @@ alias ssh-keygen='ssh-keygen -o -b 4096 -a 200 -t rsa'
 
 alias tmux='TERM=screen-256color-bce tmux'
 alias t='tmux'
-alias f='tmux last-window'
+# alias f='tmux last-window' ## Use prefix + Ctrl+S because it will also work in Vim or if another program is running in foreground.
 alias h='htop'
 alias '*'='dict'
 alias con='ping -c 1 -w 2 heise.de'

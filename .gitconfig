@@ -7,8 +7,11 @@
 	branch = auto
 [pack]
 	threads = 0
+[diff]
+	; wordRegex = [[:alnum:]_]+|[^[:alnum:]_ ]+
 [alias]
 	wd = diff --color-words
+	wdd = diff --ignore-space-at-eol --ignore-space-change --ignore-all-space --ignore-blank-lines --color-words
 	re = remote -v
 	cil = commit --reedit-message=HEAD --reset-author
 	cii = commit --all -m 'Initial commit.'

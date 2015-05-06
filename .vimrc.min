@@ -223,6 +223,17 @@
         endfunction
         nnoremap <silent> <Leader>am :call AppendModeline()<CR>
 
+        function! SwitchSourceHeader()
+            "update!
+            if (expand ("%:e") == "cpp")
+                find %:t:r.h
+            else
+                find %:t:r.cpp
+            endif
+        endfunction
+
+        nmap <Leader>fs :call SwitchSourceHeader()<CR>
+
         " nnoremap <silent> <Leader>ad :r!date<CR>
 
         " Copy the hole puffer to primary system clipboard, without the
@@ -233,6 +244,21 @@
         " Shift+Layer3Mod+c
 
         noremap <silent> <Leader>tp :split<CR>:resize 6<CR>hh<C-]><c-w><c-k>
+
+        function! AppendFoldMarker(fold)
+            if (a:fold == "open")
+                silent! substitute#[^*][^/]\zs\s\?$# /* {{{ */#
+            else
+                silent! substitute#[^*][^/]\zs\s\?$# /* }}} */#
+            endif
+            echo
+            nohlsearch
+        endfunction
+
+        nnoremap <Leader>fa :call AppendFoldMarker('open')<cr>
+        inoremap <Leader>fa <ESC>:call AppendFoldMarker('open')<cr>
+        nnoremap <Leader>fj :call AppendFoldMarker('close')<cr>
+        inoremap <Leader>fj <ESC>:call AppendFoldMarker('close')<cr>;
     " }}}
 
     " Other mappings {{{

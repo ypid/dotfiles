@@ -203,8 +203,16 @@ The keystrokes are intended for the application and not to be trapped by the win
 Shortcut      | Function        | Left hand only | Comment
 ------------- | -------------   | -------------  | -------------
 Shift+Super+V | enter           | Yes            | Emit enter. If AltGr+v does not work (unfortunately AltGr can currently not be used in autokey).
-Shift+Super+F | F11             | Yes            | Emit F11. Causes most applications to go in full screen.
+Shift+Super+m |                 | Yes            | Emits F1. Neo2 numbers.
+Shift+Super+, |                 | Yes            | Emits F2. Neo2 numbers.
+Shift+Super+. |                 | Yes            | Emits F3. Neo2 numbers.
+Shift+Super+j |                 | Yes            | Emits F4. Neo2 numbers.
 Shift+Super+R | Reload          | Yes            | Emits F5. Most applications will either reload or go to presentation mode.
+Shift+Super+l |                 | Yes            | Emits F6. Neo2 numbers.
+Shift+Super+u |                 | Yes            | Emits F7. Neo2 numbers.
+Shift+Super+i |                 | Yes            | Emits F8. Neo2 numbers.
+Shift+Super+o |                 | Yes            | Emits F9. Neo2 numbers.
+Shift+Super+F | F11             | Yes            | Emits F11. Causes most applications to go in full screen.
 Alt+M         | Switch to tab 1 | No             | See [Neo2 layer4][Neo2]. Maybe blocks the use of Alt+[a-z]. I hope that most applications use letters which would be on the left side of a qwertz keyboard.
 Alt+,         | Switch to tab 2 | No             |
 Alt+.         | Switch to tab 3 | No             |
@@ -266,14 +274,14 @@ See the manual for the default shortcuts. I added my own which I think are more 
 #### Mutable
 Shortcut      | Function       | Left hand only | Comment
 ------------- | -------------  | -------------  | -------------
-Super+M       | Rename         | Yes            |
+Ctrl+M        | Rename         | Yes            |
 Ctrl+P        | RenameOnly     | Not really     |
 Shift+Ctrl+R  | MultiRename    | Not really     |
 Ctrl+Y        | Copy           | No             |
 Ctrl+Shift+V  | CopySamePanel  | No             |
 Shift+Alt+E   | Symlink        | Yes            |
 Alt+Enter     | FileProperties | Yes            |
-Ctrl+M        | MakeDir        | Yes            |
+Super+M       | MakeDir        | Yes            |
 Ctrl+O        | ShellExecute   | Yes            | Open
 Shirt+Alt+O   | ContextMenu    | Yes            | Open with
 Ctrl+E        | Edit           | No             |
@@ -289,7 +297,7 @@ Ctrl+Shift+M     | CountDirContent        | Yes                           |
 Ctrl+Shift+Space | CalculateSpace         | Nice to have                  |
 Ctrl+.           | ShowSysFiles           | Nice to have                  |
 Ctrl+Shift+S     | RunTerm                | Not really                    | Like Ctrl+Super+s but with the current directory.
-Ctrl+L           | FocusCmdLine           | Not really                    | Was mapped to Shift+F2 but Ctrl+l is more convenient because it works by default in firefox. Overwrites default CalculateSpace in DC.
+Ctrl+L           | FocusCmdLine           | Not really                    | Was mapped to Shift+F2 but Ctrl+l is more convenient because it works by default in Firefox. Overwrites default CalculateSpace in DC.
 Shift+Alt+X      | MarkCurrentExtension   | Nice to have                  |
 Shift+Alt+Y      | UnmarkCurrentExtension | Nice to have                  |
 -                | MarkMinus              | Nice to have                  |
@@ -314,6 +322,8 @@ Ctrl+H           | DirHistory             | Not really                    |
 Ctrl+Alt+,       | ShowCmdLineHistory     | Not really                    |
 Ctrl+N           | OpenDirInNewTab        | Nice to have                  |
 Ctrl+1           | NewTab                 | Nice to have                  |
+Ctrl+U           | Exchange               | Nice to have                  |
+Alt+Z            | TargetEqualSource      | Nice to have                  |
 Super+H          | LeftOpenDrives         | Nice to have                  |
 Super+N          | RightOpenDrives        | Nice to have                  |
 Ctrl+,           | ChangeDirToHome        | Nice to have                  |
@@ -349,6 +359,26 @@ Note: [Double Commander] works quite nicely together with [Neo2][] …
 #### Does not work
 
 * Ctrl+Shift+,
+
+### Libreoffice
+
+#### Libreoffice Calc
+
+Shortcut      | Function                              | Left hand only | Comment
+------------- | -------------                         | -------------  | -------------
+Shift+Ctrl+X  | Format → Optimal Column Width, direct | Yes            |
+
+### Evince
+
+Cheat Cheat of the great default shortcuts.
+
+Shortcut      | Function                                                 | Left hand only | Comment
+------------- | -------------                                            | -------------  | -------------
+P             | Go to previous page                                      | Nice to have   |
+N             | Go to next page                                          | Nice to have   |
+J             | Go to line down                                          | Nice to have   |
+K             | Go to line up                                            | Nice to have   |
+Ctrl+N        | Start a new instance of Evince with the current document | Nice to have   |
 
 ## Terminal programs
 

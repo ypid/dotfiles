@@ -48,6 +48,7 @@ source ~/.vimrc.min
     " call add(g:spf13_bundle_groups, 'scala')
     " call add(g:spf13_bundle_groups, 'ruby')
     " call add(g:spf13_bundle_groups, 'go')
+    call add(g:spf13_bundle_groups, 'c')
 
     " Deps {{{
         if count(g:spf13_bundle_groups, 'dependencies')
@@ -84,7 +85,11 @@ source ~/.vimrc.min
             " Bundle 'YankRing.vim'
             Bundle 'maxbrunsfeld/vim-yankstack'
 
-            Bundle 'wellle/tmux-complete.vim'
+            " Bundle 'wellle/tmux-complete.vim'
+
+            Bundle 'PProvost/vim-ps1'
+
+            " Bundle 'kshenoy/vim-origami'
 
             " Show diff for before recover
             Bundle 'chrisbra/Recover.vim'
@@ -175,6 +180,8 @@ source ~/.vimrc.min
             " }}}
 
             Bundle 'tpope/vim-repeat'
+
+            Bundle 'tpope/vim-abolish'
 
             " Translate {{{
                 if has("python") && executable('python')
@@ -282,6 +289,7 @@ source ~/.vimrc.min
             " Too slow for some big files. I am looking at you opening_hours.js :-( ;-)
             "
             let g:syntastic_tex_checkers = ['chktex']
+            let g:syntastic_cpp_checkers = ['gcc', 'cppclean']
             "
             " Bundle 'Valloric/YouCompleteMe'
             " Much dependencies
@@ -348,12 +356,15 @@ source ~/.vimrc.min
 
             " Tabularize {{{
                 Bundle 'godlygeek/tabular'
+                noremap <Leader>a)  :Tabularize /)/l0<CR>
                 noremap <Leader>a&  :Tabularize /&<CR>
-                noremap <Leader>a=  :Tabularize /=<CR>
+                noremap <Leader>a=  :Tabularize /[/*+-]\?=<CR>
                 noremap <Leader>a-  :Tabularize /-\w*<CR>
                 noremap <Leader>a:  :Tabularize /: /<CR>
                 noremap <Leader>az: :Tabularize /: \zs<CR>
+                noremap <Leader>a;  :Tabularize /;/l0r1<CR>
                 noremap <Leader>a,  :Tabularize /,/l0r1<CR>
+                " noremap <Leader>a,  :Tabularize /,\zs/l0c1<CR>
                 noremap <Leader>a/  :Tabularize /\zs\(\/\/\\|\/\*\)/<CR>
                 noremap <Leader>a"  :Tabularize /"<CR>
                 noremap <Leader>a'  :Tabularize /:\zs \+'/l0r0<CR>
@@ -368,6 +379,7 @@ source ~/.vimrc.min
             " Toggle words
             Bundle 'toggle_words.vim'
             noremap δ :ToggleWord<CR>
+            " Mod4 + ö
 
             Bundle 'tpope/vim-endwise'
 
@@ -430,7 +442,7 @@ source ~/.vimrc.min
             " " Taglist {{{
             " Bundle 'taglist.vim'
             " noremap <Leader>cq :TlistToggle<cr>
-            " noremap <Leader>cr :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<cr>
+            noremap <Leader>cr :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<cr>
             " let Tlist_WinWidth = 30
             " " }}}
         endif
@@ -456,7 +468,7 @@ source ~/.vimrc.min
                 Bundle 'SirVer/ultisnips'
                 Bundle 'honza/vim-snippets'
                 " let g:UltiSnipsListSnippets = "<Leader><tab>"
-                noremap <Leader><tab> :call UltiSnips_ListSnippets()<cr>
+                noremap <Leader><tab> :call UltiSnips#ListSnippets()<cr>
             endif
         elseif count(g:spf13_bundle_groups, 'neocomplcache')
 
@@ -565,6 +577,12 @@ source ~/.vimrc.min
                     let g:pymode = 1
                 endif
             " }}}
+        endif
+    " }}}
+
+    " C and C++ {{{
+        if count(g:spf13_bundle_groups, 'c')
+            Bundle 'artoj/qmake-syntax-vim'
         endif
     " }}}
 
@@ -881,7 +899,7 @@ source ~/.vimrc.min
                     autocmd FileType python let g:syntastic_check_on_wq = 0
                 endif
 
-                autocmd FileType ansible,jinja,yaml setlocal foldmarker=(((,)))
+                autocmd FileType ansible,jinja,yaml,tex setlocal foldmarker=(((,)))
                 " Use this foldmarker to avoid folds when using Jinja2
                 " templates.
                 " autocmd Syntax jinja syntax enable
@@ -894,6 +912,7 @@ source ~/.vimrc.min
                 autocmd FileType markdown let b:delimitMate_nesting_quotes = ["`"]
                 autocmd FileType tex,html,markdown,rst setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
 
+                " autocmd FileType gitcommit IndentGuidesDisable
                 autocmd FileType gitcommit normal gg
                 " au FileType {c,cpp} au BufWritePost <buffer> silent ! [ -e tags ] &&
                     " \ ( awk -F'\t' '$2\!="%:gs/'/'\''/"{print}' tags ; ctags -f- '%:gs/'/'\''/' )
