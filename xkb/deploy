@@ -1,12 +1,7 @@
 #!/bin/bash
 
-# Not necessary on current systems.
-# tar -C /usr/share/X11/ -czf xkb-sicherung.tgz xkb/symbols/{de,level3,level5,shift} xkb/rules/{base,base.xml,evdev,evdev.xml} xkb/types/level5
-
-# wget -c http://neo-layout.org/xkb.tgz
-# tar -C /usr/share/X11/ -xzf xkb.tgz
-
+dpkg-divert --quiet --local --divert /usr/share/X11/xkb/symbols/de_org --rename /usr/share/X11/xkb/symbols/de
 cp de /usr/share/X11/xkb/symbols/de
 
-# Doing this also screws up the busybox keymap in Debian (testing, jessie).
+# Doing this also screws up the busybox keymap in Debian (jessie).
 # cp keyboard /etc/default/keyboard
