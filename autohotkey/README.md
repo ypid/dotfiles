@@ -4,4 +4,4 @@ Here is my autohotkey configuration which provides some convenience for working 
 
 ## Install
 
-Autohotkey can be downloaded from [there website](http://ahkscript.org/download/).
+Autohotkey can be downloaded from http://ahkscript.org/download/.

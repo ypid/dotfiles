@@ -1,6 +1,7 @@
 ## temp LaTeX files
 *.pdf
 *.bak
+*.ctr
 *.*~
 *.#1
 *.4tc

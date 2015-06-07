@@ -29,6 +29,10 @@ alias bc='bc -q'
 alias ,='popd'
 alias ts='date "+%F_%T"'
 
+## Able to push to all git remotes with the one command?
+## http://stackoverflow.com/a/18674313
+alias gpa='git pa'
+
 ## Ignore typos {{{
 alias 6s='ls'
 alias sl='ls'
@@ -100,12 +104,14 @@ alias ,r='vi'
 # alias less='vim -c "w! /tmp/.vimpager" -'
 ## }}}
 
-ssh_only_parms="-o PubkeyAuthentication=no -o MACs=hmac-sha2-512,hmac-sha2-256,hmac-sha1-96,hmac-sha1,hmac-md5 -o UserKnownHostsFile=$HOME/.ssh/tmp_known_hosts"
+# ssh_only_parms="-F /etc/ssh/ssh_config -o \"UserKnownHostsFile=$HOME/.ssh/known_hosts_tmp\""
+# Should work now without this hack.
+#
+# alias rsync-only-pw="rsync -e \"ssh $ssh_only_parms\""
+# alias ssh-only-pw="ssh $ssh_only_parms"
+# alias scp-only-pw="scp $ssh_only_parms"
+# alias ssh-copy-id='ssh-copy-id -o PubkeyAuthentication=no'
 alias sshfs='sshfs -o transform_symlinks'
-alias rsync-only-pw="rsync -e \"ssh $ssh_only_parms\""
-alias ssh-only-pw="ssh $ssh_only_parms"
-alias scp-only-pw="scp $ssh_only_parms"
-alias ssh-copy-id='ssh-copy-id -o PubkeyAuthentication=no'
 alias m='mosh'
 if which compdef >/dev/null 2>&1 && which mosh >/dev/null 2>&1; then
     compdef m=mosh

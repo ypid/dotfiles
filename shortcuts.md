@@ -32,7 +32,7 @@ Which shortcuts should be used where? – Some thoughts …
 * Shift+Alt: Shared between window manager and applications.
 * Ctrl+Alt: Dedicated to window manager respectively shortcuts which can be triggered globally.
   * Music player uses Ctrl+Alt except for Shift+Alt+X because of left hand use.
-* Shift+Super: Dedicated for AutoKey
+* Shift+Super: Dedicated to AutoKey (global)
     * Can also be used over RDP on Windows machines without interfering with MS Windows mappings of the Super key.
 
 ### Free
@@ -151,6 +151,7 @@ Ctrl+Alt+D    | View split on right             | Yes            |
 Shortcut         | Function                                   | Left hand only | Comment
 -------------    | -------------                              | -------------  | -------------
 Ctrl+Super+S     | Launch program `x-terminal-emulator`       | Yes            |
+Shift+Super+A    | Launch program `gnome-calculator`          | Nice to have   |
 Ctrl+Super+[1-9] | Launch custom program or script            | Yes and no     |
 Shift+Ctrl+Alt+O | Launch program `eject`                     | No             | eject removable media
 Ctrl+Alt+C       | Launch [script][suspend-script] to suspend | Yes            |
@@ -203,15 +204,15 @@ The keystrokes are intended for the application and not to be trapped by the win
 Shortcut      | Function        | Left hand only | Comment
 ------------- | -------------   | -------------  | -------------
 Shift+Super+V | enter           | Yes            | Emit enter. If AltGr+v does not work (unfortunately AltGr can currently not be used in autokey).
-Shift+Super+m |                 | Yes            | Emits F1. Neo2 numbers.
+Shift+Super+M |                 | Yes            | Emits F1. Neo2 numbers.
 Shift+Super+, |                 | Yes            | Emits F2. Neo2 numbers.
 Shift+Super+. |                 | Yes            | Emits F3. Neo2 numbers.
-Shift+Super+j |                 | Yes            | Emits F4. Neo2 numbers.
+Shift+Super+J |                 | Yes            | Emits F4. Neo2 numbers.
 Shift+Super+R | Reload          | Yes            | Emits F5. Most applications will either reload or go to presentation mode.
-Shift+Super+l |                 | Yes            | Emits F6. Neo2 numbers.
-Shift+Super+u |                 | Yes            | Emits F7. Neo2 numbers.
-Shift+Super+i |                 | Yes            | Emits F8. Neo2 numbers.
-Shift+Super+o |                 | Yes            | Emits F9. Neo2 numbers.
+Shift+Super+L |                 | Yes            | Emits F6. Neo2 numbers.
+Shift+Super+U |                 | Yes            | Emits F7. Neo2 numbers.
+Shift+Super+I |                 | Yes            | Emits F8. Neo2 numbers.
+Shift+Super+O |                 | Yes            | Emits F9. Neo2 numbers.
 Shift+Super+F | F11             | Yes            | Emits F11. Causes most applications to go in full screen.
 Alt+M         | Switch to tab 1 | No             | See [Neo2 layer4][Neo2]. Maybe blocks the use of Alt+[a-z]. I hope that most applications use letters which would be on the left side of a qwertz keyboard.
 Alt+,         | Switch to tab 2 | No             |
@@ -234,7 +235,7 @@ Ctrl+L        | Change spell check language to en | No             | See [script
 
 ###### ERP system Steps Ahead
 
-This section describes some mapping which I added to make working with the ERP system [Steps Ahead][] more pleasant. I am relaying on an ugly hack to achieve this because [Steps Ahead][] (even in the current version 9.5.3) does not allow to remap or add shortcuts to actions which already have a default shortcut … So I use [autokey][] to do this anyway. It works the following: When autokey intercepts one of the following shortcuts it emits the shortcut on which Steps Ahead triggers the desired action.
+This section describes some mapping which I added to make working with the ERP system [Steps Ahead][] more pleasant. I am relaying on an ugly hack to achieve this because [Steps Ahead][] (even in the current version 9.5.3) does not allow to remap or add shortcuts to actions which already have a default shortcut … So I use [autokey][] to do this anyway. It works the following way: When autokey intercepts one of the following shortcuts it emits the shortcut on which Steps Ahead triggers the desired action.
 
 Shortcut      | Function                          | Left hand only | Comment
 ------------- | -------------                     | -------------  | -------------
@@ -265,7 +266,7 @@ Shift+Ctrl+Y  | Redo          | Yes            | Just easier to reach
 
 ### Double Commander (DC)
 
-See the manual for the default shortcuts. I added my own which I think are more convenient (I left the original onces pretty much untouched). Note that I make have use of Shift + letter mappings. This seems to break the RenameOnly function [currently](http://doublecmd.sourceforge.net/mantisbt/view.php?id=973).
+See the manual for the default shortcuts. I added my own which I think are more convenient. Note that I make heavy use of Shift + letter mappings. This seems to break the RenameOnly function [currently](http://doublecmd.sourceforge.net/mantisbt/view.php?id=973).
 
 #### Name spaces
 
@@ -370,6 +371,8 @@ Shift+Ctrl+X  | Format → Optimal Column Width, direct | Yes            |
 
 ### Evince
 
+#### Default
+
 Cheat Cheat of the great default shortcuts.
 
 Shortcut      | Function                                                 | Left hand only | Comment
@@ -379,6 +382,13 @@ N             | Go to next page                                          | Nice 
 J             | Go to line down                                          | Nice to have   |
 K             | Go to line up                                            | Nice to have   |
 Ctrl+N        | Start a new instance of Evince with the current document | Nice to have   |
+
+#### Autokey
+
+Shortcut      | Function      | Left hand only | Comment
+------------- | ------------- | -------------  | -------------
+Ctrl+D        | Page down     | Nice to have   |
+Ctrl+U        | Page up       | Nice to have   |
 
 ## Terminal programs
 

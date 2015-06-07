@@ -361,7 +361,7 @@ source ~/.vimrc.min
                 noremap <Leader>a=  :Tabularize /[/*+-]\?=<CR>
                 noremap <Leader>a-  :Tabularize /-\w*<CR>
                 noremap <Leader>a:  :Tabularize /: /<CR>
-                noremap <Leader>az: :Tabularize /: \zs<CR>
+                noremap <Leader>az: :Tabularize /:\zs /l0<CR>
                 noremap <Leader>a;  :Tabularize /;/l0r1<CR>
                 noremap <Leader>a,  :Tabularize /,/l0r1<CR>
                 " noremap <Leader>a,  :Tabularize /,\zs/l0c1<CR>
@@ -628,6 +628,7 @@ source ~/.vimrc.min
             noremap <Leader>C :LatexTOC<cr>
 
             Bundle 'LaTeX-Box-Team/LaTeX-Box'
+            Bundle 'gi1242/vim-tex-autoclose'
         endif
     " }}}
 
@@ -850,6 +851,7 @@ source ~/.vimrc.min
             autocmd VimLeave * if filereadable($HOME."/.vim/.netrwhist")|call delete($HOME."/.vim/.netrwhist")|endif
 
             " Adjust the filetype for some files {{{
+                autocmd BufRead,BufNewFile .mrconfig* setlocal filetype=sh
                 autocmd BufRead,BufNewFile .vimpagerrc setlocal filetype=vim
                 autocmd BufRead,BufNewFile /etc/*/apt.conf setlocal filetype=conf
                 autocmd BufRead,BufNewFile /etc/hosts setlocal filetype=conf
@@ -871,10 +873,11 @@ source ~/.vimrc.min
 
                 autocmd BufRead,BufNewFile *.nse setlocal filetype=lua
 
-                autocmd BufRead,BufNewFile *ansible/* if &filetype=='yaml'|set filetype=ansible|endif
+                autocmd BufRead,BufNewFile *ansible/**/ if &filetype=='yaml'|set filetype=ansible|endif
                 autocmd BufRead,BufNewFile *ansible/*_vars/* set filetype=yaml
-                autocmd BufRead,BufNewFile *ansible/* if &filetype==''|set filetype=yaml|endif
+                autocmd BufRead,BufNewFile *ansible/**/ if &filetype==''|set filetype=yaml|endif
                 autocmd BufReadPost *.j2 setlocal filetype=jinja
+                autocmd BufRead,BufNewFile *ansible/hosts setf dosini|syn on
             " }}}
 
             autocmd BufWritePre /tmp/*  setlocal noundofile
@@ -911,6 +914,11 @@ source ~/.vimrc.min
                 " autocmd FileType xml setlocal foldmethod=syntax " does not work
                 autocmd FileType markdown let b:delimitMate_nesting_quotes = ["`"]
                 autocmd FileType tex,html,markdown,rst setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
+                autocmd FileType tex nnoremap <buffer> <silent>	<Leader>ae	:call TexACClosePrev('n')<cr>
+                " inoremap <buffer> <silent>	<C-\>c		<c-\><c-o>:call TexACClosePrev('i')<cr>
+                autocmd FileType tex abbr „ \enquote{
+                " autocmd FileType tex abbr “ }
+                " Not needed, closed by auto-pairs.
 
                 " autocmd FileType gitcommit IndentGuidesDisable
                 autocmd FileType gitcommit normal gg

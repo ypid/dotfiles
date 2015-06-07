@@ -5,5 +5,6 @@
 ## Ignore TeX files created by Kile:
 --ignore-file=match:\.tex\.backup$
 ## }}}
+--ignore-file=match:^ansible\.log$
 --smart-case
 --ignore-file=is:LICENSE

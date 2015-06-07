@@ -261,6 +261,15 @@
         inoremap <Leader>fj <ESC>:call AppendFoldMarker('close')<cr>;
     " }}}
 
+    "" Calculating in Vim {{{
+    "" http://vim.wikia.com/wiki/Sum_numbers
+    let g:S = 0  "result in global variable S
+    function! Sum(number)
+        let g:S = g:S + a:number
+        return a:number
+    endfunction
+    "" }}}
+
     " Other mappings {{{
         set pastetoggle=♡           " pastetoggle (sane indentation on pastes)
         " Shift+Layer3Mod+a

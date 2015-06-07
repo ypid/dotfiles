@@ -16,6 +16,7 @@
 	cil = commit --reedit-message=HEAD --reset-author
 	cii = commit --all -m 'Initial commit.'
 	cia = commit --all -m 'Auto commit without commit message.'
+	pa = "!git remote -v | egrep --invert-match '(https:|github.com)' | grep --invert-match 'https:' | cut -f1 | uniq | xargs -L1 git push --all"
 	co = checkout
 	br = branch --all
 	lgn = log --pretty=oneline --abbrev-commit --show-notes=* --show-signature
@@ -46,3 +47,5 @@
 	show-line-numbers = yes
 [commit]
 	gpgsign = true
+[url "ssh://ypid.github.com/ypid/"]
+	insteadOf = gh_ypid:

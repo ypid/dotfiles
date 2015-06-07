@@ -48,7 +48,7 @@
         <Param>trashcan=reversesetting</Param>
       </Hotkey>
       <Hotkey>
-        <Shortcut>Ctrl+M</Shortcut>
+        <Shortcut>WinKey+M</Shortcut>
         <Command>cm_MakeDir</Command>
       </Hotkey>
       <Hotkey>
@@ -291,7 +291,7 @@
         <Control>Files Panel</Control>
       </Hotkey>
       <Hotkey>
-        <Shortcut>WinKey+M</Shortcut>
+        <Shortcut>Ctrl+M</Shortcut>
         <Command>cm_Rename</Command>
         <Control>Files Panel</Control>
       </Hotkey>
