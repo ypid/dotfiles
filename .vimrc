@@ -14,13 +14,18 @@ let g:spf13_no_views = 1
 source ~/.vimrc.min
 
 " Bundles and plugins {{{
-    " Setup Bundle Support {{{
     " The next three lines ensure that the ~/.vim/bundle/ system works
         filetype off
-        set rtp+=~/.vim/bundle/vundle
-        " let g:vundle_default_git_proto = 'git'
+
+        set runtimepath+=~/.vim/bundle/vundle
         call vundle#rc()
-        Bundle 'gmarik/vundle'
+
+        " call vundle#begin()
+        " Bundle 'gmarik/vundle'
+        "" Not required. Managed via git submodules.
+
+        " set runtimepath+=~/.vim/bundle/neobundle.vim
+        " call neobundle#begin(expand('~/.vim/bundle/'))
     " }}}
 
     let g:spf13_bundle_groups = []
@@ -760,6 +765,8 @@ source ~/.vimrc.min
             let &l:sts = &l:sw
         endfunction
     " }}}
+
+    " call neobundle#end()
 " }}}
 
 " General {{{

@@ -11,6 +11,9 @@ for file in {en,de}.utf-8.{spl,sug};do
     fi
 done
 
+## does not work:
+# vim -c ":set rtp=.vim,.vim/bundle/vundle"
+
 vim -c ':BundleInstall' -c ':q' -c ':q' -u .vimrc
 
 # Improves performance of ZSH. Functions not needed or not used (yet).
