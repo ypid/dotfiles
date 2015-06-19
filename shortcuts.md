@@ -30,6 +30,7 @@ Here are some advices regarding shortcuts for programmers or UI designers which 
 Which shortcuts should be used where? – Some thoughts …
 
 * Shift+Alt: Shared between window manager and applications.
+* Shift+Ctrl+Alt: Shared between window manager and applications.
 * Ctrl+Alt: Dedicated to window manager respectively shortcuts which can be triggered globally.
   * Music player uses Ctrl+Alt except for Shift+Alt+X because of left hand use.
 * Shift+Super: Dedicated to AutoKey (global)
@@ -363,11 +364,26 @@ Note: [Double Commander] works quite nicely together with [Neo2][] …
 
 ### Libreoffice
 
+#### Libreoffice
+
+Shortcut      | Function                     | Left hand only | Comment
+------------- | -------------                | -------------  | -------------
+Shift+Ctrl+X  | Numbering → Bullets On/Off   | Yes            |
+Shift+Ctrl+C  | Numbering → Numbering On/Off | Yes            |
+
 #### Libreoffice Calc
 
 Shortcut      | Function                              | Left hand only | Comment
 ------------- | -------------                         | -------------  | -------------
 Shift+Ctrl+X  | Format → Optimal Column Width, direct | Yes            |
+
+#### Libreoffice Impress
+
+Shortcut      | Function                       | Left hand only | Comment
+------------- | -------------                  | -------------  | -------------
+Ctrl+D        | View → Start from current page | Yes            |
+Ctrl+D        | View → Start from current page | Yes            |
+Shift+Ctrl+C  | Options → Slide Show Settings  | Yes |
 
 ### Evince
 

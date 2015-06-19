@@ -38,8 +38,8 @@ This role requires at least Ansible{% if galaxy_info.min_ansible_version is defi
 
 To install via git, run either:
 
-    git clone {{ ansigenome_info.github_url }} {{ role.galaxy_name }}
-    git submodule add {{ ansigenome_info.github_url }} roles/{{ role.galaxy_name }}
+    git clone {{ ansigenome_info.github_url }}.git {{ role.galaxy_name }}
+    git submodule add {{ ansigenome_info.github_url }}.git roles/{{ role.galaxy_name }}
 
 {% endblock %}{# }}} #}
 

@@ -18,7 +18,6 @@
         if !isdirectory(a:dir)
             if exists("*mkdir")
                 call mkdir(a:dir,'p')
-                echo "Created directory: " . a:dir
             else
                 echo "Please create directory: " . a:dir
             endif
