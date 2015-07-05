@@ -329,6 +329,9 @@
         " bottom of the screen
         " noremap <S-H> gT
         " noremap <S-L> gt
+        "
+        " noremap <c-d> :echo "Use Neo2 movments."<cr>
+        " noremap <c-u> :echo "Use Neo2 movments."<cr>
 
         " Unbind the cursor keys in insert, normal and visual modes.
         " Luckily I do not use them anymore because they are so far away.

@@ -152,7 +152,13 @@ unalias gr
 
 # Bug in oh-my-zsh. If a plugin changes fpath, it is not picked up by compinit because it is run first!1!?
 # Hopefully this will be fixed by one of the refactoring pull requests.
-autoload -U compinit && compinit
+autoload -U compinit
+if [[ $DOCKER_IGNORE_UNSECURE == 1 ]]
+then
+	compinit -u
+else
+	compinit
+fi
 
 # Own theme based on dieter and bira {{{
 
@@ -205,3 +211,24 @@ stty -ixon -ixoff
 
 setopt no_share_history
 source ~/.shellrc
+
+## IGNORE_EOF like in bash http://www.zsh.org/mla/users/2001/msg00240.html {{{
+# bash-ctrl-d() {
+#   if [[ $CURSOR == 0 && -z $BUFFER ]]
+#   then
+#     [[ -z $IGNOREEOF || $IGNOREEOF == 0 ]] && exit
+#     if [[ $LASTWIDGET == bash-ctrl-d ]]
+#     then
+#       (( --__BASH_IGNORE_EOF <= 0 )) && exit
+#     else
+#       (( __BASH_IGNORE_EOF = IGNOREEOF-1 ))
+#     fi
+#     zle send-break
+#   else
+#     zle delete-char-or-list
+#   fi
+# }
+
+# zle -N bash-ctrl-d
+# bindkey "^D" bash-ctrl-d
+## }}}

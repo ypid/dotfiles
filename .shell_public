@@ -1,5 +1,9 @@
 ## Stuff for programs which should be available everywhere {{{
 
+## https://superuser.com/questions/479600/how-can-i-prevent-tmux-exiting-with-ctrl-d
+export IGNOREEOF=2
+## Does not work with zsh
+
 export BYOBU_PREFIX="/usr"
 export BYOBU_CONFIG_DIR="$HOME/.byobu"
 export EDITOR=vim
@@ -104,14 +108,15 @@ alias ,r='vi'
 # alias less='vim -c "w! /tmp/.vimpager" -'
 ## }}}
 
-# ssh_only_parms="-F /etc/ssh/ssh_config -o \"UserKnownHostsFile=$HOME/.ssh/known_hosts_tmp\""
+ssh_default="-F /etc/ssh/ssh_config -o \"UserKnownHostsFile=$HOME/.ssh/known_hosts_tmp\""
 # Should work now without this hack.
 #
-# alias rsync-only-pw="rsync -e \"ssh $ssh_only_parms\""
-# alias ssh-only-pw="ssh $ssh_only_parms"
-# alias scp-only-pw="scp $ssh_only_parms"
+alias rsync-default="rsync -e \"ssh $ssh_default\""
+alias ssh-default="ssh $ssh_default"
+alias scp-default="scp $ssh_default"
 # alias ssh-copy-id='ssh-copy-id -o PubkeyAuthentication=no'
 alias sshfs='sshfs -o transform_symlinks'
+alias sshfs-default='sshfs -o transform_symlinks -F /etc/ssh/ssh_config'
 alias m='mosh'
 if which compdef >/dev/null 2>&1 && which mosh >/dev/null 2>&1; then
     compdef m=mosh
