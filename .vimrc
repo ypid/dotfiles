@@ -21,8 +21,9 @@ source ~/.vimrc.min
         call vundle#rc()
 
         " call vundle#begin()
-        " Bundle 'gmarik/vundle'
+        Bundle 'gmarik/vundle'
         "" Not required. Managed via git submodules.
+        "" Required for :BundleClean.
 
         " set runtimepath+=~/.vim/bundle/neobundle.vim
         " call neobundle#begin(expand('~/.vim/bundle/'))

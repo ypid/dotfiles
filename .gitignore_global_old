@@ -1,0 +1,77 @@
+## temp LaTeX files
+*.pdf
+*.bak
+*.ctr
+*.*~
+*.#1
+*.4tc
+*.acn
+*.acr
+*.alg
+*.aux
+*.bbl
+*.bcf
+*.blg
+*-blx.bib
+*.run.xml
+#*.ctr
+*-autopp.ctr
+*.CountCompile
+*.fls
+*.fdb_latexmk
+*.glg
+*.glo
+*.gls
+*.gnuplot
+*.hd
+# *.idx
+# File suffix not used by LaTeX alone …
+#
+*.ilg
+*.ist
+*.lg
+*.ind
+*.lis
+*.lof
+*.lol
+*.log
+*.lot
+*.lox
+*.maf
+*.mtc
+*.mtc0
+*.nav
+*.nlo
+*.nls
+*.out
+*.ptc1
+*.slg
+*.snm
+*.sty.backup
+*.dtx.backup
+*.syi
+*.synctex.gz
+*.tdo
+*.tex.backup
+*.tex.latexmain
+*.tmp
+*.toc
+*.tpm
+*.tpt
+*.vrb
+*.xref
+*.exitCode
+*.stderr
+*.stdout
+*.bashful
+*.pyg
+*.pyc
+## C files
+*.o
+
+# *.d
+# Widely used for .d directories in /etc …
+
+*.lst
+tags
+.ropeproject/

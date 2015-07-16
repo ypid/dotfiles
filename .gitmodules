@@ -20,3 +20,192 @@
 [submodule ".oh-my-zsh-custom/plugins/zsh-completions"]
 	path = .oh-my-zsh-custom/plugins/zsh-completions
 	url = https://github.com/zsh-users/zsh-completions.git
+[submodule ".vim/bundle/vim-indent-object"]
+	path = .vim/bundle/vim-indent-object
+	url = https://github.com/michaeljsmith/vim-indent-object.git
+[submodule ".vim/bundle/vim-jekyll"]
+	path = .vim/bundle/vim-jekyll
+	url = https://github.com/parkr/vim-jekyll.git
+[submodule ".vim/bundle/vim-endwise"]
+	path = .vim/bundle/vim-endwise
+	url = https://github.com/tpope/vim-endwise.git
+[submodule ".vim/bundle/vim-tex-autoclose"]
+	path = .vim/bundle/vim-tex-autoclose
+	url = https://github.com/gi1242/vim-tex-autoclose.git
+[submodule ".vim/bundle/detectindent"]
+	path = .vim/bundle/detectindent
+	url = https://github.com/ypid/detectindent.git
+[submodule ".vim/bundle/vim-misc"]
+	path = .vim/bundle/vim-misc
+	url = https://github.com/xolox/vim-misc.git
+[submodule ".vim/bundle/ultisnips"]
+	path = .vim/bundle/ultisnips
+	url = https://github.com/SirVer/ultisnips.git
+[submodule ".vim/bundle/vim-perl"]
+	path = .vim/bundle/vim-perl
+	url = https://github.com/vim-perl/vim-perl.git
+[submodule ".vim/bundle/riv.vim"]
+	path = .vim/bundle/riv.vim
+	url = https://github.com/Rykka/riv.vim.git
+[submodule ".vim/bundle/vim-visual-star-search"]
+	path = .vim/bundle/vim-visual-star-search
+	url = https://github.com/bronson/vim-visual-star-search.git
+[submodule ".vim/bundle/vim-less"]
+	path = .vim/bundle/vim-less
+	url = https://github.com/groenewege/vim-less.git
+[submodule ".vim/bundle/vim-extradite"]
+	path = .vim/bundle/vim-extradite
+	url = https://github.com/int3/vim-extradite.git
+[submodule ".vim/bundle/vim-colors-solarized"]
+	path = .vim/bundle/vim-colors-solarized
+	url = https://github.com/altercation/vim-colors-solarized.git
+[submodule ".vim/bundle/HTML-AutoCloseTag"]
+	path = .vim/bundle/HTML-AutoCloseTag
+	url = https://github.com/ypid/HTML-AutoCloseTag.git
+[submodule ".vim/bundle/tabular"]
+	path = .vim/bundle/tabular
+	url = https://github.com/godlygeek/tabular.git
+[submodule ".vim/bundle/syntastic"]
+	path = .vim/bundle/syntastic
+	url = https://github.com/scrooloose/syntastic.git
+[submodule ".vim/bundle/vim-surround"]
+	path = .vim/bundle/vim-surround
+	url = https://github.com/tpope/vim-surround.git
+[submodule ".vim/bundle/gundo.vim"]
+	path = .vim/bundle/gundo.vim
+	url = https://github.com/sjl/gundo.vim.git
+[submodule ".vim/bundle/Vim-Jinja2-Syntax"]
+	path = .vim/bundle/Vim-Jinja2-Syntax
+	url = https://github.com/chase/Vim-Jinja2-Syntax.git
+[submodule ".vim/bundle/logstash.vim"]
+	path = .vim/bundle/logstash.vim
+	url = https://github.com/vim-scripts/logstash.vim.git
+[submodule ".vim/bundle/xterm-color-table.vim"]
+	path = .vim/bundle/xterm-color-table.vim
+	url = https://github.com/guns/xterm-color-table.vim.git
+[submodule ".vim/bundle/Tortoise-Typing"]
+	path = .vim/bundle/Tortoise-Typing
+	url = https://github.com/thanthese/Tortoise-Typing.git
+[submodule ".vim/bundle/vim-indent-guides"]
+	path = .vim/bundle/vim-indent-guides
+	url = https://github.com/nathanaelkane/vim-indent-guides.git
+[submodule ".vim/bundle/vim-fswitch"]
+	path = .vim/bundle/vim-fswitch
+	url = https://github.com/derekwyatt/vim-fswitch.git
+[submodule ".vim/bundle/vim-angry"]
+	path = .vim/bundle/vim-angry
+	url = https://github.com/b4winckler/vim-angry.git
+[submodule ".vim/bundle/vim-flavored-markdown"]
+	path = .vim/bundle/vim-flavored-markdown
+	url = https://github.com/jtratner/vim-flavored-markdown.git
+[submodule ".vim/bundle/TTCoach"]
+	path = .vim/bundle/TTCoach
+	url = https://github.com/vim-scripts/TTCoach.git
+[submodule ".vim/bundle/LaTeX-Box"]
+	path = .vim/bundle/LaTeX-Box
+	url = https://github.com/LaTeX-Box-Team/LaTeX-Box.git
+[submodule ".vim/bundle/cosco.vim"]
+	path = .vim/bundle/cosco.vim
+	url = https://github.com/lfilho/cosco.vim.git
+[submodule ".vim/bundle/closetag.vim"]
+	path = .vim/bundle/closetag.vim
+	url = https://github.com/ypid/closetag.vim.git
+[submodule ".vim/bundle/rainbow_parentheses.vim"]
+	path = .vim/bundle/rainbow_parentheses.vim
+	url = https://github.com/kien/rainbow_parentheses.vim.git
+[submodule ".vim/bundle/vim-yankstack"]
+	path = .vim/bundle/vim-yankstack
+	url = https://github.com/maxbrunsfeld/vim-yankstack.git
+[submodule ".vim/bundle/vim-ps1"]
+	path = .vim/bundle/vim-ps1
+	url = https://github.com/PProvost/vim-ps1.git
+[submodule ".vim/bundle/matchit.zip"]
+	path = .vim/bundle/matchit.zip
+	url = https://github.com/vim-scripts/matchit.zip.git
+[submodule ".vim/bundle/delimitMate"]
+	path = .vim/bundle/delimitMate
+	url = https://github.com/Raimondi/delimitMate.git
+[submodule ".vim/bundle/ctrlp.vim"]
+	path = .vim/bundle/ctrlp.vim
+	url = https://github.com/kien/ctrlp.vim.git
+[submodule ".vim/bundle/lookup.vim"]
+	path = .vim/bundle/lookup.vim
+	url = https://github.com/ypid/lookup.vim.git
+[submodule ".vim/bundle/vim-quickhl"]
+	path = .vim/bundle/vim-quickhl
+	url = https://github.com/t9md/vim-quickhl.git
+[submodule ".vim/bundle/vim-plugin-viewdoc"]
+	path = .vim/bundle/vim-plugin-viewdoc
+	url = https://github.com/powerman/vim-plugin-viewdoc.git
+[submodule ".vim/bundle/vim-repeat"]
+	path = .vim/bundle/vim-repeat
+	url = https://github.com/tpope/vim-repeat.git
+[submodule ".vim/bundle/vim-easytags"]
+	path = .vim/bundle/vim-easytags
+	url = https://github.com/xolox/vim-easytags.git
+[submodule ".vim/bundle/qmake-syntax-vim"]
+	path = .vim/bundle/qmake-syntax-vim
+	url = https://github.com/artoj/qmake-syntax-vim.git
+[submodule ".vim/bundle/vim-ansible-yaml"]
+	path = .vim/bundle/vim-ansible-yaml
+	url = https://github.com/chase/vim-ansible-yaml.git
+[submodule ".vim/bundle/vim-multiple-cursors"]
+	path = .vim/bundle/vim-multiple-cursors
+	url = https://github.com/terryma/vim-multiple-cursors.git
+[submodule ".vim/bundle/toggle_words.vim"]
+	path = .vim/bundle/toggle_words.vim
+	url = https://github.com/vim-scripts/toggle_words.vim.git
+[submodule ".vim/bundle/vim-bad-whitespace"]
+	path = .vim/bundle/vim-bad-whitespace
+	url = https://github.com/bitc/vim-bad-whitespace.git
+[submodule ".vim/bundle/vim-snippets"]
+	path = .vim/bundle/vim-snippets
+	url = https://github.com/honza/vim-snippets.git
+[submodule ".vim/bundle/vim-airline"]
+	path = .vim/bundle/vim-airline
+	url = https://github.com/bling/vim-airline.git
+[submodule ".vim/bundle/SingleCompile"]
+	path = .vim/bundle/SingleCompile
+	url = https://github.com/xuhdev/SingleCompile.git
+[submodule ".vim/bundle/perlcritic-compiler-script"]
+	path = .vim/bundle/perlcritic-compiler-script
+	url = https://github.com/vim-scripts/perlcritic-compiler-script.git
+[submodule ".vim/bundle/vim-locate"]
+	path = .vim/bundle/vim-locate
+	url = https://github.com/rm-hull/vim-locate.git
+[submodule ".vim/bundle/tagbar"]
+	path = .vim/bundle/tagbar
+	url = https://github.com/majutsushi/tagbar.git
+[submodule ".vim/bundle/Recover.vim"]
+	path = .vim/bundle/Recover.vim
+	url = https://github.com/chrisbra/Recover.vim.git
+[submodule ".vim/bundle/ack.vim"]
+	path = .vim/bundle/ack.vim
+	url = https://github.com/mileszs/ack.vim.git
+[submodule ".vim/bundle/vim-fugitive"]
+	path = .vim/bundle/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive.git
+[submodule ".vim/bundle/vim-markdown"]
+	path = .vim/bundle/vim-markdown
+	url = https://github.com/tpope/vim-markdown.git
+[submodule ".vim/bundle/vim-hamcos"]
+	path = .vim/bundle/vim-hamcos
+	url = https://github.com/hamcos/vim-hamcos.git
+[submodule ".vim/bundle/jshint2.vim"]
+	path = .vim/bundle/jshint2.vim
+	url = https://github.com/Shutnik/jshint2.vim.git
+[submodule ".vim/bundle/vim-expand-region"]
+	path = .vim/bundle/vim-expand-region
+	url = https://github.com/terryma/vim-expand-region.git
+[submodule ".vim/bundle/LearnVim"]
+	path = .vim/bundle/LearnVim
+	url = https://github.com/dahu/LearnVim.git
+[submodule ".vim/bundle/vim-abolish"]
+	path = .vim/bundle/vim-abolish
+	url = https://github.com/tpope/vim-abolish.git
+[submodule ".vim/bundle/nerdcommenter"]
+	path = .vim/bundle/nerdcommenter
+	url = https://github.com/scrooloose/nerdcommenter.git
+[submodule ".vim/bundle/python-mode"]
+	path = .vim/bundle/python-mode
+	url = https://github.com/ypid/python-mode.git
