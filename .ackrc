@@ -1,5 +1,7 @@
 ## Jekyll output directory:
---ignore-directory=_site
+--ignore-directory=is:_site
+## Python stuff:
+--ignore-directory=is:.ropeproject
 ## TeX/LaTeX {{{
 --ignore-file=match:\.aux$
 ## Ignore TeX files created by Kile:

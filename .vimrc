@@ -572,7 +572,6 @@ source ~/.vimrc.min
 
             " PyMode {{{
                 let g:pymode_lint_checker = "pyflakes"
-                let g:pymode_utils_whitespaces = 0
                 let g:pymode_options = 0
             " }}}
 
@@ -880,8 +879,13 @@ source ~/.vimrc.min
 
                 autocmd BufRead,BufNewFile *.nse setlocal filetype=lua
 
+                autocmd BufRead,BufNewFile *subuser/** HideBadWhitespace
+                autocmd BufRead,BufNewFile *subuser/** let b:syntastic_mode = 'passive'
+                autocmd BufRead,BufNewFile *subuser/** let g:pymode_trim_whitespaces = 0
+                autocmd BufRead,BufNewFile *subuser/** let g:pymode_lint = 0
+
                 autocmd BufRead,BufNewFile *ansible/**/ if &filetype=='yaml'|set filetype=ansible|endif
-                autocmd BufRead,BufNewFile *ansible/*_vars/* set filetype=yaml
+                autocmd BufRead,BufNewFile *ansible/*vars/* set filetype=yaml
                 autocmd BufRead,BufNewFile *ansible/**/ if &filetype==''|set filetype=yaml|endif
                 autocmd BufReadPost *.j2 setlocal filetype=jinja
                 autocmd BufRead,BufNewFile *ansible/hosts setf dosini|syn on

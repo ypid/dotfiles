@@ -8,3 +8,6 @@ done
 
 mkdir -p "$HOME/.config/htop"
 ln --force --symbolic --no-target-directory "$PWD/.htoprc" "$HOME/.config/htop/htoprc"
+
+# mkdir -p "$HOME/.config/doublecmd"
+# ln --force --symbolic "$PWD/doublecmd/shortcuts.scf" "$HOME/.config/doublecmd/"
