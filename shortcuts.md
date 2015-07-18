@@ -169,7 +169,7 @@ Shortcut      | Function                      | Left hand only | Comment
 Ctrl+Alt+X    | `clementine --play-pause`     | Of course      | Play or pause audio. Using command line to also allow to start the program if no instance is running.
 Shift+Alt+X   | `clementine --next`           | Of course      | Play next audio file
 Ctrl+Alt+N    | Seek backward                 | Nice to have   | Seek in audio file by *n* seconds.
-Ctrl+ALt+M    | Seek forward                  | Nice to have   | Seek in audio file by *n* seconds.
+Ctrl+Alt+M    | Seek forward                  | Nice to have   | Seek in audio file by *n* seconds.
 Ctrl+Alt+Z    | Rate the current song 1 star  | No             | I would prefer ¹ (entered with Mod3+1) but I did not find a way. Edit: ¹ not in global mode, so Ctrl+Alt+z is ok :)
 Ctrl+Alt+U    | Rate the current song 2 stars | No             |
 Ctrl+Alt+I    | Rate the current song 3 stars | No             |
@@ -382,8 +382,7 @@ Shift+Ctrl+X  | Format → Optimal Column Width, direct | Yes            |
 Shortcut      | Function                       | Left hand only | Comment
 ------------- | -------------                  | -------------  | -------------
 Ctrl+D        | View → Start from current page | Yes            |
-Ctrl+D        | View → Start from current page | Yes            |
-Shift+Ctrl+C  | Options → Slide Show Settings  | Yes |
+Shift+Ctrl+C  | Options → Slide Show Settings  | Yes            |
 
 ### Evince
 
@@ -398,13 +397,6 @@ N             | Go to next page                                          | Nice 
 J             | Go to line down                                          | Nice to have   |
 K             | Go to line up                                            | Nice to have   |
 Ctrl+N        | Start a new instance of Evince with the current document | Nice to have   |
-
-#### Autokey
-
-Shortcut      | Function      | Left hand only | Comment
-------------- | ------------- | -------------  | -------------
-Ctrl+D        | Page down     | Nice to have   |
-Ctrl+U        | Page up       | Nice to have   |
 
 ## Terminal programs
 
