@@ -15,7 +15,7 @@ sha512=on
 #recursive=on
 
 ; OK messages are printed by default
-skip-ok=on
+# skip-ok=on
 
 ; accept only *.sfv files while recursively checking directories
 #crc-accept=.sfv

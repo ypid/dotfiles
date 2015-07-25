@@ -3,3 +3,5 @@
 ## Editor specific files
 # *.*~
 *.bak
+*.tex.backup
+*.sty.backup

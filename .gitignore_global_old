@@ -52,7 +52,6 @@
 *.syi
 *.synctex.gz
 *.tdo
-*.tex.backup
 *.tex.latexmain
 *.tmp
 *.toc
