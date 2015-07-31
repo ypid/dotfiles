@@ -1,7 +1,7 @@
 ## Stuff for programs which should be available everywhere {{{
 
 ## https://superuser.com/questions/479600/how-can-i-prevent-tmux-exiting-with-ctrl-d
-export IGNOREEOF=2
+# export IGNOREEOF=2
 ## Does not work with zsh
 
 export BYOBU_PREFIX="/usr"
@@ -133,11 +133,12 @@ alias con='ping -c 1 -w 2 heise.de'
 ## Use the shortcuts from oh-my-zsh for git
 alias wd='git diff --color-words --no-index'
 alias ι='git status' # Shift+Level3Mod+s
+
 # overwrite alias from oh-my-zsh {{{
 alias glg='git log --stat --decorate=short --show-signature' # full history
 # alias glg='tig --show-signature' # full history
 
-# Define important sortcuts here if under bash (are already defended by oh-my-zsh) {{{
+# Define important shortcuts here if under bash (are already defended by oh-my-zsh) {{{
 alias g='git'
 alias gst='git status'
 alias gco='git checkout'
@@ -181,13 +182,16 @@ alias diff-dir='diff -arq'
 alias percent-encode='python -c "import urllib, sys; print urllib.quote(sys.argv[1])"'
 alias percent-decode='python -c "import urllib, sys; print urllib.unquote(sys.argv[1])"'
 
+alias badblocks='echo "Use badblocks_and_secure_erase."'
+
 ## FIXME legacy
 if which ack-grep >/dev/null 2>&1; then
     alias ack='ack-grep'
 fi
+## Used by silversearcher-ag
+unalias ag
 
-alias badblocks='echo "Use badblocks_and_secure_erase."'
-
+alias agg='aptitude upgrade'
 alias ass='wajig statussearch'
 alias as='apt-cache search' ## Much faster. I normally don’t need to know if the thing is installed, respectively I can check that later with aptitude install.
 alias ash='/usr/bin/aptitude show' ## Does not need to run as root.
@@ -195,10 +199,9 @@ if [[ "$USER" != 'root' ]]; then
     alias mount='sudo mount'
     alias umount='sudo umount'
     alias aptitude='sudo aptitude'
-    alias apt-add--repository='sudo apt-add--repository'
 fi
 
-alias xclip-primary-to-clipboard='xclip -out |xclip -in -selection clipboard'
+alias xclip-primary-to-clipboard='xclip -out | xclip -in -selection clipboard'
 
 ## TeX and LaTeX {{{
 alias xgettext='xgettext --copyright-holder="`git config --get user.name` <`git config --get user.email`>" --msgid-bugs-address="`git config --get user.email`"'

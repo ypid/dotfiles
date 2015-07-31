@@ -87,20 +87,21 @@ ZSH_COMPDUMP="${ZDOTDIR:-${HOME}}/.zcompdump-${ZSH_VERSION}"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 #
 # Mandatory
-plugins=(autojump git-annex)
+plugins=(autojump)
+plugins+=(git-annex)
 plugins+=(git)
 # plugins=(tmuxinator)
 # [[ -e ~/gems/gems/tmuxinator-0.6.8/completion/tmuxinator.zsh ]] && source ~/gems/gems/tmuxinator-0.6.8/completion/tmuxinator.zsh
 
 # Nice to have
-plugins+=(zsh-syntax-highlighting mosh)
+plugins+=(zsh-syntax-highlighting)
+plugins+=(mosh)
 
 # Additional functions
 plugins+=(debian)
 plugins+=(encode64)
 plugins+=(urltools)
 plugins+=(zsh_reload)
-plugins+=(vagrant)
 plugins+=(more-completions)
 plugins+=(zsh-compdef)
 plugins+=(zsh-completions)
@@ -115,6 +116,7 @@ plugins+=(zsh-completions)
 
 # Not tested enough, might be useful
 : <<'END'
+plugins+=(vagrant)
 plugins+=(vi-mode)
 plugins+=(gitfast)
 plugins+=(command-not-found)
@@ -147,8 +149,6 @@ END
 # }}}
 
 source "$ZSH/oh-my-zsh.sh"
-
-unalias gr
 
 # Bug in oh-my-zsh. If a plugin changes fpath, it is not picked up by compinit because it is run first!1!?
 # Hopefully this will be fixed by one of the refactoring pull requests.

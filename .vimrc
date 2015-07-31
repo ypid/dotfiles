@@ -398,13 +398,15 @@ source ~/.vimrc.min
             " }}}
 
             " Ack {{{
-                if executable('ack-grep')
+                if executable('ag')
+                    let g:ackprg = 'ag --vimgrep'
+                    " let g:ackprg = 'ag --nogroup --nocolor --column'
+                    " Bundle 'mileszs/ack.vim'
+                    Bundle 'rking/ag.vim'
+                elseif executable('ack-grep')
                     let g:ackprg="ack-grep -H --nocolor --nogroup --column"
                     Bundle 'mileszs/ack.vim'
                 elseif executable('ack')
-                    Bundle 'mileszs/ack.vim'
-                elseif executable('ag')
-                    let g:ackprg = 'ag --nogroup --nocolor --column'
                     Bundle 'mileszs/ack.vim'
                 endif
                 " noremap α :echo system('date -d @'.expand('<cword>'))<CR>
@@ -879,6 +881,8 @@ source ~/.vimrc.min
                 autocmd BufRead,BufNewFile .gitignore setlocal filetype=conf
 
                 autocmd BufRead,BufNewFile *.nse setlocal filetype=lua
+
+                autocmd BufRead,BufNewFile *firejail/** HideBadWhitespace
 
                 autocmd BufRead,BufNewFile *subuser/** HideBadWhitespace
                 autocmd BufRead,BufNewFile *subuser/** let b:syntastic_mode = 'passive'

@@ -13,12 +13,13 @@ done
 
 ## does not work:
 # vim -c ":set rtp=.vim,.vim/bundle/vundle"
-
-vim -c ':BundleInstall' -c ':q' -c ':q' -u .vimrc
+#
+# Installed via git submodules.
+# vim -c ':BundleInstall' -c ':q' -c ':q' -u .vimrc
 
 # Improves performance of ZSH. Functions not needed or not used (yet).
 pushd .oh-my-zsh/lib/
-rm aliases.zsh bzr.zsh correction.zsh grep.zsh key-bindings.zsh misc.zsh nvm.zsh rbenv.zsh rvm.zsh spectrum.zsh termsupport.zsh functions.zsh
+rm bzr.zsh correction.zsh grep.zsh key-bindings.zsh misc.zsh nvm.zsh spectrum.zsh termsupport.zsh functions.zsh
 
 # git commit -am 'Improves performance of ZSH. Functions not needed or not used (yet).'
 # Leave submodule dirty.

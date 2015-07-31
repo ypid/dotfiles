@@ -1,6 +1,7 @@
 {% extends "README.md.j2" %}
 
-{% block badges %}{# {{{ #}
+{# Badges ((( #}
+{% block badges %}
 {% if ansigenome_info.travis is defined and ansigenome_info.travis %}
 [![Travis CI](http://img.shields.io/travis/{{ scm.user + '/' + role.slug }}.svg?style=flat)](http://travis-ci.org/{{ scm.user + '/' + role.slug }})
 {% endif %}
@@ -13,9 +14,9 @@
 [![Platforms](http://img.shields.io/badge/platforms-{{ galaxy_info.platforms | map(attribute='name') | sort | join('%20/%20') | lower }}-lightgrey.svg?style=flat)](#)
 {% endif %}
 {% endif %}
-{% endblock %}{# }}} #}
+{% endblock %}{# ))) #}
 
-{# Description {{{ #}
+{# Description ((( #}
 {% block synopsis %}
 {% if galaxy_info.description is defined %}
 {{ galaxy_info.description | trim }}
@@ -25,9 +26,10 @@
 {{ ansigenome_info.synopsis | trim }}
 {% endif %}
 {% endblock %}
-{# }}} #}
+{# ))) #}
 
-{% block installation %}{# {{{ #}
+{# Installation ((( #}
+{% block installation %}
 {% if ansigenome_info.galaxy_id is defined and ansigenome_info.galaxy_id %}
 ### Installation
 
@@ -39,11 +41,12 @@ This role requires at least Ansible{% if galaxy_info.min_ansible_version is defi
 To install via git, run either:
 
     git clone {{ ansigenome_info.github_url }}.git {{ role.galaxy_name }}
-    git submodule add {{ ansigenome_info.github_url }}.git roles/{{ role.galaxy_name }}
+    git submodule add {{ ansigenome_info.github_url }}.git {{ role.galaxy_name }}
 
-{% endblock %}{# }}} #}
+{% endblock %}{# ))) #}
 
-{% block authors %}{# {{{ #}
+{# Authors ((( #}
+{% block authors %}
 ### Authors and license
 
 `{{ role.name }}` role was written by:
@@ -54,4 +57,4 @@ To install via git, run either:
 
 
 License: [{{ license.type | trim }}]({{ license.url | trim }})
-{% endblock %}{# }}} #}
+{% endblock %}{# ))) #}

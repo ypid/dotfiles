@@ -1,7 +1,15 @@
-## Cleaner git ignore file. Only ignore files which are unique to my setup.
+## Cleaner git ignore file (compared to .gitignore_global_old).
+## Only ignore files which are unique to my setup.
 ## git repositories should be self sustained.
+
+
 ## Editor specific files
 # *.*~
 *.bak
+
+## TeX
 *.tex.backup
 *.sty.backup
+
+## Python rope (https://github.com/python-rope/rope)
+.ropeproject
