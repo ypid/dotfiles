@@ -7,6 +7,9 @@
 # *.*~
 *.bak
 
+## Vim documentation index for each plugin. Should be ignored by the plugin repository but some don’t do this …
+doc/tags
+
 ## TeX
 *.tex.backup
 *.sty.backup

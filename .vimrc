@@ -21,7 +21,7 @@ source ~/.vimrc.min
         call vundle#rc()
 
         " call vundle#begin()
-        Bundle 'gmarik/vundle'
+        " Bundle 'gmarik/vundle'
         "" Not required. Managed via git submodules.
         "" Required for :BundleClean.
 
@@ -38,6 +38,7 @@ source ~/.vimrc.min
     call add(g:spf13_bundle_groups, 'ui')
     call add(g:spf13_bundle_groups, 'work')
     call add(g:spf13_bundle_groups, 'programming')
+    " call add(g:spf13_bundle_groups, 'programming_not_often_used')
     call add(g:spf13_bundle_groups, 'perl')
     call add(g:spf13_bundle_groups, 'snipmate')
     call add(g:spf13_bundle_groups, 'html')
@@ -75,7 +76,7 @@ source ~/.vimrc.min
             let g:multi_cursor_next_key='<c-e>'
             let g:multi_cursor_prev_key='<C-p>'
 
-            Bundle 't9md/vim-quickhl'
+            " Bundle 't9md/vim-quickhl'
             nmap μ <Plug>(quickhl-manual-this)
             vmap μ <Plug>(quickhl-manual-this)
             " Shift+Layer3Mod+m
@@ -89,7 +90,7 @@ source ~/.vimrc.min
 
             " let g:yankring_history_dir = '$HOME/.vimswap'
             " Bundle 'YankRing.vim'
-            Bundle 'maxbrunsfeld/vim-yankstack'
+            " Bundle 'maxbrunsfeld/vim-yankstack'
 
             " Bundle 'wellle/tmux-complete.vim'
 
@@ -187,7 +188,7 @@ source ~/.vimrc.min
 
             Bundle 'tpope/vim-repeat'
 
-            Bundle 'tpope/vim-abolish'
+            " Bundle 'tpope/vim-abolish'
 
             " Translate {{{
                 if has("python") && executable('python')
@@ -239,7 +240,7 @@ source ~/.vimrc.min
             " Bundle 'plasticboy/vim-markdown'
             Bundle 'jtratner/vim-flavored-markdown'
 
-            Bundle 'Rykka/riv.vim'
+            " Bundle 'Rykka/riv.vim'
             " Bundle 'Rykka/InstantRst'
 
             Bundle 'bronson/vim-visual-star-search'
@@ -346,9 +347,9 @@ source ~/.vimrc.min
                     nnoremap <silent> <leader>gp :Git push<CR>
                 " }}}
 
-                Bundle 'int3/vim-extradite'
-                let g:extradite_showhash = 1
-                command! Gloge Extradite
+                " Bundle 'int3/vim-extradite'
+                " let g:extradite_showhash = 1
+                " command! Gloge Extradite
 
                 " Bundle 'airblade/vim-gitgutter'
                 " Show changes in working copy with plus sign, start of the line
@@ -416,8 +417,8 @@ source ~/.vimrc.min
             nnoremap <Leader>h :FSSplitBelow<cr>
 
             " Highlight brackets
-            Bundle 'kien/rainbow_parentheses.vim'
-            nnoremap <Leader>R :RainbowParenthesesToggle<CR>
+            " Bundle 'kien/rainbow_parentheses.vim'
+            " nnoremap <Leader>R :RainbowParenthesesToggle<CR>
 
             if executable('ctags')
                 Bundle 'majutsushi/tagbar'
@@ -425,26 +426,28 @@ source ~/.vimrc.min
 
                 " Bundle 'craigemery/vim-autotag'
                 " Did not work. Using manual autocmd.
-                Bundle 'xolox/vim-misc'
-                Bundle 'xolox/vim-easytags'
+                "
+                " Bundle 'xolox/vim-misc'
+                " Bundle 'xolox/vim-easytags'
                 let g:easytags_async = 1
-                " let g:easytags_file = '~/.vim/tags'
-                " let g:easytags_file = './tags'
+                " " let g:easytags_file = '~/.vim/tags'
+                " " let g:easytags_file = './tags'
                 let g:easytags_dynamic_files = 1
             endif
 
             " Save and run {{{
-                Bundle 'xuhdev/SingleCompile'
-                let g:SingleCompile_alwayscompile = 0
-                call SingleCompile#SetCompilerTemplate('mkd', 'markdown',
-                            \ 'text-to-HTML conversion tool', 'markdown',
-                            \ '> $(FILE_TITLE)$.html', 'true' )
-                call SingleCompile#SetPriority('mkd', 'markdown', 50)
+            " Not needed currently.
+                " Bundle 'xuhdev/SingleCompile'
+                " let g:SingleCompile_alwayscompile = 0
+                " call SingleCompile#SetCompilerTemplate('mkd', 'markdown',
+                "             \ 'text-to-HTML conversion tool', 'markdown',
+                "             \ '> $(FILE_TITLE)$.html', 'true' )
+                " call SingleCompile#SetPriority('mkd', 'markdown', 50)
 
-                call SingleCompile#ChooseCompiler('mkd', 'markdown')
+                " call SingleCompile#ChooseCompiler('mkd', 'markdown')
 
-                noremap <Leader>as :SCCompileRun<CR>
-                inoremap <Leader>as <c-o>:SCCompileRun<CR>
+                " noremap <Leader>as :SCCompileRun<CR>
+                " inoremap <Leader>as <c-o>:SCCompileRun<CR>
             " }}}
 
             " " Taglist {{{
@@ -459,8 +462,8 @@ source ~/.vimrc.min
     " General Programming (not often used) {{{
         if count(g:spf13_bundle_groups, 'programming_not_often_used')
 
-            Bundle 'mattn/webapi-vim'
-            Bundle 'mattn/gist-vim'
+            " Bundle 'mattn/webapi-vim'
+            " Bundle 'mattn/gist-vim'
 
             Bundle 'inkarkat/SyntaxAttr.vim'
             noremap <Leader>ti :call SyntaxAttr()<CR>
@@ -775,6 +778,7 @@ source ~/.vimrc.min
     if count(g:config_section_enable, 'general_config')
         filetype indent plugin on   " Automatically detect file types.
         syntax on                   " Syntax highlighting
+        syntax spell toplevel
     endif
 " }}}
 
@@ -919,6 +923,7 @@ source ~/.vimrc.min
                 endif
 
                 autocmd FileType ansible,jinja,yaml,tex setlocal foldmarker=(((,)))
+                autocmd FileType ansible,jinja,yaml syntax spell toplevel
                 " Use this foldmarker to avoid folds when using Jinja2
                 " templates.
                 " autocmd Syntax jinja syntax enable
@@ -945,8 +950,11 @@ source ~/.vimrc.min
 
             " autocmd VimEnter * RainbowParenthesesToggle " enable by defalut
             " autocmd Syntax * RainbowParenthesesLoadRound " default
-            autocmd VimEnter,BufRead,BufNewFile * if exists(":RainbowParenthesesLoadSquare")|exe "RainbowParenthesesLoadSquare"|endif
-            autocmd VimEnter,BufRead,BufNewFile * if exists(":RainbowParenthesesLoadBraces")|exe "RainbowParenthesesLoadBraces"|endif
+            "
+            " Not needed currently.
+            " autocmd VimEnter,BufRead,BufNewFile * if exists(":RainbowParenthesesLoadSquare")|exe "RainbowParenthesesLoadSquare"|endif
+            " autocmd VimEnter,BufRead,BufNewFile * if exists(":RainbowParenthesesLoadBraces")|exe "RainbowParenthesesLoadBraces"|endif
+            "
             autocmd BufRead * if exists(":DetectIndent")|exe "DetectIndent"|endif
             " autocmd BufRead,BufNewFile * call SetIndentWidth()
             " autocmd BufWritePost * echo &ff

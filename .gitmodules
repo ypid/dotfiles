@@ -212,3 +212,6 @@
 [submodule ".vim/bundle/ag.vim"]
 	path = .vim/bundle/ag.vim
 	url = https://github.com/rking/ag.vim.git
+[submodule ".vim/bundle/SyntaxAttr.vim"]
+	path = .vim/bundle/SyntaxAttr.vim
+	url = https://github.com/inkarkat/SyntaxAttr.vim.git

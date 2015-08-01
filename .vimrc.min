@@ -435,8 +435,9 @@
 " Settings if used standalone {{{
     if !exists('g:config_section_enable')
         syntax on
-        hi clear SpellBad
-        hi SpellBad cterm=underline
+        syntax spell toplevel
+        highlight clear SpellBad
+        highlight SpellBad cterm=underline
     endif
 " }}}
 
