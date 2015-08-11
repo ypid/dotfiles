@@ -314,7 +314,7 @@
         " noremap <c-m> <c-t>
         " Does also remap <return> to <c-t>
         " nnoremap <c-n> <c-]>
-        " Put it into .vim/after/overwrite.vim
+        " Put it into ~/.vim/after/plugin/overwrite.vim
 
         command! -complete=file -nargs=? O tabnew <args>
     " }}}

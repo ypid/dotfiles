@@ -10,13 +10,13 @@ export EDITOR=vim
 alias e='editor'
 
 export GITHUB_USER="ypid"
-# used in https://github.com/ypid/scripts/blob/master/git-setup-and-push-to-my-fork
+# Used in https://github.com/ypid/scripts/blob/master/git-setup-and-push-to-my-fork
 #
 
 ## Enable color support of ls and also add handy aliases {{{
 if [ -x /usr/bin/dircolors ]; then
     export LS_OPTIONS='--color=auto'
-    eval "`dircolors`"
+    eval "$(dircolors)"
     alias ls='ls --color=auto --human-readable'
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
@@ -46,17 +46,22 @@ alias fgfg='fg'
 ## }}}
 
 ## Little functions {{{
-function up {
-[[ "${1/[^0-9]/}" == "$1" ]] && {
-    local ups=""
-    for i in $(seq 1 $1)
-    do
-        ups="$ups../"
+## http://superuser.com/a/795787/226840
+function up() {
+    if [[ $1 -lt 1 ]]; then
+        echo "Only positive integer values larger than 1 are allowed!" >&2
+        echo -e "\n\tUsage:\n\t======\n\n\t\t# to go up 10 levels in your directory\n\t\tup 10\n\n\t\t# to go up just 2 levels\n\t\tup 2\n" >&2
+        return 1;
+    fi
+
+    up=""
+
+    for ((i=1; i<=$1;i++)); do
+        up="${up}../"
     done
-    cd $ups
-    } || echo "usage: up INTEGER"
+
+    cd "${up}"
 }
-alias b='up'
 
 ## Create a new directory and enter it.
 unalias md 2>/dev/zero
@@ -65,7 +70,7 @@ function md() {
 }
 
 function run-c() {
-    echo "main(){ $@ }" | tcc -run -
+    echo "main(){ ${*} }" | tcc -run -
 }
 
 function subnetcalc() {
@@ -78,15 +83,15 @@ function subnetcalc() {
 
 ## https://gist.github.com/CMCDragonkai/62c04977f62037285772
 function sed-keyword-escape {
-    echo $1 | sed -e 's/[]\/$*.^|[]/\\&/g'
+    echo "$1" | sed -e 's/[]\/$*.^|[]/\\&/g'
 }
 
 function sed-replace-escape {
-    echo $1 | sed -e 's/[\/&]/\\&/g'
+    echo "$1" | sed -e 's/[\/&]/\\&/g'
 }
 
 function sed-easy {
-    sed -i "s/$(sed-keyword-escape $1)/$(sed-replace-escape $2)/g" $3
+    sed -i "s/$(sed-keyword-escape $1)/$(sed-replace-escape $2)/g" "$3"
 }
 ## }}}
 
@@ -121,7 +126,7 @@ alias m='mosh'
 if which compdef >/dev/null 2>&1 && which mosh >/dev/null 2>&1; then
     compdef m=mosh
 fi
-alias ssh-keygen='ssh-keygen -o -b 4096 -a 200 -t rsa'
+alias ssh-keygen='ssh-keygen -o -b 8192 -a 200 -t rsa'
 
 alias tmux='TERM=screen-256color-bce tmux'
 alias t='tmux'
@@ -149,20 +154,20 @@ alias gb='git branch'
 
 unalias gp 2>/dev/zero
 function gp {
-    if [[ "$PWD" =~ "$HOME/Beruf" ]]; then
+    if [[ "$PWD" =~ $HOME/Beruf ]]; then
         echo "Work"
-        gitw push $@ -v
+        gitw push "$@" -v
     else
-        git push $@ -v
+        git push "$@" -v
     fi
 }
 unalias gl 2>/dev/zero
 function gl {
-    if [[ "$PWD" =~ "$HOME/Beruf" ]]; then
+    if [[ "$PWD" =~ $HOME/Beruf ]]; then
         echo "Work"
-        gitw pull $@ -v
+        gitw pull "$@" -v
     else
-        git pull $@ -v
+        git pull "$@" -v
     fi
 }
 # }}}
@@ -184,17 +189,20 @@ alias percent-decode='python -c "import urllib, sys; print urllib.unquote(sys.ar
 
 alias badblocks='echo "Use badblocks_and_secure_erase."'
 
-## FIXME legacy
-if which ack-grep >/dev/null 2>&1; then
+unalias ag >/dev/null 2>&1
+if command -v ag >/dev/null 2>&1
+then
+    ## Using silversearcher-ag
+    alias ack='ag'
+elif which ack-grep >/dev/null 2>&1
+then
     alias ack='ack-grep'
 fi
-## Used by silversearcher-ag
-unalias ag
 
 alias agg='aptitude upgrade'
 alias ass='wajig statussearch'
 alias as='apt-cache search' ## Much faster. I normally don’t need to know if the thing is installed, respectively I can check that later with aptitude install.
-alias ash='/usr/bin/aptitude show' ## Does not need to run as root.
+alias ash='\aptitude show' ## Does not need to run as root.
 if [[ "$USER" != 'root' ]]; then
     alias mount='sudo mount'
     alias umount='sudo umount'

@@ -14,6 +14,8 @@
 [![Platforms](http://img.shields.io/badge/platforms-{{ galaxy_info.platforms | map(attribute='name') | sort | join('%20/%20') | lower }}-lightgrey.svg?style=flat)](#)
 {% endif %}
 {% endif %}
+[![GitHub Tags](https://img.shields.io/github/tag/{{ scm.user + '/' + role.slug }}.svg)](https://github.com/{{ scm.user + '/' + role.slug }})
+[![GitHub Stars](https://img.shields.io/github/stars/{{ scm.user + '/' + role.slug }}.svg)](https://github.com/{{ scm.user + '/' + role.slug }})
 {% endblock %}{# ))) #}
 
 {# Description ((( #}

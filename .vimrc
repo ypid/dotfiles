@@ -38,7 +38,7 @@ source ~/.vimrc.min
     call add(g:spf13_bundle_groups, 'ui')
     call add(g:spf13_bundle_groups, 'work')
     call add(g:spf13_bundle_groups, 'programming')
-    " call add(g:spf13_bundle_groups, 'programming_not_often_used')
+    call add(g:spf13_bundle_groups, 'programming_not_often_used')
     call add(g:spf13_bundle_groups, 'perl')
     call add(g:spf13_bundle_groups, 'snipmate')
     call add(g:spf13_bundle_groups, 'html')
@@ -76,7 +76,7 @@ source ~/.vimrc.min
             let g:multi_cursor_next_key='<c-e>'
             let g:multi_cursor_prev_key='<C-p>'
 
-            " Bundle 't9md/vim-quickhl'
+            Bundle 't9md/vim-quickhl'
             nmap μ <Plug>(quickhl-manual-this)
             vmap μ <Plug>(quickhl-manual-this)
             " Shift+Layer3Mod+m
@@ -426,13 +426,14 @@ source ~/.vimrc.min
 
                 " Bundle 'craigemery/vim-autotag'
                 " Did not work. Using manual autocmd.
-                "
+
+                " " vim-easytags depends on vim-misc.
                 " Bundle 'xolox/vim-misc'
                 " Bundle 'xolox/vim-easytags'
-                let g:easytags_async = 1
+                " let g:easytags_async = 1
                 " " let g:easytags_file = '~/.vim/tags'
                 " " let g:easytags_file = './tags'
-                let g:easytags_dynamic_files = 1
+                " let g:easytags_dynamic_files = 1
             endif
 
             " Save and run {{{
@@ -888,6 +889,8 @@ source ~/.vimrc.min
 
                 autocmd BufRead,BufNewFile *firejail/** HideBadWhitespace
 
+                " autocmd BufRead,BufNewFile *debops** HideBadWhitespace
+
                 autocmd BufRead,BufNewFile *subuser/** HideBadWhitespace
                 autocmd BufRead,BufNewFile *subuser/** let b:syntastic_mode = 'passive'
                 autocmd BufRead,BufNewFile *subuser/** let g:pymode_trim_whitespaces = 0
@@ -897,7 +900,6 @@ source ~/.vimrc.min
                 autocmd BufRead,BufNewFile *ansible/*vars/* set filetype=yaml
                 autocmd BufRead,BufNewFile *ansible/**/ if &filetype==''|set filetype=yaml|endif
                 autocmd BufReadPost *.j2 setlocal filetype=jinja
-                autocmd BufRead,BufNewFile *ansible/hosts setf dosini|syn on
             " }}}
 
             autocmd BufWritePre /tmp/*  setlocal noundofile
