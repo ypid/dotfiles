@@ -295,7 +295,7 @@ Shortcut         | Function               | Left hand only                | Comm
 /                | Quick search           | Yes (maybe copy paste search) | Not used. Configured DC so that every letter typed will open the quick filter.
 Ctrl+F           | QuickFilter            | Not really                    | filter=toggle
 Ctrl+S           | Search                 | Yes                           |
-Ctrl+Shift+M     | CountDirContent        | Yes                           |
+Ctrl+Shift+M     | CountDirContent        | Yes                           | Calculate size for directories and show it instead of \<DIR\>
 Ctrl+Shift+Space | CalculateSpace         | Nice to have                  |
 Ctrl+.           | ShowSysFiles           | Nice to have                  |
 Ctrl+Shift+S     | RunTerm                | Not really                    | Like Ctrl+Super+s but with the current directory.

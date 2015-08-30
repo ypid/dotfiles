@@ -43,8 +43,6 @@
 	backends = SHA512E
 	diskreserve = 600 megabyte
 	largefiles = not include=*.git*
-[tig]
-	show-line-numbers = yes
 [commit]
 	gpgsign = true
 [url "ssh://ypid.github.com/ypid/"]

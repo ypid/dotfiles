@@ -109,6 +109,8 @@ plugins+=(zsh-completions)
 # Testing
 
 ## gr {{{
+# plugins+=(vagrant)
+# plugins+=(emoji)
 # plugins+=(gr)
 # . <(gr completion)
 # Takes to long.
@@ -116,7 +118,6 @@ plugins+=(zsh-completions)
 
 # Not tested enough, might be useful
 : <<'END'
-plugins+=(vagrant)
 plugins+=(vi-mode)
 plugins+=(gitfast)
 plugins+=(command-not-found)

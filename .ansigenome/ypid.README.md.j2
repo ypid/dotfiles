@@ -11,7 +11,7 @@
 #}
 [![Ansible Galaxy](http://img.shields.io/badge/galaxy-{{ role.galaxy_name | replace('-', '–')}}-660198.svg?style=flat)](https://galaxy.ansible.com/list#/roles/{{ ansigenome_info.galaxy_id }})
 {% if galaxy_info.platforms is defined and galaxy_info.platforms %}
-[![Platforms](http://img.shields.io/badge/platforms-{{ galaxy_info.platforms | map(attribute='name') | sort | join('%20/%20') | lower }}-lightgrey.svg?style=flat)](#)
+[![Platforms](http://img.shields.io/badge/platforms-{{ galaxy_info.platforms | map(attribute='name') | sort | join('%20/%20') | lower }}-lightgrey.svg?style=flat)](https://galaxy.ansible.com/list#/roles/{{ ansigenome_info.galaxy_id }})
 {% endif %}
 {% endif %}
 [![GitHub Tags](https://img.shields.io/github/tag/{{ scm.user + '/' + role.slug }}.svg)](https://github.com/{{ scm.user + '/' + role.slug }})
@@ -37,13 +37,17 @@
 
 This role requires at least Ansible{% if galaxy_info.min_ansible_version is defined and galaxy_info.min_ansible_version %} `v{{ galaxy_info.min_ansible_version }}`{% endif %}. To install it, run:
 
-    ansible-galaxy install {{ role.galaxy_name }}
+```Shell
+ansible-galaxy install {{ role.galaxy_name }}
+```
 {% endif %}
 
 To install via git, run either:
 
-    git clone {{ ansigenome_info.github_url }}.git {{ role.galaxy_name }}
-    git submodule add {{ ansigenome_info.github_url }}.git {{ role.galaxy_name }}
+```Shell
+git clone {{ ansigenome_info.github_url }}.git {{ role.galaxy_name }}
+git submodule add {{ ansigenome_info.github_url }}.git {{ role.galaxy_name }}
+```
 
 {% endblock %}{# ))) #}
 

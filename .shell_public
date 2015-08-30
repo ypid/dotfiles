@@ -145,7 +145,8 @@ alias glg='git log --stat --decorate=short --show-signature' # full history
 
 # Define important shortcuts here if under bash (are already defended by oh-my-zsh) {{{
 alias g='git'
-alias gst='git status'
+alias gst='git status --short --branch'
+# alias gst='git status'
 alias gco='git checkout'
 alias gca='git commit -v -a'
 alias gc='git commit -v'

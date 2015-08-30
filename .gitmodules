@@ -216,3 +216,6 @@
 [submodule ".vim/bundle/SyntaxAttr.vim"]
 	path = .vim/bundle/SyntaxAttr.vim
 	url = https://github.com/inkarkat/SyntaxAttr.vim.git
+[submodule ".vim/bundle/vim-smooth-scroll"]
+	path = .vim/bundle/vim-smooth-scroll
+	url = https://github.com/terryma/vim-smooth-scroll.git

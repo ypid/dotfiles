@@ -49,6 +49,7 @@ source ~/.vimrc.min
 
     " Not often used, not properly tested.
     call add(g:spf13_bundle_groups, 'testing')
+    " call add(g:spf13_bundle_groups, 'tested_not_using')
     " call add(g:spf13_bundle_groups, 'neocomplcache')
     call add(g:spf13_bundle_groups, 'latex')
     call add(g:spf13_bundle_groups, 'javascript')
@@ -114,11 +115,11 @@ source ~/.vimrc.min
         endif
         if count(g:spf13_bundle_groups, 'tested_not_using')
             " I don‘t really like this behavior
-            " Bundle 'terryma/vim-smooth-scroll'
-            " noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 3)<CR>
-            " noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
-            " noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 2)<CR>
-            " noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 2)<CR>
+            Bundle 'terryma/vim-smooth-scroll'
+            noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 3)<CR>
+            noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
+            noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 2)<CR>
+            noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 2)<CR>
         endif
     " }}}
 
@@ -888,13 +889,15 @@ source ~/.vimrc.min
                 autocmd BufRead,BufNewFile *.nse setlocal filetype=lua
 
                 autocmd BufRead,BufNewFile *firejail/** HideBadWhitespace
+                autocmd BufRead,BufNewFile *yohours/** HideBadWhitespace
+                autocmd BufRead,BufNewFile *OpeningHoursParser.java/** HideBadWhitespace
 
                 " autocmd BufRead,BufNewFile *debops** HideBadWhitespace
 
                 autocmd BufRead,BufNewFile *subuser/** HideBadWhitespace
-                autocmd BufRead,BufNewFile *subuser/** let b:syntastic_mode = 'passive'
+                " autocmd BufRead,BufNewFile *subuser/** let b:syntastic_mode = 'passive'
+                " autocmd BufRead,BufNewFile *subuser/** let g:pymode_lint = 0
                 autocmd BufRead,BufNewFile *subuser/** let g:pymode_trim_whitespaces = 0
-                autocmd BufRead,BufNewFile *subuser/** let g:pymode_lint = 0
 
                 autocmd BufRead,BufNewFile *ansible/**/ if &filetype=='yaml'|set filetype=ansible|endif
                 autocmd BufRead,BufNewFile *ansible/*vars/* set filetype=yaml
