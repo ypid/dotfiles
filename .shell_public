@@ -128,6 +128,7 @@ if which compdef >/dev/null 2>&1 && which mosh >/dev/null 2>&1; then
 fi
 alias ssh-keygen='ssh-keygen -o -b 8192 -a 200 -t rsa'
 
+alias cat='cat --show-nonprinting'
 alias tmux='TERM=screen-256color-bce tmux'
 alias t='tmux'
 # alias f='tmux last-window' ## Use prefix + Ctrl+S because it will also work in Vim or if another program is running in foreground.
@@ -137,7 +138,6 @@ alias con='ping -c 1 -w 2 heise.de'
 
 ## Use the shortcuts from oh-my-zsh for git
 alias wd='git diff --color-words --no-index'
-alias ι='git status' # Shift+Level3Mod+s
 
 # overwrite alias from oh-my-zsh {{{
 alias glg='git log --stat --decorate=short --show-signature' # full history
@@ -145,11 +145,15 @@ alias glg='git log --stat --decorate=short --show-signature' # full history
 
 # Define important shortcuts here if under bash (are already defended by oh-my-zsh) {{{
 alias g='git'
-alias gst='git status --short --branch'
-# alias gst='git status'
+
+alias gst='git status'
+
+## Does not distinguish between changed files and changed/dirty submodules and it looks terrible …
+# alias gst='git status --short --branch'
+
 alias gco='git checkout'
-alias gca='git commit -v -a'
-alias gc='git commit -v'
+alias gc='git commit --verbose'
+alias gca='gc --all'
 alias gb='git branch'
 # }}}
 
