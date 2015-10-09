@@ -178,17 +178,17 @@ Ctrl+Alt+P    | Rate the current song 5 stars | No             |
 
 ### Windows and tabs
 
-Applies for: firefox, gnome-terminal, Double Commander (not fully yet because some are not configurable)
+Applies for: Firefox, gnome-terminal, Double Commander (not fully yet because some are not configurable)
 
 For gnome-terminal, each shortcut requires additionally the use of the Shift modifier key.
 
 Shortcut      | Function                                | Left hand only | Comment
 ------------- | -------------                           | -------------  | -------------
 Ctrl+N        | Opens a new tab                         | No             | Easier to reach than C-t
-Ctrl+tab      | Switch to right tab, cicle through tabs | Yes            |
+Ctrl+tab      | Switch to right tab, cycle through tabs | Yes            |
 Ctrl+J        | Switch to left tab                      | Not really     |
 Ctrl+K        | Switch to right tab                     | Not really     |
-Ctrl+[+-]     | Increase/Decrease (zoom) font size      | Nice to have   | Level 3 [Neo2][] plus and minus do not work in firefox (works nicely because the plus „p“ and the minus „ü“ are next to each other). Using Level 4 once (which currently don’t work with gnome-terminal. Using Level 4 plus and Level 1 hyphen for this.).
+Ctrl+[+-]     | Increase/Decrease (zoom) font size      | Nice to have   | Level 3 [Neo2][] plus and minus work in Firefox.
 Ctrl+W        | Closes the tab                          | Of course      | Should be default in all program
 Ctrl+Q        | Closes the application                  | Of course      | Should be default in all program
 
@@ -253,7 +253,6 @@ Shortcut      | Function                            | Left hand only | Comment
 ------------- | -------------                       | -------------  | -------------
 Ctrl+U        | No action                           | No             | Disabled default "View page source" because I hit Ctrl+u multiple times in the location bar to delete the line.
 Shift+Ctrl+S  | View page source                    | Yes            |
-S             | Toggle bookmarks toolbar on and off | Yes            | With keyconfig: `var toolbar = document.getElementById("PersonalToolbar");toolbar.collapsed = !toolbar.collapsed;document.persist(toolbar.id, "collapsed");`
 Shift+Ctrl+D  | Web console (d for Debug)           | Yes            |
 
 ### Gimp

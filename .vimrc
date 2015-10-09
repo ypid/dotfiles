@@ -392,8 +392,8 @@ source ~/.vimrc.min
             Bundle 'tpope/vim-endwise'
 
             " DetectIndent {{{
-                " Bundle 'ciaranm/detectindent'
-                Bundle 'ypid/detectindent'
+                Bundle 'ciaranm/detectindent'
+                " Bundle 'ypid/detectindent'
                 let g:detectindent_preferred_expandtab = 1
                 let g:detectindent_preferred_indent    = 4
                 let g:detectindent_min_indent          = 2
