@@ -187,6 +187,7 @@ if which compdef >/dev/null 2>&1 && which git-annex >/dev/null 2>&1; then
 fi
 
 alias v='vagrant'
+alias xls='lxc-ls --fancy'
 
 # http://stackoverflow.com/questions/16787916/difference-between-2-directories-in-linux
 alias diff-dir='diff -arq'

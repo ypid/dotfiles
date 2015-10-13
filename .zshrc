@@ -105,6 +105,7 @@ plugins+=(zsh_reload)
 plugins+=(more-completions)
 plugins+=(zsh-compdef)
 plugins+=(zsh-completions)
+plugins+=(zsh-compdef-ypid-collected)
 
 # Testing
 
