@@ -46,21 +46,15 @@ alias fgfg='fg'
 ## }}}
 
 ## Little functions {{{
-## http://superuser.com/a/795787/226840
-function up() {
-    if [[ $1 -lt 1 ]]; then
-        echo "Only positive integer values larger than 1 are allowed!" >&2
-        echo -e "\n\tUsage:\n\t======\n\n\t\t# to go up 10 levels in your directory\n\t\tup 10\n\n\t\t# to go up just 2 levels\n\t\tup 2\n" >&2
-        return 1;
-    fi
-
-    up=""
-
-    for ((i=1; i<=$1;i++)); do
-        up="${up}../"
+function up {
+[[ "${1/[^0-9]/}" == "$1" ]] && {
+    local ups=""
+    for i in $(seq 1 $1)
+    do
+        ups="$ups../"
     done
-
-    cd "${up}"
+    cd $ups
+    } || echo "usage: up INTEGER"
 }
 
 ## Create a new directory and enter it.
