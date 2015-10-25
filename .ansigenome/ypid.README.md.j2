@@ -7,11 +7,11 @@
 {% endif %}
 {% if ansigenome_info.galaxy_id is defined and ansigenome_info.galaxy_id %}
 {#
-[Ansible Galaxy](https://galaxy.ansible.com/list#/roles/{{ ansigenome_info.galaxy_id }})
+[Ansible Galaxy](https://galaxy.ansible.com/detail#/role/{{ ansigenome_info.galaxy_id }})
 #}
-[![Ansible Galaxy](http://img.shields.io/badge/galaxy-{{ role.galaxy_name | replace('-', '–')}}-660198.svg?style=flat)](https://galaxy.ansible.com/list#/roles/{{ ansigenome_info.galaxy_id }})
+[![Ansible Galaxy](http://img.shields.io/badge/galaxy-{{ role.galaxy_name | replace('-', '–')}}-660198.svg?style=flat)](https://galaxy.ansible.com/detail#/role/{{ ansigenome_info.galaxy_id }})
 {% if galaxy_info.platforms is defined and galaxy_info.platforms %}
-[![Platforms](http://img.shields.io/badge/platforms-{{ galaxy_info.platforms | map(attribute='name') | sort | join('%20/%20') | lower }}-lightgrey.svg?style=flat)](https://galaxy.ansible.com/list#/roles/{{ ansigenome_info.galaxy_id }})
+[![Platforms](http://img.shields.io/badge/platforms-{{ galaxy_info.platforms | map(attribute='name') | sort | join('%20/%20') | lower }}-lightgrey.svg?style=flat)](https://galaxy.ansible.com/detail#/role/{{ ansigenome_info.galaxy_id }})
 {% endif %}
 {% endif %}
 [![GitHub Tags](https://img.shields.io/github/tag/{{ scm.user + '/' + role.slug }}.svg)](https://github.com/{{ scm.user + '/' + role.slug }})

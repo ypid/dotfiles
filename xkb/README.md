@@ -36,7 +36,7 @@ Note that you can switch to the normal layout (as specified in the keyboard file
 
 ### Legacy
 
-On older systems you might need the current version of the [Neo2] xkb files need to be present before copying over the de file. See [the Wiki page about installing Neo2](http://wiki.neo-layout.org/wiki/Neo%20unter%20Linux%20einrichten/xkbmap).
+On older systems you might need the current version of the [Neo2] xkb files before copying over the de file. See [the Wiki page about installing Neo2](http://wiki.neo-layout.org/wiki/Neo%20unter%20Linux%20einrichten/xkbmap).
 
 
 [NeoLayoutViewer]: https://github.com/YggdrasiI/NeoLayoutViewer

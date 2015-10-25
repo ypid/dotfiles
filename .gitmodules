@@ -219,3 +219,6 @@
 [submodule ".vim/bundle/vim-smooth-scroll"]
 	path = .vim/bundle/vim-smooth-scroll
 	url = https://github.com/terryma/vim-smooth-scroll.git
+[submodule ".vim/bundle/vim-characterize"]
+	path = .vim/bundle/vim-characterize
+	url = https://github.com/tpope/vim-characterize.git

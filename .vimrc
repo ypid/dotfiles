@@ -189,6 +189,8 @@ source ~/.vimrc.min
 
             Bundle 'tpope/vim-repeat'
 
+            Bundle 'tpope/vim-characterize'
+
             " Bundle 'tpope/vim-abolish'
 
             " Translate {{{
