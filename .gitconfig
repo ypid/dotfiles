@@ -30,6 +30,8 @@
 	; https://github.com/k4rthik/git-cal.git
 	show-big-files = "!git ls-tree -r -t -l --full-name HEAD | sort -n -k 4 | tail -n 10"
 	# http://stackoverflow.com/a/1290046
+	#
+	g = "!g() { git fetch origin refs/pull/$1/head:pr-$1; }; g"
 [core]
 	excludesfile = ~/.gitignore_global
 	editor = vi
