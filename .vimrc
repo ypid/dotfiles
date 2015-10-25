@@ -903,6 +903,7 @@ source ~/.vimrc.min
 
                 autocmd BufRead,BufNewFile *ansible/**/ if &filetype=='yaml'|set filetype=ansible|endif
                 autocmd BufRead,BufNewFile *ansible/*vars/* set filetype=yaml
+                autocmd BufRead,BufNewFile */.ansigenome.conf set filetype=yaml
                 autocmd BufRead,BufNewFile *ansible/**/ if &filetype==''|set filetype=yaml|endif
                 autocmd BufReadPost *.j2 setlocal filetype=jinja
             " }}}
