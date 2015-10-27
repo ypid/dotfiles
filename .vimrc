@@ -566,6 +566,7 @@ source ~/.vimrc.min
         if count(g:spf13_bundle_groups, 'python')
             " Pick either python-mode or pyflakes & pydoc
             Bundle 'klen/python-mode'
+            " let g:pymode_lint_write = 0
             let g:pymode_folding = 1
             let g:pymode_doc = 0
             let g:pymode_run_bind = '<leader>aa'
@@ -878,7 +879,7 @@ source ~/.vimrc.min
                 autocmd BufRead,BufNewFile $HOME/.unison/* setlocal filetype=conf
 
                 " http://mathias-kettner.de/checkmk_configfiles.html
-                autocmd BufRead,BufNewFile *.mk setlocal filetype=python
+                autocmd BufRead,BufNewFile *.mk setlocal filetype=python|let g:pymode_options_max_line_length = 150|let g:pymode_lint = 0
 
                 " I already use the "wrong" file suffix for all my LaTeX files
                 " autocmd BufRead,BufNewFile *.tex setlocal filetype=tex
