@@ -34,7 +34,7 @@
 	url = https://github.com/gi1242/vim-tex-autoclose.git
 [submodule ".vim/bundle/detectindent"]
 	path = .vim/bundle/detectindent
-	url = https://github.com/ypid/detectindent.git
+	url = https://github.com/ciaranm/detectindent.git
 [submodule ".vim/bundle/vim-misc"]
 	path = .vim/bundle/vim-misc
 	url = https://github.com/xolox/vim-misc.git
