@@ -243,7 +243,7 @@ source ~/.vimrc.min
             " Bundle 'plasticboy/vim-markdown'
             Bundle 'jtratner/vim-flavored-markdown'
 
-            " Bundle 'Rykka/riv.vim'
+            Bundle 'Rykka/riv.vim'
             " Bundle 'Rykka/InstantRst'
 
             Bundle 'bronson/vim-visual-star-search'
@@ -904,7 +904,7 @@ source ~/.vimrc.min
 
                 autocmd BufRead,BufNewFile *ansible/**/ if &filetype=='yaml'|set filetype=ansible|endif
                 autocmd BufRead,BufNewFile *ansible/*vars/* set filetype=yaml
-                autocmd BufRead,BufNewFile */.ansigenome.conf set filetype=yaml
+                autocmd BufRead,BufNewFile **ansigenome.conf set filetype=yaml
                 autocmd BufRead,BufNewFile *ansible/**/ if &filetype==''|set filetype=yaml|endif
                 autocmd BufReadPost *.j2 setlocal filetype=jinja
             " }}}
