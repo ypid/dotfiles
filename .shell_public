@@ -4,6 +4,8 @@
 # export IGNOREEOF=2
 ## Does not work with zsh
 
+alias ansible-template-debops='ln -sf "$HOME/.ansigenome/debops-ansigenome.conf" "$HOME/.ansigenome.conf"'
+alias ansible-template-ypid='ln -sf "$HOME/.ansigenome/ypid-ansigenome.conf" "$HOME/.ansigenome.conf"'
 export ANSIBLE_NOCOWS=1
 export BYOBU_PREFIX="/usr"
 export BYOBU_CONFIG_DIR="$HOME/.byobu"
