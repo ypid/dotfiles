@@ -38,7 +38,7 @@ To use this configuration run the following:
 `.perlcriticrc`
 > Disabling some rules for perlcritic
 
-`.perltidyr`
+`.perltidyrc`
 > My thoughts about how Perl code should look like
 
 `.pystartup`
@@ -56,8 +56,8 @@ To use this configuration run the following:
 `.vimpagerrc`
 > Lightweight Vim configuration for using Vim as pager
 
-`xkb/`
-> My keyboard layout (mix between qwertz and [Neo2][] which I later refer to as qNeo2).
+`qNeo2/`
+> My keyboard layout (mix between QWERTZ and [Neo2][] which I later refer to as qNeo2).
 
 [oh-my-zsh]: http://github.com/robbyrussell/oh-my-zsh
 [Neo2]: http://www.neo-layout.org/

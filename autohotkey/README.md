@@ -4,4 +4,10 @@ Here is my autohotkey configuration which provides some convenience for working 
 
 ## Install
 
-Autohotkey can be downloaded from http://ahkscript.org/download/.
+Install via:
+
+```PowerShell
+choco install -y autohotkey
+```
+
+(Or download if from https://autohotkey.com/download/)

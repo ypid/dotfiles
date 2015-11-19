@@ -34,10 +34,22 @@ After enabling it, your default keyboard layout will be [Neo2] with the QWERTZ l
 
 Note that you can switch to the normal layout (as specified in the keyboard file) with the [scroll lock key](http://en.wikipedia.org/wiki/Scroll_lock) or with tools your window manager provides.
 
+## Autohotkey on M$ Windows
+
+The option to use the higher layers of Neo2 combined with the default QWERTZ layout is actually supported by [NeoVars](https://wiki.neo-layout.org/wiki/Neo%20unter%20Windows%20einrichten/NeoVars) under Windows which is pretty nice. All you have to do to get it is to create a INI file under `%APPDATA%\Neo2\Neo2.ini` with the content of [this file](/qNeo2/Neo2.ini) and download [neo20.exe](https://github.com/neo-layout/neo-layout/raw/master/windows/neo-vars/out/neo20.exe) and start it.
+
+* Tested on Windows 7
+
+### Problems
+
+* Does not work in the default Powershell terminal emulator. When working with that the keyboard layout is "reverted" to the default one. When switching windows qNeo2 is automatically enabled back. There needs to be a replacement Powershell terminal emulator which does fool around with me here.
+
+* Some other quirks
+
 ### Legacy
 
 On older systems you might need the current version of the [Neo2] xkb files before copying over the de file. See [the Wiki page about installing Neo2](http://wiki.neo-layout.org/wiki/Neo%20unter%20Linux%20einrichten/xkbmap).
 
 
 [NeoLayoutViewer]: https://github.com/YggdrasiI/NeoLayoutViewer
-[Neo2]: http://www.neo-layout.org/
+[Neo2]: https://www.neo-layout.org/
