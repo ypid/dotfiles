@@ -902,6 +902,8 @@ source ~/.vimrc.min
                 " autocmd BufRead,BufNewFile *subuser/** let g:pymode_lint = 0
                 autocmd BufRead,BufNewFile *subuser/** let g:pymode_trim_whitespaces = 0
 
+                autocmd BufRead,BufNewFile **rsnapshot.conf* set noexpandtab
+
                 autocmd BufRead,BufNewFile *ansible/**/ if &filetype=='yaml'|set filetype=ansible|endif
                 autocmd BufRead,BufNewFile *ansible/*vars/* set filetype=yaml
                 autocmd BufRead,BufNewFile **ansigenome.conf set filetype=yaml

@@ -169,9 +169,9 @@ unalias gl 2>/dev/zero
 function gl {
     if [[ "$PWD" =~ $HOME/Beruf ]]; then
         echo "Work"
-        gitw pull "$@" -v
+        gitw pull --ff-only "$@" -v
     else
-        git pull "$@" -v
+        git pull --ff-only "$@" -v
     fi
 }
 # }}}
