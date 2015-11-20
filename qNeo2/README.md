@@ -42,9 +42,9 @@ The option to use the higher layers of Neo2 combined with the default QWERTZ lay
 
 ### Problems
 
-* Does not work in the default Powershell terminal emulator. When working with that the keyboard layout is "reverted" to the default one. When switching windows qNeo2 is automatically enabled back. There needs to be a replacement Powershell terminal emulator which does not fool around with me here.
+* Does not work in Powershell terminal emulator when running as admin. The keyboard layout is "reverted" to the default one. This seems to be a security feature because qNeo2 works when running Powershell in user context.
 
-* Some other quirks
+* Some other quirks when working longer over Cygwin ssh or Putty on a Linux server and making heavy use of qNeo2.
 
 ### Legacy
 
