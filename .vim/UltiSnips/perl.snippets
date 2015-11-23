@@ -1,9 +1,10 @@
-snippet #! "My shebang" !b
+snippet #! "My Perl preamble" !b
 #!/usr/bin/env perl
 use strict;
 use warnings;
 use autodie;
-use feature qw(say);
+use boolean;
+use feature qw(say signatures);
 use utf8;
 use open qw(:std :utf8);
 binmode STDOUT, ':encoding(UTF-8)';
@@ -12,5 +13,11 @@ ${1:
 # /something/xms
 # x: Extended Formatting
 # m: Line Boundaries (^ and $ -> \n matching)
-# s: Matching Anything with the .	[^\n]}
+# s: Matching Anything with the .	[^\n]
+#
+# `use feature 'signatures'` is experimental? WTF Perl?}
+endsnippet
+
+snippet cl "Console log" b
+warn print "$1\n";
 endsnippet
