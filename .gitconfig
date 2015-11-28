@@ -32,6 +32,7 @@
 	# http://stackoverflow.com/a/1290046
 	#
 	g = "!g() { git fetch origin refs/pull/$1/head:pr-$1; }; g"
+	co-perms= "!git diff -p -R | grep -E '^(diff|(old|new) mode)' | git apply"
 [core]
 	excludesfile = ~/.gitignore_global
 	editor = vi

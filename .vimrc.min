@@ -308,8 +308,9 @@
         " Does not work
         " noremap <c-c> <ESC>
         "
-        inoremap <c-c> <Nop>
+        " inoremap <c-c> <Nop>
         " Use Neo2 Escape because it works everywhere.
+        " Disabling because it breaks Cygwin + qNeo2 setup.
 
         " noremap <c-m> <c-t>
         " Does also remap <return> to <c-t>

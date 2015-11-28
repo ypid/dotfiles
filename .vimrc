@@ -368,7 +368,7 @@ source ~/.vimrc.min
                 Bundle 'godlygeek/tabular'
                 noremap <Leader>a)  :Tabularize /)/l0<CR>
                 noremap <Leader>a&  :Tabularize /&<CR>
-                noremap <Leader>a=  :Tabularize /[/*+-]\?=<CR>
+                noremap <Leader>a=  :Tabularize /[/*+-]\?=[>]\?<CR>
                 noremap <Leader>a-  :Tabularize /-\w*<CR>
                 noremap <Leader>a:  :Tabularize /: /<CR>
                 noremap <Leader>az: :Tabularize /:\zs /l0<CR>
