@@ -239,6 +239,7 @@ source ~/.vimrc.min
             endif
 
             let g:markdown_folding = 1
+            let g:markdown_fenced_languages = ['html', 'javascript', 'python', 'bash=sh']
             Bundle 'tpope/vim-markdown'
             " Bundle 'plasticboy/vim-markdown'
             Bundle 'jtratner/vim-flavored-markdown'
@@ -613,7 +614,6 @@ source ~/.vimrc.min
         if count(g:spf13_bundle_groups, 'javascript')
             Bundle 'Shutnik/jshint2.vim'
             " Bundle 'leshill/vim-json'
-            " Bundle 'groenewege/vim-less'
             " Bundle 'pangloss/vim-javascript'
             " Bundle 'briancollins/vim-jst'
             " Bundle 'kchmck/vim-coffee-script'
