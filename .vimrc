@@ -43,6 +43,7 @@ source ~/.vimrc.min
     call add(g:spf13_bundle_groups, 'snipmate')
     call add(g:spf13_bundle_groups, 'html')
     call add(g:spf13_bundle_groups, 'python')
+    call add(g:spf13_bundle_groups, 'haxe')
 
     call add(g:spf13_bundle_groups, 'misc')
     " call add(g:spf13_bundle_groups, 'games')
@@ -486,7 +487,9 @@ source ~/.vimrc.min
                 " let g:UltiSnipsListSnippets = "<Leader><tab>"
                 noremap <Leader><tab> :call UltiSnips#ListSnippets()<cr>
             endif
-        elseif count(g:spf13_bundle_groups, 'neocomplcache')
+        endif
+        Bundle 'neocomplete.vim'
+        if count(g:spf13_bundle_groups, 'neocomplcache')
 
             " neocomplcache {{{
                 let g:acp_enableAtStartup = 0
@@ -593,6 +596,12 @@ source ~/.vimrc.min
                     let g:pymode = 1
                 endif
             " }}}
+        endif
+    " }}}
+
+    " Haxe {{{
+        if count(g:spf13_bundle_groups, 'haxe')
+            Bundle 'vaxe'
         endif
     " }}}
 
