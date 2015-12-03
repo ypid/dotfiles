@@ -97,13 +97,6 @@ function sed-easy {
 	# alias vim="/usr/bin/vim"
 # fi
 
-if [[ "$USER" == 'root' ]]; then
-    alias vi='vim'
-else
-    # alias vi='vim --servername VIM'
-    # alias vir='vi --remote'
-    alias vi='vim'
-fi
 alias ,e='exit'
 alias ,x='exit'
 alias ,r='vi'

@@ -1,20 +1,22 @@
 severity				= 2
 color-severity-medium	= blue
-# verbose				= 8
-## to get for example ControlStructures::ProhibitPostfixControls
-verbose					= %s: %m at line %l, column %c. %e\n
 #force					= 1
 color					= 1
 
-## theme iknow: I should know if I have to use it or if I should make an excption
+# verbose = %s: %m at line %l, column %c. %e\n
+verbose = 8
+## to get for example ControlStructures::ProhibitPostfixControls
+
+
+## theme iknow: I should know if I have to used it or if I should make an exception
 
 [Subroutines::RequireFinalReturn]
 add_themes	= iknow
 severity	= 1
 
-[ErrorHandling::RequireUseOfExceptions]
-add_themes	= iknow
-severity	= 1
+# [ErrorHandling::RequireUseOfExceptions]
+# add_themes	= iknow
+# severity	= 1
 
 
 ## "die" used instead of "croak"
@@ -35,7 +37,11 @@ severity	= 1
 [ControlStructures::ProhibitPostfixControls]
 allow = if unless
 
-## These policies are disabled
-[-Miscellanea::RequireRcsKeywords]
-[-Modules::RequireVersionVar]
-[-Editor::RequireEmacsFileVariables]
+
+## These policies are disabled (((
+
+## Not installed by libperl-critic-perl
+# [-Editor::RequireEmacsFileVariables]
+# [-Miscellanea::RequireRcsKeywords]
+
+## )))

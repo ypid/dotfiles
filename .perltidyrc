@@ -1,4 +1,3 @@
-#--entab-leading-whitespace=4              ## use tabs
 --standard-error-output                    ## errors to standard error output
 --warning-output                           ## show all warnings
 --nospace-after-keyword=="my local our"    ## 'my()' not 'my ()'
@@ -8,3 +7,5 @@
 --closing-side-comments
 --closing-side-comment-interval=20
 --noblanks-before-comments
+--backup-and-modify-in-place
+--continuation-indentation=4
