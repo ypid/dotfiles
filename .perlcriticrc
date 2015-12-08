@@ -39,6 +39,11 @@ allow = if unless
 
 
 ## These policies are disabled (((
+[ValuesAndExpressions::ProhibitMagicNumbers]
+allowed_values = -1 0 1 2
+
+[InputOutput::RequireBriefOpen]
+lines = 42
 
 ## Not installed by libperl-critic-perl
 # [-Editor::RequireEmacsFileVariables]

@@ -228,3 +228,6 @@
 [submodule ".vim/bundle/neocomplete.vim"]
 	path = .vim/bundle/neocomplete.vim
 	url = https://github.com/Shougo/neocomplete.vim.git
+[submodule ".vim/bundle/bats.vim"]
+	path = .vim/bundle/bats.vim
+	url = https://github.com/vim-scripts/bats.vim.git

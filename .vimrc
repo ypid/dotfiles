@@ -308,6 +308,8 @@ source ~/.vimrc.min
             " Bundle 'vivien/vim-addon-linux-coding-style'
             Bundle 'tpope/vim-surround'
 
+            Bundle 'bats.vim'
+
             Bundle 'lfilho/cosco.vim'
             noremap <silent> <Leader>, :call cosco#commaOrSemiColon()<CR>
             inoremap <silent> <Leader>, <c-o>:call cosco#commaOrSemiColon()<CR>
@@ -370,7 +372,7 @@ source ~/.vimrc.min
                 Bundle 'godlygeek/tabular'
                 noremap <Leader>a)  :Tabularize /)/l0<CR>
                 noremap <Leader>a&  :Tabularize /&<CR>
-                noremap <Leader>a=  :Tabularize /[/*+-]\?=[>]\?<CR>
+                noremap <Leader>a=  :Tabularize /[/*+-?]\?=[>]\?<CR>
                 noremap <Leader>a-  :Tabularize /-\w*<CR>
                 noremap <Leader>a:  :Tabularize /: /<CR>
                 noremap <Leader>az: :Tabularize /:\zs /l0<CR>
@@ -941,6 +943,8 @@ source ~/.vimrc.min
                 if count(g:spf13_bundle_groups, 'python')
                     autocmd FileType python let g:syntastic_check_on_wq = 0
                 endif
+
+                autocmd BufRead,BufNewFile *.bats let b:syntastic_mode = 'passive'
 
                 autocmd FileType ansible,jinja,yaml,tex setlocal foldmarker=(((,)))
                 autocmd FileType ansible,jinja,yaml syntax spell toplevel
