@@ -627,6 +627,7 @@ source ~/.vimrc.min
         if count(g:spf13_bundle_groups, 'javascript')
             Bundle 'Shutnik/jshint2.vim'
             " Bundle 'leshill/vim-json'
+            " Bundle 'groenewege/vim-less'
             " Bundle 'pangloss/vim-javascript'
             " Bundle 'briancollins/vim-jst'
             " Bundle 'kchmck/vim-coffee-script'
