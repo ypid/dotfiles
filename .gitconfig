@@ -38,8 +38,6 @@
 	editor = vi
 [github]
 	user = ypid
-[log]
-	date = local
 [push]
 	default = simple
 [annex]

@@ -231,3 +231,9 @@
 [submodule ".vim/bundle/bats.vim"]
 	path = .vim/bundle/bats.vim
 	url = https://github.com/vim-scripts/bats.vim.git
+[submodule ".vim/bundle/AsyncCommand"]
+	path = .vim/bundle/AsyncCommand
+	url = https://github.com/idbrii/AsyncCommand.git
+[submodule ".vim/bundle/syntastic-async"]
+	path = .vim/bundle/syntastic-async
+	url = https://github.com/stgpetrovic/syntastic-async.git

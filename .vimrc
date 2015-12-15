@@ -292,10 +292,12 @@ source ~/.vimrc.min
         if count(g:spf13_bundle_groups, 'programming')
             " Pick one of the checksyntax, jslint, or syntastic
             Bundle 'scrooloose/syntastic'
+            " Bundle 'pydave/AsyncCommand'
+            " Bundle 'stgpetrovic/syntastic-async'
             highlight SyntasticErrorSign guifg=red guibg=red
-            " let g:syntastic_mode_map = { 'mode': 'active',
-            "                            \ 'active_filetypes': [],
-            "                            \ 'passive_filetypes': ['python'] }
+            let g:syntastic_mode_map = { 'mode': 'active',
+                                       \ 'active_filetypes': [],
+                                       \ 'passive_filetypes': ['perl'] }
             let g:syntastic_ignore_files = ['\m^/etc/']
             let g:syntastic_check_on_wq = 0
             " Too slow for some big files. I am looking at you opening_hours.js :-( ;-)

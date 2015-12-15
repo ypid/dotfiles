@@ -43,7 +43,10 @@ allow = if unless
 allowed_values = -1 0 1 2
 
 [InputOutput::RequireBriefOpen]
-lines = 42
+lines = 100
+
+[Modules::ProhibitExcessMainComplexity]
+max_mccabe = 25
 
 ## Not installed by libperl-critic-perl
 # [-Editor::RequireEmacsFileVariables]
