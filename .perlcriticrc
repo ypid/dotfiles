@@ -46,7 +46,7 @@ allowed_values = -1 0 1 2
 lines = 100
 
 [Modules::ProhibitExcessMainComplexity]
-max_mccabe = 25
+max_mccabe = 30
 
 ## Not installed by libperl-critic-perl
 # [-Editor::RequireEmacsFileVariables]
