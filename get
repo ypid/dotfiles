@@ -7,12 +7,12 @@ vim_spell=".vim/spell"
 mkdir --parents "$vim_spell"
 for file in {en,de}.utf-8.{spl,sug};do
     if [ ! -e "$vim_spell/$file" ];then
-        wget --continue "ftp://ftp.vim.org/pub/vim/runtime/spell/$file" --output-document="$vim_spell/$file"
+        wget --continue "http//ftp.vim.org/pub/vim/runtime/spell/$file" --output-document="$vim_spell/$file"
     fi
 done
 
 ## Legacy. Needed on Debian wheezy system.
-wget --continue "ftp://ftp.vim.org/pub/vim/runtime/spell/de.latin1.spl" --output-document="$vim_spell/de.latin1.spl"
+wget --continue "http//ftp.vim.org/pub/vim/runtime/spell/de.latin1.spl" --output-document="$vim_spell/de.latin1.spl"
 
 ## does not work:
 # vim -c ":set rtp=.vim,.vim/bundle/vundle"

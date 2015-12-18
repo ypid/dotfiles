@@ -248,7 +248,8 @@ source ~/.vimrc.min
             Bundle 'Rykka/riv.vim'
             " Bundle 'Rykka/InstantRst'
 
-            Bundle 'bronson/vim-visual-star-search'
+            " Bundle 'bronson/vim-visual-star-search'
+            Bundle 'thinca/vim-visualstar'
         endif
     " }}}
 
@@ -419,7 +420,6 @@ source ~/.vimrc.min
                 elseif executable('ack')
                     Bundle 'mileszs/ack.vim'
                 endif
-                " noremap α :echo system('date -d @'.expand('<cword>'))<CR>
             " }}}
 
             Bundle 'derekwyatt/vim-fswitch'
@@ -939,6 +939,7 @@ source ~/.vimrc.min
                 autocmd FileType sh setlocal textwidth=0
                 autocmd FileType perl setlocal expandtab shiftwidth=4
                 autocmd FileType perl compiler perlcritic
+                autocmd FileType perl set iskeyword-=-
                 autocmd FileType python setlocal shiftwidth=4
                 autocmd FileType python let b:delimitMate_nesting_quotes = ['"', "'"]
                 autocmd FileType python setlocal makeprg=pylint\ --reports=n\ --output-format=parseable\ %:p

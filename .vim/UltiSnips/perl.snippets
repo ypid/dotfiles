@@ -1,13 +1,22 @@
 snippet #! "My Perl preamble" !b
 #!/usr/bin/env perl
+
+# Preamble {{{
 use strict;
 use warnings;
 use autodie;
-use boolean;
-use feature qw(say);
+use English qw( -no_match_vars );
 use utf8;
-use open qw(:std :utf8);
-binmode STDOUT, ':encoding(UTF-8)';
+use Encode qw(decode encode);
+binmode(STDOUT, ':encoding(UTF-8)');
+use feature qw(say);
+
+use Getopt::Long qw(:config no_ignore_case bundling);
+use Pod::Usage;
+
+# }}}
+
+use version; our $VERSION = qv('0.9.0');
 
 ${1:
 # /something/xms

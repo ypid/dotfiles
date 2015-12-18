@@ -47,9 +47,6 @@
 [submodule ".vim/bundle/riv.vim"]
 	path = .vim/bundle/riv.vim
 	url = https://github.com/Rykka/riv.vim.git
-[submodule ".vim/bundle/vim-visual-star-search"]
-	path = .vim/bundle/vim-visual-star-search
-	url = https://github.com/bronson/vim-visual-star-search.git
 [submodule ".vim/bundle/vim-less"]
 	path = .vim/bundle/vim-less
 	url = https://github.com/groenewege/vim-less.git
@@ -237,3 +234,6 @@
 [submodule ".vim/bundle/syntastic-async"]
 	path = .vim/bundle/syntastic-async
 	url = https://github.com/stgpetrovic/syntastic-async.git
+[submodule ".vim/bundle/vim-visualstar"]
+	path = .vim/bundle/vim-visualstar
+	url = https://github.com/thinca/vim-visualstar.git
