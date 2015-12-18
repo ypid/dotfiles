@@ -815,7 +815,7 @@ source ~/.vimrc.min
         " Bundle 'flazz/vim-colorschemes'
         " Bundle 'nanotech/jellybeans.vim'
         " Bundle 'spf13/vim-colors'
-        " set background=light
+        set background=light
     endif
 
     if count(g:config_section_enable, 'ui_config')
