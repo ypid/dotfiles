@@ -1,23 +1,21 @@
 # Shortcuts
 
-Here are some common shortcuts that I use and which I configure in every program which makes sense and allows to do so.
-
-The use of the shift modifier key is explicitly written down. Modifier keys are written down from left to right e.g. shift+ctrl+super+alt.
+Here are some common shortcuts that I use and which I configure in every program for which it makes sense and allows to do so.
 
 Left hand only: Should be easy to use with the left hand, because it is often used during work with the mouse. For example switching windows or Ctrl+C to copy to the clipboard.
 
 ## Advises: Shortcuts done right
 
-Here are some advices regarding shortcuts for programmers or UI designers which I would like to see implemented:
+Here are some advices regarding shortcuts for programmers and UI designers which I would like to see implemented:
 
 * Allow more than one shortcut for one action!
 * Allow to reconfigure *everything*.
 * Make it easy to track the configuration files (which contain the shortcuts) with version control. This also means not to store the shortcuts together with things that you don‘t want to track (like recent files or usernames and passwords).
-* The user types something in an input view then certain shortcuts are expected to work:
+* When editing text in an input view then certain shortcuts are expected to work:
   * Ctrl+A: Select all
   * Shift+Ctrl+A: Select none
   * Ctrl+Z: Undo
-  * Shift+Ctrl+Y: Undo (Maybe worth a thought because it is way easier to reach then Ctrl+z)
+  * Shift+Ctrl+Y: Undo (Maybe worth a thought because it is way easier to reach then Ctrl+Z)
   * Ctrl+Y: Redo
   * Ctrl+U: Delete line
   * Ctrl+W: Delete word
@@ -31,14 +29,10 @@ Which shortcuts should be used where? – Some thoughts …
 
 * Shift+Alt: Shared between window manager and applications.
 * Shift+Ctrl+Alt: Shared between window manager and applications.
-* Ctrl+Alt: Dedicated to window manager respectively shortcuts which can be triggered globally.
+* Ctrl+Alt, Ctrl+Super, Super: Dedicated to window manager respectively shortcuts which can be triggered globally.
   * Music player uses Ctrl+Alt except for Shift+Alt+X because of left hand use.
 * Shift+Super: Dedicated to AutoKey (global)
     * Can also be used over RDP on Windows machines without interfering with MS Windows mappings of the Super key.
-
-### Free
-
-* Super (WinKey): Almost forgotten :)
 
 ### Avoid
 
@@ -48,100 +42,74 @@ Which shortcuts should be used where? – Some thoughts …
 
 * Never map Alt+Letter where letter is a character which is located on the left of a QWERTZ keyboard.
 
-## Shortcut key order
+## Shortcut conventions and key order
 
-To search for shortcuts, it is important to maintain a unique naming pattern. The following is which I use in this document. It is pretty much based on the order of [Double Commander]:
+To search for shortcuts, it is important to maintain a unique naming pattern. The following is which I use in this document. It is pretty much based on the order used by [Double Commander]:
 
 * Ctrl
 * Shift
 * Super
 * Alt
-* `Non modifier keys` (letter, written in upper case for readability)
+* `Non-modifier keys` (Letter, written in upper case for readability. The use of the shift modifier key is explicitly written down.)
 
 ## Free shortcuts
 List of free shortcuts (they may have a default mapping but there are better shortcuts for those actions so that the shortcuts are available to be mapped to a different action).
 
+* Super (WinKey): Almost forgotten :)
+* Shift+Alt+A,
+  Shift+Alt+D
+
 ## Special keys
 Key name      | Comment
 ------------- | -------------
-Level5 Shift  | This key is in my configuration the <> button.
+Level5 Shift  | This key in my configuration is the <> button.
 +             | Separator for keys
-anything else | is either a usual key name or a regular expression to specify a range of keys
+anything else | Is either a usual key name or a regular expression to specify a range of keys
 
-## Window manager (Gnome3)
+## Window manager (e.g. Gnome3 or xfce)
 
 Own shortcuts for the window manager should include the Super key which is normally not used by applications.
 
-### GTK+
-
-Shortcut      | Function                | Left hand only | Comment
-------------- | -------------           | -------------  | -------------
-Shift+Ctrl+U  | Enter Unicode hex value | No             |
-
 ### Navigation
 
-Shortcut                              | Function                                  | Left hand only | Comment
--------------                         | -------------                             | -------------  | -------------
-Shift+Alt+A                           | Move window one workspace to the left     | Yes            | Currently not used, just defined to be consistent.
-Shift+Alt+D                           | Move window one workspace to the right    | Yes            | Currently not used, just defined to be consistent.
-Shift+Alt+W                           | Move window one workspace up              | Yes            |
-Shift+Alt+S                           | Move window one workspace down            | Yes            |
-Alt+[Level5 Shift][special-keys]      | Switch windows                            | Of course      | Easier to reach than Alt-Tab
-Super+J                               | Switch to next windows                    | No             | See [shellshape][].
-Super+K                               | Switch to previous windows                | No             | See [shellshape][].
-Super+D                               | switch workspace to vertical tiled mode   | Yes            | See [shellshape][].
-Super+F                               | switch workspace to floating mode         | Yes            | See [shellshape][].
-Super+G                               | switch workspace to horizontal tiled mode | Yes            | See [shellshape][].
-Shift+Super+J                         | swap with next window                     | No             | See [shellshape][].
-Shift+Super+K                         | swap with previous window                 | No             | See [shellshape][].
-Super+M                               | minimize window                           | No             | See [shellshape][].
-Shift+Super+M                         | un-minimize last window                   | No             | See [shellshape][].
-Super+H                               | shrink master area                        | No             | See [shellshape][].
-Super+L                               | grow master area                          | No             | See [shellshape][].
-Super+U                               | shrink a slave area                       | No             | See [shellshape][].
-Super+I                               | grow a slave area                         | No             | See [shellshape][].
-Shift+Super+H                         | decrease window's width                   | No             | See [shellshape][].
-Shift+Super+L                         | increase window's width                   | No             | See [shellshape][].
-Shift+Super+U                         | decrease window's height                  | No             | See [shellshape][].
-Shift+Super+I                         | increase window's height                  | No             | See [shellshape][].
-Super+Z                               | toggle window maximized state             | No             | See [shellshape][].
-Alt+Super+J                           | go to workspace below                     | No             | See [shellshape][].
-Alt+Super+K                           | go to workspace above                     | No             | See [shellshape][].
-Shift+Alt+Super+J                     | move window to workspace below            | No             | See [shellshape][].
-Shift+Alt+Super+K                     | move window to workspace above            | No             | See [shellshape][]. Could release Alt+[WASD]?
-Super+A                               | bring window to front / send to back      | No             | See [shellshape][].
-Shift+Super+C                         | close window                              | No             | See [shellshape][]. Does not work. Not using it.
-Ctrl+Alt+Y                            | Switch to workspace 1                     | Of course      |
-Ctrl+Alt+[Level5 Shift][special-keys] | Switch to workspace 2                     | Of course      |
+Shortcut                              | Function                               | Left hand only | Comment
+-------------                         | -------------                          | -------------  | -------------
+Shift+Alt+A                           | Move window one workspace to the left  | Yes            | Currently not used, just defined to be consistent.
+Shift+Alt+D                           | Move window one workspace to the right | Yes            | Currently not used, just defined to be consistent.
+Shift+Alt+W                           | Move window one workspace up           | Yes            |
+Shift+Alt+S                           | Move window one workspace down         | Yes            |
+Alt+[Level5 Shift][special-keys]      | Switch windows                         | Of course      | Easier to reach than Alt-Tab.
+Ctrl+Alt+Y                            | Switch to workspace 1                  | Of course      |
+Ctrl+Alt+[Level5 Shift][special-keys] | Switch to workspace 2                  | Of course      |
 
 [shellshape]: https://extensions.gnome.org/extension/294/shellshape/
 
 ### Sound and Media
 
-Shortcut                                | Function      | Left hand only | Comment
--------------                           | ------------- | -------------  | -------------
-Ctrl+Super+[Level5 Shift][special-keys] | Volume down   | Yes            | Maybe other shortcut?
-Ctrl+Super+Y                            | Volume up     | Yes            | Maybe other shortcut?
+Shortcut                                | Function           | Left hand only | Comment
+-------------                           | -------------      | -------------  | -------------
+Ctrl+Super+[Level5 Shift][special-keys] | Volume down by 5 % | Yes            |
+Ctrl+Super+Y                            | Volume up by 5 %   | Yes            |
 
 ### System
 
-Shortcut        | Function      | Left hand only | Comment
--------------   | ------------- | -------------  | -------------
-Ctrl+Super+A    | Lock screen   | Yes            |
-Ctrl+Alt+Delete | Log out       | No             | Not really used yet
+Shortcut      | Function      | Left hand only | Comment
+------------- | ------------- | -------------  | -------------
+Ctrl+Super+A  | Lock screen   | Yes            |
 
 ### Typing
 
 Shortcut      | Function                                            | Left hand only | Comment
 ------------- | -------------                                       | -------------  | -------------
 Alt+Super+C   | Switch to next input source (e.g. qNeo2 and qwertz) | Yes            |
+Shift+Ctrl+U  | Enter Unicode hex value                             | No             |
 
 ### Windows
 
 Shortcut      | Function                        | Left hand only | Comment
 ------------- | -------------                   | -------------  | -------------
-Ctrl+Q        | Close window                    | Yes            | If Ctrl-q does not work, defined in gnome-terminal by default
-Ctrl+Alt+F    | Toggle fullscreen mode          | Yes            | If Alt-f does not work. Try to use Ctrl+Alt+f because it is more generic. Use Shift+Super+f to emit F11.
+Super+Q       | Close window                    | Yes            | If Ctrl-Q does not work. (Example: gnome-terminal)
+Ctrl+Alt+F    | Toggle fullscreen mode          | Yes            | If Alt-F does not work. Try to use Ctrl+Alt+F because it is more generic. Use Shift+Super+F to emit F11.
 Ctrl+Alt+W    | Maximize window                 | Yes            |
 Ctrl+Alt+S    | Restore previous size of window | Yes            |
 Ctrl+Alt+A    | View split on left              | Yes            |
@@ -154,9 +122,11 @@ Shortcut         | Function                                   | Left hand only |
 Ctrl+Super+S     | Launch program `x-terminal-emulator`       | Yes            |
 Shift+Super+A    | Launch program `gnome-calculator`          | Nice to have   |
 Ctrl+Super+[1-9] | Launch custom program or script            | Yes and no     |
-Shift+Ctrl+Alt+O | Launch program `eject`                     | No             | eject removable media
 Ctrl+Alt+C       | Launch [script][suspend-script] to suspend | Yes            |
 Ctrl+Alt+V       | `poweroff`                                 | Yes            |
+Super+J          | program launcher                           | Yes            |
+
+<!-- Shift+Ctrl+Alt+O | Launch program `eject`                     | No             | eject removable media -->
 
 ## GUI applications
 

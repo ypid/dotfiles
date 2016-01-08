@@ -2,29 +2,26 @@
 
 {# Badges ((( #}
 {% block badges %}
-{% if ansigenome_info.travis is defined and ansigenome_info.travis %}
+{% if ansigenome_info.travis|d() %}
 [![Travis CI](http://img.shields.io/travis/{{ scm.user + '/' + role.slug }}.svg?style=flat)](http://travis-ci.org/{{ scm.user + '/' + role.slug }})
 {% endif %}
-{% if ansigenome_info.galaxy_id is defined and ansigenome_info.galaxy_id %}
-{#
-[Ansible Galaxy](https://galaxy.ansible.com/detail#/role/{{ ansigenome_info.galaxy_id }})
-#}
-[![Ansible Galaxy](http://img.shields.io/badge/galaxy-{{ role.galaxy_name | replace('-', '–')}}-660198.svg?style=flat)](https://galaxy.ansible.com/detail#/role/{{ ansigenome_info.galaxy_id }})
-{% if galaxy_info.platforms is defined and galaxy_info.platforms %}
-[![Platforms](http://img.shields.io/badge/platforms-{{ galaxy_info.platforms | map(attribute='name') | sort | join('%20/%20') | lower }}-lightgrey.svg?style=flat)](https://galaxy.ansible.com/detail#/role/{{ ansigenome_info.galaxy_id }})
+{% if ansigenome_info.galaxy_id|d() %}
+[![Ansible Galaxy](http://img.shields.io/badge/galaxy-{{ role.galaxy_name | replace('-', '--')}}-660198.svg?style=flat)](https://galaxy.ansible.com/detail#/role/{{ ansigenome_info.galaxy_id }})
 {% endif %}
+{% if galaxy_info.platforms|d() %}
+[![Platforms](http://img.shields.io/badge/platforms-{{ galaxy_info.platforms | map(attribute='name') | sort | join('%20/%20') | lower }}-lightgrey.svg?style=flat)](#)
 {% endif %}
 [![GitHub Tags](https://img.shields.io/github/tag/{{ scm.user + '/' + role.slug }}.svg)](https://github.com/{{ scm.user + '/' + role.slug }})
 [![GitHub Stars](https://img.shields.io/github/stars/{{ scm.user + '/' + role.slug }}.svg)](https://github.com/{{ scm.user + '/' + role.slug }})
-{% endblock %}{# ))) #}
+{%- endblock %}{# ))) #}
 
 {# Description ((( #}
 {% block synopsis %}
-{% if galaxy_info.description is defined %}
+{% if galaxy_info.description|d() %}
 {{ galaxy_info.description | trim }}
 {% endif %}
 
-{% if ansigenome_info.synopsis is defined %}
+{% if ansigenome_info.synopsis|d() %}
 {{ ansigenome_info.synopsis | trim }}
 {% endif %}
 {% endblock %}
@@ -35,7 +32,7 @@
 {% if ansigenome_info.galaxy_id is defined and ansigenome_info.galaxy_id %}
 ### Installation
 
-This role requires at least Ansible{% if galaxy_info.min_ansible_version is defined and galaxy_info.min_ansible_version %} `v{{ galaxy_info.min_ansible_version }}`{% endif %}. To install it, run:
+This role requires at least Ansible{% if galaxy_info.min_ansible_version|d() %} `v{{ galaxy_info.min_ansible_version }}`{% endif %}. To install it, run:
 
 ```Shell
 ansible-galaxy install {{ role.galaxy_name }}
