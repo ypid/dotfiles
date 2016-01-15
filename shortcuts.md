@@ -12,14 +12,14 @@ Here are some advices regarding shortcuts for programmers and UI designers which
 * Allow to reconfigure *everything*.
 * Make it easy to track the configuration files (which contain the shortcuts) with version control. This also means not to store the shortcuts together with things that you don‘t want to track (like recent files or usernames and passwords).
 * When editing text in an input view then certain shortcuts are expected to work:
-  * Ctrl+A: Select all
-  * Shift+Ctrl+A: Select none
-  * Ctrl+Z: Undo
-  * Shift+Ctrl+Y: Undo (Maybe worth a thought because it is way easier to reach then Ctrl+Z)
-  * Ctrl+Y: Redo
-  * Ctrl+U: Delete line
-  * Ctrl+W: Delete word
-  * Ctrl+H: Delete character
+  * `Ctrl+A`: Select all
+  * `Shift+Ctrl+A`: Select none
+  * `Ctrl+Z`: Undo
+  * `Shift+Ctrl+Y`: Undo (Maybe worth a thought because it is way easier to reach then Ctrl+Z)
+  * `Ctrl+Y`: Redo
+  * `Ctrl+U`: Delete line
+  * `Ctrl+W`: Delete word
+  * `Ctrl+H`: Delete character
 
 * Do not reinvent the wheel!
 
@@ -27,37 +27,46 @@ Here are some advices regarding shortcuts for programmers and UI designers which
 
 Which shortcuts should be used where? – Some thoughts …
 
-* Shift+Alt: Shared between window manager and applications.
-* Shift+Ctrl+Alt: Shared between window manager and applications.
-* Ctrl+Alt, Ctrl+Super, Super: Dedicated to window manager respectively shortcuts which can be triggered globally.
-  * Music player uses Ctrl+Alt except for Shift+Alt+X because of left hand use.
-* Shift+Super: Dedicated to AutoKey (global)
+* `Shift+Alt`: W, S, X reserved for window manager. Applications can use everything else.
+* `Ctrl+Alt`, `Ctrl+Super`, `Super`: Dedicated to window manager respectively shortcuts which can be triggered globally.
+  * Never use the `Super` key for applications as this modifier might be reserved in some window managers. (And I don’t want to find out how to patch Windows to remap that).
+* `Shift+Super`: Dedicated to AutoKey (global)
     * Can also be used over RDP on Windows machines without interfering with MS Windows mappings of the Super key.
+
+### Applications
+
+* `Shift`: Applications.
+* `Shift+Ctrl`: Applications.
+* `Shift+Ctrl+Alt`: Applications.
+* `Shift+Alt`: With limitations, see above.
 
 ### Avoid
 
-* Remapping Alt+Letter
+* Remapping `Alt+[A-Z]`
 
 ### No goes
 
-* Never map Alt+Letter where letter is a character which is located on the left of a QWERTZ keyboard.
+* Never map `Alt+<letter>` where letter is a character which is located on the left of a QWERTZ keyboard.
+
+## Free shortcuts
+
+List of free shortcuts (they may have a default mapping but there are better shortcuts for those actions so that the shortcuts are available to be mapped to a different action).
+
+* `Super` (WinKey): Almost forgotten :)
+* `Super+Alt`: Reserved (No mapping used so far)
+* Shift+Alt+A,
+  Shift+Alt+D
+  Shift+Alt+
 
 ## Shortcut conventions and key order
 
 To search for shortcuts, it is important to maintain a unique naming pattern. The following is which I use in this document. It is pretty much based on the order used by [Double Commander]:
 
-* Ctrl
-* Shift
-* Super
-* Alt
+* `Ctrl`
+* `Shift`
+* `Super`
+* `Alt`
 * `Non-modifier keys` (Letter, written in upper case for readability. The use of the shift modifier key is explicitly written down.)
-
-## Free shortcuts
-List of free shortcuts (they may have a default mapping but there are better shortcuts for those actions so that the shortcuts are available to be mapped to a different action).
-
-* Super (WinKey): Almost forgotten :)
-* Shift+Alt+A,
-  Shift+Alt+D
 
 ## Special keys
 Key name      | Comment
@@ -74,8 +83,6 @@ Own shortcuts for the window manager should include the Super key which is norma
 
 Shortcut                              | Function                               | Left hand only | Comment
 -------------                         | -------------                          | -------------  | -------------
-Shift+Alt+A                           | Move window one workspace to the left  | Yes            | Currently not used, just defined to be consistent.
-Shift+Alt+D                           | Move window one workspace to the right | Yes            | Currently not used, just defined to be consistent.
 Shift+Alt+W                           | Move window one workspace up           | Yes            |
 Shift+Alt+S                           | Move window one workspace down         | Yes            |
 Alt+[Level5 Shift][special-keys]      | Switch windows                         | Of course      | Easier to reach than Alt-Tab.
@@ -124,43 +131,55 @@ Shift+Super+A    | Launch program `gnome-calculator`          | Nice to have   |
 Ctrl+Super+[1-9] | Launch custom program or script            | Yes and no     |
 Ctrl+Alt+C       | Launch [script][suspend-script] to suspend | Yes            |
 Ctrl+Alt+V       | `poweroff`                                 | Yes            |
-Super+J          | program launcher                           | Yes            |
-
-<!-- Shift+Ctrl+Alt+O | Launch program `eject`                     | No             | eject removable media -->
+Super+J          | program launcher for non-Gnome WM          | Yes            |
+Super            | program launcher for Gnome WM              | Yes            | Gnome does by default trigger on Super button press which is a nice feature.
+Shift+Ctrl+Alt+O | Launch program `eject`                     | No             | eject removable media, FIXME
 
 ## GUI applications
 
 ### Clementine
 
-Configured in clementine, but they apply globally.
+#### Global
 
 Shortcut      | Function                      | Left hand only | Comment
 ------------- | -------------                 | -------------  | -------------
 Ctrl+Alt+X    | `clementine --play-pause`     | Of course      | Play or pause audio. Using command line to also allow to start the program if no instance is running.
 Shift+Alt+X   | `clementine --next`           | Of course      | Play next audio file
-Ctrl+Alt+N    | Seek backward                 | Nice to have   | Seek in audio file by *n* seconds.
-Ctrl+Alt+M    | Seek forward                  | Nice to have   | Seek in audio file by *n* seconds.
-Ctrl+Alt+Z    | Rate the current song 1 star  | No             | I would prefer ¹ (entered with Mod3+1) but I did not find a way. Edit: ¹ not in global mode, so Ctrl+Alt+z is ok :)
+Ctrl+Alt+N    | `clementine --seek-by -10`    | Nice to have   | Seek in audio file by *n* seconds.
+Ctrl+Alt+M    | `clementine --seek-by 10`     | Nice to have   | Seek in audio file by *n* seconds.
+
+<!-- Try with later version again.
+
+### Application window only
+
+Ctrl+Alt+Z    | Rate the current song 1 star  | No             |
 Ctrl+Alt+U    | Rate the current song 2 stars | No             |
 Ctrl+Alt+I    | Rate the current song 3 stars | No             |
 Ctrl+Alt+O    | Rate the current song 4 stars | No             |
 Ctrl+Alt+P    | Rate the current song 5 stars | No             |
 
+-->
+
 ### Windows and tabs
 
-Applies for: Firefox, gnome-terminal, Double Commander (not fully yet because some are not configurable)
+Applies to: Firefox, GNOME Terminal, Double Commander.
 
-For gnome-terminal, each shortcut requires additionally the use of the Shift modifier key.
+For GNOME Terminal, each shortcut requires additionally the use of the Shift modifier key.
 
-Shortcut      | Function                                | Left hand only | Comment
-------------- | -------------                           | -------------  | -------------
-Ctrl+N        | Opens a new tab                         | No             | Easier to reach than C-t
-Ctrl+tab      | Switch to right tab, cycle through tabs | Yes            |
-Ctrl+J        | Switch to left tab                      | Not really     |
-Ctrl+K        | Switch to right tab                     | Not really     |
-Ctrl+[+-]     | Increase/Decrease (zoom) font size      | Nice to have   | Level 3 [Neo2][] plus and minus work in Firefox.
-Ctrl+W        | Closes the tab                          | Of course      | Should be default in all program
-Ctrl+Q        | Closes the application                  | Of course      | Should be default in all program
+Shortcut       | Function                                | Left hand only | Comment
+-------------  | -------------                           | -------------  | -------------
+Ctrl+N         | Opens a new tab                         | No             | Easier to reach than C-t
+Ctrl+W         | Closes the tab                          | Of course      | Should be default in all program
+Ctrl+Q         | Closes the application                  | Of course      | Should be default in all program
+Ctrl+Tab       | Switch to right tab, cycle through tabs | Yes            |
+Shift+Ctrl+Tab | Switch to left tab, cycle through tabs  | Yes            |
+Ctrl+J         | Switch to left tab                      | Not really     |
+Ctrl+K         | Switch to right tab                     | Not really     |
+Ctrl+[+-]      | Increase/Decrease (zoom) font size      | Nice to have   | Currently not supported in Double Commander. Level 3 [Neo2][] plus and minus work in Firefox (after setting the − via the Add-On Customizable Shortcuts). GNOME Terminal does not allow to configure „−” currently (can this be done in Gtk programs?).
+
+#### Used keys
+
+* Ctrl + [CDJKNQVWX]
 
 ### Autokey
 
@@ -184,7 +203,14 @@ Shift+Super+L |                 | Yes            | Emits F6. Neo2 numbers.
 Shift+Super+U |                 | Yes            | Emits F7. Neo2 numbers.
 Shift+Super+I |                 | Yes            | Emits F8. Neo2 numbers.
 Shift+Super+O |                 | Yes            | Emits F9. Neo2 numbers.
-Shift+Super+F | F11             | Yes            | Emits F11. Causes most applications to go in full screen.
+Shift+Super+F | F11             | Yes            | Emits F11. Causes most applications to go in fullscreen.
+
+<!--
+
+Don’t do it globally via AutoKey. This will mess up Alt+[A-Z] shortcuts …
+
+Just enable it in applications which support this. This has the advantage that the application can behave differently depending on the context it is in thus still allowing to use Alt+[A-Z]
+
 Alt+M         | Switch to tab 1 | No             | See [Neo2 layer4][Neo2]. Maybe blocks the use of Alt+[a-z]. I hope that most applications use letters which would be on the left side of a qwertz keyboard.
 Alt+,         | Switch to tab 2 | No             |
 Alt+.         | Switch to tab 3 | No             |
@@ -194,6 +220,8 @@ Alt+L         | Switch to tab 6 | No             |
 Alt+U         | Switch to tab 7 | No             |
 Alt+I         | Switch to tab 8 | No             |
 Alt+O         | Switch to tab 9 | No             |
+
+-->
 
 ##### Application specific
 
@@ -236,69 +264,11 @@ Shift+Ctrl+Y  | Redo          | Yes            | Just easier to reach
 
 ### Double Commander (DC)
 
-See the manual for the default shortcuts. I added my own which I think are more convenient. Note that I make heavy use of Shift + letter mappings. This seems to break the RenameOnly function [currently](http://doublecmd.sourceforge.net/mantisbt/view.php?id=973).
+See the manual for the default shortcuts. I added my own which I think are more convenient. Note that I make heavy use of `Shift+[A-Z]` mappings. This seems to break the RenameOnly function [currently](http://doublecmd.sourceforge.net/mantisbt/view.php?id=973).
 
-#### Name spaces
+Note: [Double Commander] works quite nicely together with [Neo2][] …
 
-* Ctrl + letter: File navigation and more
-
-#### Mutable
-Shortcut      | Function       | Left hand only | Comment
-------------- | -------------  | -------------  | -------------
-Ctrl+M        | Rename         | Yes            |
-Ctrl+P        | RenameOnly     | Not really     |
-Shift+Ctrl+R  | MultiRename    | Not really     |
-Ctrl+Y        | Copy           | No             |
-Ctrl+Shift+V  | CopySamePanel  | No             |
-Shift+Alt+E   | Symlink        | Yes            |
-Alt+Enter     | FileProperties | Yes            |
-Super+M       | MakeDir        | Yes            |
-Ctrl+O        | ShellExecute   | Yes            | Open
-Shirt+Alt+O   | ContextMenu    | Yes            | Open with
-Ctrl+E        | Edit           | No             |
-Ctrl+Shift+E  | EditNew        | No             |
-
-#### Immutable
-Shortcut         | Function               | Left hand only                | Comment
--------------    | -------------          | -------------                 | -------------
-/                | Quick search           | Yes (maybe copy paste search) | Not used. Configured DC so that every letter typed will open the quick filter.
-Ctrl+F           | QuickFilter            | Not really                    | filter=toggle
-Ctrl+S           | Search                 | Yes                           |
-Ctrl+Shift+M     | CountDirContent        | Yes                           | Calculate size for directories and show it instead of \<DIR\>
-Ctrl+Shift+Space | CalculateSpace         | Nice to have                  |
-Ctrl+.           | ShowSysFiles           | Nice to have                  |
-Ctrl+Shift+S     | RunTerm                | Not really                    | Like Ctrl+Super+s but with the current directory.
-Ctrl+L           | FocusCmdLine           | Not really                    | Was mapped to Shift+F2 but Ctrl+l is more convenient because it works by default in Firefox. Overwrites default CalculateSpace in DC.
-Shift+Alt+X      | MarkCurrentExtension   | Nice to have                  |
-Shift+Alt+Y      | UnmarkCurrentExtension | Nice to have                  |
--                | MarkMinus              | Nice to have                  |
-Ctrl+B           | MarkPlus               | Nice to have                  |
-Ctrl+Shift+X     | CopyNamesToClip        | Nice to have                  |
-Ctrl+Shift+C     | CopyFullNamesToClip    | Nice to have                  |
-Super+J          | SortByName             | Nice to have                  |
-Super+K          | SortByExt              | Nice to have                  |
-Super+L          | SortBySize             | Nice to have                  |
-Super+Ö          | SortByDate             | Nice to have                  |
-Super+Ä          | SortByAttr             | Nice to have                  |
-Ctrl+Shift+N     | QuickView              | Nice to have                  |
-Ctrl+Shift+J     | ColumnsView            | Nice to have                  |
-Ctrl+Shift+K     | BriefView              | Nice to have                  |
-Ctrl+Shift+L     | ThumbnailsView         | Nice to have                  |
-Ctrl+Shift+U     | PanelsSplitterPerPos   | Nice to have                  | splitpct=50
-Ctrl+Shift+I     | PanelsSplitterPerPos   | Nice to have                  | splitpct=70
-Ctrl+Shift+O     | PanelsSplitterPerPos   | Nice to have                  | splitpct=100
-Ctrl+Shift+H     | HorizontalFilePanels   | Nice to have                  |
-Shift+F          | DirHotList             | Not really                    |
-Ctrl+H           | DirHistory             | Not really                    |
-Ctrl+Alt+,       | ShowCmdLineHistory     | Not really                    |
-Ctrl+N           | OpenDirInNewTab        | Nice to have                  |
-Ctrl+1           | NewTab                 | Nice to have                  |
-Ctrl+U           | Exchange               | Nice to have                  |
-Alt+Z            | TargetEqualSource      | Nice to have                  |
-Super+H          | LeftOpenDrives         | Nice to have                  |
-Super+N          | RightOpenDrives        | Nice to have                  |
-Ctrl+,           | ChangeDirToHome        | Nice to have                  |
-Ctrl+Tab         | ChangeDirToRoot        | Nice to have                  |
+* Don’t restrict control to files panel for actions which are shown in the function key buttons area so that DC shows the mapping there too.
 
 #### Assumed to be default
 Mappings which are default or which should be default.
@@ -311,25 +281,88 @@ Ctrl+I        | MarkInvert     | Nice to have   | Default behavior from Gimp.
 Ctrl+D        | Delete (Trash) | Yes            |
 Shift+Ctrl+D  | Delete         | Yes            |
 
-Note: [Double Commander] works quite nicely together with [Neo2][] …
+#### Mutable
+Shortcut      | Function          | Left hand only | Comment
+------------- | -------------     | -------------  | -------------
+Ctrl+M        | Rename            | Yes            |
+Ctrl+P        | RenameOnly        | Not really     |
+Shift+Ctrl+R  | MultiRename       | Not really     |
+Ctrl+Y        | Copy              | No             |
+Shift+Ctrl+V  | CopySamePanel     | No             |
+Shift+Alt+E   | Symlink           | Yes            |
+Shift+Alt+C   | FileProperties    | Yes            |
+Shift+Alt+F   | SetFileProperties | Nice to have   |
+Ctrl+F        | MakeDir           | Not really     |
+Ctrl+O        | ShellExecute      | Yes            | Open
+Shift+Ctrl+O  | ContextMenu       | Yes            | Open with
+Ctrl+E        | Edit              | No             |
+Shift+Ctrl+E  | EditNew           | No             |
+Ctrl+Z        | EditComment       | No             |
+
+#### Immutable
+Shortcut         | Function               | Left hand only                | Comment
+-------------    | -------------          | -------------                 | -------------
+/                | QuickSearch            | Yes (maybe copy paste search) | Not used. Configured DC so that every letter typed will open the quick filter.
+Ctrl+S           | Search                 | Yes                           |
+Shift+Ctrl+M     | CountDirContent        | Yes                           | Calculate size for directories and show it instead of \<DIR\>
+Shift+Ctrl+Space | CalculateSpace         | Nice to have                  |
+Ctrl+.           | ShowSysFiles           | Nice to have                  |
+Shift+Ctrl+S     | RunTerm                | Not really                    | Like Ctrl+Super+s but with the current directory of DC.
+Ctrl+L           | FocusCmdLine           | Not really                    | Was mapped to Shift+F2 but Ctrl+L is more convenient because it has a similar meaning in Firefox. Overwrites default CalculateSpace in DC.
+Shift+Alt+J      | MarkCurrentExtension   | Nice to have                  |
+Shift+Alt+K      | UnmarkCurrentExtension | Nice to have                  |
+-                | MarkMinus              | Nice to have                  |
+Ctrl+B           | MarkPlus               | No                            |
+Shift+Ctrl+X     | CopyNamesToClip        | Nice to have                  |
+Shift+Ctrl+C     | CopyFullNamesToClip    | Nice to have                  |
+Ctrl+1           | SortByName             | Nice to have                  | FIXME, no good alternative
+Ctrl+2           | SortByExt              | Nice to have                  |
+Ctrl+3           | SortBySize             | Nice to have                  |
+Ctrl+4           | SortByDate             | Nice to have                  |
+Ctrl+5           | SortByAttr             | Nice to have                  |
+Shift+Ctrl+H     | QuickView              | Nice to have                  |
+Shift+Ctrl+J     | ColumnsView            | Nice to have                  |
+Shift+Ctrl+K     | BriefView              | Nice to have                  |
+Shift+Ctrl+L     | ThumbnailsView         | Nice to have                  |
+Shift+Ctrl+1     | PanelsSplitterPerPos   | Nice to have                  | splitpct=50
+Shift+Ctrl+2     | PanelsSplitterPerPos   | Nice to have                  | splitpct=60
+Shift+Ctrl+3     | PanelsSplitterPerPos   | Nice to have                  | splitpct=70
+Shift+Ctrl+4     | PanelsSplitterPerPos   | Nice to have                  | splitpct=80
+Shift+Ctrl+5     | PanelsSplitterPerPos   | Nice to have                  | splitpct=90
+Shift+Ctrl+6     | PanelsSplitterPerPos   | Nice to have                  | splitpct=100
+Shift+Ctrl+7     | HorizontalFilePanels   | Nice to have                  |
+Shift+Ctrl+I     | DirHotList             | Not really                    |
+Ctrl+H           | DirHistory             | Not really                    |
+Ctrl+Alt+,       | ShowCmdLineHistory     | Not really                    |
+Ctrl+N           | OpenDirInNewTab        | Nice to have                  |
+Ctrl+G           | NewTab                 | Nice to have                  |
+Ctrl+U           | Exchange               | Nice to have                  |
+Alt+Z            | TargetEqualSource      | Nice to have                  |
+Shift+Alt+H      | LeftOpenDrives         | Nice to have                  |
+Shift+Alt+N      | RightOpenDrives        | Nice to have                  |
+Ctrl+,           | ChangeDirToHome        | Nice to have                  |
+Ctrl+/           | ChangeDirToRoot        | Nice to have                  |
+Shift+Alt+S      | SyncDirs               | Yes                           |
+
+#### Used keys
+
+* Ctrl + [,.1ABCDEFHIJKLMNOPQSUVWXY]
+* Shift+Ctrl + [ACDEHIJKLMNOSUVX]
 
 #### Free shortcuts
 
-* Ctrl+Shift+
+* Ctrl+[GT]
+* Shift+Ctrl+[BFPQWYZ]
 * Shift+Alt+
-* Alt+X
-* Ctrl+G
-* Ctrl+T
-* Ctrl+E
-* Shift+Alt+B
 * Shift+Tab
 * Shift+Alt+Enter (double)
-* Ctrl+B (default)
-* Ctrl+Z (default)
+* Shift+Ctrl+U  (Enter Unicode hex value does not work currently anyway)
+* Shift+Ctrl+I
+* Shift+Ctrl+N
 
 #### Does not work
 
-* Ctrl+Shift+,
+* Non-ASCII characters (except ÖÄÜ)
 
 ### Libreoffice
 
