@@ -1,17 +1,9 @@
 #!/bin/bash
 # sourced by bash and zsh
 
-if [ -f ~/.shell_public ]; then
-    . ~/.shell_public
-fi
-if [ -f ~/.shell_work ]; then
-    . ~/.shell_work
-fi
-if [ -f ~/.shell_privat ]; then
-    . ~/.shell_privat
-fi
+test -f "$HOME/.shell_public" && . "$HOME/.shell_public"
+test -f "$HOME/.shell_work" && . "$HOME/.shell_work"
+test -f "$HOME/.shell_privat" && . "$HOME/.shell_privat"
 
-# Machine dependent, is not synced across the machines!
-if [ -f ~/.shell_local ]; then
-    . ~/.shell_local
-fi
+# Machine dependent, is not synced across machines.
+test -f "$HOME/.shell_local" && . "$HOME/.shell_local"

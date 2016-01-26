@@ -911,10 +911,13 @@ source ~/.vimrc.min
 
                 " autocmd BufRead,BufNewFile *debops** HideBadWhitespace
 
+                "" Read https://github.com/subuser-security/subuser/blob/master/CONTRIBUTING.rst#coding-guidelines
                 autocmd BufRead,BufNewFile *subuser/** HideBadWhitespace
-                " autocmd BufRead,BufNewFile *subuser/** let b:syntastic_mode = 'passive'
-                " autocmd BufRead,BufNewFile *subuser/** let g:pymode_lint = 0
                 autocmd BufRead,BufNewFile *subuser/** let g:pymode_trim_whitespaces = 0
+                autocmd BufRead,BufNewFile *subuser/** let b:syntastic_mode = 'passive'
+                autocmd BufRead,BufNewFile *subuser/** let g:pymode_lint = 0
+
+                autocmd BufRead,BufNewFile *.sandboxes/** let b:syntastic_mode = 'passive'
 
                 autocmd BufRead,BufNewFile **rsnapshot.conf* set noexpandtab
 

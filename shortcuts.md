@@ -244,8 +244,7 @@ Shift+Super+S | Clone dataset (copy and paste it) | Yes            | Emits Shift
 
 I use [VimFx][] to get all the Vim basics …
 
-To customize firefox even further I use [Customizable Shortcuts](https://addons.mozilla.org/de/firefox/addon/customizable-shortcuts/) and [keyconfig](http://kb.mozillazine.org/Keyconfig_extension).
-
+To customize Firefox even further I use [Customizable Shortcuts](https://github.com/ttaubert/customizable-shortcuts).
 
 Shortcut      | Function                            | Left hand only | Comment
 ------------- | -------------                       | -------------  | -------------
