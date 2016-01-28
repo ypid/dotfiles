@@ -1,12 +1,8 @@
-.vim/*-disable/
+vim/*-disable/
 # .vim/bundle/
-.vim/spell/
+vim/spell/
 tags
 autokey/**/*.json
 autohotkey/copy
 autohotkey/put
 autohotkey/get
-
-# .vim/view
-# .vim/.netrwhist
-# .vim/yankring_history_v2.txt

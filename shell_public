@@ -170,6 +170,10 @@ function gl {
 # }}}
 ## }}}
 
+## XDG stuff {{{
+export INPUTRC="${XDG_CONFIG_HOME}/readline/inputrc"
+# }}}
+
 alias gpg-check-debian-iso='gpg --no-default-keyring --keyring /usr/share/keyrings/debian-role-keys.gpg --verify'
 alias gpg-sign='gpg --default-key 489A4D5EC353C98A --armor --detach-sig'
 

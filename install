@@ -1,10 +1,16 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-ls --almost-all -1 |grep --perl-regexp --invert-match '^(.git$|\w)'|while read file; do
-    target="$PWD/$file"
-    target=${target#$HOME/}
-    ln --force --symbolic --no-target-directory "$target" "$HOME/$file"
-done
+set -e
 
-# mkdir -p "$HOME/.config/doublecmd"
-# ln --force --symbolic "$PWD/doublecmd/shortcuts.scf" "$HOME/.config/doublecmd/"
+CONFIG="install.yml"
+DOTBOT_DIR="dotbot"
+
+DOTBOT_BIN="bin/dotbot"
+BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+cd "${BASEDIR}"
+
+## Use ./get for that.
+# git submodule update --init --recursive "${DOTBOT_DIR}"
+
+"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${CONFIG}" "${@}"

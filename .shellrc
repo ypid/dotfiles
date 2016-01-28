@@ -1,9 +1,0 @@
-#!/bin/bash
-# sourced by bash and zsh
-
-test -f "$HOME/.shell_public" && . "$HOME/.shell_public"
-test -f "$HOME/.shell_work" && . "$HOME/.shell_work"
-test -f "$HOME/.shell_privat" && . "$HOME/.shell_privat"
-
-# Machine dependent, is not synced across machines.
-test -f "$HOME/.shell_local" && . "$HOME/.shell_local"

@@ -1,0 +1,147 @@
+- clean:
+    - '~'
+    - '~/.config/git'
+
+- link:
+
+    # ~/.ackrc:
+    #     create: true
+    #     relink: true
+    #     path: ackrc
+
+    ~/.config/autokey/Emitting keystrokes:
+        create: true
+        relink: true
+        path: autokey/Emitting keystrokes
+
+    ~/.ansigenome:
+        create: true
+        relink: true
+        path: ansigenome
+
+    ~/.config/bash/bashrc:
+        create: true
+        relink: true
+        path: bashrc
+
+    # ~/.conkyrc:
+    #     create: true
+    #     relink: true
+    #     path: conkyrc
+
+    ~/.config/git/config:
+        create: true
+        relink: true
+        path: gitconfig
+
+    ~/.config/git/ignore:
+        create: true
+        relink: true
+        path: gitignore_global
+
+    ~/.hgrc:
+        create: true
+        relink: true
+        path: hgrc
+
+    ~/.config/htop/htoprc:
+        create: true
+        relink: true
+        path: htoprc
+
+    ~/.vim:
+        create: true
+        relink: true
+        path: vim
+
+    ~/.vimrc:
+        create: true
+        relink: true
+        path: vimrc
+
+    ## Backwards compatibility.
+    ~/.vimrc:
+        create: true
+        relink: true
+        path: vimrc
+
+    ~/.vimrc.min:
+        create: true
+        relink: true
+        path: vimrc.min
+
+    ~/.config/readline/inputrc:
+        create: true
+        relink: true
+        path: inputrc
+
+    ~/.latexmkrc:
+        create: true
+        relink: true
+        path: latexmkrc
+
+    ~/.perlcriticrc:
+        create: true
+        relink: true
+        path: perlcriticrc
+
+    ~/.perltidyrc:
+        create: true
+        relink: true
+        path: perltidyrc
+
+    ~/.perltidyrc:
+        create: true
+        relink: true
+        path: perltidyrc
+
+    ~/.pystartup:
+        create: true
+        relink: true
+        path: pystartup
+
+    ~/.rhashrc:
+        create: true
+        relink: true
+        path: rhashrc
+
+    ~/.config/shell/global:
+        create: true
+        relink: true
+        path: shell_global
+
+    ~/.config/shell/public:
+        create: true
+        relink: true
+        path: shell_public
+
+    ~/.tmux.conf:
+        create: true
+        relink: true
+        path: tmux.conf
+
+    # ~/.xbindkeysrc:
+    #     create: true
+    #     relink: true
+    #     path: xbindkeysrc
+
+    ~/.zshrc:
+        create: true
+        relink: true
+        path: zshrc
+
+    ~/.config/oh-my-zsh:
+        create: true
+        relink: true
+        path: oh-my-zsh
+
+    ~/.config/oh-my-zsh-custom:
+        create: true
+        relink: true
+        path: oh-my-zsh-custom
+
+    ## Does overwrite symbolic links.
+    # ~/.config/doublecmd/shortcuts.scf:
+    #     create: true
+    #     create: true
+    #     path: doublecmd/shortcuts.scf

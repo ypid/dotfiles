@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh configuration.
-ZSH="$HOME/.oh-my-zsh"
+ZSH="${XDG_CONFIG_HOME:-$HOME/.config}/oh-my-zsh"
 
 # Themes {{{
 # Look in ~/.oh-my-zsh/themes/
@@ -74,11 +74,11 @@ COMPLETION_WAITING_DOTS="true"
 # much faster.
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-ZSH_CUSTOM="$HOME/.oh-my-zsh-custom"
+ZSH_CUSTOM="${XDG_CONFIG_HOME:-$HOME/.config}/oh-my-zsh-custom"
 
 HIST_STAMPS='yyyy-mm-dd'
 
-ZSH_COMPDUMP="${ZDOTDIR:-${HOME}}/.zcompdump-${ZSH_VERSION}"
+ZSH_COMPDUMP="${XDG_CACHE_HOME:-$HOME/.cache}/zcompdump-${ZSH_VERSION}"
 # }}}
 
 # plugins {{{
@@ -212,7 +212,7 @@ stty -ixon -ixoff
 # I use tmux copy mode for this anyway.
 
 setopt no_share_history
-source ~/.shellrc
+source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/global"
 
 ## IGNORE_EOF like in bash http://www.zsh.org/mla/users/2001/msg00240.html {{{
 # bash-ctrl-d() {

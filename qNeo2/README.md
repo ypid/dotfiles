@@ -1,5 +1,7 @@
 # My X keyboard extension configuration
 
+My keyboard layout (mix between QWERTZ and [Neo2][] which I later refer to as qNeo2).
+
 I highly customized my keyboard layout for optimal efficiency and ergonomic. It is a mix between the default German QWERTZ (which I was used to) and the awesome [Neo2] layout. I decided to mix these two layouts because I could not force myself to entirely switch to [Neo2] and because I wanted to be able to shortly use other systems without more pain than necessary.
 
 ## Xmodmap
