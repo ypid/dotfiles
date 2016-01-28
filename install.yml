@@ -9,20 +9,25 @@
     #     relink: true
     #     path: ackrc
 
-    ~/.config/autokey/Emitting keystrokes:
+    '~/.config/autokey/Emitting keystrokes':
         create: true
         relink: true
-        path: autokey/Emitting keystrokes
+        path: 'autokey/Emitting keystrokes'
 
     ~/.ansigenome:
         create: true
         relink: true
         path: ansigenome
 
-    ~/.config/bash/bashrc:
+    ~/.bashrc:
         create: true
         relink: true
         path: bashrc
+
+    ~/.bash_profile:
+        create: true
+        relink: true
+        path: bash_profile
 
     # ~/.conkyrc:
     #     create: true
@@ -38,6 +43,11 @@
         create: true
         relink: true
         path: gitignore_global
+
+    ~/.goaccessrc:
+        create: true
+        relink: true
+        path: goaccessrc
 
     ~/.hgrc:
         create: true

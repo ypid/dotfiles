@@ -77,9 +77,9 @@ xterm*|rxvt*)
     ;;
 esac
 
-source ~/.shellrc
+source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/global"
 
-alias +='pushd'
+alias '+'='pushd'
 
 ## Set the thing to vi editing mode :)
 set -o vi
