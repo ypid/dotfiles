@@ -1,5 +1,6 @@
 # Path to your oh-my-zsh configuration.
 ZSH="${XDG_CONFIG_HOME:-$HOME/.config}/oh-my-zsh"
+export HISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/zsh/history"
 
 # Themes {{{
 # Look in ~/.oh-my-zsh/themes/

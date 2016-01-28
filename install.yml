@@ -54,6 +54,11 @@
         relink: true
         path: vim
 
+    ~/.nvim:
+        create: true
+        relink: true
+        path: vim
+
     ~/.vimrc:
         create: true
         relink: true

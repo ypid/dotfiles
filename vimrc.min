@@ -386,24 +386,27 @@
     set commentstring=#%s
 
     " Setting up the directories {{{
-        call EnsureDirExists($HOME . '/.vimswap')
-        set directory=~/.vimswap/
+        call EnsureDirExists($HOME . '/.cache/vim/swap')
+        set directory=~/.cache/vim/swap/
         set writebackup
+
         " call EnsureDirExists($HOME . '/.vimbackup')
         " set backup                  " Backups are nice ...
         " set backupskip=/tmp/*,crypt,sec,mnt
         " set backupdir=~/.vimbackup,/var/tmp,/tmp,.
 
-        call EnsureDirExists($HOME . '/.vimview')
-        set viewdir=~/.vimview/
+        call EnsureDirExists($HOME . '/.cache/vim/view')
+        set viewdir=~/.cache/vim/view/
 
         if has('persistent_undo')
-            call EnsureDirExists($HOME . '/.vimundo')
+            call EnsureDirExists($HOME . '/.cache/vim/undo')
             set undofile
-            set undodir=~/.vimundo/
+            set undodir=~/.cache/vim/undo/
             set undolevels=1000         " Maximum number of changes that can be undone
             set undoreload=10000        " Maximum number lines to save for undo on a buffer reload
         endif
+
+        set viminfo+=n~/.cache/vim/viminfo
 
         let g:skipview_files = [
             \ '*sec*',
