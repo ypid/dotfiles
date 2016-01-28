@@ -2,20 +2,20 @@
 	path = .vim/bundle/vundle
 	url = https://github.com/gmarik/vundle.git
 [submodule ".oh-my-zsh"]
-	path = .oh-my-zsh
+	path = oh-my-zsh
 	url = https://github.com/robbyrussell/oh-my-zsh.git
 [submodule ".oh-my-zsh-custom/plugins/zsh-syntax-highlighting"]
-	path = .oh-my-zsh-custom/plugins/zsh-syntax-highlighting
+	path = oh-my-zsh-custom/plugins/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
 [submodule ".oh-my-zsh-custom/plugins/git-annex"]
-	path = .oh-my-zsh-custom/plugins/git-annex
+	path = oh-my-zsh-custom/plugins/git-annex
 	url = https://github.com/Schnouki/git-annex-zsh-completion.git
 [submodule ".oh-my-zsh-custom/plugins/more-completions"]
-	path = .oh-my-zsh-custom/plugins/more-completions
+	path = oh-my-zsh-custom/plugins/more-completions
 	; url = https://github.com/shkumagai/my-zsh-completions.git
 	url = https://github.com/ypid/my-zsh-completions.git
 [submodule ".oh-my-zsh-custom/plugins/zsh-completions"]
-	path = .oh-my-zsh-custom/plugins/zsh-completions
+	path = oh-my-zsh-custom/plugins/zsh-completions
 	url = https://github.com/zsh-users/zsh-completions.git
 [submodule ".vim/bundle/vim-indent-object"]
 	path = .vim/bundle/vim-indent-object
@@ -31,7 +31,8 @@
 	url = https://github.com/gi1242/vim-tex-autoclose.git
 [submodule ".vim/bundle/detectindent"]
 	path = .vim/bundle/detectindent
-	url = https://github.com/ciaranm/detectindent.git
+	; url = https://github.com/ciaranm/detectindent.git
+	url = https://github.com/ypid/detectindent.git
 [submodule ".vim/bundle/vim-misc"]
 	path = .vim/bundle/vim-misc
 	url = https://github.com/xolox/vim-misc.git
@@ -100,7 +101,8 @@
 	url = https://github.com/LaTeX-Box-Team/LaTeX-Box.git
 [submodule ".vim/bundle/cosco.vim"]
 	path = .vim/bundle/cosco.vim
-	url = https://github.com/lfilho/cosco.vim.git
+	; url = https://github.com/lfilho/cosco.vim.git
+	url = https://github.com/ypid/cosco.vim.git
 [submodule ".vim/bundle/closetag.vim"]
 	path = .vim/bundle/closetag.vim
 	url = https://github.com/ypid/closetag.vim.git
@@ -121,7 +123,7 @@
 	url = https://github.com/Raimondi/delimitMate.git
 [submodule ".vim/bundle/ctrlp.vim"]
 	path = .vim/bundle/ctrlp.vim
-	url = https://github.com/kien/ctrlp.vim.git
+	url = https://github.com/ctrlpvim/ctrlp.vim.git
 [submodule ".vim/bundle/lookup.vim"]
 	path = .vim/bundle/lookup.vim
 	url = https://github.com/ypid/lookup.vim.git
