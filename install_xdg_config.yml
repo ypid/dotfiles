@@ -1,0 +1,14 @@
+- link:
+    ~/.config/htop/htoprc:
+        create: true
+        relink: true
+        path: htoprc
+
+    ~/.vim:
+        relink: true
+        path: vim
+
+    ## Does overwrite symbolic links.
+    # ~/.config/doublecmd/shortcuts.scf:
+    #     create: true
+    #     path: doublecmd/shortcuts.scf

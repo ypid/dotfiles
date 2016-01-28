@@ -1,13 +1,10 @@
 #!/bin/bash
 
-ls --almost-all -1 |grep --perl-regexp --invert-match '^(.git$|\w|.htoprc)'|while read file; do
+ls --almost-all -1 |grep --perl-regexp --invert-match '^(.git$|\w)'|while read file; do
     target="$PWD/$file"
     target=${target#$HOME/}
     ln --force --symbolic --no-target-directory "$target" "$HOME/$file"
 done
-
-mkdir -p "$HOME/.config/htop"
-ln --force --symbolic --no-target-directory "$PWD/.htoprc" "$HOME/.config/htop/htoprc"
 
 # mkdir -p "$HOME/.config/doublecmd"
 # ln --force --symbolic "$PWD/doublecmd/shortcuts.scf" "$HOME/.config/doublecmd/"
