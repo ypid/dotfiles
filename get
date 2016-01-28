@@ -14,16 +14,8 @@ done
 ## Legacy. Needed on Debian wheezy system.
 wget --continue "http//ftp.vim.org/pub/vim/runtime/spell/de.latin1.spl" --output-document="$vim_spell/de.latin1.spl"
 
-## does not work:
-# vim -c ":set rtp=.vim,.vim/bundle/vundle"
-#
-# Installed via git submodules.
-# vim -c ':BundleInstall' -c ':q' -c ':q' -u .vimrc
-
-# Improves performance of ZSH. Functions not needed or not used (yet).
+## Improves performance of ZSH. Functions not needed or not used (yet).
+## Leave submodule dirty.
 pushd .oh-my-zsh/lib/
 rm bzr.zsh correction.zsh grep.zsh key-bindings.zsh misc.zsh nvm.zsh spectrum.zsh termsupport.zsh functions.zsh
-
-# git commit -am 'Improves performance of ZSH. Functions not needed or not used (yet).'
-# Leave submodule dirty.
 popd
