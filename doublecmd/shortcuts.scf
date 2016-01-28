@@ -124,7 +124,7 @@
         <Command>cm_AddFilenameToCmdLine</Command>
       </Hotkey>
       <Hotkey>
-        <Shortcut>Ctrl+Alt+,</Shortcut>
+        <Shortcut>Ctrl+Shift+N</Shortcut>
         <Command>cm_ShowCmdLineHistory</Command>
       </Hotkey>
       <Hotkey>
@@ -272,6 +272,14 @@
       <Hotkey>
         <Shortcut>Shift+Alt+G</Shortcut>
         <Command>cm_WorkWithDirectoryHotlist</Command>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Ctrl+Tab</Shortcut>
+        <Command>cm_NextTab</Command>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Ctrl+Shift+Tab</Shortcut>
+        <Command>cm_PrevTab</Command>
       </Hotkey>
       <Hotkey>
         <Shortcut>Ctrl+X</Shortcut>

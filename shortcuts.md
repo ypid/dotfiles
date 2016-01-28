@@ -28,7 +28,7 @@ Here are some advices regarding shortcuts for programmers and UI designers which
 Which shortcuts should be used where? – Some thoughts …
 
 * `Shift+Alt`: W, S, X reserved for window manager. Applications can use everything else.
-* `Ctrl+Alt`, `Ctrl+Super`, `Super`: Dedicated to window manager respectively shortcuts which can be triggered globally.
+* `Ctrl+Alt` (unused can be used for hypervisor consoles as host key), `Ctrl+Super`, `Super`: Dedicated to window manager respectively shortcuts which can be triggered globally.
   * Never use the `Super` key for applications as this modifier might be reserved in some window managers. (And I don’t want to find out how to patch Windows to remap that).
 * `Shift+Super`: Dedicated to AutoKey (global)
     * Can also be used over RDP on Windows machines without interfering with MS Windows mappings of the Super key.
@@ -131,8 +131,8 @@ Shift+Super+A    | Launch program `gnome-calculator`          | Nice to have   |
 Ctrl+Super+[1-9] | Launch custom program or script            | Yes and no     |
 Ctrl+Alt+C       | Launch [script][suspend-script] to suspend | Yes            |
 Ctrl+Alt+V       | `poweroff`                                 | Yes            |
-Super+J          | program launcher for non-Gnome WM          | Yes            |
-Super            | program launcher for Gnome WM              | Yes            | Gnome does by default trigger on Super button press which is a nice feature.
+Super+J          | Launcher application finder                | Nice to have   | Gnome activities or substation for other WMs. Gnome does by default trigger on Super button press which is a nice feature but does not work on other WMs yet?
+Super            | Launcher application finder                | Yes            | Only works with Gnome.
 Shift+Ctrl+Alt+O | Launch program `eject`                     | No             | eject removable media, FIXME
 
 ## GUI applications
@@ -141,22 +141,27 @@ Shift+Ctrl+Alt+O | Launch program `eject`                     | No             |
 
 #### Global
 
-Shortcut      | Function                      | Left hand only | Comment
-------------- | -------------                 | -------------  | -------------
-Ctrl+Alt+X    | `clementine --play-pause`     | Of course      | Play or pause audio. Using command line to also allow to start the program if no instance is running.
-Shift+Alt+X   | `clementine --next`           | Of course      | Play next audio file
-Ctrl+Alt+N    | `clementine --seek-by -10`    | Nice to have   | Seek in audio file by *n* seconds.
-Ctrl+Alt+M    | `clementine --seek-by 10`     | Nice to have   | Seek in audio file by *n* seconds.
+Shortcut      | Function                   | Left hand only | Comment
+------------- | -------------              | -------------  | -------------
+Ctrl+Alt+X    | `clementine --play-pause`  | Of course      | Play or pause audio. Using command line to also allow to start the program if no instance is running.
+Shift+Alt+X   | `clementine --next`        | Of course      | Play next audio file
+Ctrl+Alt+H    | `clementine --next`        | Of course      | Play next audio file
+Ctrl+Alt+L    | `clementine --previous`    | Of course      | Play previous audio file
+Ctrl+Alt+B    | `clementine --seek-by -10` | Nice to have   | Seek in audio file by *n* seconds.
+Ctrl+Alt+N    | `clementine --seek-by 10`  | Nice to have   | Seek in audio file by *n* seconds.
 
 <!-- Try with later version again.
 
 ### Application window only
 
-Ctrl+Alt+Z    | Rate the current song 1 star  | No             |
-Ctrl+Alt+U    | Rate the current song 2 stars | No             |
-Ctrl+Alt+I    | Rate the current song 3 stars | No             |
-Ctrl+Alt+O    | Rate the current song 4 stars | No             |
-Ctrl+Alt+P    | Rate the current song 5 stars | No             |
+Clementine - Not worth using global shortcuts for this.
+
+Ctrl+Space | Rate the current song 0 star  | No |
+Ctrl+M     | Rate the current song 1 star  | No |
+Ctrl+,     | Rate the current song 2 stars | No |
+Ctrl+.     | Rate the current song 3 stars | No |
+Ctrl+J     | Rate the current song 4 stars | No |
+Ctrl+K     | Rate the current song 5 stars | No |
 
 -->
 
@@ -246,11 +251,12 @@ I use [VimFx][] to get all the Vim basics …
 
 To customize Firefox even further I use [Customizable Shortcuts](https://github.com/ttaubert/customizable-shortcuts).
 
-Shortcut      | Function                            | Left hand only | Comment
-------------- | -------------                       | -------------  | -------------
-Ctrl+U        | No action                           | No             | Disabled default "View page source" because I hit Ctrl+u multiple times in the location bar to delete the line.
-Shift+Ctrl+S  | View page source                    | Yes            |
-Shift+Ctrl+D  | Web console (d for Debug)           | Yes            |
+Shortcut      | Function                  | Left hand only | Comment
+------------- | -------------             | -------------  | -------------
+Ctrl+U        | No action                 | No             | Disabled default "View page source" because I hit Ctrl+u multiple times in the location bar to delete the line.
+Shift+Ctrl+S  | View page source          | Yes            |
+Shift+Ctrl+D  | Web console (d for Debug) | Yes            |
+Shift+Ctrl+W  | Undo Close Tab            | Yes            |
 
 ### Gimp
 
@@ -260,6 +266,13 @@ W             | tools-move    | Yes            |
 Shift+Alt+C   | layers-new    | Yes            |
 Ctrl+Y        | Undo          | Yes            | Just easier to reach
 Shift+Ctrl+Y  | Redo          | Yes            | Just easier to reach
+
+### VirtualBox and other hypervisors
+
+Shortcut      | Function            | Left hand only | Comment
+------------- | -------------       | -------------  | -------------
+Ctrl+Alt      | Host key            | Nice to have   |
+Host key+M    | Insert Ctrl+Alt+Del | Nice to have   |
 
 ### Double Commander (DC)
 
@@ -314,7 +327,7 @@ Shift+Alt+K      | UnmarkCurrentExtension | Nice to have                  |
 Ctrl+B           | MarkPlus               | No                            |
 Shift+Ctrl+X     | CopyNamesToClip        | Nice to have                  |
 Shift+Ctrl+C     | CopyFullNamesToClip    | Nice to have                  |
-Ctrl+1           | SortByName             | Nice to have                  | FIXME, no good alternative
+Ctrl+1           | SortByName             | Nice to have                  |
 Ctrl+2           | SortByExt              | Nice to have                  |
 Ctrl+3           | SortBySize             | Nice to have                  |
 Ctrl+4           | SortByDate             | Nice to have                  |
@@ -332,7 +345,7 @@ Shift+Ctrl+6     | PanelsSplitterPerPos   | Nice to have                  | spli
 Shift+Ctrl+7     | HorizontalFilePanels   | Nice to have                  |
 Shift+Ctrl+I     | DirHotList             | Not really                    |
 Ctrl+H           | DirHistory             | Not really                    |
-Ctrl+Alt+,       | ShowCmdLineHistory     | Not really                    |
+Shift+Ctrl+N     | ShowCmdLineHistory     | Not really                    |
 Ctrl+N           | OpenDirInNewTab        | Nice to have                  |
 Ctrl+G           | NewTab                 | Nice to have                  |
 Ctrl+U           | Exchange               | Nice to have                  |
@@ -357,7 +370,8 @@ Shift+Alt+S      | SyncDirs               | Yes                           |
 * Shift+Alt+Enter (double)
 * Shift+Ctrl+U  (Enter Unicode hex value does not work currently anyway)
 * Shift+Ctrl+I
-* Shift+Ctrl+N
+* 
+* Shift+Ctrl+B
 
 #### Does not work
 
