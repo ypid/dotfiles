@@ -14,9 +14,6 @@
 	path = .oh-my-zsh-custom/plugins/more-completions
 	; url = https://github.com/shkumagai/my-zsh-completions.git
 	url = https://github.com/ypid/my-zsh-completions.git
-[submodule ".oh-my-zsh-custom/plugins/zsh-compdef"]
-	path = .oh-my-zsh-custom/plugins/zsh-compdef
-	url = https://github.com/thrig/zsh-compdef.git
 [submodule ".oh-my-zsh-custom/plugins/zsh-completions"]
 	path = .oh-my-zsh-custom/plugins/zsh-completions
 	url = https://github.com/zsh-users/zsh-completions.git
