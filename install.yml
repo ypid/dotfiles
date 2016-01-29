@@ -2,6 +2,9 @@
     - '~'
     - '~/.config/git'
 
+- shell:
+  - 'mkdir -p ~/.config/byobu'
+
 - link:
 
     # ~/.ackrc:
@@ -20,6 +23,7 @@
         path: ansigenome
 
     ~/.bashrc:
+        force: true
         create: true
         relink: true
         path: bashrc
@@ -54,6 +58,16 @@
         create: true
         relink: true
         path: goaccessrc
+
+    ~/.gnupg/gpg.conf:
+        create: true
+        relink: true
+        path: gnupg/gpg.conf
+
+    ~/.gnupg/sks-keyservers.netCA.pem:
+        create: true
+        relink: true
+        path: gnupg/sks-keyservers.netCA.pem
 
     ~/.hgrc:
         create: true
