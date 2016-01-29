@@ -25,6 +25,7 @@
         path: bashrc
 
     ~/.bash_logout:
+        force: true
         create: true
         relink: true
         path: bash_logout

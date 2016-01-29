@@ -9,6 +9,8 @@ Enjoy.
 To use this configuration run the following:
 
 ```Shell
+git clone https://github.com/ypid/dotfiles.git ~/.config/dotfiles
+cd ~/.config/dotfiles
 ./get     # Will download all the dependencies.
 ./install # Links the config from the repo to the current $HOME dir.
 ```
