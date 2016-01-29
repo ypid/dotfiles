@@ -24,6 +24,11 @@
         relink: true
         path: bashrc
 
+    ~/.bash_logout:
+        create: true
+        relink: true
+        path: bash_logout
+
     ~/.bash_profile:
         create: true
         relink: true

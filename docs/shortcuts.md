@@ -134,6 +134,9 @@ Ctrl+Alt+V       | `poweroff`                                 | Yes            |
 Super+J          | Launcher application finder                | Nice to have   | Gnome activities or substation for other WMs. Gnome does by default trigger on Super button press which is a nice feature but does not work on other WMs yet?
 Super            | Launcher application finder                | Yes            | Only works with Gnome.
 Shift+Ctrl+Alt+O | Launch program `eject`                     | No             | eject removable media, FIXME
+Ctrl+Alt+Q       | Show [Neo Layout Viewer][NeoLayoutViewer]  | Yes            |
+
+[NeoLayoutViewer](https://github.com/YggdrasiI/NeoLayoutViewer.git)
 
 ## GUI applications
 
