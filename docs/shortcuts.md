@@ -370,7 +370,6 @@ Shift+Alt+S      | SyncDirs               | Yes                           |
 * Shift+Alt+Enter (double)
 * Shift+Ctrl+U  (Enter Unicode hex value does not work currently anyway)
 * Shift+Ctrl+I
-* 
 * Shift+Ctrl+B
 
 #### Does not work

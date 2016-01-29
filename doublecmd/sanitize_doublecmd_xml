@@ -1,0 +1,139 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+# @license AGPLv3 <https://www.gnu.org/licenses/agpl-3.0.html>
+# @author Copyright (C) 2016 Robin Schneider <ypid@riseup.net>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as
+# published by the Free Software Foundation, version 3 of the
+# License.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU Affero General Public License for more details.
+#
+# You should have received a copy of the GNU Affero General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+"""
+Sanitize the configuration file doublecmd.xml of the Double Commander and
+produce a cleaned version of the file ready for sharing and using on other
+systems.
+Workaround for: http://doublecmd.sourceforge.net/mantisbt/view.php?id=1028
+"""
+
+__version__ = '0.9'
+
+import logging
+
+#  import xml.etree.ElementTree as etree
+
+# lxml.etree
+from lxml import etree
+
+
+class DoubleCmdSanitizer:
+
+    _REMOVE_ELEMENTS = {}
+
+    def __init__(self, REMOVE_ELEMENTS=None):
+
+        if REMOVE_ELEMENTS:
+            self._REMOVE_ELEMENTS = REMOVE_ELEMENTS
+        else:
+            self._REMOVE_ELEMENTS = {
+                'Tabs': {
+                    'reason': 'Not machine independent and contains file history.',
+                },
+                'MainWindow': {
+                    'reason': 'Not machine independent (contains windows position).',
+                },
+                'Log': {
+                    'reason': 'Not machine independent (contains log filepath).',
+                },
+                'IgnoreList': {
+                    'reason': 'Not machine independent (contains filepath to ignore list).',
+                },
+                'DirectoryHotList': {
+                    'reason': 'Not machine independent (contains DirectoryHotList).',
+                },
+            }
+
+    def check_if_all_tags_are_sanitized(self):
+        missing_tags = []
+        for tag, opts in self._REMOVE_ELEMENTS.items():
+            if not opts.get('removed', False):
+                missing_tags.append(tag)
+        if len(missing_tags):
+            logging.info("The following keys have not been found and not sanitized:")
+            logging.info(missing_tags)
+
+    def sanitize_doublecmd_xml(self, input_file, output_file):
+        tree = etree.parse(input_file)
+        root = tree.getroot()
+
+        # Seems to be needed to not skip the tags directly following removed tags?
+        remove_tags = []
+
+        for child in root:
+            logging.debug("Checking {}".format(child.tag))
+            if child.tag in self._REMOVE_ELEMENTS:
+                remove_tags.append(child)
+
+        for child in remove_tags:
+                logging.info("Removing {}".format(child.tag))
+                root.remove(child)
+                self._REMOVE_ELEMENTS[child.tag]['removed'] = True
+
+        tree.write(output_file, pretty_print=True)
+
+
+# main {{{
+if __name__ == '__main__':
+    from argparse import ArgumentParser
+
+    args_parser = ArgumentParser(
+        description=__doc__,
+        # epilog=__doc__,
+    )
+    args_parser.add_argument(
+        '-V', '--version',
+        action='version',
+        version='%(prog)s {version}'.format(version=__version__)
+    )
+    args_parser.add_argument(
+        '-d', '--debug',
+        help="Print lots of debugging statements",
+        action="store_const", dest="loglevel", const=logging.DEBUG,
+        default=logging.WARNING,
+    )
+    args_parser.add_argument(
+        '-v', '--verbose',
+        help="Be verbose",
+        action="store_const", dest="loglevel", const=logging.INFO,
+    )
+    args_parser.add_argument(
+        '-i', '--input-file',
+        help="Unsanitized version of a doublecmd.xml file.",
+        required=True,
+    )
+    args_parser.add_argument(
+        '-o', '--output-file',
+        help="Filepath where the sanitized doublecmd.xml file will be written to.",
+        required=True,
+    )
+    args = args_parser.parse_args()
+    logger = logging.getLogger(__file__)
+    logging.basicConfig(
+        format='%(levelname)s: %(message)s',
+        level=args.loglevel,
+        # level=logging.DEBUG,
+        # level=logging.INFO,
+    )
+
+    dcs = DoubleCmdSanitizer()
+    dcs.sanitize_doublecmd_xml(args.input_file, args.output_file)
+    dcs.check_if_all_tags_are_sanitized()
+
+# }}}
