@@ -160,7 +160,7 @@
         relink: true
         path: shell_global
 
-    ~/.config/shell/public:
+    ~/.config/shell.d/public:
         create: true
         relink: true
         path: shell_public

@@ -1,9 +1,9 @@
 #!/bin/sh
 # Sourced by Bash and zsh.
 
-if [ -e "${XDG_CONFIG_HOME:-$HOME/.config}/shell" ]
+if [ -e "${XDG_CONFIG_HOME:-$HOME/.config}/shell.d" ]
 then
-	run-parts --list "${XDG_CONFIG_HOME:-$HOME/.config}/shell" | while read file
+	run-parts --list "${XDG_CONFIG_HOME:-$HOME/.config}/shell.d" | while read file
 	do
 		. "$file"
 	done
