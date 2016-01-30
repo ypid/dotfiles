@@ -1,3 +1,5 @@
+#!/bin/bash
+
 ## Stuff for programs which should be available everywhere {{{
 
 ## https://superuser.com/questions/479600/how-can-i-prevent-tmux-exiting-with-ctrl-d
@@ -52,7 +54,7 @@ alias fgfg='fg'
 function up {
 [[ "${1/[^0-9]/}" == "$1" ]] && {
     local ups=""
-    for i in $(seq 1 $1)
+    for i in $(seq 1 "$1")
     do
         ups="$ups../"
     done
@@ -173,6 +175,9 @@ function gl {
 ## XDG stuff {{{
 export INPUTRC="${XDG_CONFIG_HOME}/readline/inputrc"
 # }}}
+
+export PATH="${PATH}${PATH+:}${HOME}/.local/share/user-scripts/ypid/"
+export PATH="${PATH}${PATH+:}${HOME}/.sandboxes/bin"
 
 alias gpg-check-debian-iso='gpg --no-default-keyring --keyring /usr/share/keyrings/debian-role-keys.gpg --verify'
 alias gpg-sign='gpg --default-key 489A4D5EC353C98A --armor --detach-sig'

@@ -12,7 +12,7 @@
     #     relink: true
     #     path: ackrc
 
-    '~/.config/autokey/Emitting keystrokes':
+    '~/.config/autokey/data/Emitting keystrokes':
         create: true
         relink: true
         path: 'autokey/Emitting keystrokes'
@@ -43,6 +43,16 @@
     #     create: true
     #     relink: true
     #     path: conkyrc
+
+    ~/.sandboxes/firejail-scripts:
+        create: true
+        relink: true
+        path: firejail-scripts
+
+    ~/.sandboxes/bin/config_common.sh:
+        create: true
+        relink: true
+        path: firejail-scripts/config_common.sh
 
     ~/.config/git/config:
         create: true
@@ -135,6 +145,11 @@
         relink: true
         path: pystartup
 
+    ~/.local/share/user-scripts/ypid:
+        create: true
+        relink: true
+        path: scripts
+
     ~/.rhashrc:
         create: true
         relink: true
@@ -149,6 +164,11 @@
         create: true
         relink: true
         path: shell_public
+
+    ~/.config/tint2/tint2rc:
+        create: true
+        relink: true
+        path: tint2rc
 
     ~/.tmux.conf:
         create: true

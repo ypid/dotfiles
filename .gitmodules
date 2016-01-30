@@ -239,3 +239,6 @@
 [submodule "dotbot"]
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot
+[submodule "firejail-scripts"]
+	path = firejail-scripts
+	url = https://github.com/ypid/firejail-scripts.git

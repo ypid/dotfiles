@@ -1,9 +1,10 @@
 #!/bin/sh
 # Sourced by Bash and zsh.
 
-test -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/public" && . "${XDG_CONFIG_HOME:-$HOME/.config}/shell/public"
-test -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/privat" && . "${XDG_CONFIG_HOME:-$HOME/.config}/shell/privat"
-test -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/work"   && . "${XDG_CONFIG_HOME:-$HOME/.config}/shell/work"
-
-# Machine dependent, is not synced across machines.
-test -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/local" && . "${XDG_CONFIG_HOME:-$HOME/.config}/shell/local"
+if [ -e "${XDG_CONFIG_HOME:-$HOME/.config}/shell" ]
+then
+	run-parts --list "${XDG_CONFIG_HOME:-$HOME/.config}/shell" | while read file
+	do
+		. "$file"
+	done
+fi
