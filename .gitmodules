@@ -242,3 +242,6 @@
 [submodule "firejail-scripts"]
 	path = firejail-scripts
 	url = https://github.com/ypid/firejail-scripts.git
+[submodule "scripts"]
+	path = scripts
+	url = https://github.com/ypid/scripts.git
