@@ -5,6 +5,7 @@ set -e
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "${BASEDIR}"
 
+git submodule sync
 git submodule update --init --recursive
 
 vim_spell="vim/spell"
