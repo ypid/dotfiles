@@ -160,7 +160,7 @@
 	url = https://github.com/honza/vim-snippets.git
 [submodule ".vim/bundle/vim-airline"]
 	path = vim/bundle/vim-airline
-	url = https://github.com/bling/vim-airline.git
+	url = https://github.com/vim-airline/vim-airline
 [submodule ".vim/bundle/SingleCompile"]
 	path = vim/bundle/SingleCompile
 	url = https://github.com/xuhdev/SingleCompile.git

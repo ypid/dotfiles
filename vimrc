@@ -261,7 +261,7 @@ source ~/.vimrc.min
                 " else
                     " Bundle 'Lokaltog/vim-powerline'
                 " endif
-                Bundle 'bling/vim-airline'
+                Bundle 'vim-airline/vim-airline'
                 " So much faster than Powerline …
                 " let g:airline#extensions#tabline#enabled = 1
                 " function! AccentDemo()
