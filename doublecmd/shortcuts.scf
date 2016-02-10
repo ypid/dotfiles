@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<doublecmd DCVersion="0.6.2 beta">
+<doublecmd DCVersion="0.6.6 beta">
   <Hotkeys Version="20">
     <Form Name="Main">
       <Hotkey>
@@ -9,6 +9,7 @@
       <Hotkey>
         <Shortcut>Ctrl+C</Shortcut>
         <Command>cm_CopyToClipboard</Command>
+        <Control>Files Panel</Control>
       </Hotkey>
       <Hotkey>
         <Shortcut>Ctrl+Z</Shortcut>
@@ -282,6 +283,65 @@
         <Command>cm_PrevTab</Command>
       </Hotkey>
       <Hotkey>
+        <Shortcut>F1</Shortcut>
+        <Command>cm_About</Command>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>F2</Shortcut>
+        <Command>cm_RenameOnly</Command>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Shift+F6</Shortcut>
+        <Command>cm_RenameOnly</Command>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>F3</Shortcut>
+        <Command>cm_View</Command>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Ctrl+W</Shortcut>
+        <Command>cm_CloseTab</Command>
+        <Control>Files Panel</Control>
+        <Control>Quick Search</Control>
+        <Control>Command Line</Control>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Ctrl+PgDn</Shortcut>
+        <Command>cm_OpenArchive</Command>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Ctrl+PgUp</Shortcut>
+        <Command>cm_ChangeDirToParent</Command>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Shift+F4</Shortcut>
+        <Command>cm_EditNew</Command>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Shift+F5</Shortcut>
+        <Command>cm_CopySamePanel</Command>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Alt+F5</Shortcut>
+        <Command>cm_PackFiles</Command>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Alt+F9</Shortcut>
+        <Command>cm_ExtractFiles</Command>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Alt+Left</Shortcut>
+        <Command>cm_ViewHistoryPrev</Command>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Alt+Right</Shortcut>
+        <Command>cm_ViewHistoryNext</Command>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Alt+Shift+F9</Shortcut>
+        <Command>cm_TestArchive</Command>
+      </Hotkey>
+      <Hotkey>
         <Shortcut>Ctrl+X</Shortcut>
         <Command>cm_CutToClipboard</Command>
         <Control>Files Panel</Control>
@@ -295,13 +355,6 @@
         <Shortcut>Ctrl+Shift+I</Shortcut>
         <Command>cm_DirHotList</Command>
         <Control>Files Panel</Control>
-      </Hotkey>
-      <Hotkey>
-        <Shortcut>Ctrl+W</Shortcut>
-        <Command>cm_CloseTab</Command>
-        <Control>Files Panel</Control>
-        <Control>Quick Search</Control>
-        <Control>Command Line</Control>
       </Hotkey>
       <Hotkey>
         <Shortcut>Del</Shortcut>
@@ -347,6 +400,46 @@
       <Hotkey>
         <Shortcut>Shift+Alt+K</Shortcut>
         <Command>cm_UnmarkCurrentExtension</Command>
+        <Control>Files Panel</Control>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Ctrl+Num+</Shortcut>
+        <Command>cm_MarkMarkAll</Command>
+        <Control>Files Panel</Control>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Num+</Shortcut>
+        <Command>cm_MarkPlus</Command>
+        <Control>Files Panel</Control>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Shift+Num+</Shortcut>
+        <Command>cm_MarkCurrentExtension</Command>
+        <Control>Files Panel</Control>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Ctrl+Num-</Shortcut>
+        <Command>cm_MarkUnmarkAll</Command>
+        <Control>Files Panel</Control>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Num*</Shortcut>
+        <Command>cm_MarkInvert</Command>
+        <Control>Files Panel</Control>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Ctrl+Home</Shortcut>
+        <Command>cm_ChangeDirToHome</Command>
+        <Control>Files Panel</Control>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Ctrl+Left</Shortcut>
+        <Command>cm_TransferLeft</Command>
+        <Control>Files Panel</Control>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Ctrl+Right</Shortcut>
+        <Command>cm_TransferRight</Command>
         <Control>Files Panel</Control>
       </Hotkey>
     </Form>

@@ -57,6 +57,8 @@ List of free shortcuts (they may have a default mapping but there are better sho
 * Shift+Alt+A,
   Shift+Alt+D
   Shift+Alt+
+  Ctrl+Alt+Y
+  Ctrl+Alt+[Level4 Shift][special-keys]
 
 ## Shortcut conventions and key order
 
@@ -71,7 +73,7 @@ To search for shortcuts, it is important to maintain a unique naming pattern. Th
 ## Special keys
 Key name      | Comment
 ------------- | -------------
-Level5 Shift  | This key in my configuration is the <> button.
+Level4 Shift  | This key in my configuration is the <> button.
 +             | Separator for keys
 anything else | Is either a usual key name or a regular expression to specify a range of keys
 
@@ -81,13 +83,23 @@ Own shortcuts for the window manager should include the Super key which is norma
 
 ### Navigation
 
-Shortcut                              | Function                               | Left hand only | Comment
--------------                         | -------------                          | -------------  | -------------
-Shift+Alt+W                           | Move window one workspace up           | Yes            |
-Shift+Alt+S                           | Move window one workspace down         | Yes            |
-Alt+[Level5 Shift][special-keys]      | Switch windows                         | Of course      | Easier to reach than Alt-Tab.
-Ctrl+Alt+Y                            | Switch to workspace 1                  | Of course      |
-Ctrl+Alt+[Level5 Shift][special-keys] | Switch to workspace 2                  | Of course      |
+Shortcut                           | Function                       | Left hand only | Comment
+-------------                      | -------------                  | -------------  | -------------
+Shift+Alt+W                        | Move window one workspace up   | Yes            |
+Shift+Alt+S                        | Move window one workspace down | Yes            |
+Alt+[Level4 Shift][special-keys]   | Switch windows                 | Of course      | Easier to reach than Alt-Tab.
+Super+[Level4 Shift][special-keys] | Switch to workspace 1          | Of course      |
+Super+Y                            | Switch to workspace 2          | Of course      |
+Super+X                            | Switch to workspace 3          | Of course      |
+Super+A                            | Switch to workspace 4          | Of course      |
+Super+S                            | Switch to workspace 5          | Of course      |
+Super+D                            | Switch to workspace 6          | Of course      |
+Super+1                            | Move window to workspace 1     | Of course      |
+Super+2                            | Move window to workspace 2     | Of course      |
+Super+3                            | Move window to workspace 3     | Of course      |
+Super+4                            | Move window to workspace 4     | Of course      |
+Super+5                            | Move window to workspace 5     | Of course      |
+Super+6                            | Move window to workspace 6     | Of course      |
 
 [shellshape]: https://extensions.gnome.org/extension/294/shellshape/
 
@@ -95,7 +107,7 @@ Ctrl+Alt+[Level5 Shift][special-keys] | Switch to workspace 2                  |
 
 Shortcut                                | Function           | Left hand only | Comment
 -------------                           | -------------      | -------------  | -------------
-Ctrl+Super+[Level5 Shift][special-keys] | Volume down by 5 % | Yes            |
+Ctrl+Super+[Level4 Shift][special-keys] | Volume down by 5 % | Yes            |
 Ctrl+Super+Y                            | Volume up by 5 %   | Yes            |
 
 ### System
@@ -113,14 +125,15 @@ Shift+Ctrl+U  | Enter Unicode hex value                             | No        
 
 ### Windows
 
-Shortcut      | Function                        | Left hand only | Comment
-------------- | -------------                   | -------------  | -------------
-Super+Q       | Close window                    | Yes            | If Ctrl-Q does not work. (Example: gnome-terminal)
-Ctrl+Alt+F    | Toggle fullscreen mode          | Yes            | If Alt-F does not work. Try to use Ctrl+Alt+F because it is more generic. Use Shift+Super+F to emit F11.
-Ctrl+Alt+W    | Maximize window                 | Yes            |
-Ctrl+Alt+S    | Restore previous size of window | Yes            |
-Ctrl+Alt+A    | View split on left              | Yes            |
-Ctrl+Alt+D    | View split on right             | Yes            |
+Shortcut      | Function                                      | Left hand only | Comment
+------------- | -------------                                 | -------------  | -------------
+Super+Q       | Close window                                  | Yes            | If Ctrl-Q does not work. (Example: gnome-terminal)
+Ctrl+Alt+F    | Toggle fullscreen mode                        | Yes            | If Alt-F does not work. Try to use Ctrl+Alt+F because it is more generic. Use Shift+Super+F to emit F11.
+Ctrl+Alt+E    | Maximize window                               | Yes            |
+Ctrl+Alt+W    | Maximize window                               | Yes            |
+Ctrl+Alt+S    | Restore previous size of window               | Yes            |
+Ctrl+Alt+A    | Tile window on the left, View split on left                            | Yes            |
+Ctrl+Alt+D    | Tile window on the right, View split on right | Yes            |
 
 ### Custom shortcuts
 
@@ -135,6 +148,7 @@ Super+J          | Launcher application finder                | Nice to have   |
 Super            | Launcher application finder                | Yes            | Only works with Gnome.
 Shift+Ctrl+Alt+O | Launch program `eject`                     | No             | eject removable media, FIXME
 Ctrl+Alt+Q       | Show [Neo Layout Viewer][NeoLayoutViewer]  | Yes            |
+F1               | Show [Neo Layout Viewer][NeoLayoutViewer]  | Yes            | A useful help.
 
 [NeoLayoutViewer](https://github.com/YggdrasiI/NeoLayoutViewer.git)
 
@@ -379,22 +393,23 @@ Shift+Alt+S      | SyncDirs               | Yes                           |
 
 * Non-ASCII characters (except ÖÄÜ)
 
-### Libreoffice
+### LibreOffice
 
-#### Libreoffice
+#### LibreOffice
 
 Shortcut      | Function                     | Left hand only | Comment
 ------------- | -------------                | -------------  | -------------
 Shift+Ctrl+X  | Numbering → Bullets On/Off   | Yes            |
 Shift+Ctrl+C  | Numbering → Numbering On/Off | Yes            |
 
-#### Libreoffice Calc
+#### LibreOffice Calc
 
 Shortcut      | Function                              | Left hand only | Comment
 ------------- | -------------                         | -------------  | -------------
 Shift+Ctrl+X  | Format → Optimal Column Width, direct | Yes            |
+Shift+Ctrl+D  | Edit → Delete Rows                    | Yes            |
 
-#### Libreoffice Impress
+#### LibreOffice Impress
 
 Shortcut      | Function                       | Left hand only | Comment
 ------------- | -------------                  | -------------  | -------------
