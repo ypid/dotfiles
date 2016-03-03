@@ -882,7 +882,7 @@ source ~/.vimrc.min
             autocmd VimLeave * if filereadable($HOME."/.vim/bundle/vundle/.netrwhist")|call delete($HOME."/.vim/bundle/vundle/.netrwhist")|endif
             autocmd VimLeave * if filereadable($HOME."/.vim/.netrwhist")|call delete($HOME."/.vim/.netrwhist")|endif
 
-            " Adjust the filetype for some files {{{
+            " Adjust settings for files {{{
                 autocmd BufRead,BufNewFile .mrconfig* setlocal filetype=sh
                 autocmd BufRead,BufNewFile .vimpagerrc setlocal filetype=vim
                 autocmd BufRead,BufNewFile /etc/*/apt.conf setlocal filetype=conf
@@ -903,6 +903,8 @@ source ~/.vimrc.min
                 " autocmd BufRead,BufNewFile source.list.* setlocal filetype=debsources
                 autocmd BufRead,BufNewFile .gitignore setlocal filetype=conf
 
+                autocmd BufRead,BufNewFile *mrconfig* setlocal filetype=dosini
+
                 autocmd BufRead,BufNewFile *.nse setlocal filetype=lua
 
                 autocmd BufRead,BufNewFile *firejail/** HideBadWhitespace
@@ -921,10 +923,16 @@ source ~/.vimrc.min
 
                 autocmd BufRead,BufNewFile **rsnapshot.conf* set noexpandtab
 
-                autocmd BufRead,BufNewFile *ansible/**/ if &filetype=='yaml'|set filetype=ansible|endif
-                autocmd BufRead,BufNewFile *ansible/*vars/* set filetype=yaml
+                " autocmd BufRead,BufNewFile *ansible/**/ if &filetype=='yaml'|set filetype=ansible|endif
+                autocmd BufRead,BufNewFile *ansible/**/ set filetype=ansible
+                autocmd BufRead,BufNewFile *.yml set filetype=ansible
+
+                " yaml seems to be more slow than ansible filetype?
+                " autocmd BufRead,BufNewFile *ansible/*vars/* set filetype=yaml
+
+                " autocmd BufRead,BufNewFile *ansible/**/ if &filetype==''|set filetype=yaml|endif
+
                 autocmd BufRead,BufNewFile **ansigenome.conf set filetype=yaml
-                autocmd BufRead,BufNewFile *ansible/**/ if &filetype==''|set filetype=yaml|endif
                 autocmd BufReadPost *.j2 setlocal filetype=jinja
             " }}}
 

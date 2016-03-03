@@ -1,9 +1,8 @@
 #!/bin/bash
 
-SCRIPT="`readlink -e $0`"
-SCRIPTPATH="`dirname $SCRIPT`"
+SCRIPTPATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-dpkg-divert --quiet --local --divert /usr/share/X11/xkb/symbols/de_org --rename /usr/share/X11/xkb/symbols/de
+dpkg-divert --quiet --local --divert /usr/share/X11/xkb/symbols/de.dpkg-orig --rename /usr/share/X11/xkb/symbols/de
 cp "${SCRIPTPATH}/de" /usr/share/X11/xkb/symbols/de
 
 # Doing this also screws up the busybox keymap in Debian (jessie).

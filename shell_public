@@ -22,7 +22,7 @@ export GITHUB_USER="ypid"
 if [ -x /usr/bin/dircolors ]; then
     export LS_OPTIONS='--color=auto'
     eval "$(dircolors)"
-    alias ls='ls --color=auto --human-readable'
+    alias ls='ls --color=auto --human-readable --almost-all'
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'

@@ -293,13 +293,16 @@ Host key+M    | Insert Ctrl+Alt+Del | Nice to have   |
 
 ### Double Commander (DC)
 
-See the manual for the default shortcuts. I added my own which I think are more convenient. Note that I make heavy use of `Shift+[A-Z]` mappings. This seems to break the RenameOnly function [currently](http://doublecmd.sourceforge.net/mantisbt/view.php?id=973).
+See the manual for the default shortcuts. I added my own which I think are more convenient.
 
-Note: [Double Commander] works quite nicely together with [Neo2][] …
+Note that using `Shift+[A-Z]` currently has side effects when using the RenameOnly function [currently](http://doublecmd.sourceforge.net/mantisbt/view.php?id=973) so I avoid to use `Shift+[A-Z]` for actions.
+
+Hint: [Double Commander] works quite nicely together with [Neo2][] …
 
 * Don’t restrict control to files panel for actions which are shown in the function key buttons area so that DC shows the mapping there too.
 
 #### Assumed to be default
+
 Mappings which are default or which should be default.
 
 Shortcut      | Function       | Left hand only | Comment
@@ -311,6 +314,7 @@ Ctrl+D        | Delete (Trash) | Yes            |
 Shift+Ctrl+D  | Delete         | Yes            |
 
 #### Mutable
+
 Shortcut      | Function          | Left hand only | Comment
 ------------- | -------------     | -------------  | -------------
 Ctrl+M        | Rename            | Yes            |

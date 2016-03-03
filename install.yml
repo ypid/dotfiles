@@ -3,7 +3,8 @@
     - '~/.config/git'
 
 - shell:
-  - 'mkdir -p ~/.config/byobu'
+  - 'mkdir -p ~/.config/byobu ~/.local/share/zsh'
+  - 'make --directory doublecmd install'
 
 - link:
 
