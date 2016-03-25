@@ -110,8 +110,11 @@ source ~/.vimrc.min
             " Bundle 'autoproto.vim'
 
             Bundle 'chase/vim-ansible-yaml'
+            " Bundle 'pearofducks/ansible-vim'
+
             " Bundle 'Glench/Vim-Jinja2-Syntax'
-            " Bundle 'icook/Vim-Jinja2-Syntax'
+            "
+            " Supports MatchIt and Endwise.
             Bundle 'chase/Vim-Jinja2-Syntax'
         endif
         if count(g:spf13_bundle_groups, 'tested_not_using')

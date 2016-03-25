@@ -245,3 +245,6 @@
 [submodule "scripts"]
 	path = scripts
 	url = https://github.com/ypid/scripts.git
+[submodule "vim/bundle/ansible-vim"]
+	path = vim/bundle/ansible-vim
+	url = https://github.com/pearofducks/ansible-vim
