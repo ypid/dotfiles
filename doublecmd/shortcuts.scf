@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<doublecmd DCVersion="0.6.6 beta">
-  <Hotkeys Version="20">
+<doublecmd DCVersion="0.7.0 beta">
+  <Hotkeys Version="23">
     <Form Name="Main">
       <Hotkey>
         <Shortcut>Ctrl+Q</Shortcut>
         <Command>cm_Exit</Command>
-      </Hotkey>
-      <Hotkey>
-        <Shortcut>Ctrl+C</Shortcut>
-        <Command>cm_CopyToClipboard</Command>
-        <Control>Files Panel</Control>
       </Hotkey>
       <Hotkey>
         <Shortcut>Ctrl+Z</Shortcut>
@@ -299,13 +294,6 @@
         <Command>cm_View</Command>
       </Hotkey>
       <Hotkey>
-        <Shortcut>Ctrl+W</Shortcut>
-        <Command>cm_CloseTab</Command>
-        <Control>Files Panel</Control>
-        <Control>Quick Search</Control>
-        <Control>Command Line</Control>
-      </Hotkey>
-      <Hotkey>
         <Shortcut>Ctrl+PgDn</Shortcut>
         <Command>cm_OpenArchive</Command>
       </Hotkey>
@@ -338,8 +326,36 @@
         <Command>cm_ViewHistoryNext</Command>
       </Hotkey>
       <Hotkey>
-        <Shortcut>Alt+Shift+F9</Shortcut>
+        <Shortcut>Shift+Alt+F9</Shortcut>
         <Command>cm_TestArchive</Command>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>F4</Shortcut>
+        <Command>cm_ClearLogWindow</Command>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Alt+Down</Shortcut>
+        <Command>cm_DirHistory</Command>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Ctrl+W</Shortcut>
+        <Command>cm_CloseTab</Command>
+        <Control>Files Panel</Control>
+        <Control>Quick Search</Control>
+        <Control>Command Line</Control>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Ctrl+Shift+F8</Shortcut>
+        <Command>cm_TreeView</Command>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Shift+F12</Shortcut>
+        <Command>cm_DoAnyCmCommand</Command>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Ctrl+C</Shortcut>
+        <Command>cm_CopyToClipboard</Command>
+        <Control>Files Panel</Control>
       </Hotkey>
       <Hotkey>
         <Shortcut>Ctrl+X</Shortcut>
@@ -440,6 +456,11 @@
       <Hotkey>
         <Shortcut>Ctrl+Right</Shortcut>
         <Command>cm_TransferRight</Command>
+        <Control>Files Panel</Control>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Shift+Tab</Shortcut>
+        <Command>cm_NextGroup</Command>
         <Control>Files Panel</Control>
       </Hotkey>
     </Form>

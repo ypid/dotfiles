@@ -1,0 +1,11 @@
+#!/bin/sh
+# Sourced by Bash and zsh.
+
+BIN_PATHS_DIR="$HOME/.local/share/scripts"
+
+test -d "${BIN_PATHS_DIR}" || exit 0
+
+for bin_path_dir in "${BIN_PATHS_DIR}"/*
+do
+    export PATH="${bin_path_dir}${PATH+:}${PATH}"
+done

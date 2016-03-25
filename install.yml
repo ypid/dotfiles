@@ -146,11 +146,6 @@
         relink: true
         path: pystartup
 
-    ~/.local/share/user-scripts/ypid:
-        create: true
-        relink: true
-        path: scripts
-
     ~/.rhashrc:
         create: true
         relink: true
@@ -165,6 +160,16 @@
         create: true
         relink: true
         path: shell_public
+
+    ~/.config/shell.d/shell_extend_PATH:
+        create: true
+        relink: true
+        path: shell_extend_PATH
+
+    ~/.local/share/scripts/ypid-scripts-common:
+        create: true
+        relink: true
+        path: scripts
 
     ~/.config/tint2/tint2rc:
         create: true

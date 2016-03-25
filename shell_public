@@ -176,7 +176,6 @@ function gl {
 export INPUTRC="${XDG_CONFIG_HOME}/readline/inputrc"
 # }}}
 
-export PATH="${PATH}${PATH+:}${HOME}/.local/share/user-scripts/ypid/"
 export PATH="${PATH}${PATH+:}${HOME}/.sandboxes/bin"
 
 alias gpg-check-debian-iso='gpg --no-default-keyring --keyring /usr/share/keyrings/debian-role-keys.gpg --verify'

@@ -1,12 +1,14 @@
-# dotfiles
+# ypid dotfiles
 
-My work environment. It is managed via [dotbot](https://github.com/anishathalye/dotbot).
+My customized Unix work environment.
 
 Enjoy.
 
 ## Install
 
-To use this configuration run the following:
+Installation is handled by [dotbot](https://github.com/anishathalye/dotbot).
+
+To use my configuration run the following commands:
 
 ```Shell
 git clone https://github.com/ypid/dotfiles.git ~/.config/dotfiles

@@ -923,8 +923,8 @@ source ~/.vimrc.min
 
                 autocmd BufRead,BufNewFile **rsnapshot.conf* set noexpandtab
 
-                " autocmd BufRead,BufNewFile *ansible/**/ if &filetype=='yaml'|set filetype=ansible|endif
-                autocmd BufRead,BufNewFile *ansible/**/ set filetype=ansible
+                autocmd BufRead,BufNewFile *ansible/**/ if &filetype=='yaml'|set filetype=ansible|endif
+                autocmd BufRead,BufNewFile *ansible/inventory/**/ set filetype=ansible
                 autocmd BufRead,BufNewFile *.yml set filetype=ansible
 
                 " yaml seems to be more slow than ansible filetype?

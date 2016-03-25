@@ -1,4 +1,4 @@
-<doublecmd DCVersion="0.6.6 beta" ConfigVersion="7">
+<doublecmd DCVersion="0.7.0 beta" ConfigVersion="9">
   <Configuration Save="True" SortOrder="0">
     <UseConfigInProgramDir>False</UseConfigInProgramDir>
   </Configuration>
@@ -55,6 +55,12 @@
       <BackColor>16777215</BackColor>
       <UseGradient>True</UseGradient>
     </FreeSpaceIndicator>
+    <UseCursorBorder>False</UseCursorBorder>
+    <CursorBorderColor>-2147483635</CursorBorderColor>
+    <InactiveCursor>-2147483645</InactiveCursor>
+    <InactiveMark>128</InactiveMark>
+    <UseInactiveSelColor>False</UseInactiveSelColor>
+    <AllowOverColor>True</AllowOverColor>
   </Colors>
   <Plugins>
     <DsxPlugins/>
@@ -62,7 +68,7 @@
       <WcxPlugin Enabled="True">
         <ArchiveExt>zip</ArchiveExt>
         <Path>%commander_path%/plugins/wcx/zip/zip.wcx</Path>
-        <Flags>607</Flags>
+        <Flags>735</Flags>
       </WcxPlugin>
       <WcxPlugin Enabled="True">
         <ArchiveExt>lzma</ArchiveExt>
@@ -72,7 +78,7 @@
       <WcxPlugin Enabled="True">
         <ArchiveExt>tar</ArchiveExt>
         <Path>%commander_path%/plugins/wcx/zip/zip.wcx</Path>
-        <Flags>95</Flags>
+        <Flags>223</Flags>
       </WcxPlugin>
       <WcxPlugin Enabled="True">
         <ArchiveExt>bz2</ArchiveExt>
@@ -132,7 +138,7 @@
       <WcxPlugin Enabled="True">
         <ArchiveExt>zipx</ArchiveExt>
         <Path>%commander_path%/plugins/wcx/zip/zip.wcx</Path>
-        <Flags>84</Flags>
+        <Flags>212</Flags>
       </WcxPlugin>
     </WcxPlugins>
     <WdxPlugins>
@@ -189,8 +195,12 @@
   </Language>
   <Behaviours>
     <GoToRoot>False</GoToRoot>
-    <RunInTerminal/>
-    <RunTerminal>gnome-terminal</RunTerminal>
+    <RunInTerminalStayOpenCmd>x-terminal-emulator</RunInTerminalStayOpenCmd>
+    <RunInTerminalStayOpenParams>-e sh -c '{command}; echo -n Press ENTER to exit... ; read a'</RunInTerminalStayOpenParams>
+    <RunInTerminalCloseCmd/>
+    <RunInTerminalCloseParams/>
+    <JustRunTerminal>gnome-terminal</JustRunTerminal>
+    <JustRunTermParams/>
     <OnlyOneAppInstance>True</OnlyOneAppInstance>
     <LynxLike>True</LynxLike>
     <FileSizeFormat>0</FileSizeFormat>
@@ -205,6 +215,7 @@
     </Mouse>
     <AutoFillColumns>True</AutoFillColumns>
     <AutoSizeColumn>0</AutoSizeColumn>
+    <CustomColumnsChangeAllColumns>False</CustomColumnsChangeAllColumns>
     <BriefViewFileExtAligned>False</BriefViewFileExtAligned>
     <DateTimeFormat>yyyy-mm-dd hh:mm:ss</DateTimeFormat>
     <CutTextToColumnWidth>False</CutTextToColumnWidth>
@@ -242,30 +253,41 @@
       <Name>default</Name>
       <Size>13</Size>
       <Style>1</Style>
+      <Quality>0</Quality>
     </Main>
     <Editor>
       <Name>Monospace</Name>
       <Size>14</Size>
       <Style>0</Style>
+      <Quality>0</Quality>
     </Editor>
     <Viewer>
       <Name>Monospace</Name>
       <Size>14</Size>
       <Style>0</Style>
+      <Quality>0</Quality>
     </Viewer>
     <Log>
       <Name>Monospace</Name>
       <Size>12</Size>
       <Style>0</Style>
+      <Quality>0</Quality>
     </Log>
     <ViewerBook>
       <Name>default</Name>
       <Size>16</Size>
       <Style>1</Style>
+      <Quality>0</Quality>
     </ViewerBook>
+    <Console>
+      <Name>Monospace</Name>
+      <Size>12</Size>
+      <Style>0</Style>
+      <Quality>0</Quality>
+    </Console>
   </Fonts>
   <ToolTips>
-    <ShowToolTipMode>1</ShowToolTipMode>
+    <ShowToolTipMode>True</ShowToolTipMode>
     <CustomFields>
       <CustomField>
         <Name/>
@@ -290,6 +312,7 @@
       <ShowFileSystem>True</ShowFileSystem>
       <ShowFreeSpace>True</ShowFreeSpace>
     </DrivesListButton>
+    <SeparateTree>False</SeparateTree>
     <DirectoryTabs>True</DirectoryTabs>
     <CurrentDirectory>True</CurrentDirectory>
     <TabHeader>True</TabHeader>
@@ -318,6 +341,14 @@
       <AutoSaveWidth>True</AutoSaveWidth>
       <TitleStyle>1</TitleStyle>
     </ColumnsView>
+    <BriefView>
+      <FileExtAligned>False</FileExtAligned>
+      <Columns>
+        <FixedWidth>100</FixedWidth>
+        <FixedCount>2</FixedCount>
+        <AutoSize>2</AutoSize>
+      </Columns>
+    </BriefView>
   </FilesViews>
   <Keyboard>
     <Typing>
@@ -354,6 +385,7 @@
       <CopyAttributes>True</CopyAttributes>
       <CopyTime>True</CopyTime>
       <CopyOwnership>True</CopyOwnership>
+      <CopyPermissions>False</CopyPermissions>
     </Options>
     <TypeOfDuplicatedRename>0</TypeOfDuplicatedRename>
     <DragAndDropTextRichtextDesireLevel>0</DragAndDropTextRichtextDesireLevel>
@@ -364,6 +396,8 @@
     <DragAndDropTextAutoFilename>False</DragAndDropTextAutoFilename>
     <DragAndDropSaveUnicodeTextInUFT8>True</DragAndDropSaveUnicodeTextInUFT8>
     <NtfsHourTimeDelay>False</NtfsHourTimeDelay>
+    <HashBufferSize>8388608</HashBufferSize>
+    <SearchDefaultTemplate/>
   </FileOperations>
   <History>
     <SearchReplaceHistory Save="True"/>
@@ -379,6 +413,7 @@
   </QuickSearch>
   <QuickFilter>
     <AutoHide>True</AutoHide>
+    <SaveSessionModifications>False</SaveSessionModifications>
   </QuickFilter>
   <Miscellaneous>
     <GridVertLine>True</GridVertLine>
@@ -429,6 +464,8 @@
     <BackgroundColor>0</BackgroundColor>
     <FontColor>16777215</FontColor>
     <TextPosition>0</TextPosition>
+    <ImageStretchLargeOnly>False</ImageStretchLargeOnly>
+    <ImageCenter>True</ImageCenter>
   </Viewer>
   <Lua>
     <PathToLibrary>liblua5.1.so.0</PathToLibrary>
@@ -437,8 +474,8 @@
   <LastUsedPacker>zip</LastUsedPacker>
   <UseShellForFileOperations>False</UseShellForFileOperations>
   <SearchTemplates/>
-  <ColumnsSets>
-    <ColumnsSet>
+  <ColumnsSets DefaultTitleHash="0">
+    <ColumnsSet UseFrameCursor="False">
       <Name>Default</Name>
       <CustomView>True</CustomView>
       <CursorBorder Enabled="False">
@@ -448,20 +485,25 @@
         <Column>
           <Title>Name</Title>
           <FuncString>[DC().GETFILENAMENOEXT{}]</FuncString>
-          <Width>250</Width>
+          <Width>318</Width>
           <Align>0</Align>
           <Font>
             <Name>default</Name>
             <Size>13</Size>
             <Style>1</Style>
+            <Quality>0</Quality>
           </Font>
-          <Overcolor>True</Overcolor>
           <TextColor>-2147483640</TextColor>
           <Background>16776691</Background>
           <Background2>-2147483643</Background2>
           <MarkColor>255</MarkColor>
           <CursorColor>-2147483635</CursorColor>
           <CursorText>-2147483634</CursorText>
+          <InactiveCursorColor>-2147483645</InactiveCursorColor>
+          <InactiveMarkColor>128</InactiveMarkColor>
+          <UseInvertedSelection>False</UseInvertedSelection>
+          <UseInactiveSelColor>False</UseInactiveSelColor>
+          <Overcolor>True</Overcolor>
         </Column>
         <Column>
           <Title>Ext</Title>
@@ -472,14 +514,19 @@
             <Name>default</Name>
             <Size>13</Size>
             <Style>1</Style>
+            <Quality>0</Quality>
           </Font>
-          <Overcolor>True</Overcolor>
           <TextColor>-2147483640</TextColor>
           <Background>16776691</Background>
           <Background2>-2147483643</Background2>
           <MarkColor>255</MarkColor>
           <CursorColor>-2147483635</CursorColor>
           <CursorText>-2147483634</CursorText>
+          <InactiveCursorColor>-2147483645</InactiveCursorColor>
+          <InactiveMarkColor>128</InactiveMarkColor>
+          <UseInvertedSelection>False</UseInvertedSelection>
+          <UseInactiveSelColor>False</UseInactiveSelColor>
+          <Overcolor>True</Overcolor>
         </Column>
         <Column>
           <Title>Size</Title>
@@ -490,14 +537,19 @@
             <Name>default</Name>
             <Size>13</Size>
             <Style>1</Style>
+            <Quality>0</Quality>
           </Font>
-          <Overcolor>True</Overcolor>
           <TextColor>-2147483640</TextColor>
           <Background>16776691</Background>
           <Background2>-2147483643</Background2>
           <MarkColor>255</MarkColor>
           <CursorColor>-2147483635</CursorColor>
           <CursorText>-2147483634</CursorText>
+          <InactiveCursorColor>-2147483645</InactiveCursorColor>
+          <InactiveMarkColor>128</InactiveMarkColor>
+          <UseInvertedSelection>False</UseInvertedSelection>
+          <UseInactiveSelColor>False</UseInactiveSelColor>
+          <Overcolor>True</Overcolor>
         </Column>
         <Column>
           <Title>Date</Title>
@@ -508,14 +560,19 @@
             <Name>default</Name>
             <Size>13</Size>
             <Style>1</Style>
+            <Quality>0</Quality>
           </Font>
-          <Overcolor>True</Overcolor>
           <TextColor>-2147483640</TextColor>
           <Background>16776691</Background>
           <Background2>-2147483643</Background2>
           <MarkColor>255</MarkColor>
           <CursorColor>-2147483635</CursorColor>
           <CursorText>-2147483634</CursorText>
+          <InactiveCursorColor>-2147483645</InactiveCursorColor>
+          <InactiveMarkColor>128</InactiveMarkColor>
+          <UseInvertedSelection>False</UseInvertedSelection>
+          <UseInactiveSelColor>False</UseInactiveSelColor>
+          <Overcolor>True</Overcolor>
         </Column>
         <Column>
           <Title>Attr</Title>
@@ -526,14 +583,19 @@
             <Name>default</Name>
             <Size>13</Size>
             <Style>1</Style>
+            <Quality>0</Quality>
           </Font>
-          <Overcolor>True</Overcolor>
           <TextColor>-2147483640</TextColor>
           <Background>16776691</Background>
           <Background2>-2147483643</Background2>
           <MarkColor>255</MarkColor>
           <CursorColor>-2147483635</CursorColor>
           <CursorText>-2147483634</CursorText>
+          <InactiveCursorColor>-2147483645</InactiveCursorColor>
+          <InactiveMarkColor>128</InactiveMarkColor>
+          <UseInvertedSelection>False</UseInvertedSelection>
+          <UseInactiveSelColor>False</UseInactiveSelColor>
+          <Overcolor>True</Overcolor>
         </Column>
       </Columns>
     </ColumnsSet>
@@ -550,4 +612,29 @@
     <FilterSingles>True</FilterSingles>
     <FileMask>*</FileMask>
   </SyncDirs>
+  <Editor>
+    <SynEditOptions>856075</SynEditOptions>
+  </Editor>
+  <InternalAssociations>
+    <OfferToAddNewFileType>False</OfferToAddNewFileType>
+    <LastCustomAction>Custom action</LastCustomAction>
+    <ExpandedContextMenu>False</ExpandedContextMenu>
+    <ExecuteViaShell>False</ExecuteViaShell>
+    <OpenSystemWithTerminalClose>False</OpenSystemWithTerminalClose>
+    <OpenSystemWithTerminalStayOpen>False</OpenSystemWithTerminalStayOpen>
+    <IncludeFileAssociation>False</IncludeFileAssociation>
+  </InternalAssociations>
+  <FavoriteTabsOptions>
+    <FavoriteTabsUseRestoreExtraOptions>False</FavoriteTabsUseRestoreExtraOptions>
+    <WhereToAdd>1</WhereToAdd>
+    <Expand>True</Expand>
+    <GotoConfigAftSav>False</GotoConfigAftSav>
+    <GotoConfigAftReSav>False</GotoConfigAftReSav>
+    <DfltLeftGoTo>0</DfltLeftGoTo>
+    <DfltRightGoTo>1</DfltRightGoTo>
+    <DfltKeep>5</DfltKeep>
+    <DfltSaveDirHistory>False</DfltSaveDirHistory>
+    <FavTabsLastUniqueID>{3EAB3744-4C46-441D-9A87-68010DD91688}</FavTabsLastUniqueID>
+  </FavoriteTabsOptions>
+  <LastDoAnyCommand>cm_Refresh</LastDoAnyCommand>
 </doublecmd>
