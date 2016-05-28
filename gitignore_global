@@ -1,6 +1,6 @@
 ## Cleaner git ignore file (compared to .gitignore_global_old).
 ## Only ignore files which are unique to my setup.
-## git repositories should be self sustained.
+## git repositories should be self contained.
 
 
 ## Editor specific files
@@ -17,3 +17,6 @@ src/tags
 
 ## Python rope (https://github.com/python-rope/rope)
 .ropeproject
+
+## LibreOffice (https://stackoverflow.com/q/19210770)
+.~lock.*#

@@ -307,6 +307,7 @@ source ~/.vimrc.min
             " Too slow for some big files. I am looking at you opening_hours.js :-( ;-)
             "
             let g:syntastic_tex_checkers = ['chktex']
+            let g:syntastic_python_checkers = ['flake8', 'pyflakes', 'python']
             let g:syntastic_cpp_checkers = ['gcc', 'cppclean']
             "
             " Bundle 'Valloric/YouCompleteMe'

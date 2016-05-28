@@ -146,6 +146,11 @@
         relink: true
         path: pystartup
 
+    ~/.config/flake8:
+        create: true
+        relink: true
+        path: flake8
+
     ~/.rhashrc:
         create: true
         relink: true

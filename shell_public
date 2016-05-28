@@ -151,24 +151,6 @@ alias gca='gc --all'
 alias gb='git branch'
 # }}}
 
-unalias gp 2>/dev/zero
-function gp {
-    if [[ "$PWD" =~ $HOME/Beruf ]]; then
-        echo "Work"
-        gitw push "$@" -v
-    else
-        git push "$@" -v
-    fi
-}
-unalias gl 2>/dev/zero
-function gl {
-    if [[ "$PWD" =~ $HOME/Beruf ]]; then
-        echo "Work"
-        gitw pull --ff-only "$@" -v
-    else
-        git pull --ff-only "$@" -v
-    fi
-}
 # }}}
 ## }}}
 

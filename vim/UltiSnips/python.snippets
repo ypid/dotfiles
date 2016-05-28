@@ -5,8 +5,7 @@ endsnippet
 
 
 snippet sig "my signature" !b
-# @license AGPLv3 <https://www.gnu.org/licenses/agpl-3.0.html>
-# @author Copyright (C) `date +%Y` `git config --get user.name` <`git config --get user.email`>
+# Copyright (C) `date +%Y` `git config --get user.name` <`git config --get user.email`>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -20,6 +19,9 @@ snippet sig "my signature" !b
 #
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+__license__ = 'AGPL-3.0'
+__author__ = '`git config --get user.name` <`git config --get user.email`>'
 endsnippet
 
 snippet cl "Console log" !b
