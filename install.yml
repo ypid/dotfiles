@@ -206,6 +206,31 @@
         relink: true
         path: oh-my-zsh-custom
 
+    ~/.config/dconf/dconf_backup:
+        create: true
+        relink: true
+        path: scripts/dconf-backup/dconf_backup
+
+    ~/.config/dconf/dconf_backup_all:
+        create: true
+        relink: true
+        path: scripts/dconf-backup/dconf_backup_all
+
+    ~/.config/dconf/dconf_restore:
+        create: true
+        relink: true
+        path: scripts/dconf-backup/dconf_restore
+
+    ~/.config/dconf/dconf_restore_all:
+        create: true
+        relink: true
+        path: scripts/dconf-backup/dconf_restore_all
+
+    ~/.config/dconf/README.md:
+        create: true
+        relink: true
+        path: scripts/dconf-backup/README.md
+
     ## Does overwrite symbolic links.
     # ~/.config/doublecmd/shortcuts.scf:
     #     create: true
