@@ -159,6 +159,7 @@ export INPUTRC="${XDG_CONFIG_HOME}/readline/inputrc"
 # }}}
 
 export PATH="${PATH}${PATH+:}${HOME}/.sandboxes/bin"
+export PATH="${PATH}${PATH+:}/usr/local/bin"
 
 alias gpg-check-debian-iso='gpg --no-default-keyring --keyring /usr/share/keyrings/debian-role-keys.gpg --verify'
 alias gpg-sign='gpg --default-key 489A4D5EC353C98A --armor --detach-sig'

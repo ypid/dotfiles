@@ -430,8 +430,8 @@ source ~/.vimrc.min
             nnoremap <Leader>h :FSSplitBelow<cr>
 
             " Highlight brackets
-            " Bundle 'kien/rainbow_parentheses.vim'
-            " nnoremap <Leader>R :RainbowParenthesesToggle<CR>
+            Bundle 'kien/rainbow_parentheses.vim'
+            nnoremap <Leader>R :RainbowParenthesesToggle<CR>
 
             if executable('ctags')
                 Bundle 'majutsushi/tagbar'
@@ -685,7 +685,11 @@ source ~/.vimrc.min
 
             " Bundle 'hail2u/vim-css3-syntax'
             " Bundle 'tpope/vim-haml'
-            Bundle 'groenewege/vim-less'
+            "
+            " Not needed anymore. Included in Vim.
+            " https://github.com/groenewege/vim-less/issues/51
+            " Bundle 'groenewege/vim-less'
+
             Bundle 'parkr/vim-jekyll'
             let g:jekyll_post_extension = '.md'
             let g:jekyll_post_template =  [
@@ -965,7 +969,19 @@ source ~/.vimrc.min
 
                 autocmd BufRead,BufNewFile *.bats let b:syntastic_mode = 'passive'
 
+                " Finding a Fold marker for Ansible to use in the DebOps
+                " project:
+                " * {{{ results in highlighting the {{
+                " * ((( is often used with complex conditions for example.
+                " * [[[ seems to be the best choice.
+                "
+                " Define # .. vim: foldmarker=[[[,]]]:foldmethod=marker
+                " in each file. Example:
+                " https://github.com/debops/ansible-apt_install/blob/master/defaults/main.yml
+                " Docs:
+                " https://github.com/htgoebel/yaml2rst/blob/develop/docs/fold-markers.rst
                 autocmd FileType ansible,jinja,yaml,tex setlocal foldmarker=(((,)))
+                " autocmd FileType ansible,jinja,yaml,tex setlocal foldmarker=[[[,]]]
                 autocmd FileType ansible,jinja,yaml syntax spell toplevel
                 " Use this foldmarker to avoid folds when using Jinja2
                 " templates.
