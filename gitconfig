@@ -1,6 +1,7 @@
 [user]
 	name = Robin Schneider
 	email = ypid@riseup.net
+	signingkey = EF96 BC32 AC57 CFC7 2DF0  1D8C 489A 4D5E C353 C98A
 [color]
 	ui = auto
 	status = auto
