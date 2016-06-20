@@ -248,6 +248,3 @@
 [submodule "vim/bundle/ansible-vim"]
 	path = vim/bundle/ansible-vim
 	url = https://github.com/pearofducks/ansible-vim
-[submodule "ansigenome/ansigenome"]
-	path = ansigenome/ansigenome
-	url = https://github.com/nickjj/ansigenome.git
