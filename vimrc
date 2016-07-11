@@ -116,7 +116,18 @@ source ~/.vimrc.min
             "
             " Supports MatchIt and Endwise.
             Bundle 'chase/Vim-Jinja2-Syntax'
+
+            " You simply select the region, call :NR and the selected part
+            " will open in a new split window while the rest of the buffer
+            " will be protected.
+            " Bundle 'chrisbra/NrrwRgn'
+
+            " Already included in recent Vim versions.
+            " Bundle 'elzr/vim-json'
+
+            Bundle 'anwolib'
         endif
+
         if count(g:spf13_bundle_groups, 'tested_not_using')
             " I don‘t really like this behavior
             Bundle 'terryma/vim-smooth-scroll'
@@ -949,6 +960,11 @@ source ~/.vimrc.min
             autocmd BufWritePre *crypt* setlocal noundofile
             autocmd BufWritePre *mnt*   setlocal noundofile
 
+            " Trim blank lines at the end of files on save.
+            " Setting for @drybjed ;)
+            " https://stackoverflow.com/questions/7495932/how-can-i-trim-blank-lines-at-the-end-of-file-in-vim
+            autocmd BufWritePre * KeepView silent! %s#\($\n\s*\)\+\%$##
+
             autocmd BufRead,BufNewFile /etc/* if &filetype=='python'|let g:pymode_lint = 0|endif
             autocmd BufRead,BufNewFile /etc/* if &filetype=='python'|let g:pymode_rope = 0|endif
 
@@ -986,6 +1002,8 @@ source ~/.vimrc.min
                 " Use this foldmarker to avoid folds when using Jinja2
                 " templates.
                 " autocmd Syntax jinja syntax enable
+
+                autocmd FileType ansible IndentGuidesDisable
 
                 autocmd FileType c setlocal noexpandtab shiftwidth=4 tabstop=4 softtabstop=4
 

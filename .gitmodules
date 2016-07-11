@@ -248,3 +248,6 @@
 [submodule "vim/bundle/ansible-vim"]
 	path = vim/bundle/ansible-vim
 	url = https://github.com/pearofducks/ansible-vim
+[submodule "vim/bundle/anwolib"]
+	path = vim/bundle/anwolib
+	url = https://github.com/vim-scripts/anwolib.git
