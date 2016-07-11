@@ -968,6 +968,18 @@ source ~/.vimrc.min
             autocmd BufRead,BufNewFile /etc/* if &filetype=='python'|let g:pymode_lint = 0|endif
             autocmd BufRead,BufNewFile /etc/* if &filetype=='python'|let g:pymode_rope = 0|endif
 
+
+            " Automatically set executable bit for scripts
+            " http://www.reddit.com/r/linux/comments/e649x/
+            function! ChmodScripts()
+                if getline(1) =~ "^#!"
+                    if getline(1) =~ "/bin/"
+                        silent !chmod +x <afile>
+                    endif
+                endif
+            endf
+            autocmd BufWritePost * call ChmodScripts()
+
             " Set language specific stuff {{{
                 autocmd FileType vim setlocal expandtab shiftwidth=4
                 autocmd FileType vim let b:delimitMate_quotes = "' `"
