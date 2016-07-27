@@ -328,9 +328,11 @@ source ~/.vimrc.min
 
             Bundle 'bats.vim'
 
-            Bundle 'lfilho/cosco.vim'
-            noremap <silent> <Leader>, :call cosco#commaOrSemiColon()<CR>
-            inoremap <silent> <Leader>, <c-o>:call cosco#commaOrSemiColon()<CR>
+            " Bundle 'lfilho/cosco.vim'
+            " noremap <silent> <Leader>, :call cosco#commaOrSemiColon()<CR>
+            " inoremap <silent> <Leader>, <c-o>:call cosco#commaOrSemiColon()<CR>
+            "" I pressed ,, too often accidentally.
+
             " Bundle 'oinksoft/endline.vim'
             " let g:EndlineInsertMapping = '<Leader>,'
 
@@ -944,7 +946,10 @@ source ~/.vimrc.min
 
                 autocmd BufRead,BufNewFile *ansible/**/ if &filetype=='yaml'|set filetype=ansible|endif
                 autocmd BufRead,BufNewFile *ansible/inventory/**/ set filetype=ansible
-                autocmd BufRead,BufNewFile *.yml set filetype=ansible
+                " autocmd BufRead,BufNewFile *.yml set filetype=ansible
+
+                " Too slow.
+                " autocmd BufRead,BufNewFile **includes/*.rst set filetype=txt
 
                 " yaml seems to be more slow than ansible filetype?
                 " autocmd BufRead,BufNewFile *ansible/*vars/* set filetype=yaml
@@ -960,10 +965,15 @@ source ~/.vimrc.min
             autocmd BufWritePre *crypt* setlocal noundofile
             autocmd BufWritePre *mnt*   setlocal noundofile
 
-            " Trim blank lines at the end of files on save.
+            " Trim blank lines at the end of files on save if there is only
+            " one empty line at the end.
+            " Add multiple empty lines to avoid them getting trimmed.
+            " Ref: https://github.com/drybjed/dotfiles/pull/2#issuecomment-231701424
             " Setting for @drybjed ;)
             " https://stackoverflow.com/questions/7495932/how-can-i-trim-blank-lines-at-the-end-of-file-in-vim
-            autocmd BufWritePre * KeepView silent! %s#\($\n\s*\)\+\%$##
+            autocmd BufWritePre * KeepView silent! %s#\([^\s]\)\($\n\s*\)\{1\}\%$#\1#
+            " Unsure if :0;/^\%(\_s*\S\)\@!/,$d
+            " could also achieve this.
 
             autocmd BufRead,BufNewFile /etc/* if &filetype=='python'|let g:pymode_lint = 0|endif
             autocmd BufRead,BufNewFile /etc/* if &filetype=='python'|let g:pymode_rope = 0|endif

@@ -126,7 +126,10 @@ alias t='tmux'
 # alias f='tmux last-window' ## Use prefix + Ctrl+S because it will also work in Vim or if another program is running in foreground.
 alias h='htop'
 alias '*'='dict'
-alias con='ping -c 1 -w 2 heise.de'
+alias con='ping heise.de'
+
+## Ping on steroids. This was the last time that some messed up M$ host tricked me because it refused to answer echo requests.
+alias ping='nmap -n --reason -sP'
 
 ## Use the shortcuts from oh-my-zsh for git
 alias wd='git diff --color-words --no-index'

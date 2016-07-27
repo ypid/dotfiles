@@ -1,10 +1,12 @@
+---
+
 - clean:
     - '~'
     - '~/.config/git'
 
 - shell:
-  - 'mkdir -p ~/.config/byobu ~/.local/share/zsh'
-  - 'make --directory doublecmd install'
+    - 'mkdir -p ~/.config/byobu ~/.local/share/zsh'
+    - 'make --directory doublecmd install'
 
 - link:
 
@@ -225,6 +227,11 @@
         create: true
         relink: true
         path: scripts/dconf-backup/README.md
+
+    ~/.config/.neo_layout_viewer.conf:
+        create: true
+        relink: true
+        path: neo_layout_viewer.conf
 
     ## Does overwrite symbolic links.
     # ~/.config/doublecmd/shortcuts.scf:
