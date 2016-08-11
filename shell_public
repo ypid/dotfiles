@@ -129,7 +129,8 @@ alias '*'='dict'
 alias con='ping heise.de'
 
 ## Ping on steroids. This was the last time that some messed up M$ host tricked me because it refused to answer echo requests.
-alias ping='nmap -n --reason -sP'
+# alias ping='nmap -n --reason -sP'
+alias ping='nping'
 
 ## Use the shortcuts from oh-my-zsh for git
 alias wd='git diff --color-words --no-index'

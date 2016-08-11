@@ -1,0 +1,84 @@
+snippet tpl "Create script template" b
+#requires -version 2
+# Help {{{1
+<#
+.SYNOPSIS
+    <Overview of script>
+.DESCRIPTION
+    <Brief description of script>
+.PARAMETER <ParameterNameWithoutHyphen>
+    <Brief description of parameter input required. Repeat this attribute if required>
+.INPUTS
+    <Inputs if any, otherwise state None>
+.OUTPUTS
+    <Outputs if any, otherwise state None - example: Log file stored in C:\Windows\Temp\<name>.log>
+.NOTES
+    @author Copyright (C) `date +%Y` `git config --get user.name` <`git config --get user.email`>
+    @license AGPL-3.0 <https://www.gnu.org/licenses/agpl-3.0.html>
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Affero General Public License as
+    published by the Free Software Foundation, version 3 of the
+    License.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Affero General Public License for more details.
+
+    You should have received a copy of the GNU Affero General Public License
+    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+.EXAMPLE
+    <Example goes here. Repeat this attribute for more than one example>
+#>
+
+# Initializations {{{1
+
+#Set Error Action to Silently Continue
+# $ErrorActionPreference = "SilentlyContinue"
+
+# Declarations {{{1
+
+$sScriptVersion = "0.1.0"
+
+$sLogPath = "C:\Windows\Temp"
+$sLogName = "<script_name>.log"
+$sLogFile = Join-Path -Path $sLogPath -ChildPath $sLogName
+
+# Execution {{{1
+
+#Log-Start -LogPath $sLogPath -LogName $sLogName -ScriptVersion $sScriptVersion
+#Script Execution goes here
+#Log-Finish -LogPath $sLogFile
+endsnippet
+
+snippet func "test" b
+# Functions {{{1
+
+Function ${1:FunctionName} {
+    Param()
+
+    Begin{
+        Log-Write -LogPath $sLogFile -LineValue "<description of what is going on>..."
+    }
+
+    Process{
+        Try{
+            <code goes here>
+        }
+
+        Catch{
+            Log-Error -LogPath $sLogFile -ErrorDesc $_.Exception -ExitGracefully $True
+                Break
+        }
+    }
+
+    End{
+        If($?){
+            Log-Write -LogPath $sLogFile -LineValue "Completed Successfully."
+                Log-Write -LogPath $sLogFile -LineValue " "
+        }
+    }
+}
+endsnippet

@@ -6,7 +6,7 @@
 
 - shell:
     - 'mkdir -p ~/.config/byobu ~/.local/share/zsh'
-    - 'make --directory doublecmd install'
+    - 'if command -v make; then make --directory doublecmd install; fi'
 
 - link:
 

@@ -589,34 +589,33 @@ source ~/.vimrc.min
 
     " Python {{{
         if count(g:spf13_bundle_groups, 'python')
+            if has('python')
+                Bundle 'klen/python-mode'
+            endif
+
             " Pick either python-mode or pyflakes & pydoc
-            Bundle 'klen/python-mode'
             " let g:pymode_lint_write = 0
+            let g:pymode_options_max_line_length = 100
             let g:pymode_folding = 1
+
             let g:pymode_doc = 0
+            " I use powerman/vim-plugin-viewdoc for that kind of thing.
+
+            " let g:pymode_syntax = 0
             let g:pymode_run_bind = '<leader>aa'
-            let g:pymode_lint_cwindow = 1
             let g:pymode_breakpoint_bind = '<leader>ö'
-            let g:pymode_rope_completion = 0
+
             let g:pymode_lint_ignore="E302"
             " E302: I use sometimes folds to group a few functions together.
             " let g:pymode_folding = 0
-            " I use powerman/vim-plugin-viewdoc for that kind of thing.
+
+            let g:pymode_lint_checker = "pyflakes"
+            let g:pymode_options = 0
+
             " Bundle 'python.vim'
             " Bundle 'python_match.vim'
             " Bundle 'pythoncomplete'
 
-            " PyMode {{{
-                let g:pymode_lint_checker = "pyflakes"
-                let g:pymode_options = 0
-            " }}}
-
-            " PythonMode {{{
-            " Disable if python support not present
-                if !has('python')
-                    let g:pymode = 1
-                endif
-            " }}}
         endif
     " }}}
 
@@ -809,6 +808,22 @@ source ~/.vimrc.min
             let &l:ts  = &l:sw
             let &l:sts = &l:sw
         endfunction
+
+        " Creating parent directories on save
+        " https://stackoverflow.com/questions/4292733/vim-creating-parent-directories-on-save/4294176#4294176
+        function s:MkNonExDir(file, buf)
+            if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
+                let dir=fnamemodify(a:file, ':h')
+                if !isdirectory(dir)
+                    call mkdir(dir, 'p')
+                endif
+            endif
+        endfunction
+        augroup BWCCreateDir
+            autocmd!
+            autocmd BufEnter * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
+        augroup END
+
     " }}}
 
     " call neobundle#end()
@@ -957,7 +972,6 @@ source ~/.vimrc.min
                 " autocmd BufRead,BufNewFile *ansible/**/ if &filetype==''|set filetype=yaml|endif
 
                 autocmd BufRead,BufNewFile **ansigenome.conf set filetype=yaml
-                autocmd BufReadPost *.j2 setlocal filetype=jinja
             " }}}
 
             autocmd BufWritePre /tmp/*  setlocal noundofile
@@ -971,16 +985,19 @@ source ~/.vimrc.min
             " Ref: https://github.com/drybjed/dotfiles/pull/2#issuecomment-231701424
             " Setting for @drybjed ;)
             " https://stackoverflow.com/questions/7495932/how-can-i-trim-blank-lines-at-the-end-of-file-in-vim
-            autocmd BufWritePre * KeepView silent! %s#\([^\s]\)\($\n\s*\)\{1\}\%$#\1#
+            autocmd BufWritePre *.rst,*.yml KeepView silent! %s#\([^\s]\)\($\n\s*\)\{1\}\%$#\1#
             " Unsure if :0;/^\%(\_s*\S\)\@!/,$d
             " could also achieve this.
+
+            " Setting for @drybjed ;)
+            " autocmd BufReadPost *.rst setlocal spell
 
             autocmd BufRead,BufNewFile /etc/* if &filetype=='python'|let g:pymode_lint = 0|endif
             autocmd BufRead,BufNewFile /etc/* if &filetype=='python'|let g:pymode_rope = 0|endif
 
 
             " Automatically set executable bit for scripts
-            " http://www.reddit.com/r/linux/comments/e649x/
+            " https://www.reddit.com/r/linux/comments/e649x/
             function! ChmodScripts()
                 if getline(1) =~ "^#!"
                     if getline(1) =~ "/bin/"
@@ -988,7 +1005,7 @@ source ~/.vimrc.min
                     endif
                 endif
             endf
-            autocmd BufWritePost * call ChmodScripts()
+            " autocmd BufWritePost * call ChmodScripts()
 
             " Set language specific stuff {{{
                 autocmd FileType vim setlocal expandtab shiftwidth=4
@@ -1007,19 +1024,8 @@ source ~/.vimrc.min
 
                 autocmd BufRead,BufNewFile *.bats let b:syntastic_mode = 'passive'
 
-                " Finding a Fold marker for Ansible to use in the DebOps
-                " project:
-                " * {{{ results in highlighting the {{
-                " * ((( is often used with complex conditions for example.
-                " * [[[ seems to be the best choice.
-                "
-                " Define # .. vim: foldmarker=[[[,]]]:foldmethod=marker
-                " in each file. Example:
-                " https://github.com/debops/ansible-apt_install/blob/master/defaults/main.yml
-                " Docs:
                 " https://github.com/htgoebel/yaml2rst/blob/develop/docs/fold-markers.rst
-                autocmd FileType ansible,jinja,yaml,tex setlocal foldmarker=(((,)))
-                " autocmd FileType ansible,jinja,yaml,tex setlocal foldmarker=[[[,]]]
+                autocmd FileType ansible,jinja,yaml,tex setlocal foldmarker=[[[,]]]
                 autocmd FileType ansible,jinja,yaml syntax spell toplevel
                 " Use this foldmarker to avoid folds when using Jinja2
                 " templates.
@@ -1027,7 +1033,7 @@ source ~/.vimrc.min
 
                 autocmd FileType ansible IndentGuidesDisable
 
-                autocmd FileType c setlocal noexpandtab shiftwidth=4 tabstop=4 softtabstop=4
+                autocmd FileType c setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
 
                 autocmd FileType html compiler tidy
                 autocmd FileType xml setlocal foldmethod=indent
@@ -1058,7 +1064,6 @@ source ~/.vimrc.min
             " autocmd BufRead,BufNewFile * call SetIndentWidth()
             " autocmd BufWritePost * echo &ff
             autocmd QuickFixCmdPost make cwindow
-            " autocmd FileType c,cpp,go,php,javascript,python,twig,xml,yml autocmd BufWritePre <buffer> EraseBadWhitespace
             autocmd VimEnter * if &diff | execute 'windo set wrap' | endif
 
             " Always switch to the current file directory

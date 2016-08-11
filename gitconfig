@@ -32,7 +32,8 @@
 	show-big-files = "!git ls-tree -r -t -l --full-name HEAD | sort -n -k 4 | tail -n 10"
 	# http://stackoverflow.com/a/1290046
 	#
-	g = "!g() { git fetch origin refs/pull/$1/head:pr-$1; }; g"
+	# https://help.github.com/articles/checking-out-pull-requests-locally/#modifying-an-inactive-pull-request-locally
+	g = "!g() { git fetch --update-head-ok origin refs/pull/$1/head:#$1; }; g"
 	co-perms= "!git diff -p -R | grep -E '^(diff|(old|new) mode)' | git apply"
 [core]
 	editor = vi
@@ -48,3 +49,5 @@
 	gpgsign = true
 [url "ssh://ypid.github.com/ypid/"]
 	insteadOf = gh_ypid:
+[merge]
+	ff = false
