@@ -20,21 +20,19 @@ export GITHUB_USER="ypid"
 if [ -x /usr/bin/dircolors ]; then
     export LS_OPTIONS='--color=auto'
     eval "$(dircolors)"
-    alias ls='ls --color=auto --human-readable --almost-all'
+    alias ls='ls --color=auto --human-readable --time-style=long-iso'
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
 fi
 
-# List directory contents
-alias lsa='ls -lah'
-alias l='ls -lah'
-alias ll='ls -lh' # Use l but still allow ll.
-alias la='ls -lAh'
+alias ll='ls -l --all'
 
 alias bc='bc -q'
 alias ,='popd'
-alias ts='date "+%F_%T"'
+
+## https://tools.ietf.org/html/rfc3339
+alias ts='date --rfc-3339=seconds'
 
 ## Able to push to all git remotes with the one command?
 ## http://stackoverflow.com/a/18674313
@@ -93,9 +91,6 @@ function sed-easy {
 ## }}}
 
 ## Vim stuff {{{
-# if [[ -e "$HOME/Projekte/src/vim/src/vim" ]]; then
-	# alias vim="/usr/bin/vim"
-# fi
 
 alias ,e='exit'
 alias ,x='exit'
@@ -129,7 +124,7 @@ alias '*'='dict'
 alias con='ping heise.de'
 
 ## Ping on steroids. This was the last time that some messed up M$ host tricked me because it refused to answer echo requests.
-# alias ping='nmap -n --reason -sP'
+alias al='nmap -n --reason -sP'
 alias ping='nping'
 
 ## Use the shortcuts from oh-my-zsh for git
@@ -203,7 +198,3 @@ if [[ "$USER" != 'root' ]]; then
 fi
 
 alias xclip-primary-to-clipboard='xclip -out | xclip -in -selection clipboard'
-
-## TeX and LaTeX {{{
-alias xgettext='xgettext --copyright-holder="`git config --get user.name` <`git config --get user.email`>" --msgid-bugs-address="`git config --get user.email`"'
-## }}}

@@ -462,6 +462,13 @@ source ~/.vimrc.min
                 " let g:easytags_dynamic_files = 1
             endif
 
+            " Needs to be set before other stuff in the .vimrc to work
+            " correctly.
+            " https://stackoverflow.com/questions/413015/a-problem-with-folding-bash-functions-in-vim/38934275#38934275
+            autocmd FileType sh let g:sh_fold_enabled=5
+            autocmd FileType sh let g:is_bash=1
+            autocmd FileType sh set foldmethod=syntax
+
             " Save and run {{{
             " Not needed currently.
                 " Bundle 'xuhdev/SingleCompile'
@@ -590,7 +597,7 @@ source ~/.vimrc.min
     " Python {{{
         if count(g:spf13_bundle_groups, 'python')
             if has('python')
-                Bundle 'klen/python-mode'
+                " Bundle 'klen/python-mode'
             endif
 
             " Pick either python-mode or pyflakes & pydoc
@@ -821,8 +828,20 @@ source ~/.vimrc.min
         endfunction
         augroup BWCCreateDir
             autocmd!
-            autocmd BufEnter * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
+            autocmd BufEnter * call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
         augroup END
+
+        " Trim blank lines at the end of files on save if there is only
+        " one empty line at the end.
+        " Add multiple empty lines to avoid them getting trimmed.
+        " Ref: https://github.com/drybjed/dotfiles/pull/2#issuecomment-231701424
+        " Setting for @drybjed ;)
+        " https://stackoverflow.com/questions/7495932/how-can-i-trim-blank-lines-at-the-end-of-file-in-vim
+        " Unsure if :0;/^\%(\_s*\S\)\@!/,$d
+        " could also achieve this.
+        function! TrimTrailingEmptyLines()
+            KeepView silent! %s#\([^\s]\)\($\n\s*\)\{1\}\%$#\1#
+        endfunction
 
     " }}}
 
@@ -979,21 +998,16 @@ source ~/.vimrc.min
             autocmd BufWritePre *crypt* setlocal noundofile
             autocmd BufWritePre *mnt*   setlocal noundofile
 
-            " Trim blank lines at the end of files on save if there is only
-            " one empty line at the end.
-            " Add multiple empty lines to avoid them getting trimmed.
-            " Ref: https://github.com/drybjed/dotfiles/pull/2#issuecomment-231701424
-            " Setting for @drybjed ;)
-            " https://stackoverflow.com/questions/7495932/how-can-i-trim-blank-lines-at-the-end-of-file-in-vim
-            autocmd BufWritePre *.rst,*.yml KeepView silent! %s#\([^\s]\)\($\n\s*\)\{1\}\%$#\1#
-            " Unsure if :0;/^\%(\_s*\S\)\@!/,$d
-            " could also achieve this.
+            autocmd BufWritePre *.rst,*.yml call TrimTrailingEmptyLines()
 
             " Setting for @drybjed ;)
             " autocmd BufReadPost *.rst setlocal spell
 
             autocmd BufRead,BufNewFile /etc/* if &filetype=='python'|let g:pymode_lint = 0|endif
             autocmd BufRead,BufNewFile /etc/* if &filetype=='python'|let g:pymode_rope = 0|endif
+
+            " That thing just does not let itself unload!!
+            " autocmd BufRead,BufNewFile /**/debops/docs/** if &filetype=='python'|let g:pymode = 0|endif
 
 
             " Automatically set executable bit for scripts
@@ -1048,9 +1062,13 @@ source ~/.vimrc.min
 
                 " autocmd FileType gitcommit IndentGuidesDisable
                 autocmd FileType gitcommit normal gg
-                " au FileType {c,cpp} au BufWritePost <buffer> silent ! [ -e tags ] &&
+                " autocmd FileType {c,cpp} autocmd BufWritePost <buffer> silent ! [ -e tags ] &&
                     " \ ( awk -F'\t' '$2\!="%:gs/'/'\''/"{print}' tags ; ctags -f- '%:gs/'/'\''/' )
                     " \ | sort -t$'\t' -k1,1 -o tags.new && mv tags.new tags
+
+                autocmd FileType sh autocmd BufWritePre * call TrimTrailingEmptyLines()
+
+
             " }}}
 
             " autocmd VimEnter * RainbowParenthesesToggle " enable by defalut
