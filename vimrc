@@ -107,8 +107,6 @@ source ~/.vimrc.min
 
             Bundle 'rm-hull/vim-locate'
 
-            " Bundle 'autoproto.vim'
-
             Bundle 'chase/vim-ansible-yaml'
             " Bundle 'pearofducks/ansible-vim'
 
@@ -206,6 +204,16 @@ source ~/.vimrc.min
 
             Bundle 'tpope/vim-characterize'
 
+            let g:indent_guides_auto_colors = 1
+            Bundle 'tpope/vim-speeddating'
+            " Refer to .vimrc.min for details.
+            nmap  <C-S>     <Plug>SpeedDatingUp
+            nmap  <C-X>     <Plug>SpeedDatingDown
+            xmap  <C-S>     <Plug>SpeedDatingUp
+            xmap  <C-X>     <Plug>SpeedDatingDown
+            nmap d<C-S>     <Plug>SpeedDatingNowUTC
+            nmap d<C-X>     <Plug>SpeedDatingNowLocal
+
             " Bundle 'tpope/vim-abolish'
 
             " Translate {{{
@@ -255,12 +263,18 @@ source ~/.vimrc.min
 
             let g:markdown_folding = 1
             let g:markdown_fenced_languages = ['html', 'javascript', 'python', 'bash=sh']
-            Bundle 'tpope/vim-markdown'
+            " Bundle 'tpope/vim-markdown'
             " Bundle 'plasticboy/vim-markdown'
-            Bundle 'jtratner/vim-flavored-markdown'
+            " Bundle 'jtratner/vim-flavored-markdown'
 
             Bundle 'Rykka/riv.vim'
             " Bundle 'Rykka/InstantRst'
+            noremap <Leader>Q :RivTitle1<CR>'.
+            inoremap <Leader>Q <ESC>:RivTitle1<CR>o
+            noremap <Leader>q :RivTitle2<CR>'.
+            inoremap <Leader>q <ESC>:RivTitle2<CR>o
+            noremap <Leader>w :RivTitle3<CR>'.
+            inoremap <Leader>w <ESC>:RivTitle3<CR>o
 
             " Bundle 'bronson/vim-visual-star-search'
             Bundle 'thinca/vim-visualstar'
@@ -318,7 +332,8 @@ source ~/.vimrc.min
             " Too slow for some big files. I am looking at you opening_hours.js :-( ;-)
             "
             let g:syntastic_tex_checkers = ['chktex']
-            let g:syntastic_python_checkers = ['flake8', 'pyflakes', 'python']
+            " let g:syntastic_python_checkers = ['flake8', 'pyflakes', 'python']
+            let g:syntastic_python_checkers = ['flake8', 'python']
             let g:syntastic_cpp_checkers = ['gcc', 'cppclean']
             "
             " Bundle 'Valloric/YouCompleteMe'
@@ -438,6 +453,9 @@ source ~/.vimrc.min
                     Bundle 'mileszs/ack.vim'
                 endif
             " }}}
+
+            " Bundle 'whatyouhide/vim-lengthmatters'
+            let g:lengthmatters_on_by_default = 0
 
             Bundle 'derekwyatt/vim-fswitch'
             nnoremap <Leader>h :FSSplitBelow<cr>
@@ -980,6 +998,8 @@ source ~/.vimrc.min
 
                 autocmd BufRead,BufNewFile *ansible/**/ if &filetype=='yaml'|set filetype=ansible|endif
                 autocmd BufRead,BufNewFile *ansible/inventory/**/ set filetype=ansible
+                autocmd BufRead,BufNewFile */default/main.yml set foldlevel=1
+
                 " autocmd BufRead,BufNewFile *.yml set filetype=ansible
 
                 " Too slow.
@@ -1062,6 +1082,7 @@ source ~/.vimrc.min
 
                 " autocmd FileType gitcommit IndentGuidesDisable
                 autocmd FileType gitcommit normal gg
+                autocmd FileType gitcommit call matchadd('ColorColumn', '\%1l\%74v', 100)
                 " autocmd FileType {c,cpp} autocmd BufWritePost <buffer> silent ! [ -e tags ] &&
                     " \ ( awk -F'\t' '$2\!="%:gs/'/'\''/"{print}' tags ; ctags -f- '%:gs/'/'\''/' )
                     " \ | sort -t$'\t' -k1,1 -o tags.new && mv tags.new tags

@@ -251,3 +251,9 @@
 [submodule "vim/bundle/anwolib"]
 	path = vim/bundle/anwolib
 	url = https://github.com/vim-scripts/anwolib.git
+[submodule "vim/bundle/vim-lengthmatters"]
+	path = vim/bundle/vim-lengthmatters
+	url = https://github.com/whatyouhide/vim-lengthmatters.git
+[submodule "vim/bundle/vim-speeddating"]
+	path = vim/bundle/vim-speeddating
+	url = https://github.com/tpope/vim-speeddating.git

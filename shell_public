@@ -48,20 +48,25 @@ alias fgfg='fg'
 
 ## Little functions {{{
 function up {
-[[ "${1/[^0-9]/}" == "$1" ]] && {
-    local ups=""
-    for i in $(seq 1 "$1")
-    do
-        ups="$ups../"
-    done
-    cd $ups
-    } || echo "usage: up INTEGER"
+    if [[ $1 =~ ^-?[0-9]+$ ]]
+    then
+        local ups=""
+        # shellcheck disable=SC2034
+        for fnord in $(seq 1 "$1")
+        do
+            ups="${ups}../"
+        done
+        cd "$ups" || exit 1
+    elif [ -z "$1" ]; then
+        cd ..
+    fi
 }
 
 ## Create a new directory and enter it.
 unalias md 2>/dev/zero
 function md() {
-    mkdir -p "$@" && cd "$@"
+    mkdir -p "$@"
+    cd "$@" || return
 }
 
 function run-c() {
@@ -72,7 +77,7 @@ function subnetcalc() {
     if [[ $# == 0 ]]; then
         /usr/bin/subnetcalc
     else
-        /usr/bin/subnetcalc $@ -n
+        /usr/bin/subnetcalc "$@" -n
     fi
 }
 
@@ -86,7 +91,7 @@ function sed-replace-escape {
 }
 
 function sed-easy {
-    sed -i "s/$(sed-keyword-escape $1)/$(sed-replace-escape $2)/g" "$3"
+    sed -i "s/$(sed-keyword-escape "$1")/$(sed-replace-escape "$2")/g" "$3"
 }
 ## }}}
 
@@ -108,7 +113,7 @@ alias scp-default="scp $ssh_default"
 alias sshfs='sshfs -o transform_symlinks'
 alias sshfs-default='sshfs -o transform_symlinks -F /etc/ssh/ssh_config'
 alias m='mosh'
-if which compdef >/dev/null 2>&1 && which mosh >/dev/null 2>&1; then
+if command -v compdef >/dev/null 2>&1 && command -v mosh >/dev/null 2>&1; then
     compdef m=mosh
 fi
 alias ssh-keygen='ssh-keygen -o -b 8192 -a 200 -t rsa'
@@ -125,7 +130,11 @@ alias con='ping heise.de'
 
 ## Ping on steroids. This was the last time that some messed up M$ host tricked me because it refused to answer echo requests.
 alias al='nmap -n --reason -sP'
-alias ping='nping'
+
+if command -v nping >/dev/null 2>&1
+then
+    alias ping='nping'
+fi
 
 ## Use the shortcuts from oh-my-zsh for git
 alias wd='git diff --color-words --no-index'
@@ -146,6 +155,14 @@ alias gco='git checkout'
 alias gc='git commit --verbose'
 alias gca='gc --all'
 alias gb='git branch'
+
+function n() {
+    git log --reverse --pretty=%H master | grep -A 1 "$(git rev-parse HEAD)" | tail -n1 | xargs git checkout
+}
+function p() {
+    git checkout HEAD^1
+}
+
 # }}}
 
 # }}}
@@ -162,7 +179,7 @@ alias gpg-check-debian-iso='gpg --no-default-keyring --keyring /usr/share/keyrin
 alias gpg-sign='gpg --default-key 489A4D5EC353C98A --armor --detach-sig'
 
 alias a='git-annex'
-if which compdef >/dev/null 2>&1 && which git-annex >/dev/null 2>&1; then
+if command -v compdef >/dev/null 2>&1 && command -v git-annex >/dev/null 2>&1; then
     compdef a=git-annex
 fi
 
@@ -182,7 +199,7 @@ if command -v ag >/dev/null 2>&1
 then
     ## Using silversearcher-ag
     alias ack='ag'
-elif which ack-grep >/dev/null 2>&1
+elif command -v ack-grep >/dev/null 2>&1
 then
     alias ack='ack-grep'
 fi

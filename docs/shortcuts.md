@@ -148,7 +148,6 @@ Super+J          | Launcher application finder                | Nice to have   |
 Super            | Launcher application finder                | Yes            | Only works with Gnome.
 Shift+Ctrl+Alt+O | Launch program `eject`                     | No             | eject removable media, FIXME
 Ctrl+Alt+Q       | Show [Neo Layout Viewer][NeoLayoutViewer]  | Yes            |
-F1               | Show [Neo Layout Viewer][NeoLayoutViewer]  | Yes            | A useful help.
 
 [NeoLayoutViewer](https://github.com/YggdrasiI/NeoLayoutViewer.git)
 

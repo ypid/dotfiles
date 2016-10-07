@@ -15,8 +15,8 @@
 	wdd = diff --ignore-space-at-eol --ignore-space-change --ignore-all-space --ignore-blank-lines --color-words
 	re = remote -v
 	cil = commit --reedit-message=HEAD --reset-author
-	cii = commit --all -m 'Initial commit.'
-	cia = commit --all -m 'Auto commit without commit message.'
+	cii = commit --all -m 'Initial commit'
+	cia = commit --all -m 'Auto commit without commit message'
 	pa = "!git remote -v | egrep --invert-match '(https:|github.com)' | grep --invert-match 'https:' | cut -f1 | uniq | xargs -L1 git push --all"
 	co = checkout
 	br = branch --all
@@ -35,6 +35,8 @@
 	# https://help.github.com/articles/checking-out-pull-requests-locally/#modifying-an-inactive-pull-request-locally
 	g = "!g() { git fetch --update-head-ok origin refs/pull/$1/head:#$1; }; g"
 	co-perms= "!git diff -p -R | grep -E '^(diff|(old|new) mode)' | git apply"
+	t = "!git log --tags --simplify-by-decoration --pretty='format:%ci %d' | grep tag"
+	rf = for-each-ref --sort=taggerdate --format '%(refname) %(taggerdate)' refs/tags
 [core]
 	editor = vi
 [github]

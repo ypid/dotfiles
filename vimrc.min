@@ -166,16 +166,14 @@
         " Just use Ctrl-r%
 
         " Spellcheck { set spellfile=~/.vim/spell/en.utf-8.add set dictionary+=/usr/share/dict/words
-            set spelllang=en_us,de_de
+            " English is the default. German is legacy and is to be enabled
+            " only as needed.
+            " FIXME
             " set spelllang=en_us
+            set spelllang=en_us,de_de
             noremap <Leader>cd :set spell!<CR>
             inoremap <Leader>cd <c-o>:set spell!<CR>
         " }}}
-
-        " Insert newline without entering insert mode
-        " noremap <Leader>Q O<Esc>
-        " noremap <Leader>q o<Esc>
-        " I don‘t really use it. I use 'o<ESC>' more often.
 
         " easier moving between tabs
         noremap σ :tabprevious<CR>
@@ -190,9 +188,6 @@
         " noremap <Tab> :tabn<CR>
         " Does interfere with c-i ?
         " inoremap <Tab> <c-o>:tabn<CR>
-
-        " easier moving between buffers
-        noremap <Leader>w <esc>:bNext<CR>
 
         " set the executable bit
         noremap <Leader>y :w!<CR>:!chmod +x "%"<CR>
