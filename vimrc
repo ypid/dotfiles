@@ -267,6 +267,8 @@ source ~/.vimrc.min
             " Bundle 'plasticboy/vim-markdown'
             " Bundle 'jtratner/vim-flavored-markdown'
 
+            Bundle 'blindFS/vim-taskwarrior'
+
             Bundle 'Rykka/riv.vim'
             " Bundle 'Rykka/InstantRst'
             noremap <Leader>Q :RivTitle1<CR>'.
@@ -333,6 +335,7 @@ source ~/.vimrc.min
             "
             let g:syntastic_tex_checkers = ['chktex']
             " let g:syntastic_python_checkers = ['flake8', 'pyflakes', 'python']
+            " let g:syntastic_python_checkers = ['flake8', 'python', 'pylint']
             let g:syntastic_python_checkers = ['flake8', 'python']
             let g:syntastic_cpp_checkers = ['gcc', 'cppclean']
             "
@@ -844,10 +847,12 @@ source ~/.vimrc.min
                 endif
             endif
         endfunction
-        augroup BWCCreateDir
-            autocmd!
-            autocmd BufEnter * call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
-        augroup END
+        " Created to many directories for moved parent directories when using
+        " Ctrl-P history.
+        " augroup BWCCreateDir
+        "     autocmd!
+        "     autocmd BufEnter * call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
+        " augroup END
 
         " Trim blank lines at the end of files on save if there is only
         " one empty line at the end.
@@ -955,6 +960,8 @@ source ~/.vimrc.min
             autocmd VimLeave * if filereadable($HOME."/.vim/bundle/vundle/.netrwhist")|call delete($HOME."/.vim/bundle/vundle/.netrwhist")|endif
             autocmd VimLeave * if filereadable($HOME."/.vim/.netrwhist")|call delete($HOME."/.vim/.netrwhist")|endif
 
+            autocmd BufRead,BufNewFile * set expandtab
+
             " Adjust settings for files {{{
                 autocmd BufRead,BufNewFile .mrconfig* setlocal filetype=sh
                 autocmd BufRead,BufNewFile .vimpagerrc setlocal filetype=vim
@@ -981,6 +988,7 @@ source ~/.vimrc.min
                 autocmd BufRead,BufNewFile *.nse setlocal filetype=lua
 
                 autocmd BufRead,BufNewFile *firejail/** HideBadWhitespace
+                autocmd BufRead,BufNewFile *firejail/**.inc setlocal filetype=conf
                 autocmd BufRead,BufNewFile *yohours/** HideBadWhitespace
                 autocmd BufRead,BufNewFile *OpeningHoursParser.java/** HideBadWhitespace
 
@@ -1042,6 +1050,7 @@ source ~/.vimrc.min
             " autocmd BufWritePost * call ChmodScripts()
 
             " Set language specific stuff {{{
+                autocmd FileType Makefile setlocal noexpandtab ts=4
                 autocmd FileType vim setlocal expandtab shiftwidth=4
                 autocmd FileType vim let b:delimitMate_quotes = "' `"
                 autocmd FileType sh setlocal textwidth=0

@@ -19,7 +19,6 @@
 	cia = commit --all -m 'Auto commit without commit message'
 	pa = "!git remote -v | egrep --invert-match '(https:|github.com)' | grep --invert-match 'https:' | cut -f1 | uniq | xargs -L1 git push --all"
 	co = checkout
-	br = branch --all
 	lgn = log --pretty=oneline --abbrev-commit --show-notes=* --show-signature
 	lg1 = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(black)%s%C(reset) %C(dim black)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
 	; from http://stackoverflow.com/a/9074343
@@ -37,6 +36,11 @@
 	co-perms= "!git diff -p -R | grep -E '^(diff|(old|new) mode)' | git apply"
 	t = "!git log --tags --simplify-by-decoration --pretty='format:%ci %d' | grep tag"
 	rf = for-each-ref --sort=taggerdate --format '%(refname) %(taggerdate)' refs/tags
+	# http://haacked.com/archive/2014/02/21/reviewing-merge-commits/
+	merge-commits = log --min-parents=2 -p --cc
+	# https://www.qubes-os.org/doc/split-gpg/#using-git-with-split-gpg
+	stag = "!id=`git rev-parse --verify HEAD`; git tag -s ypid_${id:0:8} -m \"Tag for commit $id\""
+	vtag = !git tag -v `git describe`
 [core]
 	editor = vi
 [github]
@@ -45,7 +49,7 @@
 	default = simple
 [annex]
 	backends = SHA512E
-	diskreserve = 600 megabyte
+	diskreserve = 5 GiB
 	largefiles = not include=*.git*
 [commit]
 	gpgsign = true
@@ -53,3 +57,5 @@
 	insteadOf = gh_ypid:
 [merge]
 	ff = false
+[log]
+	date = local

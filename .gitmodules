@@ -257,3 +257,6 @@
 [submodule "vim/bundle/vim-speeddating"]
 	path = vim/bundle/vim-speeddating
 	url = https://github.com/tpope/vim-speeddating.git
+[submodule "vim/bundle/vim-taskwarrior"]
+	path = vim/bundle/vim-taskwarrior
+	url = https://github.com/blindFS/vim-taskwarrior.git

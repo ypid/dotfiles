@@ -19,13 +19,13 @@ snippet sig "my signature" !b
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-__license__ = 'AGPL-3.0'
-__author__ = '`git config --get user.name` <`git config --get user.email`>'
-__version__ = '0.5.0'
-
 """
 $1
 """
+
+__license__ = 'AGPL-3.0'
+__author__ = '`git config --get user.name` <`git config --get user.email`>'
+__version__ = '0.5.0'
 endsnippet
 
 snippet siggpl "my signature" !b
@@ -43,13 +43,13 @@ snippet siggpl "my signature" !b
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-__license__ = 'GPL-3.0'
-__author__ = '`git config --get user.name` <`git config --get user.email`>'
-__version__ = '0.5.0'
-
 """
 $1
 """
+
+__license__ = 'GPL-3.0'
+__author__ = '`git config --get user.name` <`git config --get user.email`>'
+__version__ = '0.5.0'
 endsnippet
 
 snippet sigdo "my signature" !b
@@ -69,15 +69,16 @@ snippet sigdo "my signature" !b
 # You should have received a copy of the GNU General Public License
 # along with DebOps. If not, see https://www.gnu.org/licenses/.
 
-__license__ = 'GPL-3.0'
-__author__ = '`git config --get user.name` <`git config --get user.email`>'
-__version__ = '0.5.0'
-
 """
 $1
 """
+
+__license__ = 'GPL-3.0'
+__author__ = '`git config --get user.name` <`git config --get user.email`>'
+__version__ = '0.5.0'
 endsnippet
 
+# import q; q.q(${0:"msg"})
 snippet cl "Console log" !b
-logger.debug(${0:"msg"})
+logging.debug(${0:"msg"})
 endsnippet

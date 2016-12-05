@@ -122,7 +122,7 @@ alias ssh-keygen='ssh-keygen -o -b 8192 -a 200 -t rsa'
 # alias cat='cat --show-nonprinting'
 
 alias tmux='TERM=screen-256color-bce tmux'
-alias t='tmux'
+alias t='task'
 # alias f='tmux last-window' ## Use prefix + Ctrl+S because it will also work in Vim or if another program is running in foreground.
 alias h='htop'
 alias '*'='dict'
@@ -131,10 +131,10 @@ alias con='ping heise.de'
 ## Ping on steroids. This was the last time that some messed up M$ host tricked me because it refused to answer echo requests.
 alias al='nmap -n --reason -sP'
 
-if command -v nping >/dev/null 2>&1
-then
-    alias ping='nping'
-fi
+# if command -v nping >/dev/null 2>&1
+# then
+#     alias ping='nping'
+# fi
 
 ## Use the shortcuts from oh-my-zsh for git
 alias wd='git diff --color-words --no-index'
