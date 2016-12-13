@@ -267,7 +267,9 @@ source ~/.vimrc.min
             " Bundle 'plasticboy/vim-markdown'
             " Bundle 'jtratner/vim-flavored-markdown'
 
-            Bundle 'blindFS/vim-taskwarrior'
+            if executable('task')
+                Bundle 'blindFS/vim-taskwarrior'
+            endif
 
             Bundle 'Rykka/riv.vim'
             " Bundle 'Rykka/InstantRst'

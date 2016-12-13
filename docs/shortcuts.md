@@ -59,6 +59,7 @@ List of free shortcuts (they may have a default mapping but there are better sho
   Shift+Alt+
   Ctrl+Alt+Y
   Ctrl+Alt+[Level4 Shift][special-keys]
+  Ctrl+Alt+E
 
 ## Shortcut conventions and key order
 
@@ -109,6 +110,7 @@ Shortcut                                | Function           | Left hand only | 
 -------------                           | -------------      | -------------  | -------------
 Ctrl+Super+[Level4 Shift][special-keys] | Volume down by 5 % | Yes            |
 Ctrl+Super+Y                            | Volume up by 5 %   | Yes            |
+Ctrl+Super+X                            | Mute               | Yes            |
 
 ### System
 
@@ -129,25 +131,31 @@ Shortcut      | Function                                      | Left hand only |
 ------------- | -------------                                 | -------------  | -------------
 Super+Q       | Close window                                  | Yes            | If Ctrl-Q does not work. (Example: gnome-terminal)
 Ctrl+Alt+F    | Toggle fullscreen mode                        | Yes            | If Alt-F does not work. Try to use Ctrl+Alt+F because it is more generic. Use Shift+Super+F to emit F11.
-Ctrl+Alt+E    | Maximize window                               | Yes            |
 Ctrl+Alt+W    | Maximize window                               | Yes            |
 Ctrl+Alt+S    | Restore previous size of window               | Yes            |
-Ctrl+Alt+A    | Tile window on the left, View split on left                            | Yes            |
+Ctrl+Alt+A    | Tile window on the left, View split on left   | Yes            |
 Ctrl+Alt+D    | Tile window on the right, View split on right | Yes            |
+
+## Qubes OS
+
+Shortcut      | Function             | Left hand only | Comment
+------------- | -------------        | -------------  | -------------
+Shift+Ctrl+C  | Qubes Inter VM copy  | Yes            |
+Shift+Ctrl+C  | Qubes Inter VM paste | Yes            |
 
 ### Custom shortcuts
 
-Shortcut         | Function                                   | Left hand only | Comment
--------------    | -------------                              | -------------  | -------------
-Ctrl+Super+S     | Launch program `x-terminal-emulator`       | Yes            |
-Shift+Super+A    | Launch program `gnome-calculator`          | Nice to have   |
-Ctrl+Super+[1-9] | Launch custom program or script            | Yes and no     |
-Ctrl+Alt+C       | Launch [script][suspend-script] to suspend | Yes            |
-Ctrl+Alt+V       | `poweroff`                                 | Yes            |
-Super+J          | Launcher application finder                | Nice to have   | Gnome activities or substation for other WMs. Gnome does by default trigger on Super button press which is a nice feature but does not work on other WMs yet?
-Super            | Launcher application finder                | Yes            | Only works with Gnome.
-Shift+Ctrl+Alt+O | Launch program `eject`                     | No             | eject removable media, FIXME
-Ctrl+Alt+Q       | Show [Neo Layout Viewer][NeoLayoutViewer]  | Yes            |
+Shortcut         | Function                                  | Left hand only | Comment
+-------------    | -------------                             | -------------  | -------------
+Ctrl+Super+S     | Launch program `x-terminal-emulator`      | Yes            |
+Shift+Super+A    | Launch program `gnome-calculator`         | Nice to have   |
+Ctrl+Super+[1-9] | Launch custom program or script           | Yes and no     |
+Ctrl+Alt+V       | `reboot`                                  | Yes            |
+Ctrl+Alt+G       | `poweroff`                                | Yes            |
+Super+J          | Launcher application finder               | Nice to have   | Gnome activities or substation for other WMs. Gnome does by default trigger on Super button press which is a nice feature but does not work on other WMs yet?
+Super            | Launcher application finder               | Yes            | Only works with Gnome.
+Shift+Ctrl+Alt+O | Launch program `eject`                    | No             | eject removable media, FIXME
+Ctrl+Alt+Q       | Show [Neo Layout Viewer][NeoLayoutViewer] | Yes            |
 
 [NeoLayoutViewer](https://github.com/YggdrasiI/NeoLayoutViewer.git)
 
