@@ -108,9 +108,9 @@ Super+6                            | Move window to workspace 6     | Of course 
 
 Shortcut                                | Function           | Left hand only | Comment
 -------------                           | -------------      | -------------  | -------------
-Ctrl+Super+[Level4 Shift][special-keys] | Volume down by 5 % | Yes            |
-Ctrl+Super+Y                            | Volume up by 5 %   | Yes            |
-Ctrl+Super+X                            | Mute               | Yes            |
+Ctrl+Super+[Level4 Shift][special-keys] | Volume down by 5 % | Yes            | `amixer set Master 5%- -q`
+Ctrl+Super+Y                            | Volume up by 5 %   | Yes            | `amixer set Master 5%+ -q`
+Ctrl+Super+X                            | Mute               | Yes            | Using https://askubuntu.com/questions/65764/how-do-i-toggle-sound-with-amixer/757110#757110 which runs in Qubes OS dom0 without `qvm-run` and is instant :)
 
 ### System
 
@@ -169,8 +169,8 @@ Shortcut      | Function                   | Left hand only | Comment
 ------------- | -------------              | -------------  | -------------
 Ctrl+Alt+X    | `clementine --play-pause`  | Of course      | Play or pause audio. Using command line to also allow to start the program if no instance is running.
 Shift+Alt+X   | `clementine --next`        | Of course      | Play next audio file
-Ctrl+Alt+H    | `clementine --next`        | Of course      | Play next audio file
-Ctrl+Alt+L    | `clementine --previous`    | Of course      | Play previous audio file
+Ctrl+Alt+L    | `clementine --next`        | Of course      | Play next audio file
+Ctrl+Alt+H    | `clementine --previous`    | Of course      | Play previous audio file
 Ctrl+Alt+B    | `clementine --seek-by -10` | Nice to have   | Seek in audio file by *n* seconds.
 Ctrl+Alt+N    | `clementine --seek-by 10`  | Nice to have   | Seek in audio file by *n* seconds.
 
