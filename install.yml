@@ -7,6 +7,7 @@
 - shell:
     - 'mkdir -p ~/.config/byobu ~/.local/share/zsh'
     - 'if command -v make; then make --directory doublecmd install; fi'
+    - 'mkdir -p ~/.gnupg && chmod 0750 ~/.gnupg'
 
 - link:
 

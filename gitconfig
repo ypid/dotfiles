@@ -53,9 +53,9 @@
 	largefiles = not include=*.git*
 [commit]
 	gpgsign = true
-[url "ssh://ypid.github.com/ypid/"]
-	insteadOf = gh_ypid:
 [merge]
 	ff = false
+[pull]
+	ff = only
 [log]
 	date = local
