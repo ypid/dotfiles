@@ -146,6 +146,8 @@ alias glg='git log --stat --decorate=short --show-signature' # full history
 # Define important shortcuts here if under bash (are already defended by oh-my-zsh) {{{
 alias g='git'
 
+alias d='docker'
+
 alias gst='git status'
 
 ## Does not distinguish between changed files and changed/dirty submodules and it looks terrible …
