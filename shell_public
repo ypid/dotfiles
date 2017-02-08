@@ -206,14 +206,17 @@ then
     alias ack='ack-grep'
 fi
 
+alias ai='apt install'
+alias ap='apt purge'
+alias as='\apt search'
+alias ash='\apt show'
 alias agg='aptitude upgrade'
 alias ass='wajig statussearch'
-alias as='apt-cache search' ## Much faster. I normally don’t need to know if the thing is installed, respectively I can check that later with aptitude install.
-alias ash='\aptitude show' ## Does not need to run as root.
 if [[ "$USER" != 'root' ]]; then
     alias mount='sudo mount'
     alias umount='sudo umount'
     alias aptitude='sudo aptitude'
+    alias apt='sudo apt'
 fi
 
 alias xclip-primary-to-clipboard='xclip -out | xclip -in -selection clipboard'
