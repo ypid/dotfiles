@@ -1,0 +1,2 @@
+defaults:
+  ControlPath: ~/.ssh/multiplex/%r@%h:%p.sock

@@ -1,4 +1,5 @@
 #!/bin/bash
+# .. vim: foldmarker={{{,}}}:foldmethod=marker
 
 ## Stuff for programs which should be available everywhere {{{
 
@@ -117,6 +118,7 @@ if command -v compdef >/dev/null 2>&1 && command -v mosh >/dev/null 2>&1; then
     compdef m=mosh
 fi
 alias ssh-keygen='ssh-keygen -o -b 8192 -a 200 -t rsa'
+alias so='assh sockets'
 
 ## Use as needed. --show-nonprinting does also output Unicode glyphs in escaped form.
 # alias cat='cat --show-nonprinting'
@@ -220,3 +222,55 @@ if [[ "$USER" != 'root' ]]; then
 fi
 
 alias xclip-primary-to-clipboard='xclip -out | xclip -in -selection clipboard'
+
+## PATH and related environment configuration {{{
+user_install_dir="${HOME}/.local/usr"
+if [ -d "$user_install_dir" ] && [[ ! "${PATH}" =~ $user_install_dir ]] ; then
+    ## We don‘t need to put the directory into ${PATH} twice :)
+
+    export PATH="${PATH}${PATH+:}$user_install_dir/bin"
+    # export PATH="${PATH}${PATH+:}$user_install_dir/python/bin"
+
+    ## Python {{{
+    export PYTHONUSERBASE="$user_install_dir/python"
+    export PATH="${PATH}${PATH+:}$PYTHONUSERBASE/bin"
+    export PYTHONPATH=".:$PYTHONUSERBASE:$PYTHONPATH"
+    export PYTHONSTARTUP="${HOME}/.pystartup"
+    ## }}}
+
+    ## Node.js {{{
+    export NPM_PACKAGES="$user_install_dir/npm"
+    export PATH="${PATH}${PATH+:}$NPM_PACKAGES/bin"
+    unset MANPATH
+    export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
+    export NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
+    ## }}}
+
+    ## Ruby {{{
+    export GEM_HOME="$user_install_dir/gems"
+    export GEM_PATH="$GEM_HOME"
+    export PATH="${PATH}${PATH+:}$GEM_HOME/bin"
+    ## }}}
+
+    ## Haskell {{{
+    CABAL_PATH="$HOME/.cabal/"
+    export PATH="$CABAL_PATH/bin${PATH+:}${PATH}"
+    ## }}}
+
+    ## Golang {{{
+    export GOPATH="$user_install_dir/golang"
+    ## }}}
+
+    ## Perl {{{
+    # Rework.
+    # export PATH="${HOME}/perl5/bin${PATH+:}${PATH}"
+    # export PERL5LIB="${HOME}/perl5/lib/perl5:..${PERL5LIB+:}${PERL5LIB}"
+    # export PERL_LOCAL_LIB_ROOT="${HOME}/perl5${PERL_LOCAL_LIB_ROOT+:}${PERL_LOCAL_LIB_ROOT}"
+    # export PERL_MB_OPT="--install_base \"${HOME}/perl5\""
+    # export PERL_MM_OPT="INSTALL_BASE=${HOME}/perl5"
+    ## }}}
+
+
+    export PATH_INIT_SHELL_PRIVAT=1
+fi
+## }}}

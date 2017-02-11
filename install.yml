@@ -5,7 +5,7 @@
     - '~/.config/git'
 
 - shell:
-    - 'mkdir -p ~/.config/byobu ~/.local/share/zsh'
+    - 'mkdir -p ~/.config/byobu ~/.local/share/zsh ~/.local/usr'
     - 'if command -v make; then make --directory doublecmd install; fi'
     - 'mkdir -p ~/.gnupg && chmod 0750 ~/.gnupg'
     - 'mkdir -p ~/.ssh/multiplex && chmod 0700 ~/.ssh'
@@ -58,6 +58,11 @@
         create: true
         relink: true
         path: ssh_config
+
+    ~/.ssh/assh.yml:
+        create: true
+        relink: true
+        path: assh.yml
 
     ~/.config/git/config:
         create: true

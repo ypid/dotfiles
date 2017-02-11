@@ -34,5 +34,5 @@ Host *
 
 
     ControlMaster auto
-    ControlPath ~/.ssh/multiplex/%r@%h:%p
+    ControlPath ~/.ssh/multiplex/%r@%h:%p.sock
     ControlPersist 1800
