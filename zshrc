@@ -1,5 +1,8 @@
 # Path to your oh-my-zsh configuration.
 ZSH="${XDG_CONFIG_HOME:-$HOME/.config}/oh-my-zsh"
+# ZSH_CACHE_DIR="$ZSH/cache" might not be writable
+ZSH_CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/zsh"
+mkdir -p "$ZSH_CACHE_DIR"
 export HISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/zsh/history"
 
 # Themes {{{
@@ -91,12 +94,12 @@ ZSH_COMPDUMP="${XDG_CACHE_HOME:-$HOME/.cache}/zcompdump-${ZSH_VERSION}"
 plugins=(autojump)
 plugins+=(git-annex)
 plugins+=(git)
+plugins+=(pip)
 # plugins=(tmuxinator)
 # [[ -e ~/gems/gems/tmuxinator-0.6.8/completion/tmuxinator.zsh ]] && source ~/gems/gems/tmuxinator-0.6.8/completion/tmuxinator.zsh
 
 # Nice to have
 plugins+=(zsh-syntax-highlighting)
-plugins+=(mosh)
 
 # Additional functions
 plugins+=(debian)
@@ -131,6 +134,7 @@ END
 
 # Not needed
 : <<'END'
+plugins+=(mosh)
 plugins+=(lol)
 plugins+=(per-directory-history)
 plugins+=(rand-quote)
@@ -162,6 +166,7 @@ then
 else
 	compinit
 fi
+
 
 # Own theme based on dieter and bira {{{
 
