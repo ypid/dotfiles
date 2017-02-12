@@ -53,6 +53,8 @@
 	largefiles = not include=*.git*
 [commit]
 	gpgsign = true
+[tag]
+	gpgsign = true
 [merge]
 	ff = false
 [pull]
