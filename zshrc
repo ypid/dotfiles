@@ -5,6 +5,20 @@ ZSH_CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/zsh"
 mkdir -p "$ZSH_CACHE_DIR"
 export HISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/zsh/history"
 
+PROFILE_STARTUP=false
+if [[ "$PROFILE_STARTUP" == true ]]; then
+    # http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html
+    PS4=$'%D{%M%S%.} %N:%i> '
+	mkdir -p "$HOME/tmp"
+    exec 3>&2 2> "$HOME/tmp/startlog.$$"
+    setopt xtrace prompt_subst
+fi
+# Entirety of my startup file... then
+if [[ "$PROFILE_STARTUP" == true ]]; then
+    unsetopt xtrace
+    exec 2>&3 3>&-
+fi
+
 # Themes {{{
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
@@ -166,7 +180,12 @@ then
 else
 	compinit
 fi
-
+source $HOME/.asdf/asdf.sh
+source $HOME/.asdf/completions/asdf.bash
+alias m='asdf'
+if command -v compdef >/dev/null 2>&1 && command -v asdf >/dev/null 2>&1; then
+    compdef m=asdf
+fi
 
 # Own theme based on dieter and bira {{{
 

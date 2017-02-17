@@ -39,6 +39,11 @@
         relink: true
         path: bash_profile
 
+    ~/.asdf:
+        create: true
+        relink: true
+        path: asdf
+
     # ~/.conkyrc:
     #     create: true
     #     relink: true

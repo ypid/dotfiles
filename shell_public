@@ -113,10 +113,6 @@ alias scp-default="scp $ssh_default"
 # alias ssh-copy-id='ssh-copy-id -o PubkeyAuthentication=no'
 alias sshfs='sshfs -o transform_symlinks'
 alias sshfs-default='sshfs -o transform_symlinks -F /etc/ssh/ssh_config'
-alias m='mosh'
-if command -v compdef >/dev/null 2>&1 && command -v mosh >/dev/null 2>&1; then
-    compdef m=mosh
-fi
 alias ssh-keygen='ssh-keygen -o -b 8192 -a 200 -t rsa'
 alias so='assh sockets'
 
@@ -181,6 +177,16 @@ export PATH="${PATH}${PATH+:}/usr/local/bin"
 
 alias gpg-check-debian-iso='gpg --no-default-keyring --keyring /usr/share/keyrings/debian-role-keys.gpg --verify'
 alias gpg-sign='gpg --default-key 489A4D5EC353C98A --armor --detach-sig'
+if command -v compdef >/dev/null 2>&1 && command -v qubes-gpg-client >/dev/null 2>&1; then
+    compdef qubes-gpg-client=gpg
+fi
+if command -v compdef >/dev/null 2>&1 && command -v qubes-gpg-client-wrapper >/dev/null 2>&1; then
+    compdef qubes-gpg-client-wrapper=gpg
+    alias k=qubes-gpg-client-wrapper
+else
+    alias k=gpg
+fi
+compdef k=gpg
 
 alias a='git-annex'
 if command -v compdef >/dev/null 2>&1 && command -v git-annex >/dev/null 2>&1; then

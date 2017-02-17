@@ -260,3 +260,6 @@
 [submodule "vim/bundle/vim-taskwarrior"]
 	path = vim/bundle/vim-taskwarrior
 	url = https://github.com/blindFS/vim-taskwarrior.git
+[submodule "vim/bundle/zeavim.vim"]
+	path = vim/bundle/zeavim.vim
+	url = https://github.com/KabbAmine/zeavim.vim.git

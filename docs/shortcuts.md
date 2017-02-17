@@ -138,10 +138,10 @@ Ctrl+Alt+D    | Tile window on the right, View split on right | Yes            |
 
 ## Qubes OS
 
-Shortcut      | Function             | Left hand only | Comment
-------------- | -------------        | -------------  | -------------
-Shift+Ctrl+C  | Qubes Inter VM copy  | Yes            |
-Shift+Ctrl+C  | Qubes Inter VM paste | Yes            |
+Shortcut         | Function             | Left hand only | Comment
+-------------    | -------------        | -------------  | -------------
+Shift+Ctrl+C     | Qubes Inter VM copy  | Yes            |
+Shift+Ctrl+V     | Qubes Inter VM paste | Yes            |
 
 ### Custom shortcuts
 

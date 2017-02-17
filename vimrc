@@ -409,6 +409,8 @@ source ~/.vimrc.min
             let g:viewdoc_copy_to_search_reg = 1
             let g:viewdoc_prevtabonclose = 1
 
+            Bundle 'KabbAmine/zeavim.vim'
+
             " Tabularize {{{
                 Bundle 'godlygeek/tabular'
                 noremap <Leader>a)  :Tabularize /)/l0<CR>
