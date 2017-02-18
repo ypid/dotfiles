@@ -255,3 +255,6 @@
     #     create: true
     #     create: true
     #     path: doublecmd/shortcuts.scf
+
+- shell:
+    - 'mkdir -p ~/.asdf/shims/ && ln -s node ~/.asdf/shims/nodejs'
