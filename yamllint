@@ -1,0 +1,20 @@
+---
+
+# YAML rocks!
+# https://github.com/crdoconnor/strictyaml/blob/master/FAQ.rst
+
+extends: default
+
+rules:
+
+  # This rule has to many false positives. Consider:
+  #
+  # test1:
+  #   - test
+  #
+  # test2:
+  #   - test
+  #
+  # And you want to comment out test2. This would require test2 to be indented
+  # below test1.
+  comments-indentation: disable

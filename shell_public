@@ -1,21 +1,19 @@
 #!/bin/bash
 # .. vim: foldmarker={{{,}}}:foldmethod=marker
 
-## Stuff for programs which should be available everywhere {{{
+## Exports {{{
 
 ## https://superuser.com/questions/479600/how-can-i-prevent-tmux-exiting-with-ctrl-d
 # export IGNOREEOF=2
 ## Does not work with zsh
 
+export INPUTRC="${XDG_CONFIG_HOME}/readline/inputrc"
 export ANSIBLE_NOCOWS=1
 export BYOBU_PREFIX="/usr"
 export BYOBU_CONFIG_DIR="$HOME/.byobu"
 export EDITOR=vim
-alias e='editor'
 
-export GITHUB_USER="ypid"
-# Used in https://github.com/ypid/scripts/blob/master/git-setup-and-push-to-my-fork
-#
+## }}}
 
 ## Enable color support of ls and also add handy aliases {{{
 if [ -x /usr/bin/dircolors ]; then
@@ -34,10 +32,6 @@ alias ,='popd'
 
 ## https://tools.ietf.org/html/rfc3339
 alias ts='date --rfc-3339=seconds'
-
-## Able to push to all git remotes with the one command?
-## http://stackoverflow.com/a/18674313
-alias gpa='git pa'
 
 ## Ignore typos {{{
 alias 6s='ls'
@@ -96,13 +90,17 @@ function sed-easy {
 }
 ## }}}
 
-## Vim stuff {{{
+## Vim {{{
 
+alias e='editor'
 alias ,e='exit'
 alias ,x='exit'
-alias ,r='vi'
+alias ,r='editor'
 # alias less='vim -c "w! /tmp/.vimpager" -'
+
 ## }}}
+
+## SSH {{{
 
 ssh_default="-F /etc/ssh/ssh_config -o \"UserKnownHostsFile=$HOME/.ssh/known_hosts_tmp\""
 # Should work now without this hack.
@@ -116,23 +114,15 @@ alias sshfs-default='sshfs -o transform_symlinks -F /etc/ssh/ssh_config'
 alias ssh-keygen='ssh-keygen -o -b 8192 -a 200 -t rsa'
 alias so='assh sockets'
 
-## Use as needed. --show-nonprinting does also output Unicode glyphs in escaped form.
-# alias cat='cat --show-nonprinting'
+## }}}
 
-alias tmux='TERM=screen-256color-bce tmux'
-alias t='task'
-# alias f='tmux last-window' ## Use prefix + Ctrl+S because it will also work in Vim or if another program is running in foreground.
-alias h='htop'
-alias '*'='dict'
-alias con='ping heise.de'
+## Git {{{
+export GITHUB_USER="ypid"
+# Used in https://github.com/ypid/scripts/blob/master/git-setup-and-push-to-my-fork
 
-## Ping on steroids. This was the last time that some messed up M$ host tricked me because it refused to answer echo requests.
-alias al='nmap -n --reason -sP'
-
-# if command -v nping >/dev/null 2>&1
-# then
-#     alias ping='nping'
-# fi
+## Able to push to all git remotes with the one command?
+## http://stackoverflow.com/a/18674313
+alias gpa='git pa'
 
 ## Use the shortcuts from oh-my-zsh for git
 alias wd='git diff --color-words --no-index'
@@ -143,8 +133,6 @@ alias glg='git log --stat --decorate=short --show-signature' # full history
 
 # Define important shortcuts here if under bash (are already defended by oh-my-zsh) {{{
 alias g='git'
-
-alias d='docker'
 
 alias gst='git status'
 
@@ -162,48 +150,38 @@ function n() {
 function p() {
     git checkout HEAD^1
 }
-
-# }}}
-
-# }}}
 ## }}}
 
-## XDG stuff {{{
-export INPUTRC="${XDG_CONFIG_HOME}/readline/inputrc"
-# }}}
+## }}}
+## }}}
 
-export PATH="${PATH}${PATH+:}${HOME}/.sandboxes/bin"
-export PATH="${PATH}${PATH+:}/usr/local/bin"
+## asdf {{{
+pathappend "${HOME}/.sandboxes/bin"
+pathappend "/usr/local/bin"
 
+if [ -f "$HOME/.asdf/completions/asdf.bash" ]
+then
+    source "$HOME/.asdf/completions/asdf.bash"
+fi
+command -v asdf >/dev/null 2>&1 && alias m='asdf'
+## }}}
+
+## GnuPG {{{
 alias gpg-check-debian-iso='gpg --no-default-keyring --keyring /usr/share/keyrings/debian-role-keys.gpg --verify'
 alias gpg-sign='gpg --default-key 489A4D5EC353C98A --armor --detach-sig'
-if command -v compdef >/dev/null 2>&1 && command -v qubes-gpg-client >/dev/null 2>&1; then
-    compdef qubes-gpg-client=gpg
+
+if command -v qubes-gpg-client >/dev/null 2>&1; then
+    command -v compdef >/dev/null 2>&1 && compdef qubes-gpg-client=gpg
 fi
-if command -v compdef >/dev/null 2>&1 && command -v qubes-gpg-client-wrapper >/dev/null 2>&1; then
-    compdef qubes-gpg-client-wrapper=gpg
+if command -v qubes-gpg-client-wrapper >/dev/null 2>&1; then
     alias k=qubes-gpg-client-wrapper
+    command -v compdef >/dev/null 2>&1 && compdef qubes-gpg-client-wrapper=gpg
 else
     alias k=gpg
 fi
-compdef k=gpg
+## }}}
 
-alias a='git-annex'
-if command -v compdef >/dev/null 2>&1 && command -v git-annex >/dev/null 2>&1; then
-    compdef a=git-annex
-fi
-
-alias v='vagrant'
-alias xls='lxc-ls --fancy'
-
-# http://stackoverflow.com/questions/16787916/difference-between-2-directories-in-linux
-alias diff-dir='diff -arq'
-
-alias percent-encode='python -c "import urllib, sys; print urllib.quote(sys.argv[1])"'
-alias percent-decode='python -c "import urllib, sys; print urllib.unquote(sys.argv[1])"'
-
-alias badblocks='echo "Use badblocks_and_secure_erase."'
-
+## ag {{{
 unalias ag >/dev/null 2>&1
 if command -v ag >/dev/null 2>&1
 then
@@ -213,12 +191,44 @@ elif command -v ack-grep >/dev/null 2>&1
 then
     alias ack='ack-grep'
 fi
+# }}}
+
+## More aliases {{{
+
+alias tmux='TERM=screen-256color-bce tmux'
+# alias f='tmux last-window' ## Use prefix + Ctrl+S because it will also work in Vim or if another program is running in foreground.
+
+alias d='docker'
+alias t='task'
+alias h='htop'
+alias '*'='dict'
+alias con='ping heise.de'
+alias a='git-annex'
+alias v='vagrant'
+alias xls='lxc-ls --fancy'
+
+## Ping on steroids. This was the last time that some messed up M$ host tricked me because it refused to answer echo requests.
+alias al='nmap -n --reason -sP'
+
+# if command -v nping >/dev/null 2>&1
+# then
+#     alias ping='nping'
+# fi
+
+
+# http://stackoverflow.com/questions/16787916/difference-between-2-directories-in-linux
+alias diff-dir='diff -arq'
+
+alias percent-encode='python -c "import urllib, sys; print urllib.quote(sys.argv[1])"'
+alias percent-decode='python -c "import urllib, sys; print urllib.unquote(sys.argv[1])"'
+
+alias badblocks='echo "Use badblocks_and_secure_erase."'
 
 alias ai='apt install'
 alias ap='apt purge'
 alias as='\apt search'
 alias ash='\apt show'
-alias agg='aptitude upgrade'
+alias agg='apt upgrade'
 alias ass='wajig statussearch'
 if [[ "$USER" != 'root' ]]; then
     alias mount='sudo mount'
@@ -229,54 +239,7 @@ fi
 
 alias xclip-primary-to-clipboard='xclip -out | xclip -in -selection clipboard'
 
-## PATH and related environment configuration {{{
-user_install_dir="${HOME}/.local/usr"
-if [ -d "$user_install_dir" ] && [[ ! "${PATH}" =~ $user_install_dir ]] ; then
-    ## We don‘t need to put the directory into ${PATH} twice :)
+## Use as needed. --show-nonprinting does also output Unicode glyphs in escaped form.
+# alias cat='cat --show-nonprinting'
 
-    export PATH="${PATH}${PATH+:}$user_install_dir/bin"
-    # export PATH="${PATH}${PATH+:}$user_install_dir/python/bin"
-
-    ## Python {{{
-    export PYTHONUSERBASE="$user_install_dir/python"
-    export PATH="${PATH}${PATH+:}$PYTHONUSERBASE/bin"
-    export PYTHONPATH=".:$PYTHONUSERBASE:$PYTHONPATH"
-    export PYTHONSTARTUP="${HOME}/.pystartup"
-    ## }}}
-
-    ## Node.js {{{
-    export NPM_PACKAGES="$user_install_dir/npm"
-    export PATH="${PATH}${PATH+:}$NPM_PACKAGES/bin"
-    unset MANPATH
-    export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
-    export NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
-    ## }}}
-
-    ## Ruby {{{
-    export GEM_HOME="$user_install_dir/gems"
-    export GEM_PATH="$GEM_HOME"
-    export PATH="${PATH}${PATH+:}$GEM_HOME/bin"
-    ## }}}
-
-    ## Haskell {{{
-    CABAL_PATH="$HOME/.cabal/"
-    export PATH="$CABAL_PATH/bin${PATH+:}${PATH}"
-    ## }}}
-
-    ## Golang {{{
-    export GOPATH="$user_install_dir/golang"
-    ## }}}
-
-    ## Perl {{{
-    # Rework.
-    # export PATH="${HOME}/perl5/bin${PATH+:}${PATH}"
-    # export PERL5LIB="${HOME}/perl5/lib/perl5:..${PERL5LIB+:}${PERL5LIB}"
-    # export PERL_LOCAL_LIB_ROOT="${HOME}/perl5${PERL_LOCAL_LIB_ROOT+:}${PERL_LOCAL_LIB_ROOT}"
-    # export PERL_MB_OPT="--install_base \"${HOME}/perl5\""
-    # export PERL_MM_OPT="INSTALL_BASE=${HOME}/perl5"
-    ## }}}
-
-
-    export PATH_INIT_SHELL_PRIVAT=1
-fi
 ## }}}

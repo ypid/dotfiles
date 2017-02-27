@@ -7,5 +7,58 @@ test -d "${BIN_PATHS_DIR}" || exit 0
 
 for bin_path_dir in "${BIN_PATHS_DIR}"/*
 do
-    export PATH="${bin_path_dir}${PATH+:}${PATH}"
+    pathprepend "${bin_path_dir}"
 done
+
+asdf_dir="$HOME/.asdf"
+pathprepend "${asdf_dir}/shims"
+pathappend "${asdf_dir}/bin"
+
+## PATH and related environment configuration {{{
+user_install_dir="${HOME}/.local/usr"
+if [ -d "$user_install_dir" ]
+then
+
+    pathappend "$user_install_dir/bin"
+
+    ## Python {{{
+    export PYTHONUSERBASE="$user_install_dir/python"
+    pathprepend "$PYTHONUSERBASE/bin"
+    export PYTHONPATH=".:$PYTHONUSERBASE:$PYTHONPATH"
+    export PYTHONSTARTUP="${HOME}/.pystartup"
+    ## }}}
+
+    ## Node.js {{{
+    export NPM_PACKAGES="$user_install_dir/npm"
+    pathappend "$NPM_PACKAGES/bin"
+    unset MANPATH
+    export MANPATH
+    MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
+    export NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
+    ## }}}
+
+    ## Ruby {{{
+    export GEM_HOME="$user_install_dir/gems"
+    export GEM_PATH="$GEM_HOME"
+    pathappend "$GEM_HOME/bin"
+    ## }}}
+
+    ## Haskell {{{
+    CABAL_PATH="$HOME/.cabal"
+    pathappend "$CABAL_PATH/bin"
+    ## }}}
+
+    ## Golang {{{
+    export GOPATH="$user_install_dir/golang"
+    ## }}}
+
+    ## Perl {{{
+    # Rework.
+    # export PATH="${HOME}/perl5/bin${PATH+:}${PATH}"
+    # export PERL5LIB="${HOME}/perl5/lib/perl5:..${PERL5LIB+:}${PERL5LIB}"
+    # export PERL_LOCAL_LIB_ROOT="${HOME}/perl5${PERL_LOCAL_LIB_ROOT+:}${PERL_LOCAL_LIB_ROOT}"
+    # export PERL_MB_OPT="--install_base \"${HOME}/perl5\""
+    # export PERL_MM_OPT="INSTALL_BASE=${HOME}/perl5"
+    ## }}}
+fi
+## }}}

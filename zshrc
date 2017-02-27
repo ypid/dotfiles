@@ -1,10 +1,14 @@
-# Path to your oh-my-zsh configuration.
+# vim: foldmarker={{{,}}}:foldmethod=marker
+
+# Basic paths {{{
 ZSH="${XDG_CONFIG_HOME:-$HOME/.config}/oh-my-zsh"
 # ZSH_CACHE_DIR="$ZSH/cache" might not be writable
 ZSH_CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/zsh"
 mkdir -p "$ZSH_CACHE_DIR"
 export HISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/zsh/history"
+# }}}
 
+# Profile startup {{{
 PROFILE_STARTUP=false
 if [[ "$PROFILE_STARTUP" == true ]]; then
     # http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html
@@ -18,6 +22,7 @@ if [[ "$PROFILE_STARTUP" == true ]]; then
     unsetopt xtrace
     exec 2>&3 3>&-
 fi
+# }}}
 
 # Themes {{{
 # Look in ~/.oh-my-zsh/themes/
@@ -99,7 +104,7 @@ HIST_STAMPS='yyyy-mm-dd'
 ZSH_COMPDUMP="${XDG_CACHE_HOME:-$HOME/.cache}/zcompdump-${ZSH_VERSION}"
 # }}}
 
-# plugins {{{
+# Plugins {{{
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
@@ -171,6 +176,11 @@ END
 
 source "$ZSH/oh-my-zsh.sh"
 
+autoload -U bashcompinit
+bashcompinit
+
+source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/global"
+
 # Bug in oh-my-zsh. If a plugin changes fpath, it is not picked up by compinit because it is run first!1!?
 # Hopefully this will be fixed by one of the refactoring pull requests.
 autoload -U compinit
@@ -179,12 +189,6 @@ then
 	compinit -u
 else
 	compinit
-fi
-source $HOME/.asdf/asdf.sh
-source $HOME/.asdf/completions/asdf.bash
-alias m='asdf'
-if command -v compdef >/dev/null 2>&1 && command -v asdf >/dev/null 2>&1; then
-    compdef m=asdf
 fi
 
 # Own theme based on dieter and bira {{{
@@ -237,7 +241,6 @@ stty -ixon -ixoff
 # I use tmux copy mode for this anyway.
 
 setopt no_share_history
-source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/global"
 
 ## IGNORE_EOF like in bash http://www.zsh.org/mla/users/2001/msg00240.html {{{
 # bash-ctrl-d() {

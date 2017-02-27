@@ -1,0 +1,25 @@
+#!/bin/bash
+# Sourced by Bash and zsh.
+
+# Functions which might be called by other sourced shell scripts.
+
+# https://superuser.com/questions/39751/add-directory-to-path-if-its-not-already-there/753948#753948
+pathprepend() {
+  for ARG in "$@"
+  do
+    ARG="${ARG%/}"
+    if [ -d "$ARG" ] && [[ ":$PATH:" != *":$ARG:"* ]]; then
+        PATH="$ARG${PATH:+":$PATH"}"
+    fi
+  done
+}
+
+pathappend() {
+  for ARG in "$@"
+  do
+    ARG="${ARG%/}"
+    if [ -d "$ARG" ] && [[ ":$PATH:" != *":$ARG:"* ]]; then
+        PATH="${PATH:+"$PATH:"}$ARG"
+    fi
+  done
+}

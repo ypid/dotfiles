@@ -22,5 +22,5 @@ wget --continue "http://ftp.vim.org/pub/vim/runtime/spell/de.latin1.spl" --outpu
 ## Improves performance of ZSH. Functions not needed or not used (yet).
 ## Leave submodule dirty.
 pushd oh-my-zsh/lib/
-rm -f bzr.zsh correction.zsh grep.zsh key-bindings.zsh misc.zsh nvm.zsh spectrum.zsh termsupport.zsh functions.zsh
+rm -f bzr.zsh correction.zsh grep.zsh key-bindings.zsh misc.zsh nvm.zsh spectrum.zsh termsupport.zsh functions.zsh nvm.zsh
 popd

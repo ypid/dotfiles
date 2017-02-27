@@ -1,8 +1,6 @@
 ---
 
-- clean:
-    - '~'
-    - '~/.config/git'
+# yamllint disable rule:line-length
 
 - shell:
     - 'mkdir -p ~/.config/byobu ~/.local/share/zsh ~/.local/usr'
@@ -18,31 +16,31 @@
     #     path: ackrc
 
     '~/.config/autokey/data/Emitting keystrokes':
-        create: true
-        relink: true
-        path: 'autokey/Emitting keystrokes'
+      create: true
+      relink: true
+      path: 'autokey/Emitting keystrokes'
 
     ~/.bashrc:
-        force: true
-        create: true
-        relink: true
-        path: bashrc
+      force: true
+      create: true
+      relink: true
+      path: bashrc
 
     ~/.bash_logout:
-        force: true
-        create: true
-        relink: true
-        path: bash_logout
+      force: true
+      create: true
+      relink: true
+      path: bash_logout
 
     ~/.bash_profile:
-        create: true
-        relink: true
-        path: bash_profile
+      create: true
+      relink: true
+      path: bash_profile
 
     ~/.asdf:
-        create: true
-        relink: true
-        path: asdf
+      create: true
+      relink: true
+      path: asdf
 
     # ~/.conkyrc:
     #     create: true
@@ -50,155 +48,154 @@
     #     path: conkyrc
 
     ~/.sandboxes/firejail-scripts:
-        create: true
-        relink: true
-        path: firejail-scripts
+      create: true
+      relink: true
+      path: firejail-scripts
 
     ~/.sandboxes/bin/config_common.sh:
-        create: true
-        relink: true
-        path: firejail-scripts/config_common.sh
+      create: true
+      relink: true
+      path: firejail-scripts/config_common.sh
 
     ~/.ssh/config_ypid_defaults:
-        create: true
-        relink: true
-        path: ssh_config
+      create: true
+      relink: true
+      path: ssh_config
 
     ~/.ssh/assh.yml:
-        create: true
-        relink: true
-        path: assh.yml
+      create: true
+      relink: true
+      path: assh.yml
 
     ~/.config/git/config:
-        create: true
-        relink: true
-        path: gitconfig
+      create: true
+      relink: true
+      path: gitconfig
 
     ~/.config/git/ignore:
-        create: true
-        relink: true
-        path: gitignore_global
+      create: true
+      relink: true
+      path: gitignore_global
+
+    ~/.yamllint:
+      create: true
+      relink: true
+      path: yamllint
 
     ~/.goaccessrc:
-        create: true
-        relink: true
-        path: goaccessrc
+      create: true
+      relink: true
+      path: goaccessrc
 
     ~/.gnupg/gpg.conf:
-        create: true
-        relink: true
-        path: gnupg/gpg.conf
+      create: true
+      relink: true
+      path: gnupg/gpg.conf
 
     ~/.gnupg/sks-keyservers.netCA.pem:
-        create: true
-        relink: true
-        path: gnupg/sks-keyservers.netCA.pem
+      create: true
+      relink: true
+      path: gnupg/sks-keyservers.netCA.pem
 
     ~/.hgrc:
-        create: true
-        relink: true
-        path: hgrc
+      create: true
+      relink: true
+      path: hgrc
 
     ~/.config/htop/htoprc:
-        create: true
-        relink: true
-        path: htoprc
+      create: true
+      relink: true
+      path: htoprc
 
     ~/.vim:
-        create: true
-        relink: true
-        path: vim
+      create: true
+      relink: true
+      path: vim
 
     ~/.nvim:
-        create: true
-        relink: true
-        path: vim
+      create: true
+      relink: true
+      path: vim
 
     ~/.vimrc:
-        create: true
-        relink: true
-        path: vimrc
-
-    ## Backwards compatibility.
-    ~/.vimrc:
-        create: true
-        relink: true
-        path: vimrc
+      create: true
+      relink: true
+      path: vimrc
 
     ~/.vimrc.min:
-        create: true
-        relink: true
-        path: vimrc.min
+      create: true
+      relink: true
+      path: vimrc.min
 
     ~/.config/readline/inputrc:
-        create: true
-        relink: true
-        path: inputrc
+      create: true
+      relink: true
+      path: inputrc
 
     ~/.latexmkrc:
-        create: true
-        relink: true
-        path: latexmkrc
+      create: true
+      relink: true
+      path: latexmkrc
 
     ~/.perlcriticrc:
-        create: true
-        relink: true
-        path: perlcriticrc
+      create: true
+      relink: true
+      path: perlcriticrc
 
     ~/.perltidyrc:
-        create: true
-        relink: true
-        path: perltidyrc
-
-    ~/.perltidyrc:
-        create: true
-        relink: true
-        path: perltidyrc
+      create: true
+      relink: true
+      path: perltidyrc
 
     ~/.pystartup:
-        create: true
-        relink: true
-        path: pystartup
+      create: true
+      relink: true
+      path: pystartup
 
     ~/.config/flake8:
-        create: true
-        relink: true
-        path: flake8
+      create: true
+      relink: true
+      path: flake8
 
     ~/.rhashrc:
-        create: true
-        relink: true
-        path: rhashrc
+      create: true
+      relink: true
+      path: rhashrc
 
     ~/.config/shell/global:
-        create: true
-        relink: true
-        path: shell_global
+      create: true
+      relink: true
+      path: shell_global
 
-    ~/.config/shell.d/public:
-        create: true
-        relink: true
-        path: shell_public
+    ~/.config/shell.d/10_functions:
+      create: true
+      relink: true
+      path: shell_functions
 
-    ~/.config/shell.d/shell_extend_PATH:
-        create: true
-        relink: true
-        path: shell_extend_PATH
+    ~/.config/shell.d/20_extend_PATH:
+      create: true
+      relink: true
+      path: shell_extend_PATH
+
+    ~/.config/shell.d/50_public:
+      create: true
+      relink: true
+      path: shell_public
 
     ~/.local/share/scripts/ypid-scripts-common:
-        create: true
-        relink: true
-        path: scripts
+      create: true
+      relink: true
+      path: scripts
 
     ~/.config/tint2/tint2rc:
-        create: true
-        relink: true
-        path: tint2rc
+      create: true
+      relink: true
+      path: tint2rc
 
     ~/.tmux.conf:
-        create: true
-        relink: true
-        path: tmux.conf
+      create: true
+      relink: true
+      path: tmux.conf
 
     # ~/.xbindkeysrc:
     #     create: true
@@ -206,55 +203,64 @@
     #     path: xbindkeysrc
 
     ~/.zshrc:
-        create: true
-        relink: true
-        path: zshrc
+      create: true
+      relink: true
+      path: zshrc
 
     ~/.config/oh-my-zsh:
-        create: true
-        relink: true
-        path: oh-my-zsh
+      create: true
+      relink: true
+      path: oh-my-zsh
 
     ~/.config/oh-my-zsh-custom:
-        create: true
-        relink: true
-        path: oh-my-zsh-custom
+      create: true
+      relink: true
+      path: oh-my-zsh-custom
 
     ~/.config/dconf/dconf_backup:
-        create: true
-        relink: true
-        path: scripts/dconf-backup/dconf_backup
+      create: true
+      relink: true
+      path: scripts/dconf-backup/dconf_backup
 
     ~/.config/dconf/dconf_backup_all:
-        create: true
-        relink: true
-        path: scripts/dconf-backup/dconf_backup_all
+      create: true
+      relink: true
+      path: scripts/dconf-backup/dconf_backup_all
 
     ~/.config/dconf/dconf_restore:
-        create: true
-        relink: true
-        path: scripts/dconf-backup/dconf_restore
+      create: true
+      relink: true
+      path: scripts/dconf-backup/dconf_restore
 
     ~/.config/dconf/dconf_restore_all:
-        create: true
-        relink: true
-        path: scripts/dconf-backup/dconf_restore_all
+      create: true
+      relink: true
+      path: scripts/dconf-backup/dconf_restore_all
 
     ~/.config/dconf/README.md:
-        create: true
-        relink: true
-        path: scripts/dconf-backup/README.md
+      create: true
+      relink: true
+      path: scripts/dconf-backup/README.md
 
     ~/.config/.neo_layout_viewer.conf:
-        create: true
-        relink: true
-        path: neo_layout_viewer.conf
+      create: true
+      relink: true
+      path: neo_layout_viewer.conf
 
-    ## Does overwrite symbolic links.
+    # Does overwrite symbolic links.
     # ~/.config/doublecmd/shortcuts.scf:
     #     create: true
     #     create: true
     #     path: doublecmd/shortcuts.scf
 
 - shell:
-    - 'mkdir -p ~/.asdf/shims/ && ln -s node ~/.asdf/shims/nodejs'
+    - 'mkdir -p ~/.asdf-writable/shims && ln -sfT ~/.asdf-writable/shims ~/.asdf/shims && ln -sf node ~/.asdf-writable/shims/nodejs'
+    - 'mkdir -p ~/.asdf-writable/installs/  && ln -sfT ~/.asdf-writable/installs ~/.asdf/installs'
+    - 'mkdir -p ~/.asdf-writable/keyrings/  && ln -sfT ~/.asdf-writable/keyrings ~/.asdf/keyrings'
+    - 'mkdir -p ~/.asdf-writable/plugins/  && ln -sfT ~/.asdf-writable/plugins ~/.asdf/plugins'
+    - 'rm -f ~/.config/shell.d/shell_extend_PATH ~/.config/shell.d/public'
+
+- clean:
+    - '~'
+    - '~/.config/git'
+    - '~/.config/shell.d'

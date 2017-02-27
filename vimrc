@@ -341,6 +341,8 @@ source ~/.vimrc.min
             " let g:syntastic_python_checkers = ['flake8', 'python', 'pylint']
             let g:syntastic_python_checkers = ['flake8', 'python']
             let g:syntastic_cpp_checkers = ['gcc', 'cppclean']
+            let g:syntastic_yaml_checkers = ['yamllint']
+            let g:syntastic_yaml_yamllint_args = '-c ' . shellescape($HOME . '/.yamllint')
             "
             " Bundle 'Valloric/YouCompleteMe'
             " Much dependencies
@@ -968,6 +970,7 @@ source ~/.vimrc.min
             autocmd BufRead,BufNewFile * set expandtab
 
             " Adjust settings for files {{{
+                autocmd BufRead,BufNewFile yamllint setlocal filetype=yaml
                 autocmd BufRead,BufNewFile .mrconfig* setlocal filetype=sh
                 autocmd BufRead,BufNewFile .vimpagerrc setlocal filetype=vim
                 autocmd BufRead,BufNewFile /etc/*/apt.conf setlocal filetype=conf
