@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+set -o nounset -o pipefail -o errexit
+
+verified_asdf_nodejs_commit='2d0460219db3008d95c19d57bea0811023eb0dbf'
+if [ ! -d ~/.asdf-writable/plugins/nodejs/ ]
+then
+    git clone https://github.com/asdf-vm/asdf-nodejs.git ~/.asdf-writable/plugins/nodejs/
+fi
+cd ~/.asdf-writable/plugins/nodejs/
+if [ "$(git rev-parse HEAD)" != "$verified_asdf_nodejs_commit" ]
+then
+    git fetch
+    git reset --hard "$verified_asdf_nodejs_commit"
+fi
