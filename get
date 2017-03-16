@@ -24,8 +24,3 @@ wget --continue "http://ftp.vim.org/pub/vim/runtime/spell/de.latin1.spl" --outpu
 pushd oh-my-zsh/lib/
 rm -f bzr.zsh correction.zsh grep.zsh key-bindings.zsh misc.zsh nvm.zsh spectrum.zsh termsupport.zsh functions.zsh nvm.zsh
 popd
-
-ln -sfT ~/.asdf-writable/shims ~/.asdf/shims && ln -sf node ~/.asdf-writable/shims/nodejs
-ln -sfT ~/.asdf-writable/installs ~/.asdf/installs
-ln -sfT ~/.asdf-writable/keyrings ~/.asdf/keyrings
-ln -sfT ~/.asdf-writable/plugins ~/.asdf/plugins

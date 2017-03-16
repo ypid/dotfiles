@@ -7,6 +7,11 @@
     - 'if command -v make; then make --directory doublecmd install; fi'
     - 'mkdir -p ~/.gnupg && chmod 0750 ~/.gnupg'
     - 'mkdir -p ~/.ssh/multiplex && chmod 0700 ~/.ssh'
+    - 'mkdir -p ~/.asdf-writable/shims && ln -sf node ~/.asdf-writable/shims/nodejs'
+    - 'mkdir -p ~/.asdf-writable/installs'
+    - 'mkdir -p ~/.asdf-writable/keyrings'
+    - 'mkdir -p ~/.asdf-writable/plugins'
+    - 'ln -sf "$PWD/asdf"/* ~/.asdf-writable'
 
 - link:
 
@@ -37,10 +42,11 @@
       relink: true
       path: bash_profile
 
-    ~/.asdf:
-      create: true
-      relink: true
-      path: asdf
+    ## Done by shell command above.
+    # ~/.asdf:
+    #   create: true
+    #   relink: true
+    #   path: asdf
 
     # ~/.conkyrc:
     #     create: true
@@ -254,11 +260,8 @@
     #     path: doublecmd/shortcuts.scf
 
 - shell:
-    - 'mkdir -p ~/.asdf-writable/shims'
-    - 'mkdir -p ~/.asdf-writable/installs'
-    - 'mkdir -p ~/.asdf-writable/keyrings'
-    - 'mkdir -p ~/.asdf-writable/plugins'
     - 'rm -f ~/.config/shell.d/shell_extend_PATH ~/.config/shell.d/public'
+    - 'rm -f ~/.asdf'
 
 - clean:
     - '~'

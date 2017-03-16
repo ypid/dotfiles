@@ -10,7 +10,10 @@ do
     pathprepend "${bin_path_dir}"
 done
 
-asdf_dir="$HOME/.asdf"
+pathappend "${HOME}/.sandboxes/bin"
+pathappend "/usr/local/bin"
+
+asdf_dir="$HOME/.asdf-writable/"
 pathprepend "${asdf_dir}/shims"
 pathappend "${asdf_dir}/bin"
 

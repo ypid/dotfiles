@@ -145,13 +145,9 @@ function p() {
 ## }}}
 
 ## asdf {{{
-pathappend "${HOME}/.sandboxes/bin"
-pathappend "/usr/local/bin"
-
-if [ -f "$HOME/.asdf/completions/asdf.bash" ]
-then
-    source "$HOME/.asdf/completions/asdf.bash"
-fi
+asdf_dir="$HOME/.asdf-writable/"
+# shellcheck source=/dev/null
+test -f "${asdf_dir}/completions/asdf.bash" && source "${asdf_dir}/completions/asdf.bash"
 command -v asdf >/dev/null 2>&1 && alias m='asdf'
 ## }}}
 
