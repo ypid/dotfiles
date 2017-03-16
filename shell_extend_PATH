@@ -45,7 +45,7 @@ then
 
     ## Haskell {{{
     CABAL_PATH="$HOME/.cabal"
-    pathappend "$CABAL_PATH/bin"
+    pathprepend "$CABAL_PATH/bin"
     ## }}}
 
     ## Golang {{{

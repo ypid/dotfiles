@@ -342,7 +342,7 @@ source ~/.vimrc.min
             let g:syntastic_python_checkers = ['flake8', 'python']
             let g:syntastic_cpp_checkers = ['gcc', 'cppclean']
             let g:syntastic_yaml_checkers = ['yamllint']
-            let g:syntastic_yaml_yamllint_args = '-c ' . shellescape($HOME . '/.yamllint')
+            " let g:syntastic_yaml_yamllint_args = '-c ' . shellescape($HOME . '/.yamllint')
             "
             " Bundle 'Valloric/YouCompleteMe'
             " Much dependencies

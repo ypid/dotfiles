@@ -254,10 +254,10 @@
     #     path: doublecmd/shortcuts.scf
 
 - shell:
-    - 'mkdir -p ~/.asdf-writable/shims && ln -sfT ~/.asdf-writable/shims ~/.asdf/shims && ln -sf node ~/.asdf-writable/shims/nodejs'
-    - 'mkdir -p ~/.asdf-writable/installs/  && ln -sfT ~/.asdf-writable/installs ~/.asdf/installs'
-    - 'mkdir -p ~/.asdf-writable/keyrings/  && ln -sfT ~/.asdf-writable/keyrings ~/.asdf/keyrings'
-    - 'mkdir -p ~/.asdf-writable/plugins/  && ln -sfT ~/.asdf-writable/plugins ~/.asdf/plugins'
+    - 'mkdir -p ~/.asdf-writable/shims'
+    - 'mkdir -p ~/.asdf-writable/installs'
+    - 'mkdir -p ~/.asdf-writable/keyrings'
+    - 'mkdir -p ~/.asdf-writable/plugins'
     - 'rm -f ~/.config/shell.d/shell_extend_PATH ~/.config/shell.d/public'
 
 - clean:
