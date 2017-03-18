@@ -13,9 +13,9 @@ done
 pathappend "${HOME}/.sandboxes/bin"
 pathappend "/usr/local/bin"
 
-asdf_dir="$HOME/.asdf-writable/"
-pathprepend "${asdf_dir}/shims"
-pathappend "${asdf_dir}/bin"
+export ASDF_DIR="$HOME/.asdf-writable"
+pathprepend "${ASDF_DIR}/shims"
+pathappend "${ASDF_DIR}/bin"
 
 ## PATH and related environment configuration {{{
 user_install_dir="${HOME}/.local/usr"

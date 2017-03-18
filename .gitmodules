@@ -266,3 +266,6 @@
 [submodule "asdf"]
 	path = asdf
 	url = https://github.com/asdf-vm/asdf.git
+[submodule "asdf-plugins/nodejs"]
+	path = asdf-plugins/nodejs
+	url = https://github.com/asdf-vm/asdf-nodejs.git

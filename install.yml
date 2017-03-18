@@ -262,7 +262,6 @@
 - shell:
     - 'rm -f ~/.config/shell.d/shell_extend_PATH ~/.config/shell.d/public'
     - 'rm -f ~/.asdf'
-    - './post_install'
 
 - clean:
     - '~'

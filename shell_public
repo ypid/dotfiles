@@ -145,9 +145,8 @@ function p() {
 ## }}}
 
 ## asdf {{{
-asdf_dir="$HOME/.asdf-writable/"
 # shellcheck source=/dev/null
-test -f "${asdf_dir}/completions/asdf.bash" && source "${asdf_dir}/completions/asdf.bash"
+test -f "${ASDF_DIR}/completions/asdf.bash" && source "${ASDF_DIR}/completions/asdf.bash"
 command -v asdf >/dev/null 2>&1 && alias m='asdf'
 ## }}}
 
