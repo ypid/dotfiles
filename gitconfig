@@ -61,4 +61,5 @@
 [pull]
 	ff = only
 [log]
-	date = local
+	; https://stackoverflow.com/questions/7853332/how-to-change-git-log-date-formats
+	date = iso

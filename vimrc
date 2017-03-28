@@ -990,6 +990,7 @@ source ~/.vimrc.min
 
                 " autocmd BufRead,BufNewFile source.list.* setlocal filetype=debsources
                 autocmd BufRead,BufNewFile .gitignore setlocal filetype=conf
+                autocmd BufRead,BufNewFile *gitconfig setlocal filetype=gitconfig
 
                 autocmd BufRead,BufNewFile *mrconfig* setlocal filetype=dosini
 
