@@ -32,7 +32,7 @@
 	# http://stackoverflow.com/a/1290046
 	#
 	# https://help.github.com/articles/checking-out-pull-requests-locally/#modifying-an-inactive-pull-request-locally
-	g = "!g() { git fetch --update-head-ok github refs/pull/$1/head:#$1 || git fetch --update-head-ok origin refs/pull/$1/head:#$1; }; g"
+	g = "!g() { git fetch --update-head-ok github refs/pull/$1/head:#$1 || git fetch --update-head-ok origin refs/pull/$1/head:#$1 || git fetch --update-head-ok origin refs/pull/$1/head:#$1; }; g"
 	co-perms= "!git diff -p -R | grep -E '^(diff|(old|new) mode)' | git apply"
 	t = "!git log --tags --simplify-by-decoration --pretty='format:%ci %d' | grep tag"
 	rf = for-each-ref --sort=taggerdate --format '%(refname) %(taggerdate)' refs/tags
