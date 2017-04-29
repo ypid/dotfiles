@@ -283,6 +283,16 @@ source ~/.vimrc.min
 
             " Bundle 'bronson/vim-visual-star-search'
             Bundle 'thinca/vim-visualstar'
+
+            let g:move_map_keys = 0
+            Bundle 'matze/vim-move'
+            vmap ρ <Plug>MoveBlockUp
+            nmap ρ <Plug>MoveLineUp
+            " Shift+Layer3Mod+k
+
+            vmap ν <Plug>MoveBlockDown
+            nmap ν <Plug>MoveLineDown
+            " Shift+Layer3Mod+j
         endif
     " }}}
 
@@ -369,10 +379,12 @@ source ~/.vimrc.min
                 " Bundle 'argtextobj.vim'
                 Bundle 'b4winckler/vim-angry'
 
-                Bundle 'terryma/vim-expand-region'
-                map ν <Plug>(expand_region_expand)
+                " Bundle 'terryma/vim-expand-region'
+                " Not using currently, map again when the need arises. I need
+                " those rare key combinations :)
+                " map ν <Plug>(expand_region_expand)
                 " Shift+Layer3Mod+j
-                map ρ <Plug>(expand_region_shrink)
+                " map ρ <Plug>(expand_region_shrink)
                 " Shift+Layer3Mod+k
 
                 " http://stackoverflow.com/a/6589216
@@ -972,6 +984,7 @@ source ~/.vimrc.min
             " Adjust settings for files {{{
                 autocmd BufRead,BufNewFile yamllint setlocal filetype=yaml
                 autocmd BufRead,BufNewFile .mrconfig* setlocal filetype=sh
+                autocmd BufRead,BufNewFile $HOME/.config/mr/* setlocal filetype=sh
                 autocmd BufRead,BufNewFile .vimpagerrc setlocal filetype=vim
                 autocmd BufRead,BufNewFile /etc/*/apt.conf setlocal filetype=conf
                 autocmd BufRead,BufNewFile /etc/hosts setlocal filetype=conf

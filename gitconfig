@@ -63,3 +63,5 @@
 [log]
 	; https://stackoverflow.com/questions/7853332/how-to-change-git-log-date-formats
 	date = iso
+[url "https://github.com/"]
+	insteadOf = git://github.com/

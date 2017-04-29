@@ -150,8 +150,8 @@ Shortcut         | Function                                  | Left hand only | 
 Ctrl+Super+S     | Launch program `x-terminal-emulator`      | Yes            |
 Shift+Super+A    | Launch program `gnome-calculator`         | Nice to have   |
 Ctrl+Super+[1-9] | Launch custom program or script           | Yes and no     |
-Ctrl+Alt+V       | `reboot`                                  | Yes            |
-Ctrl+Alt+G       | `poweroff`                                | Yes            |
+Ctrl+Alt+V       | `poweroff`                                | Yes            |
+Ctrl+Alt+G       | `reboot`                                  | Yes            |
 Super+J          | Launcher application finder               | Nice to have   | Gnome activities or substation for other WMs. Gnome does by default trigger on Super button press which is a nice feature but does not work on other WMs yet?
 Super            | Launcher application finder               | Yes            | Only works with Gnome.
 Shift+Ctrl+Alt+O | Launch program `eject`                    | No             | eject removable media, FIXME

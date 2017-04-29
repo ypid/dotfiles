@@ -254,11 +254,46 @@
       relink: true
       path: neo_layout_viewer.conf
 
+    ~/.config/ranger/rc.conf:
+      create: true
+      relink: true
+      path: ranger.rc.conf
+
+    ~/.config/ranger/commands.py:
+      create: true
+      relink: true
+      path: submodules/dotfiles-fiatjaf/ranger-commands.py
+
+    ~/.config/ranger/plugins/linemode_gitannex.py:
+      create: true
+      relink: true
+      path: submodules/dotfiles-fiatjaf/ranger-plugins/linemode_gitannex.py
+
     # Does overwrite symbolic links.
     # ~/.config/doublecmd/shortcuts.scf:
     #     create: true
     #     create: true
     #     path: doublecmd/shortcuts.scf
+
+    ~/.config/mr/library-loaders:
+      create: true
+      relink: true
+      path: myrepos/mr-config-adam/library-loaders
+
+    ~/.config/mr/lib.d/git:
+      create: true
+      relink: true
+      path: myrepos/mr-config-adam/sh.d/git
+
+    ~/.config/mr/lib.d/git-remotes:
+      create: true
+      relink: true
+      path: myrepos/mr-config-adam/sh.d/git-remotes
+
+    ~/.local/share/scripts/git-config-adam/git-url-rewrite:
+      create: true
+      relink: true
+      path: submodules/git-config-adam/bin/git-url-rewrite
 
 - shell:
     - 'rm -f ~/.config/shell.d/shell_extend_PATH ~/.config/shell.d/public'

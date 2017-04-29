@@ -269,3 +269,18 @@
 [submodule "asdf-plugins/nodejs"]
 	path = asdf-plugins/nodejs
 	url = https://github.com/asdf-vm/asdf-nodejs.git
+[submodule "mr-config-adam"]
+	path = myrepos/mr-config-adam
+	url = https://github.com/aspiers/mr-config.git
+[submodule "ranger-annex"]
+	path = ranger-annex
+	url = https://github.com/matze/ranger-annex.git
+[submodule "vim/bundle/vim-move"]
+	path = vim/bundle/vim-move
+	url = https://github.com/matze/vim-move.git
+[submodule "submodules/dotfiles-fiatjaf"]
+	path = submodules/dotfiles-fiatjaf
+	url = https://github.com/fiatjaf/dotfiles
+[submodule "submodules/git-config-adam"]
+	path = submodules/git-config-adam
+	url = https://github.com/aspiers/git-config.git

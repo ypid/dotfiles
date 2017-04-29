@@ -197,6 +197,7 @@ alias con='ping heise.de'
 alias a='git-annex'
 alias v='vagrant'
 alias jj='zpool'
+alias dotup='~/.config/dotfiles/install'
 
 ## Ping on steroids. This was the last time that some messed up M$ host tricked me because it refused to answer echo requests.
 alias al='nmap -n --reason -sP'

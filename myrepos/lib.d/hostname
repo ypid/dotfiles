@@ -1,0 +1,12 @@
+# vim: set ft=sh :
+
+read_localhost_nickname () {
+    if [ -n "$localhost_nickname" ]; then
+        return 0 # already got it
+    fi
+    localhost_nickname="$(fqdn)"
+    if [ -z "$localhost_nickname" ]; then
+        echo "Could not determine fqdn or hostname of the host" >&2
+        exit 1
+    fi
+}
