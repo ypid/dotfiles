@@ -7,6 +7,7 @@
     - 'if command -v make; then make --directory doublecmd install; fi'
     - 'mkdir -p ~/.gnupg && chmod 0750 ~/.gnupg'
     - 'mkdir -p ~/.ssh/multiplex && chmod 0700 ~/.ssh'
+    - 'cd ~/.ssh && for dir in ./*; do if [ -d "$dir" ] && [ "$dir" != "./multiplex" ]; then mkdir -p "$dir/known_hosts.d"; fi ; done'
     - 'mkdir -p ~/.asdf-writable/shims && ln -sf node ~/.asdf-writable/shims/nodejs'
     - 'mkdir -p ~/.asdf-writable/installs'
     - 'mkdir -p ~/.asdf-writable/keyrings'
