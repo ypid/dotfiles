@@ -275,6 +275,11 @@
     #     create: true
     #     path: doublecmd/shortcuts.scf
 
+    ~/.config/mr/mrconfig:
+      create: true
+      relink: true
+      path: myrepos/mrconfig
+
     ~/.config/mr/library-loaders:
       create: true
       relink: true
@@ -298,6 +303,7 @@
 - shell:
     - 'rm -f ~/.config/shell.d/shell_extend_PATH ~/.config/shell.d/public'
     - 'rm -f ~/.asdf'
+    - 'if [ ! -e "$HOME/.mrconfig" ]; then cp myrepos/mrconfig_home_template "$HOME/.mrconfig"; fi'
 
 - clean:
     - '~'

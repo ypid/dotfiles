@@ -1,0 +1,4 @@
+# vim: set ft=sh :
+
+[DEFAULT]
+include = cat ~/.config/mr/mrconfig

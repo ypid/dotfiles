@@ -1,0 +1,12 @@
+# vim: set ft=sh :
+
+[DEFAULT]
+git_save = git add --all .; git commit --message 'Auto commit without commit message.' --all || true
+include =
+    cat /usr/share/mr/git-annex
+    if [ -e ~/.config/mr/library-loaders ]; then
+        . ~/.config/mr/library-loaders
+        load_libraries ~/.config/mr/lib.d/*
+        load_libraries ~/.config/dotfiles/myrepos/lib.d/*
+        include_lib_dirs ~/.config/dotfiles/myrepos/include.d
+    fi
