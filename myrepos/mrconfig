@@ -8,5 +8,13 @@ include =
         . ~/.config/mr/library-loaders
         load_libraries ~/.config/mr/lib.d/*
         load_libraries ~/.config/dotfiles/myrepos/lib.d/*
-        include_lib_dirs ~/.config/dotfiles/myrepos/include.d
+        if [ -d ~/.config/dotfiles/myrepos/include.d ] && [ -n "$(ls -A ~/.config/dotfiles/myrepos/include.d)" ]; then
+            include_lib_dirs ~/.config/dotfiles/myrepos/include.d
+        fi
+        if [ -n "$(find ~/.config/mr -maxdepth 1 -name '*.ini' -print -quit)" ]; then
+            include_files ~/.config/mr/*.ini
+        fi
+        if [ -d ~/.config/mr/include.d ] && [ -n "$(ls -A ~/.config/mr/include.d)" ]; then
+            include_lib_dirs ~/.config/mr/include.d
+        fi
     fi
