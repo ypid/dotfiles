@@ -23,3 +23,16 @@ pathappend() {
     fi
   done
 }
+
+# https://gist.github.com/florianbeer/ee02c149a7e25f643491
+ssh() {
+    if [ "$(ps -p "$(ps -p $$ -o ppid= | sed 's/\s//g;')" -o comm=)" = "tmux" ]; then
+        tmux rename-window "$(echo "$@" | rev | cut -d ' ' -f1 | rev | cut -d . -f 1)"
+        command ssh "$@"
+        tmux set-window-option automatic-rename "on" 1>/dev/null
+    else
+        echo -ne "\033]0;$(echo "$@" | rev | cut -d ' ' -f1 | rev)\007"
+        command ssh "$@"
+        echo -ne "\033]0;Terminal\007"
+    fi
+}
