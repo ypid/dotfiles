@@ -49,7 +49,7 @@
 	default = simple
 [annex]
 	backends = SHA512E
-	diskreserve = 5 GiB
+	diskreserve = 30 GiB
 	largefiles = not include=*.git*
 	securehashesonly = true
 [commit]

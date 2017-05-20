@@ -1,4 +1,5 @@
 #!/bin/bash
+# shellcheck disable=SC2139
 # .. vim: foldmarker={{{,}}}:foldmethod=marker
 
 ## Exports {{{
@@ -198,6 +199,7 @@ alias a='git-annex'
 alias v='vagrant'
 alias jj='zpool'
 alias dotup='~/.config/dotfiles/install'
+alias meminfo=$'awk \'$3=="kB"{$2=$2/1024;$3="MB"} 1\' /proc/meminfo | column -t'
 
 ## Ping on steroids. This was the last time that some messed up M$ host tricked me because it refused to answer echo requests.
 alias al='nmap -n --reason -sP'
