@@ -64,6 +64,11 @@
       relink: true
       path: firejail-scripts/config_common.sh
 
+    ~/.sandboxes/bin/config_handle_desktop_entries:
+      create: true
+      relink: true
+      path: firejail-scripts/config_handle_desktop_entries
+
     ~/.ssh/config_ypid_defaults:
       create: true
       relink: true
@@ -299,6 +304,12 @@
       create: true
       relink: true
       path: submodules/git-config-adam/bin/git-url-rewrite
+
+    # https://git-annex.branchable.com/tips/finding_duplicate_files/
+    ~/.local/share/scripts/git-config-adam/git-annex-finddups:
+      create: true
+      relink: true
+      path: submodules/git-config-adam/bin/git-annex-finddups
 
 - shell:
     - 'rm -f ~/.config/shell.d/shell_extend_PATH ~/.config/shell.d/public'
