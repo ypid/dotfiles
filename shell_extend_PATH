@@ -12,6 +12,7 @@ done
 
 pathappend "${HOME}/.sandboxes/bin"
 pathappend "/usr/local/bin"
+pathappend "/usr/sbin"
 
 export ASDF_DIR="$HOME/.asdf-writable"
 pathprepend "${ASDF_DIR}/shims"
