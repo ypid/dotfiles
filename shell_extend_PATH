@@ -18,6 +18,8 @@ export ASDF_DIR="$HOME/.asdf-writable"
 pathprepend "${ASDF_DIR}/shims"
 pathappend "${ASDF_DIR}/bin"
 
+pathprepend "$HOME/bin"
+
 ## PATH and related environment configuration {{{
 user_install_dir="${HOME}/.local/usr"
 if [ -d "$user_install_dir" ]
