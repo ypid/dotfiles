@@ -1,0 +1,1612 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<helpItems schema="maml">
+
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<command:details><command:name>Get-PSReadlineKeyHandler</command:name>
+<command:verb>Get</command:verb>
+<command:noun>PSReadlineKeyHandler</command:noun>
+<maml:description><maml:para>Gets the key bindings for the PSReadline module.
+</maml:para>
+</maml:description>
+</command:details>
+<maml:description><maml:para>The Get-PSReadlineKeyHandler cmdlet gets key bindings. If you specify the Bound and Unbound parameters, this cmdlet returns all bound keys and unbound functions. If you specify Bound , but not Unbound , the cmdlet returns only bound keys. If you specify Unbound , but not Bound , the cmdlet returns only unbound keys.
+</maml:para>
+</maml:description>
+<command:syntax><command:syntaxItem><maml:name>Get-PSReadlineKeyHandler</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Bound</maml:name>
+<maml:Description><maml:para>Indicates that this cmdlet returns functions that are bound.
+</maml:para>
+</maml:Description>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Unbound</maml:name>
+<maml:Description><maml:para>Indicates that this cmdlet returns functions that are unbound.
+</maml:para>
+</maml:Description>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+</command:syntaxItem>
+</command:syntax>
+<command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Bound</maml:name>
+<maml:Description><maml:para>Indicates that this cmdlet returns functions that are bound.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Unbound</maml:name>
+<maml:Description><maml:para>Indicates that this cmdlet returns functions that are unbound.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+</command:parameters>
+<command:inputTypes><command:inputType><dev:type><maml:name> </maml:name>
+</dev:type>
+<maml:description><maml:para>You cannot pipe objects to this cmdlet.
+</maml:para>
+</maml:description>
+</command:inputType>
+</command:inputTypes>
+<command:returnValues><command:returnValue><dev:type><maml:name>PSConsoleUtilities.KeyHandler</maml:name>
+</dev:type>
+<maml:description><maml:para>This cmdlet returns one entry for each key binding, or chord, for bound functions and one entry for each unbound function.
+</maml:para>
+</maml:description>
+</command:returnValue>
+</command:returnValues>
+<maml:alertSet><maml:alert><maml:para>
+</maml:para>
+</maml:alert>
+</maml:alertSet>
+<command:examples><command:example><maml:title>Example 1: Get all key mappings</maml:title>
+<dev:code>PS C:\&gt;Get-PSReadlineKeyHandler
+Key                   Function                Description
+---                   --------                -----------
+Enter                 AcceptLine              Accept the input or move to the next line if input is missing a closing token. 
+Shift+Enter           AddLine                 Move the cursor to the next line without attempting to execute the input
+Escape                RevertLine              Equivalent to undo all edits (clears the line except lines imported from history) 
+LeftArrow             BackwardChar            Move the cursor back one character
+RightArrow            ForwardChar             Move the cursor forward one character
+Ctrl+LeftArrow        BackwardWord            Move the cursor to the beginning of the current or previous word
+Ctrl+RightArrow       NextWord                Move the cursor forward to the start of the next word
+Shift+LeftArrow       SelectBackwardChar      Adjust the current selection to include the previous character
+Shift+RightArrow      SelectForwardChar       Adjust the current selection to include the next character
+Ctrl+Shift+LeftArrow  SelectBackwardWord      Adjust the current selection to include the previous word
+Ctrl+Shift+RightArrow SelectNextWord          Adjust the current selection to include the next word
+UpArrow               PreviousHistory         Replace the input with the previous item in the history
+DownArrow             NextHistory             Replace the input with the next item in the history
+Home                  BeginningOfLine         Move the cursor to the beginning of the line
+End                   EndOfLine               Move the cursor to the end of the line
+Shift+Home            SelectBackwardsLine     Adjust the current selection to include from the cursor to the end of the line
+Shift+End             SelectLine              Adjust the current selection to include from the cursor to the start of the line
+Delete                DeleteChar              Delete the character under the cursor
+Backspace             BackwardDeleteChar      Delete the charcter before the cursor
+Ctrl+Spacebar         MenuComplete            Complete the input if there is a single completion, otherwise complete the input by selecting from a menu o... 
+Tab                   TabCompleteNext         Complete the input using the next completion
+Shift+Tab             TabCompletePrevious     Complete the input using the previous completion
+Ctrl+a                SelectAll               Select the entire line. Moves the cursor to the end of the line
+Ctrl+c                CopyOrCancelLine        Either copy selected text to the clipboard, or if no text is selected, cancel editing the line with Cancel... 
+Ctrl+C                Copy                    Copy selected region to the system clipboard.  If no region is selected, copy the whole line
+Ctrl+l                ClearScreen             Clear the screen and redraw the current line at the top of the screen
+Ctrl+r                ReverseSearchHistory    Search history backwards interactively
+â€¦</dev:code>
+<dev:remarks><maml:para>This command returns all key mappings, bound and unbound.
+</maml:para>
+</dev:remarks>
+</command:example>
+<command:example><maml:title>Example 2: Get bound keys</maml:title>
+<dev:code>PS C:\&gt;Get-PSReadlineKeyHandler -Bound
+Key                   Function                Description
+---                   --------                -----------
+Enter                 AcceptLine              Accept the input or move to the next line if input is missing a closing token. 
+Shift+Enter           AddLine                 Move the cursor to the next line without attempting to execute the input
+Escape                RevertLine              Equivalent to undo all edits (clears the line except lines imported from history) 
+LeftArrow             BackwardChar            Move the cursor back one character
+RightArrow            ForwardChar             Move the cursor forward one character
+Ctrl+LeftArrow        BackwardWord            Move the cursor to the beginning of the current or previous word
+Ctrl+RightArrow       NextWord                Move the cursor forward to the start of the next word
+Shift+LeftArrow       SelectBackwardChar      Adjust the current selection to include the previous character
+Shift+RightArrow      SelectForwardChar       Adjust the current selection to include the next character
+Ctrl+Shift+LeftArrow  SelectBackwardWord      Adjust the current selection to include the previous word
+Ctrl+Shift+RightArrow SelectNextWord          Adjust the current selection to include the next word
+UpArrow               PreviousHistory         Replace the input with the previous item in the history
+DownArrow             NextHistory             Replace the input with the next item in the history
+Home                  BeginningOfLine         Move the cursor to the beginning of the line
+End                   EndOfLine               Move the cursor to the end of the line
+Shift+Home            SelectBackwardsLine     Adjust the current selection to include from the cursor to the end of the line
+Shift+End             SelectLine              Adjust the current selection to include from the cursor to the start of the line
+Delete                DeleteChar              Delete the character under the cursor
+Backspace             BackwardDeleteChar      Delete the charcter before the cursor
+Ctrl+Spacebar         MenuComplete            Complete the input if there is a single completion, otherwise complete the input by selecting from a menu o... 
+Tab                   TabCompleteNext         Complete the input using the next completion
+â€¦</dev:code>
+<dev:remarks><maml:para>This command returns only bound keys and key combinations.
+</maml:para>
+</dev:remarks>
+</command:example>
+</command:examples>
+<command:relatedLinks><maml:navigationLink><maml:linkText>Online Version:</maml:linkText>
+<maml:uri>http://go.microsoft.com/fwlink/?LinkID=821449</maml:uri>
+</maml:navigationLink>
+<maml:navigationLink><maml:linkText>Remove-PSReadlineKeyHandler</maml:linkText>
+<maml:uri></maml:uri>
+</maml:navigationLink>
+<maml:navigationLink><maml:linkText>Get-PSReadlineOption</maml:linkText>
+<maml:uri></maml:uri>
+</maml:navigationLink>
+<maml:navigationLink><maml:linkText>Set-PSReadlineOption</maml:linkText>
+<maml:uri></maml:uri>
+</maml:navigationLink>
+<maml:navigationLink><maml:linkText>Set-PSReadlineKeyHandler</maml:linkText>
+<maml:uri></maml:uri>
+</maml:navigationLink>
+</command:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<command:details><command:name>Get-PSReadlineOption</command:name>
+<command:verb>Get</command:verb>
+<command:noun>PSReadlineOption</command:noun>
+<maml:description><maml:para>Gets values for the options that can be configured.
+</maml:para>
+</maml:description>
+</command:details>
+<maml:description><maml:para>The Get-PSReadlineOption returns the current state of the settings that can be configured by using the Set-PSReadlineOption cmdlet. You can use the object that Get-PSReadlineOption returns to change PSReadline options. This provides a slightly simpler way to set syntax coloring options for multiple kinds of tokens.
+</maml:para>
+</maml:description>
+<command:syntax><command:syntaxItem><maml:name>Get-PSReadlineOption</maml:name>
+</command:syntaxItem>
+</command:syntax>
+<command:parameters></command:parameters>
+<command:inputTypes><command:inputType><dev:type><maml:name> </maml:name>
+</dev:type>
+<maml:description><maml:para>You cannot pipe objects to this cmdlet.
+</maml:para>
+</maml:description>
+</command:inputType>
+</command:inputTypes>
+<command:returnValues></command:returnValues>
+<maml:alertSet><maml:alert><maml:para>
+</maml:para>
+</maml:alert>
+</maml:alertSet>
+<command:examples><command:example><maml:title>Example 1: Get options and their values</maml:title>
+<dev:code>PS C:\&gt;Get-PSReadlineOption
+EditMode                               : Windows
+ContinuationPrompt                     : &gt;&gt;&gt;
+ContinuationPromptForegroundColor      : DarkYellow
+ContinuationPromptBackgroundColor      : DarkMagenta
+ExtraPromptLineCount                   : 0
+AddToHistoryHandler                    : 
+CommandValidationHandler               : 
+CommandsToValidateScriptBlockArguments : {ForEach-Object, %, Invoke-Command, icm...} 
+HistoryNoDuplicates                    : False
+MaximumHistoryCount                    : 4096
+MaximumKillRingCount                   : 10
+HistorySearchCursorMovesToEnd          : False
+ShowToolTips                           : False
+DingTone                               : 1221
+CompletionQueryItems                   : 100
+WordDelimiters                         : ;:,.[]{}()/\|^&amp;*-=+--- 
+DingDuration                           : 50
+BellStyle                              : Audible
+HistorySearchCaseSensitive             : False
+HistorySavePath                        : C:\Users\TestUser\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadline\ConsoleHost_history.txt
+HistorySaveStyle                       : SaveIncrementally
+DefaultTokenForegroundColor            : DarkYellow
+CommentForegroundColor                 : DarkGreen
+KeywordForegroundColor                 : Green
+StringForegroundColor                  : DarkCyan
+OperatorForegroundColor                : DarkGray
+VariableForegroundColor                : Green
+CommandForegroundColor                 : Yellow
+ParameterForegroundColor               : DarkGray
+TypeForegroundColor                    : Gray
+NumberForegroundColor                  : White
+MemberForegroundColor                  : White
+DefaultTokenBackgroundColor            : DarkMagenta
+CommentBackgroundColor                 : DarkMagenta
+KeywordBackgroundColor                 : DarkMagenta
+StringBackgroundColor                  : DarkMagenta
+OperatorBackgroundColor                : DarkMagenta
+VariableBackgroundColor                : DarkMagenta
+CommandBackgroundColor                 : DarkMagenta
+ParameterBackgroundColor               : DarkMagenta
+TypeBackgroundColor                    : DarkMagenta
+NumberBackgroundColor                  : DarkMagenta
+MemberBackgroundColor                  : DarkMagenta
+EmphasisForegroundColor                : Cyan
+EmphasisBackgroundColor                : DarkMagenta
+ErrorForegroundColor                   : Red
+ErrorBackgroundColor                   : DarkMagenta</dev:code>
+<dev:remarks><maml:para>This command returns the list of available PSReadline options and their current values.
+</maml:para>
+</dev:remarks>
+</command:example>
+</command:examples>
+<command:relatedLinks><maml:navigationLink><maml:linkText>Online Version:</maml:linkText>
+<maml:uri>http://go.microsoft.com/fwlink/?LinkId=821450</maml:uri>
+</maml:navigationLink>
+<maml:navigationLink><maml:linkText>Remove-PSReadlineKeyHandler</maml:linkText>
+<maml:uri></maml:uri>
+</maml:navigationLink>
+<maml:navigationLink><maml:linkText>Get-PSReadlineKeyHandler</maml:linkText>
+<maml:uri></maml:uri>
+</maml:navigationLink>
+<maml:navigationLink><maml:linkText>Set-PSReadlineOption</maml:linkText>
+<maml:uri></maml:uri>
+</maml:navigationLink>
+<maml:navigationLink><maml:linkText>Set-PSReadlineKeyHandler</maml:linkText>
+<maml:uri></maml:uri>
+</maml:navigationLink>
+</command:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<command:details><command:name>Remove-PSReadlineKeyHandler</command:name>
+<command:verb>Remove</command:verb>
+<command:noun>PSReadlineKeyHandler</command:noun>
+<maml:description><maml:para>Removes a key binding.
+</maml:para>
+</maml:description>
+</command:details>
+<maml:description><maml:para>The Remove-PSReadlineKeyHandler cmdlet removes a specified key binding. Create a key binding by running the Set-PSReadlineKeyHandler cmdlet.
+</maml:para>
+</maml:description>
+<command:syntax><command:syntaxItem><maml:name>Remove-PSReadlineKeyHandler</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="Key"><maml:name>Chord</maml:name>
+<maml:Description><maml:para>Specifies an array of  keys or sequences of keys to be removed. A single binding is specified by using a single string. If the binding is a sequence of keys, separate the keys by a comma, as in the following example: 
+</maml:para>
+<maml:para>"Ctrl+X,Ctrl+L" 
+</maml:para>
+<maml:para>This parameter accepts multiple strings. Each string is a separate binding, not a sequence of keys for a single binding.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+<dev:type><maml:name>String[]</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>ViMode</maml:name>
+<maml:Description><maml:para>{{Fill ViMode Description}}
+</maml:para>
+</maml:Description>
+<command:parameterValueGroup><command:parameterValue required="false" variableLength="false">Insert</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Command</command:parameterValue>
+</command:parameterValueGroup>
+<command:parameterValue required="true" variableLength="false">ViMode</command:parameterValue>
+<dev:type><maml:name>ViMode</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+</command:syntaxItem>
+</command:syntax>
+<command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="Key"><maml:name>Chord</maml:name>
+<maml:Description><maml:para>Specifies an array of  keys or sequences of keys to be removed. A single binding is specified by using a single string. If the binding is a sequence of keys, separate the keys by a comma, as in the following example: 
+</maml:para>
+<maml:para>"Ctrl+X,Ctrl+L" 
+</maml:para>
+<maml:para>This parameter accepts multiple strings. Each string is a separate binding, not a sequence of keys for a single binding.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+<dev:type><maml:name>String[]</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>ViMode</maml:name>
+<maml:Description><maml:para>{{Fill ViMode Description}}
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">ViMode</command:parameterValue>
+<dev:type><maml:name>ViMode</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+</command:parameters>
+<command:inputTypes><command:inputType><dev:type><maml:name> </maml:name>
+</dev:type>
+<maml:description><maml:para>You cannot pipe objects to this cmdlet.
+</maml:para>
+</maml:description>
+</command:inputType>
+</command:inputTypes>
+<command:returnValues></command:returnValues>
+<maml:alertSet><maml:alert><maml:para>
+</maml:para>
+</maml:alert>
+</maml:alertSet>
+<command:examples><command:example><maml:title>Example 1: Remove a binding</maml:title>
+<dev:code>PS C:\&gt;Remove-PSReadlineKeyHandler -Chord "Shift+Ctrl+B"</dev:code>
+<dev:remarks><maml:para>This command removes the binding from the key combination, or chord, Ctrl+Shift+B. The Ctrl+Shift+B chord is created in the Set-PSReadlineKeyHandler topic.
+</maml:para>
+</dev:remarks>
+</command:example>
+</command:examples>
+<command:relatedLinks><maml:navigationLink><maml:linkText>Online Version:</maml:linkText>
+<maml:uri>http://go.microsoft.com/fwlink/?LinkId=821451</maml:uri>
+</maml:navigationLink>
+<maml:navigationLink><maml:linkText>Get-PSReadlineKeyHandler</maml:linkText>
+<maml:uri></maml:uri>
+</maml:navigationLink>
+<maml:navigationLink><maml:linkText>Get-PSReadlineOption</maml:linkText>
+<maml:uri></maml:uri>
+</maml:navigationLink>
+<maml:navigationLink><maml:linkText>Set-PSReadlineOption</maml:linkText>
+<maml:uri></maml:uri>
+</maml:navigationLink>
+<maml:navigationLink><maml:linkText>Set-PSReadlineKeyHandler</maml:linkText>
+<maml:uri></maml:uri>
+</maml:navigationLink>
+</command:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<command:details><command:name>Set-PSReadlineKeyHandler</command:name>
+<command:verb>Set</command:verb>
+<command:noun>PSReadlineKeyHandler</command:noun>
+<maml:description><maml:para>Binds keys to user-defined or PSReadline-provided key handlers.
+</maml:para>
+</maml:description>
+</command:details>
+<maml:description><maml:para>The Set-PSReadlineKeyHandler cmdlet customizes the result when a particular key or sequence of keys is pressed while PSReadline is reading input. By using user-defined key bindings, you can do almost anything that is possible from within a Windows PowerShell script. Typically, you might modify the command line in a new way, but because the handlers are just Windows PowerShell scripts, you can do interesting things such as change directories or open applications.
+</maml:para>
+</maml:description>
+<command:syntax><command:syntaxItem><maml:name>Set-PSReadlineKeyHandler</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="Key"><maml:name>Chord</maml:name>
+<maml:Description><maml:para>Specifies an array of keys or sequences of keys to be bound to a function or script block. Use a single string to specify a single binding. If the binding is a sequence of keys, separate the keys by a comma, as in the following example: 
+</maml:para>
+<maml:para>"Ctrl+X,Ctrl+L" 
+</maml:para>
+<maml:para>This parameter accepts multiple strings. Each string is a separate binding, not a sequence of keys for a single binding.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+<dev:type><maml:name>String[]</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none"><maml:name>ScriptBlock</maml:name>
+<maml:Description><maml:para>Specifies a script block value that is called when the chord is entered. The script block is passed one, or sometimes two, arguments. The first argument is the key pressed, a ConsoleKeyInfo object.. The second argument could be any object depending on the context.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">ScriptBlock</command:parameterValue>
+<dev:type><maml:name>ScriptBlock</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>BriefDescription</maml:name>
+<maml:Description><maml:para>A brief description of the key binding. You can get this from the output of the Get-PSReadlineKeyHandler cmdlet.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="LongDescription"><maml:name>Description</maml:name>
+<maml:Description><maml:para>Specifies a more detailed description of the key binding that is visible in the output of the Get-PSReadlineKeyHandler cmdlet.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>ViMode</maml:name>
+<maml:Description><maml:para>{{Fill ViMode Description}}
+</maml:para>
+</maml:Description>
+<command:parameterValueGroup><command:parameterValue required="false" variableLength="false">Insert</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Command</command:parameterValue>
+</command:parameterValueGroup>
+<command:parameterValue required="true" variableLength="false">ViMode</command:parameterValue>
+<dev:type><maml:name>ViMode</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+</command:syntaxItem>
+<command:syntaxItem><maml:name>Set-PSReadlineKeyHandler</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="Key"><maml:name>Chord</maml:name>
+<maml:Description><maml:para>Specifies an array of keys or sequences of keys to be bound to a function or script block. Use a single string to specify a single binding. If the binding is a sequence of keys, separate the keys by a comma, as in the following example: 
+</maml:para>
+<maml:para>"Ctrl+X,Ctrl+L" 
+</maml:para>
+<maml:para>This parameter accepts multiple strings. Each string is a separate binding, not a sequence of keys for a single binding.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+<dev:type><maml:name>String[]</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none"><maml:name>Function</maml:name>
+<maml:Description><maml:para>Specifies the name of an existing key handler provided by PSReadline. This parameter lets you rebind existing key bindings, or bind a handler that is provided by PSReadline and is currently unbound. By adding the ScriptBlock parameter, you can get equivalent functionality by calling the method directly from the script block. This parameter is the preferred method, however, because the results make it easier to determine which functions are bound and unbound. To see a complete list of these values, type `Get-Help Set-PSReadlineKeyHandler -Full`.
+</maml:para>
+</maml:Description>
+<command:parameterValueGroup><command:parameterValue required="false" variableLength="false">Abort</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">AcceptAndGetNext</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">AcceptLine</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">AddLine</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">BackwardChar</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">BackwardDeleteChar</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">BackwardDeleteLine</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">BackwardDeleteWord</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">BackwardKillLine</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">BackwardKillWord</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">BackwardWord</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">BeginningOfHistory</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">BeginningOfLine</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">CancelLine</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">CaptureScreen</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">CharacterSearch</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">CharacterSearchBackward</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">ClearHistory</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">ClearScreen</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Complete</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Copy</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">CopyOrCancelLine</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Cut</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">DeleteChar</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">DeleteCharOrExit</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">DeleteEndOfWord</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">DeleteLine</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">DeleteLineToFirstChar</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">DeleteToEnd</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">DeleteWord</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">DigitArgument</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">EndOfHistory</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">EndOfLine</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">ExchangePointAndMark</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">ForwardChar</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">ForwardDeleteLine</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">ForwardSearchHistory</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">ForwardWord</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">GotoBrace</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">GotoColumn</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">GotoFirstNonBlankOfLine</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">HistorySearchBackward</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">HistorySearchForward</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">InsertLineAbove</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">InsertLineBelow</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">InvertCase</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">InvokePrompt</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">KillLine</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">KillRegion</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">KillWord</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">MenuComplete</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">MoveToEndOfLine</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">NextHistory</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">NextLine</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">NextWord</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">NextWordEnd</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Paste</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">PasteAfter</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">PasteBefore</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">PossibleCompletions</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">PrependAndAccept</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">PreviousHistory</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">PreviousLine</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Redo</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">RepeatLastCharSearch</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">RepeatLastCharSearchBackwards</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">RepeatLastCommand</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">RepeatSearch</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">RepeatSearchBackward</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">ReverseSearchHistory</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">RevertLine</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">ScrollDisplayDown</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">ScrollDisplayDownLine</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">ScrollDisplayToCursor</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">ScrollDisplayTop</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">ScrollDisplayUp</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">ScrollDisplayUpLine</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">SearchChar</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">SearchCharBackward</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">SearchCharBackwardWithBackoff</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">SearchCharWithBackoff</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">SearchForward</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">SelectAll</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">SelectBackwardChar</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">SelectBackwardsLine</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">SelectBackwardWord</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">SelectForwardChar</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">SelectForwardWord</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">SelectLine</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">SelectNextWord</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">SelectShellBackwardWord</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">SelectShellForwardWord</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">SelectShellNextWord</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">SelfInsert</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">SetMark</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">ShellBackwardKillWord</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">ShellBackwardWord</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">ShellForwardWord</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">ShellKillWord</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">ShellNextWord</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">ShowKeyBindings</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">SwapCharacters</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">TabCompleteNext</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">TabCompletePrevious</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Undo</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">UndoAll</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">UnixWordRubout</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">ValidateAndAcceptLine</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">ViAcceptLine</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">ViAcceptLineOrExit</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">ViAppendLine</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">ViBackwardDeleteGlob</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">ViBackwardGlob</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">ViBackwardWord</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">ViCommandMode</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">ViDeleteBrace</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">ViDeleteEndOfGlob</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">ViDeleteGlob</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">ViDigitArgumentInChord</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">ViEditVisually</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">ViExit</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">ViGotoBrace</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">ViInsertAtBegining</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">ViInsertAtEnd</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">ViInsertLine</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">ViInsertMode</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">ViInsertWithAppend</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">ViInsertWithDelete</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">ViJoinLines</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">ViNextWord</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">ViSearchHistoryBackward</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">ViTabCompleteNext</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">ViTabCompletePrevious</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">ViYankBeginningOfLine</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">ViYankEndOfGlob</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">ViYankEndOfWord</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">ViYankLeft</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">ViYankLine</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">ViYankNextGlob</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">ViYankNextWord</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">ViYankPercent</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">ViYankPreviousGlob</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">ViYankPreviousWord</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">ViYankRight</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">ViYankToEndOfLine</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">ViYankToFirstChar</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">WhatIsKey</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Yank</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">YankLastArg</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">YankNthArg</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">YankPop</command:parameterValue>
+</command:parameterValueGroup>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>ViMode</maml:name>
+<maml:Description><maml:para>{{Fill ViMode Description}}
+</maml:para>
+</maml:Description>
+<command:parameterValueGroup><command:parameterValue required="false" variableLength="false">Insert</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Command</command:parameterValue>
+</command:parameterValueGroup>
+<command:parameterValue required="true" variableLength="false">ViMode</command:parameterValue>
+<dev:type><maml:name>ViMode</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+</command:syntaxItem>
+</command:syntax>
+<command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>BriefDescription</maml:name>
+<maml:Description><maml:para>A brief description of the key binding. You can get this from the output of the Get-PSReadlineKeyHandler cmdlet.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="Key"><maml:name>Chord</maml:name>
+<maml:Description><maml:para>Specifies an array of keys or sequences of keys to be bound to a function or script block. Use a single string to specify a single binding. If the binding is a sequence of keys, separate the keys by a comma, as in the following example: 
+</maml:para>
+<maml:para>"Ctrl+X,Ctrl+L" 
+</maml:para>
+<maml:para>This parameter accepts multiple strings. Each string is a separate binding, not a sequence of keys for a single binding.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+<dev:type><maml:name>String[]</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="LongDescription"><maml:name>Description</maml:name>
+<maml:Description><maml:para>Specifies a more detailed description of the key binding that is visible in the output of the Get-PSReadlineKeyHandler cmdlet.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none"><maml:name>Function</maml:name>
+<maml:Description><maml:para>Specifies the name of an existing key handler provided by PSReadline. This parameter lets you rebind existing key bindings, or bind a handler that is provided by PSReadline and is currently unbound. By adding the ScriptBlock parameter, you can get equivalent functionality by calling the method directly from the script block. This parameter is the preferred method, however, because the results make it easier to determine which functions are bound and unbound. To see a complete list of these values, type `Get-Help Set-PSReadlineKeyHandler -Full`.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none"><maml:name>ScriptBlock</maml:name>
+<maml:Description><maml:para>Specifies a script block value that is called when the chord is entered. The script block is passed one, or sometimes two, arguments. The first argument is the key pressed, a ConsoleKeyInfo object.. The second argument could be any object depending on the context.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">ScriptBlock</command:parameterValue>
+<dev:type><maml:name>ScriptBlock</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>ViMode</maml:name>
+<maml:Description><maml:para>{{Fill ViMode Description}}
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">ViMode</command:parameterValue>
+<dev:type><maml:name>ViMode</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+</command:parameters>
+<command:inputTypes><command:inputType><dev:type><maml:name> </maml:name>
+</dev:type>
+<maml:description><maml:para>You cannot pipe objects to this cmdlet.
+</maml:para>
+</maml:description>
+</command:inputType>
+</command:inputTypes>
+<command:returnValues></command:returnValues>
+<maml:alertSet><maml:alert><maml:para>
+</maml:para>
+</maml:alert>
+</maml:alertSet>
+<command:examples><command:example><maml:title>Example 1: Bind the arrow key to a function</maml:title>
+<dev:code>PS C:\&gt;Set-PSReadlineKeyHandler -Chord UpArrow -Function HistorySearchBackward</dev:code>
+<dev:remarks><maml:para>This command binds the up arrow key to the function HistorySearchBackward, which uses the currently-entered command line as the start of the search string when it is searching through command history.
+</maml:para>
+</dev:remarks>
+</command:example>
+<command:example><maml:title>Example 2: Bind a key to a script block</maml:title>
+<dev:code>PS C:\&gt;Set-PSReadlineKeyHandler -Chord Shift+Ctrl+B -ScriptBlock { 
+  [PSConsoleUtilities.PSConsoleReadLine]::RevertLine() 
+  [PSConsoleUtilities.PSConsoleReadLine]::Insert('build')
+      [PSConsoleUtilities.PSConsoleReadLine]::AcceptLine()
+}</dev:code>
+<dev:remarks><maml:para>This command binds the key Ctrl+Shift+B to a script block that clears the line, inserts the word build, and then accepts the line. The example shows how a single key can be used to run a command.
+</maml:para>
+</dev:remarks>
+</command:example>
+</command:examples>
+<command:relatedLinks><maml:navigationLink><maml:linkText>Online Version:</maml:linkText>
+<maml:uri>http://go.microsoft.com/fwlink/?LinkID=821452</maml:uri>
+</maml:navigationLink>
+<maml:navigationLink><maml:linkText>Get-PSReadlineKeyHandler</maml:linkText>
+<maml:uri></maml:uri>
+</maml:navigationLink>
+<maml:navigationLink><maml:linkText>Remove-PSReadlineKeyHandler</maml:linkText>
+<maml:uri></maml:uri>
+</maml:navigationLink>
+<maml:navigationLink><maml:linkText>Get-PSReadlineOption</maml:linkText>
+<maml:uri></maml:uri>
+</maml:navigationLink>
+<maml:navigationLink><maml:linkText>Set-PSReadlineOption</maml:linkText>
+<maml:uri></maml:uri>
+</maml:navigationLink>
+</command:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<command:details><command:name>Set-PSReadlineOption</command:name>
+<command:verb>Set</command:verb>
+<command:noun>PSReadlineOption</command:noun>
+<maml:description><maml:para>Customizes the behavior of command line editing in PSReadline.
+</maml:para>
+</maml:description>
+</command:details>
+<maml:description><maml:para>The Set-PSReadlineOption cmdlet customizes the behavior of the PSReadline module when you are editing the command line.
+</maml:para>
+</maml:description>
+<command:syntax><command:syntaxItem><maml:name>Set-PSReadlineOption</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>AddToHistoryHandler</maml:name>
+<maml:Description><maml:para>Specifies a ScriptBlock that controls which commands get added to PSReadline history.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">System.Func`2[System.String,System.Boolean]</command:parameterValue>
+<dev:type><maml:name>System.Func`2[System.String,System.Boolean]</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>BellStyle</maml:name>
+<maml:Description><maml:para>Specifies how PSReadLine responds to various error conditions or user prompts. If you do not specify this parameter, the default response is Audible. The acceptable values for this parameter are:
+</maml:para>
+<maml:para>- None. No feedback.  - Visual. Text flashes briefly.  - Audible. A short beep.
+</maml:para>
+</maml:Description>
+<command:parameterValueGroup><command:parameterValue required="false" variableLength="false">None</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Visual</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Audible</command:parameterValue>
+</command:parameterValueGroup>
+<command:parameterValue required="true" variableLength="false">BellStyle</command:parameterValue>
+<dev:type><maml:name>BellStyle</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>CommandValidationHandler</maml:name>
+<maml:Description><maml:para>Specifies a ScriptBlock that is called from ValidateAndAcceptLine . If an exception is thrown, validation fails and the error is reported. Before throwing an exception, the validation handler can place the cursor at the point of the error to make it easier to fix. A validation handler can also change the command line, such as to correct common typographical errors.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">System.Action`1[System.Management.Automation.Language.CommandAst]</command:parameterValue>
+<dev:type><maml:name>System.Action`1[System.Management.Automation.Language.CommandAst]</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>CompletionQueryItems</maml:name>
+<maml:Description><maml:para>Specifies the maximum number of completion items that are shown without prompting. If the number of items to show is greater than this value, PSReadline prompts you to specify yes or no (y/n) before it displays the completion items. The default maximum number is 100.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+<dev:type><maml:name>Int32</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>ContinuationPrompt</maml:name>
+<maml:Description><maml:para>Specifies the string displayed at the start of the second and subsequent lines when multi-line input is being entered. The default value is '&gt;&gt;&gt;'. The empty string is valid.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>ContinuationPromptBackgroundColor</maml:name>
+<maml:Description><maml:para>Specifies the background color of the continuation prompt.
+</maml:para>
+<maml:para>The acceptable values for this parameter are: the same values as for the BackgroundColor parameter.
+</maml:para>
+</maml:Description>
+<command:parameterValueGroup><command:parameterValue required="false" variableLength="false">Black</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">DarkBlue</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">DarkGreen</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">DarkCyan</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">DarkRed</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">DarkMagenta</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">DarkYellow</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Gray</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">DarkGray</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Blue</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Green</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Cyan</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Red</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Magenta</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Yellow</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">White</command:parameterValue>
+</command:parameterValueGroup>
+<command:parameterValue required="true" variableLength="false">ConsoleColor</command:parameterValue>
+<dev:type><maml:name>ConsoleColor</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>ContinuationPromptForegroundColor</maml:name>
+<maml:Description><maml:para>Specifies the foreground color of the continuation prompt.
+</maml:para>
+<maml:para>The acceptable values for this parameter are: the same values as for BackgroundColor .
+</maml:para>
+</maml:Description>
+<command:parameterValueGroup><command:parameterValue required="false" variableLength="false">Black</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">DarkBlue</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">DarkGreen</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">DarkCyan</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">DarkRed</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">DarkMagenta</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">DarkYellow</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Gray</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">DarkGray</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Blue</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Green</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Cyan</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Red</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Magenta</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Yellow</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">White</command:parameterValue>
+</command:parameterValueGroup>
+<command:parameterValue required="true" variableLength="false">ConsoleColor</command:parameterValue>
+<dev:type><maml:name>ConsoleColor</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>DingDuration</maml:name>
+<maml:Description><maml:para>Specifies the duration of the beep, in milliseconds (ms), if the BellStyle parameter has a value of Audible. If you do not specify this parameter, and BellStyle is set to Audible, the default duration is 50 ms.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+<dev:type><maml:name>Int32</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>DingTone</maml:name>
+<maml:Description><maml:para>Specifies the tone of the beep, in hertz (Hz), if the BellStyle parameter is set to Audible. The acceptable values for this parameter are: integers in the range 37 to 32767 Hz. If you do not specify this parameter, and Bellstyle is Audible, the default tone is 1221 Hz.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+<dev:type><maml:name>Int32</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>EditMode</maml:name>
+<maml:Description><maml:para>Specifies the command line editing mode. The EditMode parameter resets any key bindings that you have set by running Set-PSReadlineKeyHandler.
+</maml:para>
+</maml:Description>
+<command:parameterValueGroup><command:parameterValue required="false" variableLength="false">Windows</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Emacs</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Vi</command:parameterValue>
+</command:parameterValueGroup>
+<command:parameterValue required="true" variableLength="false">EditMode</command:parameterValue>
+<dev:type><maml:name>EditMode</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>EmphasisBackgroundColor</maml:name>
+<maml:Description><maml:para>Specifies the background color that is used for emphasis, such as to highlight search text.
+</maml:para>
+<maml:para>The acceptable values for this parameter are: the same values as for BackgroundColor .
+</maml:para>
+</maml:Description>
+<command:parameterValueGroup><command:parameterValue required="false" variableLength="false">Black</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">DarkBlue</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">DarkGreen</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">DarkCyan</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">DarkRed</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">DarkMagenta</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">DarkYellow</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Gray</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">DarkGray</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Blue</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Green</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Cyan</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Red</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Magenta</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Yellow</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">White</command:parameterValue>
+</command:parameterValueGroup>
+<command:parameterValue required="true" variableLength="false">ConsoleColor</command:parameterValue>
+<dev:type><maml:name>ConsoleColor</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>EmphasisForegroundColor</maml:name>
+<maml:Description><maml:para>Specifies the foreground color that is used for emphasis, such as to highlight search text.
+</maml:para>
+<maml:para>The acceptable values for this parameter are: the same values as for BackgroundColor .
+</maml:para>
+</maml:Description>
+<command:parameterValueGroup><command:parameterValue required="false" variableLength="false">Black</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">DarkBlue</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">DarkGreen</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">DarkCyan</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">DarkRed</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">DarkMagenta</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">DarkYellow</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Gray</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">DarkGray</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Blue</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Green</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Cyan</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Red</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Magenta</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Yellow</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">White</command:parameterValue>
+</command:parameterValueGroup>
+<command:parameterValue required="true" variableLength="false">ConsoleColor</command:parameterValue>
+<dev:type><maml:name>ConsoleColor</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>ErrorBackgroundColor</maml:name>
+<maml:Description><maml:para>Specifies the background color that is used for errors.
+</maml:para>
+<maml:para>The acceptable values for this parameter are: the same values as for BackgroundColor .
+</maml:para>
+</maml:Description>
+<command:parameterValueGroup><command:parameterValue required="false" variableLength="false">Black</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">DarkBlue</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">DarkGreen</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">DarkCyan</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">DarkRed</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">DarkMagenta</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">DarkYellow</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Gray</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">DarkGray</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Blue</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Green</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Cyan</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Red</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Magenta</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Yellow</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">White</command:parameterValue>
+</command:parameterValueGroup>
+<command:parameterValue required="true" variableLength="false">ConsoleColor</command:parameterValue>
+<dev:type><maml:name>ConsoleColor</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>ErrorForegroundColor</maml:name>
+<maml:Description><maml:para>Specifies the foreground color that is used for errors.
+</maml:para>
+<maml:para>The acceptable values for this parameter are: the same values as for BackgroundColor .
+</maml:para>
+</maml:Description>
+<command:parameterValueGroup><command:parameterValue required="false" variableLength="false">Black</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">DarkBlue</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">DarkGreen</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">DarkCyan</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">DarkRed</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">DarkMagenta</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">DarkYellow</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Gray</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">DarkGray</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Blue</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Green</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Cyan</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Red</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Magenta</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Yellow</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">White</command:parameterValue>
+</command:parameterValueGroup>
+<command:parameterValue required="true" variableLength="false">ConsoleColor</command:parameterValue>
+<dev:type><maml:name>ConsoleColor</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>ExtraPromptLineCount</maml:name>
+<maml:Description><maml:para>Specifies the number of extra lines. Specify a value for this parameter if your prompt spans more than one line, and you want extra lines to be available when PSReadline displays the prompt after showing some output, such as when PSReadline returns a list of completions.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+<dev:type><maml:name>Int32</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>HistoryNoDuplicates</maml:name>
+<maml:Description><maml:para>Specifies that duplicate commands not added to PSReadline history.
+</maml:para>
+</maml:Description>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>HistorySavePath</maml:name>
+<maml:Description><maml:para>Specifies a path of the history file. If you do not add this parameter, the default path is ~\AppData\Roaming\PSReadline\$($host.Name)_history.txt.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>HistorySaveStyle</maml:name>
+<maml:Description><maml:para>Specifies how PSReadLine saves history. To avoid unexpected behavior with command history, if you do not want to use the default value, SaveIncrementally, then set this option before you run the first command line in a session.
+</maml:para>
+</maml:Description>
+<command:parameterValueGroup><command:parameterValue required="false" variableLength="false">SaveIncrementally</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">SaveAtExit</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">SaveNothing</command:parameterValue>
+</command:parameterValueGroup>
+<command:parameterValue required="true" variableLength="false">HistorySaveStyle</command:parameterValue>
+<dev:type><maml:name>HistorySaveStyle</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>HistorySearchCaseSensitive</maml:name>
+<maml:Description><maml:para>Indicates that the searching history is case sensitive in functions such as ReverseSearchHistory or HistorySearchBackward.
+</maml:para>
+</maml:Description>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>HistorySearchCursorMovesToEnd</maml:name>
+<maml:Description><maml:para>Indicates that the cursor moves to the end of commands that you load from history by using a search. You can search the command history by typing one or more of the characters at the start of the command, and then pressing the up or down arrows, or any other keys that you have mapped to cycling through the command history. If you do not specify this parameter, the cursor remains at the position it was when you pressed the up or down arrows.
+</maml:para>
+<maml:para>To turn off this option, you can run either of the following commands:
+</maml:para>
+<maml:para>`Set-PSReadlineOption -HistorySearchCursorMovesToEnd:$False`
+</maml:para>
+<maml:para>`(Get-PSReadlineOption).HistorySearchCursorMovesToEnd = $False`
+</maml:para>
+</maml:Description>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>MaximumHistoryCount</maml:name>
+<maml:Description><maml:para>Specifies the maximum number of commands to save in PSReadline history. PSReadline history not the same thing as Windows PowerShell history.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+<dev:type><maml:name>Int32</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>MaximumKillRingCount</maml:name>
+<maml:Description><maml:para>Specifies the maximum number of items stored in the kill ring.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+<dev:type><maml:name>Int32</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>ResetTokenColors</maml:name>
+<maml:Description><maml:para>Indicates that this cmdlet restores token colors to default settings.
+</maml:para>
+</maml:Description>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>ShowToolTips</maml:name>
+<maml:Description><maml:para>Indicates that when you are displaying possible completions tooltips are shown in the list of completions.
+</maml:para>
+</maml:Description>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>ViModeIndicator</maml:name>
+<maml:Description><maml:para>{{Fill ViModeIndicator Description}}
+</maml:para>
+</maml:Description>
+<command:parameterValueGroup><command:parameterValue required="false" variableLength="false">None</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Prompt</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Cursor</command:parameterValue>
+</command:parameterValueGroup>
+<command:parameterValue required="true" variableLength="false">ViModeStyle</command:parameterValue>
+<dev:type><maml:name>ViModeStyle</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>WordDelimiters</maml:name>
+<maml:Description><maml:para>Specifies the characters that delimit words for functions like ForwardWord or KillWord. The default value is the following list of characters: &gt;;:,.[]{}()/\|^&amp;*-=+
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+</command:syntaxItem>
+<command:syntaxItem><maml:name>Set-PSReadlineOption</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none"><maml:name>TokenKind</maml:name>
+<maml:Description><maml:para>Specifies the kind of token when you are setting token coloring options with the ForegroundColor and BackgroundColor parameters. The acceptable values for this parameter are:
+</maml:para>
+<maml:para>- None 
+</maml:para>
+<maml:para>- Comment
+</maml:para>
+<maml:para>- Keyword
+</maml:para>
+<maml:para>- String
+</maml:para>
+<maml:para>- Operator
+</maml:para>
+<maml:para>- Variable
+</maml:para>
+<maml:para>- Command
+</maml:para>
+<maml:para>- Parameter
+</maml:para>
+<maml:para>- Type
+</maml:para>
+<maml:para>- Number
+</maml:para>
+<maml:para>- Member
+</maml:para>
+</maml:Description>
+<command:parameterValueGroup><command:parameterValue required="false" variableLength="false">None</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Comment</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Keyword</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">String</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Operator</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Variable</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Command</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Parameter</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Type</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Number</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Member</command:parameterValue>
+</command:parameterValueGroup>
+<command:parameterValue required="true" variableLength="false">TokenClassification</command:parameterValue>
+<dev:type><maml:name>TokenClassification</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none"><maml:name>ForegroundColor</maml:name>
+<maml:Description><maml:para>Specifies the foreground color for the token kind that is specified by the TokenKind parameter.
+</maml:para>
+<maml:para>The acceptable values for this parameter are: the same values as for BackgroundColor .
+</maml:para>
+</maml:Description>
+<command:parameterValueGroup><command:parameterValue required="false" variableLength="false">Black</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">DarkBlue</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">DarkGreen</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">DarkCyan</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">DarkRed</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">DarkMagenta</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">DarkYellow</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Gray</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">DarkGray</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Blue</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Green</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Cyan</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Red</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Magenta</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Yellow</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">White</command:parameterValue>
+</command:parameterValueGroup>
+<command:parameterValue required="true" variableLength="false">ConsoleColor</command:parameterValue>
+<dev:type><maml:name>ConsoleColor</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none"><maml:name>BackgroundColor</maml:name>
+<maml:Description><maml:para>Specifies the background color for the token kind that is specified by the TokenKind parameter.
+</maml:para>
+<maml:para>The acceptable values for this parameter are:
+</maml:para>
+<maml:para>- Black 
+</maml:para>
+<maml:para>- DarkBlue
+</maml:para>
+<maml:para>- DarkGreen
+</maml:para>
+<maml:para>- DarkCyan
+</maml:para>
+<maml:para>- DarkRed
+</maml:para>
+<maml:para>- DarkMagenta
+</maml:para>
+<maml:para>- DarkYellow
+</maml:para>
+<maml:para>- Gray
+</maml:para>
+<maml:para>- DarkGray
+</maml:para>
+<maml:para>- Blue
+</maml:para>
+<maml:para>- Green
+</maml:para>
+<maml:para>- Cyan
+</maml:para>
+<maml:para>- Red
+</maml:para>
+<maml:para>- Magenta
+</maml:para>
+<maml:para>- Yellow
+</maml:para>
+<maml:para>- White
+</maml:para>
+</maml:Description>
+<command:parameterValueGroup><command:parameterValue required="false" variableLength="false">Black</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">DarkBlue</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">DarkGreen</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">DarkCyan</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">DarkRed</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">DarkMagenta</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">DarkYellow</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Gray</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">DarkGray</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Blue</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Green</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Cyan</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Red</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Magenta</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Yellow</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">White</command:parameterValue>
+</command:parameterValueGroup>
+<command:parameterValue required="true" variableLength="false">ConsoleColor</command:parameterValue>
+<dev:type><maml:name>ConsoleColor</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+</command:syntaxItem>
+</command:syntax>
+<command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>AddToHistoryHandler</maml:name>
+<maml:Description><maml:para>Specifies a ScriptBlock that controls which commands get added to PSReadline history.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">System.Func`2[System.String,System.Boolean]</command:parameterValue>
+<dev:type><maml:name>System.Func`2[System.String,System.Boolean]</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none"><maml:name>BackgroundColor</maml:name>
+<maml:Description><maml:para>Specifies the background color for the token kind that is specified by the TokenKind parameter.
+</maml:para>
+<maml:para>The acceptable values for this parameter are:
+</maml:para>
+<maml:para>- Black 
+</maml:para>
+<maml:para>- DarkBlue
+</maml:para>
+<maml:para>- DarkGreen
+</maml:para>
+<maml:para>- DarkCyan
+</maml:para>
+<maml:para>- DarkRed
+</maml:para>
+<maml:para>- DarkMagenta
+</maml:para>
+<maml:para>- DarkYellow
+</maml:para>
+<maml:para>- Gray
+</maml:para>
+<maml:para>- DarkGray
+</maml:para>
+<maml:para>- Blue
+</maml:para>
+<maml:para>- Green
+</maml:para>
+<maml:para>- Cyan
+</maml:para>
+<maml:para>- Red
+</maml:para>
+<maml:para>- Magenta
+</maml:para>
+<maml:para>- Yellow
+</maml:para>
+<maml:para>- White
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">ConsoleColor</command:parameterValue>
+<dev:type><maml:name>ConsoleColor</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>BellStyle</maml:name>
+<maml:Description><maml:para>Specifies how PSReadLine responds to various error conditions or user prompts. If you do not specify this parameter, the default response is Audible. The acceptable values for this parameter are:
+</maml:para>
+<maml:para>- None. No feedback.  - Visual. Text flashes briefly.  - Audible. A short beep.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">BellStyle</command:parameterValue>
+<dev:type><maml:name>BellStyle</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>CommandValidationHandler</maml:name>
+<maml:Description><maml:para>Specifies a ScriptBlock that is called from ValidateAndAcceptLine . If an exception is thrown, validation fails and the error is reported. Before throwing an exception, the validation handler can place the cursor at the point of the error to make it easier to fix. A validation handler can also change the command line, such as to correct common typographical errors.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">System.Action`1[System.Management.Automation.Language.CommandAst]</command:parameterValue>
+<dev:type><maml:name>System.Action`1[System.Management.Automation.Language.CommandAst]</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>CompletionQueryItems</maml:name>
+<maml:Description><maml:para>Specifies the maximum number of completion items that are shown without prompting. If the number of items to show is greater than this value, PSReadline prompts you to specify yes or no (y/n) before it displays the completion items. The default maximum number is 100.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+<dev:type><maml:name>Int32</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>ContinuationPrompt</maml:name>
+<maml:Description><maml:para>Specifies the string displayed at the start of the second and subsequent lines when multi-line input is being entered. The default value is '&gt;&gt;&gt;'. The empty string is valid.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>ContinuationPromptBackgroundColor</maml:name>
+<maml:Description><maml:para>Specifies the background color of the continuation prompt.
+</maml:para>
+<maml:para>The acceptable values for this parameter are: the same values as for the BackgroundColor parameter.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">ConsoleColor</command:parameterValue>
+<dev:type><maml:name>ConsoleColor</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>ContinuationPromptForegroundColor</maml:name>
+<maml:Description><maml:para>Specifies the foreground color of the continuation prompt.
+</maml:para>
+<maml:para>The acceptable values for this parameter are: the same values as for BackgroundColor .
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">ConsoleColor</command:parameterValue>
+<dev:type><maml:name>ConsoleColor</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>DingDuration</maml:name>
+<maml:Description><maml:para>Specifies the duration of the beep, in milliseconds (ms), if the BellStyle parameter has a value of Audible. If you do not specify this parameter, and BellStyle is set to Audible, the default duration is 50 ms.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+<dev:type><maml:name>Int32</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>DingTone</maml:name>
+<maml:Description><maml:para>Specifies the tone of the beep, in hertz (Hz), if the BellStyle parameter is set to Audible. The acceptable values for this parameter are: integers in the range 37 to 32767 Hz. If you do not specify this parameter, and Bellstyle is Audible, the default tone is 1221 Hz.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+<dev:type><maml:name>Int32</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>EditMode</maml:name>
+<maml:Description><maml:para>Specifies the command line editing mode. The EditMode parameter resets any key bindings that you have set by running Set-PSReadlineKeyHandler.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">EditMode</command:parameterValue>
+<dev:type><maml:name>EditMode</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>EmphasisBackgroundColor</maml:name>
+<maml:Description><maml:para>Specifies the background color that is used for emphasis, such as to highlight search text.
+</maml:para>
+<maml:para>The acceptable values for this parameter are: the same values as for BackgroundColor .
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">ConsoleColor</command:parameterValue>
+<dev:type><maml:name>ConsoleColor</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>EmphasisForegroundColor</maml:name>
+<maml:Description><maml:para>Specifies the foreground color that is used for emphasis, such as to highlight search text.
+</maml:para>
+<maml:para>The acceptable values for this parameter are: the same values as for BackgroundColor .
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">ConsoleColor</command:parameterValue>
+<dev:type><maml:name>ConsoleColor</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>ErrorBackgroundColor</maml:name>
+<maml:Description><maml:para>Specifies the background color that is used for errors.
+</maml:para>
+<maml:para>The acceptable values for this parameter are: the same values as for BackgroundColor .
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">ConsoleColor</command:parameterValue>
+<dev:type><maml:name>ConsoleColor</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>ErrorForegroundColor</maml:name>
+<maml:Description><maml:para>Specifies the foreground color that is used for errors.
+</maml:para>
+<maml:para>The acceptable values for this parameter are: the same values as for BackgroundColor .
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">ConsoleColor</command:parameterValue>
+<dev:type><maml:name>ConsoleColor</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>ExtraPromptLineCount</maml:name>
+<maml:Description><maml:para>Specifies the number of extra lines. Specify a value for this parameter if your prompt spans more than one line, and you want extra lines to be available when PSReadline displays the prompt after showing some output, such as when PSReadline returns a list of completions.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+<dev:type><maml:name>Int32</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none"><maml:name>ForegroundColor</maml:name>
+<maml:Description><maml:para>Specifies the foreground color for the token kind that is specified by the TokenKind parameter.
+</maml:para>
+<maml:para>The acceptable values for this parameter are: the same values as for BackgroundColor .
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">ConsoleColor</command:parameterValue>
+<dev:type><maml:name>ConsoleColor</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>HistoryNoDuplicates</maml:name>
+<maml:Description><maml:para>Specifies that duplicate commands not added to PSReadline history.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>HistorySavePath</maml:name>
+<maml:Description><maml:para>Specifies a path of the history file. If you do not add this parameter, the default path is ~\AppData\Roaming\PSReadline\$($host.Name)_history.txt.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>HistorySaveStyle</maml:name>
+<maml:Description><maml:para>Specifies how PSReadLine saves history. To avoid unexpected behavior with command history, if you do not want to use the default value, SaveIncrementally, then set this option before you run the first command line in a session.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">HistorySaveStyle</command:parameterValue>
+<dev:type><maml:name>HistorySaveStyle</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>HistorySearchCaseSensitive</maml:name>
+<maml:Description><maml:para>Indicates that the searching history is case sensitive in functions such as ReverseSearchHistory or HistorySearchBackward.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>HistorySearchCursorMovesToEnd</maml:name>
+<maml:Description><maml:para>Indicates that the cursor moves to the end of commands that you load from history by using a search. You can search the command history by typing one or more of the characters at the start of the command, and then pressing the up or down arrows, or any other keys that you have mapped to cycling through the command history. If you do not specify this parameter, the cursor remains at the position it was when you pressed the up or down arrows.
+</maml:para>
+<maml:para>To turn off this option, you can run either of the following commands:
+</maml:para>
+<maml:para>`Set-PSReadlineOption -HistorySearchCursorMovesToEnd:$False`
+</maml:para>
+<maml:para>`(Get-PSReadlineOption).HistorySearchCursorMovesToEnd = $False`
+</maml:para>
+</maml:Description>
+<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>MaximumHistoryCount</maml:name>
+<maml:Description><maml:para>Specifies the maximum number of commands to save in PSReadline history. PSReadline history not the same thing as Windows PowerShell history.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+<dev:type><maml:name>Int32</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>MaximumKillRingCount</maml:name>
+<maml:Description><maml:para>Specifies the maximum number of items stored in the kill ring.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+<dev:type><maml:name>Int32</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>ResetTokenColors</maml:name>
+<maml:Description><maml:para>Indicates that this cmdlet restores token colors to default settings.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>ShowToolTips</maml:name>
+<maml:Description><maml:para>Indicates that when you are displaying possible completions tooltips are shown in the list of completions.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none"><maml:name>TokenKind</maml:name>
+<maml:Description><maml:para>Specifies the kind of token when you are setting token coloring options with the ForegroundColor and BackgroundColor parameters. The acceptable values for this parameter are:
+</maml:para>
+<maml:para>- None 
+</maml:para>
+<maml:para>- Comment
+</maml:para>
+<maml:para>- Keyword
+</maml:para>
+<maml:para>- String
+</maml:para>
+<maml:para>- Operator
+</maml:para>
+<maml:para>- Variable
+</maml:para>
+<maml:para>- Command
+</maml:para>
+<maml:para>- Parameter
+</maml:para>
+<maml:para>- Type
+</maml:para>
+<maml:para>- Number
+</maml:para>
+<maml:para>- Member
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">TokenClassification</command:parameterValue>
+<dev:type><maml:name>TokenClassification</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>ViModeIndicator</maml:name>
+<maml:Description><maml:para>{{Fill ViModeIndicator Description}}
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">ViModeStyle</command:parameterValue>
+<dev:type><maml:name>ViModeStyle</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>WordDelimiters</maml:name>
+<maml:Description><maml:para>Specifies the characters that delimit words for functions like ForwardWord or KillWord. The default value is the following list of characters: &gt;;:,.[]{}()/\|^&amp;*-=+
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+</command:parameters>
+<command:inputTypes><command:inputType><dev:type><maml:name> </maml:name>
+</dev:type>
+<maml:description><maml:para>You cannot pipe objects to this cmdlet.
+</maml:para>
+</maml:description>
+</command:inputType>
+</command:inputTypes>
+<command:returnValues><command:returnValue><dev:type><maml:name> </maml:name>
+</dev:type>
+<maml:description><maml:para>This cmdlet does not generate output.
+</maml:para>
+</maml:description>
+</command:returnValue>
+</command:returnValues>
+<maml:alertSet><maml:alert><maml:para>
+</maml:para>
+</maml:alert>
+</maml:alertSet>
+<command:examples><command:example><maml:title>Example 1: Set values for Comment type</maml:title>
+<dev:code>PS C:\&gt;Set-PSReadlineOption -TokenKind Comment -ForegroundColor Green -BackgroundColor Gray</dev:code>
+<dev:remarks><maml:para>This command sets tokens of the type Comment to be displayed in PSReadline in green text on a gray background.
+</maml:para>
+</dev:remarks>
+</command:example>
+<command:example><maml:title>Example 2: Set bell style</maml:title>
+<dev:code>PS C:\&gt;Set-PSReadlineOption -BellStyle Audible -DingTone 1221 -DingDuration 60</dev:code>
+<dev:remarks><maml:para>This cmdlet instructs PSReadline to respond to errors and other conditions that require user input by emitting an audible beep or sound at 1221 Hz for 60 ms.
+</maml:para>
+</dev:remarks>
+</command:example>
+</command:examples>
+<command:relatedLinks><maml:navigationLink><maml:linkText>Online Version:</maml:linkText>
+<maml:uri>http://go.microsoft.com/fwlink/?LinkId=821453</maml:uri>
+</maml:navigationLink>
+<maml:navigationLink><maml:linkText>Get-PSReadlineKeyHandler</maml:linkText>
+<maml:uri></maml:uri>
+</maml:navigationLink>
+<maml:navigationLink><maml:linkText>Remove-PSReadlineKeyHandler</maml:linkText>
+<maml:uri></maml:uri>
+</maml:navigationLink>
+<maml:navigationLink><maml:linkText>Get-PSReadlineOption</maml:linkText>
+<maml:uri></maml:uri>
+</maml:navigationLink>
+<maml:navigationLink><maml:linkText>Set-PSReadlineKeyHandler</maml:linkText>
+<maml:uri></maml:uri>
+</maml:navigationLink>
+</command:relatedLinks>
+</command:command>
+</helpItems>
