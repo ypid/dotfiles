@@ -15,6 +15,12 @@ function sudo() {
         start-process $args[0] -ArgumentList $args[1..$args.Length] -verb "runAs"
     }
 }
+function Get-Uptime() {
+   $os = Get-WmiObject win32_operatingsystem
+   $uptime = (Get-Date) - ($os.ConvertToDateTime($os.lastbootuptime))
+   $Display = "Uptime: " + $Uptime.Days + " days, " + $Uptime.Hours + " hours, " + $Uptime.Minutes + " minutes" 
+   Write-Output $Display
+}
 
 # System Update - Update RubyGems, NPM, and their installed packages
 function System-Update() {

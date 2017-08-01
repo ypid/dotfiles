@@ -284,3 +284,9 @@
 [submodule "submodules/git-config-adam"]
 	path = submodules/git-config-adam
 	url = https://github.com/aspiers/git-config.git
+[submodule "windows/WindowsPowerShell/Modules/PowerBash"]
+	path = windows/WindowsPowerShell/Modules/PowerBash
+	url = https://github.com/jimmehc/PowerBash.git
+[submodule "windows/WindowsPowerShell/Oh-My-Posh"]
+	path = windows/WindowsPowerShell/Oh-My-Posh
+	url = https://github.com/pecigonzalo/Oh-My-Posh.git

@@ -1,6 +1,9 @@
 # Profile for the Microsoft.Powershell Shell, only. (Not Visual Studio or other PoSh instances)
 # ===========
 
+# Set terminal encoding to a sensible one so that `git diff` works correctly.
+$env:LC_ALL='C.UTF-8'
+
 Push-Location (Split-Path -parent $profile)
 "components","functions","aliases","exports","extra" | Where-Object {Test-Path "$_.ps1"} | ForEach-Object -process {Invoke-Expression ". .\$_.ps1"}
 Pop-Location

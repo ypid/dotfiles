@@ -115,14 +115,17 @@ alias v vagrant
 alias g git
 alias a 'git-annex'
 function ga { git add $args }
-function gc  { git commit --verbose $args }
-function gca { gc --all $args }
+# function gc  { git commit --verbose $args }
+function gca { git commit --all }
 function gst { git status $args }
 function glg { git log --stat --show-signature $args }
 function gpa { git pa $args }
 function wd { git diff --color-words --no-index $args }
 function gco { git checkout $args }
 function gb { git branch $args }
+
+# Just use regular git log on Windows
+alias tig glg
 
 
 
