@@ -20,7 +20,7 @@
 Sanitize the configuration file doublecmd.xml of the Double Commander and
 produce a cleaned version of the file ready for sharing and using on other
 systems.
-Workaround for: http://doublecmd.sourceforge.net/mantisbt/view.php?id=1028
+Workaround for: https://doublecmd.sourceforge.io/mantisbt/view.php?id=1028
 """
 
 __version__ = '0.9'

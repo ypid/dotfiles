@@ -302,7 +302,7 @@ Host key+M    | Insert Ctrl+Alt+Del | Nice to have   |
 
 See the manual for the default shortcuts. I added my own which I think are more convenient.
 
-Note that using `Shift+[A-Z]` currently has side effects when using the RenameOnly function [currently](http://doublecmd.sourceforge.net/mantisbt/view.php?id=973) so I avoid to use `Shift+[A-Z]` for actions.
+Note that using `Shift+[A-Z]` currently has side effects when using the RenameOnly function [currently](https://doublecmd.sourceforge.io/mantisbt/view.php?id=973) so I avoid to use `Shift+[A-Z]` for actions.
 
 Hint: [Double Commander] works quite nicely together with [Neo2][] …
 

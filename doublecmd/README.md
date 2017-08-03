@@ -1,6 +1,6 @@
 # My configuration for the double commander
 
-This directory contains my configuration for the [Double Commander](http://doublecmd.sourceforge.net/).
+This directory contains my configuration for the [Double Commander](https://doublecmd.sourceforge.io/).
 
 You can run `make install` to install the configuration.
 
