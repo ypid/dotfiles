@@ -32,8 +32,12 @@ function cd {
 }
 
 
-# Missing Bash aliases
+# Missing GNU/Linux basics
 alias time Measure-Command
+function md5sum { $(CertUtil -hashfile $args MD5)[1] -replace " ",""; echo "Don't use MD5 anymore ;-)" }
+function sha1sum { $(CertUtil -hashfile $args SHA1)[1] -replace " ",""; echo "Don't use SHA1 anymore ;-)" }
+function sha256sum { $(CertUtil -hashfile $args SHA256)[1] -replace " ","" }
+function sha512sum { $(CertUtil -hashfile $args SHA512)[1] -replace " ","" }
 
 # Correct PowerShell Aliases if tools are available (aliases win if set)
 # WGet: Use `ls.exe` if available

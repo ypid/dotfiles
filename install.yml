@@ -12,7 +12,7 @@
     - 'mkdir -p ~/.asdf-writable/installs'
     - 'mkdir -p ~/.asdf-writable/keyrings'
     - 'mkdir -p ~/.asdf-writable/plugins'
-    - 'ln -sf "$PWD/asdf"/* ~/.asdf-writable'
+    - 'if [ "$(find "$PWD/asdf" -maxdepth 1 -type f|wc -l)" != "0" ]; then ln -sf "$PWD/asdf"/* ~/.asdf-writable; fi'
 
 - link:
 
@@ -78,6 +78,11 @@
       create: true
       relink: true
       path: assh.yml
+
+    ~/.sshrc:
+      create: true
+      relink: true
+      path: sshrc
 
     ~/.config/git/config:
       create: true

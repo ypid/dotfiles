@@ -13,7 +13,6 @@ pathprepend() {
     fi
   done
 }
-
 pathappend() {
   for ARG in "$@"
   do
@@ -24,15 +23,44 @@ pathappend() {
   done
 }
 
+## Simplified based on: https://github.com/Russell91/sshrc/blob/master/sshrc
+get_ssh_cli_host() {
+  while [[ -n $1 ]]; do
+    case $1 in
+      -* ) ;;
+      *  ) echo "$1"; return 0 ;;
+    esac
+    shift
+  done
+  return 1
+}
+
 # https://gist.github.com/florianbeer/ee02c149a7e25f643491
-ssh() {
-    if [ "$(ps -p "$(ps -p $$ -o ppid= | sed 's/\s//g;')" -o comm=)" = "tmux" ]; then
-        tmux rename-window "$(echo "$@" | rev | cut -d ' ' -f1 | rev | cut -d . -f 1)"
+ssh_wrapper() {
+    if [ -z "$(get_ssh_cli_host "$@")" ]; then
+      command ssh "$@"; return 1;
+    fi
+    if ps -p "$(ps -p $$ -o ppid= | sed 's/\s//g;')" -o comm= | grep -q tmux; then
+        tmux rename-window "$(get_ssh_cli_host "$@")"
         command ssh "$@"
         tmux set-window-option automatic-rename "on" 1>/dev/null
     else
-        echo -ne "\033]0;$(echo "$@" | rev | cut -d ' ' -f1 | rev)\007"
+        echo -ne "\033]0;$(get_ssh_cli_host "$@")\007"
         command ssh "$@"
+        echo -ne "\033]0;Terminal\007"
+    fi
+}
+sshrc_wrapper() {
+    if [ -z "$(get_ssh_cli_host "$@")" ]; then
+      command ssh "$@"; return 1;
+    fi
+    if ps -p "$(ps -p $$ -o ppid= | sed 's/\s//g;')" -o comm= | grep -q tmux; then
+        tmux rename-window "$(get_ssh_cli_host "$@")"
+        command sshrc "$@"
+        tmux set-window-option automatic-rename "on" 1>/dev/null
+    else
+        echo -ne "\033]0;$(get_ssh_cli_host "$@")\007"
+        command sshrc "$@"
         echo -ne "\033]0;Terminal\007"
     fi
 }

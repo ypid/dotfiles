@@ -186,6 +186,7 @@ return
 #j::Send ^{Esc}
 
 ; Ctrl+Super+[Level4 Shift][special-keys] | Volume down by 5 %
+; Does not work because the >< key is intercepted by Neo2.
 ^#>::SoundSet -5
 ; Ctrl+Super+Y                            | Volume up by 5 %
 ^#y::SoundSet +5

@@ -96,7 +96,10 @@ alias ,r='editor'
 
 ## SSH {{{
 
+alias ssh='ssh_wrapper'
+alias sshrc='sshrc_wrapper'
 alias s='ssh'
+alias j='sshrc'
 alias so='assh sockets'
 alias sk='assh sockets flush'
 
@@ -192,7 +195,7 @@ alias tmux='TERM=screen-256color-bce tmux'
 
 alias d='docker'
 alias t='task'
-alias h='htop'
+alias h='history |grep $1'
 alias '*'='dict'
 alias con='ping heise.de'
 alias a='git-annex'
@@ -218,12 +221,22 @@ alias percent-decode='python -c "import urllib, sys; print urllib.unquote(sys.ar
 
 alias badblocks='echo "Use badblocks_and_secure_erase."'
 
-alias ai='apt install'
-alias ap='apt purge'
-alias as='\apt search'
-alias ash='\apt show'
-alias agg='apt upgrade'
-alias ass='wajig statussearch'
+if [ -e '/etc/apt' ]; then
+    alias ai='apt install'
+    alias ap='apt purge'
+    alias as='\apt search'
+    alias ash='\apt show'
+    alias agg='apt upgrade'
+    alias ass='wajig statussearch'
+elif [ -e '/etc/zypp' ]; then
+    alias ai='zypper install'
+    alias ap='zypper remove'
+    alias as='zypper search'
+    alias ash='zypper info'
+    alias agg='zypper upgrade'
+    alias ass='zypper search'
+fi
+
 if [[ "$USER" != 'root' ]]; then
     alias mount='sudo mount'
     alias umount='sudo umount'

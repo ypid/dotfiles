@@ -155,7 +155,8 @@ Ctrl+Alt+G       | `reboot`                                  | Yes            |
 Super+J          | Launcher application finder               | Nice to have   | Gnome activities or substation for other WMs. Gnome does by default trigger on Super button press which is a nice feature but does not work on other WMs yet?
 Super            | Launcher application finder               | Yes            | Only works with Gnome.
 Shift+Ctrl+Alt+O | Launch program `eject`                    | No             | eject removable media, FIXME
-Ctrl+Alt+Q       | Show [Neo Layout Viewer][NeoLayoutViewer] | Yes            |
+Ctrl+Alt+Q       | Show [Neo Layout Viewer][NeoLayoutViewer] | Yes            | Mod3+F1 does not work on GNU/Linux (xfce). Need to change NeoVars to Ctrl+Alt+Q then :)
+Shift+Pause      | Switch between Neo2 and querz             | Yes            | FIXME: Search for better shortcut. The ThinkPad X1 does not have "pause".
 
 [NeoLayoutViewer](https://github.com/YggdrasiI/NeoLayoutViewer.git)
 
@@ -191,9 +192,9 @@ Ctrl+K     | Rate the current song 5 stars | No |
 
 ### Windows and tabs
 
-Applies to: Firefox, GNOME Terminal, Double Commander.
+Applies to: Firefox, Double Commander, GNOME Terminal, ConEmu.
 
-For GNOME Terminal, each shortcut requires additionally the use of the Shift modifier key.
+For GNOME Terminal (and ConEmu), each shortcut requires additionally the use of the Shift modifier key.
 
 Shortcut       | Function                                | Left hand only | Comment
 -------------  | -------------                           | -------------  | -------------
@@ -204,11 +205,22 @@ Ctrl+Tab       | Switch to right tab, cycle through tabs | Yes            |
 Shift+Ctrl+Tab | Switch to left tab, cycle through tabs  | Yes            |
 Ctrl+J         | Switch to left tab                      | Not really     |
 Ctrl+K         | Switch to right tab                     | Not really     |
-Ctrl+[+-]      | Increase/Decrease (zoom) font size      | Nice to have   | Currently not supported in Double Commander. Level 3 [Neo2][] plus and minus work in Firefox (after setting the − via the Add-On Customizable Shortcuts). GNOME Terminal does not allow to configure „−” currently (can this be done in Gtk programs?).
+Ctrl+[+-]      | Increase/Decrease (zoom) font size      | Nice to have   | Currently not supported in Double Commander. Level 3 [Neo2][] plus and minus work in Firefox (after setting the − via the Add-On Customizable Shortcuts). GNOME Terminal does not allow to configure „−” currently (can this be done in Gtk programs?). Works in ConEmu (without Shift).
 
 #### Used keys
 
 * Ctrl + [CDJKNQVWX]
+
+### ConEmu
+
+ConEmu together with a lot of other "fine tuning" help to make the different shells on M$ somewhat usable.
+
+Shortcut      | Function                               | Left hand only | Comment
+------------- | -------------                          | -------------  | -------------
+Shift+Ctrl+N  | Opens new vertical split               | No             | As in tmux c-a %.
+Shift+Ctrl+M  | Opens PowerShell as admin in a new tab | No             |
+Shift+Ctrl+I  | Opens CMD in a new tab                 | No             |
+Shift+Ctrl+O  | Opens CMD as admin in a new tab        | No             |
 
 ### Autokey
 
