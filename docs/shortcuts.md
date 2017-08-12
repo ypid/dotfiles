@@ -273,14 +273,6 @@ Shortcut      | Function                          | Left hand only | Comment
 Ctrl+H        | Change spell check language to de | No             | See [script](/autokey/Emitting keystrokes/Pidgin/Change language in Pidgin to de.py)
 Ctrl+L        | Change spell check language to en | No             | See [script](/autokey/Emitting keystrokes/Pidgin/Change language in Pidgin to en.py)
 
-###### ERP system Steps Ahead
-
-This section describes some mapping which I added to make working with the ERP system [Steps Ahead][] more pleasant. I am relaying on an ugly hack to achieve this because [Steps Ahead][] (even in the current version 9.5.3) does not allow to remap or add shortcuts to actions which already have a default shortcut … So I use [autokey][] to do this anyway. It works the following way: When autokey intercepts one of the following shortcuts it emits the shortcut on which Steps Ahead triggers the desired action.
-
-Shortcut      | Function                          | Left hand only | Comment
-------------- | -------------                     | -------------  | -------------
-Shift+Super+S | Clone dataset (copy and paste it) | Yes            | Emits Shift+F6 followed by enter (to acknowledge the „Do you really want to copy …“ dialog).
-
 ### Firefox
 
 I use [VimFx][] to get all the Vim basics …
@@ -289,7 +281,6 @@ To customize Firefox even further I use [Customizable Shortcuts](https://github.
 
 Shortcut      | Function                  | Left hand only | Comment
 ------------- | -------------             | -------------  | -------------
-Ctrl+U        | No action                 | No             | Disabled default "View page source" because I hit Ctrl+u multiple times in the location bar to delete the line.
 Shift+Ctrl+S  | View page source          | Yes            |
 Shift+Ctrl+D  | Web console (d for Debug) | Yes            |
 Shift+Ctrl+W  | Undo Close Tab            | Yes            |

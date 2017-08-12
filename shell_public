@@ -99,7 +99,7 @@ alias ,r='editor'
 alias ssh='ssh_wrapper'
 alias sshrc='sshrc_wrapper'
 alias s='ssh'
-alias j='sshrc'
+alias i='sshrc'
 alias so='assh sockets'
 alias sk='assh sockets flush'
 
