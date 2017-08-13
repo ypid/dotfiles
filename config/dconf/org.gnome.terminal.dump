@@ -1,0 +1,26 @@
+[legacy]
+dark-theme=false
+new-terminal-mode='window'
+menu-accelerator-enabled=false
+confirm-close=true
+shell-integration-enabled=true
+default-show-menubar=true
+mnemonics-enabled=false
+schema-version=uint32 3
+encodings=['UTF-8']
+shortcuts-enabled=true
+
+[legacy/keybindings]
+help='disabled'
+new-tab='<Primary><Shift>n'
+new-window='<Primary><Shift>t'
+zoom-out='<Primary>minus'
+switch-to-tab-1='<Alt>m'
+switch-to-tab-2='<Alt>comma'
+switch-to-tab-3='<Alt>period'
+switch-to-tab-4='<Alt>j'
+switch-to-tab-5='<Alt>k'
+switch-to-tab-6='<Alt>l'
+switch-to-tab-7='<Alt>u'
+switch-to-tab-8='<Alt>i'
+switch-to-tab-9='<Alt>o'

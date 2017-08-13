@@ -1,0 +1,12 @@
+[/]
+confirm-trash=true
+show-bookmarks-in-to-menus=true
+enable-delete=true
+thumbnail-limit=uint64 2147483648
+show-label-search-icon-toolbar=false
+swap-trash-delete=true
+show-icon-text='always'
+show-hidden-files=false
+date-format='iso'
+show-image-thumbnails='always'
+show-location-entry=true

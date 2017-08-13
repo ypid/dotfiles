@@ -234,6 +234,11 @@
       relink: true
       path: oh-my-zsh-custom
 
+    ~/.config/synapse/config.json:
+      create: true
+      relink: true
+      path: config/synapse/config.json
+
     ~/.config/dconf/dconf_backup:
       create: true
       relink: true
@@ -258,6 +263,12 @@
       create: true
       relink: true
       path: scripts/dconf-backup/README.md
+
+    ~/.config/dconf/Makefile:
+      create: true
+      relink: true
+      force: true
+      path: scripts/dconf-backup/Makefile
 
     ~/.config/.neo_layout_viewer.conf:
       create: true
@@ -317,8 +328,11 @@
       path: submodules/git-config-adam/bin/git-annex-finddups
 
 - shell:
+    - 'rsync --recursive --ignore-existing config/ ~/.config'
+    - 'rsync --recursive --ignore-existing local/ ~/.local'
     - 'rm -f ~/.config/shell.d/shell_extend_PATH ~/.config/shell.d/public'
     - 'rm -f ~/.asdf'
+    - 'if command -v dconf && [ ! -e ~/.config/dconf/user ]; then make --directory ~/.config/dconf restore; fi'
     - 'if [ ! -e "$HOME/.mrconfig" ]; then cp myrepos/mrconfig_home_template "$HOME/.mrconfig"; fi'
 
 - clean:

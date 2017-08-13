@@ -1,0 +1,51 @@
+[G0]
+timername=1m
+time=60
+timercommand=
+timerinfo=1m 0s
+is_countdown=true
+
+[G1]
+timername=3m
+time=180
+timercommand=
+timerinfo=3m 0s
+is_countdown=true
+
+[G2]
+timername=7m
+time=420
+timercommand=
+timerinfo=7m 0s
+is_countdown=true
+
+[G3]
+timername=10m
+time=600
+timercommand=
+timerinfo=10m 0s
+is_countdown=true
+
+[G4]
+timername=30m
+time=1800
+timercommand=
+timerinfo=30m 0s
+is_countdown=true
+
+[G5]
+timername=1h
+time=3600
+timercommand=
+timerinfo=1h 0m 0s
+is_countdown=true
+
+[others]
+nowin_if_alarm=false
+selecting_starts=true
+use_global_command=false
+global_command=
+repeat_alarm=false
+repetitions=1
+repeat_interval=10
+

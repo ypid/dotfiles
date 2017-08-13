@@ -1,0 +1,6 @@
+[Desktop Entry]
+NoDisplay=1
+Exec=evince
+MimeType=application/pdf
+Name=evince
+Type=Application
