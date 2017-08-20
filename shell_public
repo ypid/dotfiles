@@ -14,6 +14,11 @@ export BYOBU_PREFIX="/usr"
 export BYOBU_CONFIG_DIR="$HOME/.byobu"
 export EDITOR=vim
 
+export LANG='en_US.UTF-8'
+export LANGUAGE='en_US:en'
+# http://terokarvinen.com/international_iso-8601_date_on_thunderbird.html
+export LC_TIME='en_DK.UTF-8'
+
 ## }}}
 
 ## Enable color support of ls and also add handy aliases {{{
