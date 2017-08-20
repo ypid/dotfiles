@@ -332,7 +332,8 @@
     - 'rsync --recursive --ignore-existing local/ ~/.local'
     - 'rm -f ~/.config/shell.d/shell_extend_PATH ~/.config/shell.d/public'
     - 'rm -f ~/.asdf'
-    - 'if command -v dconf && [ ! -e ~/.config/dconf/user ]; then make --directory ~/.config/dconf restore; fi'
+    ## Needs to be run with X11 $DISPLAY set:
+    - 'if command -v dconf && [ ! -e ~/.config/dconf/user ]; then make --directory ~/.config/dconf restore || true; fi'
     - 'if [ ! -e "$HOME/.mrconfig" ]; then cp myrepos/mrconfig_home_template "$HOME/.mrconfig"; fi'
 
 - clean:
