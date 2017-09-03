@@ -3,6 +3,7 @@
 ; # 	Win (Windows logo key)
 ; ! 	Alt
 
+SetTitleMatchMode, RegEx
 
 ; Ctrl+Alt+A    | Tile window on the left, View split on left
 ; ^!a::WinMove, 0, 0 ; Move the window found by WinWait to the upper-left corner of the screen.
@@ -212,3 +213,13 @@ return
 
 ; :*:!em::[myemailaddress@abc.xyz]
 ; :c*:jj::john@somedomain.com ; Case sensitive and "ending character not required"..
+
+
+; Duplicate session in Putty based programs.
++^n::
+	; TODO: Name based matching is not reliable. Use better way. ahk_exe for example.
+	; IfWinActive,.*[KP]iTTY
+	; {
+	    Send, !{space}d
+	    return
+	; }

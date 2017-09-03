@@ -38,6 +38,13 @@ function md5sum { $(CertUtil -hashfile $args MD5)[1] -replace " ",""; echo "Don'
 function sha1sum { $(CertUtil -hashfile $args SHA1)[1] -replace " ",""; echo "Don't use SHA1 anymore ;-)" }
 function sha256sum { $(CertUtil -hashfile $args SHA256)[1] -replace " ","" }
 function sha512sum { $(CertUtil -hashfile $args SHA512)[1] -replace " ","" }
+function dirname { (get-item $args).parent.fullname }
+function basename { (get-item $args).basename.fullname }
+alias hd Format-Hex
+alias hexdump Format-Hex
+alias xclip Out-Clipboard
+alias grep ag
+function df { get-driveinfo }
 
 # Correct PowerShell Aliases if tools are available (aliases win if set)
 # WGet: Use `ls.exe` if available
@@ -150,6 +157,7 @@ alias ll 'ls'
 # alias bc 'bc -q'
 # Special charters as commands are not allowed.
 # alias ',' 'popd'
+# ${function:,} = { popd }
 
 ## https://tools.ietf.org/html/rfc3339
 ${function:ts} = { date -format u }

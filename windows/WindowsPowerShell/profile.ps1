@@ -6,10 +6,20 @@ $env:LC_ALL='C.UTF-8'
 
 Push-Location (Split-Path -parent $profile)
 "components","functions","aliases","exports","extra" | Where-Object {Test-Path "$_.ps1"} | ForEach-Object -process {Invoke-Expression ". .\$_.ps1"}
+$env:PSProfilePath = (pwd)
 Pop-Location
 
 if (test-path h:/) {
   cd h:/
+}
+
+if (test-path "C:/Program Files (x86)/PowerShell Community Extensions/Pscx3") {
+  $env:PSModulePath += ";C:/Program Files (x86)/PowerShell Community Extensions/Pscx3"
+  ## Does not work yet:
+  # Import-Module pscx –ArgumentList "$env:PSProfilePath/Pscx/Pscx.UserPreferences.ps1"
+  Import-Module pscx
+} else {
+  echo "Install pscx, it comes in handy :)"
 }
 
 
