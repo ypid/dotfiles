@@ -72,17 +72,17 @@
     ~/.ssh/config_ypid_defaults:
       create: true
       relink: true
-      path: ssh_config
+      path: ssh/config_ypid_defaults
 
     ~/.ssh/assh.yml:
       create: true
       relink: true
-      path: assh.yml
+      path: ssh/assh.yml
 
     ~/.sshrc:
       create: true
       relink: true
-      path: sshrc
+      path: ssh/sshrc
 
     ~/.config/git/config:
       create: true
@@ -330,6 +330,7 @@
 - shell:
     - 'rsync --recursive --ignore-existing config/ ~/.config'
     - 'rsync --recursive --ignore-existing local/ ~/.local'
+    - 'rsync --ignore-existing ssh/config ~/.ssh'
     - 'rm -f ~/.config/shell.d/shell_extend_PATH ~/.config/shell.d/public'
     - 'rm -f ~/.asdf'
     ## Needs to be run with X11 $DISPLAY set:
