@@ -22,8 +22,6 @@ if (test-path "C:/Program Files (x86)/PowerShell Community Extensions/Pscx3") {
   echo "Install pscx, it comes in handy :)"
 }
 
-
-
 # This is an example profile for PSReadline.
 #
 # This is roughly what I use so there is some emphasis on emacs bindings,

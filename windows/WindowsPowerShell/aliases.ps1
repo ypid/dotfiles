@@ -121,6 +121,9 @@ alias ack 'ag'
 alias s 'ssh'
 ${function:ssh-keygen-sec} = { ssh-keygen -o -b 8192 -a 200 -t rsa $args }
 
+## Can not be unaliased as it seems. Bad.
+# unalias md
+# ${function:md} = { mkdir -f $args >$null; cd $args }
 
 alias v vagrant
 alias g git

@@ -8,9 +8,15 @@
     " Windows Compatible {{{
         " On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
         " across (heterogeneous) systems easier.
-		if has('win32') || has('win64')
-			set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
-		endif
+        if has('win32') || has('win64')
+            set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
+        endif
+        if exists('+shellslash')
+            " Do the same what improved M$ cmd does but in reverse :)
+            " Use forward backslashes as directory separator on Windows.
+            " If you type backwards slashes, Vim will upgrade them to forward backslashes.
+            set shellslash
+        endif
     " }}}
 
     " Basic functions {{{
