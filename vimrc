@@ -223,9 +223,11 @@ source ~/.vimrc.min
                     let g:lookup_databases = [ 'jargon', 'vera', 'english-german', 'german-english', 'elements', 'gcide' ]
                     " noremap <Leader>tr :Lookup<CR>
                     " vmap <Leader>tr :call LookupVisual()<CR>
-                    noremap ι :Lookup<CR>
-                    vmap ι :call LookupVisual()<CR>
-                    " Shift+Layer3Mod+s
+                    noremap α :Lookup<CR>
+                    vmap α :call LookupVisual()<CR>
+                    " Shift+Layer3Mod+d
+                    " This is a workaround: See Shift+Layer3Mod+s in
+                    " .vimrc.min
                 endif
             " }}}
 

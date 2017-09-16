@@ -36,6 +36,10 @@ After enabling it, your default keyboard layout will be [Neo2] with the QWERTZ l
 
 Note that you can switch to the normal layout (as specified in the keyboard file) with the [scroll lock key](http://en.wikipedia.org/wiki/Scroll_lock) or with tools your window manager provides.
 
+### Known issues
+
+* On openSUSE in a VirtualBox VM the Shift+Layer3Mod+s ι and other greek signs can not be entered. Remapping the key in symbols/de to a sign which works does not help. xev stays quite when Shift+Layer3Mod+s is pressed.
+
 ## Autohotkey on M$ Windows
 
 The option to use the higher layers of Neo2 combined with the default QWERTZ layout is actually supported by [NeoVars](https://wiki.neo-layout.org/wiki/Neo%20unter%20Windows%20einrichten/NeoVars) under Windows which is pretty nice. All you have to do to get it is to create a INI file under `%APPDATA%\Neo2\Neo2.ini` with the content of [this file](/qNeo2/Neo2.ini) and download [neo20.exe][] and start it.

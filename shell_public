@@ -245,8 +245,11 @@ fi
 if [[ "$USER" != 'root' ]]; then
     alias mount='sudo mount'
     alias umount='sudo umount'
+    alias smount='sudo smount'
+    alias sumount='sudo sumount'
     alias aptitude='sudo aptitude'
     alias apt='sudo apt'
+    alias zypper='sudo zypper'
 fi
 
 alias xclip-primary-to-clipboard='xclip -out | xclip -in -selection clipboard'

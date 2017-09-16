@@ -350,8 +350,10 @@
         noremap <silent> <c-l> <c-w>l
         noremap <silent> <c-h> <c-w>h
 
-        noremap α <c-w>_
-        " Shift+Layer3Mod+d
+        " This should be Shift+Layer3Mod+d but Shift+Layer3Mod+s does not work
+        " on openSUSE so we are using Shift+Layer3Mod+s for <c-w>_ and Shift+Layer3Mod+d for :Lookup
+        noremap ι <c-w>_
+        " Shift+Layer3Mod+s
 
         " http://vim.wikia.com/wiki/Recover_from_accidental_Ctrl-U
         inoremap <c-u> <c-g>u<c-u>

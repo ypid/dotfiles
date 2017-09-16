@@ -2,7 +2,9 @@
 
 SCRIPTPATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-dpkg-divert --quiet --local --divert /usr/share/X11/xkb/symbols/de.dpkg-orig --rename /usr/share/X11/xkb/symbols/de
+if command -v dpkg-divert >/dev/null 2>&1; then
+	dpkg-divert --quiet --local --divert /usr/share/X11/xkb/symbols/de.dpkg-orig --rename /usr/share/X11/xkb/symbols/de
+fi
 cp "${SCRIPTPATH}/de" /usr/share/X11/xkb/symbols/de
 
 # Doing this also screws up the busybox keymap in Debian (jessie).
