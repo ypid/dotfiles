@@ -14,6 +14,10 @@ pathappend "${HOME}/.sandboxes/bin"
 pathappend "/usr/local/bin"
 pathappend "/usr/sbin"
 
+pathappend "/usr/share/elasticsearch/bin"
+pathappend "/usr/share/logstash/bin"
+pathappend "/usr/share/kibana/bin"
+
 export ASDF_DIR="$HOME/.asdf-writable"
 pathprepend "${ASDF_DIR}/shims"
 pathappend "${ASDF_DIR}/bin"

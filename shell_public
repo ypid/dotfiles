@@ -217,6 +217,10 @@ alias al='nmap -n --reason -sP'
 #     alias ping='nping'
 # fi
 
+if ! command -v hd >/dev/null 2>&1
+then
+    alias hd='hexdump -C'
+fi
 
 # http://stackoverflow.com/questions/16787916/difference-between-2-directories-in-linux
 alias diff-dir='diff -arq'

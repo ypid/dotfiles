@@ -25,6 +25,10 @@ function enable_file{
     }
 }
 
-enable_file ".\vimrc.min" ~/_vimrc
-enable_file ".\windows\ConEmu\ConEmu.xml" "$env:APPDATA/ConEmu.xml"
-enable_file "gitconfig" ~/.gitconfig
+enable_file "./vimrc.min" ~/_vimrc
+enable_file "./windows/ConEmu/ConEmu.xml" "$env:APPDATA/ConEmu.xml"
+enable_file "./gitconfig" ~/.gitconfig
+mkdir -f "$env:APPDATA/VirtuaWin" > $null
+enable_file "./windows/VirtuaWin/virtuawin.cfg" "$env:APPDATA/VirtuaWin/virtuawin.cfg"
+
+enable_file "~/Documents/dotfiles/startup/startup.bat" "$env:APPDATA/Microsoft/Windows/Start Menu/Programs/Startup/startup.bat"
