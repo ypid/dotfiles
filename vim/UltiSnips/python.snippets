@@ -1,6 +1,7 @@
-snippet #!/ "Shebang" !b
-#!/usr/bin/env python
-# encoding: utf-8
+snippet #! "Shebang" !b
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
 endsnippet
 
 snippet sig "my signature" !b
@@ -22,6 +23,8 @@ snippet sig "my signature" !b
 """
 $1
 """
+
+from __future__ import print_function, unicode_literals, absolute_import, division
 
 __license__ = 'AGPL-3.0'
 __author__ = '`git config --get user.name` <`git config --get user.email`>'
@@ -46,6 +49,8 @@ snippet siggpl "my signature" !b
 """
 $1
 """
+
+from __future__ import print_function, unicode_literals, absolute_import, division
 
 __license__ = 'GPL-3.0'
 __author__ = '`git config --get user.name` <`git config --get user.email`>'
@@ -72,6 +77,8 @@ snippet sigdo "my signature" !b
 """
 $1
 """
+
+from __future__ import print_function, unicode_literals, absolute_import, division
 
 __license__ = 'GPL-3.0'
 __author__ = '`git config --get user.name` <`git config --get user.email`>'

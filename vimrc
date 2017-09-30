@@ -217,9 +217,8 @@ source ~/.vimrc.min
             " Bundle 'tpope/vim-abolish'
 
             " Translate {{{
-                if has("python") && executable('python')
+                if has("python") || has("python3")
                     Bundle 'ypid/lookup.vim'
-                    " let g:lookup_dict_para = []
                     let g:lookup_databases = [ 'jargon', 'vera', 'english-german', 'german-english', 'elements', 'gcide' ]
                     " noremap <Leader>tr :Lookup<CR>
                     " vmap <Leader>tr :call LookupVisual()<CR>
