@@ -3,6 +3,16 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
+## Misuse bash as hook into termux-chroot and zsh.
+## termux-chroot is slower so don’t use it by default for now.
+# if [ -n "$ANDROID_ROOT" ]; then
+#     if [ -d /bin ]; then
+#         exec zsh
+#     else
+#         exec termux-chroot zsh
+#     fi
+# fi
+
 # don't put duplicate lines in the history. See bash(1) for more options
 # ... or force ignoredups and ignorespace
 HISTCONTROL=ignoredups:ignorespace
@@ -77,6 +87,7 @@ xterm*|rxvt*)
     ;;
 esac
 
+# shellcheck source=shell_global
 source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/global"
 
 alias '+'='pushd'

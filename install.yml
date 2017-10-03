@@ -2,6 +2,10 @@
 
 # yamllint disable rule:line-length
 
+- defaults:
+    link:
+      relative: true
+
 - shell:
     - 'mkdir -p ~/.config/byobu ~/.local/share/zsh ~/.local/usr'
     - 'if command -v make; then make --directory doublecmd install; fi'
@@ -129,10 +133,10 @@
       relink: true
       path: vim
 
-    ~/.nvim:
-      create: true
-      relink: true
-      path: vim
+    # ~/.config/nvim/init.vim:
+    #   create: true
+    #   relink: true
+    #   path: vimrc.min
 
     ~/.vimrc:
       create: true

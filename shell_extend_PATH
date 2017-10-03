@@ -41,9 +41,13 @@ then
     ## Node.js {{{
     export NPM_PACKAGES="$user_install_dir/npm"
     pathappend "$NPM_PACKAGES/bin"
-    unset MANPATH
-    export MANPATH
-    MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
+
+    if command -v manpath >/dev/null 2>&1; then
+        unset MANPATH
+        export MANPATH
+        MANPATH="$(manpath)"
+    fi
+    MANPATH="$NPM_PACKAGES/share/man:$MANPATH"
     export NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
     ## }}}
 

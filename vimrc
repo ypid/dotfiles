@@ -14,6 +14,47 @@ let g:spf13_no_views = 1
 source ~/.vimrc.min
 
 " Bundles and plugins {{{
+
+    " Configure plugin groups {{{
+        let g:spf13_bundle_groups = []
+
+        call add(g:spf13_bundle_groups, 'init_plugin_system')
+
+        " Default
+        " call add(g:spf13_bundle_groups, 'dependencies')
+        call add(g:spf13_bundle_groups, 'general_important')
+        call add(g:spf13_bundle_groups, 'general')
+        call add(g:spf13_bundle_groups, 'ui')
+        call add(g:spf13_bundle_groups, 'work')
+        call add(g:spf13_bundle_groups, 'programming')
+        call add(g:spf13_bundle_groups, 'programming_not_often_used')
+        call add(g:spf13_bundle_groups, 'perl')
+        call add(g:spf13_bundle_groups, 'snipmate')
+        call add(g:spf13_bundle_groups, 'html')
+        call add(g:spf13_bundle_groups, 'python')
+        call add(g:spf13_bundle_groups, 'haxe')
+
+        call add(g:spf13_bundle_groups, 'misc')
+        " call add(g:spf13_bundle_groups, 'games')
+
+        " Not often used, not properly tested.
+        call add(g:spf13_bundle_groups, 'testing')
+        " call add(g:spf13_bundle_groups, 'tested_not_using')
+        " call add(g:spf13_bundle_groups, 'neocomplcache')
+        call add(g:spf13_bundle_groups, 'latex')
+        call add(g:spf13_bundle_groups, 'javascript')
+        " call add(g:spf13_bundle_groups, 'scala')
+        " call add(g:spf13_bundle_groups, 'ruby')
+        " call add(g:spf13_bundle_groups, 'go')
+        call add(g:spf13_bundle_groups, 'c')
+
+
+        if $ANDROID_ROOT != ''
+            let g:spf13_bundle_groups = []
+        endif
+    " }}}
+
+    " Initialize plugin system {{{
     " The next three lines ensure that the ~/.vim/bundle/ system works
         filetype off
 
@@ -28,36 +69,6 @@ source ~/.vimrc.min
         " set runtimepath+=~/.vim/bundle/neobundle.vim
         " call neobundle#begin(expand('~/.vim/bundle/'))
     " }}}
-
-    let g:spf13_bundle_groups = []
-
-    " Default
-    " call add(g:spf13_bundle_groups, 'dependencies')
-    call add(g:spf13_bundle_groups, 'general_important')
-    call add(g:spf13_bundle_groups, 'general')
-    call add(g:spf13_bundle_groups, 'ui')
-    call add(g:spf13_bundle_groups, 'work')
-    call add(g:spf13_bundle_groups, 'programming')
-    call add(g:spf13_bundle_groups, 'programming_not_often_used')
-    call add(g:spf13_bundle_groups, 'perl')
-    call add(g:spf13_bundle_groups, 'snipmate')
-    call add(g:spf13_bundle_groups, 'html')
-    call add(g:spf13_bundle_groups, 'python')
-    call add(g:spf13_bundle_groups, 'haxe')
-
-    call add(g:spf13_bundle_groups, 'misc')
-    " call add(g:spf13_bundle_groups, 'games')
-
-    " Not often used, not properly tested.
-    call add(g:spf13_bundle_groups, 'testing')
-    " call add(g:spf13_bundle_groups, 'tested_not_using')
-    " call add(g:spf13_bundle_groups, 'neocomplcache')
-    call add(g:spf13_bundle_groups, 'latex')
-    call add(g:spf13_bundle_groups, 'javascript')
-    " call add(g:spf13_bundle_groups, 'scala')
-    " call add(g:spf13_bundle_groups, 'ruby')
-    " call add(g:spf13_bundle_groups, 'go')
-    call add(g:spf13_bundle_groups, 'c')
 
     " Deps {{{
         if count(g:spf13_bundle_groups, 'dependencies')

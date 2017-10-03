@@ -67,3 +67,5 @@
 	date = iso
 [url "https://github.com/"]
 	insteadOf = git://github.com/
+[credential]
+	helper = store

@@ -2,6 +2,10 @@
 # shellcheck disable=SC2139
 # .. vim: foldmarker={{{,}}}:foldmethod=marker
 
+if [ -n "$ANDROID_ROOT" ]; then
+    cd
+fi
+
 ## Exports {{{
 
 ## https://superuser.com/questions/479600/how-can-i-prevent-tmux-exiting-with-ctrl-d
@@ -16,8 +20,11 @@ export EDITOR=vim
 
 export LANG='en_US.UTF-8'
 export LANGUAGE='en_US:en'
-# http://terokarvinen.com/international_iso-8601_date_on_thunderbird.html
-export LC_TIME='en_DK.UTF-8'
+
+if [ -z "$ANDROID_ROOT" ]; then
+    # http://terokarvinen.com/international_iso-8601_date_on_thunderbird.html
+    export LC_TIME='en_DK.UTF-8'
+fi
 
 ## }}}
 
@@ -195,8 +202,10 @@ fi
 
 ## More aliases {{{
 
-alias tmux='TERM=screen-256color-bce tmux'
-# alias f='tmux last-window' ## Use prefix + Ctrl+S because it will also work in Vim or if another program is running in foreground.
+if [ -z "$ANDROID_ROOT" ]; then
+    alias tmux='TERM=screen-256color-bce tmux'
+    # alias f='tmux last-window' ## Use prefix + Ctrl+S because it will also work in Vim or if another program is running in foreground.
+fi
 
 alias d='docker'
 alias t='task'
@@ -246,7 +255,7 @@ elif [ -e '/etc/zypp' ]; then
     alias ass='zypper search'
 fi
 
-if [[ "$USER" != 'root' ]]; then
+if [[ "$USER" != 'root' ]] && [ -z "$ANDROID_ROOT" ]; then
     alias mount='sudo mount'
     alias umount='sudo umount'
     alias smount='sudo smount'

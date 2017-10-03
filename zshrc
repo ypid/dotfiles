@@ -206,7 +206,11 @@ local user_host='%{$terminfo[bold]$fg[green]%}%n@%m%{$reset_color%}'
 
 local current_dir='%{$terminfo[bold]$fg[blue]%} %~%{$reset_color%}'
 
-local git_branch='$(git_prompt_info)%{$reset_color%}'
+local git_branch=''
+if [ -z "$ANDROID_ROOT" ]; then
+    git_branch=' $(git_prompt_info)%{$reset_color%}'
+fi
+
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[yellow]%}‹"
 ZSH_THEME_GIT_PROMPT_SUFFIX="› %{$reset_color%}"
 
@@ -217,7 +221,7 @@ return_code=$return_code_enabled
 
 # RPS1='${return_code}'
 
-PROMPT="╭─${time} ${user_host}${current_dir} ${git_branch} ${return_code}
+PROMPT="╭─${time} ${user_host}${current_dir}${git_branch} ${return_code}
 ╰─%B$%b "
 
 function accept-line-or-clear-warning () {
