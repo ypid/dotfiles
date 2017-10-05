@@ -21,6 +21,8 @@
                                       
     CD_EchoNewLocation = $false       # Display new provider location after using cd (Set-LocationEx).
                                       # Mutually exclusive with CD_GetChildItem.
+
+    CD_Home = $true                   # Switch to $HOME when no parameter is given.
     
     TextEditor = 'Notepad.exe'        # Default text editor used by the Edit-File function
     

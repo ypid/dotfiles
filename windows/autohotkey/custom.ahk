@@ -223,3 +223,9 @@ return
 	    Send, !{space}d
 	    return
 	; }
+
+; Testing
+; ^j::
+; 	{
+; 	    Send, {enter}
+; 	}

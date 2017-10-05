@@ -26,6 +26,9 @@ if [ -z "$ANDROID_ROOT" ]; then
     export LC_TIME='en_DK.UTF-8'
 fi
 
+## https://www.suse.com/releasenotes/i386/openSUSE/11.1/RELEASE-NOTES.en.html#04
+export MAN_POSIXLY_CORRECT=1
+
 ## }}}
 
 ## Enable color support of ls and also add handy aliases {{{
@@ -96,7 +99,13 @@ function sed-easy {
 }
 ## }}}
 
-## Vim {{{
+## Editor {{{
+
+## On Debian this is provided by the alternatives systems.
+if ! command -v editor >/dev/null 2>&1
+then
+    alias editor="$EDITOR"
+fi
 
 alias e='editor'
 alias ,e='exit'
@@ -139,13 +148,10 @@ alias gpa='git pa'
 ## Use the shortcuts from oh-my-zsh for git
 alias wd='git diff --color-words --no-index'
 
-# overwrite alias from oh-my-zsh {{{
-alias glg='git log --stat --decorate=short --show-signature' # full history
-# alias glg='tig --show-signature' # full history
-
 # Define important shortcuts here if under bash (are already defended by oh-my-zsh) {{{
 alias g='git'
 
+alias ga='git add'
 alias gst='git status'
 
 ## Does not distinguish between changed files and changed/dirty submodules and it looks terrible …
@@ -162,9 +168,15 @@ function n() {
 function p() {
     git checkout HEAD^1
 }
-## }}}
 
 ## }}}
+
+# Overwrite alias from oh-my-zsh {{{
+alias glg='git log --stat --decorate=short --show-signature' # full history
+# alias glg='tig --show-signature' # full history
+
+## }}}
+
 ## }}}
 
 ## asdf {{{
@@ -200,11 +212,28 @@ then
 fi
 # }}}
 
+## Package management {{{
+
+if [ -e '/etc/apt' ]; then
+    alias ai='apt install'
+    alias ap='apt purge'
+    alias as='\apt search'
+    alias ash='\apt show'
+    alias an='apt upgrade'
+elif [ -e '/etc/zypp' ]; then
+    alias ai='zypper install'
+    alias ap='zypper remove'
+    alias as='zypper search'
+    alias ash='zypper info'
+    alias an='zypper upgrade'
+fi
+
+# }}}
+
 ## More aliases {{{
 
 if [ -z "$ANDROID_ROOT" ]; then
     alias tmux='TERM=screen-256color-bce tmux'
-    # alias f='tmux last-window' ## Use prefix + Ctrl+S because it will also work in Vim or if another program is running in foreground.
 fi
 
 alias d='docker'
@@ -238,22 +267,6 @@ alias percent-encode='python -c "import urllib, sys; print urllib.quote(sys.argv
 alias percent-decode='python -c "import urllib, sys; print urllib.unquote(sys.argv[1])"'
 
 alias badblocks='echo "Use badblocks_and_secure_erase."'
-
-if [ -e '/etc/apt' ]; then
-    alias ai='apt install'
-    alias ap='apt purge'
-    alias as='\apt search'
-    alias ash='\apt show'
-    alias agg='apt upgrade'
-    alias ass='wajig statussearch'
-elif [ -e '/etc/zypp' ]; then
-    alias ai='zypper install'
-    alias ap='zypper remove'
-    alias as='zypper search'
-    alias ash='zypper info'
-    alias agg='zypper upgrade'
-    alias ass='zypper search'
-fi
 
 if [[ "$USER" != 'root' ]] && [ -z "$ANDROID_ROOT" ]; then
     alias mount='sudo mount'

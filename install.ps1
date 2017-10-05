@@ -1,4 +1,4 @@
-﻿## Just copy the files in place. Seems nobody using windows ever heard about a dotfiles manager so this is what I ended up with.
+## Just copy the files in place. Seems nobody using windows ever heard about a dotfiles manager nor git so this is what I ended up with.
 
 function cp--no-clobber{
     Param(
@@ -12,7 +12,7 @@ function cp--no-clobber{
     }
 }
 
-function enable_file{
+function link_path{
     Param(
         [parameter(Mandatory=$true)][String]$source,
         [parameter(Mandatory=$true)][String]$dest
@@ -21,14 +21,21 @@ function enable_file{
     # rm "$dest"
     if ((test-path $dest) -bxor 1) {
         echo new-hardlink "$dest" "$source"
-        new-hardlink "$dest" "$source"
+        # new-hardlink "$dest" "$source"
+        new-item -Path "$dest" -ItemType SymbolicLink -Value "$source"
     }
 }
 
-enable_file "./vimrc.min" ~/_vimrc
-enable_file "./windows/ConEmu/ConEmu.xml" "$env:APPDATA/ConEmu.xml"
-enable_file "./gitconfig" ~/.gitconfig
+## I am using forward slashes. Get used to it Windows guys.
+link_path "./windows/WindowsPowerShell" ~/Documents/WindowsPowerShell
+link_path "./vimrc.min" ~/_vimrc
+link_path "./windows/ConEmu/ConEmu.xml" "$env:APPDATA/ConEmu.xml"
+link_path "./gitconfig" ~/.gitconfig
 mkdir -f "$env:APPDATA/VirtuaWin" > $null
-enable_file "./windows/VirtuaWin/virtuawin.cfg" "$env:APPDATA/VirtuaWin/virtuawin.cfg"
+link_path "./windows/VirtuaWin/virtuawin.cfg" "$env:APPDATA/VirtuaWin/virtuawin.cfg"
 
-enable_file "~/Documents/dotfiles/startup/startup.bat" "$env:APPDATA/Microsoft/Windows/Start Menu/Programs/Startup/startup.bat"
+mkdir -f "~/Documents/portable/kitty/Sessions/" > $null
+link_path "./windows/kitty/Sessions/Default%20Settings" "~/Documents/portable/kitty/Sessions/Default%20Settings"
+link_path "./windows/kitty/kitty.ini" "~/Documents/portable/kitty/kitty.ini"
+
+link_path "~/Documents/dotfiles/startup/startup.bat" "$env:APPDATA/Microsoft/Windows/Start Menu/Programs/Startup/startup.bat"
