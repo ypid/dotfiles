@@ -30,3 +30,6 @@ Set-StrictMode -Off
 if (test-path "~/Documents/dotfiles/dotfiles-ypid/") {
     cd "~/Documents/dotfiles/dotfiles-ypid/"
 }
+
+## Move M$ stuff out of the screen. Disabled because bad for debugging.
+# clear
