@@ -97,6 +97,17 @@ function sed-replace-escape {
 function sed-easy {
     sed -i "s/$(sed-keyword-escape "$1")/$(sed-replace-escape "$2")/g" "$3"
 }
+
+function h {
+    pattern="${1:-.}"
+
+    if [[ "$pattern" == "." ]]; then
+        history
+    else
+        history | egrep -e "$pattern"
+    fi
+}
+
 ## }}}
 
 ## Editor {{{
@@ -238,7 +249,6 @@ fi
 
 alias d='docker'
 alias t='task'
-alias h='history |grep $1'
 alias '*'='dict'
 alias con='ping heise.de'
 alias a='git-annex'
