@@ -286,6 +286,7 @@ if [[ "$USER" != 'root' ]] && [ -z "$ANDROID_ROOT" ]; then
     alias aptitude='sudo aptitude'
     alias apt='sudo apt'
     alias zypper='sudo zypper'
+    alias sc='sudo ~root/.local/share/scripts/ypid-scripts-common/sc'
 fi
 
 alias xclip-primary-to-clipboard='xclip -out | xclip -in -selection clipboard'
