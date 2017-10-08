@@ -225,13 +225,13 @@ fi
 
 ## Package management {{{
 
-if [ -e '/etc/apt' ]; then
+if [ -e "${PREFIX:-}/etc/apt" ]; then
     alias ai='apt install'
     alias ap='apt purge'
     alias as='\apt search'
     alias ash='\apt show'
     alias an='apt upgrade'
-elif [ -e '/etc/zypp' ]; then
+elif [ -e "${PREFIX:-}/etc/zypp" ]; then
     alias ai='zypper install'
     alias ap='zypper remove'
     alias as='zypper search'
