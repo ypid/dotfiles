@@ -63,7 +63,7 @@ List of free shortcuts (they may have a default mapping but there are better sho
 
 ## Shortcut conventions and key order
 
-To search for shortcuts, it is important to maintain a unique naming pattern. The following is which I use in this document. It is pretty much based on the order used by [Double Commander]:
+To search for shortcuts, it is important to maintain a unique naming pattern and order in which they are combined. This is pretty much based on the naming and order used by [Double Commander]:
 
 * `Ctrl`
 * `Shift`
@@ -72,10 +72,11 @@ To search for shortcuts, it is important to maintain a unique naming pattern. Th
 * `Non-modifier keys` (Letter, written in upper case for readability. The use of the shift modifier key is explicitly written down.)
 
 ## Special keys
+
 Key name      | Comment
 ------------- | -------------
 Level4 Shift  | This key in my configuration is the <> button.
-+             | Separator for keys
+\+            | Separator for keys
 anything else | Is either a usual key name or a regular expression to specify a range of keys
 
 ## Window manager (e.g. Gnome3 or xfce)
@@ -198,7 +199,7 @@ For GNOME Terminal (and ConEmu), each shortcut requires additionally the use of 
 
 Shortcut       | Function                                | Left hand only | Comment
 -------------  | -------------                           | -------------  | -------------
-Ctrl+N         | Opens a new tab                         | No             | Easier to reach than C-t
+Ctrl+N         | Opens a new tab                         | No             | Easier to reach than Ctrl+T
 Ctrl+W         | Closes the tab                          | Of course      | Should be default in all program
 Ctrl+Q         | Closes the application                  | Of course      | Should be default in all program
 Ctrl+Tab       | Switch to right tab, cycle through tabs | Yes            |
@@ -206,6 +207,16 @@ Shift+Ctrl+Tab | Switch to left tab, cycle through tabs  | Yes            |
 Ctrl+J         | Switch to left tab                      | Not really     |
 Ctrl+K         | Switch to right tab                     | Not really     |
 Ctrl+[+-]      | Increase/Decrease (zoom) font size      | Nice to have   | Currently not supported in Double Commander. Level 3 [Neo2][] plus and minus work in Firefox (after setting the − via the Add-On Customizable Shortcuts). GNOME Terminal does not allow to configure „−” currently (can this be done in Gtk programs?). Works in ConEmu (without Shift).
+Alt+M          | Switch to tab 1                         | No             | See [Neo2 layer4][Neo2]. Maybe blocks the use of Alt+[a-z]. I hope that most applications use letters which would be on the left side of a qwertz keyboard.
+Alt+,          | Switch to tab 2                         | No             |
+Alt+.          | Switch to tab 3                         | No             |
+Alt+J          | Switch to tab 4                         | No             |
+Alt+K          | Switch to tab 5                         | No             |
+Alt+L          | Switch to tab 6                         | No             |
+Alt+U          | Switch to tab 7                         | No             |
+Alt+I          | Switch to tab 8                         | No             |
+Alt+O          | Switch to tab 9                         | No             |
+
 
 #### Used keys
 
@@ -217,7 +228,7 @@ ConEmu together with a lot of other "fine tuning" help to make the different she
 
 Shortcut      | Function                               | Left hand only | Comment
 ------------- | -------------                          | -------------  | -------------
-Shift+Ctrl+N  | Opens new vertical split               | No             | As in tmux c-a %.
+Shift+Ctrl+N  | Opens new vertical split               | No             | As in Tmux Ctrl+A %.
 Shift+Ctrl+M  | Opens PowerShell as admin in a new tab | No             |
 Shift+Ctrl+I  | Opens CMD in a new tab                 | No             |
 Shift+Ctrl+O  | Opens CMD as admin in a new tab        | No             |
@@ -245,24 +256,6 @@ Shift+Super+U |                 | Yes            | Emits F7. Neo2 numbers.
 Shift+Super+I |                 | Yes            | Emits F8. Neo2 numbers.
 Shift+Super+O |                 | Yes            | Emits F9. Neo2 numbers.
 Shift+Super+F | F11             | Yes            | Emits F11. Causes most applications to go in fullscreen.
-
-<!--
-
-Don’t do it globally via AutoKey. This will mess up Alt+[A-Z] shortcuts …
-
-Just enable it in applications which support this. This has the advantage that the application can behave differently depending on the context it is in thus still allowing to use Alt+[A-Z]
-
-Alt+M         | Switch to tab 1 | No             | See [Neo2 layer4][Neo2]. Maybe blocks the use of Alt+[a-z]. I hope that most applications use letters which would be on the left side of a qwertz keyboard.
-Alt+,         | Switch to tab 2 | No             |
-Alt+.         | Switch to tab 3 | No             |
-Alt+J         | Switch to tab 4 | No             |
-Alt+K         | Switch to tab 5 | No             |
-Alt+L         | Switch to tab 6 | No             |
-Alt+U         | Switch to tab 7 | No             |
-Alt+I         | Switch to tab 8 | No             |
-Alt+O         | Switch to tab 9 | No             |
-
--->
 
 ##### Application specific
 
@@ -332,8 +325,8 @@ Ctrl+P        | RenameOnly        | Not really     |
 Shift+Ctrl+R  | MultiRename       | Not really     |
 Ctrl+Y        | Copy              | No             |
 Shift+Ctrl+V  | CopySamePanel     | No             |
-Shift+Alt+E   | Symlink           | Yes            |
-Shift+Alt+C   | FileProperties    | Yes            |
+Shift+Alt+E   | FileProperties    | Yes            |
+Shift+Alt+S   | Symlink           | Yes            |
 Shift+Alt+F   | SetFileProperties | Nice to have   |
 Ctrl+F        | MakeDir           | Not really     |
 Ctrl+O        | ShellExecute      | Yes            | Open
@@ -354,10 +347,10 @@ Shift+Ctrl+S     | RunTerm                | Not really                    | Like
 Ctrl+L           | FocusCmdLine           | Not really                    | Was mapped to Shift+F2 but Ctrl+L is more convenient because it has a similar meaning in Firefox. Overwrites default CalculateSpace in DC.
 Shift+Alt+J      | MarkCurrentExtension   | Nice to have                  |
 Shift+Alt+K      | UnmarkCurrentExtension | Nice to have                  |
--                | MarkMinus              | Nice to have                  |
+\-               | MarkMinus              | Nice to have                  |
 Ctrl+B           | MarkPlus               | No                            |
-Shift+Ctrl+X     | CopyNamesToClip        | Nice to have                  |
-Shift+Ctrl+C     | CopyFullNamesToClip    | Nice to have                  |
+Shift+Alt+X      | CopyNamesToClip        | Nice to have                  | Shift+Ctrl+X is already used by Qubes OS.
+Shift+Alt+C      | CopyFullNamesToClip    | Nice to have                  | Shift+Ctrl+C is already used by Qubes OS.
 Ctrl+1           | SortByName             | Nice to have                  |
 Ctrl+2           | SortByExt              | Nice to have                  |
 Ctrl+3           | SortBySize             | Nice to have                  |
@@ -481,4 +474,4 @@ Normal mode:
 
 ## Miscellaneous
 
-For M$ Windows see [autohotkey](/autohotkey).
+For M$ Windows see [autohotkey](/windows/autohotkey/).

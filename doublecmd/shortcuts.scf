@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<doublecmd DCVersion="0.7.0 beta">
-  <Hotkeys Version="23">
+<doublecmd DCVersion="0.7.7 beta">
+  <Hotkeys Version="38">
     <Form Name="Main">
       <Hotkey>
         <Shortcut>Ctrl+Q</Shortcut>
         <Command>cm_Exit</Command>
-      </Hotkey>
-      <Hotkey>
-        <Shortcut>Ctrl+Z</Shortcut>
-        <Command>cm_EditComment</Command>
       </Hotkey>
       <Hotkey>
         <Shortcut>Ctrl+R</Shortcut>
@@ -96,11 +92,11 @@
         <Command>cm_ContextMenu</Command>
       </Hotkey>
       <Hotkey>
-        <Shortcut>Ctrl+Shift+X</Shortcut>
+        <Shortcut>Shift+Alt+X</Shortcut>
         <Command>cm_CopyNamesToClip</Command>
       </Hotkey>
       <Hotkey>
-        <Shortcut>Ctrl+Shift+C</Shortcut>
+        <Shortcut>Shift+Alt+C</Shortcut>
         <Command>cm_CopyFullNamesToClip</Command>
       </Hotkey>
       <Hotkey>
@@ -194,7 +190,7 @@
         <Param>splitpct=100</Param>
       </Hotkey>
       <Hotkey>
-        <Shortcut>Shift+Alt+C</Shortcut>
+        <Shortcut>Shift+Alt+S</Shortcut>
         <Command>cm_SymLink</Command>
       </Hotkey>
       <Hotkey>
@@ -338,19 +334,19 @@
         <Command>cm_DirHistory</Command>
       </Hotkey>
       <Hotkey>
-        <Shortcut>Ctrl+W</Shortcut>
-        <Command>cm_CloseTab</Command>
-        <Control>Files Panel</Control>
-        <Control>Quick Search</Control>
-        <Control>Command Line</Control>
-      </Hotkey>
-      <Hotkey>
         <Shortcut>Ctrl+Shift+F8</Shortcut>
         <Command>cm_TreeView</Command>
       </Hotkey>
       <Hotkey>
         <Shortcut>Shift+F12</Shortcut>
         <Command>cm_DoAnyCmCommand</Command>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Ctrl+W</Shortcut>
+        <Command>cm_CloseTab</Command>
+        <Control>Files Panel</Control>
+        <Control>Quick Search</Control>
+        <Control>Command Line</Control>
       </Hotkey>
       <Hotkey>
         <Shortcut>Ctrl+C</Shortcut>
@@ -461,6 +457,11 @@
       <Hotkey>
         <Shortcut>Shift+Tab</Shortcut>
         <Command>cm_NextGroup</Command>
+        <Control>Files Panel</Control>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Ctrl+Z</Shortcut>
+        <Command>cm_EditComment</Command>
         <Control>Files Panel</Control>
       </Hotkey>
     </Form>
