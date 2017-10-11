@@ -287,6 +287,25 @@ Shift+Alt+C   | layers-new    | Yes            |
 Ctrl+Y        | Undo          | Yes            | Just easier to reach
 Shift+Ctrl+Y  | Redo          | Yes            | Just easier to reach
 
+### digiKam
+
+Shortcut      | Function          | Left hand only | Comment
+------------- | -------------     | -------------  | -------------
+Ctrl+Space    | Rate with 0 stars | No             |
+Ctrl+M        | Rate with 1 star  | No             |
+Ctrl+.        | Rate with 2 stars | No             |
+Ctrl+,        | Rate with 3 stars | No             |
+Ctrl+J        | Rate with 4 stars | No             |
+Ctrl+K        | Rate with 5 stars | No             |
+Ctrl+6        | Set "favor" tag   | No             |
+Shift+Ctrl+J  | Thumbnails        | Nice to have   |
+Shift+Ctrl+K  | Preview Image     | Nice to have   |
+Shift+Ctrl+L  | Light Table       | Nice to have   |
+Ctrl+E        | Rotate Left       | Nice to have   |
+Ctrl+R        | Rotate Right      | Nice to have   |
+Ctrl+D        | Delete (Trash)    | Yes            | Matches Double Commander
+Ctrl+[+-]     | Zoom in/out       | Nice to have   | Note that there is a bug in digiKam which requires to unmap other Ctrl+N and Ctrl+L mappings for this one to work. Ref: https://forum.kde.org/viewtopic.php?f=251&t=133208
+
 ### VirtualBox and other hypervisors
 
 Shortcut      | Function            | Left hand only | Comment
