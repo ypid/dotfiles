@@ -992,6 +992,7 @@ source ~/.vimrc.min
             autocmd VimLeave * if filereadable($HOME."/.vim/.netrwhist")|call delete($HOME."/.vim/.netrwhist")|endif
 
             autocmd BufRead,BufNewFile * set expandtab
+            autocmd BufRead,BufNewFile Makefile set noexpandtab
 
             " Adjust settings for files {{{
                 autocmd BufRead,BufNewFile yamllint setlocal filetype=yaml
@@ -1084,7 +1085,7 @@ source ~/.vimrc.min
             " autocmd BufWritePost * call ChmodScripts()
 
             " Set language specific stuff {{{
-                autocmd FileType Makefile setlocal noexpandtab ts=4
+                autocmd FileType make setlocal noexpandtab ts=4
                 autocmd FileType vim setlocal expandtab shiftwidth=4
                 autocmd FileType vim let b:delimitMate_quotes = "' `"
                 autocmd FileType sh setlocal textwidth=0

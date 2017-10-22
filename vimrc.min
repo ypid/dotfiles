@@ -438,7 +438,7 @@
         set fileignorecase              " Comes in very handy when your are used to ZSH.
     endif
     set ignorecase                      " Comes in very handy when your are used to ZSH.
-    " set expandtab
+    set expandtab
     set tags=./tags;/                   " Look in all upper Directorys for tags files
     " Did not work. http://stackoverflow.com/a/741486
 
