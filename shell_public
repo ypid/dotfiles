@@ -6,8 +6,7 @@ if [ -n "$ANDROID_ROOT" ]; then
     cd
 fi
 
-## Exports {{{
-
+## Exports {{{ 
 ## https://superuser.com/questions/479600/how-can-i-prevent-tmux-exiting-with-ctrl-d
 # export IGNOREEOF=2
 ## Does not work with zsh
@@ -107,6 +106,15 @@ function h {
         history | egrep -e "$pattern"
     fi
 }
+
+## }}}
+
+## Shell basics {{{
+
+alias lsa='ls -lah'
+alias l='ls -lah'
+alias ll='ls -lh'
+alias la='ls -lAh'
 
 ## }}}
 
