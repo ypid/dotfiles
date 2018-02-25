@@ -1,0 +1,711 @@
+*outlook.txt*   For Vim version 7.0.  Last change: 2016 Feb 17
+
+
+                      VIM REFERENCE MANUAL 
+                                by 
+                     David Fishburn <dfishburn dot vim at gmail dot com>
+
+        Outlook Vim Plugin
+        outlook.vim version 14.0
+
+For instructions on installing this file, type
+    :help add-local-help
+|add-local-help| inside Vim.
+
+Homepage: http://www.vim.org/scripts/script.php?script_id=3087
+
+                                                   *outlook* 
+                                                   *outlookvim* 
+
+1.  Overview  .................................... |outlook-overview|
+2.  Whats New  ................................... |outlook-new|
+3.  Installing the Plugin  ....................... |outlook-install|
+4.  Installing the Outlook Macro  ................ |outlook-macro|
+5.  Configuration  ............................... |outlook-configuration|
+6.  Troubleshooting  ............................. |outlook-troubleshooting|
+
+{Vi does not have any of this}
+
+==============================================================================
+1. Overview                                        *outlook-overview*
+
+ This plugin has two parts.
+ 
+ Outlook 
+ -------
+ Outlook includes a feature which allows macros to be created in Visual Basic.
+ Once the macro is imported / created, you can create buttons and place them
+ on Outlook's toolbars.  The macro (when executed) does several things:
+     1.  Writes the email body to a file ending in .outlook 
+     2.  Writes out a control file ending in .outlook.ctl 
+     3.  Asks Vim to edit the .outlook file
+ 
+ Vim 
+ ---
+ The outlook.vim plugin is responsible for setting up some autocmds inside 
+ of Vim.  There are a number of configuration options which allows you to tweak
+ the behaviour of the plugin.  The autocmds also set the Vim filetype to "mail"
+ which allows you to customize even further using the usual Vim filetype plugins.
+ Setting of the filetype is also an option, you can choose any filetype you wish.
+ 
+ These autocmds are responsible for updating Outlook when the buffer (email) is
+ updated.  Communication with Outlook is via the Windows Script Host (WSH
+ http://en.wikipedia.org/wiki/Windows_Script_Host) automation technology from
+ Microsoft.
+ 
+ The autocmds will execute the outlookvim.js (Javascript) file which uses 
+ the .outlook.ctl file to determine which email to update and places the 
+ contents of the .outlook file into the body of the message in Outlook.
+ It then deletes these temporary files when finished.
+ 
+ The autocmds also will delete the temporary files if you choose to abandon 
+ the changes (in Vim) by using :bdelete, :bwipe or closing Vim.
+ 
+ After creating the Outlook macro and installing the Vim Outlook plugin, no 
+ other changes are required except editing and saving your emails.
+ 
+ There are a number of configuration options available see
+ |outlook-configuration|
+ 
+ If you have questions or suggestions you can post questions to the Vim mailing
+ list.  I routinely monitor the list.  Comments, feedback and suggestions are
+ always welcome.
+ 
+ David Fishburn
+
+
+==============================================================================
+2. What's New                                      *outlook-new*
+
+Version 14.0 (February 17, 2016)
+ New Features
+ ------------
+ - Vim License
+
+Version 13.0 (September 28, 2013)
+
+ Bug Fixes
+ ---------
+ - OutlookVim globally set the textwidth for Vim if g:outlook_textwidth
+   is defined, instead of setting the textwidth for the specific email buffer
+   opened when editing an email.  The textwidth for the buffer will only be
+   set if g:outlook_textwidth is set and > 0 (Antonis Loumiotis).
+
+
+Version 12.0 (September 6, 2013)
+
+ New Features
+ ------------
+ - Four new macros have been added for the Outlook toolbars, 
+   Compose, Reply, ReplyToAll, Forward.  Unlike the previous Edit macro
+   these macros can be used from your Inbox view.  They can be added to the 
+   Inbox toolbar and will simply open the selected email items and automatically 
+   launch Vim.  These macros support selecting multiple items in your Inbox.
+   Compose obviously creates only a single email (Jörn Waterstraat).
+ - New option g:outlook_edit_cmd (defaults to "edit") allows you to control
+   what command will be used to edit a new email.  For example, if you wanted
+   a split at the bottom of Vim, you could set it to 'botright split'.
+
+ Bug Fixes
+ ---------
+ - In some cases when opening am email in Vim which was in insert mode or having 
+   unsaved text it was possible for the text to be overwritten (Gary Johnson).
+
+
+Version 11.0 (June 15, 2013)
+
+ New Features
+ ------------
+ - Changed how the filetype is set for Outlook.  The g:outlook_file_type
+   will be used for all mail.  If g:outlook_supported_body_format = 'html'
+   and the buffer begins with the html tag the filetype will be set to 'html'.
+
+ Bug Fixes
+ ---------
+ - g:outlook_supported_body_format was not checked in the Outlook macro, 
+   a previous variable name was used (Gary Johnson).
+
+
+Version 10.0 (May 31, 2013)
+
+ New Features
+ ------------
+ - Editing HTML formated Outlook emails is now supported.  A new option 
+   has been added, g:outlook_supported_body_format, can have one of two 
+   values: plain or html.
+   NOTE: Outlook html contains a lot of markup tags.  It can make it difficult
+         to find the body text within all the tags.
+ - A new option has been added, g:outlook_file_type, which defaults to 'mail'.
+   When opening the buffer within Vim, this file type is set for the buffer.
+   You may want to change this value if you are editing HTML emails.
+ - A new command has been added: OutlookNewEmail.  This will take the contents
+   of the existing buffer and create a new Outlook email.  If the filetype 
+   is 'html' and g:outlook_supported_body_format = 'html', the email body 
+   will be html rather than plain text.  The command can be run as often as
+   necessary, a new Outlook email will be created each time.
+
+ Bug Fixes
+ ---------
+ - The additional changes to the VB code to support both 32-bit and
+   64-bit platforms does not work with Outlook 2007 32-bit (at least).
+   The new changes will work for either (Greg Dunn).
+
+
+Version 9.0 (May 12, 2013)
+
+ New Features
+ ------------
+ - Added new option, g:outlook_always_use_Unicode, to override Outlook and
+   force all emails to use utf-16le fileencoding.
+ - Added new option, g:outlook_scan_email_body_Unicode, to override whether
+   messages will be scanned for Unicode characters.
+ - Added new option, g:outlook_debug, to turn on messages displayed to both 
+   Outlook and Vim.
+ - Updated some of the messages displayed to be more informative.
+
+ Bug Fixes
+ ---------
+ - Editing Unicode emails did not reliably work with OutlookVim.
+ - Unicode detection was not always correct in the Outlook Basic file.
+ - Updated the codepage which Vim expects Unicode messages from Outlook 
+   to be encoded in (András).
+ - Added some additional changes to the VB code to support both 32-bit and
+   64-bit platforms (Paul).
+
+
+Version 8.0 (February 1, 2013)
+
+ New Features
+ ------------
+ - When preparing to edit an email in Vim, OutlookVim.bas will query the
+   Vim instance checking to see if multi_byte support is enabled in Vim.
+   It does this by checking to see if a bomb is enabled (:set bomb) 
+   and the value of fileencodings (:set fileencodings) to see if ucs-bom or
+   any utf strings have been specified.  If multi_byte is enabled, then the 
+   file created by OutlookVim.bas will be saved in Unicode.  If your Vim is 
+   not setup to edit Unicode files, Outlook will not enable the Unicode format.
+
+
+Version 7.0 (October 10, 2012)
+
+ New Features
+ ------------
+ - Added support for Outlook 2010.
+ - Added documentation on how to self sign the Outlook Vim macro so that 
+   security settings do not have to change in Outlook to use the macro.
+   Changing these settings are not possible in some companies.
+
+
+Version 6.0 (February 21, 2012)
+
+ Bug Fix
+ -------
+ - Changed how the script looks for some system files especially useful if you 
+   do not store your vimfiles directory in the $VIM directory (Adam Duck).
+
+
+Version 5.0 (August 14, 2010)
+
+ New Features
+ ------------
+ - Changed how the script looks for some system files especially useful if you 
+   do not store your vimfiles directory in the $VIM directory (Adam Duck).
+
+
+Version 4.0 (June 4, 2010)
+
+ New Features
+ ------------
+ - Updated documentation.  Added a troubleshooting section (Zsolt Botykai).
+ - Updated outlookvim.js to display a message if double clicked on to determine 
+   if Windows Script Host is correctly installed.
+ - Updated outlookvim.bas (the Outlook VBScript Macro) to show an error if it 
+   cannot access the file system.  Modified all the message boxes Outlook may
+   display to indicate "OutlookVim:" is displaying the message.
+ - You can specify whether new emails should be opened in a new tab via 
+   the g:outlook_use_tabs configuration option (Zsolt Botykai).
+
+
+Version 3.0 (May 10, 2010)
+
+ New Features
+ ------------
+ - You can specify which Vim instance to edit the file by setting a variable
+   in your .vimrc (i.e. let g:outlook_servername = 'OUTLOOK')
+ 
+ Bug Fixes
+ ---------
+ - For some (international?) Windows versions, there were errors when (or a
+   failure) editing the file.  Needed to escape the backslashes of the filename.
+
+
+Version 2.0 (May 7, 2010)
+
+ New Features
+ ------------
+ - Working with Outlook 2007 and first official release.
+ - Documentation updates.
+
+
+Version 1.0 (May 7, 2010)
+
+ New Features
+ ------------
+ - Initial release.
+
+
+==============================================================================
+3. Installing the Plugin                           *outlook-install*
+
+ You can use this script as a plugin by copying it to your plugin directory. 
+ See |add-global-plugin| for instructions.
+ 
+ You can also |:source| it from your |.vimrc|.
+
+ To install this help file |add-local-help| inside Vim.
+    :help add-local-help
+    :helptags $VIM/vimfiles/doc (Windows)
+
+ Files used by the plugin:
+    outlook.vim
+        - Sets up autocmds which are activated when editing a file
+          which ends in .outlook
+    outlookVim.bas
+        - Visual Basic code used by Outlook to create some temporary files
+          and launch Vim.
+    outlookVim.js
+        - A Javascript file called by the Vim autocmds when the file is saved.
+          It uses Outlook APIs to update the email within Outlook.
+    outlook.txt
+        - This document
+
+ NOTE:
+     Vim must be in nocompatible mode for the plugin to operate correctly.
+     This implies you have this line in your |.vimrc|: >
+        set nocompatible 
+<
+
+==============================================================================
+4. Installing the Outlook Macro                    *outlook-macro*
+
+ The macro is used to add a button in Outlook to launch Vim.  It is used to
+ create the files which Vim will edit.  It will also add a shortcut key
+ (Alt-d) to fire up Vim instead of having to use a mouse.
+
+ To install the Outlook macro open Outlook.
+
+  1.  Macro security
+        Outlook 2003
+             - From the Outlook menu Tools->Macro->Security 
+             - Make sure this is set to Medium, or the macro will not be enabled 
+        Outlook 2007
+             - From the Outlook menu Tools->Macro->Security 
+             - Make sure this is set to Warnings for all macros
+        Outlook 2010
+             - From the Outlook menu File -> Options 
+                 -> Trust Center (left pane) 
+                 -> Trust Center Settings (Button, right pane)
+                 -> Macro Settings
+             - Depending on what security settings your company enforces you 
+               can either "Enable all macros" or choose "Notifications for all
+               macros" and you will be prompted once each time Outlook is
+               started.
+             - See step 16 below.
+        Outlook 2013
+             - From the Outlook menu File -> Options 
+                 -> Trust Center (left pane) 
+                 -> Trust Center Settings (Button, right pane)
+                 -> Macro Settings
+             - Depending on what security settings your company enforces you 
+               can either "Enable all macros" or choose "Notifications for all
+               macros" and you will be prompted once each time Outlook is
+               started.
+             - See step 16 below.
+  2.  From the menu Tools->Macro->Visual Basic Editor (or Alt-F11)
+      - For Outlook 2010 / 2013, I had to restart Outlook with Admin rights 
+        by holding down CTRL-SHIFT when I clicked on the Outlook icon.
+  3.  From the menu File->Import File (or Ctrl-M)
+  4.  Choose the file ...\vimfiles\plugin\OutlookVim.bas (depending on where you
+      installed the plugin).
+  5.  Expand the Modules folder in the Project pane
+      -  Right click on Module1 and choose Project Properties (if available)
+  6.  You may have to click on the top level folder (VbaProject.OTM) 
+      -  Right click on Module1 and choose Project Properties (if available)
+  7.  Change the project name to "Vim"
+  8.  Change the project description to "Edit emails with Vim", hit Ok
+  9.  From the menu File->Save (or Ctrl-S)
+ 10.  Close the Visual Basic Editor 
+ 11.  Double click on an email 
+ 12.  Adding toolbar buttons to a new email window
+        Outlook 2003
+             - Right click on the toolbar (of the email message) and choose
+               "Customize"
+             - Choose the Commands tab 
+             - Click on the Macros category
+             - Drag and drop the Vim.Edit macro onto the end of the Standard 
+               toolbar displayed in the currently open email 
+             - Click on the Rearrange Commands button 
+             - Change the radio button to Toolbar: Standard 
+             - Scroll to the bottom where the Vim.Edit button is and highlight it
+             - Click on the Modify Selection button
+             - On the dropdown which appears, click on Name
+             - Change the name from "Vim.Edit" to "Vim.E&dit" 
+                - Now you can press Alt-d as a shortcut to launch Vim to edit 
+                  the email without having to use the mouse to click on the 
+                  button (after all, that is the Vim way)
+             - Hit Enter, Close and Close to return back to the open email
+             - Click on the Vim.Edit button, or hit Ctrl-d to edit the email using Vim
+        Outlook 2007
+             - Toolbars are not editable in Outlook 2007
+             - A new Quick Access Toolbar has been introduced in the titlebar
+               of the open email
+             - Click on the far right of the toolbar and choose "Customize
+               Quick Access Toolbar" 
+             - Click on "More Commands..."
+             - Change the "Choose commands from" to "Macros"
+             - Vim.Edit should be displayed, add it using the "Add >>" button
+             - Click the Vim.Edit button in the right pane and click the
+               "Modify" button below
+             - Here you can assign some icon to it that will be easily 
+               recognisable
+             - Click on the new button in the Quick Access Toolbar
+        Outlook 2010 / 2013
+             - There are 2 ways to add icons, in the "Ribbon" where the usual
+               icons are, or in the "Quick Access Toolbar" which is at the
+               very top of the email, in the titlebar
+             - Adding a Vim Group and icons to the Ribbon
+                 - Right click on the far right of the toolbar and choose 
+                   "Customize the Ribbon" 
+                 - Change the "Choose commands from" to "Macros"
+                 - In the right side, make sure "Main Tabs" is selected 
+                   at the top
+                 - You must choose where and how you want to place your 
+                   Vim icons, here is what I choose.
+                 - Highlight the "Message" item in the list, should be at 
+                   the top
+                 - Click on the "New Group" button
+                 - Rename the new group to "Vim" (by right clicking) 
+                 - Now you can choose which Vim icons on the left pane
+                   should be added to the new group we have just created
+                 - Vim.Edit should be displayed, add it using the "Add >>"
+                   button
+                 - Click the Vim.Edit button in the right pane and click the
+                   "Modify" button below
+                 - Here you can assign some icon to it that will be easily 
+                   recognisable
+                 - Hit Ok
+                 - You may need to reopen the email
+                 - Click on the new button you added in the Quick Access Toolbar
+                   (which is located at the very top near the title bar)
+             - Adding a Vim Edit icons to the Quick Access Toolbar
+                 - Toolbars are not editable in Outlook 2010 / 2013
+                 - A new Quick Access Toolbar has been introduced in the
+                   titlebar of the open email
+                 - Right click on the far right of the toolbar and choose 
+                   "Customize Quick Access Toolbar" 
+                 - Change the "Choose commands from" to "Macros"
+                 - Vim.Edit should be displayed, add it using the "Add >>"
+                   button
+                 - Click the Vim.Edit button in the right pane and click the
+                   "Modify" button below
+                 - Here you can assign some icon to it that will be easily 
+                   recognisable
+                 - Hit Ok
+                 - You may need to reopen the email
+                 - Click on the new button you added in the Quick Access Toolbar
+                   (which is located at the very top near the title bar)
+ 13.  Make a minor change to the email (in Vim) and :w
+ 14.  Verify the Outlook email has the same change 
+ 15.  Hit Escape to close the Outlook email, you will be prompted to Save 
+      the changes you have just made.  So you always have an option of 
+      cancelling the changes you made in Vim, in Outlook.
+ 16.  Creating a digital certificate and signing your macro.
+      By default Outlook will not open certificates that are not digitally
+      signed.
+      There are some simple instructions which you can follow using 
+      Microsoft Office Tools (since you already have Outlook) to:
+         a)  Create a personal certificate.  
+         b)  Use this certificate to sign the VB macro.
+         c)  Add this certificate to your CA Root Certificates.
+      This should allow you to leave the default macro settings as they 
+      are and still have the Vim.Edit macro function.
+      This site was very useful:
+            http://www.howto-outlook.com/howto/selfcert.htm
+      After you have digitally signed the Vim.Edit certificate start 
+      Outlook.
+      When Outlook launches it will prompt you with a Microsoft Office
+      Security Notice.  "Warning this publisher has not been authenticated
+      and therefore could be imitated.  Do not trust these credentials."
+      Below that says "ThisOutlookSession", which when we added the 
+      OutlookVim.bas to the VB editor you would have seen ...
+
+      Click on the link, "Show Signature Details".   The "Signer information"
+      should be the name you created using Microsoft Office Tools.
+
+      Click on the "View Certificate" button.
+
+      The "Issued to" and "Issued by" should be the same name.
+
+      Click on the "Install Certificate" button.  The Certificate Import Wizard
+      will start up.  Take defaults ("Always select the certificate store
+      based on the type of certificate").
+
+      When the wizard finishes, choose "Trust all documents from this
+      publisher).
+
+      Restart Outlook, you should not be prompted again to for the Vim.Edit 
+      macro, and it should be enabled.
+
+      To view where your new certificate has been installed (or to remove it)
+      on Windows 7, you can run CertMgr.msc
+      (http://windows.microsoft.com/is-IS/windows-vista/View-or-manage-your-certificates)
+      and from the menu, Action -> Find Certificates ..., type in the name
+      of your certificate.
+
+ More Macros
+      In OutlookVim 12.0, four additional macros have been added:
+          Compose    - Create a new email and edit in Vim 
+          Reply      - Reply to the current selected items and edit in Vim
+          ReplyToAll - ReplyAll to the current selected items and edit in Vim
+          Forward    - Forward the current selected items and edit in Vim
+
+      You can add these macros directly to your toolbar when viewing your
+      Inbox versus an open email.  
+          Outlook 2003
+             - Not sure, don't have it installed, but it should be very
+               similar to the previous directions.
+          Outlook 2007
+             - Not sure, don't have it installed, but it should be very
+               similar to the previous directions.
+          Outlook 2010 / 2013
+             - Right click on the far right of the toolbar and choose 
+               "Customize the Ribbon" 
+             - Change the "Choose commands from" to "Macros"
+             - In the right pane, under "Main Tabs", create a New Group (hit
+               button at bottom)
+             - Click the Rename button and call the new group whatever you like (Vim?)
+             - Make sure this new group is highlighted
+             - Add the following macros, Vim.Compose, Vim.Reply,
+               Vim.ReplyToAll, Vim.Forward using the "Add >>" button
+             - Click on each new macro added to the Vim group in the right
+               pane and click the "Rename" button beside the "Add Group" button
+             - Here you can assign some icon to it that will be easily 
+               recognisable, but you can _also_ rename the macro and in these
+               cases, I would strip of the "Vim." part, since we already
+               created the group called "Vim", so it is redundant.
+             - Hit Ok
+             - In your Inbox, you can either highlight an individual email or
+               you can use Control+Click and select multiple items.  Then hit
+               the Vim Reply button.
+             - Test out the buttons and see how they work in your Inbox.
+
+==============================================================================
+5. Configuration                                   *outlook-configuration*
+
+ The behavior of outlook.vim is governed by several variables. These variables
+ are used both by the autocmds which are created by the plugin and to configure 
+ your own customization of this plugin.  These variables can be assigned
+ global defaults which can be set in your |.vimrc|. 
+
+ You can override many of the features of this script by creating various
+ variables within your vimrc.
+                                                                          
+ By default all emails will be opened using the standard Vim :edit command
+ (see g:outlook_edit_cmd).  For users, who prefer using tabs in Vim, this
+ setting (default = 0) will force all emails to be edited in a new tab in Vim. >
+     let g:outlook_use_tabs = 1
+<
+ By default, all emails will be edited in which ever Vim instance is running 
+ the OLE server (a user cannot determine this) and only 1 Vim instance can 
+ be the OLE server.  Different users use Vim in different ways.  Some prefer 
+ to have only 1 instance open with multiple buffers.  Some prefer 1 instance 
+ and using tabs for each buffer.  Other have a mixture of practices.  
+ To accommodate how people work, you can also assign a specific Vim instance 
+ to be used just to edit mail.  This setting (default = '') will force all
+ emails to be edited in a particular Vim instance.  If the instance has not be
+ started, a message is displayed with an example command line to start an
+ appropriate Vim. >
+     let g:outlook_servername = ''
+<
+ When upgrading between Vim versions, it is possible Outlook will launch a
+ previously installed version of Vim (i.e. Vim 7.3 instead of Vim 7.4).  To
+ correct this you can perform the following tasks: >
+    1.  Go to your vim73 directory and run:
+        gvim.exe -unregister 
+    2.  Go to your vim74 directory and run:
+        gvim.exe -register 
+< 
+ That should register the correct executable with Windows as the current OLE
+ server.
+
+ OutlookVim uses a few commands to edit a new email.  If Vim was just launched
+ and has only 1 buffer which has not been modified, it will simply ":edit" the
+ file.  If g:outlook_use_tabs is enabled, it uses ":tabnew".  If the current
+ buffer is not modified, it will use ":edit".  If the current buffer is
+ modified and nohidden is set, then it will use ":split".  For customization
+ purposes, you can override this command and use your own Vim command by 
+ setting the following in your |.vimrc|: >
+     let g:outlook_edit_cmd = 'botright split'
+<
+ This setting (default = plain) indicates which format of the Outlook message
+ to use when creating the buffer for Vim to edit.  If the value is set to
+ "html", then if the Outlook email is using an "html" body, then the buffer 
+ will contain html code.  If the email is in rich text or plain text, then 
+ the buffer will be in plain text.  So you will only edit in html, if the 
+ body of the Outlook message is already in html.  To set this preference 
+ add the following to your .vimrc: >
+     let g:outlook_supported_body_format = 'html'
+<
+ By default OutlookVim sets the file type for a buffer to be either "mail"
+ or if you are editing a HTML formatted mail to "html".  For customization 
+ purposes you can override this behaviour and set it to any value you 
+ would like: >
+     let g:outlook_file_type = 'anything_you_like'
+<
+ If needed, this setting allows you to override the default textwidth for the 
+ filetype chosen for your email.  By creating this variable each new email
+ opened in Vim will set a local buffer option to this value.  This will
+ allow you to automatically format text using gq.  If this variable 
+ = 0, changing the buffer specific textwidth is abandoned: >
+     let g:outlook_textwidth = 76
+<
+ When you save a file, by default, Outlook will be updated and the temporary
+ file you are editing will be deleted.  Autoread was added so that the Vim
+ buffer is automatically cleared instead of displaying a warning message
+ indicating the file has changed outside of Vim (in fact it was deleted).  If
+ you wish to see the warning, you can set (default = 1) the following: >
+     let g:outlook_noautoread = 1
+<                                                                    
+ When you save a file, by default, Outlook will be updated and the temporary
+ file you are editing will be deleted.  Since the file has been deleted, you
+ are left editing a file that no longer exists.  By default, the Vim buffer
+ will be deleted automatically, unless this option (default = 1) is set. 
+ If you want to be able to save the file multiple times before removing the
+ buffer from Vim, set the following: >
+     let g:outlook_nobdelete = 1
+<
+ If you do not save the temporary file and instead decide to throw away your
+ changes, the temporary files will be cleaned up.  This option (default = 1)
+ will leave the files in the temporary directory instead of removing them. >
+     let g:outlook_nodelete_unload = 1
+<
+ This setting (default = 1) will prevent the script from automatically turning
+ on Vim's autoindent feature.  It will use your default setting instead. >
+     let g:outlook_noautoindent = 1
+<
+ This setting (default = 1) will capture the output when attempting to update
+ Outlook. >
+     let g:outlook_save_cscript_output = 1
+<
+ This setting (default = 0) will display various debug message boxes
+ in Outlook to help identify issues. >
+     let g:outlook_debug = 1
+<
+ The outlookvim.js (Javascript) is used to update Outlook after modifying 
+ the email in Vim and saving it.  The file resides in the plugin directory 
+ with the rest of the OutlookVim files, but it can be moved and it's location 
+ specified. >
+     let g:outlook_Javascript = '$VIM\vimfiles\plugin\outlookvim.js'  (default)
+     let g:outlook_Javascript = 'C:\Documents and Settings\Username\My Documents\outlookvim.js'
+     let g:outlook_Javascript = expand('$APPDATA\Microsoft\outlookvim.js')
+     let g:outlook_Javascript = expand('$USERPROFILE\Application Data\Microsoft\outlookvim.js')
+<
+                                                   *outlook-Unicode* 
+ This setting (default = 0) can force all Outlook messages to be written
+ using the utf-16le encoding.  See :h outlook-Unicode. >
+     let g:outlook_always_use_Unicode = 1
+<
+ This setting (default = 1) will show any errors reported when attempting
+ to update Outlook.  This debugging output should help identify where
+ any problems may lie. >
+     let g:outlook_scan_email_body_Unicode = 0
+<
+ In order to edit Outlook emails which contain Unicode characters in the body
+ of the email you must enable UTF support in Vim. Your Vim setting must
+ include a font capable of displaying the characters and your encodings must
+ support UTF.  To check these items, you can run the following in Vim:
+    1.  Does your Vim support multi_byte? >
+        :echo has("multi_byte")  
+        1
+<   2.  Does your fileencodings support multi_byte 
+        (usc-bom or utf-8 or utf-16le)? >
+        :echo match(&fileencodings, '\<ucs-bom\|utf\>')
+        0  (or greater)
+<   3.  Does your encoding support multi_byte (utf-8 or utf-16le)? >
+        :echo match(&encoding, '\<utf\>')
+        0  (or greater)
+<   4.  For your font, make sure you choose one which will correctly 
+        display your characters.  DejaVu fonts 
+        (http://sourceforge.net/projects/dejavu/) will work. 
+        If you install these fonts, adding the following in your .vimrc
+        will enable them: >
+            set guifont=DejaVu_Sans_Mono:h11:b:cANSI
+<
+ The following settings in my .vimrc allowed me to successfully view 
+ and edit Unicode text from Outlook: >
+     if has("multi_byte")  
+         set encoding=utf-8
+         set fileencodings=ucs-bom
+         set guifont=DejaVu_Sans_Mono:h11:b:cANSI
+     endif
+<
+ By default OutlookVim does not enable Unicode when writing the file which 
+ Vim will edit.  It does check the Outlook body of the message to see if 
+ there are any Unicode characters.  If there are Unicode characters present, 
+ it will enable Unicode.  If you know you routinely edit emails with Unicode 
+ characters, then you should tell OutlookVim to always write the files it
+ creates using Unicode.  If you are in North America, where you most likely
+ never deal with Unicode characters then you probably do not have Vim setup to
+ edit Unicode files.  Leaving the OutlookVim defaults is probably best for
+ North Americans.  If your Vim has the required Unicode support you can force
+ Outlook to always use Unicode format using this settings: >
+     let g:outlook_always_use_Unicode = 1
+<
+ There could be a performance penalty when scanning the body of an email to
+ check for Unicode characters if you frequently edit very large emails.
+ Setting outlook_always_use_Unicode = 1 will prevent this scan since there is
+ no reason to scan if we are always using Unicode.  Turning off the check for
+ Unicode characters means you could open the file in Vim using an encoding
+ which does not support the Unicode characters.  When saving the file and
+ updating the Outlook body with the saved text, all Unicode characters will be
+ changed.  So BEWARE if you are disabling this check.  To disable the scan
+ when outlook_always_use_Unicode = 0 with: >
+     let g:outlook_scan_email_body_Unicode = 0
+<
+ To read up more on Unicode and Vim see this wiki entry: >
+     http://vim.wikia.com/wiki/Working_with_Unicode
+<
+==============================================================================
+6.  Troubleshooting (various versions of Windows)  *outlook-troubleshooting*
+
+ If you're Outlook macro does not work at all (or opens a Vim (GUI) window
+ but without proper contents/filename), you should check your Internet
+ Explorer's security settings.
+ 
+ Go to IE => Tools => Options => Security tab => Custom level and check if the
+ various ActiveX components are allowed to run. 
+ 
+ If they are enabled, and the Outlook macro still does not work, your Windows
+ Script Host (WSH) might not be installed correctly.  To test this, open Windows 
+ Explorer (not Internet Explorer) and navigate to where your Vim plugins 
+ are installed.  Find the plugin\OutlookVim.js file and double click on it.
+ This will launch the Javascript file and a Message Box should popup saying: >
+     "Hello from OutlookVim!"
+< 
+ If the Message Box is not displayed or some other error is displayed, your
+ Windows Script Host (WSH) might not be installed correctly.  You may want to
+ reinstall WSH by following the Upgrade links found at the WSH home page. >
+     http://msdn.microsoft.com/en-us/library/9bbdkx3k.aspx
+< 
+ The following has solved the problem for at least one user on a Windows XP
+ system using Outlook 2003.  Re-registering the Windows Script Host's DLLs.  
+ Hit the *Win+R* keyboard combination and run these 2 commands (separately): >
+     regsvr32 wshom.ocx
+     regsvr32 scrrun.dll
+<
+ If the above does not help, or if you receive an error message when running
+ the two commands above, then you may need to contact Microsoft Support.
+
+                                                               
+==============================================================================
+  vim:tw=78:fo=tcq2:ts=4:ft=help:norl:

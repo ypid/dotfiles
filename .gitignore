@@ -6,3 +6,6 @@ autokey/**/*.json
 autohotkey/copy
 autohotkey/put
 autohotkey/get
+
+# FIXME
+windows/MS_Shell/Modules/Pscx/

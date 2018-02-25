@@ -174,9 +174,11 @@
         " Spellcheck { set spellfile=~/.vim/spell/en.utf-8.add set dictionary+=/usr/share/dict/words
             " English is the default. German is legacy and is to be enabled
             " only as needed.
-            " FIXME
-            " set spelllang=en_us
-            set spelllang=en_us,de_de
+            if has('win32') || has('win64')
+                set spelllang=en_us
+            else
+                set spelllang=en_us,de_de
+            endif
             noremap <Leader>cd :set spell!<CR>
             inoremap <Leader>cd <c-o>:set spell!<CR>
         " }}}
@@ -532,6 +534,16 @@
                 set t_Co=256            " Enable 256 colors to stop the CSApprox warning and make xterm vim shine
             endif
             "set term=builtin_ansi       " Make arrow and other keys work
+        endif
+    endif
+" }}}
+
+" M$ Windows specifics {{{
+    " Vim on Windows is not able to run my fully blown config with plugins.
+    if has('win32') || has('win64')
+        if filereadable(expand("~/.config/dotfiles/vim/bundle/outlook/plugin/outlook.vim"))
+            source ~/.config/dotfiles/vim/bundle/outlook/plugin/outlook.vim
+            let g:outlook_Javascript = '$HOME/.config/dotfiles/vim/bundle/outlook/plugin/outlookvim.js'
         endif
     endif
 " }}}

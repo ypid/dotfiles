@@ -3,10 +3,11 @@
 # .. vim: foldmarker={{{,}}}:foldmethod=marker
 
 if [ -n "$ANDROID_ROOT" ]; then
-    cd
+    cd || exit
 fi
 
 ## Exports {{{
+
 ## https://superuser.com/questions/479600/how-can-i-prevent-tmux-exiting-with-ctrl-d
 # export IGNOREEOF=2
 ## Does not work with zsh
@@ -136,8 +137,8 @@ alias ,r='editor'
 
 ## SSH {{{
 
-alias ssh='ssh_wrapper'
-alias sshrc='sshrc_wrapper'
+alias ssh='ssh_wrapper ssh'
+alias sshrc='ssh_wrapper sshrc'
 alias s='ssh'
 alias i='sshrc'
 alias so='assh sockets'
@@ -234,17 +235,19 @@ fi
 ## Package management {{{
 
 if [ -e "${PREFIX:-}/etc/apt" ]; then
+    alias m='apt'
     alias ai='apt install'
     alias ap='apt purge'
     alias as='\apt search'
     alias ash='\apt show'
-    alias an='apt upgrade'
+    alias an='apt update && apt upgrade'
 elif [ -e "${PREFIX:-}/etc/zypp" ]; then
+    alias m='zypper'
     alias ai='zypper install'
     alias ap='zypper remove'
     alias as='zypper search'
     alias ash='zypper info'
-    alias an='zypper upgrade'
+    alias an='zypper update'
 fi
 
 # }}}
@@ -296,6 +299,8 @@ if [[ "$USER" != 'root' ]] && [ -z "$ANDROID_ROOT" ]; then
     alias zypper='sudo zypper'
     alias sc='sudo ~root/.local/share/scripts/ypid-scripts-common/sc'
 fi
+
+alias rpm-keys="rpm -q gpg-pubkey --qf '%{name}-%{version}-%{release} --> %{summary}\n'"
 
 alias xclip-primary-to-clipboard='xclip -out | xclip -in -selection clipboard'
 

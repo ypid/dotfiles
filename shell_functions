@@ -1,66 +1,24 @@
 #!/bin/bash
-# Sourced by Bash and zsh.
-
-# Functions which might be called by other sourced shell scripts.
+## Sourced by Bash and zsh.
+## Functions which might be called by other sourced shell scripts.
 
 # https://superuser.com/questions/39751/add-directory-to-path-if-its-not-already-there/753948#753948
 pathprepend() {
-  for ARG in "$@"
-  do
-    ARG="${ARG%/}"
-    if [ -d "$ARG" ] && [[ ":$PATH:" != *":$ARG:"* ]]; then
-        PATH="$ARG${PATH:+":$PATH"}"
-    fi
-  done
+    for ARG in "$@"
+    do
+        ARG="${ARG%/}"
+        if [ -d "$ARG" ] && [[ ":$PATH:" != *":$ARG:"* ]]; then
+            PATH="$ARG${PATH:+":$PATH"}"
+        fi
+    done
 }
+
 pathappend() {
-  for ARG in "$@"
-  do
-    ARG="${ARG%/}"
-    if [ -d "$ARG" ] && [[ ":$PATH:" != *":$ARG:"* ]]; then
-        PATH="${PATH:+"$PATH:"}$ARG"
-    fi
-  done
-}
-
-## Simplified based on: https://github.com/Russell91/sshrc/blob/master/sshrc
-get_ssh_cli_host() {
-  while [[ -n $1 ]]; do
-    case $1 in
-      -* ) ;;
-      *  ) echo "$1"; return 0 ;;
-    esac
-    shift
-  done
-  return 1
-}
-
-# https://gist.github.com/florianbeer/ee02c149a7e25f643491
-ssh_wrapper() {
-    if [ -z "$(get_ssh_cli_host "$@")" ]; then
-      command ssh "$@"; return 1;
-    fi
-    if ps -p "$(ps -p $$ -o ppid= | sed 's/\s//g;')" -o comm= | grep -q tmux; then
-        tmux rename-window "$(get_ssh_cli_host "$@")"
-        command ssh "$@"
-        tmux set-window-option automatic-rename "on" 1>/dev/null
-    else
-        echo -ne "\033]0;$(get_ssh_cli_host "$@")\007"
-        command ssh "$@"
-        echo -ne "\033]0;Terminal\007"
-    fi
-}
-sshrc_wrapper() {
-    if [ -z "$(get_ssh_cli_host "$@")" ]; then
-      command ssh "$@"; return 1;
-    fi
-    if ps -p "$(ps -p $$ -o ppid= | sed 's/\s//g;')" -o comm= | grep -q tmux; then
-        tmux rename-window "$(get_ssh_cli_host "$@")"
-        command sshrc "$@"
-        tmux set-window-option automatic-rename "on" 1>/dev/null
-    else
-        echo -ne "\033]0;$(get_ssh_cli_host "$@")\007"
-        command sshrc "$@"
-        echo -ne "\033]0;Terminal\007"
-    fi
+    for ARG in "$@"
+    do
+        ARG="${ARG%/}"
+        if [ -d "$ARG" ] && [[ ":$PATH:" != *":$ARG:"* ]]; then
+            PATH="${PATH:+"$PATH:"}$ARG"
+        fi
+    done
 }

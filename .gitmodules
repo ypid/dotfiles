@@ -74,7 +74,7 @@
 	url = https://github.com/chase/Vim-Jinja2-Syntax.git
 [submodule ".vim/bundle/logstash.vim"]
 	path = vim/bundle/logstash.vim
-	url = https://github.com/vim-scripts/logstash.vim.git
+	url = https://github.com/robbles/logstash.vim.git
 [submodule ".vim/bundle/xterm-color-table.vim"]
 	path = vim/bundle/xterm-color-table.vim
 	url = https://github.com/guns/xterm-color-table.vim.git

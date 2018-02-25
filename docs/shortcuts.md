@@ -6,7 +6,7 @@ Left hand only: Should be easy to use with the left hand, because it is often us
 
 ## Advises: Shortcuts done right
 
-Here are some advices regarding shortcuts for programmers and UI designers which I would like to see implemented:
+Here is some advice regarding shortcuts for programmers and UI designers which I would like to see implemented:
 
 * Allow more than one shortcut for one action!
 * Allow to reconfigure *everything*.
@@ -27,7 +27,7 @@ Here are some advices regarding shortcuts for programmers and UI designers which
 
 Which shortcuts should be used where? – Some thoughts …
 
-* `Shift+Alt`: W, S, X reserved for window manager. Applications can use everything else.
+* `Shift+Alt`: W, S, X, A reserved for window manager. Applications can use everything else.
 * `Ctrl+Alt` (unused can be used for hypervisor consoles as host key), `Ctrl+Super`, `Super`: Dedicated to window manager respectively shortcuts which can be triggered globally.
   * Never use the `Super` key for applications as this modifier might be reserved in some window managers. (And I don’t want to find out how to patch Windows to remap that).
 * `Shift+Super`: Dedicated to AutoKey (global)
@@ -35,6 +35,7 @@ Which shortcuts should be used where? – Some thoughts …
 
 ### Applications
 
+* `Ctrl`: Applications.
 * `Shift`: Applications.
 * `Shift+Ctrl`: Applications.
 * `Shift+Ctrl+Alt`: Applications.
@@ -54,7 +55,7 @@ List of free shortcuts (they may have a default mapping but there are better sho
 
 * `Super` (WinKey): Almost forgotten :)
 * `Super+Alt`: Reserved (No mapping used so far)
-* Shift+Alt+A,
+* Alt+Super+C
   Shift+Alt+D
   Shift+Alt+
   Ctrl+Alt+Y
@@ -90,7 +91,7 @@ Shortcut                           | Function                       | Left hand 
 Shift+Alt+W                        | Move window one workspace up   | Yes            |
 Shift+Alt+S                        | Move window one workspace down | Yes            |
 Alt+[Level4 Shift][special-keys]   | Switch windows                 | Of course      | Easier to reach than Alt-Tab.
-Super+[Level4 Shift][special-keys] | Switch to workspace 1          | Of course      |
+Super+[Level4 Shift][special-keys] | Switch to workspace 1          | Of course      | Does not work on M$ Windows or would require Neo2 AHK patch.
 Super+Y                            | Switch to workspace 2          | Of course      |
 Super+X                            | Switch to workspace 3          | Of course      |
 Super+A                            | Switch to workspace 4          | Of course      |
@@ -123,7 +124,7 @@ Ctrl+Super+A  | Lock screen   | Yes            |
 
 Shortcut      | Function                                            | Left hand only | Comment
 ------------- | -------------                                       | -------------  | -------------
-Alt+Super+C   | Switch to next input source (e.g. qNeo2 and qwertz) | Yes            |
+Shift+Alt+A   | Switch to next input source/keyboard layout (e.g. qNeo2 and qwertz) | Yes            | This needs to be compiled into Neo-vars on Windows.
 Shift+Ctrl+U  | Enter Unicode hex value                             | No             |
 
 ### Windows
@@ -154,10 +155,13 @@ Ctrl+Super+[1-9] | Launch custom program or script           | Yes and no     |
 Ctrl+Alt+V       | `poweroff`                                | Yes            |
 Ctrl+Alt+G       | `reboot`                                  | Yes            |
 Super+J          | Launcher application finder               | Nice to have   | Gnome activities or substation for other WMs. Gnome does by default trigger on Super button press which is a nice feature but does not work on other WMs yet?
-Super            | Launcher application finder               | Yes            | Only works with Gnome.
+Super            | Launcher application finder               | Yes            | Only works with Gnome (and M$ Windows).
+Ctrl+Super+O     | Open contact search for calling, CTI      | No             | Computer Telephony Integration
 Shift+Ctrl+Alt+O | Launch program `eject`                    | No             | eject removable media, FIXME
-Ctrl+Alt+Q       | Show [Neo Layout Viewer][NeoLayoutViewer] | Yes            | Mod3+F1 does not work on GNU/Linux (xfce). Need to change NeoVars to Ctrl+Alt+Q then :)
-Shift+Pause      | Switch between Neo2 and querz             | Yes            | FIXME: Search for better shortcut. The ThinkPad X1 does not have "pause".
+Ctrl+Alt+Q       | Show [Neo Layout Viewer][NeoLayoutViewer] | Yes            | Mod3+F1 does not work on GNU/Linux (xfce). Changed NeoVars to Ctrl+Alt+Q.
+Super+F          | Start screen recording                    | Yes            | OBS Studio.
+Super+I          | Move panel/taskbar to the top             | Nice to have   | Only needed on Windows because Windows is stupid enough/can not prevent applications from appearing below the Taskbar when it is positioned at the top.
+Super+O          | Move panel/taskbar to the bottom          | Nice to have   | See above. Ah, no comment without hating M$ :) Super+L can not be used because there is [no way to disable it under Windows 10](https://superuser.com/questions/1059511/how-to-disable-winl-in-windows-10).
 
 [NeoLayoutViewer](https://github.com/YggdrasiI/NeoLayoutViewer.git)
 
@@ -277,6 +281,10 @@ Shortcut      | Function                  | Left hand only | Comment
 Shift+Ctrl+S  | View page source          | Yes            |
 Shift+Ctrl+D  | Web console (d for Debug) | Yes            |
 Shift+Ctrl+W  | Undo Close Tab            | Yes            |
+
+### Chromium
+
+I use [cVim][] to get all the Vim basics and to customize shortcuts.
 
 ### Gimp
 
@@ -481,6 +489,7 @@ Normal mode:
 <!-- links -->
 
 [VimFx]: https://github.com/akhodakivskiy/VimFx
+[cVim]: https://github.com/1995eaton/chromium-vim
 [special-keys]: #special-keys
 [Double Commander]: #double-commander-dc
 [.vimrc]: /.vimrc

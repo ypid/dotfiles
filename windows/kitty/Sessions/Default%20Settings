@@ -3,6 +3,7 @@ SCPAutoPwd\0\
 ACSinUTF\0\
 Comment\\
 CtrlTabSwitch\0\
+Password\121nb\
 ForegroundOnBell\0\
 SaveWindowPos\0\
 WindowState\0\
@@ -213,7 +214,7 @@ TelnetKey\0\
 CtrlAltKeys\1\
 ComposeKey\0\
 AltOnly\0\
-AltSpace\0\
+AltSpace\1\
 AltF4\1\
 NetHackKeypad\0\
 ApplicationKeypad\0\

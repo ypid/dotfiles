@@ -3,12 +3,13 @@
 ; # 	Win (Windows logo key)
 ; ! 	Alt
 
-#SingleInstance force
-#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
-SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
-SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
+LAlt & Tab::return
 
-SetTitleMatchMode, RegEx
+; Shift+Alt+A   | Switch to next input source (e.g. qNeo2 and qwertz) | Yes            | This needs to be compiled into Neo-vars on Windows.
++!a::
+Suspend, Permit
+  Traytogglesuspend()
+return
 
 
 
@@ -151,16 +152,16 @@ MoveIt(Q) {
 ; GNU/Linux Alt+Window drag functionality
 ; This script modified from the original: http://www.autohotkey.com/docs/scripts/EasyWindowDrag.htm
 ; by The How-To Geek
-; http://www.howtogeek.com 
+; http://www.howtogeek.com
 Alt & LButton::
     CoordMode, Mouse  ; Switch to screen/absolute coordinates.
     MouseGetPos, EWD_MouseStartX, EWD_MouseStartY, EWD_MouseWin
     WinGetPos, EWD_OriginalPosX, EWD_OriginalPosY,,, ahk_id %EWD_MouseWin%
-    WinGet, EWD_WinState, MinMax, ahk_id %EWD_MouseWin% 
-    if EWD_WinState = 0  ; Only if the window isn't maximized 
+    WinGet, EWD_WinState, MinMax, ahk_id %EWD_MouseWin%
+    if EWD_WinState = 0  ; Only if the window isn't maximized
         SetTimer, EWD_WatchMouse, 10 ; Track the mouse as the user drags it.
     return
-    
+
     EWD_WatchMouse:
     GetKeyState, EWD_LButtonState, LButton, P
     if EWD_LButtonState = U  ; Button has been released, so drag is complete.
@@ -259,15 +260,18 @@ IfMsgBox, OK
 return
 
 ; Super+J          | Launcher application finder
-; TODO: Not yet always working. The issue is not that Super+J is used to trigger it.
-#j::Send ^{Esc}
+; #j::Send {LWin up}^{Esc}
+; #j::Send {LWin up}{LWin}
+; #j::run, "C:\Program Files (x86)\Launchy\Launchy.exe" /show
 
 ; Super+Q       | Close window
 #q::WinClose, A
 
 ; Ctrl+Super+[Level4 Shift][special-keys] | Volume down by 5 %
 ; Does not work because the >< key is intercepted by Neo2.
-^#>::SoundSet -5
+; Implemented in
+; ^#>::SoundSet -5
+
 ; Ctrl+Super+Y                            | Volume up by 5 %
 ^#y::SoundSet +5
 ; Ctrl+Super+X                            | Mute
@@ -295,6 +299,6 @@ return
 
 
 ; Duplicate session in Putty based programs.
-#IfWinActive,.*[KP]iTTY
+#IfWinActive,.*(Ki|Pu)TTY
 +^n::Send, !{space}d
 #IfWinActive
