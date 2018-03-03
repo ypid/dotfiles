@@ -28,7 +28,8 @@ Here is some advice regarding shortcuts for programmers and UI designers which I
 Which shortcuts should be used where? – Some thoughts …
 
 * `Shift+Alt`: W, S, X, A reserved for window manager. Applications can use everything else.
-* `Ctrl+Alt` (unused can be used for hypervisor consoles as host key), `Ctrl+Super`, `Super`: Dedicated to window manager respectively shortcuts which can be triggered globally.
+* `Super+Alt`: Hypervisor console as host key
+* `Ctrl+Super`, `Super`: Dedicated to window manager respectively shortcuts which can be triggered globally.
   * Never use the `Super` key for applications as this modifier might be reserved in some window managers. (And I don’t want to find out how to patch Windows to remap that).
 * `Shift+Super`: Dedicated to AutoKey (global)
     * Can also be used over RDP on Windows machines without interfering with MS Windows mappings of the Super key.
@@ -54,7 +55,6 @@ Which shortcuts should be used where? – Some thoughts …
 List of free shortcuts (they may have a default mapping but there are better shortcuts for those actions so that the shortcuts are available to be mapped to a different action).
 
 * `Super` (WinKey): Almost forgotten :)
-* `Super+Alt`: Reserved (No mapping used so far)
 * Alt+Super+C
   Shift+Alt+D
   Shift+Alt+
