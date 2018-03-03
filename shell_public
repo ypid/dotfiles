@@ -221,7 +221,6 @@ fi
 ## }}}
 
 ## ag {{{
-unalias ag >/dev/null 2>&1
 if command -v ag >/dev/null 2>&1
 then
     ## Using silversearcher-ag
