@@ -34,11 +34,13 @@ export MAN_POSIXLY_CORRECT=1
 ## Enable color support of ls and also add handy aliases {{{
 if command -v dircolors >/dev/null 2>&1; then
     export LS_OPTIONS='--color=auto'
-    eval "$(dircolors)"
     alias ls='ls --color=auto --human-readable --time-style=long-iso'
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
+
+    ## Seems not to be needed. Does not work under Termux because $SHELL is not defined.
+    # eval "$(dircolors)"
 fi
 
 ## }}}
