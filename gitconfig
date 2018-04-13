@@ -41,6 +41,10 @@
 	# https://www.qubes-os.org/doc/split-gpg/#using-git-with-split-gpg
 	stag = "!id=`git rev-parse --verify HEAD`; git tag -s ypid_${id:0:8} -m \"Tag for commit $id\""
 	vtag = !git tag -v `git describe`
+
+	## https://stackoverflow.com/questions/6127328/how-can-i-delete-all-git-branches-which-have-been-merged/6127884#6127884
+	db = "!git branch --merged | egrep -v '(^\\*|master|dev)' | xargs --no-run-if-empty git branch -d"
+
 [core]
 	editor = vim
 	; autocrlf = true
