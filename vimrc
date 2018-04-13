@@ -365,6 +365,10 @@ source ~/.vimrc.min
             let g:syntastic_cpp_checkers = ['gcc', 'cppclean']
             let g:syntastic_yaml_checkers = ['yamllint']
             " let g:syntastic_yaml_yamllint_args = '-c ' . shellescape($HOME . '/.yamllint')
+
+            " ansible-lint is currently too slow for checking while editing.
+            let g:syntastic_ansible_checkers = ['yamllint']
+
             "
             " Bundle 'Valloric/YouCompleteMe'
             " Much dependencies
