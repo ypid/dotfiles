@@ -11,17 +11,21 @@
 
 
 Host *
-
-    ## http://blog.joeyhewitt.com/2013/12/openssh-hashknownhosts-a-bad-idea/
-    HashKnownHosts no
-
-    UpdateHostKeys ask
-
-
     ## Not using sha256 currently because OpenSSH in Debian jessie can not
     ## generate them with `ssh-keygen -E` so they could not be compared out-of band
     ## on initial connection attempt.
     FingerprintHash md5
+
+    ## http://blog.joeyhewitt.com/2013/12/openssh-hashknownhosts-a-bad-idea/
+    HashKnownHosts no
+
+    ## Confirmation is currently incompatible with ControlPersist.
+    ## With ControlPersist enabled, UpdateHostKeys has no effect yet.
+    UpdateHostKeys ask
+
+    ControlMaster auto
+    ControlPath ~/.ssh/multiplex/%r@%n:%p.sock
+    ControlPersist 1800
 
 
     GSSAPIAuthentication no
@@ -33,8 +37,3 @@ Host *
     Ciphers aes256-gcm@openssh.com,aes256-ctr,aes256-cbc
     MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-sha2-512,hmac-sha2-256
     KexAlgorithms curve25519-sha256,curve25519-sha256@libssh.org,diffie-hellman-group-exchange-sha256,diffie-hellman-group-exchange-sha1,diffie-hellman-group14-sha1
-
-
-    ControlMaster auto
-    ControlPath ~/.ssh/multiplex/%r@%n:%p.sock
-    ControlPersist 1800
