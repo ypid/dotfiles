@@ -28,6 +28,8 @@ do
 	grep --quiet "$git_repo_location" "$git_repos_update_done_file" && continue
 	if [ "$(git -C "$git_repo_location" rev-parse --abbrev-ref HEAD)" != "master" ]
 	then
+		git -C "$git_repo_location" status
+		git -C "$git_repo_location" branch
 		echo "Skipping: $git_repo_location (reason: Non-default branch checked out)"
 		continue
 	fi
@@ -48,6 +50,7 @@ do
 		continue
 	fi
 
+	echo git -C "$git_repo_location" diff --diff-algorithm=minimal --find-renames --color-words "$last_trusted_commit_hash..FETCH_HEAD"
 	git -C "$git_repo_location" diff --diff-algorithm=minimal --find-renames --color-words "$last_trusted_commit_hash..FETCH_HEAD"
 
 	echo -n "Everything good then enter 'ok'? "
