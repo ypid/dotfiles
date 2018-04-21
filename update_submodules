@@ -1,3 +1,62 @@
-#!/bin/sh
+#!/bin/bash
+## @author Copyright (C) 2016-2018 Robin Schneider <ypid@riseup.net>
+## @license AGPL-3.0 <https://www.gnu.org/licenses/agpl-3.0.html>
 
-git submodule foreach git pull origin master
+set -o nounset -o pipefail -o errexit
+git_repos_update_done_file='/tmp/dotfiles_git_repos_update_done_file.list'
+
+if [ ! -e "$git_repos_update_done_file" ]
+then
+	git submodule foreach 'git fetch origin master --tags'
+fi
+
+touch "$git_repos_update_done_file"
+
+if [ -z "${1:-}" ] && [ -d "${1:-}" ]
+then
+	cd "$1" || exit
+else
+	## Go into the directory where this script is stored.
+	cd "$( dirname "${BASH_SOURCE[0]}" )" || exit
+fi
+
+## Prepare to get all files, independently what the current subdirectory is.
+cd "$(git rev-parse --show-toplevel)" || exit
+
+while read -u 3 -r git_repo_location
+do
+	grep --quiet "$git_repo_location" "$git_repos_update_done_file" && continue
+	if [ "$(git -C "$git_repo_location" rev-parse --abbrev-ref HEAD)" != "master" ]
+	then
+		echo "Skipping: $git_repo_location (reason: Non-default branch checked out)"
+		continue
+	fi
+
+	# git checkout master
+
+	## Assume that current HEAD is trusted.
+	# last_trusted_commit_hash="$(git log --pretty=format:'%H' --max-count 1 --author='Robin Schneider <ypid@riseup.net>' --show-signature | fgrep 'Good signature from "Robin Schneider (Automatic Signing Key) <ypid@riseup.net>" [ultimate]' --after-context 10 | tail --lines 1)"
+	last_trusted_commit_hash='HEAD'
+
+	echo "Git repository location: $git_repo_location"
+	echo "Last trusted commit hash: $last_trusted_commit_hash"
+
+	if git -C "$git_repo_location" diff --quiet "$last_trusted_commit_hash..FETCH_HEAD"
+	then
+		echo "OK: No diff against the remote"
+		echo "$git_repo_location"  >> "$git_repos_update_done_file"
+		continue
+	fi
+
+	git -C "$git_repo_location" diff --diff-algorithm=minimal --find-renames --color-words "$last_trusted_commit_hash..FETCH_HEAD"
+
+	echo -n "Everything good then enter 'ok'? "
+	read -r answer
+	if [ "$answer" == "ok" ]
+	then
+		git -C "$git_repo_location" merge --ff-only FETCH_HEAD
+	fi
+
+	echo "$git_repo_location"  >> "$git_repos_update_done_file"
+
+done 3< <(git submodule --quiet foreach pwd)
