@@ -583,7 +583,7 @@ source ~/.vimrc.min
 
     " Snippets & AutoComplete {{{
         if count(g:spf13_bundle_groups, 'snipmate')
-            if has("python") && executable('python')
+            if has("python") || has("python3")
                 " Needs to be before syntax on …
                 Bundle 'SirVer/ultisnips'
                 Bundle 'honza/vim-snippets'
