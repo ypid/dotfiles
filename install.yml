@@ -9,7 +9,7 @@
 - shell:
     - 'mkdir -p ~/.config/byobu ~/.local/share/zsh ~/.local/usr'
     - 'if command -v make; then make --directory doublecmd install; fi'
-    - 'mkdir -p ~/.gnupg && chmod 0750 ~/.gnupg'
+    - 'mkdir -p ~/.gnupg && chmod 0700 ~/.gnupg'
     - 'mkdir -p ~/.ssh/multiplex && chmod 0700 ~/.ssh'
     - 'cd ~/.ssh && for dir in ./*; do if [ -d "$dir" ] && [ "$dir" != "./multiplex" ]; then mkdir -p "$dir/known_hosts.d"; fi ; done'
     - 'mkdir -p ~/.asdf-writable/shims && ln -sf node ~/.asdf-writable/shims/nodejs'
