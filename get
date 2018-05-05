@@ -24,3 +24,5 @@ wget --continue "http://ftp.vim.org/pub/vim/runtime/spell/de.latin1.spl" --outpu
 pushd oh-my-zsh/lib/
 rm -f bzr.zsh correction.zsh grep.zsh key-bindings.zsh misc.zsh nvm.zsh spectrum.zsh termsupport.zsh functions.zsh nvm.zsh
 popd
+
+rm submodules/dotfiles-fiatjaf/vim/vim
