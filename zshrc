@@ -1,5 +1,10 @@
 # vim: foldmarker={{{,}}}:foldmethod=marker
 
+## Switch to bash inside template qubes on Qubes OS to reduce attack surface.
+if [ -e "/run/qubes/this-is-templatevm" ]; then
+    exec bash
+fi
+
 # Basic paths {{{
 ZSH="${XDG_CONFIG_HOME:-$HOME/.config}/oh-my-zsh"
 # ZSH_CACHE_DIR="$ZSH/cache" might not be writable

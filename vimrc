@@ -13,6 +13,11 @@ let g:spf13_no_views = 1
 
 source ~/.vimrc.min
 
+"" Don’t continue sourcing this in template qubes on Qubes OS to reduce attack surface.
+if filereadable("/run/qubes/this-is-templatevm")
+    finish
+endif
+
 " Bundles and plugins {{{
 
     " Configure plugin groups {{{
@@ -363,7 +368,7 @@ source ~/.vimrc.min
             " let g:syntastic_python_checkers = ['flake8', 'python', 'pylint']
             let g:syntastic_python_checkers = ['flake8', 'python']
             let g:syntastic_cpp_checkers = ['gcc', 'cppclean']
-            let g:syntastic_yaml_checkers = ['yamllint']
+            let g:syntastic_yaml_checkers = []
             " let g:syntastic_yaml_yamllint_args = '-c ' . shellescape($HOME . '/.yamllint')
 
             " ansible-lint is currently too slow for checking while editing.
