@@ -1,6 +1,6 @@
 ; + 	Shift
 ; ^ 	Control
-; # 	Win (Windows logo key)
+; # 	Super (Windows logo key)
 ; ! 	Alt
 
 #SingleInstance force

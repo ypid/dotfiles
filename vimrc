@@ -1139,6 +1139,9 @@ endif
                 " templates.
                 " autocmd Syntax jinja syntax enable
 
+                " Revert foldmarker for Java contained in YAML files.
+                autocmd FileType java setlocal foldmarker={{{,}}}
+
                 autocmd FileType ansible IndentGuidesDisable
 
                 autocmd FileType c setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4

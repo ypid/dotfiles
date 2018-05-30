@@ -31,7 +31,7 @@ Which shortcuts should be used where? – Some thoughts …
 * `Super+Alt`: Hypervisor console as host key
 * `Ctrl+Super`, `Super`: Dedicated to window manager respectively shortcuts which can be triggered globally.
   * Never use the `Super` key for applications as this modifier might be reserved in some window managers. (And I don’t want to find out how to patch Windows to remap that).
-* `Shift+Super`: Dedicated to AutoKey (global)
+* `Shift+Super`: Dedicated to AutoKey or AutoHotKey (global)
     * Can also be used over RDP on Windows machines without interfering with MS Windows mappings of the Super key.
 
 ### Applications
@@ -56,11 +56,16 @@ List of free shortcuts (they may have a default mapping but there are better sho
 
 * `Super` (WinKey): Almost forgotten :)
 * Alt+Super+C
-  Shift+Alt+D
   Shift+Alt+
   Ctrl+Alt+Y
   Ctrl+Alt+[Level4 Shift][special-keys]
   Ctrl+Alt+E
+
+## Reserved shortcuts
+
+Shortcuts which are reserved for non-public use at work.
+
+* Shift+Alt+D
 
 ## Shortcut conventions and key order
 
@@ -90,7 +95,7 @@ Shortcut                           | Function                       | Left hand 
 -------------                      | -------------                  | -------------  | -------------
 Shift+Alt+W                        | Move window one workspace up   | Yes            |
 Shift+Alt+S                        | Move window one workspace down | Yes            |
-Alt+[Level4 Shift][special-keys]   | Switch windows                 | Of course      | Easier to reach than Alt-Tab.
+Alt+[Level4 Shift][special-keys]   | Switch windows                 | Of course      | Easier to reach than Alt+Tab.
 Super+[Level4 Shift][special-keys] | Switch to workspace 1          | Of course      | Does not work on M$ Windows or would require Neo2 AHK patch.
 Super+Y                            | Switch to workspace 2          | Of course      |
 Super+X                            | Switch to workspace 3          | Of course      |
@@ -131,8 +136,8 @@ Shift+Ctrl+U  | Enter Unicode hex value                             | No        
 
 Shortcut      | Function                                      | Left hand only | Comment
 ------------- | -------------                                 | -------------  | -------------
-Super+Q       | Close window                                  | Yes            | If Ctrl-Q does not work. (Example: gnome-terminal)
-Ctrl+Alt+F    | Toggle fullscreen mode                        | Yes            | If Alt-F does not work. Try to use Ctrl+Alt+F because it is more generic. Use Shift+Super+F to emit F11.
+Super+Q       | Close window                                  | Yes            | If Ctrl+Q does not work. (Example: gnome-terminal)
+Ctrl+Alt+F    | Toggle fullscreen mode                        | Yes            | If Alt+F does not work. Try to use Ctrl+Alt+F because it is more generic. Use Shift+Super+F to emit F11.
 Ctrl+Alt+W    | Maximize window                               | Yes            |
 Ctrl+Alt+S    | Restore previous size of window               | Yes            |
 Ctrl+Alt+A    | Tile window on the left, View split on left   | Yes            |
@@ -463,6 +468,12 @@ N             | Go to next page                                          | Nice 
 J             | Go to line down                                          | Nice to have   |
 K             | Go to line up                                            | Nice to have   |
 Ctrl+N        | Start a new instance of Evince with the current document | Nice to have   |
+
+### SikuliX
+
+#### Default
+
+Shift+Alt+C | Abort SikulX script | Nice to have | As long as SikuliX 1.1.1 is open, it always intercepts this key combination.
 
 ## Terminal programs
 

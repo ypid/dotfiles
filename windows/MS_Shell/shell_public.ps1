@@ -2,6 +2,7 @@
 
 ## Setup basic compatibility layer {{{
 Set-Alias alias Set-Alias
+Set-Alias unset Remove-Variable 
 Set-Alias unalias Remove-Alias
 Set-Alias pathprepend Add-PathAtBegin
 Set-Alias pathappend Add-PathAtEnd
@@ -21,10 +22,12 @@ if (Get-Command ls.exe -ErrorAction SilentlyContinue | Test-Path) {
     Remove-Item alias:ls -ErrorAction SilentlyContinue
     # Set `ls` to call `ls.exe` and always use --color
     ${function:ls} = { ls.exe --color @args }
-    # List all files in long format
+    # List all files in long format.
     ${function:l} = { ls -lF @args }
-    # List all files in long format, including hidden files
-    ${function:la} = { ls -laF @args }
+    # List all files in long format, including hidden files.
+    ${function:ll} = { ls -lF --all @args }
+    # List all files in long format, including hidden files.
+    ${function:la} = { ls -lF --almost-all @args }
     # List only directories
     ${function:lsd} = { Get-ChildItem -Directory -Force @args }
 
@@ -131,7 +134,13 @@ Function ai { choco install @args }
 Function ap { choco uninstall @args }
 Function as { choco search @args }
 Function ash { choco info @args }
-Function an { choco upgrade all @args }
+Function an {
+    if ($args.Count -eq 0) {
+        choco upgrade all @args
+    } else {
+        choco upgrade @args
+    }
+}
 
 # }}}
 
@@ -140,6 +149,8 @@ Function an { choco upgrade all @args }
 alias d 'docker'
 alias t 'task'
 Function con { ping heise.de @args }
+Function conn { ping -6 heise.de @args }
+Function conl { ping -4 heise.de @args }
 alias a 'git-annex'
 alias v vagrant
 
@@ -195,12 +206,13 @@ Function sha512sum([string]$algo) { $(CertUtil -hashfile $algo SHA512)[1] -repla
 Function which() { Get-Command @args | Format-Table Path, Name }
 Function whichw() { (Get-Command @args).Definition }
 
+Function ping { ping.exe -t @args }
+
 ## Gets aliased by pscx but we prefer the original GNU coreutils version
 unalias touch
 
 alias xclip Out-Clipboard
 alias ip ipconfig
-alias ll ls
 alias reset Restart-Powershell
 alias top taskmgr
 alias htop procexp
@@ -224,7 +236,7 @@ Function id {
 ## Overwrite MS Shell aliases so that GnuWin commands are used {{{
 
 # Correct PowerShell Aliases if tools are available (aliases win if set)
-# WGet: Use `ls.exe` if available
+# WGet: Use `wget.exe` if available
 if (Get-Command wget.exe -ErrorAction SilentlyContinue | Test-Path) {
   Remove-Item alias:wget -ErrorAction SilentlyContinue
 }
@@ -232,7 +244,6 @@ if (Get-Command wget.exe -ErrorAction SilentlyContinue | Test-Path) {
 # curl: Use `curl.exe` if available
 if (Get-Command curl.exe -ErrorAction SilentlyContinue | Test-Path) {
     Remove-Item alias:curl -ErrorAction SilentlyContinue
-    # Set `ls` to call `ls.exe` and always use --color
     ${function:curl} = { curl.exe @args }
     # Gzip-enabled `curl`
     ${function:gurl} = { curl --compressed @args }

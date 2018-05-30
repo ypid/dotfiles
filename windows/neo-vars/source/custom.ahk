@@ -1,7 +1,11 @@
 ; + 	Shift
 ; ^ 	Control
-; # 	Win (Windows logo key)
+; # 	Super (Windows logo key)
 ; ! 	Alt
+
+;; https://autohotkey.com/board/topic/149617-windows-10-a-osversion/?p=733130
+A_OSMajorVersion := DllCall("GetVersion") & 0xFF
+
 
 LAlt & Tab::return
 
@@ -299,6 +303,100 @@ return
 
 
 ; Duplicate session in Putty based programs.
-#IfWinActive,.*(Ki|Pu)TTY
+#IfWinActive, ahk_class (Ki|Pu)TTY
 +^n::Send, !{space}d
+#IfWinActive
+
+
+; Patch ConEmu’s has hardcoded system hotkeys. Bad!
+; https://conemu.github.io/en/SettingsHotkeys.html
+#IfWinActive, ahk_class VirtualConsoleClass
+!m::Send, !1
+!,::Send, !2
+!.::Send, !3
+!j::Send, !4
+!k::Send, !5
+!l::Send, !6
+!u::Send, !7
+!i::Send, !8
+!o::Send, !9
+#IfWinActive
+
+
+;; Note that the Alt+E is rather uncommon for `focus location bar`. Ctrl+L is the de facto standard on GNU/Linux.
+;; Microsoft also finally started accepting this with Windows 10.
+;; Lets implement this also for older versions of Windows here.
+;;
+;; Does not work???
+; #If something
+;
+;; So we just exploit the fact that on Windows 7 (and probably below),
+;; Microsoft called their exe stupidly (and depend on the fact that Autohotkey matching is case sensitive):
+;
+;; Does not work on Windows 7 for some stupid reason when it is compiled by 1.1.24.02.
+; #IfWinActive, ahk_exe Explorer.EXE
+; ^l::Send, !e
+; #IfWinActive
+;
+;; Use this one which has the not so nice part that it also executes on
+;; versions where it is not needed:
+#IfWinActive, ahk_exe (?i)explorer.exe
+^l::
+        If (A_OSMajorVersion >= 10) {
+                Send, ^l
+        } else {
+                Send, !e
+        }
+        Return
+#IfWinActive
+
+
+;; Poor mans Double Commander, ref: ../../../docs/shortcuts.md
+#IfWinActive, ahk_exe (?i)explorer.exe
++^s::
+        If (A_OSMajorVersion >= 10) {
+                Send, ^l
+        } else {
+                Send, !e
+        }
+        Send, powershell{Enter}
+        Return
+
+^p::Send, {F2}
++!e::Send, !{Enter}
+^f::Send, +^n
+^o::Send, {Enter}
++^o::Send, +{F10}
+
+;; https://superuser.com/questions/810352/is-there-a-keyboard-shortcut-to-edit-files-such-as-reg-bat-and-so-on/1240744#1240744
+^e::
+        If (A_OSMajorVersion < 10) {
+                MsgBox, "Do it manually!"
+                Return
+        }
+        ;; Open context menu. {Menu} does not work on Windows 10 for some reason.
+        Send, +{F10}
+        ;; "Open with"
+        Send, h{Right}
+        ;; Attempt to open with Gvim, "Vi Improved".
+        Send, v
+        Return
+
+; https://superuser.com/questions/133175/is-there-a-shortcut-for-creating-a-new-file
++^e::
+        ;; Ensure no file is selected. ^{Space} does not work because it toggles the selection.
+        If (A_OSMajorVersion >= 10) {
+                Send, !hsn
+        } else {
+                ;; Do nothing. Is not reliable anyway.
+        }
+        ;; Open context menu.
+        Send, +{F10}
+        ;; "New", "w" optionally does not work because more programs injected themselves into the context menu.
+        Send, {Up}{Up}{Right}
+        Send, t
+        Return
+
+;; Not working because of neo-vars. Would need to hook into neo-vars the same I already do with Alt+< (switch window, emulates Alt+Tab).
+; /::Msgbox, "test"
 #IfWinActive

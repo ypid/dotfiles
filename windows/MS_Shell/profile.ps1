@@ -2,8 +2,14 @@
 Set-StrictMode -Version latest
 # $ErrorActionPreference = "Stop"
 
+## Some script or module messes with the $PWD so we save it here and restore it later as a workaround.
+$start_cwd = $PWD
+
+## It is called M$ Shell!
+$host.ui.RawUI.WindowTitle = "M$ Shell"
+
 # Set terminal encoding to a sensible one so that `git diff` works correctly.
-$env:LC_ALL='C.UTF-8'
+$env:LC_ALL = 'C.UTF-8'
 
 Import-Module ypidDotfiles
 
@@ -20,7 +26,8 @@ try {
 Import-Module PSReadLine
 Import-Module ZLocation
 
-Function prompt { "M`$S $(Get-Date -format 'yyyy-MM-dd HH:mm:ss') $(Get-CleanPath $(pwd)) $(&{If(id) {'#'} Else {'$'}}) " }
+# Get-Date -Format "o"
+Function prompt { "M`$S $(Get-Date -format 'yyyy-MM-dd HH:mm:sszzz') $(Get-CleanPath $(pwd)) $(&{If(id) {'#'} Else {'$'}}) " }
 
 Set-Location $(Split-Path -parent $profile)
 @("custom_PSReadLine", "functions", "exports", "shell_public", "shell_private", "shell_extend_PATH") | ? { Test-Path -PathType Leaf "$_.ps1" } | % { Invoke-Expression ". ./$_.ps1" }
@@ -29,7 +36,12 @@ Set-Location $(Split-Path -parent $profile)
 ## "An exception occurred in custom key handler, see $error for more information: Index was outside the bounds of the array."
 Set-StrictMode -Off
 
-cd ~
+cd "$start_cwd"
+unset "start_cwd"
 
-## Move M$ stuff out of the screen. Disabled because bad for debugging.
-# clear
+## Move M$ stuff out of the screen.
+clear
+
+echo 'M$ Shell'
+echo 'Copyright (C) 1984 $$ Corporation. All rights granted.'
+echo ''

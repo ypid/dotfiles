@@ -15,6 +15,7 @@ pathappend "/usr/local/bin"
 pathappend "/usr/sbin"
 
 pathappend "/usr/share/elasticsearch/bin"
+pathappend "/usr/share/elasticsearch/bin/x-pack"
 pathappend "/usr/share/logstash/bin"
 pathappend "/usr/share/kibana/bin"
 

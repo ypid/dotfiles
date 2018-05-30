@@ -258,14 +258,15 @@
 			<value name="Cascaded" type="hex" data="01"/>
 			<value name="IntegralSize" type="hex" data="00"/>
 			<value name="WindowMode" type="dword" data="00000520"/>
-			<value name="ConWnd X" type="long" data="69"/>
-			<value name="ConWnd Y" type="long" data="66"/>
+			<value name="ConWnd X" type="long" data="10"/>
+			<value name="ConWnd Y" type="long" data="510"/>
 			<value name="LastMonitor" type="string" data="0,0,1920,1020"/>
-			<value name="ConWnd Width" type="dword" data="0000004e"/>
-			<value name="ConWnd Height" type="dword" data="00000025"/>
+			<value name="ConWnd Width" type="dword" data="0000009e"/>
+			<value name="ConWnd Height" type="dword" data="00000010"/>
 			<value name="16bit Height" type="ulong" data="0"/>
 			<value name="CmdLineHistory" type="multi">
 				<line data="{Shells::PowerShell}"/>
+				<line data="{Shells::PowerShell (Admin)}"/>
 				<line data="{Putty}"/>
 			</value>
 			<value name="StartCreateDelay" type="ulong" data="100"/>

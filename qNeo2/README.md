@@ -42,18 +42,23 @@ Note that you can switch to the normal layout (as specified in the keyboard file
 
 ## Autohotkey on M$ Windows
 
-The option to use the higher layers of Neo2 combined with the default QWERTZ layout is actually supported by [NeoVars](https://wiki.neo-layout.org/wiki/Neo%20unter%20Windows%20einrichten/NeoVars) under Windows which is pretty nice. All you have to do to get it is to create a INI file under `%APPDATA%\Neo2\Neo2.ini` with the content of [this file](/qNeo2/Neo2.ini) and download [neo20.exe][] and start it.
+The option to use the higher layers of Neo2 combined with the default QWERTZ layout is actually supported by [NeoVars](https://wiki.neo-layout.org/wiki/Neo%20unter%20Windows%20einrichten/NeoVars) under Windows which is pretty nice.
+
+All you have to do to get it is ~~to create a INI file under `%APPDATA%\Neo2\Neo2.ini` with the content of [this file](/qNeo2/Neo2.ini) and download [neo20.exe][] and start it~~.
 
 <!-- [neo20.exe]: https://github.com/neo-layout/neo-layout/raw/master/windows/neo-vars/out/neo20.exe -->
 [neo20.exe]: /qNeo2/neo20.exe
 
+As of 2018 I compile my own neo-vars Autohotkey binary with additional hotkeys and so on. Also, I made QWERTZ the default so that the INI file is not required anymore. You can find the source and compiled version here: [../windows/neo-vars/](/windows/neo-vars)
+
 * Tested on Windows 7
+* Tested on Windows 10
 
 ### Problems
 
 * Does not work in Powershell terminal emulator when running as admin. The keyboard layout is "reverted" to the default one. This seems to be a security feature because qNeo2 works when running Powershell in user context.
 
-* Some other quirks when working longer over Cygwin ssh or Putty on a Linux server and making heavy use of qNeo2.
+* Some other quirks when working longer over Cygwin ssh or Putty on a Linux server and making heavy use of qNeo2. This is really bad on Windows 7. On Windows 10, it seems to be resolved fortunately.
 
 ### Legacy
 

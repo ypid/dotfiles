@@ -2,19 +2,21 @@
 
 This implements my [qNeo2](/qNeo2/) on Windows.
 
-My custom Autohotkey configuration is included as ./source/custom.ahk which
+My custom Autohotkey configuration is included as [./source/custom.ahk](/windows/neo-vars/source/custom.ahk) which
 provides some convenience for working on a Windows system. It provides as much
-of the shortcuts listed in my [shortcuts docs](/shortcuts.md) as possible.
+of the shortcuts listed in my [shortcuts docs](/docs/shortcuts.md) as possible.
+
+The upstream source code can be found in https://github.com/neo-layout/neo-layout/tree/master/windows/neo-vars/src.
 
 ## Usage
 
-Start neo20-all.exe as root.
+Start `qNeo2_ypid_custom.exe` as root. Normal user also works but not in application instances running under different user context (example, elevated permissions).
 
 ## Develop
 
 ### Install Autohotkey
 
-Use Autohotkey version between 1.1.15.0 and 1.1.25.02 to compile. Others are known to cause issues! For more infos, see https://wiki.neo-layout.org/wiki/Neo%20unter%20Windows%20einrichten/NeoVars
+Use Autohotkey version between 1.1.15.0 and 1.1.25.02 to compile. [Others are known to cause issues!](https://wiki.neo-layout.org/ticket/504?replyto=description) For more infos, see https://wiki.neo-layout.org/wiki/Neo%20unter%20Windows%20einrichten/NeoVars
 
 Install via:
 
@@ -28,5 +30,5 @@ choco pin add -n='autohotkey.install'
 
 ### Compile
 
-To compile, run C:\Program Files\AutoHotkey\Compiler\Ahk2Exe.exe
+To compile, run C:/Program Files/AutoHotkey/Compiler/Ahk2Exe.exe
 and select "Unicode 32-bit.bin".
