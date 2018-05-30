@@ -1,6 +1,6 @@
 #!/bin/bash
 ## @author Copyright (C) 2016-2018 Robin Schneider <ypid@riseup.net>
-## @license AGPL-3.0 <https://www.gnu.org/licenses/agpl-3.0.html>
+## @license AGPL-3.0-only <https://www.gnu.org/licenses/agpl-3.0.html>
 
 set -o nounset -o pipefail -o errexit
 git_repos_update_done_file='/tmp/dotfiles_git_repos_update_done_file.list'
