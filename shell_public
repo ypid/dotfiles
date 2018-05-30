@@ -184,6 +184,10 @@ alias gc='git commit --verbose'
 alias gca='gc --all'
 alias gb='git branch'
 
+if ! command -v tig >/dev/null 2>&1; then
+    alias tig='git log'
+fi
+
 function n() {
     git log --reverse --pretty=%H master | grep -A 1 "$(git rev-parse HEAD)" | tail -n1 | xargs git checkout
 }
@@ -230,6 +234,12 @@ then
 elif command -v ack-grep >/dev/null 2>&1
 then
     alias ack='ack-grep'
+elif command -v grep >/dev/null 2>&1
+then
+    function ag() {
+        grep "$@" -R .
+    }
+    alias ack='ag'
 fi
 # }}}
 
@@ -249,6 +259,20 @@ elif [ -e "${PREFIX:-}/etc/zypp" ]; then
     alias as='zypper search'
     alias ash='zypper info'
     alias an='zypper update'
+elif command -v dnf >/dev/null 2>&1; then
+    alias m='dnf'
+    alias ai='dnf install'
+    alias ap='dnf remove'
+    alias as='\dnf search'
+    alias ash='\dnf info'
+    alias an='dnf upgrade'
+fi
+
+# shellcheck disable=SC1091
+if [[ -e "/etc/os-release" ]] && [[ "$( . /etc/os-release && echo "$NAME" )" == "Qubes" ]]; then
+    alias ai='qubes-dom0-update --action=install'
+    alias as='qubes-dom0-update --action=search'
+    alias an='qubes-dom0-update'
 fi
 
 # }}}
@@ -299,6 +323,8 @@ if [[ "$USER" != 'root' ]] && [ -z "$ANDROID_ROOT" ]; then
     alias aptitude='sudo aptitude'
     alias apt='sudo apt'
     alias zypper='sudo zypper'
+    alias dnf='sudo dnf'
+    alias qubes-dom0-update='sudo qubes-dom0-update'
     alias sc='sudo ~root/.local/share/scripts/ypid-scripts-common/sc'
 fi
 
