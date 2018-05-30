@@ -11,11 +11,6 @@
 
 
 Host *
-    ## Not using sha256 currently because OpenSSH in Debian jessie can not
-    ## generate them with `ssh-keygen -E` so they could not be compared out-of band
-    ## on initial connection attempt.
-    FingerprintHash md5
-
     ## http://blog.joeyhewitt.com/2013/12/openssh-hashknownhosts-a-bad-idea/
     HashKnownHosts no
 
