@@ -53,11 +53,19 @@
 	user = ypid
 [push]
 	default = simple
+
 [annex]
-	backends = SHA512E
+	backend = SHA512E
 	diskreserve = 30 GiB
 	largefiles = not include=*.git*
-	securehashesonly = true
+[remote "web"]
+	; Can be overridden as needed with: a get -c 'remote.web.annex-ignore=false'
+	; https://git-annex.branchable.com/tips/disabling_a_special_remote/
+	annex-ignore = true
+	annex-trustlevel = untrusted
+[remote "bittorrent"]
+	annex-trustlevel = untrusted
+
 [commit]
 	gpgsign = true
 [tag]
