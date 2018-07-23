@@ -110,6 +110,27 @@ function h {
     fi
 }
 
+## https://stackoverflow.com/questions/1115904/shortest-way-to-swap-two-files-in-bash/1115909#1115909
+## TODO: Edit/improve the answer on SO.
+function swap {
+   if [[ -e "$1" && -e "$2" ]]; then
+      local TMPFILE="${1}.tmp.$$"
+      mv "$1" "$TMPFILE" && mv "$2" "$1" && mv "$TMPFILE" "$2"
+   else
+      echo "Error: Make sure the files exist." 1>&2
+   fi
+}
+
+function date {
+    ## `date` ignores our locale settings so we change the default format this way.
+    if [[ -z "$1" ]] ; then
+        command date --rfc-3339=seconds
+    else
+        command date "$@"
+    fi
+}
+alias ts='date'
+
 ## }}}
 
 ## Shell basics {{{
@@ -183,17 +204,15 @@ alias gco='git checkout'
 alias gc='git commit --verbose'
 alias gca='gc --all'
 alias gb='git branch'
+alias gj='git j'
 
-if ! command -v tig >/dev/null 2>&1; then
-    alias tig='git log'
-fi
-
-function n() {
-    git log --reverse --pretty=%H master | grep -A 1 "$(git rev-parse HEAD)" | tail -n1 | xargs git checkout
-}
-function p() {
-    git checkout HEAD^1
-}
+## Find better shortcut, move to gitconfig.
+# function n() {
+#     git log --reverse --pretty=%H master | grep -A 1 "$(git rev-parse HEAD)" | tail -n1 | xargs git checkout
+# }
+# function p() {
+#     git checkout HEAD^1
+# }
 
 ## }}}
 
@@ -203,12 +222,6 @@ alias glg='git log --stat --decorate=short --show-signature' # full history
 
 ## }}}
 
-## }}}
-
-## asdf {{{
-# shellcheck source=/dev/null
-test -f "${ASDF_DIR}/completions/asdf.bash" && source "${ASDF_DIR}/completions/asdf.bash"
-command -v asdf >/dev/null 2>&1 && alias m='asdf'
 ## }}}
 
 ## GnuPG {{{
@@ -234,16 +247,18 @@ then
 elif command -v ack-grep >/dev/null 2>&1
 then
     alias ack='ack-grep'
-elif command -v grep >/dev/null 2>&1
-then
-    function ag() {
-        grep "$@" -R .
-    }
-    alias ack='ag'
 fi
 # }}}
 
-## Package management {{{
+## User local, specific package manager: asdf {{{
+# shellcheck source=/dev/null
+test -f "${ASDF_DIR}/completions/asdf.bash" && source "${ASDF_DIR}/completions/asdf.bash"
+if command -v asdf  >/dev/null 2>&1; then
+    alias n='asdf'
+fi
+## }}}
+
+## Machine-wide package management: Platform dependent {{{
 
 if [ -e "${PREFIX:-}/etc/apt" ]; then
     alias ai='apt install'
@@ -335,9 +350,6 @@ alias xclip-primary-to-clipboard='xclip -out | xclip -in -selection clipboard'
 
 alias bc='bc -q'
 alias ,='popd'
-
-## https://tools.ietf.org/html/rfc3339
-alias ts='date --rfc-3339=seconds'
 
 ## }}}
 

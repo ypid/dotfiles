@@ -128,8 +128,9 @@ alias ack ag
 
 # }}}
 
-## Package management {{{
+## Machine-wide package management: Platform dependent {{{
 
+alias m 'choco'
 Function ai { choco install @args }
 Function ap { choco uninstall @args }
 Function as { choco search @args }

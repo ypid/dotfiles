@@ -93,8 +93,6 @@ Own shortcuts for the window manager should include the Super key which is norma
 
 Shortcut                           | Function                       | Left hand only | Comment
 -------------                      | -------------                  | -------------  | -------------
-Shift+Alt+W                        | Move window one workspace up   | Yes            |
-Shift+Alt+S                        | Move window one workspace down | Yes            |
 Alt+[Level4 Shift][special-keys]   | Switch windows                 | Of course      | Easier to reach than Alt+Tab.
 Super+[Level4 Shift][special-keys] | Switch to workspace 1          | Of course      | Does not work on M$ Windows or would require Neo2 AHK patch.
 Super+Y                            | Switch to workspace 2          | Of course      |
@@ -102,6 +100,8 @@ Super+X                            | Switch to workspace 3          | Of course 
 Super+A                            | Switch to workspace 4          | Of course      |
 Super+S                            | Switch to workspace 5          | Of course      |
 Super+D                            | Switch to workspace 6          | Of course      |
+Shift+Alt+W                        | Move window one workspace up   | Yes            |
+Shift+Alt+S                        | Move window one workspace down | Yes            |
 Super+1                            | Move window to workspace 1     | Of course      |
 Super+2                            | Move window to workspace 2     | Of course      |
 Super+3                            | Move window to workspace 3     | Of course      |
@@ -127,10 +127,10 @@ Ctrl+Super+A  | Lock screen   | Yes            |
 
 ### Typing
 
-Shortcut      | Function                                            | Left hand only | Comment
-------------- | -------------                                       | -------------  | -------------
+Shortcut      | Function                                                            | Left hand only | Comment
+------------- | -------------                                                       | -------------  | -------------
 Shift+Alt+A   | Switch to next input source/keyboard layout (e.g. qNeo2 and qwertz) | Yes            | This needs to be compiled into Neo-vars on Windows.
-Shift+Ctrl+U  | Enter Unicode hex value                             | No             |
+Shift+Ctrl+U  | Enter Unicode hex value                                             | No             |
 
 ### Windows
 
