@@ -320,41 +320,21 @@ CharProc__M3RU() {
 
 CharProc__M4LD() {
   global
-
-  If GetKeyState("LWin","P") and GetKeyState("LControl","P") {
-    SoundSet -5
-  }
-
-  If GetKeyState("LAlt","P") {
-    AltTabMenu := true
-    If GetKeyState("LShift","P") {
-        Send {LAlt Down}{LShift Down}{Tab}
-    } else {
-        Send {LAlt Down}{Tab}
-    }
-  } else {
-    if (!isMod4LPressed) {
-      isMod4LPressed := 1
-      isMod4Pressed := 1
-      %EbeneAktualisieren%()
-      PR%PhysKey% := "P__M4LU"
-      if (isMod4RPressed and !wasNonShiftKeyPressed) {
-        wasNonShiftKeyPressed := 0
-        ToggleMod4Lock()
-      } else
-        wasNonShiftKeyPressed := 0
-    }
+  if (!isMod4LPressed) {
+    isMod4LPressed := 1
+    isMod4Pressed := 1
+    %EbeneAktualisieren%()
+    PR%PhysKey% := "P__M4LU"
+    if (isMod4RPressed and !wasNonShiftKeyPressed) {
+      wasNonShiftKeyPressed := 0
+      ToggleMod4Lock()
+    } else
+      wasNonShiftKeyPressed := 0
   }
 }
 
 CharProc__M4LU() {
   global
-
-  If AltTabMenu and (!GetKeyState("LAlt","P")) {
-        Send {LShift Up}{LAlt Up}
-        AltTabMenu := false 
-  }
-
   isMod4LPressed := 0
   isMod4Pressed := isMod4RPressed
   %EbeneAktualisieren%()

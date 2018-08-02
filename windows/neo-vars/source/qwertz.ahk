@@ -48,7 +48,7 @@ ActivateQwertz() {
   CP3F6   := "PQwertt"                   ; M3+F6: Aktiviere/Deaktiviere QWERTZ
   CP4F6   := "PQwerts"                   ; M4+F6: Speichere QWERTZ
 
-  IniRead,isQwertz,%ini%,Global,isQwertz,1
+  IniRead,isQwertz,%ini%,Global,isQwertz,0
   if (isQwertz == 1)
     CharProcQwerT1()
 }
