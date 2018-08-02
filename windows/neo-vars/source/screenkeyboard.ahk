@@ -338,7 +338,8 @@ CharProc__BST1() {
 
   GuiAddKeySN("052",601,168)
   GuiAddKeySN("053",658,168)
-  Gui, +AlwaysOnTop +ToolWindow +Resize -MaximizeBox
+  ; https://wiki.neo-layout.org/ticket/390
+  Gui, +AlwaysOnTop +ToolWindow +Resize -MaximizeBox -DPIScale
   Gui, Show, y%yposition% w729 h199 NoActivate, Neo-Bildschirmtastatur
   BSTUpdate()
   BSTalwaysOnTop := 1
