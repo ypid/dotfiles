@@ -290,3 +290,6 @@
 [submodule "windows/WindowsPowerShell/Oh-My-Posh"]
 	path = windows/WindowsPowerShell/Oh-My-Posh
 	url = https://github.com/pecigonzalo/Oh-My-Posh.git
+[submodule "vim/bundle/vim-plugin-AnsiEsc"]
+	path = vim/bundle/vim-plugin-AnsiEsc
+	url = https://github.com/powerman/vim-plugin-AnsiEsc.git

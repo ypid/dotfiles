@@ -265,18 +265,21 @@ fi
 ## Machine-wide package management: Platform dependent {{{
 
 if [ -e "${PREFIX:-}/etc/apt" ]; then
+    alias m='apt'
     alias ai='apt install'
     alias ap='apt purge'
     alias as='\apt search'
     alias ash='\apt show'
     alias an='apt update && apt upgrade'
 elif [ -e "${PREFIX:-}/etc/zypp" ]; then
+    alias m='zypper'
     alias ai='zypper install'
     alias ap='zypper remove'
     alias as='zypper search'
     alias ash='zypper info'
     alias an='zypper update'
 elif command -v dnf >/dev/null 2>&1; then
+    alias m='dnf'
     alias ai='dnf install'
     alias ap='dnf remove'
     alias as='\dnf search'

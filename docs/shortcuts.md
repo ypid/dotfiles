@@ -27,7 +27,7 @@ Here is some advice regarding shortcuts for programmers and UI designers which I
 
 Which shortcuts should be used where? – Some thoughts …
 
-* `Shift+Alt`: W, S, X, A reserved for window manager. Applications can use everything else.
+* `Shift+Alt`: W, S, X, A, D reserved for window manager. Applications can use everything else.
 * `Super+Alt`: Hypervisor console as host key
 * `Ctrl+Super`, `Super`: Dedicated to window manager respectively shortcuts which can be triggered globally.
   * Never use the `Super` key for applications as this modifier might be reserved in some window managers. (And I don’t want to find out how to patch Windows to remap that).
@@ -55,7 +55,7 @@ Which shortcuts should be used where? – Some thoughts …
 List of free shortcuts (they may have a default mapping but there are better shortcuts for those actions so that the shortcuts are available to be mapped to a different action).
 
 * `Super` (WinKey): Almost forgotten :)
-* Alt+Super+C
+* Super+Alt+C
   Shift+Alt+
   Ctrl+Alt+Y
   Ctrl+Alt+[Level4 Shift][special-keys]
@@ -66,6 +66,7 @@ List of free shortcuts (they may have a default mapping but there are better sho
 Shortcuts which are reserved for non-public use at work.
 
 * Shift+Alt+D
+* Shift+Super+O
 
 ## Shortcut conventions and key order
 
@@ -323,7 +324,7 @@ Ctrl+[+-]     | Zoom in/out       | Nice to have   | Note that there is a bug in
 
 Shortcut      | Function            | Left hand only | Comment
 ------------- | -------------       | -------------  | -------------
-Ctrl+Alt      | Host key            | Nice to have   |
+Super+Alt     | Host key            | Nice to have   |
 Host key+M    | Insert Ctrl+Alt+Del | Nice to have   |
 
 ### Double Commander (DC)
@@ -409,7 +410,7 @@ Alt+Z            | TargetEqualSource      | Nice to have                  |
 Shift+Alt+H      | LeftOpenDrives         | Nice to have                  |
 Shift+Alt+N      | RightOpenDrives        | Nice to have                  |
 Ctrl+,           | ChangeDirToHome        | Nice to have                  |
-Ctrl+/           | ChangeDirToRoot        | Nice to have                  |
+Ctrl+/           | ChangeDirToRoot        | Nice to have                  | Not working on Windows with neo-vars.
 Shift+Alt+S      | SyncDirs               | Yes                           |
 
 #### Used keys

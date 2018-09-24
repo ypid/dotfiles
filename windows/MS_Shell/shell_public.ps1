@@ -234,6 +234,15 @@ Function id {
 	return ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")
 }
 
+## More similar to `journalctl --list-boots` and  `last reboot`.
+Function last-startup {
+        get-eventlog system | where-object {$_.eventid -eq 6005} | select Timegenerated, EntryType, Source, Message -first 10
+}
+
+Function last-shutdown {
+        get-eventlog system | where-object {$_.eventid -eq 6006} | select Timegenerated, EntryType, Source, Message -first 10
+}
+
 ## Overwrite MS Shell aliases so that GnuWin commands are used {{{
 
 # Correct PowerShell Aliases if tools are available (aliases win if set)

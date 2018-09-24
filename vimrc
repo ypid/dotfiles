@@ -310,6 +310,8 @@ endif
             vmap ν <Plug>MoveBlockDown
             nmap ν <Plug>MoveLineDown
             " Shift+Layer3Mod+j
+
+            Bundle 'powerman/vim-plugin-AnsiEsc'
         endif
     " }}}
 

@@ -9,7 +9,7 @@ Function Get-CleanPath {
     )
 
     [string] $sanitized_path = [System.IO.DirectoryInfo]::new($Path).FullName
-    $sanitized_path = $sanitized_path.TrimEnd("/", "\").ToLower()
+    $sanitized_path = $sanitized_path.TrimEnd("/", "\")
     $sanitized_path = $sanitized_path -replace "\\", "/"
     return $sanitized_path
 }

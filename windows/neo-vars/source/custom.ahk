@@ -102,7 +102,7 @@ MoveIt(Q) {
     CX := X + W/2
     CY := Y + 20
 
-    ; MsgBox, X: %X% Y: %Y% W: %W% H: %H% CX: %CX% CY: %CY%
+    ; MsgBox X: %X% Y: %Y% W: %W% H: %H% CX: %CX% CY: %CY%
 
     SysGet, Count, MonitorCount
 
@@ -371,7 +371,7 @@ return
 ;; https://superuser.com/questions/810352/is-there-a-keyboard-shortcut-to-edit-files-such-as-reg-bat-and-so-on/1240744#1240744
 ^e::
         If (A_OSMajorVersion < 10) {
-                MsgBox, "Do it manually!"
+                MsgBox Do it manually!
                 Return
         }
         ;; Open context menu. {Menu} does not work on Windows 10 for some reason.

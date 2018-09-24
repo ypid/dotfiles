@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <key name="Software">
 	<key name="ConEmu">
-		<key name=".Vanilla" modified="2017-10-06 16:59:18" build="170910">
+		<key name=".Vanilla" modified="2018-08-01 10:07:27" build="171205">
 			<value name="StartType" type="hex" data="02"/>
 			<value name="CmdLine" type="string" data=""/>
 			<value name="StartTasksFile" type="string" data=""/>
@@ -48,7 +48,7 @@
 			<value name="PopBackColorIdx" type="hex" data="10"/>
 			<value name="SingleInstance" type="hex" data="00"/>
 			<value name="QuakeStyle" type="hex" data="00"/>
-			<value name="KeyboardHooks" type="hex" data="01"/>
+			<value name="KeyboardHooks" type="hex" data="02"/>
 			<value name="UseInjects" type="hex" data="01"/>
 			<value name="Update.CheckOnStartup" type="hex" data="00"/>
 			<value name="Update.CheckHourly" type="hex" data="00"/>
@@ -59,7 +59,7 @@
 			<value name="FontSize" type="ulong" data="14"/>
 			<value name="StatusFontHeight" type="long" data="12"/>
 			<value name="TabFontHeight" type="long" data="13"/>
-			<key name="HotKeys" modified="2017-10-06 16:59:18" build="170910">
+			<key name="HotKeys" modified="2018-08-01 10:29:44" build="171205">
 				<value name="MinimizeRestore" type="dword" data="000011c0"/>
 				<value name="KeyMacroVersion" type="hex" data="02"/>
 				<value name="Multi.Modifier" type="dword" data="000000a4"/>
@@ -109,7 +109,7 @@
 				<value name="Multi.Detach" type="dword" data="00000000"/>
 				<value name="Multi.Unfasten" type="dword" data="00000000"/>
 				<value name="Multi.Close" type="dword" data="00101157"/>
-				<value name="CloseTabKey" type="dword" data="00125b2e"/>
+				<value name="CloseTabKey" type="dword" data="00101157"/>
 				<value name="CloseGroupKey" type="dword" data="00115b2e"/>
 				<value name="CloseGroupPrcKey" type="dword" data="00000000"/>
 				<value name="CloseAllConKey" type="dword" data="00000000"/>
@@ -121,8 +121,8 @@
 				<value name="CloseConEmuKey" type="dword" data="00005b73"/>
 				<value name="Multi.Rename" type="dword" data="00005d52"/>
 				<value name="AffinityPriorityKey" type="dword" data="00005d41"/>
-				<value name="Multi.MoveLeft" type="dword" data="00125b25"/>
-				<value name="Multi.MoveRight" type="dword" data="00125b27"/>
+				<value name="Multi.MoveLeft" type="dword" data="0010114a"/>
+				<value name="Multi.MoveRight" type="dword" data="0010114b"/>
 				<value name="CTS.VkBlockStart" type="dword" data="00000000"/>
 				<value name="CTS.VkTextStart" type="dword" data="00000000"/>
 				<value name="CTS.VkCopyFmt0" type="dword" data="00001143"/>
@@ -252,17 +252,18 @@
 				<value name="DndLKey" type="hex" data="00"/>
 				<value name="DndRKey" type="hex" data="a2"/>
 				<value name="WndDragKey" type="dword" data="00121101"/>
+				<value name="CloseToRightKey" type="dword" data="00000000"/>
 			</key>
 			<value name="UseCurrentSizePos" type="hex" data="01"/>
 			<value name="AutoSaveSizePos" type="hex" data="01"/>
 			<value name="Cascaded" type="hex" data="01"/>
 			<value name="IntegralSize" type="hex" data="00"/>
 			<value name="WindowMode" type="dword" data="00000520"/>
-			<value name="ConWnd X" type="long" data="10"/>
-			<value name="ConWnd Y" type="long" data="510"/>
+			<value name="ConWnd X" type="long" data="970"/>
+			<value name="ConWnd Y" type="long" data="0"/>
 			<value name="LastMonitor" type="string" data="0,0,1920,1020"/>
-			<value name="ConWnd Width" type="dword" data="0000009e"/>
-			<value name="ConWnd Height" type="dword" data="00000010"/>
+			<value name="ConWnd Width" type="dword" data="0000004e"/>
+			<value name="ConWnd Height" type="dword" data="00000025"/>
 			<value name="16bit Height" type="ulong" data="0"/>
 			<value name="CmdLineHistory" type="multi">
 				<line data="{Shells::PowerShell}"/>
@@ -598,9 +599,9 @@
 			<value name="Update.DownloadPath" type="string" data="%TEMP%\ConEmu"/>
 			<value name="Update.LeavePackages" type="hex" data="00"/>
 			<value name="Update.PostUpdateCmd" type="string" data="echo Last successful update&gt;ConEmuUpdate.info &amp;&amp; date /t&gt;&gt;ConEmuUpdate.info &amp;&amp; time /t&gt;&gt;ConEmuUpdate.info"/>
-			<key name="Tasks" modified="2017-10-06 16:59:18" build="170910">
+			<key name="Tasks" modified="2018-08-01 10:29:44" build="171205">
 				<value name="Count" type="long" data="11"/>
-				<key name="Task1" modified="2017-10-06 16:59:18" build="170910">
+				<key name="Task1" modified="2018-08-01 10:29:44" build="171205">
 					<value name="Name" type="string" data="{Shells::cmd}"/>
 					<value name="Flags" type="dword" data="00000000"/>
 					<value name="Hotkey" type="dword" data="00101149"/>
@@ -609,7 +610,7 @@
 					<value name="Active" type="long" data="0"/>
 					<value name="Count" type="long" data="1"/>
 				</key>
-				<key name="Task2" modified="2017-10-06 16:59:18" build="170910">
+				<key name="Task2" modified="2018-08-01 10:29:44" build="171205">
 					<value name="Name" type="string" data="{Shells::cmd (Admin)}"/>
 					<value name="Flags" type="dword" data="00000004"/>
 					<value name="Hotkey" type="dword" data="0010114f"/>
@@ -618,7 +619,7 @@
 					<value name="Active" type="long" data="0"/>
 					<value name="Count" type="long" data="1"/>
 				</key>
-				<key name="Task3" modified="2017-10-06 16:59:18" build="170910">
+				<key name="Task3" modified="2018-08-01 10:29:44" build="171205">
 					<value name="Name" type="string" data="{Shells::cmd-32}"/>
 					<value name="Flags" type="dword" data="00000004"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
@@ -627,7 +628,7 @@
 					<value name="Active" type="long" data="0"/>
 					<value name="Count" type="long" data="1"/>
 				</key>
-				<key name="Task4" modified="2017-10-06 16:59:18" build="170910">
+				<key name="Task4" modified="2018-08-01 10:29:44" build="171205">
 					<value name="Name" type="string" data="{Shells::cmd 64/32}"/>
 					<value name="Flags" type="dword" data="00000004"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
@@ -637,7 +638,7 @@
 					<value name="Active" type="long" data="1"/>
 					<value name="Count" type="long" data="2"/>
 				</key>
-				<key name="Task5" modified="2017-10-06 17:12:51" build="170910">
+				<key name="Task5" modified="2018-08-01 10:29:44" build="171205">
 					<value name="Name" type="string" data="{Shells::PowerShell}"/>
 					<value name="Flags" type="dword" data="00000004"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
@@ -646,16 +647,16 @@
 					<value name="Active" type="long" data="0"/>
 					<value name="Count" type="long" data="1"/>
 				</key>
-				<key name="Task6" modified="2017-10-06 17:12:51" build="170910">
+				<key name="Task6" modified="2018-08-01 10:29:44" build="171205">
 					<value name="Name" type="string" data="{Shells::PowerShell (Admin)}"/>
 					<value name="Flags" type="dword" data="00000007"/>
-					<value name="Hotkey" type="dword" data="0010114d"/>
+					<value name="Hotkey" type="dword" data="0010114e"/>
 					<value name="GuiArgs" type="string" data=""/>
 					<value name="Cmd1" type="string" data="powershell.exe -new_console:a -new_console:t:&quot;M$ Shell&quot; -NonInteractive"/>
 					<value name="Active" type="long" data="0"/>
 					<value name="Count" type="long" data="1"/>
 				</key>
-				<key name="Task7" modified="2017-10-06 17:12:51" build="170910">
+				<key name="Task7" modified="2018-08-01 10:29:44" build="171205">
 					<value name="Name" type="string" data="{Bash::CygWin bash}"/>
 					<value name="Flags" type="dword" data="00000004"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
@@ -664,7 +665,7 @@
 					<value name="Active" type="long" data="0"/>
 					<value name="Count" type="long" data="1"/>
 				</key>
-				<key name="Task8" modified="2017-10-06 17:12:51" build="170910">
+				<key name="Task8" modified="2018-08-01 10:29:44" build="171205">
 					<value name="Name" type="string" data="{Bash::Git bash}"/>
 					<value name="Flags" type="dword" data="00000004"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
@@ -673,7 +674,7 @@
 					<value name="Active" type="long" data="0"/>
 					<value name="Count" type="long" data="1"/>
 				</key>
-				<key name="Task9" modified="2017-10-06 17:12:51" build="170910">
+				<key name="Task9" modified="2018-08-01 10:29:44" build="171205">
 					<value name="Name" type="string" data="{Putty}"/>
 					<value name="Flags" type="dword" data="00000004"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
@@ -682,7 +683,7 @@
 					<value name="Active" type="long" data="0"/>
 					<value name="Count" type="long" data="1"/>
 				</key>
-				<key name="Task10" modified="2017-10-06 17:12:51" build="170910">
+				<key name="Task10" modified="2018-08-01 10:29:44" build="171205">
 					<value name="Name" type="string" data="{Helper::Show ANSI colors}"/>
 					<value name="Flags" type="dword" data="00000004"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
@@ -691,7 +692,7 @@
 					<value name="Active" type="long" data="0"/>
 					<value name="Count" type="long" data="1"/>
 				</key>
-				<key name="Task11" modified="2017-10-06 17:12:51" build="170910">
+				<key name="Task11" modified="2018-08-01 10:29:44" build="171205">
 					<value name="Name" type="string" data="{Tools::Chocolatey (Admin)}"/>
 					<value name="Flags" type="dword" data="00000004"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
@@ -701,14 +702,16 @@
 					<value name="Count" type="long" data="1"/>
 				</key>
 			</key>
-			<key name="Apps" modified="2017-10-06 17:12:51" build="170910">
+			<key name="Apps" modified="2018-08-01 10:29:44" build="171205">
 				<value name="Count" type="long" data="0"/>
 			</key>
-			<key name="Colors" modified="2017-10-06 17:12:51" build="170910">
+			<key name="Colors" modified="2018-08-01 10:29:44" build="171205">
 				<value name="Count" type="long" data="0"/>
 			</key>
 			<value name="ClipboardAllLinesPosix" type="hex" data="00"/>
 			<value name="ClipboardFirstLinePosix" type="hex" data="00"/>
+			<value name="DynamicBufferHeight" type="hex" data="01"/>
+			<value name="StatusBar.Hide.WMode" type="hex" data="01"/>
 		</key>
 	</key>
 </key>

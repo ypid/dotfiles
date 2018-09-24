@@ -12,11 +12,16 @@ The upstream source code can be found in https://github.com/neo-layout/neo-layou
 
 Start `qNeo2_ypid_custom.exe` as root. Normal user also works but not in application instances running under different user context (example, elevated permissions).
 
+## Compatibility
+
+* Windows 7 (With limits, Higher layers might "lock", like caps lock)
+* Windows 10 ~~Pro~~ Contra X86_64 1607 (Fully working)
+
 ## Develop
 
 ### Install Autohotkey
 
-Use Autohotkey version between 1.1.15.0 and 1.1.25.02 to compile. [Others are known to cause issues!](https://wiki.neo-layout.org/ticket/504?replyto=description) For more infos, see https://wiki.neo-layout.org/wiki/Neo%20unter%20Windows%20einrichten/NeoVars
+Use Autohotkey version between 1.1.15.0 and 1.1.25.02 to compile. [Others are known to cause issues!](https://wiki.neo-layout.org/ticket/504) For more infos, see https://wiki.neo-layout.org/wiki/Neo%20unter%20Windows%20einrichten/NeoVars
 
 Install via:
 

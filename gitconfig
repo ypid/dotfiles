@@ -13,12 +13,13 @@
 [alias]
 	wd = diff --color-words
 	wdd = diff --ignore-space-at-eol --ignore-space-change --ignore-all-space --ignore-blank-lines --color-words
-	re = remote -v
+	re = "!git remote -v show | egrep -v '^(bittorrent|web)\\b'"
 	cil = commit --reedit-message=HEAD --reset-author
 	cii = commit --all -m 'Initial commit'
 	cia = commit --all -m 'Auto commit. EOM'
 	pa = "!git remote -v | egrep --invert-match '(https:|github.com)' | grep --invert-match 'https:' | cut -f1 | uniq | xargs -L1 git push --all"
 	co = checkout
+	rl = reflog --pretty=reflog
 	lgn = log --pretty=oneline --abbrev-commit --show-notes=* --show-signature
 	lg1 = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(black)%s%C(reset) %C(dim black)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
 	; from http://stackoverflow.com/a/9074343
@@ -56,6 +57,11 @@
 	user = ypid
 [push]
 	default = simple
+
+[pretty]
+	# reflog, with relative date:
+	reflogrel = %C(auto)%h %<|(17)%gd %<|(30)%C(blue)%cr%C(reset) %s
+	reflog = %C(auto)%h %<|(17)%gd %C(blue)%ci%C(reset) %s
 
 [annex]
 	backend = SHA512E
