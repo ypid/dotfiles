@@ -1,0 +1,2 @@
+Host ypid.github.com ypid.gist.github.com
+    IdentityFile ~/.ssh/p-xx/ypid@github.com
