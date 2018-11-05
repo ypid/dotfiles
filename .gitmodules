@@ -230,9 +230,6 @@
 [submodule ".vim/bundle/AsyncCommand"]
 	path = vim/bundle/AsyncCommand
 	url = https://github.com/idbrii/AsyncCommand.git
-[submodule ".vim/bundle/syntastic-async"]
-	path = vim/bundle/syntastic-async
-	url = https://github.com/stgpetrovic/syntastic-async.git
 [submodule ".vim/bundle/vim-visualstar"]
 	path = vim/bundle/vim-visualstar
 	url = https://github.com/thinca/vim-visualstar.git
