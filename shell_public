@@ -117,12 +117,12 @@ function h {
 ## https://stackoverflow.com/questions/1115904/shortest-way-to-swap-two-files-in-bash/1115909#1115909
 ## TODO: Edit/improve the answer on SO.
 function swap {
-   if [[ -e "$1" && -e "$2" ]]; then
-      local TMPFILE="${1}.tmp.$$"
-      mv "$1" "$TMPFILE" && mv "$2" "$1" && mv "$TMPFILE" "$2"
-   else
-      echo "Error: Make sure the files exist." 1>&2
-   fi
+    if [[ -e "$1" && -e "$2" ]]; then
+        local TMPFILE="${1}.tmp.$$"
+        mv "$1" "$TMPFILE" && mv "$2" "$1" && mv "$TMPFILE" "$2"
+    else
+        echo "Error: Make sure the files exist." 1>&2
+    fi
 }
 
 function date {
@@ -220,6 +220,10 @@ alias gj='git j'
 
 ## }}}
 
+if ! command -v tig >/dev/null 2>&1; then
+    alias tig='git log'
+fi
+
 # Overwrite alias from oh-my-zsh {{{
 alias glg='git log --stat --decorate=short --show-signature' # full history
 # alias glg='tig --show-signature' # full history
@@ -251,6 +255,14 @@ then
 elif command -v ack-grep >/dev/null 2>&1
 then
     alias ack='ack-grep'
+fi
+# }}}
+
+## Elastic {{{
+## https://www.elastic.co/guide/en/kibana/6.4/install-plugin.html
+if command -v kibana-plugin >/dev/null 2>&1
+then
+    alias kibana-plugin='sudo -u kibana kibana-plugin'
 fi
 # }}}
 
@@ -343,8 +355,6 @@ if [[ "$USER" != 'root' ]] && [ -z "$ANDROID_ROOT" ]; then
     alias aptitude='sudo aptitude'
     alias apt='sudo apt'
     alias zypper='sudo zypper'
-    alias dnf='sudo dnf'
-    alias qubes-dom0-update='sudo qubes-dom0-update'
     alias sc='sudo ~root/.local/share/scripts/ypid-scripts-common/sc'
 fi
 

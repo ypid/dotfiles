@@ -148,12 +148,17 @@ Function Get-HistorySearch {
 }
 
 ## More human readable than pscx?
+## Source: http://powershellblogger.com/2016/01/get-last-computer-boot-time-or-up-time-with-powershell/
 Function Get-Uptime {
-    [CmdletBinding()]
-
-    $os = Get-WmiObject win32_operatingsystem
-    [TimeSpan] $uptime = (Get-Date) - ($os.ConvertToDateTime($os.lastbootuptime))
-    Write-Output ("uptime: " + $uptime.Days + " days, " + $uptime.Hours + " hours, " + $uptime.Minutes + " minutes")
+    Param ( [string] $ComputerName = $env:COMPUTERNAME )
+    $os = Get-WmiObject win32_operatingsystem -ComputerName $ComputerName -ErrorAction SilentlyContinue
+    if ($os.LastBootUpTime) {
+        $uptime = (Get-Date) - $os.ConvertToDateTime($os.LastBootUpTime)
+        Write-Output ("Last boot: " + $(get-date -date $os.LastBootUpTime -format o) )
+        Write-Output ("Uptime:    " + $uptime.Days + " Days " + $uptime.Hours + " Hours " + $uptime.Minutes + " Minutes" )
+    } else {
+        Write-Warning "Unable to connect to $computername"
+    }
 }
 
 # System Update - Update RubyGems, NPM, and their installed packages

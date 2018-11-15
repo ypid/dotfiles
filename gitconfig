@@ -13,11 +13,11 @@
 [alias]
 	wd = diff --color-words
 	wdd = diff --ignore-space-at-eol --ignore-space-change --ignore-all-space --ignore-blank-lines --color-words
-	re = "!git remote -v show | egrep -v '^(bittorrent|web)\\b'"
+	re = "!git remote -v show | egrep --invert-match '(^bittorrent\\b|^web\\b)'"
+	pa = "!git remote -v show | egrep --invert-match '(https://github.com/|^bittorrent\\b|^web\\b)' | cut -f1 | uniq | xargs -L1 git push --all"
 	cil = commit --reedit-message=HEAD --reset-author
 	cii = commit --all -m 'Initial commit'
 	cia = commit --all -m 'Auto commit. EOM'
-	pa = "!git remote -v | egrep --invert-match '(https:|github.com)' | grep --invert-match 'https:' | cut -f1 | uniq | xargs -L1 git push --all"
 	co = checkout
 	rl = reflog --pretty=reflog
 	lgn = log --pretty=oneline --abbrev-commit --show-notes=* --show-signature

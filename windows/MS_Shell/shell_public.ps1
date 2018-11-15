@@ -104,6 +104,9 @@ Set-Alias -Name gp -Value git-push -Force -Option AllScope
 Function git-pull() { git pull @args }
 Set-Alias -Name gl -Value git-pull -Force -Option AllScope
 
+Function git-merge() { git merge @args }
+Set-Alias -Name gm -Value git-merge -Force -Option AllScope
+
 Function n {
     git log --reverse --pretty=%H master | grep -A 1 "$(git rev-parse HEAD)" | tail -n1 | xargs git checkout
 }
@@ -198,6 +201,7 @@ ${function:......} = { Set-Location ../../../../.. }
 ## GNU/Linux basics on Windows {{{
 Function poweroff() { shutdown -t 0 -s }
 Function reboot() { shutdown -t 0 -r }
+Set-Alias -Name uptime -Value Get-Uptime
 Set-Alias -Name cd -Value Set-LocationUnix -Option AllScope -Force
 alias time Measure-Command
 Function md5sum([string]$algo)    { $(CertUtil -hashfile $algo MD5)[1] -replace " ",""; echo "Don't use MD5 anymore ;-)" }
@@ -219,6 +223,7 @@ alias top taskmgr
 alias htop procexp
 alias nautilus explorer.exe
 alias nemo explorer.exe
+alias xdg-open start
 
 if (Test-Path "C:\GnuWin\bin") {
     alias tree "tree.exe"

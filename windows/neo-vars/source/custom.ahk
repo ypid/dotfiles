@@ -3,21 +3,28 @@
 ; # 	Super (Windows logo key)
 ; ! 	Alt
 
+;; Get local facts/details about environment {{{
 ;; https://autohotkey.com/board/topic/149617-windows-10-a-osversion/?p=733130
 A_OSMajorVersion := DllCall("GetVersion") & 0xFF
+;; }}}
 
+;; Discourage the use of the regular window switching.
+;; No, this is counterproductive. I use the optimized switcher when available
+;; but don’t disable the regular one.
+; LAlt & Tab::return
 
-LAlt & Tab::return
-
-; Shift+Alt+A   | Switch to next input source (e.g. qNeo2 and qwertz) | Yes            | This needs to be compiled into Neo-vars on Windows.
+;; Shift+Alt+A | Switch to next input source (e.g. qNeo2 and qwertz) {{{
 +!a::
 Suspend, Permit
   Traytogglesuspend()
 return
+;; }}}
 
+;; Ctrl+Alt+Q | Show Neo2 keyboard layout {{{
+^!q::CharProc__BSTt()
+;; }}}
 
-
-; Ctrl+Alt+F    | Toggle fullscreen mode
+;; Ctrl+Alt+F | Toggle fullscreen mode {{{
 /*  YABT - Yet Another Borderless-Window Toggle
  *  by Barrow (March 30, 2012)
  *  rewritten by kon (May 16, 2014)
@@ -78,17 +85,18 @@ Init() {
     }
     return A
 }
+;; }}}
 
+;; Ctrl+Alt+[WASD] | Maximize window, restore, tile left/right {{{
+;; Ctrl+Alt+W    | Maximize window
+;; Ctrl+Alt+S    | Restore previous size of window
+;; Ctrl+Alt+A    | Tile window on the left, View split on left
+;; Ctrl+Alt+D    | Tile window on the right, View split on right
 
-; Ctrl+Alt+W    | Maximize window
-; Ctrl+Alt+S    | Restore previous size of window
-; Ctrl+Alt+A    | Tile window on the left, View split on left
-; Ctrl+Alt+D    | Tile window on the right, View split on right
+;; Script to allow positioning of windows based on quadrants of the current monitor
+;; https://autohotkey.com/board/topic/108780-move-window-to-half-quarter-of-current-monitor/
 
-; Script to allow positioning of windows based on quadrants of the current monitor
-; https://autohotkey.com/board/topic/108780-move-window-to-half-quarter-of-current-monitor/
-
-^!w::WinMaximize A
+^!w::WinMaximize, A
 ^!s::MoveIt(2)
 ^!a::MoveIt(4)
 ^!d::MoveIt(6)
@@ -151,12 +159,12 @@ MoveIt(Q) {
     }
     return
 }
+;; }}}
 
-
-; GNU/Linux Alt+Window drag functionality
-; This script modified from the original: http://www.autohotkey.com/docs/scripts/EasyWindowDrag.htm
-; by The How-To Geek
-; http://www.howtogeek.com
+;; GNU/Linux Alt+Window drag functionality {{{
+;; This script modified from the original: http://www.autohotkey.com/docs/scripts/EasyWindowDrag.htm
+;; by The How-To Geek
+;; http://www.howtogeek.com
 Alt & LButton::
     CoordMode, Mouse  ; Switch to screen/absolute coordinates.
     MouseGetPos, EWD_MouseStartX, EWD_MouseStartY, EWD_MouseWin
@@ -190,10 +198,11 @@ Alt & LButton::
     EWD_MouseStartX := EWD_MouseX  ; Update for the next timer-call to this subroutine.
     EWD_MouseStartY := EWD_MouseY
     return
+;; }}}
 
-
-; Super+I | Move panel/taskbar to the top
-; Super+O | Move panel/taskbar to the bottom
+;; Super+[IO] | Move panel/taskbar to the top/bottom {{{
+;; Super+I | Move panel/taskbar to the top
+;; Super+O | Move panel/taskbar to the bottom
 #I::TaskbarMove("Top")
 #O::TaskbarMove("Bottom")
 ; #Numpad4::TaskbarMove("Left")
@@ -234,95 +243,69 @@ WinMove(p_x, p_y, p_w="", p_h="", p_hwnd="") {
     WinMove, , , p_x, p_y, p_w, p_h
     SendMessage, WM_EXITSIZEMOVE
 }
+;; }}}
 
+;; Ctrl+Super+A | Lock screen {{{
+^#a::DllCall("LockWorkStation")
+;; }}}
 
-
-; Ctrl+Super+S     | Launch program `x-terminal-emulator`
-; ^#s::Run cmd.exe
-^#s::Run C:\Program Files\ConEmu\ConEmu64.exe
-
-; Shift+Super+A    | Launch program `gnome-calculator`
-; Not working. Seems to be predefined with "take a screenshot".
-; +#a::Run calc.exe
-
-; Ctrl+Alt+V       | `poweroff`
-^!v::
-MsgBox, 1,, Self destruct sequence initiated. Please confirm.
-IfMsgBox, OK
-{
-  Shutdown, 1
-}
-return
-
-; Ctrl+Alt+G       | `reboot`
-^!g::
-MsgBox, 1,, Self destruct/reset sequence initiated. Please confirm.
-IfMsgBox, OK
-{
-  Shutdown, 2
-}
-return
-
-; Super+J          | Launcher application finder
+;; Super+J | Launcher application finder {{{
 ; #j::Send {LWin up}^{Esc}
 ; #j::Send {LWin up}{LWin}
 ; #j::run, "C:\Program Files (x86)\Launchy\Launchy.exe" /show
+;; }}}
 
-; Super+Q       | Close window
+;; Super+Q | Close window {{{
 #q::WinClose, A
+;; }}}
 
-; Ctrl+Super+[Level4 Shift][special-keys] | Volume down by 5 %
-; Does not work because the >< key is intercepted by Neo2.
-; Implemented in
+;; Ctrl+Super+[Level4 Shift][special-keys] | Volume down by 5 % {{{
+;; Does not work because the >< key is intercepted by Neo2.
+;; Implemented in ./varsfunctions.ahk
 ; ^#>::SoundSet -5
+;; }}}
 
-; Ctrl+Super+Y                            | Volume up by 5 %
+;; Ctrl+Super+Y | Volume up by 5 % {{{
 ^#y::SoundSet +5
-; Ctrl+Super+X                            | Mute
+;; }}}
+
+;; Ctrl+Super+X | Mute {{{
 ^#x::Send {Volume_Mute}
-
-; Not working ...
-; #IfWinActive ahk_exe conemu64.exe
-; #If WinActive("ahk_class VirtualConsoleClass")
-; ^u::MsgBox You pressed Win+Spacebar in Notepad.
-; !m::Send !1
-; #If
-
-; Ctrl+Super+A  | Lock screen
-^#a::DllCall("LockWorkStation")
+;; }}}
 
 
-; Unfortunately, this does not work together with neo-vars.
+;; Ctrl+Super+S | Launch program `x-terminal-emulator` {{{
+; ^#s::Run cmd.exe
+^#s::Run C:\Program Files\ConEmu\ConEmu64.exe
+;; }}}
 
-; ::btw::
-; MsgBox You typed "btw".
-; return
+;; Shift+Super+A | Launch program `gnome-calculator` {{{
+;; Not working. Seems to be predefined with "take a screenshot".
+; +#a::Run calc.exe
+;; }}}
 
-; :*:!em::[myemailaddress@abc.xyz]
-; :c*:jj::john@somedomain.com ; Case sensitive and "ending character not required"..
+;; Ctrl+Alt+V | `poweroff` {{{
+^!v::
+        MsgBox, 1,, Self destruct sequence initiated. Please confirm.
+        IfMsgBox, OK
+        {
+          Shutdown, 1
+        }
+        Return
+;; }}}
 
-
-; Duplicate session in Putty based programs.
-#IfWinActive, ahk_class (Ki|Pu)TTY
-+^n::Send, !{space}d
-#IfWinActive
-
-
-; Patch ConEmu’s has hardcoded system hotkeys. Bad!
-; https://conemu.github.io/en/SettingsHotkeys.html
-#IfWinActive, ahk_class VirtualConsoleClass
-!m::Send, !1
-!,::Send, !2
-!.::Send, !3
-!j::Send, !4
-!k::Send, !5
-!l::Send, !6
-!u::Send, !7
-!i::Send, !8
-!o::Send, !9
-#IfWinActive
+;; Ctrl+Alt+G | `reboot` {{{
+^!g::
+        MsgBox, 1,, Self destruct/reset sequence initiated. Please confirm.
+        IfMsgBox, OK
+        {
+          Shutdown, 2
+        }
+        Return
+;; }}}
 
 
+;; Fix Explorer Ctrl+L behavior on Windows 7 {{{
 ;; Note that the Alt+E is rather uncommon for `focus location bar`. Ctrl+L is the de facto standard on GNU/Linux.
 ;; Microsoft also finally started accepting this with Windows 10.
 ;; Lets implement this also for older versions of Windows here.
@@ -349,8 +332,9 @@ return
         }
         Return
 #IfWinActive
+;; }}}
 
-
+;; Make Explorer behave like Double Commander where possible when we don’t have the real thing {{{
 ;; Poor mans Double Commander, ref: ../../../docs/shortcuts.md
 #IfWinActive, ahk_exe (?i)explorer.exe
 +^s::
@@ -400,3 +384,46 @@ return
 ;; Not working because of neo-vars. Would need to hook into neo-vars the same I already do with Alt+< (switch window, emulates Alt+Tab).
 ; /::Msgbox, "test"
 #IfWinActive
+;; }}}
+
+
+;; Duplicate session in Putty based programs. {{{
+#IfWinActive, ahk_class (Ki|Pu)TTY
++^n::Send, !{space}d
+#IfWinActive
+;; }}}
+
+;; Patch ConEmu’s hardcoded system hotkeys {{{
+;; https://conemu.github.io/en/SettingsHotkeys.html Bad!
+#IfWinActive, ahk_class VirtualConsoleClass
+!m::Send, !1
+!,::Send, !2
+!.::Send, !3
+!j::Send, !4
+!k::Send, !5
+!l::Send, !6
+!u::Send, !7
+!i::Send, !8
+!o::Send, !9
+#IfWinActive
+;; }}}
+
+
+;; Testing {{{
+;; Not working ...
+; #IfWinActive ahk_exe conemu64.exe
+; #If WinActive("ahk_class VirtualConsoleClass")
+; ^u::MsgBox You pressed Win+Spacebar in Notepad.
+; !m::Send !1
+; #If
+
+
+; Unfortunately, this does not work together with neo-vars.
+
+; ::btw::
+; MsgBox You typed "btw".
+; return
+
+; :*:!em::[myemailaddress@abc.xyz]
+; :c*:jj::john@somedomain.com ; Case sensitive and "ending character not required"..
+;; }}}

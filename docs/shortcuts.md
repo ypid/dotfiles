@@ -29,7 +29,7 @@ Which shortcuts should be used where? – Some thoughts …
 
 * `Shift+Alt`: W, S, X, A, D reserved for window manager. Applications can use everything else.
 * `Super+Alt`: Hypervisor console as host key
-* `Ctrl+Super`, `Super`: Dedicated to window manager respectively shortcuts which can be triggered globally.
+* `Ctrl+Super`, `Super`, `Ctrl+Alt`: Dedicated to window manager respectively shortcuts which can be triggered globally.
   * Never use the `Super` key for applications as this modifier might be reserved in some window managers. (And I don’t want to find out how to patch Windows to remap that).
 * `Shift+Super`: Dedicated to AutoKey or AutoHotKey (global)
     * Can also be used over RDP on Windows machines without interfering with MS Windows mappings of the Super key.
@@ -39,7 +39,7 @@ Which shortcuts should be used where? – Some thoughts …
 * `Ctrl`: Applications.
 * `Shift`: Applications.
 * `Shift+Ctrl`: Applications.
-* `Shift+Ctrl+Alt`: Applications.
+* `Shift+Ctrl+Alt`: Applications except Shift+Ctrl+Alt+O.
 * `Shift+Alt`: With limitations, see above.
 
 ### Avoid
@@ -66,6 +66,7 @@ List of free shortcuts (they may have a default mapping but there are better sho
 Shortcuts which are reserved for non-public use at work.
 
 * Shift+Alt+D
+* Shift+Super+I
 * Shift+Super+O
 
 ## Shortcut conventions and key order
@@ -160,14 +161,16 @@ Shift+Super+A    | Launch program `gnome-calculator`         | Nice to have   |
 Ctrl+Super+[1-9] | Launch custom program or script           | Yes and no     |
 Ctrl+Alt+V       | `poweroff`                                | Yes            |
 Ctrl+Alt+G       | `reboot`                                  | Yes            |
-Super+J          | Launcher application finder               | Nice to have   | Gnome activities or substation for other WMs. Gnome does by default trigger on Super button press which is a nice feature but does not work on other WMs yet?
-Super            | Launcher application finder               | Yes            | Only works with Gnome (and M$ Windows).
+Super+J          | Launch application finder (Launcher)      | Nice to have   | Gnome activities or substation for other WMs. Gnome does by default trigger on Super button press which is a nice feature but does not work on other WMs yet?
+Super            | Launch application finder (Launcher)      | Yes            | Only works with Gnome (and M$ Windows).
 Ctrl+Super+O     | Open contact search for calling, CTI      | No             | Computer Telephony Integration
 Shift+Ctrl+Alt+O | Launch program `eject`                    | No             | eject removable media, FIXME
-Ctrl+Alt+Q       | Show [Neo Layout Viewer][NeoLayoutViewer] | Yes            | Mod3+F1 does not work on GNU/Linux (xfce). Changed NeoVars to Ctrl+Alt+Q.
+Ctrl+Alt+Q       | Show Neo2 keyboard layout                 | Yes            | Mod3+F1 does not work on GNU/Linux (xfce). [Neo Layout Viewer][NeoLayoutViewer]. Changed NeoVars to Ctrl+Alt+Q.
 Super+F          | Start screen recording                    | Yes            | OBS Studio.
 Super+I          | Move panel/taskbar to the top             | Nice to have   | Only needed on Windows because Windows is stupid enough/can not prevent applications from appearing below the Taskbar when it is positioned at the top.
 Super+O          | Move panel/taskbar to the bottom          | Nice to have   | See above. Ah, no comment without hating M$ :) Super+L can not be used because there is [no way to disable it under Windows 10](https://superuser.com/questions/1059511/how-to-disable-winl-in-windows-10).
+Super+V          | Paste secret string to application window | Nice to have   | Paste secret string to application window that does not support clipboard pasting
+Shift+Super+V    | Paste string to application window        | Nice to have   | Paste string to application window that does not support clipboard pasting
 
 [NeoLayoutViewer](https://github.com/YggdrasiI/NeoLayoutViewer.git)
 
@@ -211,7 +214,7 @@ Shortcut       | Function                                | Left hand only | Comm
 -------------  | -------------                           | -------------  | -------------
 Ctrl+N         | Opens a new tab                         | No             | Easier to reach than Ctrl+T
 Ctrl+W         | Closes the tab                          | Of course      | Should be default in all program
-Ctrl+Q         | Closes the application                  | Of course      | Should be default in all program
+Ctrl+Q         | Closes the application                  | Of course      | Should be default in all program. FIXME: Drop this shortcut in favor of Super+Q.
 Ctrl+Tab       | Switch to right tab, cycle through tabs | Yes            |
 Shift+Ctrl+Tab | Switch to left tab, cycle through tabs  | Yes            |
 Ctrl+J         | Switch to left tab                      | Not really     |
@@ -255,7 +258,7 @@ The keystrokes are intended for the application and not to be trapped by the win
 
 Shortcut      | Function        | Left hand only | Comment
 ------------- | -------------   | -------------  | -------------
-Shift+Super+V | enter           | Yes            | Emit enter. If AltGr+v does not work (unfortunately AltGr can currently not be used in autokey).
+Shift+Super+V | enter           | Yes            | Emit enter. If AltGr+v does not work (unfortunately AltGr can currently not be used in autokey). Unused. Reusing Shift+Super+V for something else.
 Shift+Super+M |                 | Yes            | Emits F1. Neo2 numbers.
 Shift+Super+, |                 | Yes            | Emits F2. Neo2 numbers.
 Shift+Super+. |                 | Yes            | Emits F3. Neo2 numbers.
@@ -337,6 +340,8 @@ Hint: [Double Commander] works quite nicely together with [Neo2][] …
 
 * Don’t restrict control to files panel for actions which are shown in the function key buttons area so that DC shows the mapping there too.
 
+When looking for currently unassigned/free shortcuts, Double Commander has an awesome feature which can tell you the unassigend shortcuts. In ConfigHotKeys -> "Add hotkey" -> F1 symbol. Nice idea but seems not to work as of 0.8.4 beta?
+
 #### Assumed to be default
 
 Mappings which are default or which should be default.
@@ -410,8 +415,9 @@ Alt+Z            | TargetEqualSource      | Nice to have                  |
 Shift+Alt+H      | LeftOpenDrives         | Nice to have                  |
 Shift+Alt+N      | RightOpenDrives        | Nice to have                  |
 Ctrl+,           | ChangeDirToHome        | Nice to have                  |
-Ctrl+/           | ChangeDirToRoot        | Nice to have                  | Not working on Windows with neo-vars.
+Ctrl+/           | ChangeDirToRoot        | Nice to have                  | Not working on Windows with neo-vars by default. Workaround provided in `../doublecmd/Makefile`.
 Shift+Alt+S      | SyncDirs               | Yes                           |
+Shift+Alt+M      | ConfigHotKeys          | Not really                    | Helps for quick shortcut lookup.
 
 #### Used keys
 

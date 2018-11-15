@@ -30,7 +30,7 @@ Import-Module ZLocation
 Function prompt { "M`$S $(Get-Date -format 'yyyy-MM-dd HH:mm:sszzz') $(Get-CleanPath $(pwd)) $(&{If(id) {'#'} Else {'$'}}) " }
 
 Set-Location $(Split-Path -parent $profile)
-@("custom_PSReadLine", "functions", "exports", "shell_public", "shell_private", "shell_extend_PATH") | ? { Test-Path -PathType Leaf "$_.ps1" } | % { Invoke-Expression ". ./$_.ps1" }
+@("custom_PSReadLine", "exports", "shell_public", "shell_private", "shell_extend_PATH") | ? { Test-Path -PathType Leaf "$_.ps1" } | % { Invoke-Expression ". ./$_.ps1" }
 
 ## PSReadLine seems to have issues with this:
 ## "An exception occurred in custom key handler, see $error for more information: Index was outside the bounds of the array."
