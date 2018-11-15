@@ -116,7 +116,7 @@ Super+6                            | Move window to workspace 6     | Of course 
 
 Shortcut                                | Function           | Left hand only | Comment
 -------------                           | -------------      | -------------  | -------------
-Ctrl+Super+[Level4 Shift][special-keys] | Volume down by 5 % | Yes            | `amixer set Master 5%- -q`
+Ctrl+Super+[Level4 Shift][special-keys] | Volume down by 5 % | Yes            | `amixer set Master 5%- -q` (`pactl set-sink-volume 0 '-5%'` might not work when a different output is active.)
 Ctrl+Super+Y                            | Volume up by 5 %   | Yes            | `amixer set Master 5%+ -q`
 Ctrl+Super+X                            | Mute               | Yes            | Using https://askubuntu.com/questions/65764/how-do-i-toggle-sound-with-amixer/757110#757110 which runs in Qubes OS dom0 without `qvm-run` and is instant :)
 
