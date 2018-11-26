@@ -25,4 +25,4 @@ pushd oh-my-zsh/lib/
 rm -f bzr.zsh correction.zsh grep.zsh key-bindings.zsh misc.zsh nvm.zsh spectrum.zsh termsupport.zsh functions.zsh nvm.zsh
 popd
 
-rm submodules/dotfiles-fiatjaf/vim/vim
+rm -f submodules/dotfiles-fiatjaf/vim/vim submodules/dotfiles-fiatjaf/fish_functions/fzf_key_bindings.fish submodules/dotfiles-fiatjaf/fish_functions/fish_user_key_bindings.fish
