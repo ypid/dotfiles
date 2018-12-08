@@ -19,11 +19,17 @@ function link_path{
         [parameter(Mandatory=$true)][String]$dest
     )
 
-    rm "$dest"
-    if ((test-path $dest) -bxor 1) {
-        echo new-hardlink "$dest" "$source"
-        # new-hardlink "$dest" "$source"
-        new-item -Path "$dest" -ItemType SymbolicLink -Value "$source" | Out-Null
+    if ((Test-Path -Type Container "$dest") -bxor 1) {
+
+        echo "Deleting: $dest"
+        Remove-Item "$dest" -ErrorAction Ignore
+        if ((test-path $dest) -bxor 1) {
+            echo "Creating link: $dest -> $source"
+            # new-hardlink "$dest" "$source"
+            new-item -Path "$dest" -ItemType SymbolicLink -Value "$source" | Out-Null
+        }
+    } else {
+        echo "Skipping existing directory: $dest"
     }
 }
 
@@ -32,10 +38,12 @@ $documents_path = [environment]::getfolderpath("mydocuments")
 ## I am using forward slashes. Get used to it Windows guys.
 link_path "./windows/MS_Shell/" "$documents_path/WindowsPowerShell"
 link_path "./vimrc.min" ~/_vimrc
+link_path "./vim/" ~/_vim
 link_path "./windows/ConEmu/ConEmu.xml" "$env:APPDATA/ConEmu.xml"
 link_path "./gitconfig" ~/.gitconfig
-mkdir -f "$env:APPDATA/VirtuaWin" > $null
-link_path "./windows/VirtuaWin/virtuawin.cfg" "$env:APPDATA/VirtuaWin/virtuawin.cfg"
+
+# mkdir -f "$env:APPDATA/VirtuaWin" > $null
+# link_path "./windows/VirtuaWin/virtuawin.cfg" "$env:APPDATA/VirtuaWin/virtuawin.cfg"
 
 mkdir -f "$env:APPDATA/obs-studio/basic/profiles/Untitled" > $null
 ## OBS Studio v20.1.3 can not handle these kinds of symlinks. It will overwrite them.
@@ -43,17 +51,19 @@ mkdir -f "$env:APPDATA/obs-studio/basic/profiles/Untitled" > $null
 cp--no-clobber "./config/obs-studio/basic/profiles/Untitled/basic.ini" "$env:APPDATA/obs-studio/basic/profiles/Untitled/basic.ini"
 
 mkdir -f "$env:APPDATA/doublecmd/" > $null
-link_path "./doublecmd/shortcuts.scf" "$env:APPDATA/doublecmd/shortcuts.scf"
+## Doing this with only sed and output redirect has issues with file encoding as of 2018-11.
+Copy-Item .\doublecmd\shortcuts.scf C:\Users\snero\AppData\Roaming\doublecmd\shortcuts.scf
+sed --in-place --regexp-extended 's/Ctrl\+Shift\+7/Ctrl+Shift+8/;s#Ctrl\+Num/#Ctrl+Shift+7#;' "$env:APPDATA/doublecmd/shortcuts.scf"
 cp--no-clobber "./doublecmd/sanitize_doublecmd_xml" "$env:APPDATA/doublecmd/doublecmd.xml"
 
 mkdir -f "$env:APPDATA/Neo2/" > $null
 link_path "./qNeo2/Neo2.ini" "$env:APPDATA/Neo2/Neo2.ini"
 
-mkdir -f "$documents_path//portable/kitty/Sessions/" > $null
+mkdir -f "$documents_path/portable/kitty/Sessions/" > $null
 link_path "./windows/kitty/Sessions/Default%20Settings" "$documents_path/portable/kitty/Sessions/Default%20Settings"
 link_path "./windows/kitty/kitty.ini" "$documents_path/portable/kitty/kitty.ini"
 
-link_path "$documents_path/dotfiles/startup/startup.bat" "$env:APPDATA/Microsoft/Windows/Start Menu/Programs/Startup/startup.bat"
+cp--no-clobber "$documents_path/dotfiles/startup/startup.bat" "$env:APPDATA/Microsoft/Windows/Start Menu/Programs/Startup/startup.bat"
 
 Install-Module -Name ZLocation
 Install-Module -Name Pscx -Force -AllowClobber

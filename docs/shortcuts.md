@@ -1,6 +1,6 @@
 # Shortcuts
 
-Here are some common shortcuts that I use and which I configure in every program for which it makes sense and allows to do so.
+Here are some common shortcuts that I use and which I configure in every program for which it makes sense and allows to do so. Programs which don’t allow me to configure shortcuts don’t stop me to follow my standards either by patching, opening an issue or as last resort by scripting using AutoKey or AutoHotKey.
 
 Left hand only: Should be easy to use with the left hand, because it is often used during work with the mouse. For example switching windows or Ctrl+C to copy to the clipboard.
 
@@ -31,8 +31,9 @@ Which shortcuts should be used where? – Some thoughts …
 * `Super+Alt`: Hypervisor console as host key
 * `Ctrl+Super`, `Super`, `Ctrl+Alt`: Dedicated to window manager respectively shortcuts which can be triggered globally.
   * Never use the `Super` key for applications as this modifier might be reserved in some window managers. (And I don’t want to find out how to patch Windows to remap that).
-* `Shift+Super`: Dedicated to AutoKey or AutoHotKey (global)
+* `Shift+Super`, `Shift+Super+Alt`: Dedicated to AutoKey or AutoHotKey (global)
     * Can also be used over RDP on Windows machines without interfering with MS Windows mappings of the Super key.
+    * Note that `Shift+Super+Alt` is uncomfortable to enter. Only use for less frequent shortcuts.
 
 ### Applications
 
@@ -56,22 +57,21 @@ List of free shortcuts (they may have a default mapping but there are better sho
 
 * `Super` (WinKey): Almost forgotten :)
 * Super+Alt+C
-  Shift+Alt+
-  Ctrl+Alt+Y
-  Ctrl+Alt+[Level4 Shift][special-keys]
-  Ctrl+Alt+E
+* Shift+Alt+
+* Ctrl+Alt+Y
+* Ctrl+Alt+[Level4 Shift][special-keys]
+* Ctrl+Alt+E
+* Shift+Super+Alt+
 
 ## Reserved shortcuts
 
 Shortcuts which are reserved for non-public use at work.
 
 * Shift+Alt+D
-* Shift+Super+I
-* Shift+Super+O
 
 ## Shortcut conventions and key order
 
-To search for shortcuts, it is important to maintain a unique naming pattern and order in which they are combined. This is pretty much based on the naming and order used by [Double Commander]:
+To search for shortcuts, it is important to maintain a unique naming schema and order in which they are combined. This is pretty much based on convention used by [Double Commander]:
 
 * `Ctrl`
 * `Shift`
@@ -145,7 +145,7 @@ Ctrl+Alt+S    | Restore previous size of window               | Yes            |
 Ctrl+Alt+A    | Tile window on the left, View split on left   | Yes            |
 Ctrl+Alt+D    | Tile window on the right, View split on right | Yes            |
 
-## Qubes OS
+### Qubes OS
 
 Shortcut         | Function             | Left hand only | Comment
 -------------    | -------------        | -------------  | -------------
@@ -154,27 +154,53 @@ Shift+Ctrl+V     | Qubes Inter VM paste | Yes            |
 
 ### Custom shortcuts
 
-Shortcut         | Function                                  | Left hand only | Comment
--------------    | -------------                             | -------------  | -------------
-Ctrl+Super+S     | Launch program `x-terminal-emulator`      | Yes            |
-Shift+Super+A    | Launch program `gnome-calculator`         | Nice to have   |
-Ctrl+Super+[1-9] | Launch custom program or script           | Yes and no     |
-Ctrl+Alt+V       | `poweroff`                                | Yes            |
-Ctrl+Alt+G       | `reboot`                                  | Yes            |
-Super+J          | Launch application finder (Launcher)      | Nice to have   | Gnome activities or substation for other WMs. Gnome does by default trigger on Super button press which is a nice feature but does not work on other WMs yet?
-Super            | Launch application finder (Launcher)      | Yes            | Only works with Gnome (and M$ Windows).
-Ctrl+Super+O     | Open contact search for calling, CTI      | No             | Computer Telephony Integration
-Shift+Ctrl+Alt+O | Launch program `eject`                    | No             | eject removable media, FIXME
-Ctrl+Alt+Q       | Show Neo2 keyboard layout                 | Yes            | Mod3+F1 does not work on GNU/Linux (xfce). [Neo Layout Viewer][NeoLayoutViewer]. Changed NeoVars to Ctrl+Alt+Q.
-Super+F          | Start screen recording                    | Yes            | OBS Studio.
-Super+I          | Move panel/taskbar to the top             | Nice to have   | Only needed on Windows because Windows is stupid enough/can not prevent applications from appearing below the Taskbar when it is positioned at the top.
-Super+O          | Move panel/taskbar to the bottom          | Nice to have   | See above. Ah, no comment without hating M$ :) Super+L can not be used because there is [no way to disable it under Windows 10](https://superuser.com/questions/1059511/how-to-disable-winl-in-windows-10).
-Super+V          | Paste secret string to application window | Nice to have   | Paste secret string to application window that does not support clipboard pasting
-Shift+Super+V    | Paste string to application window        | Nice to have   | Paste string to application window that does not support clipboard pasting
+Shortcut          | Function                                   | Left hand only | Comment
+-------------     | -------------                              | -------------  | -------------
+Ctrl+Super+S      | Launch program `x-terminal-emulator`       | Yes            |
+Shift+Super+A     | Launch program `gnome-calculator`          | Nice to have   |
+Ctrl+Super+[1-9]  | Launch custom program or script            | Yes and no     |
+Ctrl+Alt+V        | `poweroff`                                 | Yes            |
+Ctrl+Alt+G        | `reboot`                                   | Yes            |
+Super+J           | Launch application finder (Launcher)       | Nice to have   | Gnome activities or substation for other WMs. Gnome does by default trigger on Super button press which is a nice feature but does not work on other WMs yet?
+Super             | Launch application finder (Launcher)       | Yes            | Only works with Gnome (and M$ Windows).
+Ctrl+Super+O      | Open contact search for calling, CTI       | No             | Computer Telephony Integration
+Shift+Ctrl+Alt+O  | Launch program `eject`                     | No             | Eject removable media, FIXME
+Ctrl+Alt+Q        | Show Neo2 keyboard layout                  | Yes            | Mod3+F1 does not work on GNU/Linux (xfce). [Neo Layout Viewer][NeoLayoutViewer].
+Super+F           | Start screen recording                     | Yes            | Start screen recording using OBS Studio.
+Super+I           | Move panel/taskbar to the top              | Nice to have   | Only needed on Windows because Windows is stupid enough/can not prevent applications from appearing below the Taskbar when it is positioned at the top.
+Super+O           | Move panel/taskbar to the bottom           | Nice to have   | See above. Ah, no comment without hating M$ :) Super+L can not be used because there is [no way to disable it under Windows 10](https://superuser.com/questions/1059511/how-to-disable-winl-in-windows-10).
+Super+V           | Type clipboard text content to application | Nice to have   | Type clipboard text content to application window that does not support clipboard pasting.
+Shift+Super+V     | Type secret string to application window   | Nice to have   | Paste secret string to application window that does not support clipboard pasting.
+Shift+Super+Alt+V | Type string to application window          | Nice to have   | Paste string to application window that does not support clipboard pasting.
+Shift+Super+C     | Copy clean path to clipboard               | Nice to have   | Use forward slashes as file separators.
 
-[NeoLayoutViewer](https://github.com/YggdrasiI/NeoLayoutViewer.git)
+[NeoLayoutViewer]: https://github.com/YggdrasiI/NeoLayoutViewer.git
 
 ## GUI applications
+
+### Autokey
+
+Here are the shortcuts I use to trigger [autokey][] actions.
+
+#### Emitting keystrokes
+
+The keystrokes are intended for the application and not to be trapped by the window manager.
+
+#### Global
+
+Shortcut      | Function        | Left hand only | Comment
+------------- | -------------   | -------------  | -------------
+Shift+Super+V | enter           | Yes            | Emit enter. If AltGr+v does not work (unfortunately AltGr can currently not be used in autokey). Unused. Reusing Shift+Super+V for something else.
+Shift+Super+M |                 | Yes            | Emits F1. Neo2 numbers.
+Shift+Super+, |                 | Yes            | Emits F2. Neo2 numbers.
+Shift+Super+. |                 | Yes            | Emits F3. Neo2 numbers.
+Shift+Super+J |                 | Yes            | Emits F4. Neo2 numbers.
+Shift+Super+R | Reload          | Yes            | Emits F5. Most applications will either reload or go to presentation mode.
+Shift+Super+L |                 | Yes            | Emits F6. Neo2 numbers.
+Shift+Super+U |                 | Yes            | Emits F7. Neo2 numbers.
+Shift+Super+I |                 | Yes            | Emits F8. Neo2 numbers.
+Shift+Super+O |                 | Yes            | Emits F9. Neo2 numbers.
+Shift+Super+F | F11             | Yes            | Emits F11. Causes most applications to go in fullscreen.
 
 ### Clementine
 
@@ -204,9 +230,19 @@ Ctrl+K     | Rate the current song 5 stars | No |
 
 -->
 
+### IDEs
+
+Applies to: SikuliX, SciTE
+
+Shortcut      | Function           | Left hand only | Comment
+------------- | -------------      | -------------  | -------------
+Ctrl+R        | Execute/run script | Nice to have   | The default seems to be F5 but I prefer easier to reach key combinations.
+F5            | Execute/run script | Nice to have   | Fallback in case Ctrl+R is not yet configured for an application.
+
+
 ### Windows and tabs
 
-Applies to: Firefox, Double Commander, GNOME Terminal, ConEmu.
+Applies to: Firefox, Chromium, Double Commander, GNOME Terminal, ConEmu.
 
 For GNOME Terminal (and ConEmu), each shortcut requires additionally the use of the Shift modifier key.
 
@@ -214,7 +250,7 @@ Shortcut       | Function                                | Left hand only | Comm
 -------------  | -------------                           | -------------  | -------------
 Ctrl+N         | Opens a new tab                         | No             | Easier to reach than Ctrl+T
 Ctrl+W         | Closes the tab                          | Of course      | Should be default in all program
-Ctrl+Q         | Closes the application                  | Of course      | Should be default in all program. FIXME: Drop this shortcut in favor of Super+Q.
+Ctrl+Q         | Closes the application                  | Of course      | Should be default in all program. FIXME: Drop this shortcut in favor of Super+Q. Done on: Windows.
 Ctrl+Tab       | Switch to right tab, cycle through tabs | Yes            |
 Shift+Ctrl+Tab | Switch to left tab, cycle through tabs  | Yes            |
 Ctrl+J         | Switch to left tab                      | Not really     |
@@ -235,6 +271,18 @@ Alt+O          | Switch to tab 9                         | No             |
 
 * Ctrl + [CDJKNQVWX]
 
+### Browser
+
+Applies to: Firefox, Chromium
+
+Shortcut      | Function                     | Left hand only | Comment
+------------- | -------------                | -------------  | -------------
+Shift+Ctrl+S  | View page source             | Yes            |
+Shift+Ctrl+D  | Web console (d for Debug)    | Yes            | Can not be configured in Chromium as of 
+Shift+Ctrl+W  | Undo Close Tab               | Yes            |
+Alt+Enter     | Open location bar in new tab | No             |
+Ctrl+H        | Open history                 | Not really     |
+
 ### ConEmu
 
 ConEmu together with a lot of other "fine tuning" help to make the different shells on M$ somewhat usable.
@@ -245,30 +293,6 @@ Shift+Ctrl+N  | Opens new vertical split               | No             | As in 
 Shift+Ctrl+M  | Opens PowerShell as admin in a new tab | No             |
 Shift+Ctrl+I  | Opens CMD in a new tab                 | No             |
 Shift+Ctrl+O  | Opens CMD as admin in a new tab        | No             |
-
-### Autokey
-
-Here are the shortcuts I use to trigger [autokey][] actions.
-
-#### Emitting keystrokes
-
-The keystrokes are intended for the application and not to be trapped by the window manager.
-
-##### Global
-
-Shortcut      | Function        | Left hand only | Comment
-------------- | -------------   | -------------  | -------------
-Shift+Super+V | enter           | Yes            | Emit enter. If AltGr+v does not work (unfortunately AltGr can currently not be used in autokey). Unused. Reusing Shift+Super+V for something else.
-Shift+Super+M |                 | Yes            | Emits F1. Neo2 numbers.
-Shift+Super+, |                 | Yes            | Emits F2. Neo2 numbers.
-Shift+Super+. |                 | Yes            | Emits F3. Neo2 numbers.
-Shift+Super+J |                 | Yes            | Emits F4. Neo2 numbers.
-Shift+Super+R | Reload          | Yes            | Emits F5. Most applications will either reload or go to presentation mode.
-Shift+Super+L |                 | Yes            | Emits F6. Neo2 numbers.
-Shift+Super+U |                 | Yes            | Emits F7. Neo2 numbers.
-Shift+Super+I |                 | Yes            | Emits F8. Neo2 numbers.
-Shift+Super+O |                 | Yes            | Emits F9. Neo2 numbers.
-Shift+Super+F | F11             | Yes            | Emits F11. Causes most applications to go in fullscreen.
 
 ##### Application specific
 
@@ -284,12 +308,6 @@ Ctrl+L        | Change spell check language to en | No             | See [script
 I use [VimFx][] to get all the Vim basics …
 
 To customize Firefox even further I use [Customizable Shortcuts](https://github.com/ttaubert/customizable-shortcuts).
-
-Shortcut      | Function                  | Left hand only | Comment
-------------- | -------------             | -------------  | -------------
-Shift+Ctrl+S  | View page source          | Yes            |
-Shift+Ctrl+D  | Web console (d for Debug) | Yes            |
-Shift+Ctrl+W  | Undo Close Tab            | Yes            |
 
 ### Chromium
 
@@ -415,7 +433,7 @@ Alt+Z            | TargetEqualSource      | Nice to have                  |
 Shift+Alt+H      | LeftOpenDrives         | Nice to have                  |
 Shift+Alt+N      | RightOpenDrives        | Nice to have                  |
 Ctrl+,           | ChangeDirToHome        | Nice to have                  |
-Ctrl+/           | ChangeDirToRoot        | Nice to have                  | Not working on Windows with neo-vars by default. Workaround provided in `../doublecmd/Makefile`.
+Ctrl+/           | ChangeDirToRoot        | Nice to have                  | Not working on Windows with neo-vars by default. Workaround provided in `../install.ps1`.
 Shift+Alt+S      | SyncDirs               | Yes                           |
 Shift+Alt+M      | ConfigHotKeys          | Not really                    | Helps for quick shortcut lookup.
 
@@ -480,7 +498,9 @@ Ctrl+N        | Start a new instance of Evince with the current document | Nice 
 
 #### Default
 
-Shift+Alt+C | Abort SikulX script | Nice to have | As long as SikuliX 1.1.1 is open, it always intercepts this key combination.
+Shortcut      | Function            | Left hand only | Comment
+------------- | -------------       | -------------  | -------------
+Shift+Alt+C   | Abort SikulX script | Nice to have   | As long as SikuliX 1.1.1 is open, it always intercepts this key combination.
 
 ## Terminal programs
 
@@ -510,8 +530,8 @@ Normal mode:
 [cVim]: https://github.com/1995eaton/chromium-vim
 [special-keys]: #special-keys
 [Double Commander]: #double-commander-dc
-[.vimrc]: /.vimrc
-[.tmux.conf]: /.tmux.conf
+[.vimrc]: /vimrc
+[.tmux.conf]: /tmux.conf
 [suspend-script]: https://github.com/ypid/scripts/blob/master/suspend-via-gnome
 [autokey]: https://code.google.com/p/autokey/
 [Steps Ahead]: https://de.wikipedia.org/wiki/Steps_Ahead
@@ -520,4 +540,4 @@ Normal mode:
 
 ## Miscellaneous
 
-For M$ Windows see [autohotkey](/windows/autohotkey/).
+For M$ Windows see [custom.ahk](/windows/neo-vars/source/custom.ahk).

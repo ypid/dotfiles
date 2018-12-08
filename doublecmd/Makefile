@@ -3,9 +3,10 @@ all: install
 install:
 	mkdir --parents ~/.config/doublecmd
 	test -e ~/.config/doublecmd/doublecmd.xml || cp doublecmd.xml ~/.config/doublecmd/doublecmd.xml
+	## Doublecmd as of 0.8.4 can not handle symlinks (GNU/Linux and Windows).
 	test -e ~/.config/doublecmd/shortcuts.scf || cp shortcuts.scf ~/.config/doublecmd/shortcuts.scf
 ifeq ($(OS),Windows_NT)
-	sed --in-place --regexp-extended 's/Ctrl\+Shift\+7/Ctrl+Shift+8/;s#Ctrl\+Num/#Ctrl+Shift+7#;' ~/.config/doublecmd/shortcuts.scf
+	# Workaround see ../install.ps1
 endif
 
 get-changes: shortcuts.scf doublecmd.xml

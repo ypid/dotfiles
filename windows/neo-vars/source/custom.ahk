@@ -8,20 +8,164 @@
 A_OSMajorVersion := DllCall("GetVersion") & 0xFF
 ;; }}}
 
-;; Discourage the use of the regular window switching.
-;; No, this is counterproductive. I use the optimized switcher when available
-;; but don’t disable the regular one.
-; LAlt & Tab::return
+;; Force Windows to behave like GNU/Linux {{{
 
-;; Shift+Alt+A | Switch to next input source (e.g. qNeo2 and qwertz) {{{
+;; Copy clean file/directory path to clipboard (use forward slashes as file separators) {{{
+;; https://stackoverflow.com/questions/1589930/so-what-is-the-right-direction-of-the-paths-slash-or-under-windows/1589959#1589959
+
+;; WARNING: This clipboard substitution has the issue that after the substitution, pasting the file does not work anymore!!
+;; Because of this, we don’t run the substitution OnClipboardChange globally but only when we consider it save and otherwise using a (manual) shortcut.
+;; Situations where we know it is save:
+;; * Double Commander calls CopyFullNamesToClip.
+;; * Location bar in Explorer has focus. See limitations below!
+
+;; The expected workflow is:
+;; 1. Do what you usually do to copy a path.
+;; 2. We try to do what is necessary to have a clean path in the clipboard.
+;; 3. If we cannot do it by default (we don’t know that it is save), we do nothing and you have to manually make the path in the clipboard clean by pressing Shift+Super+C.
+
+;; Ref: Get-CleanPath in ../../MS_Shell/Modules/ypidDotfiles/ypidDotfiles.psm1
+;; Seems up to and including Windows 10, UNC paths with forward slashes don’t work.
+;; At least //files.example.org/home and \\files.example.org/home and //files.example.org\home don’t work.
+clean_path_in_clipboard() {
+    If (RegExMatch(Clipboard, "^(?i)(?:[a-z]:)?\\[^\\]")) {
+        StringReplace, Clipboard, Clipboard,\,/, All
+    }
+    Return
+}
+
+;; Shift+Super+C | Clean file/directory path in clipboard {{{
++#C::
+    ; ClipSaved := ClipboardAll
+    ; Clipboard = 
+
+    ; Send ^c
+    ;; Ensure that we are only working on text.
+    ; ClipWait
+
+    ; currentPath =
+    ; WinGetClass explorerClass, A
+    ; ControlGetText currentPath, Edit1, ahk_class %explorerClass%
+    ; msgbox %currentPath%
+
+    ; If (ErrorLevel) {
+    ;     Clipboard := ClipSaved
+    ;     MsgBox, 48, Clipboard copy warning, Failed to copy to clipboard.
+    ;     Return
+    ; }
+
+    clean_path_in_clipboard()
+Return
+;; }}}
+
+;; Shift+Alt+C | Hook Double Commander calls to CopyFullNamesToClip and run clean_path_in_clipboard afterwards.
+;; We can "safely" do this because when CopyFullNamesToClip is called, the user wants to copy the path as text.
+#UseHook
+#IfWinActive ahk_exe doublecmd.exe
++!c::
+    Send +!c
+    clean_path_in_clipboard()
+Return
+#IfWinActive
+#UseHook off
+
+OnClipboardChange:
+    ;; Fix file path when in transit in Explorer (or Double Commander).
+    ;; Ensure that we are only working on text.
+    If (WinActive("ahk_exe (?i)(?:explorer.exe|doublecmd.exe)") and A_EventInfo == 1) {
+
+        ;; Location bar in Explorer has focus.
+        ;; Run clean_path_in_clipboard after copying text to clipboard in Explorer when cursor is above "Location bar" known as Edit1 (bad programming/variable naming M$??).
+        ;; Technically this is not 100 % bulletproof because you could do the copy to clipboard with Ctrl+L followed Ctrl+C while the cursor focuses some other control.
+        If (WinActive("ahk_exe (?i)(?:explorer.exe)")) {
+            MouseGetPos, , , , control_below_cursor
+            If (control_below_cursor == "Edit1") {
+                clean_path_in_clipboard()
+            }
+        }
+
+        ;; We cannot do this globally, see WARNING above.
+        ; clean_path_in_clipboard()
+    }
+return
+
+;; }}}
+
+;; GNU/Linux Alt+Window drag functionality {{{
+;; This script modified from the original: http://www.autohotkey.com/docs/scripts/EasyWindowDrag.htm
+;; by The How-To Geek
+;; http://www.howtogeek.com
+Alt & LButton::
+    CoordMode, Mouse  ; Switch to screen/absolute coordinates.
+    MouseGetPos, EWD_MouseStartX, EWD_MouseStartY, EWD_MouseWin
+    WinGetPos, EWD_OriginalPosX, EWD_OriginalPosY,,, ahk_id %EWD_MouseWin%
+    WinGet, EWD_WinState, MinMax, ahk_id %EWD_MouseWin%
+    if EWD_WinState = 0  ; Only if the window isn't maximized
+        SetTimer, EWD_WatchMouse, 10 ; Track the mouse as the user drags it.
+    return
+
+    EWD_WatchMouse:
+    GetKeyState, EWD_LButtonState, LButton, P
+    if EWD_LButtonState = U  ; Button has been released, so drag is complete.
+    {
+        SetTimer, EWD_WatchMouse, off
+        return
+    }
+    GetKeyState, EWD_EscapeState, Escape, P
+    if EWD_EscapeState = D  ; Escape has been pressed, so drag is cancelled.
+    {
+        SetTimer, EWD_WatchMouse, off
+        WinMove, ahk_id %EWD_MouseWin%,, %EWD_OriginalPosX%, %EWD_OriginalPosY%
+        return
+    }
+    ; Otherwise, reposition the window to match the change in mouse coordinates
+    ; caused by the user having dragged the mouse:
+    CoordMode, Mouse
+    MouseGetPos, EWD_MouseX, EWD_MouseY
+    WinGetPos, EWD_WinX, EWD_WinY,,, ahk_id %EWD_MouseWin%
+    SetWinDelay, -1   ; Makes the below move faster/smoother.
+    WinMove, ahk_id %EWD_MouseWin%,, EWD_WinX + EWD_MouseX - EWD_MouseStartX, EWD_WinY + EWD_MouseY - EWD_MouseStartY
+    EWD_MouseStartX := EWD_MouseX  ; Update for the next timer-call to this subroutine.
+    EWD_MouseStartY := EWD_MouseY
+    return
+;; }}}
+
+;; }}}
+
+
+;; Sound and Media {{{
+
+;; Ctrl+Super+[Level4 Shift][special-keys] | Volume down by 5 % {{{
+;; Does not work because the >< key is intercepted by Neo2.
+;; Implemented in ./varsfunctions.ahk
+; ^#>::SoundSet -5
+;; }}}
+
+;; Ctrl+Super+Y | Volume up by 5 % {{{
+^#y::SoundSet +5
+;; }}}
+
+;; Ctrl+Super+X | Mute {{{
+^#x::Send {Volume_Mute}
+;; }}}
+
+;; }}}
+
+;; Ctrl+Super+A | System -> Lock screen {{{
+^#a::DllCall("LockWorkStation")
+;; }}}
+
+;; Shift+Alt+A | Typing -> Switch to next input source (e.g. qNeo2 and qwertz) {{{
 +!a::
-Suspend, Permit
-  Traytogglesuspend()
+    Suspend, Permit
+    Traytogglesuspend()
 return
 ;; }}}
 
-;; Ctrl+Alt+Q | Show Neo2 keyboard layout {{{
-^!q::CharProc__BSTt()
+;; Windows {{{
+
+;; Super+Q | Close window {{{
+#q::WinClose, A
 ;; }}}
 
 ;; Ctrl+Alt+F | Toggle fullscreen mode {{{
@@ -161,43 +305,57 @@ MoveIt(Q) {
 }
 ;; }}}
 
-;; GNU/Linux Alt+Window drag functionality {{{
-;; This script modified from the original: http://www.autohotkey.com/docs/scripts/EasyWindowDrag.htm
-;; by The How-To Geek
-;; http://www.howtogeek.com
-Alt & LButton::
-    CoordMode, Mouse  ; Switch to screen/absolute coordinates.
-    MouseGetPos, EWD_MouseStartX, EWD_MouseStartY, EWD_MouseWin
-    WinGetPos, EWD_OriginalPosX, EWD_OriginalPosY,,, ahk_id %EWD_MouseWin%
-    WinGet, EWD_WinState, MinMax, ahk_id %EWD_MouseWin%
-    if EWD_WinState = 0  ; Only if the window isn't maximized
-        SetTimer, EWD_WatchMouse, 10 ; Track the mouse as the user drags it.
-    return
+;; }}}
 
-    EWD_WatchMouse:
-    GetKeyState, EWD_LButtonState, LButton, P
-    if EWD_LButtonState = U  ; Button has been released, so drag is complete.
+;; Disable reserved shortcuts globally (Qubes OS) {{{
+
+;; This is to prevent me from accidentally start using reserved shortcuts.
+
++^C::
++^V::MsgBox, 48, qNeo2_ypid_custom reserved shortcut warning, Use of reserved shortcut detected and blocked. Please use a different shortcut.
+
+;; }}}
+
+;; Custom global shortcuts {{{
+
+;; Ctrl+Super+S | Launch program `x-terminal-emulator` {{{
+; ^#s::Run cmd.exe
+^#s::Run C:\Program Files\ConEmu\ConEmu64.exe
+;; }}}
+
+;; Shift+Super+A | Launch program `gnome-calculator` {{{
+;; Not working. Seems to be predefined with "take a screenshot".
+; +#a::Run calc.exe
+;; }}}
+
+;; Ctrl+Alt+V | `poweroff` {{{
+^!v::
+    MsgBox, 1,, Self destruct sequence initiated. Please confirm.
+    IfMsgBox, OK
     {
-        SetTimer, EWD_WatchMouse, off
-        return
+        Shutdown, 1
     }
-    GetKeyState, EWD_EscapeState, Escape, P
-    if EWD_EscapeState = D  ; Escape has been pressed, so drag is cancelled.
+Return
+;; }}}
+
+;; Ctrl+Alt+G | `reboot` {{{
+^!g::
+    MsgBox, 1,, Self destruct/reset sequence initiated. Please confirm.
+    IfMsgBox, OK
     {
-        SetTimer, EWD_WatchMouse, off
-        WinMove, ahk_id %EWD_MouseWin%,, %EWD_OriginalPosX%, %EWD_OriginalPosY%
-        return
+        Shutdown, 2
     }
-    ; Otherwise, reposition the window to match the change in mouse coordinates
-    ; caused by the user having dragged the mouse:
-    CoordMode, Mouse
-    MouseGetPos, EWD_MouseX, EWD_MouseY
-    WinGetPos, EWD_WinX, EWD_WinY,,, ahk_id %EWD_MouseWin%
-    SetWinDelay, -1   ; Makes the below move faster/smoother.
-    WinMove, ahk_id %EWD_MouseWin%,, EWD_WinX + EWD_MouseX - EWD_MouseStartX, EWD_WinY + EWD_MouseY - EWD_MouseStartY
-    EWD_MouseStartX := EWD_MouseX  ; Update for the next timer-call to this subroutine.
-    EWD_MouseStartY := EWD_MouseY
-    return
+Return
+;; }}}
+
+;; Super+J | Launcher application finder {{{
+; #j::Send {LWin up}^{Esc}
+; #j::Send {LWin up}{LWin}
+; #j::run, "C:\Program Files (x86)\Launchy\Launchy.exe" /show
+;; }}}
+
+;; Ctrl+Alt+Q | Show Neo2 keyboard layout {{{
+^!q::CharProc__BSTt(false)
 ;; }}}
 
 ;; Super+[IO] | Move panel/taskbar to the top/bottom {{{
@@ -245,65 +403,32 @@ WinMove(p_x, p_y, p_w="", p_h="", p_hwnd="") {
 }
 ;; }}}
 
-;; Ctrl+Super+A | Lock screen {{{
-^#a::DllCall("LockWorkStation")
-;; }}}
+;; Paste string to application window that does not support clipboard pasting {{{
+;; Examples: VM, desktop sharing, websites which block pasting.
 
-;; Super+J | Launcher application finder {{{
-; #j::Send {LWin up}^{Esc}
-; #j::Send {LWin up}{LWin}
-; #j::run, "C:\Program Files (x86)\Launchy\Launchy.exe" /show
-;; }}}
+;; https://gist.github.com/ethack/110f7f46272447828352768e6cd1c4cb
+#v::Send {Raw}%Clipboard%
 
-;; Super+Q | Close window {{{
-#q::WinClose, A
-;; }}}
++#v::
+    InputBox, string_to_paste, Secret string to paste, Please enter a secret string to paste into the active window behind this input box. The string will be represented as stars., hide, 300, 200
+    If !ErrorLevel {
+        Send %string_to_paste%
+    }
+Return
 
-;; Ctrl+Super+[Level4 Shift][special-keys] | Volume down by 5 % {{{
-;; Does not work because the >< key is intercepted by Neo2.
-;; Implemented in ./varsfunctions.ahk
-; ^#>::SoundSet -5
-;; }}}
-
-;; Ctrl+Super+Y | Volume up by 5 % {{{
-^#y::SoundSet +5
-;; }}}
-
-;; Ctrl+Super+X | Mute {{{
-^#x::Send {Volume_Mute}
++#!v::
+    InputBox, string_to_paste, String to paste, Please enter a string to paste into the active window behind this input box, , 300, 150
+    If !ErrorLevel {
+        Send %string_to_paste%
+    }
+Return
 ;; }}}
 
 
-;; Ctrl+Super+S | Launch program `x-terminal-emulator` {{{
-; ^#s::Run cmd.exe
-^#s::Run C:\Program Files\ConEmu\ConEmu64.exe
 ;; }}}
 
-;; Shift+Super+A | Launch program `gnome-calculator` {{{
-;; Not working. Seems to be predefined with "take a screenshot".
-; +#a::Run calc.exe
-;; }}}
 
-;; Ctrl+Alt+V | `poweroff` {{{
-^!v::
-        MsgBox, 1,, Self destruct sequence initiated. Please confirm.
-        IfMsgBox, OK
-        {
-          Shutdown, 1
-        }
-        Return
-;; }}}
-
-;; Ctrl+Alt+G | `reboot` {{{
-^!g::
-        MsgBox, 1,, Self destruct/reset sequence initiated. Please confirm.
-        IfMsgBox, OK
-        {
-          Shutdown, 2
-        }
-        Return
-;; }}}
-
+;; Application specific {{{
 
 ;; Fix Explorer Ctrl+L behavior on Windows 7 {{{
 ;; Note that the Alt+E is rather uncommon for `focus location bar`. Ctrl+L is the de facto standard on GNU/Linux.
@@ -325,12 +450,12 @@ WinMove(p_x, p_y, p_w="", p_h="", p_hwnd="") {
 ;; versions where it is not needed:
 #IfWinActive, ahk_exe (?i)explorer.exe
 ^l::
-        If (A_OSMajorVersion >= 10) {
-                Send, ^l
-        } else {
-                Send, !e
-        }
-        Return
+    If (A_OSMajorVersion >= 10) {
+        Send, ^l
+    } else {
+        Send, !e
+    }
+Return
 #IfWinActive
 ;; }}}
 
@@ -338,13 +463,13 @@ WinMove(p_x, p_y, p_w="", p_h="", p_hwnd="") {
 ;; Poor mans Double Commander, ref: ../../../docs/shortcuts.md
 #IfWinActive, ahk_exe (?i)explorer.exe
 +^s::
-        If (A_OSMajorVersion >= 10) {
-                Send, ^l
-        } else {
-                Send, !e
-        }
-        Send, powershell{Enter}
-        Return
+    If (A_OSMajorVersion >= 10) {
+        Send, ^l
+    } else {
+        Send, !e
+    }
+    Send, powershell{Enter}
+Return
 
 ^p::Send, {F2}
 +!e::Send, !{Enter}
@@ -354,38 +479,66 @@ WinMove(p_x, p_y, p_w="", p_h="", p_hwnd="") {
 
 ;; https://superuser.com/questions/810352/is-there-a-keyboard-shortcut-to-edit-files-such-as-reg-bat-and-so-on/1240744#1240744
 ^e::
-        If (A_OSMajorVersion < 10) {
-                MsgBox Do it manually!
-                Return
-        }
-        ;; Open context menu. {Menu} does not work on Windows 10 for some reason.
-        Send, +{F10}
-        ;; "Open with"
-        Send, h{Right}
-        ;; Attempt to open with Gvim, "Vi Improved".
-        Send, v
+    If (A_OSMajorVersion < 10) {
+        MsgBox Do it manually!
         Return
+    }
+    ;; Open context menu. {Menu} does not work on Windows 10 for some reason.
+    Send, +{F10}
+    ;; "Open with"
+    Send, h{Right}
+    ;; Attempt to open with Gvim, "Vi Improved".
+    Send, v
+Return
 
 ; https://superuser.com/questions/133175/is-there-a-shortcut-for-creating-a-new-file
 +^e::
-        ;; Ensure no file is selected. ^{Space} does not work because it toggles the selection.
-        If (A_OSMajorVersion >= 10) {
-                Send, !hsn
-        } else {
-                ;; Do nothing. Is not reliable anyway.
-        }
-        ;; Open context menu.
-        Send, +{F10}
-        ;; "New", "w" optionally does not work because more programs injected themselves into the context menu.
-        Send, {Up}{Up}{Right}
-        Send, t
-        Return
+    ;; Ensure no file is selected. ^{Space} does not work because it toggles the selection.
+    If (A_OSMajorVersion >= 10) {
+        Send, !hsn
+    } else {
+        ;; Do nothing. Is not reliable anyway.
+    }
+    ;; Open context menu.
+    Send, +{F10}
+    ;; "New", "w" optionally does not work because more programs injected themselves into the context menu.
+    Send, {Up}{Up}{Right}
+    Send, t
+Return
 
 ;; Not working because of neo-vars. Would need to hook into neo-vars the same I already do with Alt+< (switch window, emulates Alt+Tab).
 ; /::Msgbox, "test"
 #IfWinActive
 ;; }}}
 
+;; Make WinSCP behave like Double Commander where possible when we don’t have the real thing {{{
+;; https://winscp.net/eng/docs/ui_commander_key
+#IfWinActive ahk_exe WinSCP.exe
+^e::Send {F4}
++^e::Send +{F4}
+^p::Send {F2}
+
+;; Would need to hook into neo-vars to work.
+; ^/::Send {F2}
+; ^1::Send ^{F3}
+; ^2::Send ^{F4}
+; ^3::Send ^{F6}
+; ^4::Send ^{F5}
+; ^5::Send ^{F7}
+
+^,::Send ^h
++^a::Send +^l
++!s::Send !{F6}
+^f::Send {F7}
+^d::Send {F8}
++!f::Send {F9}
++!x::Send +^c
++!c::Send ^!c
+^.::Send ^!h
+^o::Send ^!e
+^l::Send +^n
+#IfWinActive
+;; }}}
 
 ;; Duplicate session in Putty based programs. {{{
 #IfWinActive, ahk_class (Ki|Pu)TTY
@@ -408,6 +561,38 @@ WinMove(p_x, p_y, p_w="", p_h="", p_hwnd="") {
 #IfWinActive
 ;; }}}
 
+;; Ctrl+F | Search for text in Outlook {{{
+;; Common shortcuts for M$ Outlook 365. In my version at work, the "Customize" option is missing so we just do it with AHK.
+;; https://support.office.com/en-us/article/customize-keyboard-shortcuts-9a92343e-a781-4d5a-92f1-0f32e3ba5b4d
+#IfWinActive ahk_exe OUTLOOK.EXE
+^F::Send {F4}
+#IfWinActive
+;; }}}
+
+;; F5 | Execute/run script in SikuliXIDE {{{
+#IfWinActive, SikulixIDE
+F5::Send, ^r
+#IfWinActive
+;; }}}
+
+;; Ctrl+R | Execute/run script in SciTE {{{
+;; SciTE can probably configured to do this but I have not found this by a
+;; quick Internet search.
+#IfWinActive, ahk_class SciTEWindow
+^r::Send, {F5}
+#IfWinActive
+;; }}}
+
+;; Chrome {{{
+;; Chrome does not allow to customize shortcuts other than what I found https://github.com/1995eaton/chromium-vim allows.
+;; https://superuser.com/questions/497526/how-to-customize-google-chrome-keyboard-shortcuts
+#IfWinActive ahk_exe chrome.exe
++^D::+^J
+#IfWinActive
+;; }}}
+
+;; }}}
+
 
 ;; Testing {{{
 ;; Not working ...
@@ -426,4 +611,65 @@ WinMove(p_x, p_y, p_w="", p_h="", p_hwnd="") {
 
 ; :*:!em::[myemailaddress@abc.xyz]
 ; :c*:jj::john@somedomain.com ; Case sensitive and "ending character not required"..
+;; }}}
+
+;; Disabled/deprecated {{{
+
+;; Discourage the use of the regular window switching.
+;; No, this is counterproductive. I use the optimized switcher when available
+;; but don’t disable the regular one.
+; LAlt & Tab::return
+
+;; }}}
+
+;; Examples that need to be changed to be working {{{
+
+;; Example | Paste password, perform_os_login {{{
+;; Login at Windows 10 and Windows 7 WM lock screen over TeamViwer or other means of remote control.
+;; Shift+Super+D does not work here. Using Shift+Alt+D violates my shortcut name spaces.
+
+perform_os_login() {
+        ;; Not needed. It also seems to work with neo2 enabled.
+        If WinActive("ahk_class IEFrame") {
+                MsgBox Ensure that neo2 is disabled.
+        }
+
+        If WinActive("ahk_class VMPlayerFrame") {
+                MsgBox VMware PLayer is not supported. Please open the "Web Console".
+                Return
+        }
+
+
+        FileReadLine, line, C:/path/to/pw.txt, 1
+
+        ;; Send Escape to wake up Windows 10 sleepy screen.
+        ;; Escape would cause issues when logging in as a new user (make the username field empty).
+        ; Send {Escape}
+        Send {Space}
+        Sleep, 500
+
+        ;; Does not help. In the worst case, this snippet will need two runs.
+        ; If WinActive("ahk_class IEFrame") {
+        ;         Sleep, 500
+        ; }
+
+        ;; Ensure the user login prompt is active.
+        ;; In case the user switching dialog is open, space selects the first,
+        ;; currently logged in user and goes to the login prompt for the
+        ;; user.
+        ;; Enter would also do that but would cause issues in case the login prompt is already open.
+        ;; Space just inserts a space in that case which is cleared in the next step anyway ;-)
+        Send {Space}
+
+        ;; Ensure no characters are contained in the password field.
+        ;; SendEvent is needed for IEFrame where Send does not work.
+        SendEvent ^a
+        Send {Delete}
+
+        Send %line%{enter}
+
+        Return
+}
+;; }}}
+
 ;; }}}

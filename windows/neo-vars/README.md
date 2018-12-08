@@ -15,7 +15,7 @@ Start `qNeo2_ypid_custom.exe` as root. Normal user also works but not in applica
 ## Compatibility
 
 * Windows 7 (With limits, Higher layers might "lock", like caps lock)
-* Windows 10 ~~Pro~~ Contra X86_64 1607 (Fully working)
+* Windows 10 ~~Pro~~ Contra X86_64 1607 and 1803 (Fully working)
 
 ## Develop
 

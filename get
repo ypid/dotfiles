@@ -12,12 +12,12 @@ vim_spell="vim/spell"
 mkdir --parents "$vim_spell"
 for file in {en,de}.utf-8.{spl,sug};do
     if [ ! -e "$vim_spell/$file" ];then
-        wget --continue "http://ftp.vim.org/pub/vim/runtime/spell/$file" --output-document="$vim_spell/$file"
+        wget --continue "https://ftp.nluug.nl/pub/vim/runtime/spell/$file" --output-document="$vim_spell/$file"
     fi
 done
 
 ## Legacy. Needed on Debian wheezy system.
-wget --continue "http://ftp.vim.org/pub/vim/runtime/spell/de.latin1.spl" --output-document="$vim_spell/de.latin1.spl"
+wget --continue "https://ftp.nluug.nl/pub/vim/runtime/spell/de.latin1.spl" --output-document="$vim_spell/de.latin1.spl"
 
 ## Improves performance of ZSH. Functions not needed or not used (yet).
 ## Leave submodule dirty.
@@ -25,4 +25,4 @@ pushd oh-my-zsh/lib/
 rm -f bzr.zsh correction.zsh grep.zsh key-bindings.zsh misc.zsh nvm.zsh spectrum.zsh termsupport.zsh functions.zsh nvm.zsh
 popd
 
-rm -f submodules/dotfiles-fiatjaf/vim/vim submodules/dotfiles-fiatjaf/fish_functions/fzf_key_bindings.fish submodules/dotfiles-fiatjaf/fish_functions/fish_user_key_bindings.fish
+rm -rf submodules/dotfiles-fiatjaf/vim/vim submodules/dotfiles-fiatjaf/fish_functions/fzf_key_bindings.fish submodules/dotfiles-fiatjaf/fish_functions/fish_user_key_bindings.fish

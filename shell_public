@@ -110,7 +110,7 @@ function h {
     if [[ "$pattern" == "." ]]; then
         history
     else
-        history | egrep -e "$pattern"
+        history | egrep -ie "$pattern"
     fi
 }
 

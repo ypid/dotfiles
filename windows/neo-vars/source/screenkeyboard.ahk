@@ -139,8 +139,13 @@ GuiAddKey(key,x,y) {
   GuiKeyList := GuiKeyList . key . ","
 }
 
-CharProc__BSTt() {
+CharProc__BSTt(use_different_shortcut=true) {
   global
+
+  if (use_different_shortcut) {
+    MsgBox, 48, qNeo2_ypid_custom deprecated shortcut warning, Use of deprecated shortcut to show the Neo2 keyboard layout detected. Please use Ctrl+Alt+Q.
+    Return
+  }
   ; Bildschirmtastatur togglen
   useBST := !(useBST)
   if (useBST)
