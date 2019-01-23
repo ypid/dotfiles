@@ -283,6 +283,26 @@ Shift+Ctrl+W  | Undo Close Tab               | Yes            |
 Alt+Enter     | Open location bar in new tab | No             |
 Ctrl+H        | Open history                 | Not really     |
 
+### Media player
+
+Applies to: SMPlayer, Kodi
+
+Shortcut      | Function                     | Left hand only | Comment
+------------- | -------------                | -------------  | -------------
+Space         | Play/Pause                   | Yes            |
+Del           | Stop playback                | Nice to have   | Two times stop causes SMPlayer to reset the playback position to the beginning.
+,             | Previous frame               | Nice to have   |
+.             | Next frame                   | Nice to have   |
+P             | Previous media in playlist   | Nice to have   |
+N             | Next media in playlist       | Nice to have   |
+{             | Half speed                   | Nice to have   |
+}             | Double speed                 | Nice to have   |
+[             | Reduce speed by 0.10         | Nice to have   |
+]             | Increase speed by 0.10       | Nice to have   |
+Backspace     | Normal speed                 | Nice to have   |
+Ctrl+L        | Open Playlist                | Nice to have   |
+Ctrl+F        | Fullscreen                   | Not really     |
+
 ### ConEmu
 
 ConEmu together with a lot of other "fine tuning" help to make the different shells on M$ somewhat usable.

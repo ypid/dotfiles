@@ -61,7 +61,7 @@ Return
 ;; Shift+Alt+C | Hook Double Commander calls to CopyFullNamesToClip and run clean_path_in_clipboard afterwards.
 ;; We can "safely" do this because when CopyFullNamesToClip is called, the user wants to copy the path as text.
 #UseHook
-#IfWinActive ahk_exe doublecmd.exe
+#IfWinActive ahk_exe doublecmd\.exe
 +!c::
     Send +!c
     clean_path_in_clipboard()
@@ -72,12 +72,12 @@ Return
 OnClipboardChange:
     ;; Fix file path when in transit in Explorer (or Double Commander).
     ;; Ensure that we are only working on text.
-    If (WinActive("ahk_exe (?i)(?:explorer.exe|doublecmd.exe)") and A_EventInfo == 1) {
+    If (WinActive("ahk_exe (?i)(?:explorer\.exe|doublecmd\.exe)") and A_EventInfo == 1) {
 
         ;; Location bar in Explorer has focus.
         ;; Run clean_path_in_clipboard after copying text to clipboard in Explorer when cursor is above "Location bar" known as Edit1 (bad programming/variable naming M$??).
         ;; Technically this is not 100 % bulletproof because you could do the copy to clipboard with Ctrl+L followed Ctrl+C while the cursor focuses some other control.
-        If (WinActive("ahk_exe (?i)(?:explorer.exe)")) {
+        If (WinActive("ahk_exe (?i)(?:explorer\.exe)")) {
             MouseGetPos, , , , control_below_cursor
             If (control_below_cursor == "Edit1") {
                 clean_path_in_clipboard()
@@ -320,7 +320,7 @@ MoveIt(Q) {
 
 ;; Ctrl+Super+S | Launch program `x-terminal-emulator` {{{
 ; ^#s::Run cmd.exe
-^#s::Run C:\Program Files\ConEmu\ConEmu64.exe
+^#s::Run C:/Program Files/ConEmu/ConEmu64.exe
 ;; }}}
 
 ;; Shift+Super+A | Launch program `gnome-calculator` {{{
@@ -351,7 +351,7 @@ Return
 ;; Super+J | Launcher application finder {{{
 ; #j::Send {LWin up}^{Esc}
 ; #j::Send {LWin up}{LWin}
-; #j::run, "C:\Program Files (x86)\Launchy\Launchy.exe" /show
+; #j::run, "C:/Program Files (x86)/Launchy/Launchy.exe" /show
 ;; }}}
 
 ;; Ctrl+Alt+Q | Show Neo2 keyboard layout {{{
@@ -448,7 +448,7 @@ Return
 ;
 ;; Use this one which has the not so nice part that it also executes on
 ;; versions where it is not needed:
-#IfWinActive, ahk_exe (?i)explorer.exe
+#IfWinActive, ahk_exe (?i)explorer\.exe
 ^l::
     If (A_OSMajorVersion >= 10) {
         Send, ^l
@@ -461,7 +461,7 @@ Return
 
 ;; Make Explorer behave like Double Commander where possible when we don’t have the real thing {{{
 ;; Poor mans Double Commander, ref: ../../../docs/shortcuts.md
-#IfWinActive, ahk_exe (?i)explorer.exe
+#IfWinActive, ahk_exe (?i)explorer\.exe
 +^s::
     If (A_OSMajorVersion >= 10) {
         Send, ^l
@@ -513,7 +513,7 @@ Return
 
 ;; Make WinSCP behave like Double Commander where possible when we don’t have the real thing {{{
 ;; https://winscp.net/eng/docs/ui_commander_key
-#IfWinActive ahk_exe WinSCP.exe
+#IfWinActive ahk_exe WinSCP\.exe
 ^e::Send {F4}
 +^e::Send +{F4}
 ^p::Send {F2}
@@ -564,7 +564,7 @@ Return
 ;; Ctrl+F | Search for text in Outlook {{{
 ;; Common shortcuts for M$ Outlook 365. In my version at work, the "Customize" option is missing so we just do it with AHK.
 ;; https://support.office.com/en-us/article/customize-keyboard-shortcuts-9a92343e-a781-4d5a-92f1-0f32e3ba5b4d
-#IfWinActive ahk_exe OUTLOOK.EXE
+#IfWinActive ahk_exe outlook\.exe
 ^F::Send {F4}
 #IfWinActive
 ;; }}}
@@ -586,7 +586,7 @@ F5::Send, ^r
 ;; Chrome {{{
 ;; Chrome does not allow to customize shortcuts other than what I found https://github.com/1995eaton/chromium-vim allows.
 ;; https://superuser.com/questions/497526/how-to-customize-google-chrome-keyboard-shortcuts
-#IfWinActive ahk_exe chrome.exe
+#IfWinActive ahk_exe chrome\.exe
 +^D::+^J
 #IfWinActive
 ;; }}}
@@ -596,7 +596,7 @@ F5::Send, ^r
 
 ;; Testing {{{
 ;; Not working ...
-; #IfWinActive ahk_exe conemu64.exe
+; #IfWinActive ahk_exe conemu64\.exe
 ; #If WinActive("ahk_class VirtualConsoleClass")
 ; ^u::MsgBox You pressed Win+Spacebar in Notepad.
 ; !m::Send !1

@@ -21,32 +21,41 @@
 	co = checkout
 	rl = reflog --pretty=reflog
 	lgn = log --pretty=oneline --abbrev-commit --show-notes=* --show-signature
+
+	;; http://stackoverflow.com/a/9074343
 	lg1 = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(black)%s%C(reset) %C(dim black)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
-	; from http://stackoverflow.com/a/9074343
-	;
+
+	;; https://stackoverflow.com/questions/1441010/the-shortest-possible-output-from-git-log-containing-author-and-date/1441062#1441062
+	l1 = log --pretty=format:'%C(yellow)%h %Cred%ad %Cblue%an%Cgreen%d %Creset%s' --date=short
+
 	lg = log --graph --pretty=format:'%Cred%h..%Creset - %s %Cgreen(%cr)%Creset - %an' --abbrev-commit --date=relative
 	v = fsck --full --unreachable --strict --no-dangling
 	s = shortlog -sn
+
+	;; https://github.com/k4rthik/git-cal.git
 	c = cal --unicode
-	; https://github.com/k4rthik/git-cal.git
+
+	;; http://stackoverflow.com/a/1290046
 	show-big-files = "!git ls-tree -r -t -l --full-name HEAD | sort -n -k 4 | tail -n 10"
-	# http://stackoverflow.com/a/1290046
-	#
-	# https://help.github.com/articles/checking-out-pull-requests-locally/#modifying-an-inactive-pull-request-locally
+
+	;; https://help.github.com/articles/checking-out-pull-requests-locally/#modifying-an-inactive-pull-request-locally
 	g = "!g() { git fetch --update-head-ok github refs/pull/$1/head:#$1 || git fetch --update-head-ok origin refs/pull/$1/head:#$1 || git fetch --update-head-ok origin refs/pull/$1/head:#$1; }; g"
+
 	co-perms= "!git diff -p -R | grep -E '^(diff|(old|new) mode)' | git apply"
 	t = "!git log --tags --simplify-by-decoration --pretty='format:%ci %d' | grep tag"
 	rf = for-each-ref --sort=taggerdate --format '%(refname) %(taggerdate)' refs/tags
-	# http://haacked.com/archive/2014/02/21/reviewing-merge-commits/
+
+	;; http://haacked.com/archive/2014/02/21/reviewing-merge-commits/
 	merge-commits = log --min-parents=2 -p --cc
-	# https://www.qubes-os.org/doc/split-gpg/#using-git-with-split-gpg
+
+	;; https://www.qubes-os.org/doc/split-gpg/#using-git-with-split-gpg
 	stag = "!id=`git rev-parse --verify HEAD`; git tag -s ypid_${id:0:8} -m \"Tag for commit $id\""
 	vtag = !git tag -v `git describe`
 
 	## https://stackoverflow.com/questions/6127328/how-can-i-delete-all-git-branches-which-have-been-merged/6127884#6127884
 	db = "!git branch --merged | egrep -v '(^\\*|master|dev)' | xargs --no-run-if-empty git branch -d"
 
-	# https://gist.github.com/jasonrudolph/1810768#gistcomment-2220772
+	;; https://gist.github.com/jasonrudolph/1810768#gistcomment-2220772
 	j = branch -r --sort=-committerdate --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'
 
 [core]

@@ -1,5 +1,4 @@
-# Profile for the Visual Studio Shell, only. (e.g. Package Manager Console)
-# ===========
+## Profile for the Visual Studio Shell, only. E.g. Package Manager Console.
 
 Push-Location (Split-Path -parent $profile)
 "components-nuget" | Where-Object {Test-Path "$_.ps1"} | ForEach-Object -process {Invoke-Expression ". .\$_.ps1"}
@@ -29,7 +28,7 @@ function Reinstall-Package {
   Install-Package -ProjectName $ProjectName -Id $Id -Version $Version
 }
 
-# Wire StudioShell Functions if Exists
+## Wire StudioShell Functions if Exists
 if ((Get-Module -ListAvailable StudioShell) -ne $null) {
   Import-Module StudioShell
 
@@ -50,4 +49,3 @@ if ((Get-Module -ListAvailable StudioShell) -ne $null) {
   Remove-Variable $localMonitors
   #>
 }
-

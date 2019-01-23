@@ -203,9 +203,9 @@ command -v compdef >/dev/null 2>&1 && compdef sc=service
 
 # local time, color coded by last return code
 # time_enabled="%(?.⌚ %{$fg[green]%}.%{$fg[red]%})%*%{$reset_color%}"
-time_enabled="%(?.%{$fg[green]%}.%{$fg[red]%})%*%{$reset_color%}"
+time_enabled="%(?.%{$fg[green]%}.%{$fg[red]%})%D{%Y-%m-%d %I:%M:%S%z}%{$reset_color%}"
 time_disabled="%{$fg[green]%}%*%{$reset_color%}"
-time=$time_enabled
+time="$time_enabled"
 
 # user part, color coded by privileges
 local user_host='%{$terminfo[bold]$fg[green]%}%n@%m%{$reset_color%}'

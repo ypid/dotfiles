@@ -1,4 +1,4 @@
-# Profile for Microsoft Shell only. (Not Visual Studio or other M$ shell instances)
+## Profile for Microsoft Shell only. (Not Visual Studio or other M$ shell instances)
 Set-StrictMode -Version latest
 # $ErrorActionPreference = "Stop"
 
@@ -8,7 +8,7 @@ $start_cwd = $PWD
 ## It is called M$ Shell!
 $host.ui.RawUI.WindowTitle = "M$ Shell"
 
-# Set terminal encoding to a sensible one so that `git diff` works correctly.
+## Set terminal encoding to a sensible one so that `git diff` works correctly.
 $env:LC_ALL = 'C.UTF-8'
 
 Import-Module ypidDotfiles
@@ -26,8 +26,8 @@ try {
 Import-Module PSReadLine
 Import-Module ZLocation
 
-# Get-Date -Format "o"
-Function prompt { "M`$S $(Get-Date -format 'yyyy-MM-dd HH:mm:sszzz') $(Get-CleanPath $(pwd)) $(&{If(id) {'#'} Else {'$'}}) " }
+## Get-Date -Format "o"
+Function prompt { "M`$S $(Get-Date -format 'yyyy-MM-dd HH:mm:sszzz') $($env:UserName.ToLower())@$($env:ComputerName.ToLower()) $(Get-CleanPath $(pwd)) $(&{If(id) {'#'} Else {'$'}}) " }
 
 Set-Location $(Split-Path -parent $profile)
 @("custom_PSReadLine", "exports", "shell_public", "shell_private", "shell_extend_PATH") | ? { Test-Path -PathType Leaf "$_.ps1" } | % { Invoke-Expression ". ./$_.ps1" }
