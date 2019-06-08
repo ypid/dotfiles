@@ -251,6 +251,7 @@ endif
             " Don’t really using it for now.
 
             Bundle 'sjl/gundo.vim'
+            let g:gundo_prefer_python3 = 1
             " nnoremap <Leader>ga :GundoToggle<CR>
             nnoremap ψ :GundoToggle<CR>
             " Shift+Layer3Mod+u
