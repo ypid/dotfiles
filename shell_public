@@ -85,9 +85,9 @@ function run-c() {
 
 function subnetcalc() {
     if [[ $# == 0 ]]; then
-        /usr/bin/subnetcalc
+        command subnetcalc
     else
-        /usr/bin/subnetcalc "$@" -n
+        command subnetcalc "$@" -n
     fi
 }
 
@@ -106,11 +106,12 @@ function sed-easy {
 
 function h {
     pattern="${1:-.}"
+    shift
 
     if [[ "$pattern" == "." ]]; then
         history
     else
-        history | egrep -ie "$pattern"
+        history | egrep -ie "$pattern" "$@"
     fi
 }
 
@@ -251,19 +252,25 @@ fi
 if command -v ag >/dev/null 2>&1
 then
     ## Using silversearcher-ag
+    function ag() {
+        if [[ $# == 0 ]]; then
+            command ag
+        else
+            command ag --follow "$@"
+        fi
+    }
     alias ack='ag'
 elif command -v ack-grep >/dev/null 2>&1
 then
-    alias ack='ack-grep'
+    alias ack='ack-grep --follow'
+    alias ag='ack'
 fi
 # }}}
 
 ## Elastic {{{
 ## https://www.elastic.co/guide/en/kibana/6.4/install-plugin.html
-if command -v kibana-plugin >/dev/null 2>&1
-then
-    alias kibana-plugin='sudo -u kibana kibana-plugin'
-fi
+command -v kibana-plugin >/dev/null 2>&1 && alias kibana-plugin="sudo -u kibana $(which kibana-plugin)"
+command -v elasticsearch-keystore >/dev/null 2>&1 && alias elasticsearch-keystore="sudo -u elasticsearch $(which elasticsearch-keystore)"
 # }}}
 
 ## User local, specific package manager: asdf {{{

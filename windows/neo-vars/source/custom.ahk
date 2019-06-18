@@ -5,10 +5,25 @@
 
 ;; Get local facts/details about environment {{{
 ;; https://autohotkey.com/board/topic/149617-windows-10-a-osversion/?p=733130
-A_OSMajorVersion := DllCall("GetVersion") & 0xFF
+global A_OSMajorVersion := DllCall("GetVersion") & 0xFF
 ;; }}}
 
-;; Force Windows to behave like GNU/Linux {{{
+;; Helper functions {{{
+
+;; Source: https://www.autohotkey.com/boards/viewtopic.php?t=59466
+RegExEsc(String, Options := "") {
+    if (Options == "$") {
+	;; To be used with "RegExReplace" third parameter! ("$$" represents one literal "$").
+        string_with_re_meta_char_escaped := RegExReplace(String, "\$", "$$$$")
+    } else {
+	;; To be used with "RegExMatch" and "RegExReplace" second parameters! ("\\" represents one literal "\").
+        string_with_re_meta_char_escaped := "\E\Q" RegExReplace(String, "\\E", "\E\\E\Q") "\E"
+    }
+
+    return string_with_re_meta_char_escaped
+}
+
+;; }}}
 
 ;; Copy clean file/directory path to clipboard (use forward slashes as file separators) {{{
 ;; https://stackoverflow.com/questions/1589930/so-what-is-the-right-direction-of-the-paths-slash-or-under-windows/1589959#1589959
@@ -28,7 +43,9 @@ A_OSMajorVersion := DllCall("GetVersion") & 0xFF
 ;; Seems up to and including Windows 10, UNC paths with forward slashes don’t work.
 ;; At least //files.example.org/home and \\files.example.org/home and //files.example.org\home don’t work.
 clean_path_in_clipboard() {
-    If (RegExMatch(Clipboard, "^(?i)(?:[a-z]:)?\\[^\\]")) {
+    EnvGet, home_dir_path, USERPROFILE
+    Clipboard := RegExReplace(Clipboard, "^" RegExEsc(home_dir_path), "%USERPROFILE%")
+    If (RegExMatch(Clipboard, "^(?i)(?:[a-z]:|%[^%]+%)?\\[^\\]")) {
         StringReplace, Clipboard, Clipboard,\,/, All
     }
     Return
@@ -90,6 +107,9 @@ OnClipboardChange:
 return
 
 ;; }}}
+
+
+;; Force Windows to behave like GNU/Linux {{{
 
 ;; GNU/Linux Alt+Window drag functionality {{{
 ;; This script modified from the original: http://www.autohotkey.com/docs/scripts/EasyWindowDrag.htm
@@ -310,9 +330,18 @@ MoveIt(Q) {
 ;; Disable reserved shortcuts globally (Qubes OS) {{{
 
 ;; This is to prevent me from accidentally start using reserved shortcuts.
+;;
+;; Showing a MsgBox if the shortcut is pressed is not a good idea because
+;; I might press it accidentally during copy paste because I am used to Qubes OS.
+;; I could try to differentiate if the shortcut is pressed accidentally or is
+;; being assigned to a new action by checking if the clipboard has recently been
+;; modified (or A_TimeSincePriorHotkey).
+;; But this only really works for Shift+Ctrl+C. So I take the risk of assigning
+;; Shift+Ctrl+[CV]. I hope I won’t or at least I will soon realize the mistake.
 
-+^C::
-+^V::MsgBox, 48, qNeo2_ypid_custom reserved shortcut warning, Use of reserved shortcut detected and blocked. Please use a different shortcut.
+; +^C::
+; +^V::Return
+; +^V::MsgBox, 48, qNeo2_ypid_custom reserved shortcut warning, Use of reserved shortcut detected and blocked. Please use a different shortcut.
 
 ;; }}}
 
@@ -330,7 +359,7 @@ MoveIt(Q) {
 
 ;; Ctrl+Alt+V | `poweroff` {{{
 ^!v::
-    MsgBox, 1,, Self destruct sequence initiated. Please confirm.
+    MsgBox, 1,, Self-destruct sequence initiated. Please confirm.
     IfMsgBox, OK
     {
         Shutdown, 1
@@ -340,7 +369,7 @@ Return
 
 ;; Ctrl+Alt+G | `reboot` {{{
 ^!g::
-    MsgBox, 1,, Self destruct/reset sequence initiated. Please confirm.
+    MsgBox, 1,, Self-destruct/reset sequence initiated. Please confirm.
     IfMsgBox, OK
     {
         Shutdown, 2
@@ -407,23 +436,31 @@ WinMove(p_x, p_y, p_w="", p_h="", p_hwnd="") {
 ;; Examples: VM, desktop sharing, websites which block pasting.
 
 ;; https://gist.github.com/ethack/110f7f46272447828352768e6cd1c4cb
-#v::Send {Raw}%Clipboard%
+;; Super + v
+; #v::Send {Raw}%Clipboard%
 
+;; Shift+Super + v
 +#v::
     InputBox, string_to_paste, Secret string to paste, Please enter a secret string to paste into the active window behind this input box. The string will be represented as stars., hide, 300, 200
     If !ErrorLevel {
+        ; WinActivate
+        ;; Give window switching a bit of time to paste for the Window below the input box.
+        Sleep 100
         Send %string_to_paste%
     }
 Return
 
+;; Shift+Super+Alt + v
 +#!v::
     InputBox, string_to_paste, String to paste, Please enter a string to paste into the active window behind this input box, , 300, 150
     If !ErrorLevel {
+        ; WinActivate
+        ;; Give window switching a bit of time to paste for the Window below the input box.
+        Sleep 100
         Send %string_to_paste%
     }
 Return
 ;; }}}
-
 
 ;; }}}
 
@@ -434,9 +471,17 @@ Return
 ;; Note that the Alt+E is rather uncommon for `focus location bar`. Ctrl+L is the de facto standard on GNU/Linux.
 ;; Microsoft also finally started accepting this with Windows 10.
 ;; Lets implement this also for older versions of Windows here.
-;;
-;; Does not work???
+
+explorer_focus_location_bar() {
+    If (A_OSMajorVersion >= 10) {
+        Send, ^l
+    } else {
+        Send, !e
+    }
+}
+
 ; #If something
+;; Does not work???
 ;
 ;; So we just exploit the fact that on Windows 7 (and probably below),
 ;; Microsoft called their exe stupidly (and depend on the fact that Autohotkey matching is case sensitive):
@@ -449,13 +494,7 @@ Return
 ;; Use this one which has the not so nice part that it also executes on
 ;; versions where it is not needed:
 #IfWinActive, ahk_exe (?i)explorer\.exe
-^l::
-    If (A_OSMajorVersion >= 10) {
-        Send, ^l
-    } else {
-        Send, !e
-    }
-Return
+^l::explorer_focus_location_bar()
 #IfWinActive
 ;; }}}
 
@@ -463,11 +502,7 @@ Return
 ;; Poor mans Double Commander, ref: ../../../docs/shortcuts.md
 #IfWinActive, ahk_exe (?i)explorer\.exe
 +^s::
-    If (A_OSMajorVersion >= 10) {
-        Send, ^l
-    } else {
-        Send, !e
-    }
+    explorer_focus_location_bar()
     Send, powershell{Enter}
 Return
 
@@ -477,8 +512,42 @@ Return
 ^o::Send, {Enter}
 +^o::Send, +{F10}
 
-;; https://superuser.com/questions/810352/is-there-a-keyboard-shortcut-to-edit-files-such-as-reg-bat-and-so-on/1240744#1240744
-^e::
+;; Credits go to turnersd.
+;; https://www.howtogeek.com/howto/keyboard-ninja/keyboard-ninja-toggle-hidden-files-with-a-shortcut-key-in-windows/
+^.::
+    ;; Path separator must be "\". Last tested 2019-01.
+    RegRead, HiddenFiles_Status, HKEY_CURRENT_USER, Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced, Hidden 
+    If (HiddenFiles_Status = 2) {
+        RegWrite, REG_DWORD, HKEY_CURRENT_USER, Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced, Hidden, 1 
+    } Else {
+        RegWrite, REG_DWORD, HKEY_CURRENT_USER, Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced, Hidden, 2 
+    }
+
+    ; WinGetClass, eh_Class,A 
+    ; If (eh_Class = "#32770" OR A_OSVersion = "WIN_VISTA") {
+    Send, {F5} 
+    ; } Else {
+    ;     ;; Seems this was for Windows below Vista?
+    ;     PostMessage, 0x111, 28931,,, A 
+    ;     msgbox done
+    ; }
+Return
+
+
+explorer_ensure_no_item_is_selected() {
+    ;; Ensure no file is selected. ^{Space} does not work because it toggles the selection.
+    ; Send, ^a!ei
+    If (A_OSMajorVersion >= 10) {
+        Send, !hsn
+    } else {
+        Send, {Up}{Down}
+    }
+}
+
++^A::explorer_ensure_no_item_is_selected()
+
+
+explorer_edit_file_with_editor() {
     If (A_OSMajorVersion < 10) {
         MsgBox Do it manually!
         Return
@@ -489,22 +558,48 @@ Return
     Send, h{Right}
     ;; Attempt to open with Gvim, "Vi Improved".
     Send, v
+}
+
+;; https://superuser.com/questions/810352/is-there-a-keyboard-shortcut-to-edit-files-such-as-reg-bat-and-so-on/1240744#1240744
+^e::explorer_edit_file_with_editor()
 Return
 
 ; https://superuser.com/questions/133175/is-there-a-shortcut-for-creating-a-new-file
 +^e::
-    ;; Ensure no file is selected. ^{Space} does not work because it toggles the selection.
-    If (A_OSMajorVersion >= 10) {
-        Send, !hsn
-    } else {
-        ;; Do nothing. Is not reliable anyway.
-    }
+    explorer_ensure_no_item_is_selected()
+
+    InputBox, new_filename, New file name, Please enter the filename for the new file, , 300, 150,,,,, test.txt
+
     ;; Open context menu.
     Send, +{F10}
     ;; "New", "w" optionally does not work because more programs injected themselves into the context menu.
     Send, {Up}{Up}{Right}
     Send, t
+    Send, ^a
+    Send, %new_filename%{enter}
+
+    explorer_edit_file_with_editor()
 Return
+
+;; https://www.howtogeek.com/howto/8955/make-backspace-in-windows-7-or-vista-explorer-go-up-like-xp-did/
+;; TODO: Not working yet?
+; #IfWinActive, ahk_class CabinetWClass
+; Backspace::
+;     ControlGet renamestatus,Visible,,Edit1,A
+;     ControlGetFocus focussed, A
+;     if(renamestatus != 1 && (focussed="DirectUIHWND3" || focussed=SysTreeView321)) {
+;         Send !{Up}
+;     } else {
+;         msgbox sdf
+;         Send {Backspace}
+;     }
+
+;; Change view:
+;; https://www.intowindows.com/keyboard-shortcuts-to-change-file-explorer-view-in-windows-10/
++^h::Send !p
++^j::Send +^6
++^k::Send +^8
++^l::Send +^1
 
 ;; Not working because of neo-vars. Would need to hook into neo-vars the same I already do with Alt+< (switch window, emulates Alt+Tab).
 ; /::Msgbox, "test"
@@ -517,6 +612,8 @@ Return
 ^e::Send {F4}
 +^e::Send +{F4}
 ^p::Send {F2}
+^y::Send {F5}
+^m::Send {F6}
 
 ;; Would need to hook into neo-vars to work.
 ; ^/::Send {F2}
@@ -544,6 +641,38 @@ Return
 #IfWinActive, ahk_class (Ki|Pu)TTY
 +^n::Send, !{space}d
 #IfWinActive
+;; }}}
+
+;; Zoom in PuTTY based programs. {{{
+;; Tested with KiTTY 0.70.0.7p.
+
+;; Not working?
+; #IfWinActive, ahk_exe (?i).*tty.*
+
+#UseHook
+^+::
+    If WinActive("ahk_class (Ki|Pu)TTY") {
+    ; state := GetKeyState("Control", "P")
+    ; MsgBox, test %state%
+    ; If GetKeyState("Control", "P") {
+        Send, !{space}{up}{up}{up}{up}{up}{up}{up}{right}{enter}
+    ; } Else {
+    ;     Send, x
+    ; }
+    } Else {
+        Send, ^+
+    }
+    Return
+^-::
+    If WinActive("ahk_class (Ki|Pu)TTY") {
+        Send, !{space}{up}{up}{up}{up}{up}{up}{up}{right}{down}{enter}
+    } Else {
+        Send, ^-
+    }
+    Return
+#UseHook off
+
+; #IfWinActive
 ;; }}}
 
 ;; Patch ConEmu’s hardcoded system hotkeys {{{
@@ -583,13 +712,38 @@ F5::Send, ^r
 #IfWinActive
 ;; }}}
 
-;; Chrome {{{
-;; Chrome does not allow to customize shortcuts other than what I found https://github.com/1995eaton/chromium-vim allows.
+;; Chromium {{{
+;; Chromium does not allow to customize shortcuts other than what I found https://github.com/1995eaton/chromium-vim allows.
+;; https://productforums.google.com/forum/#!topic/chrome/a_YsNg8xq3c;context-place=forum/chrome
 ;; https://superuser.com/questions/497526/how-to-customize-google-chrome-keyboard-shortcuts
-#IfWinActive ahk_exe chrome\.exe
+
+#IfWinActive ahk_exe (chromium|chrome)\.exe
+
 +^D::+^J
+
+;; Does not work in view-source:. Also has the issue that while in search mode, no links can be clicked.
+; ^f::Send /
+
+^d::
+       ; Send :
+       ; Sleep, 50
+       ; Send call scrollPageDown{enter}
+       Send ,d
+Return
+^u::Send ,u
++^w::Send +^t
 #IfWinActive
+
 ;; }}}
+
+;; mRemoteNG {{{
+
+#IfWinActive mRemoteNG
+^l::ControlFocus, Edit1, A
+#IfWinActive
+
+;; }}}
+
 
 ;; }}}
 

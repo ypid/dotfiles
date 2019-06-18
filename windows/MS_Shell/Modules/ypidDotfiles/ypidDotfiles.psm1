@@ -63,7 +63,7 @@ Function Add-PathAtEnd {
 
 Function Set-LocationUnix {
     ## Not using named parameters because that causes parameter tab completion
-    ## to appear when "-" is typed which inconvenient here.
+    ## to appear when "-" is typed which is inconvenient here.
     # Param(
     #     [string] $Path
     # )
@@ -75,16 +75,20 @@ Function Set-LocationUnix {
     }
 
     if ($Path -eq $null) {
-        $new_pwd = '~'
+        $Path = '~'
     } elseif ($Path -eq '-') {
-        $new_pwd = $env:OLDPWD
-    } else {
-        $new_pwd = $Path
+        $Path = $env:OLDPWD
     }
 
-    if ($new_pwd) {
+    if ($Path.StartsWith('~')) {
+        # ~ refers to the FileSystem location provider in our understanding.
+        # This is required because by default Windows uses the Home of the location provider we are currently in.
+        $Path = (Get-PSProvider 'FileSystem').Home + $Path.Substring(1)
+    }
+
+    if ($Path) {
         [string]$env:OLDPWD = "$(Get-Location)"
-        Set-Location $new_pwd
+        Set-Location $Path
     }
 }
 

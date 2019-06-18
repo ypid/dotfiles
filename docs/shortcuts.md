@@ -28,7 +28,7 @@ Here is some advice regarding shortcuts for programmers and UI designers which I
 Which shortcuts should be used where? – Some thoughts …
 
 * `Shift+Alt`: W, S, X, A, D reserved for window manager. Applications can use everything else.
-* `Super+Alt`: Hypervisor console as host key
+* `Super+Alt`: Hypervisor console as host key.
 * `Ctrl+Super`, `Super`, `Ctrl+Alt`: Dedicated to window manager respectively shortcuts which can be triggered globally.
   * Never use the `Super` key for applications as this modifier might be reserved in some window managers. (And I don’t want to find out how to patch Windows to remap that).
 * `Shift+Super`, `Shift+Super+Alt`: Dedicated to AutoKey or AutoHotKey (global)
@@ -396,7 +396,7 @@ Shift+Ctrl+D  | Delete         | Yes            |
 
 Shortcut      | Function          | Left hand only | Comment
 ------------- | -------------     | -------------  | -------------
-Ctrl+M        | Rename            | Yes            |
+Ctrl+M        | Move              | Yes            |
 Ctrl+P        | RenameOnly        | Not really     |
 Shift+Ctrl+R  | MultiRename       | Not really     |
 Ctrl+Y        | Copy              | No             |

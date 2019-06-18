@@ -120,8 +120,9 @@ Function glg { git log --stat --show-signature @args }
 
 ## }}}
 
-## Just use regular git log on Windows.
-alias tig glg
+if (!(Get-Command tig.exe -ErrorAction SilentlyContinue | Test-Path)) {
+    alias tig glg
+}
 
 ## }}}
 
@@ -174,9 +175,11 @@ Get-ChildItem "c:/" -Filter 'python*' | ForEach-Object{ $_.FullName } | Sort-Obj
     alias python2 (Join-Path -Path $_ -ChildPath "python.exe")
 }
 
-if (Test-Path 'C:\Program Files\DB Browser for SQLite\DB Browser for SQLite.exe') {
-    alias sqlitebrowser 'C:\Program Files\DB Browser for SQLite\DB Browser for SQLite.exe'
+if (Test-Path 'C:/Program Files/DB Browser for SQLite/DB Browser for SQLite.exe') {
+    alias sqlitebrowser 'C:/Program Files/DB Browser for SQLite/DB Browser for SQLite.exe'
 }
+
+alias nslookup 'C:/Windows/system32/nslookup.exe'
 
 alias j Set-ZLocation
 
@@ -225,9 +228,9 @@ alias nautilus explorer.exe
 alias nemo explorer.exe
 alias xdg-open start
 
-if (Test-Path "C:\GnuWin\bin") {
+if (Test-Path "C:/GnuWin/bin") {
     alias tree "tree.exe"
-    alias find "C:\GnuWin\bin\find.exe"
+    alias find "C:/GnuWin/bin/find.exe"
     Set-Alias -Name cp -Value "cp.exe" -Option AllScope
     Set-Alias -Name mv -Value "mv.exe" -Option AllScope
     Set-Alias -Name rm -Value "rm.exe" -Option AllScope

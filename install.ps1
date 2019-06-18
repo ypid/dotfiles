@@ -63,6 +63,11 @@ mkdir -f "$documents_path/portable/kitty/Sessions/" > $null
 link_path "./windows/kitty/Sessions/Default%20Settings" "$documents_path/portable/kitty/Sessions/Default%20Settings"
 link_path "./windows/kitty/kitty.ini" "$documents_path/portable/kitty/kitty.ini"
 
+mkdir -f "$env:APPDATA/Everything/" > $null
+## Everything as of v1.4.1.895 overwrites symbolic links.
+# link_path "./windows/Everything/Everything.ini" "$env:APPDATA/Everything/Everything.ini"
+cp--no-clobber "./windows/Everything/Everything.ini" "$env:APPDATA/Everything/Everything.ini"
+
 cp--no-clobber "$documents_path/dotfiles/startup/startup.bat" "$env:APPDATA/Microsoft/Windows/Start Menu/Programs/Startup/startup.bat"
 
 Install-Module -Name ZLocation

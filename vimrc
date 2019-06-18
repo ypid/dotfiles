@@ -131,6 +131,9 @@ endif
             " Supports MatchIt and Endwise.
             Bundle 'chase/Vim-Jinja2-Syntax'
 
+            Bundle 'saltstack/salt-vim'
+
+
             " You simply select the region, call :NR and the selected part
             " will open in a new split window while the rest of the buffer
             " will be protected.
@@ -832,6 +835,8 @@ endif
         if count(g:spf13_bundle_groups, 'misc')
             Bundle 'thanthese/Tortoise-Typing'
             Bundle 'dahu/LearnVim'
+            Bundle 'wikitopian/hardmode'
+            let g:HardMode_level = 'wannabe'
             " Bundle 'spf13/vim-preview'
             " Bundle 'tpope/vim-cucumber'
             " Bundle 'quentindecock/vim-cucumber-align-pipes'
@@ -1024,6 +1029,8 @@ endif
             autocmd VimLeave * if filereadable($HOME."/.vim/bundle/vundle/.netrwhist")|call delete($HOME."/.vim/bundle/vundle/.netrwhist")|endif
             autocmd VimLeave * if filereadable($HOME."/.vim/.netrwhist")|call delete($HOME."/.vim/.netrwhist")|endif
 
+            autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
+
             autocmd BufRead,BufNewFile * set expandtab
             autocmd BufRead,BufNewFile Makefile set noexpandtab
 
@@ -1036,6 +1043,7 @@ endif
                 autocmd BufRead,BufNewFile /etc/hosts setlocal filetype=conf
                 autocmd BufRead,BufNewFile /etc/NetworkManager/NetworkManager.conf setlocal filetype=conf
                 autocmd BufRead,BufNewFile /usr/share/X11/xkb/* setlocal filetype=xkb
+                autocmd BufRead,BufNewFile /etc/salt/**.conf setlocal filetype=yaml
                 autocmd BufRead,BufNewFile $HOME/.ssh/*config* setlocal filetype=sshconfig
                 autocmd BufRead,BufNewFile $HOME/.unison/* setlocal filetype=conf
 
