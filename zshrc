@@ -208,8 +208,8 @@ time_disabled="%{$fg[green]%}%*%{$reset_color%}"
 time="$time_enabled"
 
 # user part, color coded by privileges
-## Use `-f` because `--fqdn` is not recognized by the `hostname` of BusyBox.
-HOSTNAME="$(hostname -f)"
+## In case of "Name or service not known" we fall back to $HOST.
+HOSTNAME="$(hostname --fqdn 2> /dev/null || echo "$HOST")"
 if [ "$HOSTNAME" = "localhost" ]; then
     HOSTNAME="$HOST"
 fi
