@@ -218,6 +218,11 @@
       relink: true
       path: tmux.conf
 
+    ~/.local/share/tmux:
+      create: true
+      relink: true
+      path: tmux
+
     # ~/.xbindkeysrc:
     #     create: true
     #     relink: true

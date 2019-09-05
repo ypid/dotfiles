@@ -296,3 +296,6 @@
 [submodule "vim/bundle/salt-vim"]
 	path = vim/bundle/salt-vim
 	url = https://github.com/saltstack/salt-vim.git
+[submodule "tmux/plugins/tmux-prefix-highlight"]
+	path = tmux/plugins/tmux-prefix-highlight
+	url = https://github.com/tmux-plugins/tmux-prefix-highlight.git
