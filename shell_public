@@ -136,6 +136,7 @@ function date {
 }
 alias ts='date'
 
+# command -v compdef >/dev/null 2>&1 && compdef rl=journalctl
 function rl() {
     ## rl: read log
     ## journalctl wrapper with nice output format and colors based on log event severity.

@@ -198,6 +198,7 @@ fi
 command -v compdef >/dev/null 2>&1 && compdef ssh_wrapper=ssh
 command -v compdef >/dev/null 2>&1 && compdef sshrc_wrapper=ssh
 command -v compdef >/dev/null 2>&1 && compdef sc=service
+command -v compdef >/dev/null 2>&1 && compdef rl=journalctl
 
 # Own theme based on dieter and bira {{{
 
