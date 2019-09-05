@@ -131,22 +131,22 @@
     ~/.vim:
       create: true
       relink: true
-      path: vim
+      path: nvim
 
-    # ~/.config/nvim/init.vim:
-    #   create: true
-    #   relink: true
-    #   path: vimrc.min
+    ~/.config/nvim:
+      create: true
+      relink: true
+      path: nvim
 
     ~/.vimrc:
       create: true
       relink: true
-      path: vimrc
+      path: nvim/init.vim
 
     ~/.vimrc.min:
       create: true
       relink: true
-      path: vimrc.min
+      path: nvim/init_min.vim
 
     ~/.config/readline/inputrc:
       create: true

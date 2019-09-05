@@ -1,5 +1,5 @@
-vim/*-disable/
-# .vim/bundle/
-vim/spell/
+nvim/*-disable/
+# .nvim/bundle/
+nvim/spell/
 tags
 autokey/**/*.json

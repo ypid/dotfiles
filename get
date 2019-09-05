@@ -8,16 +8,16 @@ cd "${BASEDIR}"
 git submodule sync
 git submodule update --init --recursive
 
-vim_spell="vim/spell"
-mkdir --parents "$vim_spell"
+nvim_spell="nvim/spell"
+mkdir --parents "$nvim_spell"
 for file in {en,de}.utf-8.{spl,sug};do
-    if [ ! -e "$vim_spell/$file" ];then
-        wget --continue "https://ftp.nluug.nl/pub/vim/runtime/spell/$file" --output-document="$vim_spell/$file"
+    if [ ! -e "$nvim_spell/$file" ];then
+        wget --continue "https://ftp.nluug.nl/pub/vim/runtime/spell/$file" --output-document="$nvim_spell/$file"
     fi
 done
 
 ## Legacy. Needed on Debian wheezy system.
-wget --continue "https://ftp.nluug.nl/pub/vim/runtime/spell/de.latin1.spl" --output-document="$vim_spell/de.latin1.spl"
+wget --continue "https://ftp.nluug.nl/pub/vim/runtime/spell/de.latin1.spl" --output-document="$nvim_spell/de.latin1.spl"
 
 ## Improves performance of ZSH. Functions not needed or not used (yet).
 ## Leave submodule dirty.
