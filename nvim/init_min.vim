@@ -66,9 +66,6 @@
         " CommandCabbr s perldo
         " command! s echo "Use perldo"
 
-        " Also open not existing files.
-        noremap gf :sp <cfile><cR>
-
         " Wrapped lines goes down/up to next row, rather than next line in file.
         " Does this slow down the scrolling in my configuration?
         noremap j gj
@@ -323,15 +320,6 @@
 
     " }}}
 
-    "" Calculating in Vim {{{
-    "" http://vim.wikia.com/wiki/Sum_numbers
-    let g:S = 0  "result in global variable S
-    function! Sum(number)
-        let g:S = g:S + a:number
-        return a:number
-    endfunction
-    "" }}}
-
     " Other mappings {{{
         set pastetoggle=♡           " pastetoggle (sane indentation on pastes)
         " Shift+Layer3Mod+a
@@ -415,7 +403,6 @@
         " Has many valid use cases.
 
     " }}}
-" }}}
 
 " General {{{
     set mousehide               " Hide the mouse cursor while typing
@@ -478,6 +465,34 @@
             \ '*sec*',
             \ '*crypt*'
             \ ]
+    " }}}
+
+    " IncludeExprForSmartGF {{{
+    function! IncludeExprForSmartGF(fname)
+        " When attempting to open a relative file and it does not yet exist,
+        " create it.
+        " This function hooks into normal mode commands like gf and create creates
+        " the file if it does not yet exist. It is only executed if the file
+        " cannot be found by Vim itself.
+
+        " Improved version of https://stackoverflow.com/questions/6158294/create-and-open-for-editing-nonexistent-file-under-the-cursor/6159415#6159415
+        " TODO: POST to Stackoverflow.
+        let fname = a:fname
+
+        " call system("echo " . fname . " >> /tmp/log")
+        " let fname = substitute(fname,'^.*','/tmp/sd','')
+
+        if match(fname, '^/') == -1
+            if !filereadable(fname)
+                call EnsureDirExists(fnamemodify(fname, ":p:h"))
+                call system("touch " . fname)
+            endif
+        endif
+
+        return fname
+    endfunction
+
+    set includeexpr=IncludeExprForSmartGF(v:fname)
     " }}}
 " }}}
 

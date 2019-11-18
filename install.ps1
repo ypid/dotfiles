@@ -37,8 +37,8 @@ $documents_path = [environment]::getfolderpath("mydocuments")
 
 ## I am using forward slashes. Get used to it Windows guys.
 link_path "./windows/MS_Shell/" "$documents_path/WindowsPowerShell"
-link_path "./vimrc.min" ~/_vimrc
-link_path "./vim/" ~/_vim
+link_path "./nvim/init_min.vim" ~/_vimrc
+link_path "./nvim/init.vim" ~/_vim
 link_path "./windows/ConEmu/ConEmu.xml" "$env:APPDATA/ConEmu.xml"
 link_path "./gitconfig" ~/.gitconfig
 
@@ -52,16 +52,18 @@ cp--no-clobber "./config/obs-studio/basic/profiles/Untitled/basic.ini" "$env:APP
 
 mkdir -f "$env:APPDATA/doublecmd/" > $null
 ## Doing this with only sed and output redirect has issues with file encoding as of 2018-11.
-Copy-Item .\doublecmd\shortcuts.scf C:\Users\snero\AppData\Roaming\doublecmd\shortcuts.scf
+Copy-Item ./doublecmd/shortcuts.scf C:/Users/snero/AppData/Roaming/doublecmd/shortcuts.scf
 sed --in-place --regexp-extended 's/Ctrl\+Shift\+7/Ctrl+Shift+8/;s#Ctrl\+Num/#Ctrl+Shift+7#;' "$env:APPDATA/doublecmd/shortcuts.scf"
 cp--no-clobber "./doublecmd/sanitize_doublecmd_xml" "$env:APPDATA/doublecmd/doublecmd.xml"
 
 mkdir -f "$env:APPDATA/Neo2/" > $null
 link_path "./qNeo2/Neo2.ini" "$env:APPDATA/Neo2/Neo2.ini"
 
-mkdir -f "$documents_path/portable/kitty/Sessions/" > $null
-link_path "./windows/kitty/Sessions/Default%20Settings" "$documents_path/portable/kitty/Sessions/Default%20Settings"
-link_path "./windows/kitty/kitty.ini" "$documents_path/portable/kitty/kitty.ini"
+mkdir -f "$env:LOCALAPPDATA/VirtualStore/ProgramData/Chocolatey/lib/kitty/tools/Sessions" > $null
+link_path "./windows/kitty/Sessions/Default%20Settings" "$env:LOCALAPPDATA/VirtualStore/ProgramData/Chocolatey/lib/kitty/tools/Sessions/Default%20Settings"
+
+## FIXME
+# link_path "./windows/kitty/kitty.ini" "$documents_path/portable/kitty/kitty.ini"
 
 mkdir -f "$env:APPDATA/Everything/" > $null
 ## Everything as of v1.4.1.895 overwrites symbolic links.

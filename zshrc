@@ -195,10 +195,13 @@ then
 else
 	compinit
 fi
-command -v compdef >/dev/null 2>&1 && compdef ssh_wrapper=ssh
-command -v compdef >/dev/null 2>&1 && compdef sshrc_wrapper=ssh
-command -v compdef >/dev/null 2>&1 && compdef sc=service
-command -v compdef >/dev/null 2>&1 && compdef rl=journalctl
+
+if command -v compdef >/dev/null 2>&1; then
+    command -v ssh_wrapper >/dev/null 2>&1 && compdef ssh_wrapper=ssh
+    command -v sshrc_wrapper >/dev/null 2>&1 && compdef sshrc_wrapper=ssh
+    command -v sc >/dev/null 2>&1 && compdef sc=service
+    command -v rl >/dev/null 2>&1 && compdef rl=journalctl
+fi
 
 # Own theme based on dieter and bira {{{
 

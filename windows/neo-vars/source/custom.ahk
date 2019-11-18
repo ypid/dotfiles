@@ -643,6 +643,13 @@ Return
 #IfWinActive
 ;; }}}
 
+;; Focus Hostname field in Putty based programs. {{{
+
+#IfWinActive, ahk_class ^(Ki|Pu)TTYConfigBox$
+^l::Send, !n
+#IfWinActive
+;; }}}
+
 ;; Zoom in PuTTY based programs. {{{
 ;; Tested with KiTTY 0.70.0.7p.
 
@@ -691,11 +698,16 @@ Return
 ;; }}}
 
 ;; Ctrl+F | Search for text in Outlook {{{
-;; Common shortcuts for M$ Outlook 365. In my version at work, the "Customize" option is missing so we just do it with AHK.
+;; Common shortcuts for M$ Outlook 365/2016. In my version at work, the "Customize" option is missing so we just do it with AHK.
 ;; https://support.office.com/en-us/article/customize-keyboard-shortcuts-9a92343e-a781-4d5a-92f1-0f32e3ba5b4d
-#IfWinActive ahk_exe outlook\.exe
+;; After more research, it turns out that M$ decided to drop basic functionally from their otherwise bloated Outlook 2016.
+;; https://social.technet.microsoft.com/Forums/en-US/0fd8e8de-1944-4436-a580-308ab05ac637/outlook-2016-custom-keyboard-shortcuts
+
+;; Outlook, only valid with ALL CAPS stupidity in the executable.
+#IfWinActive ahk_exe (?:outlook|OUTLOOK)\.(?:exe|EXE)
 ^F::Send {F4}
 #IfWinActive
+
 ;; }}}
 
 ;; F5 | Execute/run script in SikuliXIDE {{{

@@ -166,7 +166,7 @@ Super             | Launch application finder (Launcher)       | Yes            
 Ctrl+Super+O      | Open contact search for calling, CTI       | No             | Computer Telephony Integration
 Shift+Ctrl+Alt+O  | Launch program `eject`                     | No             | Eject removable media, FIXME
 Ctrl+Alt+Q        | Show Neo2 keyboard layout                  | Yes            | Mod3+F1 does not work on GNU/Linux (xfce). [Neo Layout Viewer][NeoLayoutViewer].
-Super+F           | Start screen recording                     | Yes            | Start screen recording using OBS Studio.
+Super+C           | Start screen recording                     | Yes            | Start screen recording using OBS Studio.
 Super+I           | Move panel/taskbar to the top              | Nice to have   | Only needed on Windows because Windows is stupid enough/can not prevent applications from appearing below the Taskbar when it is positioned at the top.
 Super+O           | Move panel/taskbar to the bottom           | Nice to have   | See above. Ah, no comment without hating M$ :) Super+L can not be used because there is [no way to disable it under Windows 10](https://superuser.com/questions/1059511/how-to-disable-winl-in-windows-10).
 Super+V           | Type clipboard text content to application | Nice to have   | Type clipboard text content to application window that does not support clipboard pasting.

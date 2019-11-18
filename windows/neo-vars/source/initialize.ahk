@@ -31,8 +31,8 @@ if (A_IsCompiled) {
 }
 
 name=Neo 2.0 r%Revision%-r%CompRevision% (%A_ScriptName%)
-enable=Aktiviere %name%
-disable=Deaktiviere %name%
+enable=Aktiviere (Shift+Alt+A) %name%
+disable=Deaktiviere (Shift+Alt+A) %name%
 #LTrim ; Quelltext kann eingerückt werden
 
 NEONumLockLEDState    := "Off"

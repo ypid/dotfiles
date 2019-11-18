@@ -1,9 +1,11 @@
 controller_user="$(echo "$SSHHOME" | cut -d '.' -f 2)"
 new_home="$HOME/$controller_user"
-echo "Setting $new_home as new \$HOME to enable ypid/dotfiles." 1>&2
 if [ -e "$new_home" ]; then
+    echo "Setting $new_home as new \$HOME to enable ypid/dotfiles." 1>&2
     export HOME="$new_home"
     cd
+else
+    echo "$new_home missing. Create it with the corresponding content so that ypid/dotfiles can be enabled automatically next time you log in." 1>&2
 fi
 if command -v zsh >/dev/null 2>&1; then
     exec zsh

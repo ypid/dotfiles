@@ -136,24 +136,6 @@ function date {
 }
 alias ts='date'
 
-# command -v compdef >/dev/null 2>&1 && compdef rl=journalctl
-function rl() {
-    ## rl: read log
-    ## journalctl wrapper with nice output format and colors based on log event severity.
-    ## The order is for human consumption only so they are just based on RFC 5424 (without being compliant) and the default journalctl short-iso format.
-    ## The syslog severity is added. This one is missing in all common log formats or not human readable (RFC 5424).
-    ## The time format is based on systemd.time(7) and RFC 3339.
-    ## The colors are made up by ypid because I could not find a proper standard.
-    ## Ref: https://serverfault.com/questions/59262/bash-print-stderr-in-red-color/502019#502019
-    ## Ref: https://serverfault.com/questions/801514/systemd-default-log-output-format
-
-    # shellcheck disable=SC2016
-    command journalctl "$@" -o json \
-        | jq --unbuffered --raw-output '"echo \(.PRIORITY|tonumber|@sh) \"$(date --date @\((._SOURCE_REALTIME_TIMESTAMP // .__REALTIME_TIMESTAMP) |tonumber | ./ 1000000 | tostring) '\''+%F %T %Z'\'')\" \(._HOSTNAME|@sh) \(.SYSLOG_IDENTIFIER|@sh): \(.MESSAGE|@sh) "' \
-        | sh \
-        | perl -e 'my $c_to_sev = {0 => "48;5;9", 1 => "48;5;5", 2 => "38;5;9", 3 => "38;5;1", 4 => "38;5;5", 5 => "38;5;2", 6 => "38;5;2"}; while (<>) { s#^(([0-6])(?: [^ ]+){5})(.*)#\e[$c_to_sev->{$2}m$1\e[m$3#; print; }'
-}
-
 ## }}}
 
 ## Shell basics {{{
@@ -162,6 +144,14 @@ alias lsa='ls -lah'
 alias l='ls -lah'
 alias ll='ls -lh'
 alias la='ls -lAh'
+
+## }}}
+
+## Ensure timezone is something we expect {{{
+
+if [ "$(date '+%Z')" != 'CEST' ] && [ "$(date '+%Z')" != 'CET' ]; then
+    export TZ='Europe/Berlin'
+fi
 
 ## }}}
 

@@ -288,7 +288,7 @@
 	path = windows/WindowsPowerShell/Oh-My-Posh
 	url = https://github.com/pecigonzalo/Oh-My-Posh.git
 [submodule "vim/bundle/vim-plugin-AnsiEsc"]
-	path = vim/bundle/vim-plugin-AnsiEsc
+	path = nvim/bundle/vim-plugin-AnsiEsc
 	url = https://github.com/powerman/vim-plugin-AnsiEsc.git
 [submodule "vim/bundle/hardmode"]
 	path = nvim/bundle/hardmode

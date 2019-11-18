@@ -1034,6 +1034,8 @@ endif
             autocmd BufRead,BufNewFile * set expandtab
             autocmd BufRead,BufNewFile Makefile set noexpandtab
 
+            autocmd BufReadCmd file://* exe "edit ".substitute(expand("<afile>"),"file:/*","/","")
+
             " Adjust settings for files {{{
                 autocmd BufRead,BufNewFile yamllint setlocal filetype=yaml
                 autocmd BufRead,BufNewFile .mrconfig* setlocal filetype=sh
@@ -1044,6 +1046,7 @@ endif
                 autocmd BufRead,BufNewFile /etc/NetworkManager/NetworkManager.conf setlocal filetype=conf
                 autocmd BufRead,BufNewFile /usr/share/X11/xkb/* setlocal filetype=xkb
                 autocmd BufRead,BufNewFile /etc/salt/**.conf setlocal filetype=yaml
+                autocmd BufReadCmd salt://* exe "edit ".substitute(expand("<afile>"),'^salt:\/\/[^/]\+\/','./','')
                 autocmd BufRead,BufNewFile $HOME/.ssh/*config* setlocal filetype=sshconfig
                 autocmd BufRead,BufNewFile $HOME/.unison/* setlocal filetype=conf
 
@@ -1142,6 +1145,8 @@ endif
                 endif
 
                 autocmd BufRead,BufNewFile *.bats let b:syntastic_mode = 'passive'
+
+                autocmd BufRead,BufNewFile *logstash*/**/*.conf set filetype=logstash
 
                 " https://github.com/htgoebel/yaml2rst/blob/develop/docs/fold-markers.rst
                 autocmd FileType ansible,jinja,yaml,tex setlocal foldmarker=[[[,]]]
