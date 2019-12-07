@@ -2,8 +2,6 @@
 
 Here are some common shortcuts that I use and which I configure in every program for which it makes sense and allows to do so. Programs which don’t allow me to configure shortcuts don’t stop me to follow my standards either by patching, opening an issue or as last resort by scripting using AutoKey or AutoHotKey.
 
-Left hand only: Should be easy to use with the left hand, because it is often used during work with the mouse. For example switching windows or Ctrl+C to copy to the clipboard.
-
 ## Advises: Shortcuts done right
 
 Here is some advice regarding shortcuts for programmers and UI designers which I would like to see implemented:
@@ -71,7 +69,7 @@ Shortcuts which are reserved for non-public use at work.
 
 ## Shortcut conventions and key order
 
-To search for shortcuts, it is important to maintain a unique naming schema and order in which they are combined. This is pretty much based on convention used by [Double Commander]:
+To search for shortcuts, it is important to maintain a unique naming schema and order in which they are combined. This is pretty much based on the convention used by [Double Commander]:
 
 * `Ctrl`
 * `Shift`
@@ -79,7 +77,7 @@ To search for shortcuts, it is important to maintain a unique naming schema and 
 * `Alt`
 * `Non-modifier keys` (Letter, written in upper case for readability. The use of the shift modifier key is explicitly written down.)
 
-## Special keys
+### Special keys
 
 Key name      | Comment
 ------------- | -------------
@@ -93,6 +91,8 @@ Own shortcuts for the window manager should include the Super key which is norma
 
 ### Navigation
 
+Left hand only: Should be easy to use with the left hand, because it is often used during work with the mouse. For example switching windows or Ctrl+C to copy to the clipboard.
+
 Shortcut                           | Function                       | Left hand only | Comment
 -------------                      | -------------                  | -------------  | -------------
 Alt+[Level4 Shift][special-keys]   | Switch windows                 | Of course      | Easier to reach than Alt+Tab.
@@ -102,14 +102,14 @@ Super+X                            | Switch to workspace 3          | Of course 
 Super+A                            | Switch to workspace 4          | Of course      |
 Super+S                            | Switch to workspace 5          | Of course      |
 Super+D                            | Switch to workspace 6          | Of course      |
-Shift+Alt+W                        | Move window one workspace up   | Yes            |
-Shift+Alt+S                        | Move window one workspace down | Yes            |
-Super+1                            | Move window to workspace 1     | Of course      |
-Super+2                            | Move window to workspace 2     | Of course      |
-Super+3                            | Move window to workspace 3     | Of course      |
-Super+4                            | Move window to workspace 4     | Of course      |
-Super+5                            | Move window to workspace 5     | Of course      |
-Super+6                            | Move window to workspace 6     | Of course      |
+Shift+Alt+W                        | Move window one workspace up   | Yes            | I did not make that work on Windows yet.
+Shift+Alt+S                        | Move window one workspace down | Yes            | I did not make that work on Windows yet.
+Super+1                            | Move window to workspace 1     | Of course      | Not working on Windows 10 1903. Need to find a solution.
+Super+2                            | Move window to workspace 2     | Of course      | Not working on Windows 10 1903.
+Super+3                            | Move window to workspace 3     | Of course      | Not working on Windows 10 1903.
+Super+4                            | Move window to workspace 4     | Of course      | Not working on Windows 10 1903.
+Super+5                            | Move window to workspace 5     | Of course      | Not working on Windows 10 1903.
+Super+6                            | Move window to workspace 6     | Of course      | Not working on Windows 10 1903.
 
 [shellshape]: https://extensions.gnome.org/extension/294/shellshape/
 

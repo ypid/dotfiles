@@ -27,4 +27,4 @@ Install with the Portable parameter because this sets `savemode=dir` automatical
 choco install kitty --params "/Portable"
 ```
 
-Deployment tip: System defaults can be provided as C:/ProgramData/Chocolatey/lib/kitty/tools/Sessions/Default%20Settings
+Deployment tip: System defaults can be provided as `C:/ProgramData/Chocolatey/lib/kitty/tools/Sessions/Default%20Settings`

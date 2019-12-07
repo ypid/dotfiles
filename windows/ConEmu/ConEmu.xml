@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <key name="Software">
 	<key name="ConEmu">
-		<key name=".Vanilla" modified="2019-05-16 10:37:55" build="171205">
+		<key name=".Vanilla" modified="2019-12-09 14:38:48" build="191012">
 			<value name="StartType" type="hex" data="02"/>
 			<value name="CmdLine" type="string" data=""/>
 			<value name="StartTasksFile" type="string" data=""/>
@@ -59,7 +59,7 @@
 			<value name="FontSize" type="ulong" data="14"/>
 			<value name="StatusFontHeight" type="long" data="12"/>
 			<value name="TabFontHeight" type="long" data="13"/>
-			<key name="HotKeys" modified="2018-10-04 14:32:59" build="171205">
+			<key name="HotKeys" modified="2019-12-09 14:41:26" build="191012">
 				<value name="MinimizeRestore" type="dword" data="000011c0"/>
 				<value name="KeyMacroVersion" type="hex" data="02"/>
 				<value name="Multi.Modifier" type="dword" data="000000a4"/>
@@ -109,7 +109,7 @@
 				<value name="Multi.Detach" type="dword" data="00000000"/>
 				<value name="Multi.Unfasten" type="dword" data="00000000"/>
 				<value name="Multi.Close" type="dword" data="00101157"/>
-				<value name="CloseTabKey" type="dword" data="00101157"/>
+				<value name="CloseTabKey" type="dword" data="10115d57"/>
 				<value name="CloseGroupKey" type="dword" data="00115b2e"/>
 				<value name="CloseGroupPrcKey" type="dword" data="00000000"/>
 				<value name="CloseAllConKey" type="dword" data="00000000"/>
@@ -121,8 +121,8 @@
 				<value name="CloseConEmuKey" type="dword" data="00005b73"/>
 				<value name="Multi.Rename" type="dword" data="00005d52"/>
 				<value name="AffinityPriorityKey" type="dword" data="00005d41"/>
-				<value name="Multi.MoveLeft" type="dword" data="0010114a"/>
-				<value name="Multi.MoveRight" type="dword" data="0010114b"/>
+				<value name="Multi.MoveLeft" type="dword" data="10115d4a"/>
+				<value name="Multi.MoveRight" type="dword" data="10115d4b"/>
 				<value name="CTS.VkBlockStart" type="dword" data="00000000"/>
 				<value name="CTS.VkTextStart" type="dword" data="00000000"/>
 				<value name="CTS.VkCopyFmt0" type="dword" data="00001143"/>
@@ -244,15 +244,17 @@
 				<value name="KeyMacro31.Text" type="string" data=""/>
 				<value name="KeyMacro32" type="dword" data="00000000"/>
 				<value name="KeyMacro32.Text" type="string" data=""/>
-				<value name="CTS.VkBlock" type="hex" data="a4"/>
-				<value name="CTS.VkText" type="hex" data="a0"/>
+				<value name="CTS.VkBlock" type="hex" data="A4"/>
+				<value name="CTS.VkText" type="hex" data="A0"/>
 				<value name="CTS.VkAct" type="hex" data="00"/>
 				<value name="CTS.VkPrompt" type="hex" data="00"/>
-				<value name="FarGotoEditorVk" type="hex" data="a2"/>
+				<value name="FarGotoEditorVk" type="hex" data="A2"/>
 				<value name="DndLKey" type="hex" data="00"/>
-				<value name="DndRKey" type="hex" data="a2"/>
+				<value name="DndRKey" type="hex" data="A2"/>
 				<value name="WndDragKey" type="dword" data="00121101"/>
 				<value name="CloseToRightKey" type="dword" data="00000000"/>
+				<value name="CheckUpdates" type="dword" data="00105b55"/>
+				<value name="Multi.NewWndConfirm" type="dword" data="00000000"/>
 			</key>
 			<value name="UseCurrentSizePos" type="hex" data="01"/>
 			<value name="AutoSaveSizePos" type="hex" data="01"/>
@@ -273,8 +275,8 @@
 			<value name="StartCreateDelay" type="ulong" data="100"/>
 			<value name="ExtendFonts" type="hex" data="00"/>
 			<value name="ExtendFontNormalIdx" type="hex" data="01"/>
-			<value name="ExtendFontBoldIdx" type="hex" data="0c"/>
-			<value name="ExtendFontItalicIdx" type="hex" data="0d"/>
+			<value name="ExtendFontBoldIdx" type="hex" data="0C"/>
+			<value name="ExtendFontItalicIdx" type="hex" data="0D"/>
 			<value name="CursorTypeActive" type="dword" data="000232c1"/>
 			<value name="CursorTypeInactive" type="dword" data="00823283"/>
 			<value name="ClipboardDetectLineEnd" type="hex" data="01"/>
@@ -290,7 +292,7 @@
 			<value name="VividColors" type="hex" data="01"/>
 			<value name="FadeInactive" type="hex" data="01"/>
 			<value name="FadeInactiveLow" type="hex" data="00"/>
-			<value name="FadeInactiveHigh" type="hex" data="d0"/>
+			<value name="FadeInactiveHigh" type="hex" data="D0"/>
 			<value name="ConVisible" type="hex" data="00"/>
 			<value name="SetDefaultTerminal" type="hex" data="00"/>
 			<value name="SetDefaultTerminalStartup" type="hex" data="00"/>
@@ -353,13 +355,13 @@
 			<value name="CompressLongStrings" type="hex" data="01"/>
 			<value name="BackGround Image show" type="hex" data="00"/>
 			<value name="BackGround Image" type="string" data="c:\back.bmp"/>
-			<value name="bgImageDarker" type="hex" data="ff"/>
+			<value name="bgImageDarker" type="hex" data="FF"/>
 			<value name="bgImageColors" type="dword" data="ffffffff"/>
 			<value name="bgOperation" type="hex" data="00"/>
 			<value name="bgPluginAllowed" type="hex" data="01"/>
-			<value name="AlphaValue" type="hex" data="ff"/>
+			<value name="AlphaValue" type="hex" data="FF"/>
 			<value name="AlphaValueSeparate" type="hex" data="00"/>
-			<value name="AlphaValueInactive" type="hex" data="ff"/>
+			<value name="AlphaValueInactive" type="hex" data="FF"/>
 			<value name="UserScreenTransparent" type="hex" data="00"/>
 			<value name="ColorKeyTransparent" type="hex" data="00"/>
 			<value name="ColorKeyValue" type="dword" data="00010101"/>
@@ -369,7 +371,7 @@
 			<value name="HideChildCaption" type="hex" data="01"/>
 			<value name="FocusInChildWindows" type="hex" data="01"/>
 			<value name="HideCaptionAlways" type="hex" data="00"/>
-			<value name="HideCaptionAlwaysFrame" type="hex" data="ff"/>
+			<value name="HideCaptionAlwaysFrame" type="hex" data="FF"/>
 			<value name="HideCaptionAlwaysDelay" type="ulong" data="2000"/>
 			<value name="HideCaptionAlwaysDisappear" type="ulong" data="2000"/>
 			<value name="DownShowHiddenMessage" type="hex" data="00"/>
@@ -406,7 +408,7 @@
 			<value name="CTS.ForceLocale" type="dword" data="00000000"/>
 			<value name="CTS.RBtnAction" type="hex" data="03"/>
 			<value name="CTS.MBtnAction" type="hex" data="00"/>
-			<value name="CTS.ColorIndex" type="hex" data="e0"/>
+			<value name="CTS.ColorIndex" type="hex" data="E0"/>
 			<value name="ClipboardConfirmEnter" type="hex" data="01"/>
 			<value name="ClipboardConfirmLonger" type="ulong" data="200"/>
 			<value name="FarGotoEditorOpt" type="hex" data="01"/>
@@ -419,9 +421,9 @@
 			<value name="ExtendUCharMap" type="hex" data="01"/>
 			<value name="EnhanceGraphics" type="hex" data="01"/>
 			<value name="EnhanceButtons" type="hex" data="00"/>
-			<value name="PartBrush75" type="hex" data="c8"/>
+			<value name="PartBrush75" type="hex" data="C8"/>
 			<value name="PartBrush50" type="hex" data="96"/>
-			<value name="PartBrush25" type="hex" data="5a"/>
+			<value name="PartBrush25" type="hex" data="5A"/>
 			<value name="PartBrushBlack" type="hex" data="20"/>
 			<value name="RightClick opens context menu" type="hex" data="02"/>
 			<value name="RightClickMacro2" type="string" data=""/>
@@ -647,10 +649,10 @@
 					<value name="Active" type="long" data="0"/>
 					<value name="Count" type="long" data="1"/>
 				</key>
-				<key name="Task6" modified="2018-10-04 14:32:59" build="171205">
+				<key name="Task6" modified="2019-12-09 14:38:48" build="191012">
 					<value name="Name" type="string" data="{Shells::PowerShell (Admin)}"/>
 					<value name="Flags" type="dword" data="00000007"/>
-					<value name="Hotkey" type="dword" data="0010114e"/>
+					<value name="Hotkey" type="dword" data="10115d4e"/>
 					<value name="GuiArgs" type="string" data=""/>
 					<value name="Cmd1" type="string" data='powershell.exe -new_console:a -new_console:t:"M$ Shell" -NonInteractive'/>
 					<value name="Active" type="long" data="0"/>
@@ -712,6 +714,12 @@
 			<value name="ClipboardFirstLinePosix" type="hex" data="00"/>
 			<value name="DynamicBufferHeight" type="hex" data="01"/>
 			<value name="StatusBar.Hide.WMode" type="hex" data="01"/>
+			<value name="Language" type="string" data="en"/>
+			<value name="AnsiLogCodes" type="hex" data="00"/>
+			<value name="RestoreInactive" type="hex" data="00"/>
+			<value name="AutoReloadEnvironment" type="hex" data="01"/>
+			<value name="AutoTrimSingleLine" type="hex" data="00"/>
+			<value name="StatusBar.Hide.InputGrouping" type="hex" data="00"/>
 		</key>
 	</key>
 </key>

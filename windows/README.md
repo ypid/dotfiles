@@ -32,6 +32,7 @@ To use my configuration run the following commands to download it:
 ```Shell
 if (! (test-path '~/.config')) { mkdir '~/.config' }; if (! (test-path '~/.config/dotfiles')) { git clone --recursive "https://github.com/ypid/dotfiles.git" }
 ```
+
 Installation is handled by a custom MS Shell script called [`install.ps1`](/install.ps1) inside `~/.config/dotfiles`.
 
 ## Contents

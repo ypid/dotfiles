@@ -211,7 +211,7 @@ Function md5sum([string]$algo)    { $(CertUtil -hashfile $algo MD5)[1] -replace 
 Function sha1sum([string]$algo)   { $(CertUtil -hashfile $algo SHA1)[1] -replace " ",""; echo "Don't use SHA1 anymore ;-)" }
 Function sha256sum([string]$algo) { $(CertUtil -hashfile $algo SHA256)[1] -replace " ","" }
 Function sha512sum([string]$algo) { $(CertUtil -hashfile $algo SHA512)[1] -replace " ","" }
-Function which() { Get-Command @args | Format-Table Path, Name }
+Function which() { Get-Command @args | Format-Table @{Label="Path"; Expression={Get-CleanPath $_.Path}}, Name }
 Function whichw() { (Get-Command @args).Definition }
 
 Function ping { ping.exe -t @args }

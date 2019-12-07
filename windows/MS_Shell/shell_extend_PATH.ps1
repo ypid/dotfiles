@@ -1,6 +1,7 @@
 Add-PathAtBegin "c:/GnuWin/bin"
 Add-PathAtBegin "c:/program files/openssl/bin"
 Add-PathAtBegin "c:/programdata/chocolatey/bin"
+Add-PathAtBegin "c:/programdata/chocolatey/lib/sysinternals/tools"
 
 # Not needed. Installer adds this by default.
 # Get-ChildItem -Path c:/ 'Python3*' | %{ Add-PathAtBegin "C:/$($_.name)" }

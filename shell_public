@@ -214,7 +214,8 @@ alias gst='git status'
 # alias gst='git status --short --branch'
 
 alias gco='git checkout'
-alias gc='git commit --verbose'
+
+alias gc='git ci'
 alias gca='gc --all'
 alias gb='git branch'
 alias gj='git j'

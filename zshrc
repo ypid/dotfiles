@@ -200,7 +200,7 @@ if command -v compdef >/dev/null 2>&1; then
     command -v ssh_wrapper >/dev/null 2>&1 && compdef ssh_wrapper=ssh
     command -v sshrc_wrapper >/dev/null 2>&1 && compdef sshrc_wrapper=ssh
     command -v sc >/dev/null 2>&1 && compdef sc=service
-    command -v rl >/dev/null 2>&1 && compdef rl=journalctl
+    command -v rl >/dev/null 2>&1 && command -v journalctll >/dev/null 2>&1 && compdef rl=journalctl
 fi
 
 # Own theme based on dieter and bira {{{
@@ -236,7 +236,7 @@ return_code=$return_code_enabled
 
 # RPS1='${return_code}'
 
-PROMPT="╭─${time} ${user_host}${current_dir}${git_branch} ${return_code}
+PROMPT="╭─ ${time} ${user_host}${current_dir}${git_branch} ${return_code}
 ╰─%B$%b "
 
 function accept-line-or-clear-warning () {

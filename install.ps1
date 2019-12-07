@@ -1,5 +1,5 @@
-## Just copy the files in place. Seems nobody using windows ever heard about a dotfiles manager nor git* so this is what I ended up with.
-## *git is now Microsoft default so forget about that last part :)
+## This script just links (or as fall back, copies) the files in place. Seems nobody using windows ever heard about a dotfiles manager nor git* so this is what I ended up with.
+## *git is now even Microsoft default so forget about that last part :)
 
 function cp--no-clobber{
     Param(
@@ -13,7 +13,7 @@ function cp--no-clobber{
     }
 }
 
-function link_path{
+function ln-s{
     Param(
         [parameter(Mandatory=$true)][String]$source,
         [parameter(Mandatory=$true)][String]$dest
@@ -36,18 +36,18 @@ function link_path{
 $documents_path = [environment]::getfolderpath("mydocuments")
 
 ## I am using forward slashes. Get used to it Windows guys.
-link_path "./windows/MS_Shell/" "$documents_path/WindowsPowerShell"
-link_path "./nvim/init_min.vim" ~/_vimrc
-link_path "./nvim/init.vim" ~/_vim
-link_path "./windows/ConEmu/ConEmu.xml" "$env:APPDATA/ConEmu.xml"
-link_path "./gitconfig" ~/.gitconfig
+ln-s "./windows/MS_Shell/" "$documents_path/WindowsPowerShell"
+ln-s "./nvim/init_min.vim" ~/_vimrc
+ln-s "./nvim/init.vim" ~/_vim
+ln-s "./windows/ConEmu/ConEmu.xml" "$env:APPDATA/ConEmu.xml"
+ln-s "./gitconfig" ~/.gitconfig
 
 # mkdir -f "$env:APPDATA/VirtuaWin" > $null
-# link_path "./windows/VirtuaWin/virtuawin.cfg" "$env:APPDATA/VirtuaWin/virtuawin.cfg"
+# ln-s "./windows/VirtuaWin/virtuawin.cfg" "$env:APPDATA/VirtuaWin/virtuawin.cfg"
 
 mkdir -f "$env:APPDATA/obs-studio/basic/profiles/Untitled" > $null
 ## OBS Studio v20.1.3 can not handle these kinds of symlinks. It will overwrite them.
-# link_path "./config/obs-studio/basic/profiles/Untitled/basic.ini" "$env:APPDATA/obs-studio/basic/profiles/Untitled/basic.ini"
+# ln-s "./config/obs-studio/basic/profiles/Untitled/basic.ini" "$env:APPDATA/obs-studio/basic/profiles/Untitled/basic.ini"
 cp--no-clobber "./config/obs-studio/basic/profiles/Untitled/basic.ini" "$env:APPDATA/obs-studio/basic/profiles/Untitled/basic.ini"
 
 mkdir -f "$env:APPDATA/doublecmd/" > $null
@@ -57,17 +57,17 @@ sed --in-place --regexp-extended 's/Ctrl\+Shift\+7/Ctrl+Shift+8/;s#Ctrl\+Num/#Ct
 cp--no-clobber "./doublecmd/sanitize_doublecmd_xml" "$env:APPDATA/doublecmd/doublecmd.xml"
 
 mkdir -f "$env:APPDATA/Neo2/" > $null
-link_path "./qNeo2/Neo2.ini" "$env:APPDATA/Neo2/Neo2.ini"
+ln-s "./qNeo2/Neo2.ini" "$env:APPDATA/Neo2/Neo2.ini"
 
 mkdir -f "$env:LOCALAPPDATA/VirtualStore/ProgramData/Chocolatey/lib/kitty/tools/Sessions" > $null
-link_path "./windows/kitty/Sessions/Default%20Settings" "$env:LOCALAPPDATA/VirtualStore/ProgramData/Chocolatey/lib/kitty/tools/Sessions/Default%20Settings"
+ln-s "./windows/kitty/Sessions/Default%20Settings" "$env:LOCALAPPDATA/VirtualStore/ProgramData/Chocolatey/lib/kitty/tools/Sessions/Default%20Settings"
 
 ## FIXME
-# link_path "./windows/kitty/kitty.ini" "$documents_path/portable/kitty/kitty.ini"
+# ln-s "./windows/kitty/kitty.ini" "$documents_path/portable/kitty/kitty.ini"
 
 mkdir -f "$env:APPDATA/Everything/" > $null
 ## Everything as of v1.4.1.895 overwrites symbolic links.
-# link_path "./windows/Everything/Everything.ini" "$env:APPDATA/Everything/Everything.ini"
+# ln-s "./windows/Everything/Everything.ini" "$env:APPDATA/Everything/Everything.ini"
 cp--no-clobber "./windows/Everything/Everything.ini" "$env:APPDATA/Everything/Everything.ini"
 
 cp--no-clobber "$documents_path/dotfiles/startup/startup.bat" "$env:APPDATA/Microsoft/Windows/Start Menu/Programs/Startup/startup.bat"
