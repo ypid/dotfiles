@@ -35,6 +35,12 @@ function ln-s{
 
 $documents_path = [environment]::getfolderpath("mydocuments")
 
+## Patch submodules.
+ln-s "./windows/windows-desktop-switcher-my/user_config.ahk" "./windows/windows-desktop-switcher/user_config.ahk"
+
+## I cannot commit the result of this command to git because I found *no* way to create relative symlinks on Windows!!!
+ln-s "./windows/windows-desktop-switcher/VirtualDesktopAccessor.dll" "./windows/windows-desktop-switcher-my/VirtualDesktopAccessor.dll"
+
 ## I am using forward slashes. Get used to it Windows guys.
 ln-s "./windows/MS_Shell/" "$documents_path/WindowsPowerShell"
 ln-s "./nvim/init_min.vim" ~/_vimrc

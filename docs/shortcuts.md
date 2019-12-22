@@ -102,14 +102,14 @@ Super+X                            | Switch to workspace 3          | Of course 
 Super+A                            | Switch to workspace 4          | Of course      |
 Super+S                            | Switch to workspace 5          | Of course      |
 Super+D                            | Switch to workspace 6          | Of course      |
-Shift+Alt+W                        | Move window one workspace up   | Yes            | I did not make that work on Windows yet.
-Shift+Alt+S                        | Move window one workspace down | Yes            | I did not make that work on Windows yet.
-Super+1                            | Move window to workspace 1     | Of course      | Not working on Windows 10 1903. Need to find a solution.
-Super+2                            | Move window to workspace 2     | Of course      | Not working on Windows 10 1903.
-Super+3                            | Move window to workspace 3     | Of course      | Not working on Windows 10 1903.
-Super+4                            | Move window to workspace 4     | Of course      | Not working on Windows 10 1903.
-Super+5                            | Move window to workspace 5     | Of course      | Not working on Windows 10 1903.
-Super+6                            | Move window to workspace 6     | Of course      | Not working on Windows 10 1903.
+Shift+Alt+W                        | Move window one workspace up   | Yes            | Not supported by windows-desktop-switcher on M$. I could implement it if I would really need it.
+Shift+Alt+S                        | Move window one workspace down | Yes            | Not supported by windows-desktop-switcher on M$. I could implement it if I would really need it.
+Super+1                            | Move window to workspace 1     | Of course      |
+Super+2                            | Move window to workspace 2     | Of course      |
+Super+3                            | Move window to workspace 3     | Of course      |
+Super+4                            | Move window to workspace 4     | Of course      |
+Super+5                            | Move window to workspace 5     | Of course      |
+Super+6                            | Move window to workspace 6     | Of course      |
 
 [shellshape]: https://extensions.gnome.org/extension/294/shellshape/
 

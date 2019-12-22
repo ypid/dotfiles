@@ -299,3 +299,6 @@
 [submodule "tmux/plugins/tmux-prefix-highlight"]
 	path = tmux/plugins/tmux-prefix-highlight
 	url = https://github.com/tmux-plugins/tmux-prefix-highlight.git
+[submodule "windows/windows-desktop-switcher"]
+	path = windows/windows-desktop-switcher
+	url = https://github.com/pmb6tz/windows-desktop-switcher.git

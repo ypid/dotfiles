@@ -5,4 +5,4 @@ rem Start this legacy bat script is scheduled task at user login to ensure the f
 start %HOMEPATH%\.config\dotfiles\windows\neo-vars\qNeo2_ypid_custom.exe
 timeout 1 > NUL
 
-start %HOMEPATH%\.config\dotfiles\windows\virtual-desktop-enhancer\virtual-desktop-enhancer.exe
+start %HOMEPATH%\.config\dotfiles\windows\windows-desktop-switcher\desktop_switcher.ahk
