@@ -244,7 +244,7 @@ return_code=$return_code_enabled
 # RPS1='${return_code}'
 
 PROMPT="╭─ ${time} ${user_host}${current_dir}${git_branch} ${return_code}
-╰─%B$%b "
+╰─ %B$%b "
 
 function accept-line-or-clear-warning () {
 	if [[ -z $BUFFER ]]; then
