@@ -123,7 +123,10 @@ plugins+=(pip)
 # [[ -e ~/gems/gems/tmuxinator-0.6.8/completion/tmuxinator.zsh ]] && source ~/gems/gems/tmuxinator-0.6.8/completion/tmuxinator.zsh
 
 # Nice to have
-plugins+=(zsh-syntax-highlighting)
+
+if [[ ! -a /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
+    plugins+=(zsh-syntax-highlighting)
+fi
 
 # Additional functions
 plugins+=(debian)
@@ -201,6 +204,10 @@ if command -v compdef >/dev/null 2>&1; then
     command -v sshrc_wrapper >/dev/null 2>&1 && compdef sshrc_wrapper=ssh
     command -v sc >/dev/null 2>&1 && compdef sc=service
     command -v rl >/dev/null 2>&1 && command -v journalctll >/dev/null 2>&1 && compdef rl=journalctl
+fi
+
+if [[ -a /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
+    source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
 
 # Own theme based on dieter and bira {{{
