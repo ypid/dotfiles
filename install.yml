@@ -5,6 +5,7 @@
 - defaults:
     link:
       relative: true
+      canonicalize-path: false
 
 - shell:
     - 'mkdir -p ~/.config/byobu ~/.local/share/zsh ~/.local/usr'
