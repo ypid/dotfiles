@@ -134,7 +134,7 @@ plugins+=(encode64)
 plugins+=(urltools)
 plugins+=(zsh_reload)
 plugins+=(more-completions)
-plugins+=(zsh-compdef)
+# plugins+=(zsh-compdef)
 plugins+=(zsh-completions)
 plugins+=(zsh-compdef-ypid-collected)
 
@@ -289,4 +289,18 @@ setopt no_share_history
 
 # zle -N bash-ctrl-d
 # bindkey "^D" bash-ctrl-d
+## }}}
+
+## bindkey {{{
+bindkey -v
+bindkey -M vicmd v edit-command-line
+bindkey '^R' history-incremental-search-backward
+bindkey '^K' history-beginning-search-backward
+bindkey '^O' history-beginning-search-forward
+# bindkey '^M' history-beginning-search-forward # disables enter
+bindkey '^P' up-history
+bindkey '^N' down-history
+
+[[ -n "${key[Up]}" ]] && bindkey "${key[Up]}" history-beginning-search-backward
+[[ -n "${key[Down]}" ]] && bindkey "${key[Down]}" history-beginning-search-forward
 ## }}}
