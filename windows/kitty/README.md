@@ -28,3 +28,9 @@ choco install kitty --params "/Portable"
 ```
 
 Deployment tip: System defaults can be provided as `C:/ProgramData/Chocolatey/lib/kitty/tools/Sessions/Default%20Settings`
+
+## Configuration
+
+Refer to ../../install.ps1.
+
+Ref: https://github.com/cyd01/KiTTY/issues/70

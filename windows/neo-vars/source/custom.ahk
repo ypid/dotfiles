@@ -29,15 +29,15 @@ RegExEsc(String, Options := "") {
 ;; https://stackoverflow.com/questions/1589930/so-what-is-the-right-direction-of-the-paths-slash-or-under-windows/1589959#1589959
 
 ;; WARNING: This clipboard substitution has the issue that after the substitution, pasting the file does not work anymore!!
-;; Because of this, we don’t run the substitution OnClipboardChange globally but only when we consider it save and otherwise using a (manual) shortcut.
-;; Situations where we know it is save:
+;; Because of this, we don’t run the substitution OnClipboardChange globally but only when we consider it safe and otherwise using a (manual) shortcut.
+;; Situations where we know it is safe:
 ;; * Double Commander calls CopyFullNamesToClip.
 ;; * Location bar in Explorer has focus. See limitations below!
 
 ;; The expected workflow is:
 ;; 1. Do what you usually do to copy a path.
 ;; 2. We try to do what is necessary to have a clean path in the clipboard.
-;; 3. If we cannot do it by default (we don’t know that it is save), we do nothing and you have to manually make the path in the clipboard clean by pressing Shift+Super+C.
+;; 3. If we cannot do it by default (we don’t know that it is safe), we do nothing and you have to manually make the path in the clipboard clean by pressing Shift+Super+C.
 
 ;; Ref: Get-CleanPath in ../../MS_Shell/Modules/ypidDotfiles/ypidDotfiles.psm1
 ;; Seems up to and including Windows 10, UNC paths with forward slashes don’t work.
@@ -79,6 +79,13 @@ Return
 ;; We can "safely" do this because when CopyFullNamesToClip is called, the user wants to copy the path as text.
 #UseHook
 #IfWinActive ahk_exe doublecmd\.exe
++!c::
+    Send +!c
+    clean_path_in_clipboard()
+Return
+#IfWinActive
+
+#IfWinActive ahk_exe Everything\.exe
 +!c::
     Send +!c
     clean_path_in_clipboard()
@@ -648,38 +655,6 @@ Return
 #IfWinActive, ahk_class ^(Ki|Pu)TTYConfigBox$
 ^l::Send, !n
 #IfWinActive
-;; }}}
-
-;; Zoom in PuTTY based programs. {{{
-;; Tested with KiTTY 0.70.0.7p.
-
-;; Not working?
-; #IfWinActive, ahk_exe (?i).*tty.*
-
-#UseHook
-^+::
-    If WinActive("ahk_class (Ki|Pu)TTY") {
-    ; state := GetKeyState("Control", "P")
-    ; MsgBox, test %state%
-    ; If GetKeyState("Control", "P") {
-        Send, !{space}{up}{up}{up}{up}{up}{up}{up}{right}{enter}
-    ; } Else {
-    ;     Send, x
-    ; }
-    } Else {
-        Send, ^+
-    }
-    Return
-^-::
-    If WinActive("ahk_class (Ki|Pu)TTY") {
-        Send, !{space}{up}{up}{up}{up}{up}{up}{up}{right}{down}{enter}
-    } Else {
-        Send, ^-
-    }
-    Return
-#UseHook off
-
-; #IfWinActive
 ;; }}}
 
 ;; Patch ConEmu’s hardcoded system hotkeys {{{

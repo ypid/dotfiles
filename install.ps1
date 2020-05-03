@@ -60,7 +60,7 @@ mkdir -f "$env:APPDATA/doublecmd/" > $null
 ## Doing this with only sed and output redirect has issues with file encoding as of 2018-11.
 Copy-Item ./doublecmd/shortcuts.scf C:/Users/snero/AppData/Roaming/doublecmd/shortcuts.scf
 sed --in-place --regexp-extended 's/Ctrl\+Shift\+7/Ctrl+Shift+8/;s#Ctrl\+Num/#Ctrl+Shift+7#;' "$env:APPDATA/doublecmd/shortcuts.scf"
-cp--no-clobber "./doublecmd/sanitize_doublecmd_xml" "$env:APPDATA/doublecmd/doublecmd.xml"
+cp--no-clobber "./doublecmd/doublecmd.xml" "$env:APPDATA/doublecmd/doublecmd.xml"
 
 mkdir -f "$env:APPDATA/Neo2/" > $null
 ln-s "./qNeo2/Neo2.ini" "$env:APPDATA/Neo2/Neo2.ini"

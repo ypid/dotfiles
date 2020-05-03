@@ -213,9 +213,9 @@ fi
 # Own theme based on dieter and bira {{{
 
 # local time, color coded by last return code
-# time_enabled="%(?.⌚ %{$fg[green]%}.%{$fg[red]%})%*%{$reset_color%}"
-time_enabled="%(?.%{$fg[green]%}.%{$fg[red]%})%D{%Y-%m-%d %H:%M:%S%z}%{$reset_color%}"
-time_disabled="%{$fg[green]%}%*%{$reset_color%}"
+# time_enabled="%(?.⌚ %{$fg[black]%}.%{$fg[red]%})%*%{$reset_color%}"
+time_enabled="%(?.%{$fg[black]%}.%{$fg[red]%})%D{%Y-%m-%d %H:%M:%S%z}%{$reset_color%}"
+time_disabled="%{$fg[black]%}%*%{$reset_color%}"
 time="$time_enabled"
 
 # user part, color coded by privileges
@@ -224,7 +224,7 @@ HOSTNAME="$(hostname --fqdn 2> /dev/null || echo "$HOST")"
 if [ "$HOSTNAME" = "localhost" ]; then
     HOSTNAME="$HOST"
 fi
-local user_host='%{$terminfo[bold]$fg[green]%}%n@${HOSTNAME}%{$reset_color%}'
+local user_host='%{$terminfo[bold]$fg[black]%}%n@${HOSTNAME}%{$reset_color%}'
 
 local current_dir='%{$terminfo[bold]$fg[blue]%} %~%{$reset_color%}'
 
@@ -244,7 +244,7 @@ return_code=$return_code_enabled
 # RPS1='${return_code}'
 
 PROMPT="╭─ ${time} ${user_host}${current_dir}${git_branch} ${return_code}
-╰─ %B$%b "
+╰─ %B%(!.#.$)%b "
 
 function accept-line-or-clear-warning () {
 	if [[ -z $BUFFER ]]; then

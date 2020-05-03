@@ -1,3 +1,9 @@
+ifeq ($(OS),Windows_NT)
+DOUBLECMD_CONF_DIR ?= $(APPDATA)/doublecmd
+else
+DOUBLECMD_CONF_DIR ?= ~/.config/doublecmd
+endif
+
 all: install
 
 install:
@@ -11,8 +17,9 @@ endif
 
 get-changes: shortcuts.scf doublecmd.xml
 
-doublecmd.xml: ~/.config/doublecmd/doublecmd.xml
+## M$ Windows does not support /usr/bin/env to find python3. Call manually.
+doublecmd.xml: $(DOUBLECMD_CONF_DIR)/doublecmd.xml
 	./sanitize_doublecmd_xml --input-file "$<" --output-file "$@" --verbose
 
-%: ~/.config/doublecmd/%
+%: $(DOUBLECMD_CONF_DIR)/%
 	cp "$<" "$@"

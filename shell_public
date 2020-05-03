@@ -268,11 +268,12 @@ then
             command ag --follow "$@"
         fi
     }
-    alias ack='ag'
 elif command -v ack-grep >/dev/null 2>&1
 then
-    alias ack='ack-grep --follow'
-    alias ag='ack'
+    alias ag='ack-grep --follow'
+elif command -v git >/dev/null 2>&1
+then
+    alias ag='git grep'
 fi
 # }}}
 

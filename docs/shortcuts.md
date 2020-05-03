@@ -248,8 +248,9 @@ For GNOME Terminal (and ConEmu), each shortcut requires additionally the use of 
 
 Shortcut       | Function                                | Left hand only | Comment
 -------------  | -------------                           | -------------  | -------------
-Ctrl+N         | Opens a new tab                         | No             | Easier to reach than Ctrl+T
-Ctrl+W         | Closes the tab                          | Of course      | Should be default in all program
+Ctrl+N         | Open new tab                            | No             | Easier to reach than Ctrl+T
+Ctrl+W         | Close current tab                       | Of course      | Should be default in all program
+Ctrl+T         | Open a new window                       | No             | Not as often used as "new tab", thus switched with it.
 Ctrl+Q         | Closes the application                  | Of course      | Should be default in all program. FIXME: Drop this shortcut in favor of Super+Q. Done on: Windows.
 Ctrl+Tab       | Switch to right tab, cycle through tabs | Yes            |
 Shift+Ctrl+Tab | Switch to left tab, cycle through tabs  | Yes            |
@@ -432,6 +433,7 @@ Ctrl+2           | SortByExt              | Nice to have                  |
 Ctrl+3           | SortBySize             | Nice to have                  |
 Ctrl+4           | SortByDate             | Nice to have                  |
 Ctrl+5           | SortByAttr             | Nice to have                  |
+Ctrl+6           | SortByRunCount         | Nice to have                  | DC currently does not have it but other file explorers/finders might.
 Shift+Ctrl+H     | QuickView              | Nice to have                  |
 Shift+Ctrl+J     | ColumnsView            | Nice to have                  |
 Shift+Ctrl+K     | BriefView              | Nice to have                  |
@@ -442,6 +444,7 @@ Shift+Ctrl+3     | PanelsSplitterPerPos   | Nice to have                  | spli
 Shift+Ctrl+4     | PanelsSplitterPerPos   | Nice to have                  | splitpct=80
 Shift+Ctrl+5     | PanelsSplitterPerPos   | Nice to have                  | splitpct=90
 Shift+Ctrl+6     | PanelsSplitterPerPos   | Nice to have                  | splitpct=100
+Shift+Ctrl+9     | PanelsSplitterPerPos   | Nice to have                  | Auto fit. DC currently does not have it but other file explorers/finders might.
 Shift+Ctrl+7     | HorizontalFilePanels   | Nice to have                  |
 Shift+Ctrl+I     | DirHotList             | Not really                    |
 Ctrl+H           | DirHistory             | Not really                    |

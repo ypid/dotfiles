@@ -191,6 +191,12 @@ endif
                 noremap <Bar> :call NERDComment('n', 'Toggle')<cr>
             " }}}
 
+            " Proper regex support {{{
+                " Even after years of using Vim, I could never get used to
+                " it’s regex dialect. Just use something proper.
+
+                Bundle 'othree/eregex.vim'
+            " }}}
         endif
     " }}}
 
@@ -835,8 +841,18 @@ endif
         if count(g:spf13_bundle_groups, 'misc')
             Bundle 'thanthese/Tortoise-Typing'
             Bundle 'dahu/LearnVim'
-            Bundle 'wikitopian/hardmode'
-            let g:HardMode_level = 'wannabe'
+
+            " Pro hardmode:
+            " * "Helps" users that I teach Vim and who use my config. Fix:
+            "   Enable it for them locally.
+            " Contra hardmode:
+            " * Prevents me from using Neo2 "standard" instead of Vim
+            "   "custom". Why use $ which is specific to Vim when Neo2 has a
+            "   shortcut to go to the end of the line?
+            " Decission: Disable hardmode for myself.
+            " Bundle 'wikitopian/hardmode'
+            " let g:HardMode_level = 'wannabe'
+
             " Bundle 'spf13/vim-preview'
             " Bundle 'tpope/vim-cucumber'
             " Bundle 'quentindecock/vim-cucumber-align-pipes'
@@ -945,6 +961,10 @@ endif
         filetype indent plugin on   " Automatically detect file types.
         syntax on                   " Syntax highlighting
         syntax spell toplevel
+        highlight clear SpellBad
+        highlight SpellBad cterm=underline ctermbg=None
+        highlight SpellCap cterm=underline ctermbg=None
+        highlight DiffChange ctermbg=Yellow
     endif
 " }}}
 
@@ -1108,7 +1128,7 @@ endif
             autocmd BufWritePre *.rst,*.yml call TrimTrailingEmptyLines()
 
             " Setting for @drybjed ;)
-            " autocmd BufReadPost *.rst setlocal spell
+            " autocmd BufReadPost * setlocal spell
 
             autocmd BufRead,BufNewFile /etc/* if &filetype=='python'|let g:pymode_lint = 0|endif
             autocmd BufRead,BufNewFile /etc/* if &filetype=='python'|let g:pymode_rope = 0|endif
@@ -1150,7 +1170,6 @@ endif
 
                 " https://github.com/htgoebel/yaml2rst/blob/develop/docs/fold-markers.rst
                 autocmd FileType ansible,jinja,yaml,tex setlocal foldmarker=[[[,]]]
-                autocmd FileType ansible,jinja,yaml syntax spell toplevel
                 " Use this foldmarker to avoid folds when using Jinja2
                 " templates.
                 " autocmd Syntax jinja syntax enable
@@ -1180,7 +1199,7 @@ endif
                     " \ ( awk -F'\t' '$2\!="%:gs/'/'\''/"{print}' tags ; ctags -f- '%:gs/'/'\''/' )
                     " \ | sort -t$'\t' -k1,1 -o tags.new && mv tags.new tags
 
-                autocmd FileType sh autocmd BufWritePre * call TrimTrailingEmptyLines()
+                " autocmd FileType sh autocmd BufWritePre * call TrimTrailingEmptyLines()
 
 
             " }}}

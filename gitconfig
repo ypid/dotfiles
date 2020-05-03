@@ -12,7 +12,11 @@
 	; wordRegex = [[:alnum:]_]+|[^[:alnum:]_ ]+
 
 [filter "kitty_session_file"]
-	clean = LC_ALL=C sort | grep -v "^Password[^\\w]"
+	clean = LC_ALL=C sort | grep --no-filename --invert-match "^Password[^\\w]"
+
+[filter "everything_ini_file"]
+        ;; Only works on Linux for some reason. Thus changes require a checkout on Linux and then the file will appear as changed automatically. Then just commit/amend this cleanup.
+	clean = egrep --no-filename --invert-match '^(folders|exclude_folders|last_options_page|ntfs_volume_(paths|roots|guids)|(date_run_column|window)_[[:alnum:]_]+)='
 
 [alias]
 	wd = diff --color-words
@@ -32,6 +36,8 @@
 	cia = "!git ci -m 'Auto commit. EOM' --all \"$@\""
 
 	co = checkout
+	; Cannot use this date format yet because it also messes with %gd.
+	; --date=format:'%Y-%m-%d %H:%M:%S%z'
 	rl = reflog --pretty=reflog
 	lgn = log --pretty=oneline --abbrev-commit --show-notes=* --show-signature
 
@@ -119,3 +125,17 @@
 	insteadOf = git://github.com/
 [credential]
 	helper = store
+[tig]
+	# https://github.com/jonas/tig/blob/master/contrib/large-repo.tigrc
+	# Use Git's default (reverse chronological) order, never automatically
+	# use topo-order for the commit graph
+	commit-order = default
+
+	# Limit number of commits loaded by default to 1000
+	main-options = -n 1000
+
+	# Don't show staged and unstaged changes in the main view
+	show-changes = no
+
+	# Optionally, use the old and faster but less accurate graph renderer
+	#set main-view-commit-title-graph = v1

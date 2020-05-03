@@ -318,6 +318,20 @@
                         \ contains=@'.group
         endfunction
 
+        " https://stackoverflow.com/questions/9464844/how-to-get-group-name-of-highlighting-under-cursor-in-vim
+        function! SynStack()
+            if !exists("*synstack")
+                return
+            endif
+            echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+        endfunc
+
+        " https://stackoverflow.com/questions/9464844/how-to-get-group-name-of-highlighting-under-cursor-in-vim
+        function! SynGroup()
+            let l:s = synID(line('.'), col('.'), 1)
+            echo synIDattr(l:s, 'name') . ' -> ' . synIDattr(synIDtrans(l:s), 'name')
+        endfun
+
     " }}}
 
     " Other mappings {{{
@@ -523,7 +537,9 @@
         syntax on
         syntax spell toplevel
         highlight clear SpellBad
-        highlight SpellBad cterm=underline
+        highlight SpellBad cterm=underline ctermbg=None
+        highlight SpellCap cterm=underline ctermbg=None
+        highlight DiffChange ctermbg=Yellow
     endif
 " }}}
 

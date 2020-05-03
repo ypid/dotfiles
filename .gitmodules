@@ -302,3 +302,6 @@
 [submodule "windows/windows-desktop-switcher"]
 	path = windows/windows-desktop-switcher
 	url = https://github.com/pmb6tz/windows-desktop-switcher.git
+[submodule "nvim/bundle/eregex.vim"]
+	path = nvim/bundle/eregex.vim
+	url = https://github.com/othree/eregex.vim
