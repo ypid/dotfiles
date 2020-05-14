@@ -55,6 +55,9 @@ class DoubleCmdSanitizer:
                 'IgnoreList': {
                     'reason': 'Not machine independent (contains filepath to ignore list).',
                 },
+                'Lua': {
+                    'reason': 'Not machine independent (contains shared library filepath).',
+                },
                 'DirectoryHotList': {
                     'reason': 'Not machine independent (contains DirectoryHotList).',
                 },

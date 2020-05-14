@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<doublecmd DCVersion="0.8.4 beta">
-  <Hotkeys Version="42">
+<doublecmd DCVersion="0.9.8 beta">
+  <Hotkeys Version="46">
     <Form Name="Main">
       <Hotkey>
         <Shortcut>Ctrl+Q</Shortcut>
@@ -13,14 +13,6 @@
       <Hotkey>
         <Shortcut>Ctrl+U</Shortcut>
         <Command>cm_Exchange</Command>
-      </Hotkey>
-      <Hotkey>
-        <Shortcut>Ctrl+N</Shortcut>
-        <Command>cm_OpenDirInNewTab</Command>
-      </Hotkey>
-      <Hotkey>
-        <Shortcut>Ctrl+G</Shortcut>
-        <Command>cm_NewTab</Command>
       </Hotkey>
       <Hotkey>
         <Shortcut>Ctrl+J</Shortcut>
@@ -48,7 +40,7 @@
         <Command>cm_QuickView</Command>
       </Hotkey>
       <Hotkey>
-        <Shortcut>Ctrl+Shift+7</Shortcut>
+        <Shortcut>Ctrl+Shift+8</Shortcut>
         <Command>cm_HorizontalFilePanels</Command>
       </Hotkey>
       <Hotkey>
@@ -94,10 +86,6 @@
       <Hotkey>
         <Shortcut>Shift+Alt+X</Shortcut>
         <Command>cm_CopyNamesToClip</Command>
-      </Hotkey>
-      <Hotkey>
-        <Shortcut>Shift+Alt+C</Shortcut>
-        <Command>cm_CopyFullNamesToClip</Command>
       </Hotkey>
       <Hotkey>
         <Shortcut>Ctrl+L</Shortcut>
@@ -218,7 +206,7 @@
         <Command>cm_ChangeDirToHome</Command>
       </Hotkey>
       <Hotkey>
-        <Shortcut>Ctrl+Num/</Shortcut>
+        <Shortcut>Ctrl+Shift+7</Shortcut>
         <Command>cm_ChangeDirToRoot</Command>
       </Hotkey>
       <Hotkey>
@@ -350,6 +338,106 @@
         <Command>cm_LoadFavoriteTabs</Command>
       </Hotkey>
       <Hotkey>
+        <Shortcut>F1</Shortcut>
+        <Command>cm_About</Command>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Shift+Tab</Shortcut>
+        <Command>cm_FocusTreeView</Command>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Alt+1</Shortcut>
+        <Command>cm_ActivateTabByIndex</Command>
+        <Param>index=1</Param>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Alt+2</Shortcut>
+        <Command>cm_ActivateTabByIndex</Command>
+        <Param>index=2</Param>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Alt+3</Shortcut>
+        <Command>cm_ActivateTabByIndex</Command>
+        <Param>index=3</Param>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Alt+4</Shortcut>
+        <Command>cm_ActivateTabByIndex</Command>
+        <Param>index=4</Param>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Alt+5</Shortcut>
+        <Command>cm_ActivateTabByIndex</Command>
+        <Param>index=5</Param>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Alt+6</Shortcut>
+        <Command>cm_ActivateTabByIndex</Command>
+        <Param>index=6</Param>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Alt+7</Shortcut>
+        <Command>cm_ActivateTabByIndex</Command>
+        <Param>index=7</Param>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Alt+8</Shortcut>
+        <Command>cm_ActivateTabByIndex</Command>
+        <Param>index=8</Param>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Alt+9</Shortcut>
+        <Command>cm_ActivateTabByIndex</Command>
+        <Param>index=9</Param>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Alt+`</Shortcut>
+        <Command>cm_ActivateTabByIndex</Command>
+        <Param>index=-1</Param>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Ctrl+6</Shortcut>
+        <Command>cm_OpenDriveByIndex</Command>
+        <Param>index=6</Param>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Ctrl+7</Shortcut>
+        <Command>cm_OpenDriveByIndex</Command>
+        <Param>index=7</Param>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Ctrl+8</Shortcut>
+        <Command>cm_OpenDriveByIndex</Command>
+        <Param>index=8</Param>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Ctrl+9</Shortcut>
+        <Command>cm_OpenDriveByIndex</Command>
+        <Param>index=9</Param>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Ctrl+ö</Shortcut>
+        <Command>cm_OpenDirInNewTab</Command>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Ctrl+N</Shortcut>
+        <Command>cm_ExecuteScript</Command>
+        <Param>%USERPROFILE%/AppData/Roaming/doublecmd/scripts/OpenInNewTab.lua</Param>
+        <Param>%"0%p</Param>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Ctrl+Z</Shortcut>
+        <Command>cm_ExecuteScript</Command>
+        <Param>%USERPROFILE%/AppData/Roaming/doublecmd/scripts/CopyPathToClipboard.lua</Param>
+        <Param>%"0%D</Param>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Shift+Alt+C</Shortcut>
+        <Command>cm_ExecuteScript</Command>
+        <Param>%USERPROFILE%/AppData/Roaming/doublecmd/scripts/CopyPathToClipboard.lua</Param>
+        <Param>%"0%p</Param>
+      </Hotkey>
+      <Hotkey>
         <Shortcut>Ctrl+W</Shortcut>
         <Command>cm_CloseTab</Command>
         <Control>Files Panel</Control>
@@ -460,16 +548,6 @@
       <Hotkey>
         <Shortcut>Ctrl+Right</Shortcut>
         <Command>cm_TransferRight</Command>
-        <Control>Files Panel</Control>
-      </Hotkey>
-      <Hotkey>
-        <Shortcut>Shift+Tab</Shortcut>
-        <Command>cm_NextGroup</Command>
-        <Control>Files Panel</Control>
-      </Hotkey>
-      <Hotkey>
-        <Shortcut>Ctrl+Z</Shortcut>
-        <Command>cm_EditComment</Command>
         <Control>Files Panel</Control>
       </Hotkey>
     </Form>
@@ -639,24 +717,12 @@
     </Form>
     <Form Name="Editor">
       <Hotkey>
-        <Shortcut>F7</Shortcut>
-        <Command>cm_EditFind</Command>
-      </Hotkey>
-      <Hotkey>
-        <Shortcut>F2</Shortcut>
-        <Command>cm_FileSave</Command>
-      </Hotkey>
-      <Hotkey>
         <Shortcut>F3</Shortcut>
         <Command>cm_EditFindNext</Command>
       </Hotkey>
       <Hotkey>
         <Shortcut>Shift+F3</Shortcut>
         <Command>cm_EditFindPrevious</Command>
-      </Hotkey>
-      <Hotkey>
-        <Shortcut>Esc</Shortcut>
-        <Command>cm_FileExit</Command>
       </Hotkey>
       <Hotkey>
         <Shortcut>Ctrl+X</Shortcut>
@@ -693,6 +759,34 @@
       <Hotkey>
         <Shortcut>Ctrl+Shift+Z</Shortcut>
         <Command>cm_EditRedo</Command>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Ctrl+F</Shortcut>
+        <Command>cm_EditFind</Command>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>F7</Shortcut>
+        <Command>cm_EditFind</Command>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>F2</Shortcut>
+        <Command>cm_FileSave</Command>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Ctrl+S</Shortcut>
+        <Command>cm_FileSave</Command>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Alt+X</Shortcut>
+        <Command>cm_FileExit</Command>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Esc</Shortcut>
+        <Command>cm_FileExit</Command>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Ctrl+G</Shortcut>
+        <Command>cm_EditGotoLine</Command>
       </Hotkey>
     </Form>
     <Form Name="Find Files">
@@ -763,6 +857,28 @@
       <Hotkey>
         <Shortcut>Ctrl+Shift+Tab</Shortcut>
         <Command>cm_PagePrev</Command>
+      </Hotkey>
+    </Form>
+    <Form Name="Synchronize Directories">
+      <Hotkey>
+        <Shortcut>Ctrl+M</Shortcut>
+        <Command>cm_SelectClear</Command>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Ctrl+D</Shortcut>
+        <Command>cm_SelectCopyDefault</Command>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Ctrl+W</Shortcut>
+        <Command>cm_SelectCopyReverse</Command>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Ctrl+L</Shortcut>
+        <Command>cm_SelectCopyLeftToRight</Command>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Ctrl+R</Shortcut>
+        <Command>cm_SelectCopyRightToLeft</Command>
       </Hotkey>
     </Form>
   </Hotkeys>
