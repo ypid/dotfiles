@@ -3,8 +3,8 @@ Add-PathAtBegin "c:/program files/openssl/bin"
 Add-PathAtBegin "c:/programdata/chocolatey/bin"
 Add-PathAtBegin "c:/programdata/chocolatey/lib/sysinternals/tools"
 
-# Not needed. Installer adds this by default.
-# Get-ChildItem -Path c:/ 'Python3*' | %{ Add-PathAtBegin "C:/$($_.name)" }
+## Better enforce that our Python is at the beginning to prevent M$ Store getting in the way.
+Get-ChildItem -Path c:/ 'Python3*' | %{ Add-PathAtBegin "C:/$($_.name)" }
 
 Add-PathAtEnd 'c:/Program Files (x86)/PDFtk/bin'
 

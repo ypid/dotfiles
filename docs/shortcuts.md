@@ -410,64 +410,66 @@ Ctrl+O        | ShellExecute      | Yes            | Open
 Shift+Ctrl+O  | ContextMenu       | Yes            | Open with
 Ctrl+E        | Edit              | No             |
 Shift+Ctrl+E  | EditNew           | No             |
-Ctrl+Z        | EditComment       | No             |
+              | EditComment       | No             | Not used and therefore unmapped.
 
 #### Immutable
-Shortcut         | Function               | Left hand only                | Comment
--------------    | -------------          | -------------                 | -------------
-/                | QuickSearch            | Yes (maybe copy paste search) | Not used. Configured DC so that every letter typed will open the quick filter.
-Ctrl+S           | Search                 | Yes                           |
-Shift+Ctrl+M     | CountDirContent        | Yes                           | Calculate size for directories and show it instead of \<DIR\>
-Shift+Ctrl+Space | CalculateSpace         | Nice to have                  |
-Ctrl+.           | ShowSysFiles           | Nice to have                  |
-Shift+Ctrl+S     | RunTerm                | Not really                    | Like Ctrl+Super+s but with the current directory of DC.
-Ctrl+L           | FocusCmdLine           | Not really                    | Was mapped to Shift+F2 but Ctrl+L is more convenient because it has a similar meaning in Firefox. Overwrites default CalculateSpace in DC.
-Shift+Alt+J      | MarkCurrentExtension   | Nice to have                  |
-Shift+Alt+K      | UnmarkCurrentExtension | Nice to have                  |
-\-               | MarkMinus              | Nice to have                  |
-Ctrl+B           | MarkPlus               | No                            |
-Shift+Alt+X      | CopyNamesToClip        | Nice to have                  | Shift+Ctrl+X is already used by Qubes OS.
-Shift+Alt+C      | CopyFullNamesToClip    | Nice to have                  | Shift+Ctrl+C is already used by Qubes OS.
-Ctrl+1           | SortByName             | Nice to have                  |
-Ctrl+2           | SortByExt              | Nice to have                  |
-Ctrl+3           | SortBySize             | Nice to have                  |
-Ctrl+4           | SortByDate             | Nice to have                  |
-Ctrl+5           | SortByAttr             | Nice to have                  |
-Ctrl+6           | SortByRunCount         | Nice to have                  | DC currently does not have it but other file explorers/finders might.
-Shift+Ctrl+H     | QuickView              | Nice to have                  |
-Shift+Ctrl+J     | ColumnsView            | Nice to have                  |
-Shift+Ctrl+K     | BriefView              | Nice to have                  |
-Shift+Ctrl+L     | ThumbnailsView         | Nice to have                  |
-Shift+Ctrl+1     | PanelsSplitterPerPos   | Nice to have                  | splitpct=50
-Shift+Ctrl+2     | PanelsSplitterPerPos   | Nice to have                  | splitpct=60
-Shift+Ctrl+3     | PanelsSplitterPerPos   | Nice to have                  | splitpct=70
-Shift+Ctrl+4     | PanelsSplitterPerPos   | Nice to have                  | splitpct=80
-Shift+Ctrl+5     | PanelsSplitterPerPos   | Nice to have                  | splitpct=90
-Shift+Ctrl+6     | PanelsSplitterPerPos   | Nice to have                  | splitpct=100
-Shift+Ctrl+9     | PanelsSplitterPerPos   | Nice to have                  | Auto fit. DC currently does not have it but other file explorers/finders might.
-Shift+Ctrl+7     | HorizontalFilePanels   | Nice to have                  |
-Shift+Ctrl+I     | DirHotList             | Not really                    |
-Ctrl+H           | DirHistory             | Not really                    |
-Shift+Ctrl+N     | ShowCmdLineHistory     | Not really                    |
-Ctrl+N           | OpenDirInNewTab        | Nice to have                  |
-Ctrl+G           | NewTab                 | Nice to have                  |
-Ctrl+U           | Exchange               | Nice to have                  |
-Alt+Z            | TargetEqualSource      | Nice to have                  |
-Shift+Alt+H      | LeftOpenDrives         | Nice to have                  |
-Shift+Alt+N      | RightOpenDrives        | Nice to have                  |
-Ctrl+,           | ChangeDirToHome        | Nice to have                  |
-Ctrl+/           | ChangeDirToRoot        | Nice to have                  | Not working on Windows with neo-vars by default. Workaround provided in `../install.ps1`.
-Shift+Alt+S      | SyncDirs               | Yes                           |
-Shift+Alt+M      | ConfigHotKeys          | Not really                    | Helps for quick shortcut lookup.
+Shortcut         | Function                | Left hand only                | Comment
+-------------    | -------------           | -------------                 | -------------
+/                | QuickSearch             | Yes (maybe copy paste search) | Not used. Configured DC so that every letter typed will open the quick filter.
+Ctrl+S           | Search                  | Yes                           |
+Shift+Ctrl+M     | CountDirContent         | Yes                           | Calculate size for directories and show it instead of \<DIR\>
+Shift+Ctrl+Space | CalculateSpace          | Nice to have                  |
+Ctrl+.           | ShowSysFiles            | Nice to have                  |
+Shift+Ctrl+S     | RunTerm                 | Not really                    | Like Ctrl+Super+s but with the current directory of DC.
+Ctrl+L           | FocusCmdLine            | Not really                    | Was mapped to Shift+F2 but Ctrl+L is more convenient because it has a similar meaning in Firefox. Overwrites default CalculateSpace in DC.
+Shift+Alt+J      | MarkCurrentExtension    | Nice to have                  |
+Shift+Alt+K      | UnmarkCurrentExtension  | Nice to have                  |
+\-               | MarkMinus               | Nice to have                  |
+Ctrl+B           | MarkPlus                | No                            |
+Shift+Alt+X      | CopyNamesToClip         | Nice to have                  | Shift+Ctrl+X is already used by Qubes OS.
+Shift+Alt+C      | CopyPathToClipboard.lua | Nice to have                  | Copy full path of selected file. Shift+Ctrl+C is already used by Qubes OS.
+Ctrl+Z           | CopyPathToClipboard.lua | Nice to have                  | Copy path of current panel to clipboard.
+Ctrl+1           | SortByName              | Nice to have                  |
+Ctrl+2           | SortByExt               | Nice to have                  |
+Ctrl+3           | SortBySize              | Nice to have                  |
+Ctrl+4           | SortByDate              | Nice to have                  |
+Ctrl+5           | SortByAttr              | Nice to have                  |
+Ctrl+6           | SortByRunCount          | Nice to have                  | DC currently does not have it but other file explorers/finders might.
+Shift+Ctrl+H     | QuickView               | Nice to have                  |
+Shift+Ctrl+J     | ColumnsView             | Nice to have                  |
+Shift+Ctrl+K     | BriefView               | Nice to have                  |
+Shift+Ctrl+L     | ThumbnailsView          | Nice to have                  |
+Shift+Ctrl+1     | PanelsSplitterPerPos    | Nice to have                  | splitpct=50
+Shift+Ctrl+2     | PanelsSplitterPerPos    | Nice to have                  | splitpct=60
+Shift+Ctrl+3     | PanelsSplitterPerPos    | Nice to have                  | splitpct=70
+Shift+Ctrl+4     | PanelsSplitterPerPos    | Nice to have                  | splitpct=80
+Shift+Ctrl+5     | PanelsSplitterPerPos    | Nice to have                  | splitpct=90
+Shift+Ctrl+6     | PanelsSplitterPerPos    | Nice to have                  | splitpct=100
+Shift+Ctrl+9     | PanelsSplitterPerPos    | Nice to have                  | Auto fit. DC currently does not have it but other file explorers/finders might.
+Shift+Ctrl+7     | HorizontalFilePanels    | Nice to have                  |
+Shift+Ctrl+I     | DirHotList              | Not really                    |
+Ctrl+H           | DirHistory              | Not really                    |
+Shift+Ctrl+N     | ShowCmdLineHistory      | Not really                    |
+Ctrl+Ö           | OpenDirInNewTab         | Nice to have                  |
+Ctrl+N           | NewTab                  | Nice to have                  |
+Ctrl+U           | Exchange                | Nice to have                  |
+Alt+Z            | TargetEqualSource       | Nice to have                  |
+Shift+Alt+H      | LeftOpenDrives          | Nice to have                  |
+Shift+Alt+N      | RightOpenDrives         | Nice to have                  |
+Ctrl+,           | ChangeDirToHome         | Nice to have                  |
+Ctrl+/           | ChangeDirToRoot         | Nice to have                  | Not working on Windows with neo-vars by default. Workaround provided in `../install.ps1`.
+Shift+Alt+S      | SyncDirs                | Yes                           |
+Shift+Alt+M      | ConfigHotKeys           | Not really                    | Helps for quick shortcut lookup.
 
 #### Used keys
 
-* Ctrl + [,.1ABCDEFHIJKLMNOPQSUVWXY]
+* Ctrl + [,.1ABCDEFGHIJKLMNOPQRSUVWXYÄ]
 * Shift+Ctrl + [ACDEHIJKLMNOSUVX]
 
 #### Free shortcuts
 
-* Ctrl+[GT]
+* *+[ÖÄÜ] (Ö is particularly interesting because it is directly under the pinky)
+* Ctrl+[TG]
 * Shift+Ctrl+[BFPQWYZ]
 * Shift+Alt+
 * Shift+Tab

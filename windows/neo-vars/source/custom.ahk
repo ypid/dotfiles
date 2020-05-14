@@ -42,6 +42,7 @@ RegExEsc(String, Options := "") {
 ;; Ref: Get-CleanPath in ../../MS_Shell/Modules/ypidDotfiles/ypidDotfiles.psm1
 ;; Seems up to and including Windows 10, UNC paths with forward slashes don’t work.
 ;; At least //files.example.org/home and \\files.example.org/home and //files.example.org\home don’t work.
+;; Note: This function exists in multiple files and even languages (Lua, AHK). Refer to the AHK implementation for details. AHK is considered the reference implementation.
 clean_path_in_clipboard() {
     EnvGet, home_dir_path, USERPROFILE
     Clipboard := RegExReplace(Clipboard, "^" RegExEsc(home_dir_path), "%USERPROFILE%")
@@ -75,16 +76,9 @@ clean_path_in_clipboard() {
 Return
 ;; }}}
 
-;; Shift+Alt+C | Hook Double Commander calls to CopyFullNamesToClip and run clean_path_in_clipboard afterwards.
-;; We can "safely" do this because when CopyFullNamesToClip is called, the user wants to copy the path as text.
+;; Shift+Alt+C | Hook Everything copy path.
+;; We can "safely" do this because here, the user wants to copy the path as text.
 #UseHook
-#IfWinActive ahk_exe doublecmd\.exe
-+!c::
-    Send +!c
-    clean_path_in_clipboard()
-Return
-#IfWinActive
-
 #IfWinActive ahk_exe Everything\.exe
 +!c::
     Send +!c
@@ -94,9 +88,9 @@ Return
 #UseHook off
 
 OnClipboardChange:
-    ;; Fix file path when in transit in Explorer (or Double Commander).
+    ;; Fix file path when in transit in Explorer
     ;; Ensure that we are only working on text.
-    If (WinActive("ahk_exe (?i)(?:explorer\.exe|doublecmd\.exe)") and A_EventInfo == 1) {
+    If (WinActive("ahk_exe (?i)(?:explorer\.exe)") and A_EventInfo == 1) {
 
         ;; Location bar in Explorer has focus.
         ;; Run clean_path_in_clipboard after copying text to clipboard in Explorer when cursor is above "Location bar" known as Edit1 (bad programming/variable naming M$??).

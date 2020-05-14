@@ -3,7 +3,7 @@ AddressFamily\0\
 AgentFwd\0\
 AltF4\1\
 AltOnly\0\
-AltSpace\1\
+AltSpace\0\
 AlwaysOnTop\0\
 Answerback\KiTTY\
 AntiIdle\\
@@ -91,7 +91,7 @@ ComposeKey\0\
 Compression\0\
 ConnectionSharingDownstream\1\
 ConnectionSharingUpstream\1\
-ConnectionSharing\1\
+ConnectionSharing\0\
 CtrlAltKeys\1\
 CtrlShiftCV\none\
 CtrlShiftIns\explicit\
@@ -133,7 +133,7 @@ IconeFile\\
 Icone\1\
 KEX\ecdh,dh-gex-sha1,dh-group14-sha1,rsa,WARN,dh-group1-sha1\
 LFImpliesCR\0\
-LineCodePage\UTF-8\
+LineCodePage\\
 LinuxFunctionKeys\0\
 LocalEcho\2\
 LocalEdit\2\
@@ -156,7 +156,7 @@ MouseOverride\1\
 MousePaste\explicit\
 NetHackKeypad\0\
 NoAltScreen\0\
-NoApplicationCursors\1\
+NoApplicationCursors\0\
 NoApplicationKeys\1\
 NoDBackspace\0\
 NoMouseReporting\0\
