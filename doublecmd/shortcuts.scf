@@ -422,19 +422,19 @@
       <Hotkey>
         <Shortcut>Ctrl+N</Shortcut>
         <Command>cm_ExecuteScript</Command>
-        <Param>%USERPROFILE%/AppData/Roaming/doublecmd/scripts/OpenInNewTab.lua</Param>
+        <Param>%DC_CONFIG_PATH%/scripts/OpenInNewTab.lua</Param>
         <Param>%"0%p</Param>
       </Hotkey>
       <Hotkey>
         <Shortcut>Ctrl+Z</Shortcut>
         <Command>cm_ExecuteScript</Command>
-        <Param>%USERPROFILE%/AppData/Roaming/doublecmd/scripts/CopyPathToClipboard.lua</Param>
+        <Param>%DC_CONFIG_PATH%/scripts/CopyPathToClipboard.lua</Param>
         <Param>%"0%D</Param>
       </Hotkey>
       <Hotkey>
         <Shortcut>Shift+Alt+C</Shortcut>
         <Command>cm_ExecuteScript</Command>
-        <Param>%USERPROFILE%/AppData/Roaming/doublecmd/scripts/CopyPathToClipboard.lua</Param>
+        <Param>%DC_CONFIG_PATH%/scripts/CopyPathToClipboard.lua</Param>
         <Param>%"0%p</Param>
       </Hotkey>
       <Hotkey>

@@ -273,11 +273,11 @@
   </Language>
   <Behaviours>
     <GoToRoot>False</GoToRoot>
-    <RunInTerminalStayOpenCmd>x-terminal-emulator</RunInTerminalStayOpenCmd>
+    <RunInTerminalStayOpenCmd>ConEmu64.exe</RunInTerminalStayOpenCmd>
     <RunInTerminalStayOpenParams>-e sh -c '{command}; echo -n Press ENTER to exit... ; read a'</RunInTerminalStayOpenParams>
     <RunInTerminalCloseCmd/>
     <RunInTerminalCloseParams/>
-    <JustRunTerminal>x-terminal-emulator</JustRunTerminal>
+    <JustRunTerminal>ConEmu64.exe</JustRunTerminal>
     <JustRunTermParams/>
     <OnlyOneAppInstance>True</OnlyOneAppInstance>
     <LynxLike>True</LynxLike>
@@ -326,7 +326,7 @@
       <KeepTerminalOpen>True</KeepTerminalOpen>
     </Viewer>
     <Editor Enabled="True">
-      <Path>gvim</Path>
+      <Path>C:/Program Files/Vim/vim81/gvim.exe</Path>
       <Parameters/>
       <RunInTerminal>False</RunInTerminal>
       <KeepTerminalOpen>True</KeepTerminalOpen>

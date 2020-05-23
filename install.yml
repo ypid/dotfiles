@@ -303,8 +303,12 @@
     # Does overwrite symbolic links.
     # ~/.config/doublecmd/shortcuts.scf:
     #     create: true
-    #     create: true
     #     path: doublecmd/shortcuts.scf
+
+    ~/.config/doublecmd/scripts:
+        create: true
+        relink: true
+        path: doublecmd/scripts
 
     ~/.config/mr/mrconfig:
       create: true
