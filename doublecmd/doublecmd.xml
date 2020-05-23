@@ -1,3 +1,4 @@
+<?xml version="1.0"?>
 <doublecmd DCVersion="0.9.8 beta" ConfigVersion="10">
   <Configuration Save="True" SortOrder="0" TreeType="0">
     <UseConfigInProgramDir>False</UseConfigInProgramDir>
@@ -63,11 +64,6 @@
     <UseInactiveSelColor>False</UseInactiveSelColor>
     <AllowOverColor>True</AllowOverColor>
     <gBorderFrameWidth>1</gBorderFrameWidth>
-    <LogWindow>
-      <Info>8388608</Info>
-      <Error>255</Error>
-      <Success>32768</Success>
-    </LogWindow>
   </Colors>
   <Plugins>
     <DsxPlugins/>
@@ -819,7 +815,6 @@
     <DfltRightGoTo>1</DfltRightGoTo>
     <DfltKeep>5</DfltKeep>
     <DfltSaveDirHistory>False</DfltSaveDirHistory>
-    <FavTabsLastUniqueID>{96A85B0C-F45F-49EF-80A3-09E6AAD3CEE2}</FavTabsLastUniqueID>
   </FavoriteTabsOptions>
   <LastDoAnyCommand>cm_Refresh</LastDoAnyCommand>
   <Description>
@@ -895,4 +890,4 @@
   <MarkShowWantedAttribute>False</MarkShowWantedAttribute>
   <MarkDefaultWantedAttribute/>
   <MarkLastWantedAttribute/>
-  </doublecmd>
+</doublecmd>

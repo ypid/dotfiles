@@ -11,6 +11,18 @@
 [diff]
 	; wordRegex = [[:alnum:]_]+|[^[:alnum:]_ ]+
 
+[filter "doublecmd_xml_file"]
+	clean = xmlstarlet ed \
+		-d '//doublecmd/Tabs' \
+		-d '//doublecmd/MainWindow' \
+		-d '//doublecmd/Log' \
+		-d '//doublecmd/IgnoreList' \
+		-d '//doublecmd/Lua' \
+		-d '//doublecmd/DirectoryHotList' \
+		-d '//doublecmd/Colors/LogWindow' \
+		-d '//doublecmd/FavoriteTabsOptions/FavTabsLastUniqueID' \
+		'%f'
+
 [filter "kitty_session_file"]
 	clean = LC_ALL=C sort | grep --no-filename --invert-match "^Password[^\\w]"
 
