@@ -278,7 +278,7 @@ fi
 # }}}
 
 ## Elastic {{{
-## https://www.elastic.co/guide/en/kibana/6.4/install-plugin.html
+## https://www.elastic.co/guide/en/kibana/7.7/install-plugin.html
 command -v kibana-plugin >/dev/null 2>&1 && alias kibana-plugin="sudo -u kibana $(which kibana-plugin)"
 command -v elasticsearch-keystore >/dev/null 2>&1 && alias elasticsearch-keystore="sudo -u elasticsearch $(which elasticsearch-keystore)"
 # }}}
@@ -372,7 +372,14 @@ if [[ "$USER" != 'root' ]] && [ -z "$ANDROID_ROOT" ]; then
     alias aptitude='sudo aptitude'
     alias apt='sudo apt'
     alias zypper='sudo zypper'
-    alias sc='sudo ~root/.local/share/scripts/ypid-scripts-common/sc'
+
+    ## Ref: https://github.com/ypid/ypid-ansible-inventory/tree/master/group_vars/public_ypid_qubes_debops
+    if [ -e /usr/local.template ]; then
+        usrlocal_path='/usr/local.template'
+    else
+        usrlocal_path='/usr/local'
+    fi
+    alias sc="sudo ${usrlocal_path}/share/ypid_dotfiles/scripts/sc"
 fi
 
 alias rpm-keys="rpm -q gpg-pubkey --qf '%{name}-%{version}-%{release} --> %{summary}\n'"
