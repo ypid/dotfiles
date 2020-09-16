@@ -305,10 +305,10 @@ if [ -e "${PREFIX:-}/etc/apt" ]; then
     alias an='apt update && apt upgrade'
 elif [ -e "${PREFIX:-}/etc/zypp" ]; then
     alias m='zypper'
-    alias ai='zypper install'
+    alias ai='zypper install --details'
     alias ap='zypper remove'
-    alias as='zypper search'
-    alias ash='zypper info'
+    alias as='\zypper search'
+    alias ash='\zypper info'
     alias an='zypper update'
 elif command -v dnf >/dev/null 2>&1; then
     alias m='dnf'

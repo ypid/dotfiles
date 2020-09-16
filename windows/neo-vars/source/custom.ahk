@@ -31,7 +31,6 @@ RegExEsc(String, Options := "") {
 ;; WARNING: This clipboard substitution has the issue that after the substitution, pasting the file does not work anymore!!
 ;; Because of this, we don’t run the substitution OnClipboardChange globally but only when we consider it safe and otherwise using a (manual) shortcut.
 ;; Situations where we know it is safe:
-;; * Double Commander calls CopyFullNamesToClip.
 ;; * Location bar in Explorer has focus. See limitations below!
 
 ;; The expected workflow is:
@@ -94,7 +93,7 @@ OnClipboardChange:
 
         ;; Location bar in Explorer has focus.
         ;; Run clean_path_in_clipboard after copying text to clipboard in Explorer when cursor is above "Location bar" known as Edit1 (bad programming/variable naming M$??).
-        ;; Technically this is not 100 % bulletproof because you could do the copy to clipboard with Ctrl+L followed Ctrl+C while the cursor focuses some other control.
+        ;; Technically this is not 100 % bulletproof because you could do the copy to clipboard with Ctrl+L followed by Ctrl+C while the cursor focuses some other control.
         If (WinActive("ahk_exe (?i)(?:explorer\.exe)")) {
             MouseGetPos, , , , control_below_cursor
             If (control_below_cursor == "Edit1") {
