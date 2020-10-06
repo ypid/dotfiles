@@ -17,8 +17,20 @@ Q: Can I trust your [Free Software] which was written at work?<br>
 A: For the most part yes and here is why. I understand that every system which
    has Windows in it’s [TCB] is by definition untrustworthy. That is why I review
    every commit I make on my personal computer running Qubes OS, sign the commit
-   with a OpenPGP signature and then push it upstream. As stated elsewhere, assume
-   everything not signed by me to be forged/not from me.
+   with a OpenPGP signature and then push it upstream.
+
+   ~~As stated elsewhere, assume everything not signed by me to be forged/not from me.~~
+
+   I now use the account https://github.com/ypid-geberit to open PR against projects. The idea is
+   that those PRs are reviewed upstream anyway so I don’t necessarily need to
+   sign them which means extra work for me.
+   I don’t really see the point in using a YubiKey to do signatures there because the
+   basic problem remains. Windows is not trustworthy so I could accidentally
+   sign anything there without knowing it.
+   I guess there is still value in using a YubiKey if it has a battery-backed
+   RTC so that at least what I signed can be time checked so it at least forces
+   the advisory to have recent access to my YubiKey. Lets see, I might go that
+   route.
 
 Q: Did any of your private OpenPGP keys ever get exposed to a Windows system or will they in the future?<br>
 A: Silly? No, never.
