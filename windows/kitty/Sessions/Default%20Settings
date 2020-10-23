@@ -142,7 +142,7 @@ LocalPortAcceptAll\0\
 LocalUserName\\
 LockSize\0\
 LogFileClash\-1\
-LogFileName\C%3A%2Fvar%2Flog%2Fssh_sessions%2F&H_&Y-&M-&DT&T.log\
+LogFileName\C%3A%2Fvar%2Flog%2Fkitty_sessions%2F&H_&Y-&M-&DT&T.log\
 LogFlush\1\
 LogHeader\1\
 LogHost\\

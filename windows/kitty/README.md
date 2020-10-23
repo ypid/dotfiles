@@ -31,9 +31,20 @@ Deployment tip: System defaults can be provided as `C:/ProgramData/Chocolatey/li
 
 ## Configuration install
 
-Refer to ../../install.ps1.
+Two options exist, either manual or automated.
 
-Ref: https://github.com/cyd01/KiTTY/issues/70
+Note that the default settings cannot be symlinked because of https://github.com/cyd01/KiTTY/issues/70. It will be copied with both installation methods.
+
+## Manual configuration install
+
+1. Start KiTTY once to let it create its local config dir with default config and close it again to ensure that it does not get in the way.
+2. Download [`Default%20Settings`](./Sessions/Default%20Settings) and put it into `%LOCALAPPDATA%\VirtualStore/ProgramData/Chocolatey/lib/kitty/tools/Sessions`. Be sure that the file is named exactly like that. You will need to overwrite the file that KiTTY just created.
+3. Create the directory hierarchy `C:/var/log/kitty_sessions` to allow KiTTY to store session logs there.
+
+## Automated configuration install
+
+1. Review and run [`../../install.ps1`](../../install.ps1). Note that this script installs all Windows related dotfiles in this repo, not just KiTTY. You may want to edit the script to only execute the KiTTY related things.
+2. Review and run [`../../install_fhs.ps1`](../../install_fhs.ps1) to create the required directory hierarchy.
 
 ## Settings
 
@@ -61,8 +72,8 @@ SaveOnExit\1\
 ;; Comes in handy specially when duplicating sessions to have a predictable behavior (same as original session).
 ;; One has window manager shortcuts to quickly reposition windows as needed.
 
-LogFileName "C:/var/log/ssh_sessions/&H_&Y-&M-&DT&T.log"
-;; Example: C:/var/log/ssh_sessions/localhost_2020-07-02T124741.log
+LogFileName "C:/var/log/kitty_sessions/&H_&Y-&M-&DT&T.log"
+;; Example: C:/var/log/kitty_sessions/localhost_2020-07-02T124741.log
 ;; "Session" -> "Logging" -> "Log file name"
 
 LogTimestamp "%Y-%m-%d %H:%M:%S "
