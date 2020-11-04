@@ -140,9 +140,8 @@ alias ts='date'
 
 ## Shell basics {{{
 
-alias lsa='ls -lah'
-alias l='ls -lah'
-alias ll='ls -lh'
+alias l='ls -lh'
+alias ll='ls -lha'
 alias la='ls -lAh'
 
 ## }}}
