@@ -96,7 +96,7 @@
 	j = branch -r --sort=-committerdate --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'
 
 [core]
-	editor = vim
+	editor = nvim
 
         ;; Don’t. Use .gitattributes if necessary:
         ;; Setting it here is required to overwrite the Windows default from c:/ProgramData/Git/config

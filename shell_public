@@ -16,7 +16,7 @@ export INPUTRC="${XDG_CONFIG_HOME}/readline/inputrc"
 export ANSIBLE_NOCOWS=1
 export BYOBU_PREFIX="/usr"
 export BYOBU_CONFIG_DIR="$HOME/.byobu"
-export EDITOR=vim
+export EDITOR=nvim
 
 export LANG='en_US.UTF-8'
 export LANGUAGE='en_US:en'
@@ -136,6 +136,8 @@ function date {
 }
 alias ts='date'
 
+# source ~/.config/dotfiles/n.sh
+
 ## }}}
 
 ## Shell basics {{{
@@ -157,15 +159,12 @@ fi
 ## Editor {{{
 
 ## On Debian this is provided by the alternatives systems.
-if ! command -v editor >/dev/null 2>&1
-then
-    alias editor="$EDITOR"
-fi
+## But the alternative system is global.
+alias editor="$EDITOR"
 
-alias e='editor'
+alias vi='editor'
 alias ,e='exit'
 alias ,x='exit'
-alias ,r='editor'
 # alias less='vim -c "w! /tmp/.vimpager" -'
 
 ## }}}
@@ -259,15 +258,26 @@ else
 fi
 ## }}}
 
-## ag {{{
+## ripgrep {{{
 if command -v ag >/dev/null 2>&1
+then
+    ## Using ripgrep
+    function ag() {
+        if [[ $# == 0 ]]; then
+            command rg
+        else
+            command rg --follow --smart-case "$@"
+        fi
+    }
+    alias rg='ag'
+elif command -v ag >/dev/null 2>&1
 then
     ## Using silversearcher-ag
     function ag() {
         if [[ $# == 0 ]]; then
             command ag
         else
-            command ag --follow "$@"
+            command ag --follow --smart-case "$@"
         fi
     }
 elif command -v ack-grep >/dev/null 2>&1
@@ -288,9 +298,6 @@ command -v elasticsearch-keystore >/dev/null 2>&1 && alias elasticsearch-keystor
 ## User local, specific package manager: asdf {{{
 # shellcheck source=/dev/null
 test -f "${ASDF_DIR}/completions/asdf.bash" && source "${ASDF_DIR}/completions/asdf.bash"
-if command -v asdf  >/dev/null 2>&1; then
-    alias n='asdf'
-fi
 ## }}}
 
 ## Machine-wide package management: Platform dependent {{{

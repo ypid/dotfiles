@@ -55,12 +55,13 @@ then
     ## Ruby {{{
     ## There is an issue on SLES which causes the $LOAD_PATH to be reset
     ## ("/usr/lib64/ruby/gems/2.5.0/gems/" entries are removed).
+    ## This also breaks Vagrant on Debian 10. So I disable it for now:
     # shellcheck disable=SC1091
-    if [[ -e "/etc/os-release" ]] && [[ ! "$( . /etc/os-release && echo "$NAME" )" == "SLES" ]]; then
-        export GEM_HOME="$user_install_dir/gems"
-        export GEM_PATH="$GEM_HOME"
-        pathappend "$GEM_HOME/bin"
-    fi
+    # if [[ -e "/etc/os-release" ]] && [[ ! "$( . /etc/os-release && echo "$NAME" )" == "SLES" ]]; then
+    #     export GEM_HOME="$user_install_dir/gems"
+    #     export GEM_PATH="$GEM_HOME"
+    #     pathappend "$GEM_HOME/bin"
+    # fi
     ## }}}
 
     ## Haskell {{{

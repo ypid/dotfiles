@@ -128,6 +128,10 @@ if [[ ! -a /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; th
     plugins+=(zsh-syntax-highlighting)
 fi
 
+if [[ -d /usr/share/zsh/vendor-completions ]]; then
+	fpath+="/usr/share/zsh/vendor-completions"
+fi
+
 # Additional functions
 plugins+=(debian)
 plugins+=(encode64)
