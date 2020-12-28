@@ -1002,7 +1002,7 @@ if count(g:config_section_enable, 'autocmd_config')
             " Automatically set executable bit for scripts. {{{
             " https://www.reddit.com/r/linux/comments/e649x/
             function! MakeScriptExecuteable()
-                if getline(1) =~ "^#!.*/bin/"
+                if getline(1) =~# '\v^#!.*/bin/'
                     silent !chmod +x <afile>
                 endif
             endf
@@ -1101,7 +1101,7 @@ if count(g:config_section_enable, 'autocmd_config')
             " Always switch to the current file directory
             autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
 
-            " autocmd BufEnter * if expand("%:p") =~ "/.unison/" | lcd | endif
+            " autocmd BufEnter * if expand("%:p") =~# "/.unison/" | lcd | endif
             " Go to home for unison to use file completion easily.
         augroup END
     endif
