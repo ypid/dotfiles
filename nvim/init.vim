@@ -249,11 +249,16 @@ if count(g:spf13_bundle_groups, 'general') " {{{
     " let g:EasyMotion_leader_key = '<Leader>j'
     " Don’t really using it for now.
 
-    Plugin 'ghost/gundo.vim'
-    let g:gundo_prefer_python3 = 1
-    nnoremap ρ :GundoToggle<CR>
+    " Plugin 'ghost/gundo.vim'
+    " let g:gundo_prefer_python3 = 1
+    " nnoremap ρ :GundoToggle<CR>
     " Shift+Layer3Mod+r
     " Shift+Layer3Mod+u cannot be used because it is the same as Shift+Layer3Mod+h on neo_qwertz.
+    Plugin 'ghost/vim-mundo'
+    let g:mundo_prefer_python3 = 1
+    nnoremap ρ :MundoToggle<CR>
+
+
 
     "" Indent guide {{{
     " Plugin 'Yggdroot/indentLine'

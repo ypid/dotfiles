@@ -340,3 +340,6 @@
 [submodule "nvim/bundle/SrchRplcHiGrp.vim"]
 	path = nvim/bundle/SrchRplcHiGrp.vim
 	url = https://github.com/vim-scripts/SrchRplcHiGrp.vim.git
+[submodule "nvim/bundle/vim-mundo"]
+	path = nvim/bundle/vim-mundo
+	url = https://github.com/simnalamburt/vim-mundo.git
