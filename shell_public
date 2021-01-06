@@ -111,7 +111,7 @@ function h {
     if [[ "$pattern" == "." ]]; then
         history
     else
-        history | egrep -ie "$pattern" "$@"
+        history | grep -Eie "$pattern" "$@"
     fi
 }
 
@@ -291,8 +291,8 @@ fi
 
 ## Elastic {{{
 ## https://www.elastic.co/guide/en/kibana/7.7/install-plugin.html
-command -v kibana-plugin >/dev/null 2>&1 && alias kibana-plugin="sudo -u kibana $(which kibana-plugin)"
-command -v elasticsearch-keystore >/dev/null 2>&1 && alias elasticsearch-keystore="sudo -u elasticsearch $(which elasticsearch-keystore)"
+command -v kibana-plugin >/dev/null 2>&1 && alias kibana-plugin="sudo -u kibana $(command -v kibana-plugin)"
+command -v elasticsearch-keystore >/dev/null 2>&1 && alias elasticsearch-keystore="sudo -u elasticsearch $(command -v elasticsearch-keystore)"
 # }}}
 
 ## User local, specific package manager: asdf {{{
@@ -391,7 +391,7 @@ if [[ "$USER" != 'root' ]] && [ -z "$ANDROID_ROOT" ]; then
     alias sc="sudo ${usrlocal_path}/share/ypid_dotfiles/scripts/sc"
 fi
 
-alias rpm-keys="rpm -q gpg-pubkey --qf '%{name}-%{version}-%{release} --> %{summary}\n'"
+alias rpm-keys="rpm -q gpg-pubkey --qf '%{name}-%{version}-%{release} --> %{summary}\\n'"
 
 alias xclip-primary-to-clipboard='xclip -out | xclip -in -selection clipboard'
 
