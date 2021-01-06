@@ -346,3 +346,6 @@
 [submodule "nvim/bundle/diffconflicts"]
 	path = nvim/bundle/diffconflicts
 	url = https://github.com/whiteinge/diffconflicts.git
+[submodule "nvim/bundle/vim-diff-enhanced"]
+	path = nvim/bundle/vim-diff-enhanced
+	url = https://github.com/chrisbra/vim-diff-enhanced.git

@@ -445,6 +445,8 @@ if count(g:spf13_bundle_groups, 'generic_programming') " {{{
         Plugin 'ghost/diffconflicts'
     " }}}
 
+    Plugin 'ghost/vim-diff-enhanced'
+
     Plugin 'ghost/vim-plugin-viewdoc'
     let g:manpageview_options_pl = ";-f;-q;-t;"
     let g:viewdoc_openempty = 1
