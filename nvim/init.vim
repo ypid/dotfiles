@@ -445,6 +445,8 @@ if count(g:spf13_bundle_groups, 'generic_programming') " {{{
 
         " Plugin 'airblade/vim-gitgutter'
         " Show changes in working copy with plus sign, start of the line
+
+        Plugin 'ghost/diffconflicts'
     " }}}
 
     Plugin 'ghost/vim-plugin-viewdoc'

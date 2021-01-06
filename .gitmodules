@@ -343,3 +343,6 @@
 [submodule "nvim/bundle/vim-mundo"]
 	path = nvim/bundle/vim-mundo
 	url = https://github.com/simnalamburt/vim-mundo.git
+[submodule "nvim/bundle/diffconflicts"]
+	path = nvim/bundle/diffconflicts
+	url = https://github.com/whiteinge/diffconflicts.git
