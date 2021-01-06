@@ -59,23 +59,19 @@ endif
 " Plugins {{{
 
 if count(g:spf13_bundle_groups, 'init_plugin_system') " {{{
+    " I use git submodules to manage my plugins. To avoid redundancy, I put
+    " "ghost" as owner here.
 
-    " The next three lines ensure that the ~/.vim/bundle/ system works
     filetype off
 
     set runtimepath+=~/.vim/bundle/vundle
     call vundle#rc()
 
-    " call vundle#begin()
-    " Plugin 'gmarik/vundle'
-    " Not required. Managed via git submodules.
-    " Submodules are also the reason why I put "ghost" as owner
-    " everywhere.
-    " Required for :PluginClean.
+    " Needed to make doc helptags work.
+    Plugin 'ghost/vundle'
 
     " set runtimepath+=~/.vim/bundle/neobundle.vim
     " call neobundle#begin(expand('~/.vim/bundle/'))
-
 endif " }}}
 
 if count(g:spf13_bundle_groups, 'plugin_dependencies') " {{{
