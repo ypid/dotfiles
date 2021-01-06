@@ -233,7 +233,7 @@ if ! command -v tig >/dev/null 2>&1; then
 fi
 
 # Overwrite alias from oh-my-zsh {{{
-alias glg='git log --stat --decorate=short --show-signature' # full history
+alias glg="git log --stat --decorate=short --show-signature --date=format:'%a %Y-%m-%d %H:%M:%S%z'" # full history
 alias gl='git pull --verify-signatures'
 alias gll='git pull'
 alias gup='git pull --verify-signatures --recurse-submodules=on-demand'
