@@ -349,7 +349,8 @@ MoveIt(Q) {
 
 ;; Ctrl+Super+S | Launch program `x-terminal-emulator` {{{
 ; ^#s::Run cmd.exe
-^#s::Run C:/Program Files/ConEmu/ConEmu64.exe
+; ^#s::Run C:/Program Files/ConEmu/ConEmu64.exe
+^#s::Run wt.exe
 ;; }}}
 
 ;; Shift+Super+A | Launch program `gnome-calculator` {{{

@@ -1,0 +1,20 @@
+---
+
+# yamllint disable rule:line-length
+
+- defaults:
+    link:
+      relative: true
+      canonicalize-path: false
+      create: true
+      relink: true
+      if: '[ -d /mingw64 ]'
+
+- link:
+
+    # Workaround: https://github.com/microsoft/terminal/issues/2933#issuecomment-739243074
+    '~/AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState':
+      path: 'windows/MS_Terminal/LocalState'
+
+    '~/Documents/PowerShell':
+      path: 'windows/MS_Shell'

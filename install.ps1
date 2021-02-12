@@ -1,5 +1,6 @@
 ## This script just links (or as fall back, copies) the files in place. Seems nobody using windows ever heard about a dotfiles manager nor git* so this is what I ended up with.
 ## *git is now even Microsoft default so forget about that last part :)
+## TODO: Switch to install-win.yml
 
 function cp--no-clobber{
     Param(
