@@ -131,8 +131,6 @@
 	verbose = true
 [tag]
 	gpgsign = true
-[merge]
-	ff = false
 [pull]
 	ff = only
 [log]
@@ -156,3 +154,11 @@
 
 	# Optionally, use the old and faster but less accurate graph renderer
 	#set main-view-commit-title-graph = v1
+[merge]
+	ff = false
+	tool = diffconflicts
+[mergetool "diffconflicts"]
+	cmd = nvim -c DiffConflicts \"$MERGED\" \"$BASE\" \"$LOCAL\" \"$REMOTE\"
+	trustExitCode = true
+[mergetool]
+	keepBackup = false
