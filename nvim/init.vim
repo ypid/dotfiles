@@ -254,7 +254,12 @@ if count(g:spf13_bundle_groups, 'general') " {{{
     let g:mundo_prefer_python3 = 1
     nnoremap ρ :MundoToggle<CR>
 
+    " WARNING: I only reviewed the code paths that I use from this library
+    " because it is too big.
+    Plugin 'ghost/vim-ingo-library'
 
+    " https://stackoverflow.com/questions/22193596/in-vim-how-to-remove-all-lines-that-are-duplicate-somewhere/22377072#22377072
+    Plugin 'ghost/vim-PatternsOnText'
 
     "" Indent guide {{{
     " Plugin 'Yggdroot/indentLine'
@@ -576,6 +581,8 @@ if count(g:spf13_bundle_groups, 'generic_programming') " {{{
         " noremap <Leader>as :SCCompileRun<CR>
         " inoremap <Leader>as <c-o>:SCCompileRun<CR>
     " }}}
+
+    " Plugin 'ghost/license-to-vim'
 
 endif " }}}
 
@@ -953,7 +960,7 @@ endif " }}}
         " Plugin 'spf13/vim-colors'
     endif
 
-    set background=light
+    set background=dark
 
     if count(g:config_section_enable, 'ui_config')
         highlight clear SignColumn      " SignColumn should match background for

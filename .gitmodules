@@ -349,3 +349,12 @@
 [submodule "nvim/bundle/vim-diff-enhanced"]
 	path = nvim/bundle/vim-diff-enhanced
 	url = https://github.com/chrisbra/vim-diff-enhanced.git
+[submodule "nvim/bundle/vim-PatternsOnText"]
+	path = nvim/bundle/vim-PatternsOnText
+	url = https://github.com/inkarkat/vim-PatternsOnText.git
+[submodule "nvim/bundle/vim-ingo-library"]
+	path = nvim/bundle/vim-ingo-library
+	url = https://github.com/inkarkat/vim-ingo-library.git
+[submodule "nvim/bundle/license-to-vim"]
+	path = nvim/bundle/license-to-vim
+	url = https://github.com/ararslan/license-to-vim.git
