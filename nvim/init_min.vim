@@ -135,7 +135,7 @@ set softtabstop=4                   " Let backspace delete indent.
 set mousehide                       " Hide the mouse cursor while typing
 set mouse=a                         " Enable mouse wheel scrolling
 
-set clipboard=unnamedplus         " Native integration with system clipboard, like any other application would.
+set clipboard=unnamedplus           " Native integration with system clipboard, like any other application would.
 
 set autowrite                       " Automatically write a file when leaving a modified buffer
 set shortmess+=filmnrxoOtT          " Abbrev. of messages (avoids 'hit enter')
