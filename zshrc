@@ -5,6 +5,10 @@ if [ -e "/run/qubes/this-is-templatevm" ]; then
     exec bash
 fi
 
+# Enable this:
+# zmodload zsh/zprof
+# And run `zprof` in a new shell to profile startup time.
+
 # Basic paths {{{
 ZSH="${XDG_CONFIG_HOME:-$HOME/.config}/oh-my-zsh"
 # ZSH_CACHE_DIR="$ZSH/cache" might not be writable
@@ -194,12 +198,26 @@ source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/global"
 
 # Bug in oh-my-zsh. If a plugin changes fpath, it is not picked up by compinit because it is run first!1!?
 # Hopefully this will be fixed by one of the refactoring pull requests.
-autoload -U compinit
-if [[ $DOCKER_IGNORE_UNSECURE == 1 ]]
-then
-	compinit -u
+
+# On slow systems, checking the cached .zcompdump file to see if it must be
+# regenerated adds a noticable delay to zsh startup.  This little hack restricts
+# it to once a day.  It should be pasted into your own completion file.
+#
+# The globbing is a little complicated here:
+# - '#q' is an explicit glob qualifier that makes globbing work within zsh's [[ ]] construct.
+# - 'N' makes the glob pattern evaluate to nothing when it doesn't match (rather than throw a globbing error)
+# - '.' matches "regular files"
+# - 'mh+24' matches files (or directories or whatever) that are older than 24 hours.
+autoload -Uz compinit
+if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
+    if [[ $DOCKER_IGNORE_UNSECURE == 1 ]]
+    then
+        compinit -u
+    else
+        compinit
+    fi
 else
-	compinit
+	compinit -C
 fi
 
 if command -v compdef >/dev/null 2>&1; then
