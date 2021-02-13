@@ -234,8 +234,8 @@ fi
 
 alias gls='git pull --verify-signatures'
 
-# Easier to type than `gf` because gf is typed with the same finger on QWERTZ.
-alias go='git fetch'
+# `ge` for `get`. Easier to type than `gf` because gf is typed with the same finger on QWERTZ.
+alias ge='git fetch'
 
 # Overwrite alias from oh-my-zsh {{{
 alias glg="git log --stat --decorate=short --show-signature --date=format:'%a %Y-%m-%d %H:%M:%S%z'" # full history
