@@ -1,0 +1,32 @@
+{
+    "usageCount": 165, 
+    "omitTrigger": false, 
+    "prompt": false, 
+    "description": "Change language in Pidgin to de", 
+    "abbreviation": {
+        "wordChars": "[\\w]", 
+        "abbreviations": [
+            "xkav"
+        ], 
+        "immediate": true, 
+        "ignoreCase": false, 
+        "backspace": true, 
+        "triggerInside": false
+    }, 
+    "hotkey": {
+        "hotKey": "h", 
+        "modifiers": [
+            "<ctrl>"
+        ]
+    }, 
+    "modes": [
+        3
+    ], 
+    "showInTrayMenu": false, 
+    "filter": {
+        "regex": "Pidgin.Pidgin", 
+        "isRecursive": false
+    }, 
+    "type": "script", 
+    "store": {}
+}

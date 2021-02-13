@@ -1,0 +1,413 @@
+#!/bin/bash
+# shellcheck disable=SC2139
+# .. vim: foldmarker={{{,}}}:foldmethod=marker
+
+if [ -n "$ANDROID_ROOT" ]; then
+    cd || exit
+fi
+
+## Exports {{{
+
+## https://superuser.com/questions/479600/how-can-i-prevent-tmux-exiting-with-ctrl-d
+# export IGNOREEOF=2
+## Does not work with zsh
+
+export INPUTRC="${XDG_CONFIG_HOME}/readline/inputrc"
+export ANSIBLE_NOCOWS=1
+export BYOBU_PREFIX="/usr"
+export BYOBU_CONFIG_DIR="$HOME/.byobu"
+export EDITOR=nvim
+
+export LANG='en_US.UTF-8'
+export LANGUAGE='en_US:en'
+
+if [ -z "$ANDROID_ROOT" ]; then
+    # http://terokarvinen.com/international_iso-8601_date_on_thunderbird.html
+    export LC_TIME='en_DK.UTF-8'
+fi
+
+## https://www.suse.com/releasenotes/i386/openSUSE/11.1/RELEASE-NOTES.en.html#04
+export MAN_POSIXLY_CORRECT=1
+
+## }}}
+
+## Enable color support of ls and also add handy aliases {{{
+if command -v dircolors >/dev/null 2>&1; then
+    export LS_OPTIONS='--color=auto'
+    alias ls='ls --color=auto --human-readable --time-style=long-iso'
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+
+    ## Seems not to be needed. Does not work under Termux because $SHELL is not defined.
+    # eval "$(dircolors)"
+fi
+
+## }}}
+
+## Little functions {{{
+function up {
+    if [[ $1 =~ ^-?[0-9]+$ ]]
+    then
+        local ups=""
+        # shellcheck disable=SC2034
+        for fnord in $(seq 1 "$1")
+        do
+            ups="${ups}../"
+        done
+        cd "$ups" || exit 1
+    elif [ -z "$1" ]; then
+        cd ..
+    fi
+}
+
+## Create a new directory and enter it.
+unalias md 2>/dev/zero
+function md() {
+    mkdir -p "$@"
+    cd "$@" || return
+}
+
+function dmesg() {
+    command dmesg --time-format iso "$@" || command dmesg "$@"
+}
+
+function virsh-disks() {
+    virsh --quiet domblklist "$1" --details | grep '^block' | while read -r line; do
+        disk_path="${line##* }"; info="$(lsblk "$disk_path" --output NAME,SIZE,TYPE --noheadings --nodeps)"
+        echo "$info $line"
+    done
+}
+
+function run-c() {
+    echo "main(){ ${*} }" | tcc -run -
+}
+
+function subnetcalc() {
+    if [[ $# == 0 ]]; then
+        command subnetcalc
+    else
+        command subnetcalc "$@" -n
+    fi
+}
+
+## https://gist.github.com/CMCDragonkai/62c04977f62037285772
+function sed-keyword-escape {
+    echo "$1" | sed -e 's/[]\/$*.^|[]/\\&/g'
+}
+
+function sed-replace-escape {
+    echo "$1" | sed -e 's/[\/&]/\\&/g'
+}
+
+function sed-easy {
+    sed -i "s/$(sed-keyword-escape "$1")/$(sed-replace-escape "$2")/g" "$3"
+}
+
+function h {
+    pattern="${1:-.}"
+    shift
+
+    if [[ "$pattern" == "." ]]; then
+        history
+    else
+        history | grep -Eie "$pattern" "$@"
+    fi
+}
+
+## https://stackoverflow.com/questions/1115904/shortest-way-to-swap-two-files-in-bash/1115909#1115909
+## TODO: Edit/improve the answer on SO.
+function swap {
+    if [[ -e "$1" && -e "$2" ]]; then
+        local TMPFILE="${1}.tmp.$$"
+        mv "$1" "$TMPFILE" && mv "$2" "$1" && mv "$TMPFILE" "$2"
+    else
+        echo "Error: Make sure the files exist." 1>&2
+    fi
+}
+
+function date {
+    ## `date` ignores our locale settings so we change the default format this way.
+    if [[ -z "$1" ]] ; then
+        command date --rfc-3339=seconds
+    else
+        command date "$@"
+    fi
+}
+alias ts='date'
+
+# source ~/.config/dotfiles/n.sh
+
+## }}}
+
+## Shell basics {{{
+
+alias l='ls -l'
+alias ll='ls -la'
+alias la='ls -a'
+
+## }}}
+
+## Ensure timezone is something we expect {{{
+
+if [ "$(date '+%Z')" != 'CEST' ] && [ "$(date '+%Z')" != 'CET' ]; then
+    export TZ='Europe/Berlin'
+fi
+
+## }}}
+
+## Editor {{{
+
+## On Debian this is provided by the alternatives systems.
+## But the alternative system is global.
+alias editor="$EDITOR"
+
+alias vi='editor'
+alias ,e='exit'
+alias ,x='exit'
+# alias less='vim -c "w! /tmp/.vimpager" -'
+
+## }}}
+
+## SSH {{{
+
+alias ssh='ssh_wrapper ssh'
+alias sshrc='ssh_wrapper sshrc'
+alias s='ssh'
+alias i='sshrc'
+alias so='assh sockets'
+alias sk='assh sockets flush'
+
+ssh_default="-F /etc/ssh/ssh_config -o \"UserKnownHostsFile=$HOME/.ssh/known_hosts_tmp\""
+# Should work now without this hack.
+#
+alias rsync-default="rsync -e \"ssh $ssh_default\""
+alias ssh-default="ssh $ssh_default"
+alias scp-default="scp $ssh_default"
+# alias ssh-copy-id='ssh-copy-id -o PubkeyAuthentication=no'
+alias sshfs='sshfs -o transform_symlinks'
+alias sshfs-default='sshfs -o transform_symlinks -F /etc/ssh/ssh_config'
+alias ssh-keygen-sec='ssh-keygen -o -b 8192 -a 200 -t rsa'
+
+## }}}
+
+## Git {{{
+export GITHUB_USER="ypid"
+# Used in https://github.com/ypid/scripts/blob/master/git-setup-and-push-to-my-fork
+
+## Able to push to all git remotes with the one command?
+## http://stackoverflow.com/a/18674313
+alias gpa='git pa'
+
+## Use the shortcuts from oh-my-zsh for git
+alias wd='git diff --color-words --no-index'
+
+# Define important shortcuts here if under bash (are already defended by oh-my-zsh) {{{
+alias g='git'
+
+alias ga='git add'
+alias gst='git status'
+
+## Does not distinguish between changed files and changed/dirty submodules and it looks terrible …
+# alias gst='git status --short --branch'
+
+alias gco='git checkout'
+
+alias gc='git ci'
+alias gca='gc --all'
+alias gb='git branch'
+alias gj='git j'
+
+## Find better shortcut, move to gitconfig.
+# function n() {
+#     git log --reverse --pretty=%H master | grep -A 1 "$(git rev-parse HEAD)" | tail -n1 | xargs git checkout
+# }
+# function p() {
+#     git checkout HEAD^1
+# }
+
+## }}}
+
+if ! command -v tig >/dev/null 2>&1; then
+    alias tig='git log'
+fi
+
+alias gls='git pull --verify-signatures'
+
+# Easier to type than `gf` because gf is typed with the same finger on QWERTZ.
+alias go='git fetch'
+
+# Overwrite alias from oh-my-zsh {{{
+alias glg="git log --stat --decorate=short --show-signature --date=format:'%a %Y-%m-%d %H:%M:%S%z'" # full history
+alias gup='git pull --verify-signatures --recurse-submodules=on-demand'
+# alias glg='tig --show-signature' # full history
+
+## }}}
+
+## }}}
+
+## GnuPG {{{
+alias gpg-check-debian-iso='gpg --no-default-keyring --keyring /usr/share/keyrings/debian-role-keys.gpg --verify'
+alias gpg-sign='gpg --default-key 489A4D5EC353C98A --armor --detach-sig'
+
+if command -v qubes-gpg-client >/dev/null 2>&1; then
+    command -v compdef >/dev/null 2>&1 && compdef qubes-gpg-client=gpg
+fi
+if command -v qubes-gpg-client-wrapper >/dev/null 2>&1; then
+    alias k=qubes-gpg-client-wrapper
+    command -v compdef >/dev/null 2>&1 && compdef qubes-gpg-client-wrapper=gpg
+else
+    alias k=gpg
+fi
+## }}}
+
+## ripgrep {{{
+if command -v ag >/dev/null 2>&1
+then
+    ## Using ripgrep
+    function ag() {
+        if [[ $# == 0 ]]; then
+            command rg
+        else
+            command rg --follow --smart-case "$@"
+        fi
+    }
+    alias rg='ag'
+elif command -v ag >/dev/null 2>&1
+then
+    ## Using silversearcher-ag
+    function ag() {
+        if [[ $# == 0 ]]; then
+            command ag
+        else
+            command ag --follow --smart-case "$@"
+        fi
+    }
+elif command -v ack-grep >/dev/null 2>&1
+then
+    alias ag='ack-grep --follow'
+elif command -v git >/dev/null 2>&1
+then
+    alias ag='git grep'
+fi
+# }}}
+
+## Elastic {{{
+## https://www.elastic.co/guide/en/kibana/7.7/install-plugin.html
+command -v kibana-plugin >/dev/null 2>&1 && alias kibana-plugin="sudo -u kibana $(command -v kibana-plugin)"
+command -v elasticsearch-keystore >/dev/null 2>&1 && alias elasticsearch-keystore="sudo -u elasticsearch $(command -v elasticsearch-keystore)"
+# }}}
+
+## User local, specific package manager: asdf {{{
+# shellcheck source=/dev/null
+test -f "${ASDF_DIR}/completions/asdf.bash" && source "${ASDF_DIR}/completions/asdf.bash"
+## }}}
+
+## Machine-wide package management: Platform dependent {{{
+
+if [ -e "${PREFIX:-}/etc/apt" ]; then
+    alias m='apt'
+    alias ai='apt install'
+    alias ap='apt purge'
+    alias as='\apt search'
+    alias ash='\apt show'
+    alias an='apt update && apt upgrade'
+elif [ -e "${PREFIX:-}/etc/zypp" ]; then
+    alias m='zypper'
+    alias ai='zypper install --details'
+    alias ap='zypper remove'
+    alias as='\zypper search'
+    alias ash='\zypper info'
+    alias an='zypper update'
+elif command -v dnf >/dev/null 2>&1; then
+    alias m='dnf'
+    alias ai='dnf install'
+    alias ap='dnf remove'
+    alias as='\dnf search'
+    alias ash='\dnf info'
+    alias an='dnf upgrade'
+fi
+
+# shellcheck disable=SC1091
+if [[ -e "/etc/os-release" ]] && [[ "$( . /etc/os-release && echo "$NAME" )" == "Qubes" ]]; then
+    alias ai='qubes-dom0-update --action=install'
+    alias as='qubes-dom0-update --action=search'
+    alias an='qubes-dom0-update'
+fi
+
+# }}}
+
+## More aliases {{{
+
+if [ -z "$ANDROID_ROOT" ]; then
+    alias tmux='TERM=screen-256color-bce tmux'
+fi
+
+alias d='docker'
+alias t='task'
+alias '*'='dict'
+alias con='ping heise.de'
+alias conn='ping6 heise.de'
+alias conl='ping heise.de'
+alias a='git-annex'
+alias v='vagrant'
+alias jj='zpool'
+alias dotup='~/.config/dotfiles/install'
+alias meminfo=$'awk \'$3=="kB"{$2=$2/1024;$3="MB"} 1\' /proc/meminfo | column -t'
+
+## Ping on steroids. This was the last time that some messed up M$ host tricked me because it refused to answer echo requests.
+alias al='nmap -n --reason -sP'
+
+# if command -v nping >/dev/null 2>&1
+# then
+#     alias ping='nping'
+# fi
+
+if ! command -v hd >/dev/null 2>&1
+then
+    alias hd='hexdump -C'
+fi
+
+# http://stackoverflow.com/questions/16787916/difference-between-2-directories-in-linux
+alias diff-dir='diff -arq'
+
+alias percent-encode='python -c "import urllib, sys; print urllib.quote(sys.argv[1])"'
+alias percent-decode='python -c "import urllib, sys; print urllib.unquote(sys.argv[1])"'
+
+alias badblocks='echo "Use badblocks_and_secure_erase."'
+
+if [[ "$USER" != 'root' ]] && [ -z "$ANDROID_ROOT" ]; then
+    alias mount='sudo mount'
+    alias umount='sudo umount'
+    alias smount='sudo smount'
+    alias sumount='sudo sumount'
+    alias aptitude='sudo aptitude'
+    alias apt='sudo apt'
+    alias zypper='sudo zypper'
+
+    ## Ref: https://github.com/ypid/ypid-ansible-inventory/tree/master/group_vars/public_ypid_qubes_debops
+    if [ -e /usr/local.template ]; then
+        usrlocal_path='/usr/local.template'
+    else
+        usrlocal_path='/usr/local'
+    fi
+    alias sc="sudo ${usrlocal_path}/share/ypid_dotfiles/scripts/sc"
+fi
+
+alias rpm-keys="rpm -q gpg-pubkey --qf '%{name}-%{version}-%{release} --> %{summary}\\n'"
+
+alias xclip-primary-to-clipboard='xclip -out | xclip -in -selection clipboard'
+
+## Use as needed. --show-nonprinting does also output Unicode glyphs in escaped form.
+# alias cat='cat --show-nonprinting'
+
+alias bc='bc -q'
+alias ,='popd'
+
+## }}}
+
+## Ignore typos {{{
+alias 6s='ls'
+alias sl='ls'
+alias fgfg='fg'
+## }}}
