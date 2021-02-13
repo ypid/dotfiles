@@ -64,9 +64,6 @@ sed --in-place --regexp-extended 's/Ctrl\+Shift\+7/Ctrl+Shift+8/;s#Ctrl\+Num/#Ct
 cp--no-clobber "./doublecmd/doublecmd-windows.xml" "$env:APPDATA/doublecmd/doublecmd.xml"
 ln-s "./doublecmd/scripts" "$env:APPDATA/doublecmd/scripts"
 
-mkdir -f "$env:APPDATA/Neo2/" > $null
-ln-s "./qNeo2/Neo2.ini" "$env:APPDATA/Neo2/Neo2.ini"
-
 mkdir -f "$env:LOCALAPPDATA/VirtualStore/ProgramData/Chocolatey/lib/kitty/tools/Sessions" > $null
 ln-s "./windows/kitty/Sessions/Default%20Settings" "$env:LOCALAPPDATA/VirtualStore/ProgramData/Chocolatey/lib/kitty/tools/Sessions/Default%20Settings"
 

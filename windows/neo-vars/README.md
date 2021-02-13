@@ -1,10 +1,11 @@
 # Neo-Vars
 
-This implements my [qNeo2](/qNeo2/) on Windows.
+This implements my [keyboard layout neo_qwertz](/docs/keyboard.md) on Windows.
 
-My custom Autohotkey configuration is included as [./source/custom.ahk](/windows/neo-vars/source/custom.ahk) which
-provides some convenience for working on a Windows system. It provides as much
-of the shortcuts listed in my [shortcuts docs](/docs/shortcuts.md) as possible.
+My custom Autohotkey configuration is included as
+[./source/custom.ahk](/windows/neo-vars/source/custom.ahk) which provides some
+convenience for working on a Windows system. It provides as much of the
+shortcuts listed in my [shortcuts docs](/docs/shortcuts.md) as possible.
 
 I think of `qNeo2_ypid_custom.exe` as the main abstraction layer between my brain and Windows. It abstracts Windows away and offers me a generic UI that behaves the same across operating systems. This UI is optimized to be interfaced with a keyboard.
 
