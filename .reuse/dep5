@@ -1,0 +1,4 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: ypid-dotfiles
+Upstream-Contact: Robin Schneider <ypid@riseup.net>
+Source: https://github.com/ypid/dotfiles/

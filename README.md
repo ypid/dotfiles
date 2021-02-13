@@ -1,3 +1,9 @@
+<!--
+SPDX-FileCopyrightText: 2012-2021 Robin Schneider <ypid@riseup.net>
+
+SPDX-License-Identifier: CC-BY-SA-4.0
+-->
+
 # ypid dotfiles
 
 My customized Unix work environment.
