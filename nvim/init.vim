@@ -357,15 +357,14 @@ if count(g:spf13_bundle_groups, 'ui_enhancements') " {{{
 endif " }}}
 
 if count(g:spf13_bundle_groups, 'generic_programming') " {{{
-    " Pick one of the checksyntax, jslint, or syntastic
-    Plugin 'ghost/syntastic'
-    " Plugin 'pydave/AsyncCommand'
-    " Plugin 'stgpetrovic/syntastic-async'
 
     if has('nvim')
         Plugin 'ghost/neomake'
         call neomake#configure#automake('rw', 1000)
     else
+        Plugin 'ghost/syntastic'
+        " Plugin 'pydave/AsyncCommand'
+        " Plugin 'stgpetrovic/syntastic-async'
         highlight SyntasticErrorSign guifg=red guibg=red
         let g:syntastic_mode_map = { 'mode': 'active',
                     \ 'active_filetypes': [],

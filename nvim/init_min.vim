@@ -192,8 +192,6 @@ if has('persistent_undo')
     set undoreload=10000        " Maximum number lines to save for undo on a buffer reload
 endif
 
-set viminfo+=n~/.cache/vim/viminfo
-
 let g:skipview_files = [
     \ '*sec*',
     \ '*crypt*'
