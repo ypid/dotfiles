@@ -73,8 +73,9 @@ function dmesg() {
 }
 
 function virsh-disks() {
-    virsh --quiet domblklist "$1" --details | grep '^block' | while read -r line; do
-        disk_path="${line##* }"; info="$(lsblk "$disk_path" --output NAME,SIZE,TYPE --noheadings --nodeps)"
+    virsh --quiet domblklist "$1" --details | grep '^\s*block' | while read -r line; do
+        disk_path="${line##* }"
+        info="$(lsblk "$disk_path" --output NAME,SIZE,TYPE --noheadings --nodeps)"
         echo "$info $line"
     done
 }
