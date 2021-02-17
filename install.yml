@@ -206,13 +206,15 @@
 - shell:
 
     - command: |
-        touch ~/.gitconfig
-        git config --global commit.gpgsign true
-        git config --global tag.gpgsign true
-        if [[ -e /rw/config/gpg-split-domain ]]; then
-          git config --global gpg.program qubes-gpg-client-wrapper
+        if [[ -d ~/.gnupg/private-keys-v1.d/ ]] && ls -1qA ~/.gnupg/private-keys-v1.d/ | grep -q . || [[ -e /rw/config/gpg-split-domain ]]; then
+          echo "Enable git commit and tag signing using GnuPG."
+          touch ~/.gitconfig
+          git config --global commit.gpgsign true
+          git config --global tag.gpgsign true
+          if [[ -e /rw/config/gpg-split-domain ]]; then
+            git config --global gpg.program qubes-gpg-client-wrapper
+          fi
         fi
-      if: '[[ -d ~/.gnupg/private-keys-v1.d/ ]] && ls -1qA ~/.gnupg/private-keys-v1.d/ | grep -q . || [[ -e /rw/config/gpg-split-domain ]]'
 
 # Editable installation specific. [[[1
 - link:
