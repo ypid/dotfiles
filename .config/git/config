@@ -117,7 +117,6 @@
 [annex]
 	backend = SHA512E
 	diskreserve = 30 GiB
-	largefiles = not include=*.git*
 [remote "web"]
 	; Can be overridden as needed with: a get -c 'remote.web.annex-ignore=false'
 	; https://git-annex.branchable.com/tips/disabling_a_special_remote/
