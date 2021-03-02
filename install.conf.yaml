@@ -21,12 +21,13 @@
 # Machine and install strategy independent. [[[1
 - create:
     - ~/.local/share/zsh
+    - ~/.local/usr
+    - ~/.ssh/multiplex
 
 - shell:
-    - 'mkdir -p  ~/.local/usr'
     - 'make --directory .config/doublecmd install'
 
-    - 'mkdir -p ~/.ssh/multiplex && chmod 0700 ~/.ssh'
+    - 'chmod 0700 ~/.ssh'
     - 'cd ~/.ssh && for dir in ./*; do if [ -d "$dir" ] && [ "$dir" != "./multiplex" ]; then mkdir -p "$dir/known_hosts.d"; fi ; done'
 
     - 'mkdir -p ~/.asdf-writable/shims && ln -sf node ~/.asdf-writable/shims/nodejs'
@@ -88,6 +89,11 @@
 
     ~/.vimrc:
       path: nvim/init.vim
+      if: '[ ! -d /mingw64 ]'
+
+    ~/.vimrc:
+      path: nvim/init_min.vim
+      if: '[ -d /mingw64 ]'
 
     ~/.vimrc.min:
       path: nvim/init_min.vim

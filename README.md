@@ -27,6 +27,8 @@ cd ~/.config/dotfiles
 ./install # Links the config from the repo to the current $HOME dir.
 ```
 
+On Windows those steps should work in a Git Bash as administrator.
+
 ### Read-only installation
 
 For secure, self-hosted distribution of my dotfiles to servers, clients and

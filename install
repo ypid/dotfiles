@@ -10,4 +10,24 @@ BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 cd "${BASEDIR}"
 
-./dotbot/bin/dotbot --base-directory "${BASEDIR}" --config-file "install.yml" "${@}"
+if [ -d /mingw64 ]; then
+    # Running inside a Git Bash on legacy Windows.
+
+    # https://stackoverflow.com/questions/43650595/is-there-a-command-to-check-if-git-bash-is-opened-in-administrator-mode/58846650#58846650
+    if ! [[ $(sfc 2>&1 | tr -d '\0') =~ SCANNOW ]]; then
+        echo "You need to run this as admin otherwise symlinks cannot be created on legacy Windows." 1>&2
+        exit 1
+    fi
+
+    # From https://github.com/anishathalye/dotbot/wiki/Troubleshooting
+    # Is this still needed?
+    # export MSYS=winsymlinks:nativestrict
+
+    # Currently not fully compatible with Windows.
+    ./dotbot/bin/dotbot --base-directory "${BASEDIR}" --config-file "install.conf.yaml" "${@}" || :
+
+    ./dotbot/bin/dotbot --base-directory "${BASEDIR}" --config-file "install-legacy-windows.conf.yaml" "${@}"
+    exit 0
+fi
+
+./dotbot/bin/dotbot --base-directory "${BASEDIR}" --config-file "install.conf.yaml" "${@}"

@@ -40,6 +40,10 @@ PS: https://getgnulinux.org/
 
 ## Install on Windows
 
+In a Git Bash as administrator the same as for Unix systems, see [main README](/).
+
+## Install on Windows (old way)
+
 To use my configuration run the following commands to download it:
 
 ```Shell

@@ -319,7 +319,7 @@ elif [ -e "${PREFIX:-}/etc/zypp" ]; then
     alias ap='zypper remove'
     alias as='\zypper search'
     alias ash='\zypper info'
-    alias an='zypper update'
+    alias an='zypper update --details'
 elif command -v dnf >/dev/null 2>&1; then
     alias m='dnf'
     alias ai='dnf install'

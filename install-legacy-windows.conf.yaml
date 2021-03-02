@@ -1,0 +1,86 @@
+---
+
+# SPDX-FileCopyrightText: 2020-2021 Robin Schneider <ypid@riseup.net>
+#
+# SPDX-License-Identifier: CC0-1.0
+
+# yamllint disable rule:line-length
+
+# For now Windows specific stuff is maintained in this separate file.
+# With https://github.com/anishathalye/dotbot/issues/225 I would merge it into one file.
+
+- defaults:
+    link:
+      relative: true
+      canonicalize-path: false
+      relink: true
+      glob: true
+      create: true
+    shell:
+      stdout: true
+      stderr: true
+
+- create:
+    - '${APPDATA/obs-studio/basic/profiles/Untitled'
+
+    # Create https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard on Windows.
+    # Some application configs here might use/require those directories.
+    - 'C:/var/log/kitty_sessions'
+    - 'C:/var/tmp'
+    - 'C:/tmp'
+
+- link:
+
+    # Patch submodules [[[2
+    windows/windows-desktop-switcher/user_config.ahk:
+      path: windows/windows-desktop-switcher-my/user_config.ahk
+
+    # I am not committing this symlink to git because on checkout, it will not be a symlink.
+    # Maybe a permission issue. Anyway, lets keep this here for now.
+    windows/windows-desktop-switcher-my/VirtualDesktopAccessor.dll:
+      path: windows/windows-desktop-switcher/VirtualDesktopAccessor.dll
+
+    # Workaround: https://github.com/microsoft/terminal/issues/2933#issuecomment-739243074
+    '$LOCALAPPDATA/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState':
+      path: 'windows/MS_Terminal/LocalState'
+    # ]]]2
+
+    '~/Documents/PowerShell':
+      path: 'windows/MS_Shell'
+
+    # The legacy of the legacy.
+    '~/Documents/WindowsPowerShell':
+      path: 'windows/MS_Shell'
+
+    # Doublecmd as of 0.9.9 can not handle symlinks (GNU/Linux? and Windows).
+    # Doublecmd will replace the symlink by a copy of the file.
+    ~/AppData/Roaming/doublecmd/doublecmd.xml:
+      path: .config/doublecmd/doublecmd-windows.xml
+
+    ~/AppData/Roaming/doublecmd/shortcuts.scf:
+      path: .config/doublecmd/shortcuts.scf
+
+    ~/AppData/Roaming/doublecmd/scripts:
+      path: .config/doublecmd/scripts
+
+    '$LOCALAPPDATA/nvim/init.vim':
+      path: nvim/init_min.vim
+
+    '$LOCALAPPDATA/VirtualStore/ProgramData/Chocolatey/lib/kitty/tools/Sessions/Default%20Settings':
+      path: windows/kitty/Sessions/Default%20Settings
+
+    # FIXME
+    # '~/Documents/portable/kitty/kitty.ini':
+    #   path: windows/kitty/kitty.ini
+
+    # Everything as of v1.4.1.895 overwrites symbolic links.
+    '$APPDATA/Everything/Everything.ini':
+      path: windows/Everything/Everything.ini
+
+- shell:
+
+    # OBS Studio v20.1.3 can not handle these kinds of symlinks. It will overwrite them.
+    - command: |
+        if ! test -e "$APPDATA/obs-studio/basic/profiles/Untitled/basic.ini"; then
+          echo cp "config/obs-studio/basic/profiles/Untitled/basic.ini" "$APPDATA/obs-studio/basic/profiles/Untitled/basic.ini"
+        fi

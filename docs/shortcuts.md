@@ -173,6 +173,7 @@ Super+V           | Type clipboard text content to application | Nice to have   
 Shift+Super+V     | Type secret string to application window   | Nice to have   | Paste secret string to application window that does not support clipboard pasting.
 Shift+Super+Alt+V | Type string to application window          | Nice to have   | Paste string to application window that does not support clipboard pasting.
 Shift+Super+C     | Copy clean path to clipboard               | Nice to have   | Use forward slashes as file separators.
+Shift+Super+N     | Begin note entry with "2023-05-23, user"   | No             | Mainly for work for making notes in various options when and who changed something.
 
 [NeoLayoutViewer]: https://github.com/YggdrasiI/NeoLayoutViewer.git
 
@@ -279,7 +280,7 @@ Applies to: Firefox, Chromium
 Shortcut      | Function                     | Left hand only | Comment
 ------------- | -------------                | -------------  | -------------
 Shift+Ctrl+S  | View page source             | Yes            |
-Shift+Ctrl+D  | Web console (d for Debug)    | Yes            | Can not be configured in Chromium as of 
+Shift+Ctrl+D  | Web console (d for Debug)    | Yes            | Can not be configured in Chromium as of
 Shift+Ctrl+W  | Undo Close Tab               | Yes            |
 Alt+Enter     | Open location bar in new tab | No             |
 Ctrl+H        | Open history                 | Not really     |
