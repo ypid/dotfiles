@@ -63,4 +63,4 @@ YPID_DOT_IGNORE_EXISTING="--recursive" ./install
 
 ## Contents
 
-Check the [`install.yml`](/install.yml) file to see my active configuration and where it is linked to.
+Check the [`install.conf.yaml`](/install.conf.yaml) file to see my active configuration and where it is linked to.
