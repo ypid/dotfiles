@@ -254,7 +254,7 @@ local user_host='%{$terminfo[bold]$fg[green]%}%n@${HOSTNAME}%{$reset_color%}'
 local current_dir='%{$terminfo[bold]$fg[blue]%} %~%{$reset_color%}'
 
 local git_branch=''
-if [ -z "$ANDROID_ROOT" ]; then
+if [ -z "$ANDROID_ROOT" ] && [ "$(hostname)" != "files" ]; then
     git_branch=' $(git_prompt_info)%{$reset_color%}'
 fi
 
