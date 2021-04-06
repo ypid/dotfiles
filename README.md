@@ -39,7 +39,7 @@ needed. This comes in handy when different accounts are using for separation.
 
 Pro:
 
-* With history, my dotfiles (mainly caused to the hundreds of git submodules
+* With history, my dotfiles (mainly caused by the hundreds of git submodules
   included) is 400 MiB in size. This space is used only once per system as all
   user accounts just symlink to it.
 * It allows to update most of the configuration files per system instead of per
