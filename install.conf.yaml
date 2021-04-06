@@ -25,8 +25,6 @@
     - ~/.ssh/multiplex
 
 - shell:
-    - 'make --directory .config/doublecmd install'
-
     - 'chmod 0700 ~/.ssh'
     - 'cd ~/.ssh && for dir in ./*; do if [ -d "$dir" ] && [ "$dir" != "./multiplex" ]; then mkdir -p "$dir/known_hosts.d"; fi ; done'
 
@@ -115,6 +113,7 @@
       path: .config/latexmk/*
 
     ~/.config/qubes-keyboard-layout.rc:
+      force: true
       path: .config/qubes-keyboard-layout.rc
 
     ~/.perlcriticrc:
@@ -168,10 +167,6 @@
 
     ~/.config/ranger/plugins/linemode_gitannex.py:
       path: submodules/dotfiles-fiatjaf/ranger-plugins/linemode_gitannex.py
-
-    # Does overwrite symbolic links.
-    # ~/.config/doublecmd/shortcuts.scf:
-    #     path: doublecmd/shortcuts.scf
 
     ~/.config/doublecmd/scripts:
       path: .config/doublecmd/scripts
@@ -241,6 +236,14 @@
       path: .config/obs-studio/basic/profiles/Untitled/*
       if: 'test -w .'
 
+    ~/.config/doublecmd/doublecmd.xml:
+      path: .config/doublecmd/doublecmd.xml
+      if: 'test -w .'
+
+    ~/.config/doublecmd/shortcuts.scf:
+      path: .config/doublecmd/shortcuts.scf
+      if: 'test -w .'
+
 # Read-only installation specific. [[[1
 - shell:
     - command: |
@@ -253,6 +256,10 @@
             .config/obs-studio \
             .config/Clementine \
             ~/.config/
+          rsync --recursive ${YPID_DOT_IGNORE_EXISTING:---ignore-existing} \
+            .config/doublecmd/doublecmd.xml \
+            .config/doublecmd/doublecmd.xml \
+            ~/.config/doublecmd
         fi
 
     # Needs to be run with X11 $DISPLAY set:
