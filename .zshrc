@@ -249,7 +249,18 @@ HOSTNAME="$(hostname --fqdn 2> /dev/null || echo "$HOST")"
 if [ "$HOSTNAME" = "localhost" ]; then
     HOSTNAME="$HOST"
 fi
-local user_host='%{$terminfo[bold]$fg[green]%}%n@${HOSTNAME}%{$reset_color%}'
+
+local user="%{$terminfo[bold]$fg[green]%}%n"
+if [ "$USER" = "root" ]; then
+    user="%{$terminfo[bold]$fg[red]%}%n"
+fi
+
+local host="%{$terminfo[bold]$fg[green]%}${HOSTNAME}"
+test -f /etc/machine-info && source /etc/machine-info
+if [ "$DEPLOYMENT" = "production" ]; then
+    host="%{$terminfo[bold]$fg[red]%}${HOSTNAME}"
+fi
+local user_host='${user}%{$reset_color%}@${host}%{$reset_color%}'
 
 local current_dir='%{$terminfo[bold]$fg[blue]%} %~%{$reset_color%}'
 
