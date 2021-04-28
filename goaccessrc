@@ -1,9 +1,0 @@
-color_scheme 2
-# date_format %d/%b/%Y
-# log_format %h %^[%d:%^] "%r" %s %b "%R" "%u"
-# date_format %d/%b/%Y:%T %z
-# log_format %h - - [%d] "%r" %s %b "%R" "%u"
-# log-format %h %^[%d:%^] "%r" %s %b "%R" "%u"
-
-date-format %d/%b/%Y
-log-format %h %^[%d:%^] "%r" %s %b "%R" "%u"

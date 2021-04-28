@@ -1,0 +1,31 @@
+{
+    "usageCount": 20, 
+    "omitTrigger": false, 
+    "prompt": false, 
+    "description": "<menu> Open menu", 
+    "abbreviation": {
+        "wordChars": "[\\w]", 
+        "abbreviations": [
+            "xkav"
+        ], 
+        "immediate": true, 
+        "ignoreCase": false, 
+        "backspace": true, 
+        "triggerInside": false
+    }, 
+    "hotkey": {
+        "hotKey": "s", 
+        "modifiers": [
+            "<shift>", 
+            "<super>"
+        ]
+    }, 
+    "modes": [], 
+    "showInTrayMenu": false, 
+    "filter": {
+        "regex": null, 
+        "isRecursive": false
+    }, 
+    "type": "script", 
+    "store": {}
+}

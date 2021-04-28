@@ -1,0 +1,160 @@
+[user]
+	name = Robin Schneider
+	email = ypid@riseup.net
+	signingkey = EF96BC32AC57CFC72DF01D8C489A4D5EC353C98A
+[color]
+	ui = auto
+	status = auto
+	branch = auto
+[pack]
+	threads = 0
+[diff]
+	; wordRegex = [[:alnum:]_]+|[^[:alnum:]_ ]+
+
+[filter "doublecmd_xml_file"]
+	clean = xmlstarlet ed \
+		--omit-decl \
+		--delete '//doublecmd/Tabs' \
+		--delete '//doublecmd/MainWindow' \
+		--delete '//doublecmd/Log' \
+		--delete '//doublecmd/IgnoreList' \
+		--delete '//doublecmd/Lua' \
+		--delete '//doublecmd/DirectoryHotList' \
+		--delete '//doublecmd/Colors/LogWindow' \
+		--delete '//doublecmd/FavoriteTabsOptions/FavTabsLastUniqueID' \
+		--delete '//doublecmd/Plugins/WcxPlugins/WcxPlugin/Flags' \
+		--update '//doublecmd/Tools/Editor/Path' --value 'gvim' \
+		--update '//doublecmd/Behaviours/RunInTerminalStayOpenCmd' --value 'x-terminal-emulator' \
+		--update '//doublecmd/Behaviours/JustRunTerminal' --value 'x-terminal-emulator' \
+		'%f' | sed --regexp-extended "/\\<Path\\>/s#\\\\\\\\#/#g;"
+
+[filter "kitty_session_file"]
+	clean = LC_ALL=C sort | grep --no-filename --invert-match "^Password[^\\w]"
+
+[filter "everything_ini_file"]
+        ;; Only works on Linux for some reason. Thus changes require a checkout on Linux and then the file will appear as changed automatically. Then just commit/amend this cleanup.
+	clean = egrep --no-filename --invert-match '^(folders|exclude_folders|last_options_page|ntfs_volume_(paths|roots|guids)|(date_run_column|window)_[[:alnum:]_]+)='
+
+[alias]
+	wd = diff --color-words
+	wdd = diff --ignore-space-at-eol --ignore-space-change --ignore-all-space --ignore-blank-lines --color-words
+	re = "!git remote -v show | egrep --invert-match '(^bittorrent\\b|^web\\b)'"
+	pa = "!git remote -v show | egrep --invert-match '(https://github.com/|^bittorrent\\b|^web\\b)' | cut -f1 | uniq | xargs -L1 git push --all"
+	cil = commit --reedit-message=HEAD --reset-author
+
+	;; etckeeper is preferred for committing in /etc because it will not
+	;; use user name/email from /etc/.git/config if a interactive user is
+	;; detected thus allowing to differentiate between automated
+	;; commits/changes and direct human changes.
+	ci = "!f() { cd -- \"${GIT_PREFIX:-.}\"; if command -v etckeeper >/dev/null 2>&1 && pwd | egrep -q '^/etc(/.*|$)'; then etckeeper commit \"$@\"; else git commit \"$@\"; fi; }; f"
+
+	;; Order of --all is important for etckeeper!
+	cii = "!git ci -m 'Initial commit' --all \"$@\""
+	cia = "!git ci -m 'Auto commit. EOM' --all \"$@\""
+
+	co = checkout
+	; Cannot use this date format yet because it also messes with %gd.
+	; --date=format:'%Y-%m-%d %H:%M:%S%z'
+	rl = reflog --pretty=reflog
+	lgn = log --pretty=oneline --abbrev-commit --show-notes=* --show-signature
+
+	;; http://stackoverflow.com/a/9074343
+	; lg1 = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(black)%s%C(reset) %C(dim black)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+	lg1 = "!f() { cd -- \"${GIT_PREFIX:-.}\"; git log --pretty=format:\"%C(yellow)%h|%Cred%ad|%Cblue%an|%Cgreen%d %Creset%s\" --date=short \"$@\" | column -ts \"|\"; }; f"
+
+	;; https://stackoverflow.com/questions/1441010/the-shortest-possible-output-from-git-log-containing-author-and-date/1441062#1441062
+	l1 = log --pretty=format:'%C(yellow)%h %Cred%ad %Cblue%an%Cgreen%d %Creset%s' --date=short
+
+	lg = log --graph --pretty=format:'%Cred%h..%Creset - %s %Cgreen(%cr)%Creset - %an' --abbrev-commit --date=relative
+	v = fsck --full --unreachable --strict --no-dangling
+	s = shortlog -sn
+
+	;; https://github.com/k4rthik/git-cal.git
+	c = cal --unicode
+
+	;; http://stackoverflow.com/a/1290046
+	show-big-files = "!git ls-tree -r -t -l --full-name HEAD | sort -n -k 4 | tail -n 10"
+
+	;; https://help.github.com/articles/checking-out-pull-requests-locally/#modifying-an-inactive-pull-request-locally
+	g = "!g() { git fetch --update-head-ok github refs/pull/$1/head:#$1 || git fetch --update-head-ok origin refs/pull/$1/head:#$1 || git fetch --update-head-ok origin refs/pull/$1/head:#$1; }; g"
+
+	co-perms= "!git diff -p -R | grep -E '^(diff|(old|new) mode)' | git apply"
+	t = "!git log --tags --simplify-by-decoration --pretty='format:%ci %d' | grep tag"
+	rf = for-each-ref --sort=taggerdate --format '%(refname) %(taggerdate)' refs/tags
+
+	;; http://haacked.com/archive/2014/02/21/reviewing-merge-commits/
+	merge-commits = log --min-parents=2 -p --cc
+
+	;; https://www.qubes-os.org/doc/split-gpg/#using-git-with-split-gpg
+	stag = "!id=`git rev-parse --verify HEAD`; git tag -s ypid_${id:0:8} -m \"Tag for commit $id\""
+	vtag = !git tag -v `git describe`
+
+	## https://stackoverflow.com/questions/6127328/how-can-i-delete-all-git-branches-which-have-been-merged/6127884#6127884
+	db = "!git branch --merged | egrep -v '(^\\*|master|dev)' | xargs --no-run-if-empty git branch -d"
+
+	;; https://gist.github.com/jasonrudolph/1810768#gistcomment-2220772
+	j = branch -r --sort=-committerdate --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'
+
+[core]
+	editor = nvim
+
+        ;; Don’t. Use .gitattributes if necessary:
+        ;; Setting it here is required to overwrite the Windows default from c:/ProgramData/Git/config
+	autocrlf = false
+
+	; eol = lf
+
+[github]
+	user = ypid
+[push]
+	default = simple
+
+[pretty]
+	# reflog, with relative date:
+	reflogrel = %C(auto)%h %<|(17)%gd %<|(30)%C(blue)%cr%C(reset) %s
+	reflog = %C(auto)%h %<|(17)%gd %C(blue)%ci%C(reset) %s
+
+[annex]
+	backend = SHA512E
+	diskreserve = 30 GiB
+[remote "web"]
+	; Can be overridden as needed with: a get -c 'remote.web.annex-ignore=false'
+	; https://git-annex.branchable.com/tips/disabling_a_special_remote/
+	annex-ignore = true
+	annex-trustlevel = untrusted
+[remote "bittorrent"]
+	annex-trustlevel = untrusted
+
+[commit]
+	verbose = true
+[pull]
+	ff = only
+[log]
+	; https://stackoverflow.com/questions/7853332/how-to-change-git-log-date-formats
+	date = iso
+[url "https://github.com/"]
+	insteadOf = git://github.com/
+[credential]
+	helper = store
+[tig]
+	# https://github.com/jonas/tig/blob/master/contrib/large-repo.tigrc
+	# Use Git's default (reverse chronological) order, never automatically
+	# use topo-order for the commit graph
+	commit-order = default
+
+	# Limit number of commits loaded by default to 1000
+	main-options = -n 1000
+
+	# Don't show staged and unstaged changes in the main view
+	show-changes = no
+
+	# Optionally, use the old and faster but less accurate graph renderer
+	#set main-view-commit-title-graph = v1
+[merge]
+	ff = false
+	tool = diffconflicts
+[mergetool "diffconflicts"]
+	cmd = nvim -c DiffConflicts \"$MERGED\" \"$BASE\" \"$LOCAL\" \"$REMOTE\"
+	trustExitCode = true
+[mergetool]
+	keepBackup = false

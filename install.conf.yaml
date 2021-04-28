@@ -1,0 +1,275 @@
+---
+
+# SPDX-FileCopyrightText: 2016-2021 Robin Schneider <ypid@riseup.net>
+#
+# SPDX-License-Identifier: CC0-1.0
+
+# yamllint disable rule:line-length
+
+- defaults:
+    link:
+      relative: true
+      canonicalize-path: false
+      relink: true
+      glob: true
+      create: true
+    shell:
+      stdout: true
+      stderr: true
+
+
+# Machine and install strategy independent. [[[1
+- create:
+    - ~/.local/share/zsh
+    - ~/.local/usr
+    - ~/.ssh/multiplex
+
+- shell:
+    - 'chmod 0700 ~/.ssh'
+    - 'cd ~/.ssh && for dir in ./*; do if [ -d "$dir" ] && [ "$dir" != "./multiplex" ]; then mkdir -p "$dir/known_hosts.d"; fi ; done'
+
+    - 'mkdir -p ~/.asdf-writable/shims && ln -sf node ~/.asdf-writable/shims/nodejs'
+    - 'mkdir -p ~/.asdf-writable/installs'
+    - 'mkdir -p ~/.asdf-writable/keyrings'
+    - 'mkdir -p ~/.asdf-writable/plugins'
+    - 'if [ "$(find "$PWD/asdf" -maxdepth 1 -type f|wc -l)" != "0" ]; then ln -sf "$PWD/asdf"/* ~/.asdf-writable; fi'
+
+- link:
+
+    # Bash [[[2
+    ~/.bashrc:
+      force: true
+      create: false
+      path: .bashrc
+
+    ~/.bash_logout:
+      force: true
+      create: false
+      path: .bash_logout
+
+    ~/.bash_profile:
+      create: false
+      path: .bash_profile
+
+    # ZSH [[[2
+    ~/.zshrc:
+      path: .zshrc
+
+    ~/.config/oh-my-zsh:
+      path: oh-my-zsh
+
+    ~/.config/oh-my-zsh-custom:
+      path: oh-my-zsh-custom
+
+    # Tmux [[[2
+    ~/.tmux.conf:
+      path: .tmux.conf
+
+    ~/.local/share/tmux:
+      path: .local/share/tmux
+
+    # SSH [[[2
+    ~/.ssh/config_ypid_defaults:
+      path: .ssh/config_ypid_defaults
+
+    ~/.ssh/assh.yml:
+      path: .ssh/assh.yml
+
+    ~/.sshrc:
+      path: .sshrc
+
+    # NeoVim [[[2
+    ~/.config/nvim:
+      path: nvim
+
+    ~/.vim:
+      path: nvim
+
+    ~/.vimrc:
+      path: nvim/init.vim
+      if: '[ ! -d /mingw64 ]'
+
+    ~/.vimrc:
+      path: nvim/init_min.vim
+      if: '[ -d /mingw64 ]'
+
+    ~/.vimrc.min:
+      path: nvim/init_min.vim
+
+    # Miscellaneous [[[2
+    ~/.config/git/:
+      path: .config/git/*
+
+    ~/.config/htop/htoprc:
+      path: .config/htop/htoprc
+
+    ~/.gnupg/:
+      path: .gnupg/*
+
+    ~/.config/readline/:
+      path: .config/readline/*
+
+    ~/.config/latexmk/:
+      path: .config/latexmk/*
+
+    ~/.config/qubes-keyboard-layout.rc:
+      force: true
+      path: .config/qubes-keyboard-layout.rc
+
+    ~/.perlcriticrc:
+      path: .perlcriticrc
+
+    ~/.perltidyrc:
+      path: .perltidyrc
+
+    ~/.pystartup:
+      path: .pystartup
+
+    ~/.config/shell/:
+      path: .config/shell/*
+
+    ~/.config/shell.d/:
+      path: .config/shell.d/*
+
+    ~/.local/share/scripts/ypid-scripts-common:
+      path: scripts
+
+    ~/.config/synapse/:
+      path: .config/synapse/*
+
+    ~/.config/xfce4/helpers.rc:
+      force: true
+      path: .config/xfce4/helpers.rc
+
+    ~/.config/xfce4/panel/:
+      force: true
+      path: .config/xfce4/panel/*
+
+    ~/.config/xfce4/terminal/:
+      force: true
+      path: .config/xfce4/terminal/*
+
+    ~/.config/xfce4/xfconf/xfce-perchannel-xml/:
+      force: true
+      path: .config/xfce4/xfconf/xfce-perchannel-xml/*
+
+    ~/.config/dconf/:
+      path: scripts/dconf-backup/*
+
+    ~/.config/neo_layout_viewer.conf:
+      path: .config/neo_layout_viewer.conf
+
+    ~/.config/ranger/rc.conf:
+      path: ranger.rc.conf
+
+    ~/.config/ranger/commands.py:
+      path: submodules/dotfiles-fiatjaf/ranger-commands.py
+
+    ~/.config/ranger/plugins/linemode_gitannex.py:
+      path: submodules/dotfiles-fiatjaf/ranger-plugins/linemode_gitannex.py
+
+    ~/.config/doublecmd/scripts:
+      path: .config/doublecmd/scripts
+
+    ~/.config/mr/mrconfig:
+      path: myrepos/mrconfig
+
+    ~/.config/mr/library-loaders:
+      path: myrepos/mr-config-adam/library-loaders
+
+    ~/.config/mr/lib.d/git:
+      path: myrepos/mr-config-adam/sh.d/git
+
+    ~/.config/mr/lib.d/git-remotes:
+      path: myrepos/mr-config-adam/sh.d/git-remotes
+
+    ~/.local/share/scripts/git-config-adam/git-url-rewrite:
+      path: submodules/git-config-adam/bin/git-url-rewrite
+
+    # https://git-annex.branchable.com/tips/finding_duplicate_files/
+    ~/.local/share/scripts/git-config-adam/git-annex-finddups:
+      path: submodules/git-config-adam/bin/git-annex-finddups
+
+    '~/.config/autokey/data/Emitting keystrokes':
+      path: '.config/autokey/Emitting keystrokes'
+    # ]]]2
+
+- link:
+
+    ~/.config/dconf/:
+      path: .config/dconf/*
+
+- shell:
+    - 'chmod 0700 ~/.gnupg'
+    - 'rsync --ignore-existing .ssh/config ~/.ssh'
+
+# Machine dependent (auto detected). [[[1
+- shell:
+
+    - command: |
+        if [[ -d ~/.gnupg/private-keys-v1.d/ ]] && ls -1qA ~/.gnupg/private-keys-v1.d/ | grep -q . || [[ -e /rw/config/gpg-split-domain ]]; then
+          echo "Enable git commit and tag signing using GnuPG."
+          touch ~/.gitconfig
+          git config --global commit.gpgsign true
+          git config --global tag.gpgsign true
+          if [[ -e /rw/config/gpg-split-domain ]]; then
+            git config --global gpg.program qubes-gpg-client-wrapper
+          fi
+        fi
+
+# Editable installation specific. [[[1
+- link:
+
+    ~/.local/share/mimeapps.list:
+      path: .local/share/mimeapps.list
+      if: 'test -w .'
+
+    ~/.local/share/applications/:
+      path: .local/share/applications/*
+      if: 'test -w .'
+
+    ~/.config/Clementine/:
+      path: .config/Clementine/*
+      if: 'test -w .'
+
+    ~/.config/obs-studio/basic/profiles/Untitled/:
+      path: .config/obs-studio/basic/profiles/Untitled/*
+      if: 'test -w .'
+
+    ~/.config/doublecmd/doublecmd.xml:
+      path: .config/doublecmd/doublecmd.xml
+      if: 'test -w .'
+
+    ~/.config/doublecmd/shortcuts.scf:
+      path: .config/doublecmd/shortcuts.scf
+      if: 'test -w .'
+
+# Read-only installation specific. [[[1
+- shell:
+    - command: |
+        if ! test -w .; then
+          rsync --recursive ${YPID_DOT_IGNORE_EXISTING:---ignore-existing} \
+            .local/share/mimeapps.list \
+            .local/share/applications \
+            ~/.local/share/
+          rsync --recursive ${YPID_DOT_IGNORE_EXISTING:---ignore-existing} \
+            .config/obs-studio \
+            .config/Clementine \
+            ~/.config/
+          rsync --recursive ${YPID_DOT_IGNORE_EXISTING:---ignore-existing} \
+            .config/doublecmd/doublecmd.xml \
+            .config/doublecmd/doublecmd.xml \
+            ~/.config/doublecmd
+        fi
+
+    # Needs to be run with X11 $DISPLAY set:
+    - 'if command -v dconf && [ ! -e ~/.config/dconf/user ]; then make --directory ~/.config/dconf restore || true; fi'
+
+    - 'if [ ! -e "$HOME/.mrconfig" ]; then cp myrepos/mrconfig_home_template "$HOME/.mrconfig"; fi'
+
+# Clean up legacy. [[[1
+- clean:
+    - '~'
+    - '~/.config'
+    - '~/.config/git'
+    - '~/.config/shell.d'

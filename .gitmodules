@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2012-2021 Robin Schneider <ypid@riseup.net>
+#
+# SPDX-License-Identifier: CC0-1.0
+
 [submodule ".vim/bundle/vundle"]
 	path = nvim/bundle/vundle
 	url = https://github.com/gmarik/vundle.git
@@ -67,7 +71,7 @@
 	url = https://github.com/sjl/gundo.vim.git
 [submodule ".vim/bundle/Vim-Jinja2-Syntax"]
 	path = nvim/bundle/Vim-Jinja2-Syntax
-	url = https://github.com/chase/Vim-Jinja2-Syntax.git
+	url = https://github.com/Glench/Vim-Jinja2-Syntax.git
 [submodule ".vim/bundle/logstash.vim"]
 	path = nvim/bundle/logstash.vim
 	url = https://github.com/robbles/logstash.vim.git
@@ -301,3 +305,60 @@
 [submodule "nvim/bundle/eregex.vim"]
 	path = nvim/bundle/eregex.vim
 	url = https://github.com/othree/eregex.vim
+[submodule "nvim/bundle/vim-better-whitespace"]
+	path = nvim/bundle/vim-better-whitespace
+	url = https://github.com/ntpeters/vim-better-whitespace.git
+[submodule "nvim/bundle/neomake"]
+	path = nvim/bundle/neomake
+	url = https://github.com/neomake/neomake.git
+[submodule "nvim/bundle/vim-cycle"]
+	path = nvim/bundle/vim-cycle
+	url = https://github.com/zef/vim-cycle.git
+[submodule "nvim/bundle/vim-solarized8"]
+	path = nvim/bundle/vim-solarized8
+	url = https://github.com/lifepillar/vim-solarized8.git
+[submodule "nvim/bundle/fzf.vim"]
+	path = nvim/bundle/fzf.vim
+	url = https://github.com/junegunn/fzf.vim
+[submodule "nvim/bundle/fzf"]
+	path = nvim/bundle/fzf
+	url = https://github.com/junegunn/fzf
+[submodule "nvim/bundle/vimtex"]
+	path = nvim/bundle/vimtex
+	url = https://github.com/lervag/vimtex.git
+[submodule "nvim/bundle/editorconfig-vim"]
+	path = nvim/bundle/editorconfig-vim
+	url = https://github.com/editorconfig/editorconfig-vim.git
+[submodule "nvim/bundle/vim-sleuth"]
+	path = nvim/bundle/vim-sleuth
+	url = https://github.com/tpope/vim-sleuth.git
+[submodule "nvim/bundle/vim-sensible"]
+	path = nvim/bundle/vim-sensible
+	url = https://github.com/tpope/vim-sensible.git
+[submodule "nvim/bundle/vim-auto-save"]
+	path = nvim/bundle/vim-auto-save
+	url = https://github.com/907th/vim-auto-save.git
+[submodule "nvim/bundle/vim-ripgrep"]
+	path = nvim/bundle/vim-ripgrep
+	url = https://github.com/jremmen/vim-ripgrep.git
+[submodule "nvim/bundle/SrchRplcHiGrp.vim"]
+	path = nvim/bundle/SrchRplcHiGrp.vim
+	url = https://github.com/vim-scripts/SrchRplcHiGrp.vim.git
+[submodule "nvim/bundle/vim-mundo"]
+	path = nvim/bundle/vim-mundo
+	url = https://github.com/simnalamburt/vim-mundo.git
+[submodule "nvim/bundle/diffconflicts"]
+	path = nvim/bundle/diffconflicts
+	url = https://github.com/whiteinge/diffconflicts.git
+[submodule "nvim/bundle/vim-diff-enhanced"]
+	path = nvim/bundle/vim-diff-enhanced
+	url = https://github.com/chrisbra/vim-diff-enhanced.git
+[submodule "nvim/bundle/vim-PatternsOnText"]
+	path = nvim/bundle/vim-PatternsOnText
+	url = https://github.com/inkarkat/vim-PatternsOnText.git
+[submodule "nvim/bundle/vim-ingo-library"]
+	path = nvim/bundle/vim-ingo-library
+	url = https://github.com/inkarkat/vim-ingo-library.git
+[submodule "nvim/bundle/license-to-vim"]
+	path = nvim/bundle/license-to-vim
+	url = https://github.com/ararslan/license-to-vim.git

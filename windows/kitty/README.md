@@ -31,7 +31,7 @@ Deployment tip: System defaults can be provided as `C:/ProgramData/Chocolatey/li
 
 ## Configuration install
 
-Two options exist, either manual or automated.
+Two options exist, either manual or automated (see [main README](/)).
 
 Note that the default settings cannot be symlinked because of https://github.com/cyd01/KiTTY/issues/70. It will be copied with both installation methods.
 
@@ -40,11 +40,6 @@ Note that the default settings cannot be symlinked because of https://github.com
 1. Start KiTTY once to let it create its local config dir with default config and close it again to ensure that it does not get in the way.
 2. Download [`Default%20Settings`](./Sessions/Default%20Settings) and put it into `%LOCALAPPDATA%\VirtualStore/ProgramData/Chocolatey/lib/kitty/tools/Sessions`. Be sure that the file is named exactly like that. You will need to overwrite the file that KiTTY just created.
 3. Create the directory hierarchy `C:/var/log/kitty_sessions` to allow KiTTY to store session logs there.
-
-## Automated configuration install
-
-1. Review and run [`../../install.ps1`](../../install.ps1). Note that this script installs all Windows related dotfiles in this repo, not just KiTTY. You may want to edit the script to only execute the KiTTY related things.
-2. Review and run [`../../install_fhs.ps1`](../../install_fhs.ps1) to create the required directory hierarchy.
 
 ## Settings
 

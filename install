@@ -1,16 +1,33 @@
 #!/usr/bin/env bash
 
-set -e
+# SPDX-FileCopyrightText: 2021 Robin Schneider <ypid@riseup.net>
+#
+# SPDX-License-Identifier: CC0-1.0
 
-CONFIG="install.yml"
-DOTBOT_DIR="dotbot"
+set -o nounset -o pipefail -o errexit
 
-DOTBOT_BIN="bin/dotbot"
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 cd "${BASEDIR}"
 
-## Use ./get for that.
-# git submodule update --init --recursive "${DOTBOT_DIR}"
+if [ -d /mingw64 ]; then
+    # Running inside a Git Bash on legacy Windows.
 
-"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${CONFIG}" "${@}"
+    # https://stackoverflow.com/questions/43650595/is-there-a-command-to-check-if-git-bash-is-opened-in-administrator-mode/58846650#58846650
+    if ! [[ $(sfc 2>&1 | tr -d '\0') =~ SCANNOW ]]; then
+        echo "You need to run this as admin otherwise symlinks cannot be created on legacy Windows." 1>&2
+        exit 1
+    fi
+
+    # From https://github.com/anishathalye/dotbot/wiki/Troubleshooting
+    # Is this still needed?
+    # export MSYS=winsymlinks:nativestrict
+
+    # Currently not fully compatible with Windows.
+    ./dotbot/bin/dotbot --base-directory "${BASEDIR}" --config-file "install.conf.yaml" "${@}" || :
+
+    ./dotbot/bin/dotbot --base-directory "${BASEDIR}" --config-file "install-legacy-windows.conf.yaml" "${@}"
+    exit 0
+fi
+
+./dotbot/bin/dotbot --base-directory "${BASEDIR}" --config-file "install.conf.yaml" "${@}"

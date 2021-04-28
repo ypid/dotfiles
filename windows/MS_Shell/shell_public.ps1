@@ -1,4 +1,4 @@
-# Make Windows behave like a proper GNU/Linux. We are so mean :)
+# Make Windows behave like GNU/Linux. We are so mean :)
 
 ## Setup basic compatibility layer {{{
 Set-Alias alias Set-Alias
@@ -10,7 +10,7 @@ Set-Alias pathappend Add-PathAtEnd
 
 ## Exports {{{
 
-Set-Environment "EDITOR" "gvim --nofork"
+Set-Environment "EDITOR" "nvim-qt.exe"
 Set-Environment "GIT_EDITOR" $Env:EDITOR
 
 ## }}}
@@ -53,7 +53,7 @@ Set-Alias -Name md -Value Set-LocationMkDir -Option AllScope
 ## Editor {{{
 
 # Function editor { Invoke-Expression $env:EDITOR $args }
-alias editor gvim
+alias editor nvim-qt.exe
 alias e editor
 
 ## Overwrite command-line Vim commands.
@@ -217,13 +217,14 @@ Function whichw() { (Get-Command @args).Definition }
 Function ping { ping.exe -t @args }
 
 ## Gets aliased by pscx but we prefer the original GNU coreutils version
-unalias touch
+unalias touch -ErrorAction SilentlyContinue
 
 alias xclip Out-Clipboard
 alias ip ipconfig
 alias reset Restart-Powershell
 alias top taskmgr
-alias htop procexp
+alias htop taskmgr
+# alias htop procexp
 alias nautilus explorer.exe
 alias nemo explorer.exe
 alias xdg-open start
@@ -299,6 +300,8 @@ alias unmute Set-SoundUnmute
 
 # Update installed Ruby Gems, NPM, and their installed packages.
 alias update Get-SystemUpdate
+
+alias chrome "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe"
 
 # Common Editing needs
 function Edit-Hosts { Invoke-Expression "sudo $(if($env:EDITOR -ne $null)  {$env:EDITOR } else { 'notepad' }) $env:windir/system32/drivers/etc/hosts" }

@@ -31,7 +31,7 @@ do
 		git -C "$git_repo_location" status
 		git -C "$git_repo_location" branch
 		echo "Skipping: $git_repo_location (reason: Non-default branch checked out)"
-		continue
+        continue
 	fi
 
 	# git checkout master

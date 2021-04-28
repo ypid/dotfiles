@@ -1,0 +1,32 @@
+{
+    "usageCount": 13, 
+    "omitTrigger": false, 
+    "prompt": false, 
+    "description": "Change language in Pidgin to en", 
+    "abbreviation": {
+        "wordChars": "[\\w]", 
+        "abbreviations": [
+            "xkav"
+        ], 
+        "immediate": true, 
+        "ignoreCase": false, 
+        "backspace": true, 
+        "triggerInside": false
+    }, 
+    "hotkey": {
+        "hotKey": "l", 
+        "modifiers": [
+            "<ctrl>"
+        ]
+    }, 
+    "modes": [
+        3
+    ], 
+    "showInTrayMenu": false, 
+    "filter": {
+        "regex": "Pidgin.Pidgin", 
+        "isRecursive": false
+    }, 
+    "type": "script", 
+    "store": {}
+}

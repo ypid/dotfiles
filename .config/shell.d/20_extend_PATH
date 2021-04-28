@@ -1,0 +1,86 @@
+#!/bin/bash
+# Sourced by Bash and zsh.
+
+BIN_PATHS_DIR="$HOME/.local/share/scripts"
+
+test -d "${BIN_PATHS_DIR}" || exit 0
+
+for bin_path_dir in "${BIN_PATHS_DIR}"/*
+do
+    pathprepend "${bin_path_dir}"
+done
+
+pathappend "${HOME}/.sandboxes/bin"
+pathappend "/usr/local/bin"
+pathappend "/usr/sbin"
+
+pathappend "/usr/share/elasticsearch/bin"
+pathappend "/usr/share/elasticsearch/bin/x-pack"
+pathappend "/usr/share/logstash/bin"
+pathappend "/usr/share/kibana/bin"
+
+export ASDF_DIR="$HOME/.asdf-writable"
+pathprepend "${ASDF_DIR}/shims"
+pathappend "${ASDF_DIR}/bin"
+
+pathprepend "$HOME/bin"
+
+## PATH and related environment configuration {{{
+user_install_dir="${HOME}/.local/usr"
+if [ -d "$user_install_dir" ]
+then
+
+    pathappend "$user_install_dir/bin"
+
+    ## Python {{{
+    export PYTHONUSERBASE="$user_install_dir/python"
+    pathprepend "$PYTHONUSERBASE/bin"
+    export PYTHONPATH=".:$PYTHONUSERBASE:$PYTHONPATH"
+    export PYTHONSTARTUP="${HOME}/.pystartup"
+    ## }}}
+
+    ## Node.js {{{
+    export NPM_PACKAGES="$user_install_dir/npm"
+    pathappend "$NPM_PACKAGES/bin"
+
+    if command -v manpath >/dev/null 2>&1; then
+        unset MANPATH
+        export MANPATH
+        MANPATH="$(manpath)"
+    fi
+    MANPATH="$NPM_PACKAGES/share/man:$MANPATH"
+    export NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
+    ## }}}
+
+    ## Ruby {{{
+    ## There is an issue on SLES which causes the $LOAD_PATH to be reset
+    ## ("/usr/lib64/ruby/gems/2.5.0/gems/" entries are removed).
+    ## This also breaks Vagrant on Debian 10. So I disable it for now:
+    # shellcheck disable=SC1091
+    # if [[ -e "/etc/os-release" ]] && [[ ! "$( . /etc/os-release && echo "$NAME" )" == "SLES" ]]; then
+    #     export GEM_HOME="$user_install_dir/gems"
+    #     export GEM_PATH="$GEM_HOME"
+    #     pathappend "$GEM_HOME/bin"
+    # fi
+    ## }}}
+
+    ## Haskell {{{
+    CABAL_PATH="$HOME/.cabal"
+    pathprepend "$CABAL_PATH/bin"
+    ## }}}
+
+    ## Golang {{{
+    export GOPATH="$user_install_dir/golang"
+    pathappend "$GOPATH/bin"
+    ## }}}
+
+    ## Perl {{{
+    # Rework.
+    # export PATH="${HOME}/perl5/bin${PATH+:}${PATH}"
+    # export PERL5LIB="${HOME}/perl5/lib/perl5:..${PERL5LIB+:}${PERL5LIB}"
+    # export PERL_LOCAL_LIB_ROOT="${HOME}/perl5${PERL_LOCAL_LIB_ROOT+:}${PERL_LOCAL_LIB_ROOT}"
+    # export PERL_MB_OPT="--install_base \"${HOME}/perl5\""
+    # export PERL_MM_OPT="INSTALL_BASE=${HOME}/perl5"
+    ## }}}
+fi
+## }}}

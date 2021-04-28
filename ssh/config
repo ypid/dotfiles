@@ -1,5 +1,0 @@
-Host *
-    Include ~/.ssh/*/config
-
-Host *
-    Include ~/.ssh/config_ypid_defaults

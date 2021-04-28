@@ -1,5 +1,0 @@
-# Dependencies: xautomation
-
-# Switch windows with mouse button. For lazy people like me :)
-"xte 'keydown Alt_L' 'key Tab' 'keyup Alt_L'"
-release + b:10
