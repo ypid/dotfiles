@@ -3,6 +3,15 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
+if [ -n "$OSTYPE" ] && [ -x /usr/local/opnsense/scripts/shell/banner.php ]; then
+    /usr/local/opnsense/scripts/shell/banner.php
+    echo
+    alias vi='vim'
+    alias ls="ls -D '%F %T'"
+    alias l="ls -lh"
+    alias ll="ls -lha"
+fi
+
 ## Misuse bash as hook into termux-chroot and zsh.
 ## termux-chroot is slower so don’t use it by default for now.
 # if [ -n "$ANDROID_ROOT" ]; then
