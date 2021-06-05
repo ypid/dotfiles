@@ -1,0 +1,15 @@
+gui.column.hidden:
+gui.column.format:
+	"No.", "%m",
+	"Time", "%t",
+	"t delta", "%Gt",
+	"Source", "%s",
+	"Destination", "%d",
+	"DSCP", "%Cus:ip.dsfield.dscp:0:R",
+	"Protocol", "%p",
+	"st", "%Cus:tcp.stream:0:R",
+	"Length", "%L",
+	"Info", "%i"
+gui.qt.font_name: Liberation Mono,9,-1,5,50,0,0,0,0,0
+gui.layout_type: 2
+nameres.use_external_name_resolver: FALSE
