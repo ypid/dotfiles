@@ -16,7 +16,12 @@ export INPUTRC="${XDG_CONFIG_HOME}/readline/inputrc"
 export ANSIBLE_NOCOWS=1
 export BYOBU_PREFIX="/usr"
 export BYOBU_CONFIG_DIR="$HOME/.byobu"
-export EDITOR=nvim
+
+if command -v nvim >/dev/null 2>&1; then
+    export EDITOR=nvim
+else
+    export EDITOR=vim
+fi
 
 export LANG='en_US.UTF-8'
 export LANGUAGE='en_US:en'
@@ -135,7 +140,6 @@ function date {
         command date "$@"
     fi
 }
-alias ts='date'
 
 # source ~/.config/dotfiles/n.sh
 
@@ -367,6 +371,12 @@ alias al='nmap -n --reason -sP'
 if ! command -v hd >/dev/null 2>&1
 then
     alias hd='hexdump -C'
+fi
+
+if ! command -v unp >/dev/null 2>&1 && command -v file-unpack >/dev/null 2>&1
+then
+    # Close enough.
+    alias unp='file-unpack'
 fi
 
 # http://stackoverflow.com/questions/16787916/difference-between-2-directories-in-linux
