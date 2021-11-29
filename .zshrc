@@ -342,8 +342,10 @@ bindkey '^N' down-history
 ## }}}
 
 # notifyosd.zsh {{{
-# IGNORE_WINDOW_CHECK=1
-LONG_RUNNING_COMMAND_TIMEOUT=60
+
 LONG_RUNNING_IGNORE_LIST=(vim vi nvim nano htop top tmux less)
-source ~/.config/dotfiles/submodules/notifyosd.zsh/notifyosd.zsh
+
+# To many false positives because tabs in my Terminal emulator and Qubes OS windows are not yet supported.
+# source ~/.config/dotfiles/submodules/notifyosd.zsh/notifyosd.zsh
+
 # }}}
