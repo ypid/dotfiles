@@ -362,3 +362,6 @@
 [submodule "nvim/bundle/license-to-vim"]
 	path = nvim/bundle/license-to-vim
 	url = https://github.com/ararslan/license-to-vim.git
+[submodule "submodules/notifyosd.zsh"]
+	path = submodules/notifyosd.zsh
+	url = https://github.com/Nanoseb/notifyosd.zsh.git

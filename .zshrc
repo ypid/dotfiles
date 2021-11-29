@@ -340,3 +340,10 @@ bindkey '^N' down-history
 [[ -n "${key[Up]}" ]] && bindkey "${key[Up]}" history-beginning-search-backward
 [[ -n "${key[Down]}" ]] && bindkey "${key[Down]}" history-beginning-search-forward
 ## }}}
+
+# notifyosd.zsh {{{
+# IGNORE_WINDOW_CHECK=1
+LONG_RUNNING_COMMAND_TIMEOUT=60
+LONG_RUNNING_IGNORE_LIST=(vim vi nvim nano htop top tmux less)
+source ~/.config/dotfiles/submodules/notifyosd.zsh/notifyosd.zsh
+# }}}
