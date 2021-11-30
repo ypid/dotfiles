@@ -35,7 +35,7 @@ For secure, self-hosted distribution of my dotfiles to servers, clients and
 Qubes OS AppVMs I choose the approach to have a checkout (without the `.git`)
 at `/usr/local/share/ypid_dotfiles/` and than `/etc/skel/.config/dotfiles`
 symlinks to it. With this, I can easily enable my dotfiles for new users as
-needed. This comes in handy when different accounts are using for separation.
+needed. This comes in handy when different accounts are used for separation.
 
 Pro:
 
