@@ -347,13 +347,14 @@ fi
 # if [ -z "$ANDROID_ROOT" ]; then
 #     alias tmux='TERM=screen-256color-bce tmux'
 # fi
-function t() {
+function tmux() {
     if [[ $# == 0 ]]; then
         command tmux new -As0
     else
         command tmux "$@"
     fi
 }
+alias t='tmux'
 
 alias d='docker'
 alias '*'='dict'
