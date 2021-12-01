@@ -14,10 +14,8 @@
         <value type="int" value="16"/>
         <value type="int" value="15"/>
         <value type="int" value="6"/>
-        <value type="int" value="17"/>
         <value type="int" value="11"/>
         <value type="int" value="10"/>
-        <value type="int" value="14"/>
         <value type="int" value="20"/>
         <value type="int" value="5"/>
         <value type="int" value="18"/>
@@ -60,6 +58,12 @@
         <value type="string" value="vmapp command"/>
         <value type="string" value="yumex"/>
       </property>
+      <property name="known-legacy-items" type="array">
+        <value type="string" value="networkmanager applet"/>
+      </property>
+      <property name="known-items" type="array">
+        <value type="string" value="blueman"/>
+      </property>
     </property>
     <property name="plugin-14" type="string" value="xfce4-timer"/>
     <property name="plugin-10" type="string" value="battery"/>
@@ -73,7 +77,7 @@
       <property name="appearance" type="uint" value="1"/>
       <property name="items" type="array">
         <value type="string" value="+lock-screen"/>
-        <value type="string" value="-switch-user"/>
+        <value type="string" value="+switch-user"/>
         <value type="string" value="+separator"/>
         <value type="string" value="+suspend"/>
         <value type="string" value="-hibernate"/>
@@ -83,7 +87,10 @@
         <value type="string" value="+separator"/>
         <value type="string" value="+logout"/>
         <value type="string" value="-logout-dialog"/>
+        <value type="string" value="-hybrid-sleep"/>
       </property>
+      <property name="button-title" type="uint" value="3"/>
+      <property name="custom-title" type="string" value="X"/>
     </property>
     <property name="plugin-20" type="string" value="pulseaudio">
       <property name="enable-keyboard-shortcuts" type="bool" value="true"/>

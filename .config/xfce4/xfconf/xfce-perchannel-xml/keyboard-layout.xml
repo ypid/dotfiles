@@ -4,6 +4,6 @@
   <property name="Default" type="empty">
     <property name="XkbDisable" type="bool" value="false"/>
     <property name="XkbLayout" type="string" value="de"/>
-    <property name="XkbVariant" type="string" value="neo"/>
+    <property name="XkbVariant" type="string" value="neo_qwertz"/>
   </property>
 </channel>
