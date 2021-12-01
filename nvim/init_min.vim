@@ -3,7 +3,8 @@
 set nocompatible        " Must be first line.
 scriptencoding utf-8
 
-" Tim Pope sensible.vim - Defaults everyone can agree on (pasted here) {{{
+" Tim Pope sensible.vim - Defaults everyone can agree on. {{{
+" Pasted here to have it all in one file.
 unlet! g:loaded_sensible
 
 " sensible.vim - Defaults everyone can agree on

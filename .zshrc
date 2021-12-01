@@ -345,7 +345,8 @@ bindkey '^N' down-history
 
 LONG_RUNNING_IGNORE_LIST=(vim vi nvim nano htop top tmux less)
 
-# To many false positives because tabs in my Terminal emulator and Qubes OS windows are not yet supported.
-# source ~/.config/dotfiles/submodules/notifyosd.zsh/notifyosd.zsh
+# Too many false positives because tabs in my Terminal emulator and Qubes OS
+# windows are not yet supported.
+source ~/.config/dotfiles/submodules/notifyosd.zsh/notifyosd.zsh
 
 # }}}

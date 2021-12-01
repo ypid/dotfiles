@@ -344,12 +344,18 @@ fi
 
 ## More aliases {{{
 
-if [ -z "$ANDROID_ROOT" ]; then
-    alias tmux='TERM=screen-256color-bce tmux'
-fi
+# if [ -z "$ANDROID_ROOT" ]; then
+#     alias tmux='TERM=screen-256color-bce tmux'
+# fi
+function t() {
+    if [[ $# == 0 ]]; then
+        command tmux new -As0
+    else
+        command tmux "$@"
+    fi
+}
 
 alias d='docker'
-alias t='task'
 alias '*'='dict'
 alias con='ping heise.de'
 alias conn='ping6 heise.de'

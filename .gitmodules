@@ -296,9 +296,6 @@
 [submodule "vim/bundle/salt-vim"]
 	path = nvim/bundle/salt-vim
 	url = https://github.com/saltstack/salt-vim.git
-[submodule "tmux/plugins/tmux-prefix-highlight"]
-	path = tmux/plugins/tmux-prefix-highlight
-	url = https://github.com/tmux-plugins/tmux-prefix-highlight.git
 [submodule "windows/windows-desktop-switcher"]
 	path = windows/windows-desktop-switcher
 	url = https://github.com/pmb6tz/windows-desktop-switcher.git
@@ -365,3 +362,12 @@
 [submodule "submodules/notifyosd.zsh"]
 	path = submodules/notifyosd.zsh
 	url = https://github.com/Nanoseb/notifyosd.zsh.git
+[submodule ".local/share/tmux/plugins/tmux-sensible"]
+	path = .local/share/tmux/plugins/tmux-sensible
+	url = https://github.com/tmux-plugins/tmux-sensible.git
+[submodule ".local/share/tmux/plugins/tmux-prefix-highlight"]
+	path = .local/share/tmux/plugins/tmux-prefix-highlight
+	url = https://github.com/tmux-plugins/tmux-prefix-highlight.git
+[submodule ".local/share/tmux/plugins/tmux-colors-solarized"]
+	path = .local/share/tmux/plugins/tmux-colors-solarized
+	url = https://github.com/seebi/tmux-colors-solarized.git

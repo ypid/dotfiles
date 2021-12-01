@@ -62,8 +62,12 @@
       path: oh-my-zsh-custom
 
     # Tmux [[[2
+    ~/.config/tmux/tmux.conf:
+      path: .config/tmux/tmux.conf
+
+    # Legacy. Needed for backwards compatibility up until Tmux ~3.0.
     ~/.tmux.conf:
-      path: .tmux.conf
+      path: .config/tmux/tmux.conf
 
     ~/.local/share/tmux:
       path: .local/share/tmux
