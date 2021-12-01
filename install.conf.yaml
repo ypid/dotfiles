@@ -34,6 +34,9 @@
     - 'mkdir -p ~/.asdf-writable/plugins'
     - 'if [ "$(find "$PWD/asdf" -maxdepth 1 -type f|wc -l)" != "0" ]; then ln -sf "$PWD/asdf"/* ~/.asdf-writable; fi'
 
+    - command: 'killall xfconfd'
+      description: 'Ensure xfconfd is stopped. It will be started again on next access.'
+
 - link:
 
     # Bash [[[2
@@ -153,6 +156,8 @@
       force: true
       path: .config/xfce4/terminal/*
 
+    # xfconf replaces symlinks if it needs to update a file. Otherwise, it
+    # leaves the symlink in place.
     ~/.config/xfce4/xfconf/xfce-perchannel-xml/:
       force: true
       path: .config/xfce4/xfconf/xfce-perchannel-xml/*
