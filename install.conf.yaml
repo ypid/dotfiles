@@ -34,7 +34,7 @@
     - 'mkdir -p ~/.asdf-writable/plugins'
     - 'if [ "$(find "$PWD/asdf" -maxdepth 1 -type f|wc -l)" != "0" ]; then ln -sf "$PWD/asdf"/* ~/.asdf-writable; fi'
 
-    - command: 'killall --user "$USER" xfconfd'
+    - command: 'killall --user "$USER" xfconfd || :'
       description: 'Ensure xfconfd is stopped. It will be started again on next access.'
 
 - link:
