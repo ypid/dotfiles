@@ -1,0 +1,14 @@
+--follow
+--smart-case
+
+# I want to search hidden files, respect .gitignore but not search .git by default.
+# This can currently not be configured.
+# https://github.com/BurntSushi/ripgrep/issues/1303
+# https://github.com/BurntSushi/ripgrep/issues/1808
+# --hidden
+# --glob
+# "!**/.git/**"
+# --glob
+# '!.git'
+# --glob
+# "!**/.git/**"
