@@ -14,8 +14,6 @@ fi
 
 export INPUTRC="${XDG_CONFIG_HOME:-$HOME/.config}/readline/inputrc"
 export ANSIBLE_NOCOWS=1
-export BYOBU_PREFIX="/usr"
-export BYOBU_CONFIG_DIR="$HOME/.byobu"
 
 if command -v nvim >/dev/null 2>&1; then
     export EDITOR=nvim
