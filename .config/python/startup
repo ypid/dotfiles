@@ -12,22 +12,27 @@ import atexit
 import os
 import readline
 import rlcompleter
-import sys
-import re
+import sys  # noqa: F401
+import re  # noqa: F401
 
 # change autocomplete to tab
 readline.parse_and_bind("tab: complete")
 
-historyPath = os.path.expanduser("~/.pyhistory")
+history_dir_path = os.path.expanduser("~/.local/share/python")
+history_file_path = os.path.join(history_dir_path, 'history')
 
-def save_history(historyPath=historyPath):
+
+def save_history(history_file_path=history_file_path):
     import readline
-    readline.write_history_file(historyPath)
+    readline.write_history_file(history_file_path)
 
-if os.path.exists(historyPath):
-    readline.read_history_file(historyPath)
+
+if os.path.exists(history_file_path):
+    readline.read_history_file(history_file_path)
+elif not os.path.exists(history_dir_path):
+    os.makedirs(history_dir_path)
 
 atexit.register(save_history)
 
 # anything not deleted (sys and os) will remain in the interpreter session
-del atexit, readline, rlcompleter, save_history, historyPath
+del atexit, readline, rlcompleter, save_history, history_dir_path, history_file_path

@@ -129,8 +129,8 @@
     ~/.perltidyrc:
       path: .perltidyrc
 
-    ~/.pystartup:
-      path: .pystartup
+    ~/.config/python/startup:
+      path: .config/python/startup
 
     ~/.config/shell/:
       path: .config/shell/*

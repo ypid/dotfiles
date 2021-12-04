@@ -30,13 +30,14 @@ user_install_dir="${HOME}/.local/usr"
 if [ -d "$user_install_dir" ]
 then
 
+    pathappend "${HOME}/.local/bin"
     pathappend "$user_install_dir/bin"
 
     ## Python {{{
     export PYTHONUSERBASE="$user_install_dir/python"
     pathprepend "$PYTHONUSERBASE/bin"
     export PYTHONPATH=".:$PYTHONUSERBASE:$PYTHONPATH"
-    export PYTHONSTARTUP="${HOME}/.pystartup"
+    export PYTHONSTARTUP="${HOME}/.config/python/startup"
     ## }}}
 
     ## Node.js {{{
