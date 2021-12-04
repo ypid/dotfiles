@@ -42,17 +42,17 @@
     # Bash [[[2
     ~/.bashrc:
       force: true
-      create: false
       path: .bashrc
 
     ~/.bash_logout:
       force: true
-      create: false
       path: .bash_logout
 
     ~/.bash_profile:
-      create: false
       path: .bash_profile
+
+    ~/.config/ripgrep/ripgreprc:
+      path: .config/ripgrep/ripgreprc
 
     # ZSH [[[2
     ~/.zshrc:

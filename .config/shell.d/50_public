@@ -12,7 +12,7 @@ fi
 # export IGNOREEOF=2
 ## Does not work with zsh
 
-export INPUTRC="${XDG_CONFIG_HOME}/readline/inputrc"
+export INPUTRC="${XDG_CONFIG_HOME:-$HOME/.config}/readline/inputrc"
 export ANSIBLE_NOCOWS=1
 export BYOBU_PREFIX="/usr"
 export BYOBU_CONFIG_DIR="$HOME/.byobu"
@@ -33,6 +33,9 @@ fi
 
 ## https://www.suse.com/releasenotes/i386/openSUSE/11.1/RELEASE-NOTES.en.html#04
 export MAN_POSIXLY_CORRECT=1
+
+RIPGREP_CONFIG_PATH="${XDG_CONFIG_HOME:-$HOME/.config}/ripgrep/ripgreprc"
+export RIPGREP_CONFIG_PATH
 
 ## }}}
 
@@ -133,11 +136,19 @@ function swap {
 }
 
 function date {
-    ## `date` ignores our locale settings so we change the default format this way.
+    ## `date` ignores our locale settings so we fix the default format this way.
     if [[ -z "$1" ]] ; then
         command date --rfc-3339=seconds
     else
         command date "$@"
+    fi
+}
+
+function df() {
+    if [[ -z "$1" ]] ; then
+        command df --human-readable --print-type
+    else
+        command df "$@"
     fi
 }
 
@@ -265,37 +276,6 @@ else
     alias k=gpg
 fi
 ## }}}
-
-## ripgrep {{{
-if command -v ag >/dev/null 2>&1
-then
-    ## Using ripgrep
-    function ag() {
-        if [[ $# == 0 ]]; then
-            command rg
-        else
-            command rg --follow --smart-case "$@"
-        fi
-    }
-    alias rg='ag'
-elif command -v ag >/dev/null 2>&1
-then
-    ## Using silversearcher-ag
-    function ag() {
-        if [[ $# == 0 ]]; then
-            command ag
-        else
-            command ag --follow --smart-case "$@"
-        fi
-    }
-elif command -v ack-grep >/dev/null 2>&1
-then
-    alias ag='ack-grep --follow'
-elif command -v git >/dev/null 2>&1
-then
-    alias ag='git grep'
-fi
-# }}}
 
 ## Elastic {{{
 ## https://www.elastic.co/guide/en/kibana/7.7/install-plugin.html
