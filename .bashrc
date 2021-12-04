@@ -10,6 +10,8 @@ if [ -n "$OSTYPE" ] && [ -x /usr/local/opnsense/scripts/shell/banner.php ]; then
     alias ls="ls -D '%F %T'"
     alias l="ls -lh"
     alias ll="ls -lha"
+else
+    source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/tmux-attach"
 fi
 
 ## Misuse bash as hook into termux-chroot and zsh.

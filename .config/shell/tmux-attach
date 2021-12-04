@@ -1,0 +1,14 @@
+#!/bin/sh
+# Sourced by Bash and zsh.
+
+# SPDX-FileCopyrightText: 2021 Robin Schneider <ypid@riseup.net>
+#
+# SPDX-License-Identifier: CC0-1.0
+
+if [[ -n "$PS1" ]] && [[ -z "$TMUX" ]] && [[ -n "$SSH_CLIENT" ]] && [[ -z "$ANDROID_ROOT" ]] && command -v tmux >/dev/null 2>&1; then
+    if tmux has-session -t0 >/dev/null 2>&1; then
+        exec tmux attach-session -t0
+    else
+        exec tmux new-session -s0 'run-parts /etc/update-motd.d; zsh || bash'
+    fi
+fi

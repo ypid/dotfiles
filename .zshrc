@@ -5,6 +5,8 @@ if [ -e "/run/qubes/this-is-templatevm" ]; then
     exec bash
 fi
 
+source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/tmux-attach"
+
 # Enable this:
 # zmodload zsh/zprof
 # And run `zprof` in a new shell to profile startup time.
