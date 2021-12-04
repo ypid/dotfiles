@@ -258,7 +258,7 @@ Shift+Ctrl+Tab | Switch to left tab, cycle through tabs  | Yes            |
 Ctrl+J         | Switch to left tab                      | Not really     |
 Ctrl+K         | Switch to right tab                     | Not really     |
 Ctrl+[+-]      | Increase/Decrease (zoom) font size      | Nice to have   | Currently not supported in Double Commander. Level 3 [Neo2][] plus and minus work in Firefox (after setting the − via the Add-On Customizable Shortcuts). GNOME Terminal does not allow to configure „−” currently (can this be done in Gtk programs?). Works in ConEmu (without Shift).
-Alt+M          | Switch to tab 1                         | No             | See [Neo2 layer4][Neo2]. Maybe blocks the use of Alt+[a-z]. I hope that most applications use letters which would be on the left side of a qwertz keyboard.
+Alt+M          | Switch to tab 1                         | No             | See [Neo2 layer4][Neo2]. Maybe blocks the use of Alt+[a-z]. I hope that most applications use letters which would be on the left side of a qwertz keyboard. FIXME: No, they wont!!!
 Alt+,          | Switch to tab 2                         | No             |
 Alt+.          | Switch to tab 3                         | No             |
 Alt+J          | Switch to tab 4                         | No             |
