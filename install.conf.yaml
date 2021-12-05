@@ -141,8 +141,8 @@
     ~/.local/share/scripts/ypid-scripts-common:
       path: scripts
 
-    ~/.config/synapse/:
-      path: .config/synapse/*
+    ~/.config/synapse:
+      path: .config/synapse
 
     ~/.config/xfce4/helpers.rc:
       force: true

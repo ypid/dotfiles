@@ -10,7 +10,9 @@
         "SynapseLaunchpadPlugin",
         "SynapseLocatePlugin",
         "SynapseOpenSearchPlugin",
-        "SynapseSshPlugin"
+        "SynapseSshPlugin",
+        "SynapseChromiumPlugin",
+        "SynapseSelectionPlugin"
       ]
     }
   },
