@@ -55,7 +55,6 @@
       <property name="&lt;Primary&gt;Escape" type="string" value="xfdesktop --menu"/>
       <property name="XF86LogOff" type="string" value="xfce4-session-logout"/>
       <property name="&lt;Alt&gt;Print" type="string" value="xfce4-screenshooter -w"/>
-      <property name="XF86Terminal" type="string" value="x-terminal-emulator"/>
       <property name="&lt;Alt&gt;F3" type="string" value="xfce4-appfinder">
         <property name="startup-notify" type="bool" value="true"/>
       </property>
@@ -88,12 +87,12 @@
       <property name="&lt;Super&gt;F1" type="string" value="xrandr -s 2560x1440"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;k" type="string" value="clementine --next"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;l" type="string" value="clementine --next"/>
-      <property name="&lt;Primary&gt;&lt;Alt&gt;g" type="string" value="sh -c &apos;/home/user/scripts/stop-vms; sudo reboot&apos;"/>
-      <property name="&lt;Primary&gt;&lt;Alt&gt;v" type="string" value="sh -c &apos;/home/user/scripts/stop-vms; sudo poweroff&apos;"/>
       <property name="F1" type="string" value="galculator"/>
       <property name="&lt;Primary&gt;&lt;Super&gt;x" type="string" value="pactl set-sink-mute 0 toggle"/>
       <property name="&lt;Primary&gt;&lt;Super&gt;y" type="string" value="pactl set-sink-volume 0 &apos;+5%&apos;"/>
-      <property name="&lt;Primary&gt;&lt;Super&gt;s" type="string" value="x-terminal-emulator"/>
+      <property name="&lt;Primary&gt;&lt;Super&gt;s" type="string" value="xfce4-terminal --maximize"/>
+      <property name="&lt;Primary&gt;&lt;Alt&gt;v" type="string" value="sudo poweroff"/>
+      <property name="&lt;Primary&gt;&lt;Alt&gt;g" type="string" value="sudo reboot"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">
