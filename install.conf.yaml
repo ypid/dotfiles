@@ -51,9 +51,6 @@
     ~/.bash_profile:
       path: .bash_profile
 
-    ~/.config/ripgrep/ripgreprc:
-      path: .config/ripgrep/ripgreprc
-
     # ZSH [[[2
     ~/.zshrc:
       path: .zshrc
@@ -201,6 +198,10 @@
 
     '~/.config/autokey/data/Emitting keystrokes':
       path: '.config/autokey/Emitting keystrokes'
+
+    ~/.config/ripgrep/ripgreprc:
+      path: .config/ripgrep/ripgreprc
+
     # ]]]2
 
 - link:
