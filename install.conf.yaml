@@ -229,6 +229,9 @@
           if [[ -e /rw/config/gpg-split-domain ]]; then
             git config --global gpg.program qubes-gpg-client-wrapper
           fi
+          if [[ -e /run/qubes/this-is-appvm ]] || [[ -e /run/qubes/this-is-templatevm ]]; then
+            git config --global credential.helper store
+          fi
         fi
 
 # Editable installation specific. [[[1

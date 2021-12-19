@@ -141,8 +141,11 @@
 	date = iso
 [url "https://github.com/"]
 	insteadOf = git://github.com/
+
+# Default to secure keyring instead of unencrypted ~/.git-credentials.
 [credential]
-	helper = store
+	helper = /usr/share/doc/git/contrib/credential/libsecret/git-credential-libsecret
+
 [tig]
 	# https://github.com/jonas/tig/blob/master/contrib/large-repo.tigrc
 	# Use Git's default (reverse chronological) order, never automatically
