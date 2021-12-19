@@ -275,7 +275,7 @@
             ~/.config/
           rsync --recursive ${YPID_DOT_IGNORE_EXISTING:---ignore-existing} \
             .config/doublecmd/doublecmd.xml \
-            .config/doublecmd/doublecmd.xml \
+            .config/doublecmd/shortcuts.scf \
             ~/.config/doublecmd
         fi
 
