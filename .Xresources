@@ -1,0 +1,2 @@
+! Disable "New Login" in xscreensaver.
+xscreensaver.newLoginCommand:
