@@ -240,8 +240,8 @@
 # Editable installation specific. [[[1
 - link:
 
-    ~/.local/share/mimeapps.list:
-      path: .local/share/mimeapps.list
+    ~/.config/mimeapps.list:
+      path: .config/mimeapps.list
       if: 'test -w .'
 
     ~/.local/share/applications/:
@@ -269,12 +269,12 @@
     - command: |
         if ! test -w .; then
           rsync --recursive ${YPID_DOT_IGNORE_EXISTING:---ignore-existing} \
-            .local/share/mimeapps.list \
             .local/share/applications \
             ~/.local/share/
           rsync --recursive ${YPID_DOT_IGNORE_EXISTING:---ignore-existing} \
-            .config/obs-studio \
             .config/Clementine \
+            .config/mimeapps.list \
+            .config/obs-studio \
             ~/.config/
           rsync --recursive ${YPID_DOT_IGNORE_EXISTING:---ignore-existing} \
             .config/doublecmd/doublecmd.xml \
@@ -293,3 +293,15 @@
     - '~/.config'
     - '~/.config/git'
     - '~/.config/shell.d'
+
+# Legacy support. [[[1
+
+# This needs to be at the end because .config/mimeapps.list needs to exist
+# first.
+- link:
+
+    # Although deprecated, several applications still read/write to
+    # ~/.local/share/applications/mimeapps.list
+    # Ref: https://wiki.archlinux.org/title/XDG_MIME_Applications#mimeapps.list
+    ~/.local/share/mimeapps.list:
+      path: ~/.config/mimeapps.list
