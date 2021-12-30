@@ -23,6 +23,7 @@ call add(g:spf13_bundle_groups, 'generic_programming')
 call add(g:spf13_bundle_groups, 'programming_not_often_used')
 call add(g:spf13_bundle_groups, 'perl')
 call add(g:spf13_bundle_groups, 'jinja2')
+call add(g:spf13_bundle_groups, 'sysadmin')
 call add(g:spf13_bundle_groups, 'snipmate')
 call add(g:spf13_bundle_groups, 'html')
 call add(g:spf13_bundle_groups, 'python')
@@ -831,6 +832,8 @@ if count(g:spf13_bundle_groups, 'sysadmin') " {{{
     Plugin 'ghost/salt-vim'
 
     Plugin 'ghost/logstash.vim'
+
+    Plugin 'ghost/vim-nftables'
 endif " }}}
 
 if count(g:spf13_bundle_groups, 'miscelenous') " Misc {{{

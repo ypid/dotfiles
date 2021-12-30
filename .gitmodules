@@ -371,3 +371,6 @@
 [submodule ".local/share/tmux/plugins/tmux-colors-solarized"]
 	path = .local/share/tmux/plugins/tmux-colors-solarized
 	url = https://github.com/seebi/tmux-colors-solarized.git
+[submodule "nvim/bundle/vim-nftables"]
+	path = nvim/bundle/vim-nftables
+	url = https://github.com/nfnty/vim-nftables.git
