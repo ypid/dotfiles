@@ -219,6 +219,7 @@
     - 'chmod 0700 ~/.gnupg'
     - 'rsync --ignore-existing .ssh/config ~/.ssh'
     - 'rsync --ignore-existing --recursive .config/wireshark/ ~/.config/wireshark'
+    - 'rsync --ignore-existing --recursive .config/smplayer/ ~/.config/smplayer'
 
 # Machine dependent (auto detected). [[[1
 - shell:
