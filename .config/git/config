@@ -160,6 +160,9 @@
 
 	# Optionally, use the old and faster but less accurate graph renderer
 	#set main-view-commit-title-graph = v1
+
+	# Workaround for https://github.com/jonas/tig/issues/411 before Debian 12.
+	mailmap = yes
 [merge]
 	ff = false
 	tool = diffconflicts
