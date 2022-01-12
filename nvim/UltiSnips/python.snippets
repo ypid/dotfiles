@@ -5,54 +5,14 @@ snippet #! "Shebang" !b
 endsnippet
 
 snippet sig "my signature" !b
-# Copyright (C) `date +%Y` `git config --get user.name` <`git config --get user.email`>
+# SPDX-FileCopyrightText: `date +%Y` `git config --get user.name` <`git config --get user.email`>
 #
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU Affero General Public License as
-# published by the Free Software Foundation, version 3 of the
-# License.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU Affero General Public License for more details.
-#
-# You should have received a copy of the GNU Affero General Public License
-# along with this program.  If not, see <https://www.gnu.org/licenses/>.
+# SPDX-License-Identifier: AGPL-3.0-or-later
 
 """
 $1
 """
 
-from __future__ import print_function, unicode_literals, absolute_import, division
-
-__license__ = 'AGPL-3.0-only'
-__author__ = '`git config --get user.name` <`git config --get user.email`>'
-__version__ = '0.5.0'
-endsnippet
-
-snippet siggpl "my signature" !b
-# Copyright (C) `date +%Y` `git config --get user.name` <`git config --get user.email`>
-#
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License version 3, as
-# published by the Free Software Foundation.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
-"""
-$1
-"""
-
-from __future__ import print_function, unicode_literals, absolute_import, division
-
-__license__ = 'GPL-3.0'
 __author__ = '`git config --get user.name` <`git config --get user.email`>'
 __version__ = '0.5.0'
 endsnippet
