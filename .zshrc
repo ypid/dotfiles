@@ -283,6 +283,7 @@ return_code=$return_code_enabled
 
 PROMPT="╭─ ${time} ${user_host}${current_dir}${git_branch} ${return_code}
 ╰─ %B%(!.#.$)%b "
+RPROMPT=""
 
 function accept-line-or-clear-warning () {
 	if [[ -z $BUFFER ]]; then
