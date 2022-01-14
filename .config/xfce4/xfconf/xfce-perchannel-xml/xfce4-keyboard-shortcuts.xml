@@ -66,7 +66,6 @@
       <property name="&lt;Primary&gt;&lt;Alt&gt;Delete" type="string" value="xflock4"/>
       <property name="&lt;Control&gt;&lt;Alt&gt;Escape" type="string" value="xkill"/>
       <property name="XF86Calculator" type="string" value="galculator"/>
-      <property name="Print" type="string" value="xfce4-screenshooter -f"/>
       <property name="XF86AudioPlay" type="string" value="pragha --pause"/>
       <property name="XF86Mail" type="string" value="exo-open --launch MailReader"/>
       <property name="XF86Display" type="string" value="xfce4-display-settings --minimal"/>
@@ -93,6 +92,7 @@
       <property name="&lt;Primary&gt;&lt;Super&gt;s" type="string" value="xfce4-terminal --maximize"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;v" type="string" value="sudo poweroff"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;g" type="string" value="sudo reboot"/>
+      <property name="Print" type="string" value="gnome-screenshot --clipboard --area --delay=2 --include-pointer"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">
