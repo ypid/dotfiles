@@ -360,8 +360,8 @@ endif " }}}
 if count(g:spf13_bundle_groups, 'generic_programming') " {{{
 
     if has('nvim')
-        Plugin 'ghost/neomake'
-        call neomake#configure#automake('rw', 1000)
+        " Plugin 'ghost/neomake'
+        " call neomake#configure#automake('rw', 1000)
     else
         Plugin 'ghost/syntastic'
         " Plugin 'pydave/AsyncCommand'
@@ -941,6 +941,18 @@ endif " }}}
 " }}}
 
 " call neobundle#end()
+" }}}
+
+" Spellcheck {{{
+" set spellfile=~/.vim/spell/en.utf-8.add set dictionary+=/usr/share/dict/words
+" English is the default. German is legacy and is to be enabled
+" only as needed.
+"
+if has('win32') || has('win64')
+    set spelllang=en_us
+else
+    set spelllang=en_us,de_de
+endif
 " }}}
 
 " Color schema {{{

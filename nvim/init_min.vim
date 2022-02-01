@@ -170,6 +170,7 @@ set cursorline
 
 set spell
 syntax spell toplevel
+set spelllang=en_us
 
 " Setting up the directories {{{
 
@@ -331,15 +332,7 @@ inoremap <silent> <Leader>b <c-o>:nohlsearch<CR>
 noremap <Leader>l :set list!<CR>
 inoremap <Leader>l <c-o>:set list!<CR>
 
-" Spellcheck { set spellfile=~/.vim/spell/en.utf-8.add set dictionary+=/usr/share/dict/words
-" English is the default. German is legacy and is to be enabled
-" only as needed.
-"
-if has('win32') || has('win64')
-    set spelllang=en_us
-else
-    set spelllang=en_us,de_de
-endif
+" Toggle spell checking.
 noremap <Leader>cd :set spell!<CR>
 inoremap <Leader>cd <c-o>:set spell!<CR>
 

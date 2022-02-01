@@ -221,6 +221,21 @@
     - 'rsync --ignore-existing --recursive .config/wireshark/ ~/.config/wireshark'
     - 'rsync --ignore-existing --recursive .config/smplayer/ ~/.config/smplayer'
 
+    - description: 'Size matters when having to transfer it for every SSH login. Put stripped down files in ~/.sshrc.d/'
+      command: |-
+        for file_path in .zshrc .config/shell.d/50_public .config/git/config .config/htop/htoprc .config/tmux/tmux.conf .local/share/tmux/plugins/tmux-prefix-highlight/prefix_highlight.tmux .local/share/tmux/plugins/tmux-colors-solarized/tmuxcolors-dark.conf .local/share/tmux/plugins/tmux-sensible/sensible.tmux .config/shell/tmux-attach scripts/sc; do
+          mkdir -p "$(dirname "$HOME/.sshrc.d/$file_path")"
+          grep -Ev '^\s*#([^!]|$)' "$file_path" > "$HOME/.sshrc.d/$file_path"
+        done
+        chmod +x "$HOME/.sshrc.d"/scripts/*
+        ln -sf .config/tmux/tmux.conf ~/.sshrc.d/.tmux.conf
+        for file_path in oh-my-zsh/plugins/git/git.plugin.zsh oh-my-zsh/plugins/vi-mode/vi-mode.plugin.zsh ./oh-my-zsh/lib/*.zsh ./oh-my-zsh-custom/themes/ypid.zsh-theme; do
+          mkdir -p "$(dirname "$HOME/.sshrc.d/.config/$file_path")"
+          grep -Ev '^\s*#([^!]|$)' "$file_path" > "$HOME/.sshrc.d/.config/$file_path"
+        done
+        grep -Ev '^(\s*"|$)' nvim/init_min.vim > ~/.sshrc.d/.vimrc.min
+
+
 # Machine dependent (auto detected). [[[1
 - shell:
 

@@ -5,7 +5,16 @@ if [ -e "$new_home" ]; then
     export HOME="$new_home"
     cd
 else
-    echo "$new_home missing. Create it with the corresponding content so that ypid/dotfiles can be enabled automatically next time you log in." 1>&2
+    # Assume non-root account is my personalized account.
+    if [[ "$USER" != 'root' ]]; then
+        ln -sf "$SSHHOME/.sshrc.d/.tmux.conf" ~/.tmux.conf
+        mkdir -p ~/.local/share ~/.config/htop
+        ln -sf "$SSHHOME/.sshrc.d/.local/share/tmux" ~/.local/share/tmux
+        ln -sf "$SSHHOME/.sshrc.d/.config/htop/htoprc" ~/.config/htop/htoprc
+    fi
+
+    export VIMINIT="let \$MYVIMRC='$SSHHOME/.sshrc.d/.vimrc.min' | source \$MYVIMRC"
+    export ZDOTDIR="$SSHHOME/.sshrc.d"
 fi
 if command -v zsh >/dev/null 2>&1; then
     exec zsh

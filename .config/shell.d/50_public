@@ -113,12 +113,12 @@ function sed-easy {
 
 function h {
     pattern="${1:-.}"
-    shift
 
     if [[ "$pattern" == "." ]]; then
-        history
+        omz_history -i
     else
-        history | grep -Eie "$pattern" "$@"
+        shift
+        omz_history -i | grep -Eie "$pattern" "$@"
     fi
 }
 
@@ -149,6 +149,16 @@ function df() {
         command df "$@"
     fi
 }
+
+if [[ "$ypid_dotfiles_level" == "min" ]]; then
+    function sudo() {
+        if [[ "$1" == "-i" ]] && [[ "$#" == 1 ]]; then
+            HOME="$SSHHOME/.sshrc.d" command sudo -E zsh
+        else
+            command sudo "$@"
+        fi
+    }
+fi
 
 # source ~/.config/dotfiles/n.sh
 
@@ -391,6 +401,13 @@ if [[ "$USER" != 'root' ]] && [ -z "$ANDROID_ROOT" ]; then
         usrlocal_path='/usr/local'
     fi
     alias sc="sudo ${usrlocal_path}/share/ypid_dotfiles/scripts/sc"
+fi
+if [[ "$ypid_dotfiles_level" == "min" ]]; then
+    if [[ "$USER" == 'root' ]]; then
+        alias sc="$SSHHOME/.sshrc.d/scripts/sc"
+    else
+        alias sc="sudo $SSHHOME/.sshrc.d/scripts/sc"
+    fi
 fi
 
 alias rpm-keys="rpm -q gpg-pubkey --qf '%{name}-%{version}-%{release} --> %{summary}\\n'"

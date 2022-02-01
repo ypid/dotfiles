@@ -5,7 +5,101 @@ if [ -e "/run/qubes/this-is-templatevm" ]; then
     exec bash
 fi
 
+# oh-my-zsh configuration {{{
+# Set to this to use case-sensitive completion
+# CASE_SENSITIVE="true"
+
+# Comment this out to disable bi-weekly auto-update checks
+DISABLE_AUTO_UPDATE="true"
+
+# Uncomment to change how often before auto-updates occur? (in days)
+# export UPDATE_ZSH_DAYS=13
+
+# Uncomment following line if you want to disable colors in ls
+# DISABLE_LS_COLORS="true"
+
+# Uncomment following line if you want to disable autosetting terminal title.
+DISABLE_AUTO_TITLE="true"
+
+# Uncomment following line if you want to disable command autocorrection
+# DISABLE_CORRECTION="true"
+
+# Uncomment following line if you want red dots to be displayed while waiting for completion
+COMPLETION_WAITING_DOTS="true"
+
+# Uncomment following line if you want to disable marking untracked files under
+# VCS as dirty. This makes repository status check for large repositories much,
+# much faster.
+DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+ZSH_CUSTOM="${XDG_CONFIG_HOME:-$HOME/.config}/oh-my-zsh-custom"
+
+HIST_STAMPS='yyyy-mm-dd'
+
+ZSH_COMPDUMP="${XDG_CACHE_HOME:-$HOME/.cache}/zcompdump-${ZSH_VERSION}"
+# }}}
+
+## bindkey {{{
+ypid_zsh_bindkey() {
+    bindkey -v
+    bindkey -M vicmd v edit-command-line
+    bindkey '^R' history-incremental-search-backward
+    bindkey '^K' history-beginning-search-backward
+    bindkey '^O' history-beginning-search-forward
+    # bindkey '^M' history-beginning-search-forward # disables enter
+    bindkey '^P' up-history
+    bindkey '^N' down-history
+
+    [[ -n "${key[Up]}" ]] && bindkey "${key[Up]}" history-beginning-search-backward
+    [[ -n "${key[Down]}" ]] && bindkey "${key[Down]}" history-beginning-search-forward
+}
+## }}}
+
+# http://vim.1045645.n5.nabble.com/vim-ctrl-s-mapping-does-not-work-td1147525.html
+stty -ixon -ixoff
+# I use tmux copy mode for this anyway.
+
+local ypid_dotfiles_level="full"
+if [ -n "$SSHHOME" ] && [ ! -e "$HOME/.config/dotfiles/.reuse/dep5" ]; then
+    local ypid_dotfiles_level="min"
+
+    source "$SSHHOME/.sshrc.d/.config/shell.d/50_public"
+    source "$SSHHOME/.sshrc.d/.config/oh-my-zsh/plugins/git/git.plugin.zsh"
+    source "$SSHHOME/.sshrc.d/.config/oh-my-zsh/plugins/vi-mode/vi-mode.plugin.zsh"
+
+    for config_file ($SSHHOME/.sshrc.d/.config/oh-my-zsh/lib/*.zsh); do
+      custom_config_file="${ZSH_CUSTOM}/lib/${config_file:t}"
+      [ -f "${custom_config_file}" ] && config_file=${custom_config_file}
+      source $config_file
+    done
+
+    # Let git use .config/git from sshrc.
+    XDG_CONFIG_HOME="$SSHHOME/.sshrc.d/.config"
+    export XDG_CONFIG_HOME
+
+    source "$SSHHOME/.sshrc.d/.config/oh-my-zsh-custom/themes/ypid.zsh-theme"
+
+    PATH="${PATH:+"$PATH:"}$SSHHOME/.sshrc.d/scripts"
+
+    ypid_zsh_bindkey
+
+    # Write to persistent history file when I am root.
+    if [[ "$USER" == 'root' ]]; then
+        export HISTFILE="/root/.history"
+    fi
+fi
+
+if command -v compdef >/dev/null 2>&1; then
+    command -v ssh_wrapper >/dev/null 2>&1 && compdef ssh_wrapper=ssh
+    command -v sshrc_wrapper >/dev/null 2>&1 && compdef sshrc_wrapper=ssh
+    command -v sc >/dev/null 2>&1 && compdef sc=service
+    command -v rl >/dev/null 2>&1 && command -v journalctll >/dev/null 2>&1 && compdef rl=journalctl
+fi
+
 source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/tmux-attach"
+if [ "$ypid_dotfiles_level" = "min" ]; then
+    return
+fi
 
 # Enable this:
 # zmodload zsh/zprof
@@ -79,40 +173,6 @@ fi
 # ZSH_THEME="steeef"
 # }}}
 #
-# }}}
-
-# oh-my-zsh configuration {{{
-# Set to this to use case-sensitive completion
-# CASE_SENSITIVE="true"
-
-# Comment this out to disable bi-weekly auto-update checks
-DISABLE_AUTO_UPDATE="true"
-
-# Uncomment to change how often before auto-updates occur? (in days)
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment following line if you want to disable colors in ls
-# DISABLE_LS_COLORS="true"
-
-# Uncomment following line if you want to disable autosetting terminal title.
-DISABLE_AUTO_TITLE="true"
-
-# Uncomment following line if you want to disable command autocorrection
-# DISABLE_CORRECTION="true"
-
-# Uncomment following line if you want red dots to be displayed while waiting for completion
-COMPLETION_WAITING_DOTS="true"
-
-# Uncomment following line if you want to disable marking untracked files under
-# VCS as dirty. This makes repository status check for large repositories much,
-# much faster.
-DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-ZSH_CUSTOM="${XDG_CONFIG_HOME:-$HOME/.config}/oh-my-zsh-custom"
-
-HIST_STAMPS='yyyy-mm-dd'
-
-ZSH_COMPDUMP="${XDG_CACHE_HOME:-$HOME/.cache}/zcompdump-${ZSH_VERSION}"
 # }}}
 
 # Plugins {{{
@@ -222,90 +282,15 @@ else
 	compinit -C
 fi
 
-if command -v compdef >/dev/null 2>&1; then
-    command -v ssh_wrapper >/dev/null 2>&1 && compdef ssh_wrapper=ssh
-    command -v sshrc_wrapper >/dev/null 2>&1 && compdef sshrc_wrapper=ssh
-    command -v sc >/dev/null 2>&1 && compdef sc=service
-    command -v rl >/dev/null 2>&1 && command -v journalctll >/dev/null 2>&1 && compdef rl=journalctl
-fi
-
 if [[ -a /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
     source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
 
-if [[ -a /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
-    source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-fi
-
-# Own theme based on dieter and bira {{{
-
-# local time, color coded by last return code
-# time_enabled="%(?.⌚ %{$fg[green]%}.%{$fg[red]%})%*%{$reset_color%}"
-time_enabled="%(?.%{$fg[green]%}.%{$fg[red]%})%D{%Y-%m-%d %H:%M:%S%z}%{$reset_color%}"
-time_disabled="%{$fg[green]%}%*%{$reset_color%}"
-time="$time_enabled"
-
-# user part, color coded by privileges
-## In case of "Name or service not known" we fall back to $HOST.
-HOSTNAME="$(hostname --fqdn 2> /dev/null || echo "$HOST")"
-if [ "$HOSTNAME" = "localhost" ]; then
-    HOSTNAME="$HOST"
-fi
-
-local user="%{$terminfo[bold]$fg[green]%}%n"
-if [ "$USER" = "root" ]; then
-    user="%{$terminfo[bold]$fg[red]%}%n"
-fi
-
-local host="%{$terminfo[bold]$fg[green]%}${HOSTNAME}"
-test -f /etc/machine-info && source /etc/machine-info
-if [ "$DEPLOYMENT" = "production" ]; then
-    host="%{$terminfo[bold]$fg[red]%}${HOSTNAME}"
-fi
-local user_host='${user}%{$reset_color%}@${host}%{$reset_color%}'
-
-local current_dir='%{$terminfo[bold]$fg[blue]%} %~%{$reset_color%}'
-
-local git_branch=''
-if [ -z "$ANDROID_ROOT" ] && [ "$(hostname)" != "files" ]; then
-    git_branch=' $(git_prompt_info)%{$reset_color%}'
-fi
-
-ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[yellow]%}‹"
-ZSH_THEME_GIT_PROMPT_SUFFIX="› %{$reset_color%}"
-
-# elaborate exitcode on the right when >0
-return_code_enabled="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
-return_code_disabled=
-return_code=$return_code_enabled
-
-# RPS1='${return_code}'
-
-PROMPT="╭─ ${time} ${user_host}${current_dir}${git_branch} ${return_code}
-╰─ %B%(!.#.$)%b "
-RPROMPT=""
-
-function accept-line-or-clear-warning () {
-	if [[ -z $BUFFER ]]; then
-		time=$time_disabled
-		return_code=$return_code_disabled
-	else
-		time=$time_enabled
-		return_code=$return_code_enabled
-	fi
-	zle accept-line
-}
-zle -N accept-line-or-clear-warning
-bindkey '^M' accept-line-or-clear-warning
-# }}}
+source "${XDG_CONFIG_HOME:-$HOME/.config}/oh-my-zsh-custom/themes/ypid.zsh-theme"
 
 # like eternal history
 # SAVEHIST=100000000
 # huge performance killer!
-
-# http://vim.1045645.n5.nabble.com/vim-ctrl-s-mapping-does-not-work-td1147525.html
-stty -ixon -ixoff
-# I use tmux copy mode for this anyway.
 
 setopt no_share_history
 
@@ -330,20 +315,7 @@ setopt no_share_history
 # bindkey "^D" bash-ctrl-d
 ## }}}
 
-## bindkey {{{
-bindkey -v
-bindkey -M vicmd v edit-command-line
-bindkey '^R' history-incremental-search-backward
-bindkey '^K' history-beginning-search-backward
-bindkey '^O' history-beginning-search-forward
-# bindkey '^M' history-beginning-search-forward # disables enter
-bindkey '^P' up-history
-bindkey '^N' down-history
-
-[[ -n "${key[Up]}" ]] && bindkey "${key[Up]}" history-beginning-search-backward
-[[ -n "${key[Down]}" ]] && bindkey "${key[Down]}" history-beginning-search-forward
-## }}}
-
+ypid_zsh_bindkey
 # notifyosd.zsh {{{
 
 LONG_RUNNING_IGNORE_LIST=(vim vi nvim nano htop top tmux less)

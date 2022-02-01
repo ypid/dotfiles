@@ -3,6 +3,8 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
+local ypid_dotfiles_level="full"
+
 if [ -n "$OSTYPE" ] && [ -x /usr/local/opnsense/scripts/shell/banner.php ]; then
     /usr/local/opnsense/scripts/shell/banner.php
     echo
