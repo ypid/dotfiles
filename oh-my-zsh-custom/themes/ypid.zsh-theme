@@ -1,6 +1,11 @@
 # SPDX-FileCopyrightText: 2014,2021-2022 Robin Schneider <ypid@riseup.net>
 # SPDX-FileCopyrightText: Authors of dieter and bira
 
+function virtualenv_info {
+    [ $VIRTUAL_ENV ] && echo "(venv: $(basename "$VIRTUAL_ENV")) "
+}
+local virtualenv_prompt='$(virtualenv_info)'
+
 # Own theme based on dieter and bira
 
 # local time, color coded by last return code
@@ -44,7 +49,7 @@ return_code=$return_code_enabled
 
 # RPS1='${return_code}'
 
-PROMPT="╭─ ${time} ${user_host}${current_dir}${git_branch} ${return_code}
+PROMPT="╭─ ${time} ${user_host}${current_dir}${git_branch}${virtualenv_prompt} ${return_code}
 ╰─ %B%(!.#.$)%b "
 RPROMPT=""
 

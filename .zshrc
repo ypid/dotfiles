@@ -185,6 +185,7 @@ plugins=(autojump)
 plugins+=(git-annex)
 plugins+=(git)
 plugins+=(pip)
+plugins+=(virtualenv)
 # plugins=(tmuxinator)
 # [[ -e ~/gems/gems/tmuxinator-0.6.8/completion/tmuxinator.zsh ]] && source ~/gems/gems/tmuxinator-0.6.8/completion/tmuxinator.zsh
 
