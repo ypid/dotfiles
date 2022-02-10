@@ -1044,6 +1044,9 @@ if count(g:config_section_enable, 'autocmd_config')
             autocmd BufRead,BufNewFile $HOME/.unison/* setlocal filetype=conf
             autocmd BufRead,BufNewFile *logstash*/**/*.conf setlocal filetype=logstash
 
+            " Oh My Zsh does not follow standards for their themes!
+            autocmd BufRead,BufNewFile *.zsh-theme setlocal filetype=zsh
+
             autocmd BufRead,BufNewFile .gitignore setlocal filetype=conf
             " }}}
 
