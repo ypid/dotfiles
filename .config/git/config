@@ -67,7 +67,11 @@
 
 	lg = log --graph --pretty=format:'%Cred%h..%Creset - %s %Cgreen(%cr)%Creset - %an' --abbrev-commit --date=relative
 	v = fsck --full --unreachable --strict --no-dangling
-	s = shortlog --numbered --summary --no-merges --email
+
+	# --email is not done by default because I first of call care what a person did, regardless of their employment.
+	# Consider a person switches jobs but continues contributing. With `--email` two entries for that person would be shown.
+	# Without, only one.
+	s = shortlog --numbered --summary --no-merges
 
 	;; https://github.com/k4rthik/git-cal.git
 	c = cal --unicode
@@ -173,3 +177,7 @@
 	keepBackup = false
 [init]
 	defaultBranch = main
+
+; TODO: Make use of this.
+; [includeIf "gitdir:~/w-s/"]
+;     path = ~/work/.gitconfi
