@@ -10,6 +10,13 @@ My customized Unix work environment.
 
 Enjoy.
 
+## Requirements
+
+* Debian 11.
+
+Note: Support for Windows 10 will not be continued but is still contained in this
+repo for historic reasons.
+
 ## Install
 
 Installation is handled by [dotbot](https://github.com/anishathalye/dotbot).
@@ -41,7 +48,10 @@ Pro:
 
 * With history, my dotfiles (mainly caused by the hundreds of git submodules
   included) is 400 MiB in size. This space is used only once per system as all
-  user accounts just symlink to it.
+  user accounts just symlink to it. Note that I don’t deploy those 400 MiB to
+  servers in practice. My Ansible role
+  [ypid.dotfiles](https://github.com/ypid/ansible-dotfiles) strips most of this
+  out and brings down the size to 70 MiB.
 * It allows to update most of the configuration files per system instead of per
   user account.
 
