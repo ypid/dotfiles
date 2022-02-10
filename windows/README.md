@@ -89,7 +89,7 @@ an emulation and you will run into issues often.
 Even though WSL is currently hip I suggest not to use it if you are a GNU/Linux
 power user already. I see this as an attempt to keep users locked in the
 Windows ecosystem while giving them enough GNU/Linux to not escape. Do not
-fall for this this! It is a slippery slope I can tell you from experience. WSL
+fall for this! It is a slippery slope I can tell you from experience. WSL
 can be nice and easy to introduce people to GNU/Linux however.
 
 ### Setup
