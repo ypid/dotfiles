@@ -205,6 +205,9 @@
     ~/.config/ripgrep/ripgreprc:
       path: .config/ripgrep/ripgreprc
 
+    ~/.config/mpv/mpv.conf:
+      path: .config/mpv/mpv.conf
+
     ~/.Xresources:
       path: .Xresources
 
