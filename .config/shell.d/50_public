@@ -37,6 +37,12 @@ export RIPGREP_CONFIG_PATH
 
 ## }}}
 
+## Configure format of the `time` shell command {{{
+
+TIMEFMT=$'\nreal\t%E\nuser\t%U\nsys\t%S\ncpu\t%P'
+
+## }}}
+
 ## Enable color support of ls and also add handy aliases {{{
 if command -v dircolors >/dev/null 2>&1; then
     export LS_OPTIONS='--color=auto'
