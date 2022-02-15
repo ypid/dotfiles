@@ -225,6 +225,14 @@ alias ssh-keygen-sec='ssh-keygen -o -b 8192 -a 200 -t rsa'
 export GITHUB_USER="ypid"
 # Used in https://github.com/ypid/scripts/blob/master/git-setup-and-push-to-my-fork
 
+# Redefine the most important aliases from
+# ~/.config/dotfiles/oh-my-zsh/plugins/git/git.plugin.zsh here to also have
+# them in Bash.
+alias ga='git add'
+alias gst='git status'
+alias gco='git checkout'
+alias gb='git branch'
+
 ## Able to push to all git remotes with the one command?
 ## http://stackoverflow.com/a/18674313
 alias gpa='git pa'
@@ -235,17 +243,11 @@ alias wd='git diff --color-words --no-index'
 # Define important shortcuts here if under bash (are already defended by oh-my-zsh) {{{
 alias g='git'
 
-alias ga='git add'
-alias gst='git status'
-
 ## Does not distinguish between changed files and changed/dirty submodules and it looks terrible …
 # alias gst='git status --short --branch'
 
-alias gco='git checkout'
-
 alias gc='git ci'
 alias gca='gc --all'
-alias gb='git branch'
 alias gj='git j'
 
 ## Find better shortcut, move to gitconfig.
