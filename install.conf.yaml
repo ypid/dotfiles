@@ -58,6 +58,9 @@
     ~/.zshrc:
       path: .zshrc
 
+    ~/.zshenv:
+      path: .zshenv
+
     ~/.config/oh-my-zsh:
       path: oh-my-zsh
 
