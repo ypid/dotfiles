@@ -1,6 +1,11 @@
 --follow
 --smart-case
 
+# Disable the "smartness" of ripgrep.
+--no-ignore
+--hidden
+--binary
+
 # I want to search hidden files, respect .gitignore but not search .git by default.
 # This can currently not be configured.
 # https://github.com/BurntSushi/ripgrep/issues/1303
