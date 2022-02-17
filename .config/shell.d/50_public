@@ -166,6 +166,17 @@ if [[ "$ypid_dotfiles_level" == "min" ]]; then
     }
 fi
 
+# Ref: https://stackoverflow.com/questions/11543593/grep-for-stuff-in-multiple-git-repositories/36240077#36240077
+function ggrep() {
+    find -L . -name .git -printf '%h\n' | while read -r repo_dir; do
+        (
+        echo "$(tput setaf 2)$repo_dir$(tput sgr0)"
+        git -C "$repo_dir" grep -n "$@"
+        )
+    done
+}
+# _ggrep () { _git-grep }
+
 # source ~/.config/dotfiles/n.sh
 
 ## }}}
