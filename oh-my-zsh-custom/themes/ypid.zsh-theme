@@ -13,7 +13,6 @@ time_enabled="%(?.%{$fg[green]%}.%{$fg[red]%})%D{%Y-%m-%d %H:%M:%S%z}%{$reset_co
 time_disabled="%{$fg[green]%}%*%{$reset_color%}"
 time="$time_enabled"
 
-# user part, color coded by privileges
 ## In case of "Name or service not known" we fall back to $HOST.
 HOSTNAME="$(hostname --fqdn 2> /dev/null || echo "$HOST")"
 if [ "$HOSTNAME" = "localhost" ]; then
