@@ -45,7 +45,6 @@ TIMEFMT=$'\nreal\t%E\nuser\t%U\nsys\t%S\ncpu\t%P'
 
 ## Enable color support of ls and also add handy aliases {{{
 if command -v dircolors >/dev/null 2>&1; then
-    export LS_OPTIONS='--color=auto'
     alias ls='ls --color=auto --human-readable --time-style=long-iso'
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
@@ -459,8 +458,14 @@ alias xclip-primary-to-clipboard='xclip -out | xclip -in -selection clipboard'
 ## Use as needed. --show-nonprinting does also output Unicode glyphs in escaped form.
 # alias cat='cat --show-nonprinting'
 
-alias bc='bc -q'
 alias ,='popd'
+
+# I am not fully convinced. It is not a drop-in replacement so I cannot make it
+# the default as a sysadmin yet anyway.
+if command -v exa >/dev/null 2>&1
+then
+    alias exa='exa --time-style=long-iso --group --links'
+fi
 
 ## }}}
 
