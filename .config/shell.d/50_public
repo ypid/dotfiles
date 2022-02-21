@@ -175,6 +175,8 @@ function ggrep() {
         )
     done
 }
+# Not working?
+# compdef _git ggrep=git-grep
 # _ggrep () { _git-grep }
 
 # source ~/.config/dotfiles/n.sh
@@ -229,6 +231,31 @@ alias scp-default="scp $ssh_default"
 alias sshfs='sshfs -o transform_symlinks'
 alias sshfs-default='sshfs -o transform_symlinks -F /etc/ssh/ssh_config'
 alias ssh-keygen-sec='ssh-keygen -o -b 8192 -a 200 -t rsa'
+
+# Ref /usr/share/doc/pssh/README.Debian:
+# > To avoid any conflicts with the putty package, all of the programs have
+# > been renamed.
+# I don’t care about putty, pssh is shorter and other distros like SLES use
+# `pssh` as command name so I add aliases that make the commands accessible as
+# `pssh` and the like.
+# This has the disadvantage that scripts show `parallel-ssh` in their help text.
+# Symlinking pssh to parallel-ssh in $PATH in the `install.conf.yaml` would solve it but this is less dynamic.
+# The dynamic detection aspect is more important to me and creating/managing symlinks from shell config feels wrong.
+if ! command -v pssh >/dev/null 2>&1 && command -v parallel-ssh >/dev/null; then
+    alias pssh='parallel-ssh'
+fi
+if ! command -v pscp >/dev/null 2>&1 && command -v parallel-scp >/dev/null; then
+    alias pscp='parallel-scp'
+fi
+if ! command -v prsync >/dev/null 2>&1 && command -v parallel-rsync >/dev/null; then
+    alias prsync='parallel-rsync'
+fi
+if ! command -v pnuke >/dev/null 2>&1 && command -v parallel-nuke >/dev/null; then
+    alias pnuke='parallel-nuke'
+fi
+if ! command -v pslurp >/dev/null 2>&1 && command -v parallel-slurp >/dev/null; then
+    alias pslurp='parallel-slurp'
+fi
 
 ## }}}
 
