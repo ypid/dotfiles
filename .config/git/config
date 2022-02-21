@@ -102,6 +102,8 @@
 	; https://stackoverflow.com/questions/1904860/how-to-remove-unreferenced-blobs-from-my-git-repository/14728706#14728706
 	gc-all = -c gc.reflogExpire=0 -c gc.reflogExpireUnreachable=0 -c gc.rerereresolved=0 -c gc.rerereunresolved=0 -c gc.pruneExpire=now gc
 
+	c = config --show-origin --list
+
 [core]
 	editor = nvim
 
