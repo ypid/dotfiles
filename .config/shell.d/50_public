@@ -67,7 +67,7 @@ function up {
             ups="${ups}../"
         done
         cd "$ups" || exit 1
-    elif [ -z "$1" ]; then
+    elif [[ $# == 0 ]]; then
         cd ..
     fi
 }
@@ -140,7 +140,7 @@ function swap {
 
 function date {
     ## `date` ignores our locale settings so we fix the default format this way.
-    if [[ -z "$1" ]] ; then
+    if [[ $# == 0 ]]; then
         command date --rfc-3339=seconds
     else
         command date "$@"
@@ -148,7 +148,7 @@ function date {
 }
 
 function df() {
-    if [[ -z "$1" ]] ; then
+    if [[ $# == 0 ]]; then
         command df --human-readable --print-type
     else
         command df "$@"
@@ -184,6 +184,15 @@ function ggrep() {
 function colorstd(){
     set -o pipefail
     "$@" 2> >(while read line; do echo -e "\e[01;31m$line\e[0m" >&2; done)
+}
+
+# Ref: https://stackoverflow.com/questions/60756020/print-environment-variables-sorted-by-name-including-variables-with-newlines/60756021#60756021
+function env() {
+    if [[ $# == 0 ]]; then
+        command env --null | sort --zero-terminated | tr '\0' '\n'
+    else
+        command env "$@"
+    fi
 }
 
 ## }}}
