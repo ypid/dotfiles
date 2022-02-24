@@ -180,6 +180,12 @@ function ggrep() {
 
 # source ~/.config/dotfiles/n.sh
 
+# Ref: https://serverfault.com/questions/59262/bash-print-stderr-in-red-color/59279#59279
+function colorstd(){
+    set -o pipefail
+    "$@" 2> >(while read line; do echo -e "\e[01;31m$line\e[0m" >&2; done)
+}
+
 ## }}}
 
 ## Shell basics {{{
@@ -386,6 +392,7 @@ function tmux() {
 alias t='tmux'
 
 alias d='docker'
+alias ds='docker ps --format "table {{ .ID }}\t{{ .Image }}\t{{ .Status }}"'
 alias '*'='dict'
 alias con='ping heise.de'
 alias conn='ping6 heise.de'
