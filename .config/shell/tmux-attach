@@ -5,10 +5,15 @@
 #
 # SPDX-License-Identifier: CC0-1.0
 
+# Needs to be define here so that it is available for the login-banner script
+# and later in Zsh and Bash.
+export PROCPS_USERLEN=32
+
 if [[ -n "$PS1" ]] && [[ -z "$TMUX" ]] && [[ -n "$SSH_CLIENT" ]] && [[ -z "$ANDROID_ROOT" ]] && command -v tmux >/dev/null 2>&1; then
     if tmux has-session -t0 >/dev/null 2>&1; then
         exec tmux attach-session -t0
     else
-        exec tmux new-session -s0 'run-parts /etc/update-motd.d; zsh || bash'
+        login_banner_script_path="${XDG_CONFIG_HOME:-$HOME/.config}/shell/login-banner"
+        exec tmux new-session -s0 "${login_banner_script_path}; zsh || bash"
     fi
 fi

@@ -1,0 +1,11 @@
+#!/bin/sh
+# Sourced by Bash and zsh.
+
+# SPDX-FileCopyrightText: 2022 Robin Schneider <ypid@riseup.net>
+#
+# SPDX-License-Identifier: CC0-1.0
+
+run-parts /etc/update-motd.d
+
+# Show who else is logged in.
+w --no-header | grep -v "^$USER" || :
