@@ -437,6 +437,12 @@ then
     alias unp='file-unpack'
 fi
 
+# /usr/share/doc/fd-find/README.Debian
+if ! command -v fd >/dev/null 2>&1 && command -v fdfind >/dev/null 2>&1
+then
+    alias fd='fdfind'
+fi
+
 # http://stackoverflow.com/questions/16787916/difference-between-2-directories-in-linux
 alias diff-dir='diff -arq'
 
