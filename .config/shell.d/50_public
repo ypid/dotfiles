@@ -290,6 +290,7 @@ alias gb='git branch'
 alias gc='git ci'
 alias gca='gc --all'
 alias gj='git j'
+alias gp='git push --force-with-lease'
 
 ## Find better shortcut, move to gitconfig.
 # function n() {
