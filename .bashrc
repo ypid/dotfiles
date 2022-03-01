@@ -3,7 +3,15 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-local ypid_dotfiles_level="full"
+ypid_dotfiles_level="full"
+if [ -n "$SSHHOME" ] && [ ! -e "$HOME/.config/dotfiles/.reuse/dep5" ]; then
+    ypid_dotfiles_level="min"
+
+    XDG_CONFIG_HOME="$SSHHOME/.sshrc.d/.config"
+    export XDG_CONFIG_HOME
+
+    PATH="${PATH:+"$PATH:"}$SSHHOME/.sshrc.d/scripts"
+fi
 
 if [ -n "$OSTYPE" ] && [ -x /usr/local/opnsense/scripts/shell/banner.php ]; then
     /usr/local/opnsense/scripts/shell/banner.php

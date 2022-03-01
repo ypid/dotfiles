@@ -73,9 +73,10 @@ if [ -n "$SSHHOME" ] && [ ! -e "$HOME/.config/dotfiles/.reuse/dep5" ]; then
       source $config_file
     done
 
-    # Let git use .config/git from sshrc.
     XDG_CONFIG_HOME="$SSHHOME/.sshrc.d/.config"
     export XDG_CONFIG_HOME
+
+    source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/global"
 
     source "$SSHHOME/.sshrc.d/.config/oh-my-zsh-custom/themes/ypid.zsh-theme"
 

@@ -7,6 +7,9 @@ if [ -e "$new_home" ]; then
 else
     # Assume non-root account is my personalized account.
     if [[ "$USER" != 'root' ]]; then
+        # Unintended side-effect. `.bashrc` is sourced first and than execs tmux before `.sshrc` is sourced.
+        # `~/.bashrc` is not used for now.
+        ln -sf "$SSHHOME/.sshrc.d/.bashrc" ~/.bashrc-
         ln -sf "$SSHHOME/.sshrc.d/.tmux.conf" ~/.tmux.conf
         mkdir -p ~/.local/share ~/.config/htop
         ln -sf "$SSHHOME/.sshrc.d/.local/share/tmux" ~/.local/share/tmux
@@ -19,5 +22,5 @@ fi
 if command -v zsh >/dev/null 2>&1; then
     exec zsh
 else
-    exec bash
+    exec bash --rcfile ~/.bashrc-
 fi

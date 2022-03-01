@@ -158,7 +158,7 @@ function df() {
 if [[ "$ypid_dotfiles_level" == "min" ]]; then
     function sudo() {
         if [[ "$1" == "-i" ]] && [[ "$#" == 1 ]]; then
-            HOME="$SSHHOME/.sshrc.d" command sudo -E zsh
+            HOME="$SSHHOME/.sshrc.d" command sudo -E zsh || HOME="$SSHHOME/.sshrc.d" command sudo -E bash
         else
             command sudo "$@"
         fi
