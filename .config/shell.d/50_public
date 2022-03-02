@@ -406,6 +406,7 @@ alias t='tmux'
 
 alias d='docker'
 alias ds='docker ps --format "table {{ .ID }}\t{{ .Image }}\t{{ .Status }}"'
+alias dish="docker images --format 'table {{ .ID }}   {{ .Size}}\t{{ .CreatedSince }}\t{{ .Tag }}\t{{ .Repository }}'"
 alias '*'='dict'
 alias con='ping heise.de'
 alias conn='ping6 heise.de'
