@@ -5,11 +5,8 @@
 #
 # SPDX-License-Identifier: CC0-1.0
 
-if [ -e /etc/update-motd.d ]; then
-    run-parts /etc/update-motd.d
-else
-    cat /etc/motd
-fi
+test -e /etc/update-motd.d && run-parts /etc/update-motd.d
+test -e /etc/motd && cat /etc/motd
 
 # Show who else is logged in.
 w --no-header | grep -v "^$USER" || :
