@@ -358,14 +358,14 @@ test -f "${ASDF_DIR}/completions/asdf.bash" && source "${ASDF_DIR}/completions/a
 
 ## Machine-wide package management: Platform dependent {{{
 
-if [ -e "${PREFIX:-}/etc/apt" ]; then
+if command -v apt >/dev/null 2>&1; then
     alias m='apt'
     alias ai='apt install'
     alias ap='apt purge'
     alias as='\apt search'
     alias ash='\apt show'
     alias an='apt update && apt upgrade'
-elif [ -e "${PREFIX:-}/etc/zypp" ]; then
+elif command -v zypper >/dev/null 2>&1; then
     alias m='zypper'
     alias ai='zypper install --details'
     alias ap='zypper remove'
@@ -379,6 +379,13 @@ elif command -v dnf >/dev/null 2>&1; then
     alias as='\dnf search'
     alias ash='\dnf info'
     alias an='dnf upgrade'
+elif command -v yum >/dev/null 2>&1; then
+    alias m='yum'
+    alias ai='yum install'
+    alias ap='yum remove'
+    alias as='\yum search'
+    alias ash='\yum info'
+    alias an='yum update'
 fi
 
 # shellcheck disable=SC1091
@@ -458,9 +465,10 @@ if [[ "$USER" != 'root' ]] && [ -z "$ANDROID_ROOT" ]; then
     alias umount='sudo umount'
     alias smount='sudo smount'
     alias sumount='sudo sumount'
-    alias aptitude='sudo aptitude'
-    alias apt='sudo apt'
-    alias zypper='sudo zypper'
+
+    command -v apt >/dev/null 2>&1 && alias apt='sudo apt'
+    command -v aptitude >/dev/null 2>&1 && alias apt='sudo aptitude'
+    command -v zypper >/dev/null 2>&1 && alias zypper='sudo zypper'
 
     ## Ref: https://github.com/ypid/ypid-ansible-inventory/tree/master/group_vars/public_ypid_qubes_debops
     if [ -e /usr/local.template ]; then
