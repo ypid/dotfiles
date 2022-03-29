@@ -502,6 +502,11 @@ then
     alias exa='exa --time-style=long-iso --group --links'
 fi
 
+if ! command -v rg >/dev/null 2>&1
+then
+    alias rg='grep -R'
+fi
+
 ## }}}
 
 ## Ignore typos {{{
