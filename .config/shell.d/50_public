@@ -148,10 +148,19 @@ function date {
 }
 
 function df() {
-    if [[ $# == 0 ]]; then
-        command df --human-readable --print-type
+    if command -v dfrs >/dev/null 2>&1; then
+        if [[ $# == 0 ]] || [[ $1 == "-hT" ]]; then
+            # -T is not a valid dfrs switch.
+            dfrs --total
+        else
+            dfrs "$@"
+        fi
     else
-        command df "$@"
+        if [[ $# == 0 ]] || [[ $1 == "-hT" ]]; then
+            findmnt -D -t nosquashfs,notmpfs,nodevtmpfs,tracefs
+        else
+            command df "$@"
+        fi
     fi
 }
 
