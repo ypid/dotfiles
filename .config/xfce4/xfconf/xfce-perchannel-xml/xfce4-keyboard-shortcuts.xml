@@ -92,7 +92,7 @@
       <property name="&lt;Primary&gt;&lt;Super&gt;s" type="string" value="xfce4-terminal --maximize"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;v" type="string" value="sudo poweroff"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;g" type="string" value="sudo reboot"/>
-      <property name="Print" type="string" value="gnome-screenshot --clipboard --area --delay=2 --include-pointer"/>
+      <property name="Print" type="string" value="gnome-screenshot --interactive --clipboard --area --delay=2 --include-pointer"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">
