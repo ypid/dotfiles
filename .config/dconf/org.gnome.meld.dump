@@ -1,0 +1,17 @@
+[/]
+custom-font='monospace 10'
+draw-spaces=@as []
+highlight-current-line=false
+highlight-syntax=false
+ignore-blank-lines=false
+indent-width=8
+insert-spaces-instead-of-tabs=false
+show-line-numbers=false
+style-scheme='solarized-dark'
+use-system-font=true
+wrap-mode='word'
+
+[window-state]
+height=1015
+is-maximized=true
+width=950
