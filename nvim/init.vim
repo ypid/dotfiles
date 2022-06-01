@@ -1016,64 +1016,17 @@ if count(g:config_section_enable, 'autocmd_config')
     if has('autocmd')
         augroup vimrc
             filetype on
-            " autocmd BufWritePost $MYVIMRC source %
-            " autocmd BufWritePost $HOME/.vimpagerrc source %
-            autocmd VimLeave * if filereadable($HOME."/.vim/bundle/vundle/.netrwhist")|call delete($HOME."/.vim/bundle/vundle/.netrwhist")|endif
-            autocmd VimLeave * if filereadable($HOME."/.vim/.netrwhist")|call delete($HOME."/.vim/.netrwhist")|endif
 
             autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
 
-            autocmd BufReadCmd file://* exe "edit ".substitute(expand("<afile>"),"file:/*","/","")
-
-            " Automatically set executable bit for scripts. {{{
-            " https://www.reddit.com/r/linux/comments/e649x/
-            function! MakeScriptExecuteable()
-                if getline(1) =~# '\v^#!.*/bin/'
-                    silent !chmod +x <afile>
-                endif
-            endf
-            autocmd BufWritePost * call MakeScriptExecuteable()
-            " }}}
-
-            " Custom filetype detection. {{{
-            autocmd BufRead,BufNewFile /etc/hosts setlocal filetype=conf
-            autocmd BufRead,BufNewFile /etc/NetworkManager/NetworkManager.conf setlocal filetype=conf
-            autocmd BufRead,BufNewFile /usr/share/X11/xkb/* setlocal filetype=xkb
-            autocmd BufRead,BufNewFile /etc/salt/**.conf setlocal filetype=yaml
-            autocmd BufRead,BufNewFile $HOME/.ssh/*config* setlocal filetype=sshconfig
-            autocmd BufRead,BufNewFile $HOME/.unison/* setlocal filetype=conf
-            autocmd BufRead,BufNewFile *logstash*/**/*.conf setlocal filetype=logstash
-
-            " Oh My Zsh does not follow standards for their themes!
-            autocmd BufRead,BufNewFile *.zsh-theme setlocal filetype=zsh
-
-            autocmd BufRead,BufNewFile .gitignore setlocal filetype=conf
-            " }}}
-
             " Adjust settings for files. {{{
-            autocmd BufRead,BufNewFile yamllint setlocal filetype=yaml
-            autocmd BufRead,BufNewFile .mrconfig* setlocal filetype=sh
-            autocmd BufRead,BufNewFile $HOME/.config/mr/* setlocal filetype=sh
-            autocmd BufRead,BufNewFile .vimpagerrc setlocal filetype=vim
-
-            autocmd BufReadCmd salt://* exe "edit ".substitute(expand("<afile>"),'^salt:\/\/[^/]\+\/','./','')
+            autocmd BufRead,BufNewFile *firejail/** HideBadWhitespace
 
             " I already use the "wrong" file suffix for all my LaTeX files
-            " autocmd BufRead,BufNewFile *.tex setlocal filetype=tex
-            autocmd BufRead,BufNewFile *.ldf setlocal filetype=tex
-            autocmd BufRead,BufNewFile *.lco setlocal filetype=tex
-
-            autocmd BufRead,BufNewFile *mrconfig* setlocal filetype=dosini
-
-            autocmd BufRead,BufNewFile *firejail/** HideBadWhitespace
-            autocmd BufRead,BufNewFile *firejail/**.inc setlocal filetype=conf
-
-            autocmd BufRead,BufNewFile *ansible/**/ if &filetype=='yaml'|setlocal filetype=ansible|endif
             autocmd BufRead,BufNewFile *ansible/inventory/**/ setlocal filetype=ansible
             autocmd BufRead,BufNewFile */default/main.yml setlocal foldlevel=1
 
             " autocmd BufRead,BufNewFile *ansible/**/ if &filetype==''|setlocal filetype=yaml|endif
-            " }}}
 
             autocmd BufWritePre /tmp/*  setlocal noundofile
             autocmd BufWritePre *sec*   setlocal noundofile
@@ -1081,6 +1034,7 @@ if count(g:config_section_enable, 'autocmd_config')
             autocmd BufWritePre *mnt*   setlocal noundofile
 
             autocmd BufWritePre *.rst,*.yml call TrimTrailingEmptyLines()
+            " }}}
 
             " Set language specific stuff {{{
             autocmd FileType make setlocal noexpandtab
@@ -1123,15 +1077,6 @@ if count(g:config_section_enable, 'autocmd_config')
 
 
             " }}}
-
-            autocmd QuickFixCmdPost make cwindow
-            autocmd VimEnter * if &diff | execute 'windo set wrap' | endif
-
-            " Always switch to the current file directory
-            autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
-
-            " autocmd BufEnter * if expand("%:p") =~# "/.unison/" | lcd | endif
-            " Go to home for unison to use file completion easily.
         augroup END
     endif
 endif

@@ -527,6 +527,64 @@ endif
 
 " }}}
 
+" autocmd {{{
+if has('autocmd')
+    augroup vimrc_min
+            " autocmd BufWritePost $MYVIMRC source %
+            " autocmd BufWritePost $HOME/.vimpagerrc source %
+            autocmd VimLeave * if filereadable($HOME."/.vim/bundle/vundle/.netrwhist")|call delete($HOME."/.vim/bundle/vundle/.netrwhist")|endif
+            autocmd VimLeave * if filereadable($HOME."/.vim/.netrwhist")|call delete($HOME."/.vim/.netrwhist")|endif
+
+            autocmd BufReadCmd file://* exe "edit ".substitute(expand("<afile>"),"file:/*","/","")
+            autocmd BufReadCmd salt://* exe "edit ".substitute(expand("<afile>"),'^salt:\/\/[^/]\+\/','./','')
+
+            " Automatically set executable bit for scripts. {{{
+            " https://www.reddit.com/r/linux/comments/e649x/
+            function! MakeScriptExecuteable()
+                if getline(1) =~# '\v^#!.*/bin/'
+                    silent !chmod +x <afile>
+                endif
+            endf
+            autocmd BufWritePost * call MakeScriptExecuteable()
+            " }}}
+
+            " Custom filetype detection. {{{
+            autocmd BufRead,BufNewFile $HOME/.config/mr/* setlocal filetype=sh
+            autocmd BufRead,BufNewFile $HOME/.ssh/*config* setlocal filetype=sshconfig
+            autocmd BufRead,BufNewFile $HOME/.unison/* setlocal filetype=conf
+            autocmd BufRead,BufNewFile *ansible/**/ if &filetype=='yaml'|setlocal filetype=ansible|endif
+            autocmd BufRead,BufNewFile *firejail/**.inc setlocal filetype=conf
+            autocmd BufRead,BufNewFile *logstash*/**/*.conf setlocal filetype=logstash
+            autocmd BufRead,BufNewFile *mrconfig* setlocal filetype=dosini
+            autocmd BufRead,BufNewFile .gitignore setlocal filetype=conf
+            autocmd BufRead,BufNewFile .mrconfig* setlocal filetype=sh
+            autocmd BufRead,BufNewFile .vimpagerrc setlocal filetype=vim
+            autocmd BufRead,BufNewFile /etc/NetworkManager/NetworkManager.conf setlocal filetype=conf
+            autocmd BufRead,BufNewFile /etc/hosts setlocal filetype=conf
+            autocmd BufRead,BufNewFile /etc/salt/**.conf setlocal filetype=yaml
+            autocmd BufRead,BufNewFile /usr/share/X11/xkb/* setlocal filetype=xkb
+            autocmd BufRead,BufNewFile yamllint setlocal filetype=yaml
+
+            " autocmd BufRead,BufNewFile *.tex setlocal filetype=tex
+            autocmd BufRead,BufNewFile *.ldf setlocal filetype=tex
+            autocmd BufRead,BufNewFile *.lco setlocal filetype=tex
+
+            " Oh My Zsh does not follow standards for their themes!
+            autocmd BufRead,BufNewFile *.zsh-theme setlocal filetype=zsh
+            " }}}
+
+            autocmd QuickFixCmdPost make cwindow
+            autocmd VimEnter * if &diff | execute 'windo set wrap' | endif
+
+            " Always switch to the current file directory
+            autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
+
+            " autocmd BufEnter * if expand("%:p") =~# "/.unison/" | lcd | endif
+            " Go to home for unison to use file completion easily.
+    augroup END
+endif
+" }}}
+
 " Machine specific configuration {{{
 
 " Needs to stay outside of ~/.config/nvim/ to ensure the path is writable.
