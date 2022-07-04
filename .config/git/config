@@ -32,7 +32,7 @@
 	clean = LC_ALL=C sort | grep --no-filename --invert-match "^Password[^\\w]"
 
 [filter "everything_ini_file"]
-        ;; Only works on Linux for some reason. Thus changes require a checkout on Linux and then the file will appear as changed automatically. Then just commit/amend this cleanup.
+	;; Only works on Linux for some reason. Thus changes require a checkout on Linux and then the file will appear as changed automatically. Then just commit/amend this cleanup.
 	clean = egrep --no-filename --invert-match '^(folders|exclude_folders|last_options_page|ntfs_volume_(paths|roots|guids)|(date_run_column|window)_[[:alnum:]_]+)='
 
 [alias]
@@ -111,8 +111,8 @@
 [core]
 	editor = nvim
 
-        ;; Don’t. Use .gitattributes if necessary:
-        ;; Setting it here is required to overwrite the Windows default from c:/ProgramData/Git/config
+	;; Don’t. Use .gitattributes if necessary:
+	;; Setting it here is required to overwrite the Windows default from c:/ProgramData/Git/config
 	autocrlf = false
 
 	; eol = lf
