@@ -104,6 +104,10 @@
 
 	c = config --show-origin --list
 
+	# find duplicate files from the current folder (can also be root)
+	# Ref: https://stackoverflow.com/questions/224687/git-find-duplicate-blobs-files-in-this-tree/8408640#8408640
+	dupes = !"cd `pwd`/$GIT_PREFIX && git ls-tree -r HEAD | cut -c 13- | sort | uniq -D -w 40"
+
 [core]
 	editor = nvim
 
