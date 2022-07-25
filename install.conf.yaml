@@ -214,6 +214,9 @@
     ~/.Xresources:
       path: .Xresources
 
+    ~/.npmrc:
+      path: .npmrc
+
     # ]]]2
 
 - link:
