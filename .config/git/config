@@ -49,8 +49,8 @@
 	ci = "!f() { cd -- \"${GIT_PREFIX:-.}\"; if command -v etckeeper >/dev/null 2>&1 && pwd | egrep -q '^/etc(/.*|$)'; then etckeeper commit \"$@\"; else git commit \"$@\"; fi; }; f"
 
 	;; Order of --all is important for etckeeper!
-	cii = "!git ci -m 'Initial commit' --all \"$@\""
-	cia = "!git ci -m 'Auto commit. EOM' --all \"$@\""
+	cii = "!git ci -m 'chore: Initial commit' --all \"$@\""
+	cia = "!git ci -m 'chore: Auto commit. EOM' --all \"$@\""
 
 	co = checkout
 	; Cannot use this date format yet because it also messes with %gd.
@@ -94,7 +94,7 @@
 	vtag = !git tag -v `git describe`
 
 	## https://stackoverflow.com/questions/6127328/how-can-i-delete-all-git-branches-which-have-been-merged/6127884#6127884
-	db = "!git branch --merged | egrep -v '(^\\*|master|dev)' | xargs --no-run-if-empty git branch -d"
+	db = "!git branch --merged | egrep -v '(^\\*|main|master|dev)' | xargs --no-run-if-empty git branch -d"
 
 	;; https://gist.github.com/jasonrudolph/1810768#gistcomment-2220772
 	j = branch -r --sort=-committerdate --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'
@@ -107,6 +107,10 @@
 	# find duplicate files from the current folder (can also be root)
 	# Ref: https://stackoverflow.com/questions/224687/git-find-duplicate-blobs-files-in-this-tree/8408640#8408640
 	dupes = !"cd `pwd`/$GIT_PREFIX && git ls-tree -r HEAD | cut -c 13- | sort | uniq -D -w 40"
+
+	# https://stackoverflow.com/questions/8475448/find-merge-commit-which-include-a-specific-commit/30998048#30998048
+	find-merge = "!sh -c 'commit=$0 && branch=${1:-HEAD} && (git rev-list $commit..$branch --ancestry-path | cat -n; git rev-list $commit..$branch --first-parent | cat -n) | sort -k2 -s | uniq -f1 -d | sort -n | tail -1 | cut -f2'"
+	show-merge = "!sh -c 'merge=$(git find-merge $0 $1) && [ -n \"$merge\" ] && git show $merge'"
 
 [core]
 	editor = nvim
@@ -151,7 +155,7 @@
 	ff = only
 [log]
 	; https://stackoverflow.com/questions/7853332/how-to-change-git-log-date-formats
-	date = iso
+	date = iso-strict-local
 [url "https://github.com/"]
 	insteadOf = git://github.com/
 
@@ -176,6 +180,10 @@
 
 	# Workaround for https://github.com/jonas/tig/issues/411 before Debian 12.
 	mailmap = yes
+
+	# TODO: Figure out how to set `log.date = iso-strict-local` for tig.
+	; main-view-date = custom
+	; main-view-date-format = "%Y-%m-%d %H:%M"
 [merge]
 	ff = false
 	tool = diffconflicts
