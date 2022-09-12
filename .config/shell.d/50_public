@@ -172,6 +172,15 @@ if [[ "$ypid_dotfiles_level" == "min" ]]; then
             command sudo "$@"
         fi
     }
+    if command -v mysql >/dev/null 2>&1; then
+        function mysql() {
+            if [[ -e ~$USER/.my.cnf ]]; then
+                ln -s ~"$USER/.my.cnf" "$SSHHOME/.sshrc.d/"
+            fi
+            command "$0" "$@"
+            rm -f "$SSHHOME/.sshrc.d/.my.cnf"
+        }
+    fi
 fi
 
 # Ref: https://stackoverflow.com/questions/11543593/grep-for-stuff-in-multiple-git-repositories/36240077#36240077
