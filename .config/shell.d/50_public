@@ -526,6 +526,12 @@ then
     alias rg='grep -R'
 fi
 
+# Already use the new name even on Debian 11: https://github.com/edenhill/kcat#what-happened-to-kafkacat
+if command -v kafkacat >/dev/null 2>&1 && ! command -v kcat >/dev/null 2>&1
+then
+    alias kcat='kafkacat'
+fi
+
 ## }}}
 
 ## Ignore typos {{{
