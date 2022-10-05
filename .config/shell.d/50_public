@@ -441,6 +441,7 @@ alias v='vagrant'
 alias jj='zpool'
 alias dotup='~/.config/dotfiles/install'
 alias meminfo=$'awk \'$3=="kB"{$2=$2/1024;$3="MB"} 1\' /proc/meminfo | column -t'
+alias last='last --time-format=iso'
 
 # Poor humans notifyosd.zsh
 alias n='notify-send -i utilities-terminal "Job done"'
