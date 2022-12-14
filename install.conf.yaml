@@ -1,6 +1,7 @@
 ---
+# vim: foldmarker=[[[,]]]:foldmethod=marker
 
-# SPDX-FileCopyrightText: 2016-2021 Robin Schneider <ypid@riseup.net>
+# SPDX-FileCopyrightText: 2016-2022 Robin Schneider <ypid@riseup.net>
 #
 # SPDX-License-Identifier: CC0-1.0
 
@@ -110,9 +111,6 @@
     ~/.config/git/:
       path: .config/git/*
 
-    ~/.config/htop/htoprc:
-      path: .config/htop/htoprc
-
     ~/.gnupg/:
       path: .gnupg/*
 
@@ -211,6 +209,9 @@
     ~/.config/mpv/mpv.conf:
       path: .config/mpv/mpv.conf
 
+    ~/.config/flameshot/flameshot.ini:
+      path: .config/flameshot/flameshot.ini
+
     ~/.Xresources:
       path: .Xresources
 
@@ -229,6 +230,8 @@
     - 'rsync --ignore-existing .ssh/config ~/.ssh'
     - 'rsync --ignore-existing --recursive .config/wireshark/ ~/.config/wireshark'
     - 'rsync --ignore-existing --recursive .config/smplayer/ ~/.config/smplayer'
+    - 'test -L ~/.config/htop/htoprc && rm ~/.config/htop/htoprc'
+    - 'rsync --ignore-existing --recursive .config/htop/ ~/.config/htop'
 
     - description: 'Size matters when having to transfer it for every SSH login. Put stripped down files in ~/.sshrc.d/'
       command: |-
