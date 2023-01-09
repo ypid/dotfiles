@@ -287,7 +287,7 @@ if count(g:spf13_bundle_groups, 'general') " {{{
         Plugin 'ghost/vim-taskwarrior'
     endif
 
-    Plugin 'ghost/riv.vim'
+    " Plugin 'ghost/riv.vim'
     " Plugin 'Rykka/InstantRst'
     noremap <Leader>Q :RivTitle1<CR>'.
     inoremap <Leader>Q <ESC>:RivTitle1<CR>o
