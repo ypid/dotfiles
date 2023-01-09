@@ -4,6 +4,8 @@ time=60
 timercommand=
 timerinfo=1m 0s
 is_countdown=true
+is_recur=false
+autostart=false
 
 [G1]
 timername=3m
@@ -11,13 +13,17 @@ time=180
 timercommand=
 timerinfo=3m 0s
 is_countdown=true
+is_recur=false
+autostart=false
 
 [G2]
-timername=7m
-time=420
+timername=6m
+time=360
 timercommand=
-timerinfo=7m 0s
+timerinfo=6m 0s
 is_countdown=true
+is_recur=false
+autostart=false
 
 [G3]
 timername=10m
@@ -25,6 +31,8 @@ time=600
 timercommand=
 timerinfo=10m 0s
 is_countdown=true
+is_recur=false
+autostart=false
 
 [G4]
 timername=30m
@@ -32,6 +40,8 @@ time=1800
 timercommand=
 timerinfo=30m 0s
 is_countdown=true
+is_recur=false
+autostart=false
 
 [G5]
 timername=1h
@@ -39,11 +49,12 @@ time=3600
 timercommand=
 timerinfo=1h 0m 0s
 is_countdown=true
+is_recur=false
+autostart=false
 
 [others]
 nowin_if_alarm=false
-selecting_starts=true
-use_global_command=false
+use_global_command=true
 global_command=
 repeat_alarm=false
 repetitions=1

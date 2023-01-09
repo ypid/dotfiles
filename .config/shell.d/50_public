@@ -355,12 +355,6 @@ alias gpg-sign='gpg --default-key 489A4D5EC353C98A --armor --detach-sig'
 if command -v qubes-gpg-client >/dev/null 2>&1; then
     command -v compdef >/dev/null 2>&1 && compdef qubes-gpg-client=gpg
 fi
-if command -v qubes-gpg-client-wrapper >/dev/null 2>&1; then
-    alias k=qubes-gpg-client-wrapper
-    command -v compdef >/dev/null 2>&1 && compdef qubes-gpg-client-wrapper=gpg
-else
-    alias k=gpg
-fi
 ## }}}
 
 ## Elastic {{{
@@ -428,6 +422,7 @@ function tmux() {
     fi
 }
 alias t='tmux'
+alias k='kubectl'
 
 alias d='docker'
 alias ds='docker ps --format "table {{ .ID }}\t{{ .Image }}\t{{ .Status }}"'
