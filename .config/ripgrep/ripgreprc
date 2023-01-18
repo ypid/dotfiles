@@ -1,6 +1,10 @@
 --follow
 --smart-case
 
+# Idempotent output is more important than getting the last bit of performance.
+# Deterministic output helps when iterating over searches to see what changed.
+--sort=path
+
 # Disable the "smartness" of ripgrep.
 --no-ignore
 --hidden
