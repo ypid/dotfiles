@@ -10,7 +10,9 @@ BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 cd "${BASEDIR}"
 
-if [ -d /mingw64 ]; then
+if [ ! -d /mingw64 ]; then
+    ./dotbot/bin/dotbot --base-directory "${BASEDIR}" --config-file "install.conf.yaml" "${@}"
+else
     # Running inside a Git Bash on legacy Windows.
 
     # https://stackoverflow.com/questions/43650595/is-there-a-command-to-check-if-git-bash-is-opened-in-administrator-mode/58846650#58846650
@@ -27,7 +29,4 @@ if [ -d /mingw64 ]; then
     ./dotbot/bin/dotbot --base-directory "${BASEDIR}" --config-file "install.conf.yaml" "${@}" || :
 
     ./dotbot/bin/dotbot --base-directory "${BASEDIR}" --config-file "install-legacy-windows.conf.yaml" "${@}"
-    exit 0
 fi
-
-./dotbot/bin/dotbot --base-directory "${BASEDIR}" --config-file "install.conf.yaml" "${@}"
