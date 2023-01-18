@@ -212,9 +212,6 @@
     ~/.config/nix/nix.conf:
       path: .config/nix/nix.conf
 
-    ~/.config/flameshot/flameshot.ini:
-      path: .config/flameshot/flameshot.ini
-
     ~/.Xresources:
       path: .Xresources
 
@@ -231,11 +228,15 @@
     ~/.config/dconf/:
       path: .config/dconf/*
 
+# Copy files instead of linking them and then let the application manage it to
+# avoid diffs in git during normal application usage.
 - shell:
     - 'chmod 0700 ~/.gnupg'
     - 'rsync --ignore-existing .ssh/config ~/.ssh'
     - 'rsync --ignore-existing --recursive .config/wireshark/ ~/.config/wireshark'
     - 'rsync --ignore-existing --recursive .config/smplayer/ ~/.config/smplayer'
+    - 'test -L ~/.config/flameshot/flameshot.ini && rm ~/.config/flameshot/flameshot.ini'
+    - 'rsync --ignore-existing --recursive .config/flameshot/ ~/.config/flameshot'
     - 'test -L ~/.config/htop/htoprc && rm ~/.config/htop/htoprc'
     - 'rsync --ignore-existing --recursive .config/htop/ ~/.config/htop'
 
