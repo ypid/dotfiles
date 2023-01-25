@@ -94,7 +94,7 @@
 	vtag = !git tag -v `git describe`
 
 	## https://stackoverflow.com/questions/6127328/how-can-i-delete-all-git-branches-which-have-been-merged/6127884#6127884
-	db = "!git branch --merged | egrep -v '(^\\*|main|master|dev)' | xargs --no-run-if-empty git branch -d"
+	db = "!git branch --merged | egrep -v '^\\s*(\\*.*|main|master|dev)$' | xargs --no-run-if-empty git branch -d"
 
 	;; https://gist.github.com/jasonrudolph/1810768#gistcomment-2220772
 	j = branch -r --sort=-committerdate --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'
