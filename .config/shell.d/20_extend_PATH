@@ -10,7 +10,8 @@ do
     pathprepend "${bin_path_dir}"
 done
 
-pathappend "${HOME}/.sandboxes/bin"
+# pathappend "${HOME}/.sandboxes/bin"
+pathprepend "${HOME}/.nix-profile/bin"
 pathappend "/usr/local/bin"
 pathappend "/usr/sbin"
 
