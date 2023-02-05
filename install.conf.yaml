@@ -209,6 +209,9 @@
     ~/.config/mpv/mpv.conf:
       path: .config/mpv/mpv.conf
 
+    ~/.config/nix/nix.conf:
+      path: .config/nix/nix.conf
+
     ~/.config/flameshot/flameshot.ini:
       path: .config/flameshot/flameshot.ini
 
