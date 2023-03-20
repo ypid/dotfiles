@@ -239,6 +239,7 @@
     - 'rsync --ignore-existing --recursive .config/flameshot/ ~/.config/flameshot'
     - 'test -L ~/.config/htop/htoprc && rm ~/.config/htop/htoprc'
     - 'rsync --ignore-existing --recursive .config/htop/ ~/.config/htop'
+    - 'rsync --ignore-existing --recursive .config/libvirt/ ~/.config/libvirt'
 
     - description: 'Size matters when having to transfer it for every SSH login. Put stripped down files in ~/.sshrc.d/'
       command: |-
