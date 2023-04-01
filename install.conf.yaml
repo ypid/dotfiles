@@ -221,6 +221,9 @@
     ~/.npmrc:
       path: .npmrc
 
+    ~/.logseq/config/config.edn:
+      path: .logseq/config/config.edn
+
     # ]]]2
 
 - link:
