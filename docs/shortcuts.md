@@ -534,6 +534,13 @@ Shortcut      | Function            | Left hand only | Comment
 ------------- | -------------       | -------------  | -------------
 Shift+Alt+C   | Abort SikulX script | Nice to have   | As long as SikuliX 1.1.1 is open, it always intercepts this key combination.
 
+### Evolution, Thunderbird
+
+Shortcut      | Function          | Left hand only | Comment
+------------- | -------------     | -------------  | -------------
+Shift+X       | mail/mail-archive | Nice to have   |
+
+
 ## Terminal programs
 
 ### Tmux

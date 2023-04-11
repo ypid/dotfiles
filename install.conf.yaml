@@ -212,6 +212,9 @@
     ~/.config/nix/nix.conf:
       path: .config/nix/nix.conf
 
+    ~/.config/evolution/accels:
+      path: .config/evolution/accels
+
     ~/.Xresources:
       path: .Xresources
 
