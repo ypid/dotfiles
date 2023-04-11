@@ -1,48 +1,59 @@
 [G0]
-timername=1m
+timername=PT1M
 time=60
 timercommand=
 timerinfo=1m 0s
 is_countdown=true
+is_recur=false
+autostart=false
 
 [G1]
-timername=3m
+timername=PT3M
 time=180
 timercommand=
 timerinfo=3m 0s
 is_countdown=true
+is_recur=false
+autostart=false
 
 [G2]
-timername=7m
-time=420
+timername=PT6M
+time=360
 timercommand=
-timerinfo=7m 0s
+timerinfo=6m 0s
 is_countdown=true
+is_recur=false
+autostart=false
 
 [G3]
-timername=10m
+timername=PT10M
 time=600
 timercommand=
 timerinfo=10m 0s
 is_countdown=true
+is_recur=false
+autostart=false
 
 [G4]
-timername=30m
+timername=PT30M
 time=1800
 timercommand=
 timerinfo=30m 0s
 is_countdown=true
+is_recur=false
+autostart=false
 
 [G5]
-timername=1h
+timername=PT1H
 time=3600
 timercommand=
 timerinfo=1h 0m 0s
 is_countdown=true
+is_recur=false
+autostart=false
 
 [others]
 nowin_if_alarm=false
-selecting_starts=true
 use_global_command=false
 global_command=
 repeat_alarm=false
