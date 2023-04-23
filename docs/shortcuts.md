@@ -325,6 +325,12 @@ Shortcut      | Function                          | Left hand only | Comment
 Ctrl+H        | Change spell check language to de | No             | See [script](/autokey/Emitting keystrokes/Pidgin/Change language in Pidgin to de.py)
 Ctrl+L        | Change spell check language to en | No             | See [script](/autokey/Emitting keystrokes/Pidgin/Change language in Pidgin to en.py)
 
+### Browser
+
+Shortcut      | Function                                | Left hand only | Comment
+------------- | -------------                           | -------------  | -------------
+Ctrl+E        | Password manager auto fill current page | No             |
+
 ### Firefox
 
 I use [VimFx][] to get all the Vim basics …
