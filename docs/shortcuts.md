@@ -289,21 +289,21 @@ Ctrl+H        | Open history                 | Not really     |
 
 Applies to: SMPlayer, Kodi
 
-Shortcut      | Function                     | Left hand only | Comment
-------------- | -------------                | -------------  | -------------
-Space         | Play/Pause                   | Yes            |
-Del           | Stop playback                | Nice to have   | Two times stop causes SMPlayer to reset the playback position to the beginning.
-,             | Previous frame               | Nice to have   |
-.             | Next frame                   | Nice to have   |
-P             | Previous media in playlist   | Nice to have   |
-N             | Next media in playlist       | Nice to have   |
-{             | Half speed                   | Nice to have   |
-}             | Double speed                 | Nice to have   |
-[             | Reduce speed by 0.10         | Nice to have   |
-]             | Increase speed by 0.10       | Nice to have   |
-Backspace     | Normal speed                 | Nice to have   |
-Ctrl+L        | Open Playlist                | Nice to have   |
-Ctrl+F        | Fullscreen                   | Not really     |
+Shortcut      | Function                   | Left hand only | Comment
+------------- | -------------              | -------------  | -------------
+Space         | Play/Pause                 | Yes            |
+Del           | Stop playback              | Nice to have   | Two times stop causes SMPlayer to reset the playback position to the beginning.
+,             | Previous frame             | Nice to have   |
+.             | Next frame                 | Nice to have   |
+P             | Previous media in playlist | Nice to have   |
+N             | Next media in playlist     | Nice to have   |
+{             | Previous chapter           | Nice to have   | Smplayer default of halve speed is not very useful. How often can you halve the speed?
+}             | Next chapter               | Nice to have   | Smplayer default of double speed is not very useful. How often can you double the speed?
+[             | Reduce speed by 0.10       | Nice to have   |
+]             | Increase speed by 0.10     | Nice to have   |
+Backspace     | Normal speed               | Nice to have   |
+Ctrl+L        | Open Playlist              | Nice to have   |
+Ctrl+F        | Fullscreen                 | Not really     |
 
 ### ConEmu
 
