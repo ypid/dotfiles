@@ -259,7 +259,7 @@ Ctrl+J         | Switch to left tab                      | Not really     |
 Ctrl+K         | Switch to right tab                     | Not really     |
 Ctrl+[+-]      | Increase/Decrease (zoom) font size      | Nice to have   | Currently not supported in Double Commander. Level 3 [Neo2][] plus and minus work in Firefox (after setting the − via the Add-On Customizable Shortcuts). GNOME Terminal does not allow to configure „−” currently (can this be done in Gtk programs?). Works in ConEmu (without Shift).
 Alt+M          | Switch to tab 1                         | No             | See [Neo2 layer4][Neo2]. Maybe blocks the use of Alt+[a-z]. I hope that most applications use letters which would be on the left side of a qwertz keyboard. FIXME: No, they wont!!!
-Alt+,          | Switch to tab 2                         | No             |
+Alt+,          | Switch to tab 2                         | No             | Change to Ctrl+1 (https://support.google.com/chrome/answer/157179?hl=en&co=GENIE.Platform%3DDesktop#zippy=%2Ctab-window-shortcuts) ?
 Alt+.          | Switch to tab 3                         | No             |
 Alt+J          | Switch to tab 4                         | No             |
 Alt+K          | Switch to tab 5                         | No             |
@@ -534,11 +534,11 @@ Shortcut      | Function            | Left hand only | Comment
 ------------- | -------------       | -------------  | -------------
 Shift+Alt+C   | Abort SikulX script | Nice to have   | As long as SikuliX 1.1.1 is open, it always intercepts this key combination.
 
-### Evolution, Thunderbird
+### Evolution, Thunderbird, Outlook Web (OWA)
 
 Shortcut      | Function          | Left hand only | Comment
 ------------- | -------------     | -------------  | -------------
-Shift+X       | mail/mail-archive | Nice to have   |
+E             | mail/mail-archive | Nice to have   | Lower case "E" is hard coded in Outlook. https://support.microsoft.com/en-us/office/keyboard-shortcuts-for-outlook-3cdeb221-7ae5-4c1d-8c1d-9e63216c1efd#PickTab=Web
 
 
 ## Terminal programs

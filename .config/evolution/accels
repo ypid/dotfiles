@@ -29,7 +29,7 @@
 ; (gtk_accel_path "<Actions>/e-mail-display-attachment-inline/show-all" "")
 ; (gtk_accel_path "<Actions>/image/image-save" "<Primary>s")
 ; (gtk_accel_path "<Actions>/mail/mail-reply-list" "<Primary>l")
-(gtk_accel_path "<Actions>/mail/mail-archive" "<Shift>x")
+(gtk_accel_path "<Actions>/mail/mail-archive" "e")
 ; (gtk_accel_path "<Actions>/mail/mail-smart-backward" "BackSpace")
 ; (gtk_accel_path "<Actions>/e-mail-display-attachment-inline/zoom-to-window" "")
 ; (gtk_accel_path "<Actions>/shell/preferences" "<Primary><Shift>s")
