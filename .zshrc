@@ -5,6 +5,11 @@ if [ -e "/run/qubes/this-is-templatevm" ]; then
     exec bash
 fi
 
+# Ensure alias defined by others are cleared.
+# The issue is that aliases overrule functions even when the function is defined later.
+# More complex "aliases" are defined as function.
+unalias -a
+
 # oh-my-zsh configuration {{{
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
