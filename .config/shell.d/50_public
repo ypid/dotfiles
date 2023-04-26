@@ -428,6 +428,7 @@ alias d='docker'
 alias ds='docker ps --format "table {{ .ID }}\t{{ .Image }}\t{{ .Status }}"'
 alias dish="docker images --format 'table {{ .ID }}   {{ .Size}}\t{{ .CreatedSince }}\t{{ .Tag }}\t{{ .Repository }}'"
 alias dcl='docker-compose logs --tail 100 --follow'
+alias dc='docker-compose'
 alias '*'='dict'
 alias con='ping heise.de'
 alias conn='ping6 heise.de'
