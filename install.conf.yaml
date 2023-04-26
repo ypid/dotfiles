@@ -244,8 +244,12 @@
     - 'rsync --ignore-existing --recursive .config/htop/ ~/.config/htop'
     - 'rsync --ignore-existing --recursive .config/libvirt/ ~/.config/libvirt'
 
-    - description: 'Bootstrap required legacy file (I assume)'
-      command: 'rsync --ignore-existing --recursive .config/xfce4/panel/xfce4-timer-plugin-2.rc ~/.config/xfce4/panel/XfceTimer.rc'
+    # I found no reliable way to configure nor even preseed config of xfce4-timer-plugin.
+    # I give up for now.
+    # - description: 'Bootstrap required legacy file (I assume)'
+    #   # Not reliable. If the plugin has no times, remove and readd the plugin. Then it should pick up the settings.
+    #   # Test next: Copy both files as regular files instead of symlinks.
+    #   command: 'rsync --ignore-existing --recursive .config/xfce4/panel/xfce4-timer-plugin-2.rc ~/.config/xfce4/panel/XfceTimer.rc'
 
     - description: 'Size matters when having to transfer it for every SSH login. Put stripped down files in ~/.sshrc.d/'
       command: |-
