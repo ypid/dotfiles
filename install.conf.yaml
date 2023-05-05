@@ -133,6 +133,9 @@
     ~/.config/python/startup:
       path: .config/python/startup
 
+    ~/.config/python_keyring/keyringrc.cfg:
+      path: .config/python_keyring/keyringrc.cfg
+
     ~/.config/shell/:
       path: .config/shell/*
 
