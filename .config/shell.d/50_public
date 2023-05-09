@@ -156,7 +156,8 @@ function df() {
         fi
     else
         if [[ $# == 0 ]] || [[ $1 == "-hT" ]]; then
-            findmnt -D -t nosquashfs,notmpfs,nodevtmpfs,tracefs
+            # https://github.com/prometheus/node_exporter/blob/v1.5.0/collector/filesystem_linux.go#L36-L37
+            findmnt --df --types 'notmpfs,noautofs,nobinfmt_misc,nobpf,nocgroup,nocgroup2,noconfigfs,nodebugfs,nodevpts,nodevtmpfs,nofusectl,nohugetlbfs,noiso9660,nomqueue,nonsfs,nooverlay,noproc,noprocfs,nopstore,norpc_pipefs,nosecurityfs,noselinuxfs,nosquashfs,nosysfs,notracefs'
         else
             command df "$@"
         fi
