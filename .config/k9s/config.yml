@@ -1,0 +1,66 @@
+k9s:
+  # Represents ui poll intervals. Default 2secs
+  refreshRate: 2
+  # Number of retries once the connection to the api-server is lost. Default 15.
+  maxConnRetry: 5
+  # Enable mouse support. Default false
+  enableMouse: true
+  # Set to true to hide K9s header. Default false
+  headless: false
+  # Set to true to hide K9s crumbs. Default false
+  crumbsless: false
+  # Indicates whether modification commands like delete/kill/edit are disabled. Default is false
+  readOnly: false
+  # Toggles whether k9s should exit when CTRL-C is pressed. When set to true, you will need to exist k9s via the :quit command. Default is false.
+  noExitOnCtrlC: false
+  # Toggles icons display as not all terminal support these chars.
+  noIcons: false
+  # Toggles whether k9s should check for the latest revision from the Github repository releases. Default is false.
+  skipLatestRevCheck: true
+  # Logs configuration
+  logger:
+    # Defines the number of lines to return. Default 100
+    tail: 200
+    # Defines the total number of log lines to allow in the view. Default 1000
+    buffer: 500
+    # Represents how far to go back in the log timeline in seconds. Setting to -1 will show all available logs. Default is 5min.
+    sinceSeconds: 300
+    # Go full screen while displaying logs. Default false
+    fullScreenLogs: false
+    # Toggles log line wrap. Default false
+    textWrap: false
+    # Toggles log line timestamp info. Default false
+    showTime: false
+  # Indicates the current kube context. Defaults to current context
+  currentContext: minikube
+  # Indicates the current kube cluster. Defaults to current context cluster
+  currentCluster: minikube
+  # Persists per cluster preferences for favorite namespaces and view.
+  clusters:
+    example-cluster:
+      namespace:
+        active: default
+        lockFavorites: false
+        favorites:
+        - default
+      view:
+        active: po
+      featureGates:
+        nodeShell: false
+      shellPod:
+        image: busybox:1.35.0
+        command: []
+        args: []
+        namespace: default
+        limits:
+          cpu: 100m
+          memory: 100Mi
+      portForwardAddress: localhost
+  thresholds:
+    cpu:
+      critical: 90
+      warn: 70
+    memory:
+      critical: 90
+      warn: 70
+  screenDumpDir: /tmp/k9s-screens-user

@@ -246,6 +246,7 @@
     - 'test -L ~/.config/htop/htoprc && rm ~/.config/htop/htoprc'
     - 'rsync --ignore-existing --recursive .config/htop/ ~/.config/htop'
     - 'rsync --ignore-existing --recursive .config/libvirt/ ~/.config/libvirt'
+    - 'rsync --ignore-existing --recursive .config/k9s/ ~/.config/k9s'
 
     # I found no reliable way to configure nor even preseed config of xfce4-timer-plugin.
     # I give up for now.
