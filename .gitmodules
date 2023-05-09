@@ -374,3 +374,12 @@
 [submodule "nvim/bundle/vim-nftables"]
 	path = nvim/bundle/vim-nftables
 	url = https://github.com/nfnty/vim-nftables.git
+[submodule "nvim/bundle/vim-localorie"]
+	path = nvim/bundle/vim-localorie
+	url = https://github.com/airblade/vim-localorie.git
+[submodule "nvim/bundle/vim-yaml-helper"]
+	path = nvim/bundle/vim-yaml-helper
+	url = https://github.com/lmeijvogel/vim-yaml-helper.git
+[submodule "nvim/bundle/yaml-revealer"]
+	path = nvim/bundle/yaml-revealer
+	url = https://github.com/Einenlum/yaml-revealer.git

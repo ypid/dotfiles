@@ -313,6 +313,15 @@ if count(g:spf13_bundle_groups, 'general') " {{{
 
     " Show diff for before recover.
     Plugin 'ghost/Recover.vim'
+
+    " Does not always show a location.
+    " Plugin 'ghost/vim-yaml-helper'
+
+    " Works poorly with YAML compared to yaml-revealer.
+    " Plugin 'ghost/vim-localorie'
+
+    Plugin 'ghost/yaml-revealer'
+
 endif " }}}
 
 if count(g:spf13_bundle_groups, 'ui_enhancements') " {{{
