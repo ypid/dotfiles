@@ -72,8 +72,7 @@ function up {
     fi
 }
 
-## Create a new directory and enter it.
-unalias md 2>/dev/zero
+# Create a new directory and enter it.
 function md() {
     mkdir -p "$@"
     cd "$@" || return
