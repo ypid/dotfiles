@@ -27,10 +27,7 @@ fi
 # Ensure alias defined by others are cleared.
 # The issue is that aliases overrule functions even when the function is defined later.
 # More complex "aliases" are defined as function.
-if ! unalias -a 2>/dev/null; then
-    unalias df 2>/dev/null
-    unalias md 2>/dev/null
-fi
+unalias -a 2>/dev/null
 
 ## Misuse bash as hook into termux-chroot and zsh.
 ## termux-chroot is slower so don’t use it by default for now.

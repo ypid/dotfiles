@@ -8,10 +8,7 @@ fi
 # Ensure alias defined by others are cleared.
 # The issue is that aliases overrule functions even when the function is defined later.
 # More complex "aliases" are defined as function.
-if ! unalias -a 2>/dev/null; then
-    unalias df 2>/dev/null
-    unalias md 2>/dev/null
-fi
+unalias -a 2>/dev/null
 
 # oh-my-zsh configuration {{{
 # Set to this to use case-sensitive completion

@@ -73,6 +73,7 @@ function up {
 }
 
 # Create a new directory and enter it.
+unalias md 2>/dev/null
 function md() {
     mkdir -p "$@"
     cd "$@" || return
@@ -146,6 +147,7 @@ function date {
     fi
 }
 
+unalias df 2>/dev/null
 function df() {
     if command -v dfrs >/dev/null 2>&1; then
         if [[ $# == 0 ]] || [[ $1 == "-h" ]] || [[ $1 == "-hT" ]]; then
