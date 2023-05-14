@@ -44,6 +44,8 @@ shopt -s histappend
 HISTSIZE=52300000
 export HISTTIMEFORMAT='%F %T '
 
+export HISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/bash/history"
+
 log_bash_eternal_history()
 {
     local rc=$?
