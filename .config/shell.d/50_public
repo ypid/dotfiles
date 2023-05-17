@@ -35,6 +35,11 @@ export MAN_POSIXLY_CORRECT=1
 RIPGREP_CONFIG_PATH="${XDG_CONFIG_HOME:-$HOME/.config}/ripgrep/ripgreprc"
 export RIPGREP_CONFIG_PATH
 
+# nnn does not have a config file :( https://github.com/jarun/nnn/wiki/Usage#configuration
+# Not gonna pollute my env when I can use an alias instead.
+# NNN_OPTS="e"
+alias nnn='nnn -e'
+
 ## }}}
 
 ## Configure format of the `time` shell command {{{
