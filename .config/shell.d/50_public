@@ -149,12 +149,11 @@ function date {
 
 unalias df 2>/dev/null
 function df() {
-    if command -v dfrs >/dev/null 2>&1; then
+    if command -v duf >/dev/null 2>&1; then
         if [[ $# == 0 ]] || [[ $1 == "-h" ]] || [[ $1 == "-hT" ]]; then
-            # -T is not a valid dfrs switch.
-            dfrs --total
+            duf --hide fuse,special,loops,binds --sort filesystem
         else
-            dfrs "$@"
+            duf "$@"
         fi
     else
         if [[ $# == 0 ]] || [[ $1 == "-h" ]] || [[ $1 == "-hT" ]]; then
