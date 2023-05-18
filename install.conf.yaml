@@ -212,6 +212,9 @@
     ~/.config/mpv/mpv.conf:
       path: .config/mpv/mpv.conf
 
+    ~/.config/yt-dlp/watch-config:
+      path: .config/yt-dlp/watch-config
+
     ~/.config/nix/nix.conf:
       path: .config/nix/nix.conf
 
@@ -243,6 +246,7 @@
     - 'rsync --ignore-existing --recursive .config/smplayer/ ~/.config/smplayer'
     - 'test -L ~/.config/flameshot/flameshot.ini && rm ~/.config/flameshot/flameshot.ini'
     - 'rsync --ignore-existing --recursive .config/flameshot/ ~/.config/flameshot'
+    - 'rsync --ignore-existing --recursive .config/yt-dlp/ ~/.config/yt-dlp'
     - 'test -L ~/.config/htop/htoprc && rm ~/.config/htop/htoprc'
     - 'rsync --ignore-existing --recursive .config/htop/ ~/.config/htop'
     - 'rsync --ignore-existing --recursive .config/libvirt/ ~/.config/libvirt'

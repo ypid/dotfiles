@@ -1,0 +1,17 @@
+--verbose
+
+--list-formats
+--no-simulate
+
+# My https://github.com/TheFrenchGhosty/TheFrenchGhostys-Ultimate-YouTube-DL-Scripts-Collection/tree/master/scripts/Watch%20Scripts/Watch%20on%20PC%20Script equivalent.
+
+# Use the following to download a list:
+# md ~/Downloads/watch && yt-dlp -a ~/Downloads/yt-dlp.list
+
+# 480 res or less. Smallest file.
+--format-sort "res:480,abr:30,+size"
+
+--embed-chapters
+--output "%(uploader)s - %(upload_date>%Y-%m-%d)s - %(title)s [%(id)s].%(ext)s"
+
+--download-archive ~/.config/yt-dlp/download-archive.list
