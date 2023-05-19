@@ -261,7 +261,7 @@
 
     - description: 'Size matters when having to transfer it for every SSH login. Put stripped down files in ~/.sshrc.d/'
       command: |-
-        for file_path in .zshrc .bashrc .config/shell.d/50_public .config/git/config .config/htop/htoprc .config/tmux/tmux.conf .local/share/tmux/plugins/tmux-prefix-highlight/prefix_highlight.tmux .local/share/tmux/plugins/tmux-colors-solarized/tmuxcolors-dark.conf .local/share/tmux/plugins/tmux-sensible/sensible.tmux .config/shell/global .config/shell/tmux-attach .config/shell/login-banner scripts/sc scripts/cron-list-all; do
+        for file_path in .zshrc .bashrc .config/shell.d/50_public .config/git/config .config/htop/htoprc .config/tmux/tmux.conf .local/share/tmux/plugins/tmux-prefix-highlight/prefix_highlight.tmux .local/share/tmux/plugins/tmux-colors-solarized/tmuxcolors-dark.conf .local/share/tmux/plugins/tmux-sensible/sensible.tmux .config/shell/global .config/shell/tmux-attach .config/shell/login-banner scripts/sc scripts/cron-list-all scripts/ssh_wrapper; do
           mkdir -p "$(dirname "$HOME/.sshrc.d/$file_path")"
           grep -Ev '^\s*#([^!]|$)' "$file_path" > "$HOME/.sshrc.d/$file_path"
         done
