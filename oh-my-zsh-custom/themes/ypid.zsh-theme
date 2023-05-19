@@ -9,9 +9,9 @@ local virtualenv_prompt='$(virtualenv_info)'
 # Own theme based on dieter and bira
 
 # local time, color coded by last return code
-time_enabled="%(?.%{$fg[green]%}.%{$fg[red]%})%D{%Y-%m-%d %H:%M:%S%z}%{$reset_color%}"
-time_disabled="%{$fg[green]%}%*%{$reset_color%}"
-time="$time_enabled"
+time_color_depends_on_exit_code="%(?.%{$fg[green]%}.%{$fg[red]%})%D{%Y-%m-%d %H:%M:%S%z}%{$reset_color%}"
+time_green="%{$fg[green]%}%D{%Y-%m-%d %H:%M:%S%z}%{$reset_color%}"
+time="$time_color_depends_on_exit_code"
 
 ## In case of "Name or service not known" we fall back to $HOST.
 HOSTNAME="$(hostname --fqdn 2> /dev/null || echo "$HOST")"
@@ -29,9 +29,9 @@ test -f /etc/machine-info && source /etc/machine-info
 if [ "$DEPLOYMENT" = "production" ] || [[ $HOSTNAME == *prod* ]]; then
     host="%{$terminfo[bold]$fg[red]%}${HOSTNAME}"
 fi
-local user_host='${user}%{$reset_color%}@${host}%{$reset_color%}'
+local user_host="${user}%{$reset_color%}@${host}%{$reset_color%}"
 
-local current_dir='%{$terminfo[bold]$fg[blue]%} %~%{$reset_color%}'
+local current_dir="%{$terminfo[bold]$fg[blue]%} %~%{$reset_color%}"
 
 local git_branch=''
 if [ -z "$ANDROID_ROOT" ] && [ "$(hostname)" != "files" ]; then
@@ -48,19 +48,21 @@ return_code=$return_code_enabled
 
 # RPS1='${return_code}'
 
-PROMPT="╭─ ${time} ${user_host}${current_dir}${git_branch}${virtualenv_prompt} ${return_code}
+PROMPT="╭─ \${time} ${user_host}${current_dir}${git_branch}${virtualenv_prompt} \${return_code}
 ╰─ %B%(!.#.$)%b "
 RPROMPT=""
 
 function accept-line-or-clear-warning () {
-	if [[ -z $BUFFER ]]; then
-		time=$time_disabled
-		return_code=$return_code_disabled
-	else
-		time=$time_enabled
-		return_code=$return_code_enabled
-	fi
-	zle accept-line
+    if [[ -z $BUFFER ]]; then
+        return_code=$return_code_disabled
+        # `true` does not seem to change `$?` therefore we use the following
+        # workaround:
+        time=$time_green
+    else
+        return_code=$return_code_enabled
+        time=$time_color_depends_on_exit_code
+    fi
+    zle accept-line
 }
 zle -N accept-line-or-clear-warning
 bindkey '^M' accept-line-or-clear-warning
