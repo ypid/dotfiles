@@ -383,3 +383,6 @@
 [submodule "nvim/bundle/yaml-revealer"]
 	path = nvim/bundle/yaml-revealer
 	url = https://github.com/Einenlum/yaml-revealer.git
+[submodule "oh-my-zsh-custom/themes/powerlevel10k"]
+	path = oh-my-zsh-custom/themes/powerlevel10k
+	url = https://gitee.com/romkatv/powerlevel10k.git

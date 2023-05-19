@@ -62,6 +62,9 @@
     ~/.zshenv:
       path: .zshenv
 
+    ~/.config/powerlevel10k/config.zsh:
+      path: .config/powerlevel10k/config.zsh
+
     ~/.config/oh-my-zsh:
       path: oh-my-zsh
 

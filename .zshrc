@@ -5,6 +5,13 @@ if [ -e "/run/qubes/this-is-templatevm" ]; then
     exec bash
 fi
 
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # Ensure alias defined by others are cleared.
 # The issue is that aliases overrule functions even when the function is defined later.
 # More complex "aliases" are defined as function.
@@ -61,7 +68,8 @@ ypid_zsh_bindkey() {
 ## }}}
 
 # http://vim.1045645.n5.nabble.com/vim-ctrl-s-mapping-does-not-work-td1147525.html
-stty -ixon -ixoff
+# Was added in 2014, probably outdated.
+# stty -ixon -ixoff
 # I use tmux copy mode for this anyway.
 
 local ypid_dotfiles_level="full"
@@ -294,6 +302,8 @@ if [[ -a /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
 fi
 
 source "${XDG_CONFIG_HOME:-$HOME/.config}/oh-my-zsh-custom/themes/ypid.zsh-theme"
+# source "${XDG_CONFIG_HOME:-$HOME/.config}/powerlevel10k/config.zsh"
+# source "${XDG_CONFIG_HOME:-$HOME/.config}/oh-my-zsh-custom/themes/powerlevel10k/powerlevel10k.zsh-theme"
 
 # like eternal history
 # SAVEHIST=100000000
