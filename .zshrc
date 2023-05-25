@@ -277,6 +277,11 @@ bashcompinit
 
 source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/global"
 
+if command -v switch >/dev/null 2>&1; then
+    source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/kubeswitch"
+    alias switch="switch --executable-path \"$HOME/.nix-profile/bin/switch\""
+fi
+
 # Bug in oh-my-zsh. If a plugin changes fpath, it is not picked up by compinit because it is run first!1!?
 # Hopefully this will be fixed by one of the refactoring pull requests.
 
