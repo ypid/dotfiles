@@ -103,6 +103,10 @@ if [ -n "$SSHHOME" ] && [ ! -e "$HOME/.config/dotfiles/.reuse/dep5" ]; then
     fi
 fi
 
+if command -v direnv >/dev/null 2>&1; then
+    eval "$(direnv hook zsh)"
+fi
+
 if command -v compdef >/dev/null 2>&1; then
     command -v ssh_wrapper >/dev/null 2>&1 && compdef ssh_wrapper=ssh
     command -v sshrc_wrapper >/dev/null 2>&1 && compdef sshrc_wrapper=ssh
