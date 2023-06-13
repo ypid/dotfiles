@@ -12,6 +12,7 @@ done
 
 # pathappend "${HOME}/.sandboxes/bin"
 pathprepend "${HOME}/.nix-profile/bin"
+pathappend "${HOME}/.krew/bin"
 pathappend "/usr/local/bin"
 pathappend "/usr/sbin"
 
