@@ -14,4 +14,7 @@
 --embed-chapters
 --output "%(uploader)s - %(upload_date>%Y-%m-%d)s - %(title)s [%(id)s].%(ext)s"
 
+# Prefer https://jellyfin.org/docs/general/clients/codec-support/ mp4 if we can.
+--merge-output-format mp4
+
 --download-archive ~/.config/yt-dlp/download-archive.list
