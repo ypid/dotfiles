@@ -36,9 +36,10 @@ then
     pathappend "$user_install_dir/bin"
 
     ## Python {{{
-    export PYTHONUSERBASE="$user_install_dir/python"
-    pathprepend "$PYTHONUSERBASE/bin"
-    export PYTHONPATH=".:$PYTHONUSERBASE:$PYTHONPATH"
+    # Use pipx instead.
+    # export PYTHONUSERBASE="$user_install_dir/python"
+    # pathprepend "$PYTHONUSERBASE/bin"
+    # export PYTHONPATH="$PYTHONUSERBASE:$PYTHONPATH"
     export PYTHONSTARTUP="${HOME}/.config/python/startup"
     ## }}}
 
