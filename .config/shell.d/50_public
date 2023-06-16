@@ -423,6 +423,7 @@ function tmux() {
         command tmux "$@"
     fi
 }
+alias m='task'
 alias t='tmux'
 alias k='kubectl'
 
