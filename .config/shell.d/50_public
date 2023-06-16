@@ -539,6 +539,7 @@ then
     alias kcat='kafkacat'
 fi
 
+alias fq='fq --option "colors=array=black,dumpaddr=yellow,dumpheader=yellow+underline,error=brightred,false=yellow,index=black,null=brightblack,number=cyan,object=black,objectkey=brightblue,prompt_repl_level=brightblack,prompt_value=black,string=green,true=yellow,value=black"'
 ## }}}
 
 ## Ignore typos {{{
