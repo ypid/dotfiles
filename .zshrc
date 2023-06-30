@@ -272,6 +272,8 @@ END
 
 source "$ZSH/oh-my-zsh.sh"
 
+FPATH="$FPATH:$HOME/.nix-profile/share/zsh/site-functions"
+
 autoload -U bashcompinit
 bashcompinit
 
