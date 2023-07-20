@@ -24,6 +24,7 @@
     - ~/.local/share/zsh
     - ~/.local/usr
     - ~/.ssh/multiplex
+    - ~/.config/k9s/
 
 - shell:
     - 'chmod 0700 ~/.ssh'
@@ -40,6 +41,10 @@
 
     - description: 'Remove default user data directories if empty.'
       command: 'rmdir --ignore-fail-on-non-empty ~/Documents ~/Music ~/Pictures ~/Public ~/Templates ~/Videos || :'
+
+    - description: 'Install K9s community Custom Plugins'
+      command: |-
+        yq eval-all '. as $item ireduce ({}; . * $item )' $(find submodules/k9s/plugins/ -name '*.yml' -and -not -iname 'flux.yml' -and -not -iname 'log_jq.yml') > ~/.config/k9s/plugin.yml
 
 - link:
 
@@ -205,6 +210,10 @@
     # https://git-annex.branchable.com/tips/finding_duplicate_files/
     ~/.local/share/scripts/git-config-adam/git-annex-finddups:
       path: submodules/git-config-adam/bin/git-annex-finddups
+
+    # Poorly maintained. Rather use generic tool like lnav.
+    # ~/.local/share/scripts/k9s/kubectl-jq:
+    #   path: submodules/k9s/plugins/kubectl-plugins/kubectl-jq
 
     '~/.config/autokey/data/Emitting keystrokes':
       path: '.config/autokey/Emitting keystrokes'

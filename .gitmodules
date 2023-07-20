@@ -386,3 +386,6 @@
 [submodule "oh-my-zsh-custom/themes/powerlevel10k"]
 	path = oh-my-zsh-custom/themes/powerlevel10k
 	url = https://gitee.com/romkatv/powerlevel10k.git
+[submodule "submodules/k9s"]
+	path = submodules/k9s
+	url = https://github.com/derailed/k9s
