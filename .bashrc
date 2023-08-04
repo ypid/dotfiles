@@ -39,32 +39,22 @@ unalias -a 2>/dev/null
 #     fi
 # fi
 
-# don't put duplicate lines in the history. See bash(1) for more options
-# ... or force ignoredups and ignorespace
-HISTCONTROL=ignoredups:ignorespace
+if command -v atuin >/dev/null 2>&1 && test -e ~/.nix-profile/share/bash/bash-preexec.sh; then
+    source ~/.nix-profile/share/bash/bash-preexec.sh
+    eval "$(atuin init bash)"
+    unset HISTFILE
+else
+    # don't put duplicate lines in the history. See bash(1) for more options
+    # ... or force ignoredups and ignorespace
+    HISTCONTROL=ignoredups:ignorespace
 
-# append to the history file, don't overwrite it
-shopt -s histappend
-# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=52300000
-export HISTTIMEFORMAT='%F %T '
-
-export HISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/bash/history"
-
-log_bash_eternal_history()
-{
-    local rc=$?
-    [[ $(history 1) =~ ^\ *[0-9]+\ +([^\ ]+\ [^\ ]+)\ +(.*)$ ]]
-    local date_part="${BASH_REMATCH[1]}"
-    local command_part="${BASH_REMATCH[2]}"
-    if [ "$command_part" != "$ETERNAL_HISTORY_LAST" -a "$command_part" != "ls" -a "$command_part" != "ll" ]
-    then
-        echo $date_part $HOSTNAME $rc "$command_part" >> ~/.shell_eternal_history
-        export ETERNAL_HISTORY_LAST="$command_part"
-    fi
-}
-
-# PROMPT_COMMAND="log_bash_eternal_history"
+    # append to the history file, don't overwrite it
+    shopt -s histappend
+    # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+    HISTSIZE=52300000
+    export HISTTIMEFORMAT='%F %T '
+    export HISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/bash/history"
+fi
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.

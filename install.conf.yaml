@@ -233,6 +233,9 @@
     ~/.config/evolution/accels:
       path: .config/evolution/accels
 
+    ~/.config/atuin/config.toml:
+      path: .config/atuin/config.toml
+
     ~/.Xresources:
       path: .Xresources
 

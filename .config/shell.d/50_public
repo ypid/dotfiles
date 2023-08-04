@@ -121,16 +121,20 @@ function sed-easy {
     sed -i "s/$(sed-keyword-escape "$1")/$(sed-replace-escape "$2")/g" "$3"
 }
 
-function h {
-    pattern="${1:-.}"
+if command -v atuin >/dev/null 2>&1; then
+    alias h='atuin search --human'
+else
+    function h {
+        pattern="${1:-.}"
 
-    if [[ "$pattern" == "." ]]; then
-        omz_history -i
-    else
-        shift
-        omz_history -i | grep -Eie "$pattern" "$@"
-    fi
-}
+        if [[ "$pattern" == "." ]]; then
+            omz_history -i
+        else
+            shift
+            omz_history -i | grep -Eie "$pattern" "$@"
+        fi
+    }
+fi
 
 ## https://stackoverflow.com/questions/1115904/shortest-way-to-swap-two-files-in-bash/1115909#1115909
 ## TODO: Edit/improve the answer on SO.

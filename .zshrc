@@ -55,15 +55,24 @@ ZSH_COMPDUMP="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/zcompdump-${ZSH_VERSION}"
 ypid_zsh_bindkey() {
     bindkey -v
     bindkey -M vicmd v edit-command-line
-    bindkey '^R' history-incremental-search-backward
-    bindkey '^K' history-beginning-search-backward
-    bindkey '^O' history-beginning-search-forward
-    # bindkey '^M' history-beginning-search-forward # disables enter
+
+    if command -v atuin >/dev/null 2>&1; then
+        eval "$(atuin init zsh)"
+        bindkey '^K' _atuin_search_widget
+        unset HISTFILE
+    else
+        bindkey '^R' history-incremental-search-backward
+        bindkey '^K' history-beginning-search-backward
+        bindkey '^O' history-beginning-search-forward
+    fi
+
+    # I don’t use Atuin here because I mostly use Ctrl+P to bring up the last command in order to modify it.
+    # Using Atuin would add one extra step because it brings me into Atuin from
+    # which I have to exit out again before I can edit the command.
     bindkey '^P' up-history
     bindkey '^N' down-history
-
-    [[ -n "${key[Up]}" ]] && bindkey "${key[Up]}" history-beginning-search-backward
-    [[ -n "${key[Down]}" ]] && bindkey "${key[Down]}" history-beginning-search-forward
+    [[ -n "${key[Up]}" ]] && bindkey "${key[Up]}" up-history
+    [[ -n "${key[Down]}" ]] && bindkey "${key[Down]}" down-history
 }
 ## }}}
 
@@ -95,12 +104,12 @@ if [ -n "$SSHHOME" ] && [ ! -e "$HOME/.config/dotfiles/.reuse/dep5" ]; then
 
     PATH="${PATH:+"$PATH:"}$SSHHOME/.sshrc.d/scripts"
 
-    ypid_zsh_bindkey
-
     # Write to persistent history file when I am root.
     if [[ "$USER" == 'root' ]]; then
         export HISTFILE="/root/.history"
     fi
+
+    ypid_zsh_bindkey
 fi
 
 if command -v direnv >/dev/null 2>&1; then
@@ -315,10 +324,6 @@ fi
 source "${XDG_CONFIG_HOME:-$HOME/.config}/oh-my-zsh-custom/themes/ypid.zsh-theme"
 # source "${XDG_CONFIG_HOME:-$HOME/.config}/powerlevel10k/config.zsh"
 # source "${XDG_CONFIG_HOME:-$HOME/.config}/oh-my-zsh-custom/themes/powerlevel10k/powerlevel10k.zsh-theme"
-
-# like eternal history
-# SAVEHIST=100000000
-# huge performance killer!
 
 setopt no_share_history
 
