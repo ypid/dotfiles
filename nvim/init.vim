@@ -1074,7 +1074,7 @@ if count(g:config_section_enable, 'autocmd_config')
 
             " Encourage a self review before writing the commit message by
             " moving the cursor to "On branch" to start from there.
-            autocmd FileType gitcommit exe 5
+            " autocmd FileType gitcommit exe 5
 
             autocmd FileType gitcommit call matchadd('ColorColumn', '\%1l\%74v', 100)
 
