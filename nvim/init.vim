@@ -508,8 +508,8 @@ if count(g:spf13_bundle_groups, 'generic_programming') " {{{
     if executable('rg')
         Plugin 'ghost/vim-ripgrep'
 
-        command! -nargs=* -complete=file Rg :call s:Rg(<q-args>)
-        command! -complete=file RgRoot :call s:RgShowRoot()
+        command! -nargs=* Rg :call s:Rg(<q-args>)
+        command! RgRoot :call s:RgShowRoot()
     elseif executable('ag')
         let g:ackprg = 'ag --vimgrep'
     elseif executable('ack-grep')
