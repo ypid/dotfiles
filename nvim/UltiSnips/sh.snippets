@@ -8,9 +8,10 @@ snippet #! "Shebang" !b
 
 function main() {
     echo "Actual script starts here."
+    ${0}
 }
 
-if [[ "${BASH_SOURCE[0]}" == "${0}" ]]
+if [[ "${BASH_SOURCE[0]}" == "\${0}" ]]
 then
     PS4='+ $(date --rfc-3339=seconds), ${BASH_SOURCE-}:${LINENO-}: '
     export PS4
@@ -19,5 +20,4 @@ then
 
     main "$@"
 fi
-
 endsnippet
