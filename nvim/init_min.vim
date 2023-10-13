@@ -280,6 +280,12 @@ vnoremap > >gv
 " Source: https://www.youtube.com/watch?v=Yiw2f3m73Fo
 noremap <space> za
 
+" I am used to Y being yy, no need to change old habits.
+" Neovim defaults Y to y$. Vim still defaults Y to yy. 
+" https://github.com/neovim/neovim/pull/13268
+nnoremap Y yy
+xnoremap Y yy
+
 " }}}
 
 " Map leader mappings {{{
