@@ -10,8 +10,20 @@ do
     pathprepend "${bin_path_dir}"
 done
 
+if [ -d "/nix/var/nix/" ]
+then
+    NIX_REMOTE=daemon
+    # Using pathprepend here will also cause versions of nix-env to be used
+    # inside impure nix-shells.
+    # This I can also not use /usr/lib/environment.d/nix-daemon.conf directly.
+    pathappend "${HOME}/.nix-profile/bin"
+    pathappend "/nix/var/nix/profiles/default/bin"
+    NIX_PATH="nixpkgs=/nix/var/nix/profiles/per-user/$USER/channels/nixpkgs:/nix/var/nix/profiles/per-user/$USER/channels"
+    export NIX_REMOTE
+    export NIX_PATH
+fi
+
 # pathappend "${HOME}/.sandboxes/bin"
-pathprepend "${HOME}/.nix-profile/bin"
 pathappend "${HOME}/.krew/bin"
 pathappend "/usr/local/bin"
 pathappend "/usr/sbin"

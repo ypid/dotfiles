@@ -431,6 +431,10 @@ alias m='task'
 alias t='tmux'
 alias k='kubectl'
 
+if [ -e "$HOME/.nix-profile/bin/docker" ]; then
+    # Use docker-client from Nixpkgs so that "docker compose" is available.
+    alias docker='/home/user/.nix-profile/bin/docker'
+fi
 alias d='docker'
 alias ds='docker ps --format "table {{ .ID }}\t{{ .Image }}\t{{ .Status }}"'
 alias dish="docker images --format 'table {{ .ID }}   {{ .Size}}\t{{ .CreatedSince }}\t{{ .Tag }}\t{{ .Repository }}'"
