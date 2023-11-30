@@ -525,6 +525,17 @@ alias xclip-primary-to-clipboard='xclip -out | xclip -in -selection clipboard'
 
 alias ,='popd'
 
+# https://github.com/x-motemen/ghq/issues/29#issuecomment-52584401
+ghq () {
+    if [ "$1" = get -a -n "$2" ]; then
+        command ghq get "$2"
+        cd $(command ghq list --exact --full-path "$2")
+        return
+    fi
+
+    command ghq "$@"
+}
+
 # I am not fully convinced. It is not a drop-in replacement so I cannot make it
 # the default as a sysadmin yet anyway.
 if command -v exa >/dev/null 2>&1
