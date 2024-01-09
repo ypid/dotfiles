@@ -8,8 +8,8 @@
 # Use the following to download a list:
 # md ~/Downloads/watch && yt-dlp -a ~/Downloads/yt-dlp.list
 
-# 480 res or less. Smallest file.
---format-sort "res:480,abr:30,+size"
+# 720 res or less. Smallest file.
+--format-sort "res:720,abr:30,+size"
 
 --embed-chapters
 --output "%(uploader)s - %(upload_date>%Y-%m-%d)s - %(title)s [%(id)s].%(ext)s"
