@@ -198,6 +198,9 @@
 [init]
 	defaultBranch = main
 
+[ghq]
+	root = ~/src/
+
 ; TODO: Make use of this.
 ; [includeIf "gitdir:~/w-s/"]
 ;     path = ~/work/.gitconfi
