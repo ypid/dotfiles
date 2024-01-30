@@ -439,8 +439,28 @@ fi
 alias d='docker'
 alias ds='docker ps --format "table {{ .ID }}\t{{ .Image }}\t{{ .Status }}"'
 alias dish="docker images --format 'table {{ .ID }}   {{ .Size}}\t{{ .CreatedSince }}\t{{ .Tag }}\t{{ .Repository }}'"
-alias dcl='docker-compose logs --tail 100 --follow'
-alias dc='docker-compose'
+
+# docker compose {{{
+
+# (( ${+commands[docker-compose]} )) && dccmd='docker-compose' || dccmd='docker compose'
+# Ref: https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/docker-compose/docker-compose.plugin.zsh
+# This code is not compatible with Bash. Also, we want to prefer `docker
+# compose`. The code from ohmyzsh prefers `docker-compose` which is a bug.
+
+if docker compose version >/dev/null 2>&1; then
+    dccmd='docker compose'
+elif command -v docker-compose >/dev/null 2>&1; then
+    dccmd='docker-compose'
+else
+    dccmd='docker compose'
+fi
+
+alias dcl="$dccmd logs --tail 100 --follow"
+alias dc="$dccmd"
+
+unset dccmd
+# }}}
+
 alias '*'='dict'
 alias con='ping heise.de'
 alias conn='ping6 heise.de'
