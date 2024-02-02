@@ -1,4 +1,4 @@
-# SPDX-FileCopyrightText: 2012-2021 Robin Schneider <ypid@riseup.net>
+# SPDX-FileCopyrightText: 2012-2024 Robin Schneider <ypid@riseup.net>
 #
 # SPDX-License-Identifier: CC0-1.0
 
@@ -385,7 +385,8 @@
 	url = https://github.com/Einenlum/yaml-revealer.git
 [submodule "oh-my-zsh-custom/themes/powerlevel10k"]
 	path = oh-my-zsh-custom/themes/powerlevel10k
-	url = https://gitee.com/romkatv/powerlevel10k.git
+	; url = https://gitee.com/romkatv/powerlevel10k.git
+	url = https://github.com/romkatv/powerlevel10k.git
 [submodule "submodules/k9s"]
 	path = submodules/k9s
 	url = https://github.com/derailed/k9s
