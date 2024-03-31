@@ -577,6 +577,14 @@ fi
 
 alias fq='fq --option "colors=array=black,dumpaddr=yellow,dumpheader=yellow+underline,error=brightred,false=yellow,index=black,null=brightblack,number=cyan,object=black,objectkey=brightblue,prompt_repl_level=brightblack,prompt_value=black,string=green,true=yellow,value=black"'
 
+if command -v uuid >/dev/null 2>&1
+then
+    # Default to UUIDv4 (random). If the user later appends -v1 we preseed
+    # UUIDv1 to use a random multi-cast MAC address for privacy reasons using
+    # -m.
+    alias uuid='uuid -m -v4'
+fi
+
 ## }}}
 
 ## Ignore typos {{{
