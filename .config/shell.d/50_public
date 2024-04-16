@@ -446,7 +446,7 @@ if [ -e "$HOME/.nix-profile/bin/docker" ]; then
 fi
 alias d='docker'
 alias ds='docker ps --format "table {{ .ID }}\t{{ .Image }}\t{{ .Status }}"'
-alias dish="docker images --format 'table {{ .ID }}   {{ .Size}}\t{{ .CreatedSince }}\t{{ .Tag }}\t{{ .Repository }}'"
+alias dish="docker images --format 'table {{ .Repository }}:{{ .Tag }}\t{{ .ID }}\t{{ .Size}}\t{{ .CreatedSince }}'"
 
 # docker compose {{{
 
