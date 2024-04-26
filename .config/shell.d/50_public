@@ -128,10 +128,18 @@ else
         pattern="${1:-.}"
 
         if [[ "$pattern" == "." ]]; then
-            omz_history -i
+            if command -v omz_history >/dev/null 2>&1; then
+                omz_history -i
+            else
+                history
+            fi
         else
             shift
-            omz_history -i | grep -Eie "$pattern" "$@"
+            if command -v omz_history >/dev/null 2>&1; then
+                omz_history -i | grep -Eie "$pattern" "$@"
+            else
+                history | grep -Eie "$pattern" "$@"
+            fi
         fi
     }
 fi
