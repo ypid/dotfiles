@@ -46,6 +46,8 @@
       command: |-
         yq eval-all '. as $item ireduce ({}; . * $item )' $(find submodules/k9s/plugins/ -name '*.yml' -and -not -iname 'flux.yml' -and -not -iname 'log_jq.yml') > ~/.config/k9s/plugin.yml
 
+    - 'mkdir -p ${XDG_DATA_HOME:-$HOME/.local/share}/bash'
+
 - link:
 
     # Bash [[[2
