@@ -2,23 +2,52 @@
 # Sourced by Bash and zsh.
 # Functions which might be called by other sourced shell scripts.
 
-# https://superuser.com/questions/39751/add-directory-to-path-if-its-not-already-there/753948#753948
-pathprepend() {
-    for ARG in "$@"
+# I started with https://superuser.com/questions/39751/add-directory-to-path-if-its-not-already-there/753948#753948
+# but then modified it to my needs.
+remove_from_path() {
+    local item_to_remove
+    local path_item
+    local IFS
+    IFS=":"
+
+    if [ $ZSH_VERSION ]; then
+        setopt sh_word_split
+    fi
+
+    for item_to_remove in "$@"
     do
-        ARG="${ARG%/}"
-        if [ -d "$ARG" ] && [[ ":$PATH:" != *":$ARG:"* ]]; then
-            PATH="$ARG${PATH:+":$PATH"}"
+        item_to_remove="${item_to_remove%/}"
+        declare -a path_array
+
+        for path_item in $PATH
+        do
+            if [[ "${path_item%/}" != "$item_to_remove" ]]; then
+                path_array+=($path_item)
+            fi
+        done
+
+        PATH="${path_array[*]}"
+    done
+
+    if [ $ZSH_VERSION ]; then
+        unsetopt sh_word_split
+    fi
+}
+
+pathprepend() {
+    remove_from_path "$@"
+    for new_path in "$@"; do
+        if [ -d "$new_path" ]; then
+            PATH="${new_path%/}${PATH:+:$PATH}"
         fi
     done
 }
 
 pathappend() {
-    for ARG in "$@"
-    do
-        ARG="${ARG%/}"
-        if [ -d "$ARG" ] && [[ ":$PATH:" != *":$ARG:"* ]]; then
-            PATH="${PATH:+"$PATH:"}$ARG"
+    remove_from_path "$@"
+    for new_path in "$@"; do
+        if [ -d "$new_path" ]; then
+            PATH="${PATH:+$PATH:}${new_path%/}"
         fi
     done
 }
