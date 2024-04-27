@@ -37,6 +37,13 @@ export ASDF_DIR="$HOME/.asdf-writable"
 pathprepend "${ASDF_DIR}/shims"
 pathappend "${ASDF_DIR}/bin"
 
+# This is normally loaded by /etc/profile.d/safe-rm.sh but zsh does not source
+# this file so we set the PATH here.
+# Interestingly, on Qubes OS, /etc/profile.d/safe-rm.sh is still sourced which
+# made this issue difficult to debug. But on bare metal Debian, it is not
+# sourced as expected.
+pathprepend "/usr/share/safe-rm/bin"
+
 pathprepend "$HOME/bin"
 
 ## PATH and related environment configuration {{{
