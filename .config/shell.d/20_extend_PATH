@@ -1,37 +1,51 @@
 #!/bin/bash
 # Sourced by Bash and zsh.
 
-BIN_PATHS_DIR="$HOME/.local/share/scripts"
+___() {
+    local BIN_PATHS_DIR
+    local bin_path_dir
 
-test -d "${BIN_PATHS_DIR}" || exit 0
+    local BIN_PATHS_DIR="$HOME/.local/share/scripts"
 
-for bin_path_dir in "${BIN_PATHS_DIR}"/*
-do
-    pathprepend "${bin_path_dir}"
-done
+    test -d "${BIN_PATHS_DIR}" || exit 0
+
+    for bin_path_dir in "${BIN_PATHS_DIR}"/*
+    do
+        pathprepend "${bin_path_dir}"
+    done
+} && ___
+unset -f ___
 
 if [ -d "/nix/var/nix/" ]
 then
     NIX_REMOTE=daemon
-    # Using pathprepend here will also cause versions of nix-env to be used
-    # inside impure nix-shells.
-    # This I can also not use /usr/lib/environment.d/nix-daemon.conf directly.
-    pathappend "${HOME}/.nix-profile/bin"
-    pathappend "/nix/var/nix/profiles/default/bin"
-    NIX_PATH="nixpkgs=/nix/var/nix/profiles/per-user/$USER/channels/nixpkgs:/nix/var/nix/profiles/per-user/$USER/channels"
     export NIX_REMOTE
-    export NIX_PATH
+
+    # /usr/lib/environment.d/nix-daemon.conf is not sourced here but it does
+    # not hurt if it was sourced outside of my dotfiles.
+    #
+    # pathprepend pro:
+    #
+    # * Allows to install a more recent nix version that overrules the one
+    #   provided by nix-bin on Debian.
+    #
+    # pathappend pro:
+    #
+    # * Causes versions of nix-env to be used inside impure nix-shells.
+    #
+    pathprepend "${HOME}/.nix-profile/bin"
+
+    # Remove default profile from my PATH. Only programs that the user installs
+    # should be in the path.
+    remove_from_path '/nix/var/nix/profiles/default/bin'
+
+    # NIX_PATH="${HOME}/.nix-defexpr/channels/"
+    # export NIX_PATH
 fi
 
-# pathappend "${HOME}/.sandboxes/bin"
 pathappend "${HOME}/.krew/bin"
 pathappend "/usr/local/bin"
 pathappend "/usr/sbin"
-
-pathappend "/usr/share/elasticsearch/bin"
-pathappend "/usr/share/elasticsearch/bin/x-pack"
-pathappend "/usr/share/logstash/bin"
-pathappend "/usr/share/kibana/bin"
 
 export ASDF_DIR="$HOME/.asdf-writable"
 pathprepend "${ASDF_DIR}/shims"
@@ -73,37 +87,6 @@ then
     fi
     MANPATH="$NPM_PACKAGES/share/man:$MANPATH"
     export NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
-    ## }}}
-
-    ## Ruby {{{
-    ## There is an issue on SLES which causes the $LOAD_PATH to be reset
-    ## ("/usr/lib64/ruby/gems/2.5.0/gems/" entries are removed).
-    ## This also breaks Vagrant on Debian 10. So I disable it for now:
-    # shellcheck disable=SC1091
-    # if [[ -e "/etc/os-release" ]] && [[ ! "$( . /etc/os-release && echo "$NAME" )" == "SLES" ]]; then
-    #     export GEM_HOME="$user_install_dir/gems"
-    #     export GEM_PATH="$GEM_HOME"
-    #     pathappend "$GEM_HOME/bin"
-    # fi
-    ## }}}
-
-    ## Haskell {{{
-    CABAL_PATH="$HOME/.cabal"
-    pathprepend "$CABAL_PATH/bin"
-    ## }}}
-
-    ## Golang {{{
-    export GOPATH="$user_install_dir/golang"
-    pathappend "$GOPATH/bin"
-    ## }}}
-
-    ## Perl {{{
-    # Rework.
-    # export PATH="${HOME}/perl5/bin${PATH+:}${PATH}"
-    # export PERL5LIB="${HOME}/perl5/lib/perl5:..${PERL5LIB+:}${PERL5LIB}"
-    # export PERL_LOCAL_LIB_ROOT="${HOME}/perl5${PERL_LOCAL_LIB_ROOT+:}${PERL_LOCAL_LIB_ROOT}"
-    # export PERL_MB_OPT="--install_base \"${HOME}/perl5\""
-    # export PERL_MM_OPT="INSTALL_BASE=${HOME}/perl5"
     ## }}}
 fi
 ## }}}
