@@ -1,7 +1,18 @@
+# vim: foldmarker=[[[,]]]:foldmethod=marker
+
+# Core git settings [[[
 [user]
 	name = Robin Schneider
 	email = ypid@riseup.net
 	signingkey = EF96BC32AC57CFC72DF01D8C489A4D5EC353C98A
+[core]
+	editor = nvim
+
+	; Don’t. Use .gitattributes if necessary:
+	; Setting it here is required to overwrite the Windows default from c:/ProgramData/Git/config
+	autocrlf = false
+
+	; eol = lf
 [color]
 	ui = auto
 	status = auto
@@ -115,26 +126,44 @@
 	# https://stackoverflow.com/questions/8475448/find-merge-commit-which-include-a-specific-commit/30998048#30998048
 	find-merge = "!sh -c 'commit=$0 && branch=${1:-HEAD} && (git rev-list $commit..$branch --ancestry-path | cat -n; git rev-list $commit..$branch --first-parent | cat -n) | sort -k2 -s | uniq -f1 -d | sort -n | tail -1 | cut -f2'"
 	show-merge = "!sh -c 'merge=$(git find-merge $0 $1) && [ -n \"$merge\" ] && git show $merge'"
-
-[core]
-	editor = nvim
-
-	;; Don’t. Use .gitattributes if necessary:
-	;; Setting it here is required to overwrite the Windows default from c:/ProgramData/Git/config
-	autocrlf = false
-
-	; eol = lf
-
-[github]
-	user = ypid
 [push]
 	default = simple
-
 [pretty]
 	# reflog, with relative date:
 	reflogrel = %C(auto)%h %<|(17)%gd %<|(30)%C(blue)%cr%C(reset) %s
 	reflog = %C(auto)%h %<|(17)%gd %C(blue)%ci%C(reset) %s
+[commit]
+	verbose = true
+[pull]
+	ff = only
+[log]
+	; https://stackoverflow.com/questions/7853332/how-to-change-git-log-date-formats
+	date = iso-strict-local
+[url "https://github.com/"]
+	insteadOf = git://github.com/
 
+# Default to secure keyring instead of unencrypted ~/.git-credentials.
+; [credential]
+;     helper = /usr/share/doc/git/contrib/credential/libsecret/git-credential-libsecret
+
+[merge]
+	ff = false
+	tool = diffconflicts
+[mergetool "diffconflicts"]
+	cmd = nvim -c DiffConflicts \"$MERGED\" \"$BASE\" \"$LOCAL\" \"$REMOTE\"
+	trustExitCode = true
+[mergetool]
+	keepBackup = false
+[init]
+	defaultBranch = main
+
+; TODO: Make use of this.
+; [includeIf "gitdir:~/w-s/"]
+;     path = ~/work/.gitconfi
+
+# ]]]
+
+# git-annex [[[
 [annex]
 	backend = SHA512E
 
@@ -152,21 +181,9 @@
 	annex-trustlevel = untrusted
 [remote "bittorrent"]
 	annex-trustlevel = untrusted
+# ]]]
 
-[commit]
-	verbose = true
-[pull]
-	ff = only
-[log]
-	; https://stackoverflow.com/questions/7853332/how-to-change-git-log-date-formats
-	date = iso-strict-local
-[url "https://github.com/"]
-	insteadOf = git://github.com/
-
-# Default to secure keyring instead of unencrypted ~/.git-credentials.
-[credential]
-	helper = /usr/share/doc/git/contrib/credential/libsecret/git-credential-libsecret
-
+# tig [[[
 [tig]
 	# https://github.com/jonas/tig/blob/master/contrib/large-repo.tigrc
 	# Use Git's default (reverse chronological) order, never automatically
@@ -188,20 +205,12 @@
 	# TODO: Figure out how to set `log.date = iso-strict-local` for tig.
 	; main-view-date = custom
 	; main-view-date-format = "%Y-%m-%d %H:%M"
-[merge]
-	ff = false
-	tool = diffconflicts
-[mergetool "diffconflicts"]
-	cmd = nvim -c DiffConflicts \"$MERGED\" \"$BASE\" \"$LOCAL\" \"$REMOTE\"
-	trustExitCode = true
-[mergetool]
-	keepBackup = false
-[init]
-	defaultBranch = main
+# ]]]
 
+# ghq [[[
 [ghq]
 	root = ~/src/
+# ]]]
 
-; TODO: Make use of this.
-; [includeIf "gitdir:~/w-s/"]
-;     path = ~/work/.gitconfi
+[github]
+	user = ypid
