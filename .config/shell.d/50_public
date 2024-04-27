@@ -529,13 +529,17 @@ if [[ "$USER" != 'root' ]] && [ -z "$ANDROID_ROOT" ]; then
     command -v apt >/dev/null 2>&1 && alias apt='sudo apt'
     command -v zypper >/dev/null 2>&1 && alias zypper='sudo zypper'
 
-    ## Ref: https://github.com/ypid/ypid-ansible-inventory/tree/master/group_vars/public_ypid_qubes_debops
-    if [ -e /usr/local.template ]; then
-        usrlocal_path='/usr/local.template'
-    else
-        usrlocal_path='/usr/local'
-    fi
-    alias sc="sudo ${usrlocal_path}/share/ypid_dotfiles/scripts/sc"
+    # Ref: https://github.com/ypid/ypid-ansible-inventory/tree/master/group_vars/public_ypid_qubes_debops
+
+    ___() {
+        if [ -e /usr/local.template ]; then
+            local usrlocal_path='/usr/local.template'
+        else
+            local usrlocal_path='/usr/local'
+        fi
+        alias sc="sudo ${usrlocal_path}/share/ypid_dotfiles/scripts/sc"
+    } && ___
+    unset -f ___
 fi
 if [[ "$ypid_dotfiles_level" == "min" ]]; then
     if [[ "$USER" == 'root' ]]; then
