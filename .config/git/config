@@ -143,8 +143,8 @@
 	insteadOf = git://github.com/
 
 # Default to secure keyring instead of unencrypted ~/.git-credentials.
-; [credential]
-;     helper = /usr/share/doc/git/contrib/credential/libsecret/git-credential-libsecret
+[credential]
+	helper = /usr/share/doc/git/contrib/credential/libsecret/git-credential-libsecret
 
 [merge]
 	ff = false
