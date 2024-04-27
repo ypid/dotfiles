@@ -1,6 +1,6 @@
 # vim: foldmarker={{{,}}}:foldmethod=marker
 
-## Switch to bash inside template qubes on Qubes OS to reduce attack surface.
+# Switch to bash inside template qubes on Qubes OS to reduce attack surface.
 if [ -e "/run/qubes/this-is-templatevm" ]; then
     exec bash
 fi
