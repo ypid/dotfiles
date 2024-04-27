@@ -156,6 +156,8 @@
 	keepBackup = false
 [init]
 	defaultBranch = main
+[advice]
+	skippedCherryPicks = false
 
 ; TODO: Make use of this.
 ; [includeIf "gitdir:~/w-s/"]
