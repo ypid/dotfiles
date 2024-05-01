@@ -1,6 +1,6 @@
 #!/bin/bash
-## Sourced by Bash and zsh.
-## Functions which might be called by other sourced shell scripts.
+# Sourced by Bash and zsh.
+# Functions which might be called by other sourced shell scripts.
 
 # https://superuser.com/questions/39751/add-directory-to-path-if-its-not-already-there/753948#753948
 pathprepend() {

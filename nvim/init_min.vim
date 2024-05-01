@@ -551,7 +551,7 @@ if has('autocmd')
                     silent !chmod +x <afile>
                 endif
             endf
-            autocmd BufWritePost * call MakeScriptExecuteable()
+            " autocmd BufWritePost * call MakeScriptExecuteable()
             " }}}
 
             " Custom filetype detection. {{{
