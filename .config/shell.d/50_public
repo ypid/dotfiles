@@ -603,3 +603,10 @@ alias 6s='ls'
 alias sl='ls'
 alias fgfg='fg'
 ## }}}
+
+# Workaround: Set NeoQwertz layout because there seems to be a bug in Qubes OS {{{
+# that frequently resets the layout.
+if [ -d "/run/qubes" ]; then
+    setxkbmap de neo_qwertz
+fi
+# }}}
