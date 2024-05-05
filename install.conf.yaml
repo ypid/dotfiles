@@ -117,6 +117,15 @@
     ~/.vimrc.min:
       path: nvim/init_min.vim
 
+    # Nix on Debian [[[2
+    # Create ~/.nix-profile on Qubes OS when Nix was installed and pre-seeded
+    # in template qubes.
+    ~/.nix-profile:
+      path: /nix/var/nix/profiles/per-user/$USER/profile
+      relative: false
+      if: test -e /nix/var/nix/profiles/per-user/$USER/profile
+    # ]]]2
+
     # Miscellaneous [[[2
     ~/.config/git/:
       path: .config/git/*
