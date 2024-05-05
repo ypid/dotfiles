@@ -250,8 +250,8 @@
     ~/.Xresources:
       path: .Xresources
 
-    ~/.npmrc:
-      path: .npmrc
+    ~/.config/npm/npmrc:
+      path: .config/npm/npmrc
 
     ~/.logseq/config/config.edn:
       path: .logseq/config/config.edn

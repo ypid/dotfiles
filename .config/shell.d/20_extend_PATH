@@ -1,6 +1,16 @@
 #!/bin/bash
 # Sourced by Bash and zsh.
 
+# https://wiki.archlinux.org/title/Environment_variables#Using_shell_initialization_files
+XDG_CACHE_HOME=$HOME/.cache
+export XDG_CACHE_HOME
+XDG_CONFIG_HOME=$HOME/.config
+export XDG_CONFIG_HOME
+XDG_DATA_HOME=$HOME/.local/share
+export XDG_DATA_HOME
+XDG_STATE_HOME=$HOME/.local/state
+export XDG_STATE_HOME
+
 ___() {
     local BIN_PATHS_DIR
     local bin_path_dir
@@ -68,25 +78,17 @@ then
     pathprepend "${HOME}/.local/bin"
     pathappend "$user_install_dir/bin"
 
-    ## Python {{{
+    # Python {{{
     # Use pipx instead.
     # export PYTHONUSERBASE="$user_install_dir/python"
     # pathprepend "$PYTHONUSERBASE/bin"
     # export PYTHONPATH="$PYTHONUSERBASE:$PYTHONPATH"
     export PYTHONSTARTUP="${HOME}/.config/python/startup"
-    ## }}}
+    # }}}
 
-    ## Node.js {{{
-    export NPM_PACKAGES="$user_install_dir/npm"
-    pathappend "$NPM_PACKAGES/bin"
-
-    if command -v manpath >/dev/null 2>&1; then
-        unset MANPATH
-        export MANPATH
-        MANPATH="$(manpath)"
-    fi
-    MANPATH="$NPM_PACKAGES/share/man:$MANPATH"
-    export NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
+    # Node.js {{{
+    # Use npx
+    export NPM_CONFIG_USERCONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/npm/npmrc"
     ## }}}
 fi
 ## }}}
