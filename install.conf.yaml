@@ -126,6 +126,11 @@
       if: test -e /nix/var/nix/profiles/per-user/$USER/profile
     # ]]]2
 
+    # lnav [[[2
+    ~/.config/lnav/configs/:
+      path: .config/lnav/configs/*
+    # ]]]2
+
     # Miscellaneous [[[2
     ~/.config/git/:
       path: .config/git/*

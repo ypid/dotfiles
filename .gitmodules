@@ -390,3 +390,6 @@
 [submodule "submodules/k9s"]
 	path = submodules/k9s
 	url = https://github.com/derailed/k9s
+[submodule ".config/lnav/configs/https___github_com_shoffmeister_lnav_formats_git"]
+	path = .config/lnav/configs/https___github_com_shoffmeister_lnav_formats_git
+	url = https://github.com/shoffmeister/lnav-formats.git
