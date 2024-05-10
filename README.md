@@ -10,9 +10,9 @@ My customized Unix work environment.
 
 Enjoy.
 
-## Requirements
+## Supported on
 
-* Debian 11.
+* Debian 12
 
 Note: Support for Windows 10 will not be continued but is still contained in this
 repo for historic reasons.
