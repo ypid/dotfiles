@@ -129,6 +129,9 @@
     # lnav [[[2
     ~/.config/lnav/configs/:
       path: .config/lnav/configs/*
+
+    ~/.config/lnav/config.json:
+      path: .config/lnav/config.json
     # ]]]2
 
     # Miscellaneous [[[2
@@ -379,6 +382,7 @@
     - '~/.config/git'
     - '~/.config/shell.d'
     - '~/.config/xfce4/panel'
+    - '~/.config/lnav/configs'
 
 # Legacy support. [[[1
 
