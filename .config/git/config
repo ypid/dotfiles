@@ -60,8 +60,8 @@
 	ci = "!f() { cd -- \"${GIT_PREFIX:-.}\"; if command -v etckeeper >/dev/null 2>&1 && pwd | egrep -q '^/etc(/.*|$)'; then etckeeper commit \"$@\"; else git commit \"$@\"; fi; }; f"
 
 	;; Order of --all is important for etckeeper!
-	cii = "!git ci -m 'chore: Initial commit' --all \"$@\""
-	cia = "!git ci -m 'chore: Auto commit. EOM' --all \"$@\""
+	cii = "!git ci -m 'chore: initial commit' --all \"$@\""
+	cia = "!git ci -m 'chore: auto commit, EOM' --all \"$@\""
 
 	co = checkout
 	; Cannot use this date format yet because it also messes with %gd.
