@@ -234,6 +234,12 @@
     # ~/.local/share/scripts/k9s/kubectl-jq:
     #   path: submodules/k9s/plugins/kubectl-plugins/kubectl-jq
 
+    ~/.config/k9s/config.yaml:
+      path: .config/k9s/config.yaml
+
+    ~/.config/k9s/skins/:
+      path: submodules/k9s/skins/*
+
     '~/.config/autokey/data/Emitting keystrokes':
       path: '.config/autokey/Emitting keystrokes'
 
@@ -284,7 +290,6 @@
     - 'test -L ~/.config/htop/htoprc && rm ~/.config/htop/htoprc'
     - 'rsync --ignore-existing --recursive .config/htop/ ~/.config/htop'
     - 'rsync --ignore-existing --recursive .config/libvirt/ ~/.config/libvirt'
-    - 'rsync --ignore-existing --recursive .config/k9s/ ~/.config/k9s'
 
     # I found no reliable way to configure nor even preseed config of xfce4-timer-plugin.
     # I give up for now.
@@ -383,6 +388,7 @@
     - '~/.config/shell.d'
     - '~/.config/xfce4/panel'
     - '~/.config/lnav/configs'
+    - '~/.config/k9s/skins'
 
 # Legacy support. [[[1
 
