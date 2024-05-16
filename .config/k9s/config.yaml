@@ -1,42 +1,21 @@
+# Do not repeat default values here.
 k9s:
-  liveViewAutoRefresh: false
-  screenDumpDir: /home/user/.local/state/k9s/screen-dumps
-  refreshRate: 2
-  maxConnRetry: 5
-  readOnly: false
-  noExitOnCtrlC: false
   ui:
     enableMouse: true
-    headless: false
-    logoless: false
-    crumbsless: false
-    reactive: false
-    noIcons: false
-    defaultsToFullScreen: false
-    skin: in-the-navy
+    # Skin cannot be set per cluster currently.
+    # Ref: https://github.com/derailed/k9s/issues/1487
+    # skin: everforest-dark # Looks relaxing.
+    # skin: kanagawa # Close to everforest-dark otherwise good.
+    # skin: narsingh # Plain but nice.
+    # skin: nightfox
+    # skin: red # Default to scary looking skin representing Prod to force users overwrite this per cluster.
+    # skin: solarized-16
+    skin: solarized-light
+    # skin: in_the_navy
   skipLatestRevCheck: true
-  disablePodCounting: false
   shellPod:
     image: busybox
     namespace: default
     limits:
       cpu: 100m
       memory: 100Mi
-  imageScans:
-    enable: false
-    exclusions:
-      namespaces: []
-      labels: {}
-  logger:
-    tail: 100
-    buffer: 5000
-    sinceSeconds: -1
-    textWrap: false
-    showTime: false
-  thresholds:
-    cpu:
-      critical: 90
-      warn: 70
-    memory:
-      critical: 90
-      warn: 70
