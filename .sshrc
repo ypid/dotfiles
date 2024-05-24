@@ -18,6 +18,7 @@ else
 
     export VIMINIT="let \$MYVIMRC='$SSHHOME/.sshrc.d/.vimrc.min' | source \$MYVIMRC"
     export ZDOTDIR="$SSHHOME/.sshrc.d"
+    export XDG_CONFIG_HOME="$SSHHOME/.config"
 fi
 if command -v zsh >/dev/null 2>&1; then
     exec zsh
