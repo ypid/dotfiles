@@ -137,8 +137,7 @@
 [pull]
 	ff = only
 [log]
-	; https://stackoverflow.com/questions/7853332/how-to-change-git-log-date-formats
-	date = iso-strict-local
+	date = format:%a %F %T %z
 [url "https://github.com/"]
 	insteadOf = git://github.com/
 
