@@ -201,19 +201,6 @@ if [[ "$ypid_dotfiles_level" == "min" ]]; then
     fi
 fi
 
-# Ref: https://stackoverflow.com/questions/11543593/grep-for-stuff-in-multiple-git-repositories/36240077#36240077
-function ggrep() {
-    find -L . -name .git -printf '%h\n' | while read -r repo_dir; do
-        (
-        echo "$(tput setaf 2)$repo_dir$(tput sgr0)"
-        git -C "$repo_dir" grep -n "$@"
-        )
-    done
-}
-# Not working?
-# compdef _git ggrep=git-grep
-# _ggrep () { _git-grep }
-
 # source ~/.config/dotfiles/n.sh
 
 # Ref: https://serverfault.com/questions/59262/bash-print-stderr-in-red-color/59279#59279
