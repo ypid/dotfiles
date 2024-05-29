@@ -411,6 +411,26 @@ fi
 
 # }}}
 
+# Deleting files and directories {{{
+
+# I use tp for regular file deletion instead of aliasing rm to avoid the risk
+# of unintentionally executing actual rm commands, such as sudo rm or on SSH
+# servers.
+# Both the authors of gtrash and trashy came to the same recommendation.
+
+if command -v gio >/dev/null 2>&1; then
+    alias tp='gio trash'
+elif command -v trash >/dev/null 2>&1; then
+    alias tp='trash put'
+elif command -v trash >/dev/null 2>&1; then
+    alias tp='gtrash put'
+fi
+
+# This alias is only temporary:
+alias rm='echo "These are not the trash cans you are looking for."; false'
+
+# }}}
+
 ## More aliases {{{
 
 # if [ -z "$ANDROID_ROOT" ]; then
