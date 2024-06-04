@@ -261,6 +261,9 @@
     ~/.config/atuin/config.toml:
       path: .config/atuin/config.toml
 
+    ~/.config/firejail:
+      path: .config/firejail/
+
     ~/.Xresources:
       path: .Xresources
 
