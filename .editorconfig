@@ -20,6 +20,9 @@ indent_style = tab
 [*.{html,json}]
 indent_size = 2
 
+[.config/lnav/formats/ypid/*.json]
+indent_size = 4
+
 # Minified JavaScript files shouldn't be changed.
 [**.min.js]
 indent_style = ignore
