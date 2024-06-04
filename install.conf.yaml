@@ -132,6 +132,9 @@
 
     ~/.config/lnav/config.json:
       path: .config/lnav/config.json
+
+    ~/.config/lnav/formats/ypid:
+      path: .config/lnav/formats/ypid
     # ]]]2
 
     # Miscellaneous [[[2

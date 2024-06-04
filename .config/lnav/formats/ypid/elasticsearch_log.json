@@ -1,5 +1,5 @@
 {
-    "elasticsearch" : {
+    "elasticsearch_log" : {
         "title" : "Elasticsearch log4j2 pattern format",
         "description" : "Log4j2 pattern format used bu Elasticsearch",
         "regex" : {
