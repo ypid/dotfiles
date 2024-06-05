@@ -206,6 +206,8 @@
 	# TODO: Figure out how to set `log.date = iso-strict-local` for tig.
 	; main-view-date = custom
 	; main-view-date-format = "%Y-%m-%d %H:%M"
+
+	ignore-case = smart-case
 # ]]]
 
 # ghq [[[
