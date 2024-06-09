@@ -49,8 +49,9 @@ then
     # should be in the path.
     remove_from_path '/nix/var/nix/profiles/default/bin'
 
-    # NIX_PATH="${HOME}/.nix-defexpr/channels/"
-    # export NIX_PATH
+    # Workaround some bug.
+    NIX_PATH="${HOME}/.nix-defexpr/channels/"
+    export NIX_PATH
 fi
 
 pathappend "${HOME}/.krew/bin"
