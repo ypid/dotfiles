@@ -5,7 +5,7 @@
         "description": "Log4j2 pattern format used bu Elasticsearch",
         "regex": {
             "basic": {
-                "pattern": "^\\[(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2},\\d{3})\\]\\[(?<level>[^\\] ]+) *\\]\\[(?<component>[^\\]]+)\\] (?<body>(.*))\\n?(?<stacktrace>.*\\n(\\tat.*\\n?)*)?$"
+                "pattern": "^\\[(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2},\\d{3})\\]\\[(?<level>[^\\] ]+) *\\]\\[(?<component>[^\\]]+)\\] \\[(?<host>[^\\]]+)\\](?<body>(.*))\\n?(?<stacktrace>.*\\n(\\tat.*\\n?)*)?$"
             }
         },
         "level-field": "level",

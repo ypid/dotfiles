@@ -4,7 +4,8 @@
         "title": "JSON log",
         "description": "Generic JSON log",
         "json": true,
-        "file-pattern": ".*\\.json$",
+        "hide-extra": true,
+        "body-field": "msg",
         "level-field": "level",
         "level": {
             "critical": "error",
@@ -12,7 +13,7 @@
             "warning": "alert",
             "info": "info"
         },
-        "timestamp-field": "timestamp",
+        "timestamp-field": "ts",
         "value": {
             "msg": {
                 "kind": "string"
@@ -20,11 +21,11 @@
         },
         "line-format": [
             {
-                "field": "timestamp"
+                "field": "__timestamp__"
             },
             " ",
             {
-                "field": "level",
+                "field": "__level__",
                 "min-width": 6
             },
             {

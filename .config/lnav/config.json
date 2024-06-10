@@ -1,6 +1,7 @@
 {
     "ui": {
-        "theme": "monocai",
+        "clock-format": "%a %F %T%::z",
+        "theme": "solarized-dark",
         "theme-defs": {
             "default": {
                 "highlights": {
@@ -18,9 +19,6 @@
                     }
                 }
             }
-        },
-        "movement": {
-            "mode": "cursor"
         }
     }
 }
