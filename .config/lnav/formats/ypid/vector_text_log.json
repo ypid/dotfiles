@@ -1,0 +1,64 @@
+{
+    "$schema": "https://lnav.org/schemas/format-v1.schema.json",
+    "vector_text_log": {
+        "title": "Vector.dev text log",
+        "description": "Disadvantage over json log is that timestamp translation to local time does not work.",
+        "url": "https://vector.dev/docs/administration/monitoring/#logs",
+        "regex": {
+            "std": {
+                "pattern": "^(?<timestamp>\\d{4}-\\d{2}-\\d{2}(?: |T)\\d{2}:\\d{2}:\\d{2}[.,]\\d{3,}(?:Z|[-+]\\d{2}:?\\d{2}))\\s+(?<level>\\w+)\\s+(?<target>[^\\s]+):\\s+(?<body>.*)"
+            }
+        },
+        "timestamp-field": "timestamp",
+        "timestamp-format": [
+            "%Y-%m-%dT%H:%M:%S.%f%Z"
+        ],
+        "level": {
+            "debug": "^DEBUG$",
+            "info": "^INFO$",
+            "error": "^ERROR$",
+            "warning": "^WARN$"
+        },
+        "value": {
+            "level": {
+                "kind": "string"
+            },
+            "target": {
+                "kind": "string"
+            },
+            "timestamp": {
+                "kind": "string"
+            }
+        },
+        "sample": [
+            {
+                "line": "2024-06-11T18:33:33.076460Z DEBUG vector::app: Internal log rate limit configured. internal_log_rate_secs=10",
+                "level": "debug"
+            },
+            {
+                "line": "2024-06-11T13:20:54.060569Z  INFO vector::app: Log level is enabled. level=\"info\"",
+                "level": "info"
+            },
+            {
+                "line": "2024-06-11T13:20:54.069607Z  INFO vector::app: Loading configs. paths=[\"simple_demo_log_source.yaml\"]",
+                "level": "info"
+            },
+            {
+                "line": "2024-06-11T13:20:54.074579Z  INFO vector: Vector has started. debug=\"false\" version=\"0.36.1\" arch=\"x86_64\" revision=\"2857180 2024-03-11 14:32:52.417737479\"",
+                "level": "info"
+            },
+            {
+                "line": "2024-06-11T13:20:54.074615Z  INFO vector::app: API is disabled, enable by setting `api.enabled` to `true` and use commands like `vector top`.",
+                "level": "info"
+            },
+            {
+                "line": "2024-06-11T18:22:16.731284Z  WARN librdkafka: librdkafka: FAIL",
+                "level": "warning"
+            },
+            {
+                "line": "2024-06-11T18:22:16.731367Z ERROR rdkafka::client: librdkafka: Global error: BrokerTransportFailure (Local: Broker transport failure):",
+                "level": "error"
+            }
+        ]
+    }
+}

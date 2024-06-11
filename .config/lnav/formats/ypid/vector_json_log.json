@@ -1,0 +1,40 @@
+{
+    "$schema": "https://lnav.org/schemas/format-v1.schema.json",
+    "vector_json_log": {
+        "title": "Vector.dev JSON log",
+        "description": "Only works with the non-default json format, run vector with `--log-format json`. Disadvantage over text log is that lines that do not conform to format defined here are hidden in lnav.",
+        "url": "https://vector.dev/docs/administration/monitoring/#logs",
+        "json": true,
+        "timestamp-field": "timestamp",
+        "timestamp-format": [
+            "%Y-%m-%dT%H:%M:%S.%f%Z"
+        ],
+        "convert-to-local-time": true,
+        "level-field": "level",
+        "body-field": "message",
+        "value": {
+            "target": {
+                "kind": "string"
+            }
+        },
+        "line-format": [
+            {
+                "field": "__timestamp__",
+                "timestamp-format": "%Y-%m-%d %H:%M:%S.%f"
+            },
+            " ",
+            {
+                "field": "__level__",
+                "text-transform": "uppercase"
+            },
+            " ",
+            {
+                "field": "target"
+            },
+            " ",
+            {
+                "field": "message"
+            }
+        ]
+    }
+}

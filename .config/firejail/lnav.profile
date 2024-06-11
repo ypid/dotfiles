@@ -1,6 +1,10 @@
 # Firejail profile for PROGRAM_NAME
 # Description: DESCRIPTION OF THE PROGRAM
 # This file is overwritten after every install/update
+#
+# Known limitations:
+# * `lnav -m regex101 import` is not supported.
+#
 # --- CUT HERE ---
 # This is a generic template to help you create profiles.
 # PRs welcome at https://github.com/netblue30/firejail/.
@@ -215,5 +219,6 @@ private-dev
 dbus-user none
 dbus-system none
 
+# tmpfs ${HOME}/.config/lnav
 read-write ${HOME}/.config/lnav
 restrict-namespaces
