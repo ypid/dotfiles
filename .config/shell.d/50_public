@@ -48,7 +48,7 @@ TIMEFMT=$'\nreal\t%E\nuser\t%U\nsys\t%S\ncpu\t%P'
 
 ## }}}
 
-## Enable color support of ls and also add handy aliases {{{
+## Enable color support {{{
 if command -v dircolors >/dev/null 2>&1; then
     alias ls='ls --color=auto --human-readable --time-style=long-iso'
     alias grep='grep --color=auto'
@@ -57,6 +57,8 @@ if command -v dircolors >/dev/null 2>&1; then
 
     ## Seems not to be needed. Does not work under Termux because $SHELL is not defined.
     # eval "$(dircolors)"
+
+    alias ip='ip --color=auto'
 fi
 
 ## }}}
