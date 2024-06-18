@@ -187,6 +187,14 @@ function df() {
 if [[ "$ypid_dotfiles_level" == "min" ]]; then
     function sudo() {
         if [[ "$1" == "-i" ]] && [[ "$#" == 1 ]]; then
+            if sudo test -e /root/.docker/config.json; then
+                mkdir -p "$SSHHOME/.sshrc.d/.docker"
+                # `ln` seems to check if check if targets exist thus it is
+                # executed with sudo so that it does not complain.
+                sudo ln -sf /root/.docker/config.json "$SSHHOME/.sshrc.d/.docker/config.json"
+            fi
+
+            # Hack to enable my dotfiles even in a root shell.
             HOME="$SSHHOME/.sshrc.d" command sudo -E zsh || HOME="$SSHHOME/.sshrc.d" command sudo -E bash
         else
             command sudo "$@"
