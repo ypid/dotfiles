@@ -85,6 +85,10 @@ local ypid_dotfiles_level="full"
 if [ -n "$SSHHOME" ] && [ ! -e "$HOME/.config/dotfiles/.reuse/dep5" ]; then
     local ypid_dotfiles_level="min"
 
+    # Required on NixOS 24.05. Not required on Debian 12.
+    autoload -Uz compinit
+    compinit
+
     source "$SSHHOME/.sshrc.d/.config/shell.d/50_public"
     source "$SSHHOME/.sshrc.d/.config/oh-my-zsh/plugins/git/git.plugin.zsh"
     source "$SSHHOME/.sshrc.d/.config/oh-my-zsh/plugins/vi-mode/vi-mode.plugin.zsh"
