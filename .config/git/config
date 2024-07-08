@@ -134,6 +134,8 @@
 	reflog = %C(auto)%h %<|(17)%gd %C(blue)%ci%C(reset) %s
 [commit]
 	verbose = true
+[fetch]
+	prune = true
 [pull]
 	ff = only
 [log]
