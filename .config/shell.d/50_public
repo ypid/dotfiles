@@ -461,9 +461,14 @@ if [ -e "$HOME/.nix-profile/bin/docker" ]; then
     # Use docker-client from Nixpkgs so that "docker compose" is available.
     alias docker='/home/user/.nix-profile/bin/docker'
 fi
-alias d='docker'
-alias ds='docker ps --format "table {{ .ID }}\t{{ .Image }}\t{{ .Status }}"'
-alias dish="docker images --format 'table {{ .Repository }}:{{ .Tag }}\t{{ .ID }}\t{{ .Size}}\t{{ .CreatedSince }}'"
+
+if command -v podman >/dev/null 2>&1; then
+    alias d='podman'
+elif command -v docker >/dev/null 2>&1; then
+    alias d='docker'
+fi
+alias ds='d ps --format "table {{ .ID }}\t{{ .Image }}\t{{ .Status }}"'
+alias dish="d images --format 'table {{ .Repository }}:{{ .Tag }}\t{{ .ID }}\t{{ .Size}}\t{{ .CreatedSince }}'"
 
 # docker compose {{{
 
@@ -472,18 +477,20 @@ alias dish="docker images --format 'table {{ .Repository }}:{{ .Tag }}\t{{ .ID }
 # This code is not compatible with Bash. Also, we want to prefer `docker
 # compose`. The code from ohmyzsh prefers `docker-compose` which is a bug.
 
-if docker compose version >/dev/null 2>&1; then
+if command -v podman-compose >/dev/null 2>&1; then
+    dccmd='podman-compose'
+elif docker compose version >/dev/null 2>&1; then
     dccmd='docker compose'
 elif command -v docker-compose >/dev/null 2>&1; then
     dccmd='docker-compose'
-else
-    dccmd='docker compose'
 fi
 
-alias dcl="$dccmd logs --tail 100 --follow"
-alias dc="$dccmd"
+if [ -n ${dccmd+x} ]; then
+    alias dcl="$dccmd logs --tail 100 --follow"
+    alias dc="$dccmd"
+    unset dccmd
+fi
 
-unset dccmd
 # }}}
 
 alias '*'='dict'
