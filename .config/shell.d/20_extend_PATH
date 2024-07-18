@@ -26,7 +26,7 @@ ___() {
 } && ___
 unset -f ___
 
-if [ -d "/nix/var/nix/" ]
+if [ -d "/nix/var/nix/" ] && [ ! -e /etc/NIXOS ]
 then
     NIX_REMOTE=daemon
     export NIX_REMOTE
