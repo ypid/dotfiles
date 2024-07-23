@@ -292,11 +292,9 @@ bashcompinit
 
 source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/global"
 
-# TODO: Do not install `switch` into $PATH. I only need the path to the binary in the Nix store. Use Home Manager?
-if [[ -e "$HOME/.nix-profile/bin/switch" ]]; then
-    # Call the alias `kswitch` instead of the poorly choose upstream suggestion `switch`.
+if [[ -e "$HOME/.nix-profile/bin/switcher" ]]; then
     # https://github.com/NixOS/nixpkgs/pull/288162
-    source <(~/.nix-profile/bin/switch init "${SHELL##*/}" | sed --regexp-extended "s#(DEFAULT_EXECUTABLE_PATH=)\"switcher\"#\1~/.nix-profile/bin/switch#;s/^(function )switch\(/\1kswitch(/;")
+    source <(~/.nix-profile/bin/switcher init "${SHELL##*/}" | sed --regexp-extended "s#(DEFAULT_EXECUTABLE_PATH=)\"switcher\"#\1~/.nix-profile/bin/switcher#;s/^(function )switch\(/\1kswitch(/;")
 fi
 
 # Bug in oh-my-zsh. If a plugin changes fpath, it is not picked up by compinit because it is run first!1!?
