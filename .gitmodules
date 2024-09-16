@@ -393,3 +393,6 @@
 [submodule ".config/lnav/configs/https___github_com_shoffmeister_lnav_formats_git"]
 	path = .config/lnav/configs/https___github_com_shoffmeister_lnav_formats_git
 	url = https://github.com/shoffmeister/lnav-formats.git
+[submodule "nvim/bundle/jsonc.vim"]
+	path = nvim/bundle/jsonc.vim
+	url = https://github.com/neoclide/jsonc.vim

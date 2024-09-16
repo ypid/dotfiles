@@ -760,6 +760,7 @@ if count(g:spf13_bundle_groups, 'javascript') " {{{
     " Plugin 'ghost/jshint2.vim'
 
     " Plugin 'leshill/vim-json'
+    Plugin 'neoclide/jsonc.vim'
     " Plugin 'groenewege/vim-less'
     " Plugin 'pangloss/vim-javascript'
     " Plugin 'briancollins/vim-jst'
