@@ -50,7 +50,7 @@
 	wd = diff --color-words
 	wdd = diff --ignore-space-at-eol --ignore-space-change --ignore-all-space --ignore-blank-lines --color-words
 	re = "!git remote -v show | egrep --invert-match '(^bittorrent\\b|^web\\b)'"
-	pa = "!git remote -v show | egrep --invert-match '(https://github.com/|^bittorrent\\b|^web\\b)' | cut -f1 | uniq | xargs -L1 git push --all"
+	pa = "!git remote -v show | egrep --invert-match '(https://github.com/|^bittorrent\\b|^web\\b)' | cut -f1 | uniq | xargs -L1 git push --all --force-with-lease"
 	cil = commit --reedit-message=HEAD --reset-author
 
 	;; etckeeper is preferred for committing in /etc because it will not
