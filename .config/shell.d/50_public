@@ -357,7 +357,7 @@ alias gs='git status'
 # Overwrite alias from oh-my-zsh {{{
 alias glg="git log --stat --decorate=short --show-signature --date=format:'%a %Y-%m-%d %H:%M:%S%z'" # full history
 alias gup='git pull --verify-signatures --recurse-submodules=on-demand'
-alias gl='git pull --autostash'
+alias gl='git pull --autostash && git db'
 # alias glg='tig --show-signature' # full history
 
 ## }}}
