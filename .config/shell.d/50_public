@@ -228,6 +228,24 @@ function env() {
     fi
 }
 
+# Add a header like:
+#
+# ```
+# subject=C = US, O = Internet Security Research Group, CN = ISRG Root X1
+# issuer=C = US, O = Internet Security Research Group, CN = ISRG Root X1
+# ```
+#
+# above each `-----BEGIN CERTIFICATE-----` in the input file.
+function openssl_print_certs_file() {
+    if [[ $# == 1 ]]; then
+        cert_filepath="${1}"
+        openssl crl2pkcs7 -nocrl -certfile "$cert_filepath" | openssl pkcs7 -print_certs | sponge "$cert_filepath"
+    else
+        echo "Error: Provide cert filepath as parameter." 1>&2
+        return 1
+    fi
+}
+
 ## }}}
 
 ## Shell basics {{{
