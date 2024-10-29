@@ -246,6 +246,12 @@ function openssl_print_certs_file() {
     fi
 }
 
+function qemu-monitor-cmd() {
+    local socket="$1"
+    shift
+    echo "$@" | socat -,shut-down unix-connect:"$socket"
+}
+
 ## }}}
 
 ## Shell basics {{{
