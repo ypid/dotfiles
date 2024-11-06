@@ -87,7 +87,7 @@ function md() {
 }
 
 function dmesg() {
-    command dmesg --time-format iso "$@" || command dmesg "$@"
+    command dmesg --time-format=iso --decode "$@" || command dmesg "$@"
 }
 
 function virsh-disks() {
