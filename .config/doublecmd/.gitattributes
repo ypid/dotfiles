@@ -1,2 +1,2 @@
-doublecmd.xml filter=doublecmd_xml_file
+# doublecmd.xml filter=doublecmd_xml_file
 * text eol=lf
