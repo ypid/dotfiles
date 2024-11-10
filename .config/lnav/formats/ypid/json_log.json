@@ -1,35 +1,35 @@
 {
-  "$schema": "https://lnav.org/schemas/format-v1.schema.json",
-  "json_log": {
-    "title": "JSON log",
-    "description": "Generic JSON log",
-    "json": true,
-    "file-pattern": ".*\\.json$",
-    "level-field": "level",
-    "level": {
-      "critical": "error",
-      "error": "warning",
-      "warning": "alert",
-      "info": "info"
-    },
-    "timestamp-field": "timestamp",
-    "value": {
-      "msg": {
-        "kind": "string"
-      }
-    },
-    "line-format": [
-      {
-        "field": "timestamp"
-      },
-      " ",
-      {
-        "field": "level",
-        "min-width": 6
-      },
-      {
-        "field": "msg"
-      }
-    ]
-  }
+    "$schema": "https://lnav.org/schemas/format-v1.schema.json",
+    "json_log": {
+        "title": "JSON log",
+        "description": "Generic JSON log",
+        "json": true,
+        "file-pattern": ".*\\.json$",
+        "level-field": "level",
+        "level": {
+            "critical": "error",
+            "error": "warning",
+            "warning": "alert",
+            "info": "info"
+        },
+        "timestamp-field": "timestamp",
+        "value": {
+            "msg": {
+                "kind": "string"
+            }
+        },
+        "line-format": [
+            {
+                "field": "timestamp"
+            },
+            " ",
+            {
+                "field": "level",
+                "min-width": 6
+            },
+            {
+                "field": "msg"
+            }
+        ]
+    }
 }

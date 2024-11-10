@@ -1,46 +1,46 @@
 {
-  "$schema": "https://lnav.org/schemas/format-v1.schema.json",
-    "elasticsearch_log" : {
-        "title" : "Elasticsearch log4j2 pattern format",
-        "description" : "Log4j2 pattern format used bu Elasticsearch",
-        "regex" : {
-            "basic" : {
-                "pattern" : "^\\[(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2},\\d{3})\\]\\[(?<level>[^\\] ]+) *\\]\\[(?<component>[^\\]]+)\\] (?<body>(.*))\\n?(?<stacktrace>.*\\n(\\tat.*\\n?)*)?$"
+    "$schema": "https://lnav.org/schemas/format-v1.schema.json",
+    "elasticsearch_log": {
+        "title": "Elasticsearch log4j2 pattern format",
+        "description": "Log4j2 pattern format used bu Elasticsearch",
+        "regex": {
+            "basic": {
+                "pattern": "^\\[(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2},\\d{3})\\]\\[(?<level>[^\\] ]+) *\\]\\[(?<component>[^\\]]+)\\] (?<body>(.*))\\n?(?<stacktrace>.*\\n(\\tat.*\\n?)*)?$"
             }
         },
-        "level-field" : "level",
-        "level" : {
-            "error" : "ERROR",
-            "warning" : "WARN",
-            "debug" : "DEBUG",
-            "info" : "INFO"
+        "level-field": "level",
+        "level": {
+            "error": "ERROR",
+            "warning": "WARN",
+            "debug": "DEBUG",
+            "info": "INFO"
         },
-        "value" : {
-            "component" : {
-                "kind" : "string",
-                "identifier" : true
+        "value": {
+            "component": {
+                "kind": "string",
+                "identifier": true
             },
-            "level" : {
-                "kind" : "string",
-                "identifier" : true
+            "level": {
+                "kind": "string",
+                "identifier": true
             },
-            "host" : {
-                "kind" : "string",
-                "identifier" : true
+            "host": {
+                "kind": "string",
+                "identifier": true
             },
-            "stacktrace" : {
-                "kind" : "string",
-                "identifier" : true
+            "stacktrace": {
+                "kind": "string",
+                "identifier": true
             }
         },
-        "sample" : [
+        "sample": [
             {
-                "line" : "[2018-08-14T00:00:41,209][WARN ][o.e.m.j.JvmGcMonitorService] [elasticsearch1] [gc][64700] overhead, spent [7.8s] collecting in the last [8.7s]",
-                "level" : "warning"
+                "line": "[2018-08-14T00:00:41,209][WARN ][o.e.m.j.JvmGcMonitorService] [elasticsearch1] [gc][64700] overhead, spent [7.8s] collecting in the last [8.7s]",
+                "level": "warning"
             },
             {
-                "line" : "[2018-08-14T09:02:45,890][DEBUG][o.e.a.b.TransportShardBulkAction] [logstash-2018.08.14][3] failed to execute bulk item (index) BulkShardRequest [[logstash-2018.08.14][3]] contain\norg.elasticsearch.index.mapper.MapperParsingException: object mapping for [date] tried to parse field [date] as object, but found a concrete value\n\tat org.elasticsearch.index.mapper.DocumentParser.parseObjectOrNested(DocumentParser.java:361) ~[elasticsearch-6.2.2.jar:6.2.2]\n\tat org.elasticsearch.index.mapper.DocumentParser.parseObjectOrField(DocumentParser.java:482) ~[elasticsearch-6.2.2.jar:6.2.2]",
-                "level" : "debug"
+                "line": "[2018-08-14T09:02:45,890][DEBUG][o.e.a.b.TransportShardBulkAction] [logstash-2018.08.14][3] failed to execute bulk item (index) BulkShardRequest [[logstash-2018.08.14][3]] contain\norg.elasticsearch.index.mapper.MapperParsingException: object mapping for [date] tried to parse field [date] as object, but found a concrete value\n\tat org.elasticsearch.index.mapper.DocumentParser.parseObjectOrNested(DocumentParser.java:361) ~[elasticsearch-6.2.2.jar:6.2.2]\n\tat org.elasticsearch.index.mapper.DocumentParser.parseObjectOrField(DocumentParser.java:482) ~[elasticsearch-6.2.2.jar:6.2.2]",
+                "level": "debug"
             }
         ]
     }
