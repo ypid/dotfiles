@@ -231,7 +231,7 @@ if [[ -d /usr/share/zsh/vendor-completions ]]; then
 fi
 
 # Additional functions
-plugins+=(debian)
+# plugins+=(debian)  # `age` conflicts with https://age-encryption.org/
 plugins+=(encode64)
 plugins+=(urltools)
 plugins+=(zsh_reload)
