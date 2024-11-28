@@ -217,5 +217,10 @@
 	root = ~/src/
 # ]]]
 
+# git-absorb [[[
+[absorb]
+    autoStageIfNothingStaged = true
+# ]]]
+
 [github]
 	user = ypid
