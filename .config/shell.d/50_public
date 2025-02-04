@@ -499,6 +499,7 @@ elif command -v docker >/dev/null 2>&1; then
 fi
 alias ds='d ps --format "table {{ .ID }}\t{{ .Image }}\t{{ .Status }}"'
 alias dish="d images --format 'table {{ .Repository }}:{{ .Tag }}\t{{ .ID }}\t{{ .Size}}\t{{ .CreatedSince }}'"
+alias dishs="d images --format 'table {{ .Repository }}:{{ .Tag }}@{{ .Digest }}'"
 
 # docker compose {{{
 
