@@ -57,7 +57,7 @@
 	;; use user name/email from /etc/.git/config if a interactive user is
 	;; detected thus allowing to differentiate between automated
 	;; commits/changes and direct human changes.
-	ci = "!f() { cd -- \"${GIT_PREFIX:-.}\"; if command -v etckeeper >/dev/null 2>&1 && pwd | egrep -q '^/etc(/.*|$)'; then etckeeper commit \"$@\"; else git commit \"$@\"; fi; }; f"
+	ci = "!f() { pre_commit_ok=true && if [ -e '.pre-commit-config.yaml' ]; then if ! grep --fixed-strings --quiet 'https://pre-commit.com' \"$(git rev-parse --git-dir)/hooks/pre-commit\"; then echo 'Install pre-commit hooks!' && pre_commit_ok=false; fi; fi && [ \"$pre_commit_ok\" = true ] && cd -- \"${GIT_PREFIX:-.}\" && if command -v etckeeper >/dev/null 2>&1 && pwd | egrep -q '^/etc(/.*|$)'; then etckeeper commit \"$@\"; else git commit \"$@\"; fi; }; f"
 
 	;; Order of --all is important for etckeeper!
 	cii = "!git ci -m 'chore: initial commit' --all \"$@\""
