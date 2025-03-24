@@ -138,8 +138,14 @@
     # ]]]2
 
     # Miscellaneous [[[2
-    ~/.config/git/:
-      path: .config/git/*
+    ~/.config/git/config:
+      path: .config/git/config
+
+    ~/.config/git/global_hooks/git-hooks-core:
+      path: .config/git/global_hooks/git-hooks-core
+
+    ~/.config/git/global_hooks/pre-commit.d/:
+      path: .config/git/global_hooks/pre-commit.d/*
 
     ~/.gnupg/:
       path: .gnupg/*

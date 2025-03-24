@@ -4,5 +4,5 @@
 
 # https://editorconfig.org/
 
-[*]
+[config]
 indent_style = tab

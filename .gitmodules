@@ -396,3 +396,6 @@
 [submodule "nvim/bundle/jsonc.vim"]
 	path = nvim/bundle/jsonc.vim
 	url = https://github.com/neoclide/jsonc.vim
+[submodule ".config/git/global_hooks/git-hooks-core"]
+	path = .config/git/global_hooks/git-hooks-core
+	url = https://github.com/ypid/git-hooks-core.git
