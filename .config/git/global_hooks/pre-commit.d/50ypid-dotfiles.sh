@@ -15,16 +15,20 @@ function main() {
     #   commit` or commit via a GUI would fail. How can I achieve this?
     # GPT-4o mini answer was not useful.
     #
-    # Not using `git config core.hooksPath` for the pre-commit check for the
-    # following reason:
+    # Pro `git config core.hooksPath`:
+    # * Works regardless of how git commit is done: GUI, CLI (alias).
+    # * Installing can be done with `GIT_CONFIG=/dev/null pre-commit install`
+    # * More flexible for possible future extensions that want to globally hook
+    #   into git.
+    # Contra `git config core.hooksPath`:
     # * `pre-commit install` is unsupported by pre-commit.com with
     #   core.hooksPath set:
     #   https://github.com/pre-commit/pre-commit/issues/1198#issuecomment-844017639
-    # * It would require to store hooks in the global hooksPath directory that
+    # * It requires to store hooks in the global hooksPath directory that
     #   call the equivalent local hook in $GIT_DIR/hooks for all existing hooks
     #   to not break expected behavior.
     #   https://medium.com/@ripoche.b/using-global-pre-commit-hook-to-prevent-committing-unwanted-code-edbbf957ad12
-    # * It allows me to easily overwrite this protection/warning that hooks
+    # * It allows to easily overwrite this protection/warning that hooks
     #   exist but I have not installed them when I don’t use my alias.
     #   I am so used to using my alias that this will not happen by accident.
     if [ -e '.pre-commit-config.yaml' ]; then
