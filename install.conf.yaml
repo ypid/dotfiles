@@ -44,7 +44,7 @@
 
     - description: 'Install K9s community Custom Plugins'
       command: |-
-        yq eval-all '. as $item ireduce ({}; . * $item )' $(find submodules/k9s/plugins/ -name 'debug.y?ml' -or -name 'dive.y?ml' -or -name 'helm-values.y?ml' -or -name 'watch-events.y?ml' -or -name 'vector-dev-top.y?ml') > ~/.config/k9s/plugins.yaml
+        yq eval-all '. as $item ireduce ({}; . * $item )' $(find submodules/k9s/plugins/ -name 'debug.y?ml' -or -name 'dive.y?ml' -or -name 'helm-values.y?ml' -or -name 'watch-events.y?ml' -or -name 'vector-dev-top.y?ml' -or -name 'node-root-shell.y?ml') > ~/.config/k9s/plugins.yaml
 
     - 'mkdir -p ${XDG_DATA_HOME:-$HOME/.local/share}/bash'
 
