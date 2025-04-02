@@ -54,19 +54,7 @@
 	pa = "!git remote -v show | egrep --invert-match '(https://github.com/|^bittorrent\\b|^web\\b)' | cut -f1 | uniq | xargs -L1 git push --all --force-with-lease"
 	cil = commit --reedit-message=HEAD --reset-author
 
-	; etckeeper:
-	; etckeeper is preferred for committing in /etc because it will not
-	; use user name/email from /etc/.git/config if a interactive user is
-	; detected thus allowing to differentiate between automated
-	; commits/changes and direct human changes.
-	ci = "!f() { \
-			if command -v etckeeper >/dev/null 2>&1 && pwd | egrep -q '^/etc(/.*|$)'; then \
-				etckeeper commit \"$@\"; \
-			else \
-				git commit \"$@\"; \
-			fi; \
-		}; \
-		f"
+	ci = commit
 
 	;; Order of --all is important for etckeeper!
 	cii = "!git ci -m 'chore: initial commit' --all \"$@\""
