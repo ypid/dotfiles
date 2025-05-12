@@ -1,8 +1,0 @@
-# SPDX-FileCopyrightText: 2022 Robin Schneider <ypid@riseup.net>
-#
-# SPDX-License-Identifier: CC0-1.0
-
-# https://editorconfig.org/
-
-[config]
-indent_style = tab

@@ -220,7 +220,7 @@
 
 # git-absorb [[[
 [absorb]
-    autoStageIfNothingStaged = true
+	autoStageIfNothingStaged = true
 # ]]]
 
 [github]
