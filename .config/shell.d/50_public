@@ -390,6 +390,9 @@ function gl() {
 # Does not work:
 # command -v compdef >/dev/null 2>&1 && compdef _git gl=git-pull
 
+# clustergit based aliases
+alias gcpull='clustergit --recursive --hide-clean --workers 10 --pull'
+
 ## }}}
 
 ## }}}
