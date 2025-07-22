@@ -13,12 +13,16 @@
 
 # Determine best for video-only and audio-only individually first before checking if a combined file is better.
 # If video-only and audio-only together are smaller than one file with both than download two files files and mux them together.
---format "bestvideo+bestaudio/best"
+--format="bestvideo+bestaudio/best"
 
 --embed-chapters
---output "%(uploader)s - %(upload_date>%Y-%m-%d)s - %(title)s [%(id)s].%(ext)s"
+--output="%(uploader)s - %(upload_date>%Y-%m-%d)s - %(title)s [%(id)s].%(ext)s"
 
-# Prefer https://jellyfin.org/docs/general/clients/codec-support/ mp4 if we can.
---merge-output-format mp4
+# mp4 container is supported everywhere
+# (https://jellyfin.org/docs/general/clients/codec-support/) but it results in
+# a video file without audio if the audio codec is opus for example.
+# https://wiki.xiph.org/Mp4Opus
+# Slightly related: https://github.com/yt-dlp/yt-dlp/issues/10553
+# --merge-output-format=mp4
 
 --download-archive ~/.config/yt-dlp/download-archive.list
