@@ -281,7 +281,7 @@ vnoremap > >gv
 noremap <space> za
 
 " I am used to Y being yy, no need to change old habits.
-" Neovim defaults Y to y$. Vim still defaults Y to yy. 
+" Neovim defaults Y to y$. Vim still defaults Y to yy.
 " https://github.com/neovim/neovim/pull/13268
 nnoremap Y yy
 xnoremap Y yy
@@ -462,9 +462,6 @@ endfunction
 " }}}
 
 " Other mappings {{{
-    set pastetoggle=α
-    " Shift+Layer3Mod+a
-
     if !exists('g:spf13_bundle_groups') || !count(g:spf13_bundle_groups, 'general')
         " Ctrl+a is used by tmux and screen
         " vim-speeddating
