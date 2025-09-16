@@ -400,10 +400,11 @@
     - '~'
     - '~/.config'
     - '~/.config/git'
+    - '~/.config/git/global_hooks/pre-commit.d/'
+    - '~/.config/k9s/skins'
+    - '~/.config/lnav/configs'
     - '~/.config/shell.d'
     - '~/.config/xfce4/panel'
-    - '~/.config/lnav/configs'
-    - '~/.config/k9s/skins'
 
 # Legacy support. [[[1
 
