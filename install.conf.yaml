@@ -159,10 +159,6 @@
     ~/.config/latexmk/:
       path: .config/latexmk/*
 
-    ~/.config/qubes-keyboard-layout.rc:
-      force: true
-      path: .config/qubes-keyboard-layout.rc
-
     ~/.perlcriticrc:
       path: .perlcriticrc
 
