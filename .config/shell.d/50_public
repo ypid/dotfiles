@@ -383,7 +383,7 @@ alias glg="git log --stat --decorate=short --show-signature --date=format:'%a %Y
 alias gup='git pull --verify-signatures --recurse-submodules=on-demand'
 # alias glg='tig --show-signature' # full history
 
-unalias gl
+unalias gl 2>/dev/null
 function gl() {
     git pull --autostash "$@" && git db
 }
