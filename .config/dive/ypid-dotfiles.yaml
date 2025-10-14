@@ -1,0 +1,7 @@
+---
+
+# dive defaults to docker. Better default to podman.
+# This setting is not used for `dive` without subcommand.
+# Therefore, ypid has set an alias in ../shell.d/50_public
+# https://github.com/wagoodman/dive/issues/643
+container-engine: podman

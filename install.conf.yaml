@@ -177,6 +177,9 @@
     ~/.config/shell.d/:
       path: .config/shell.d/*
 
+    ~/.config/dive/:
+      path: .config/dive/*
+
     ~/.local/share/scripts/ypid-scripts-common:
       path: scripts
 

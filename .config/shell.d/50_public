@@ -497,6 +497,10 @@ fi
 
 if command -v podman >/dev/null 2>&1; then
     alias d='podman'
+    if command -v dive >/dev/null 2>&1; then
+        # Workaround, see ../dive/ypid-dotfiles.yaml for details.
+        alias dive='dive --source=podman'
+    fi
 elif command -v docker >/dev/null 2>&1; then
     alias d='docker'
 fi
