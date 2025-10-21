@@ -51,3 +51,14 @@ pathappend() {
         fi
     done
 }
+
+_is_nixos() {
+    test -e /etc/os-release && os_release='/etc/os-release' || os_release='/usr/lib/os-release'
+    source "${os_release}"
+
+    if [ "${ID:-linux}" = "nixos" ] || [ "${ID_LIKE#*nixos*}" != "${ID_LIKE}" ]; then
+        return 0
+    else
+        return 1
+    fi
+}
