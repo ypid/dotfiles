@@ -12,7 +12,10 @@ Enjoy.
 
 ## Supported on
 
+* NixOS 25.05
+* NixOS 25.11
 * Debian 12
+* Debian 13
 
 Note: Support for Windows 10 will not be continued but is still contained in this
 repo for historic reasons.
