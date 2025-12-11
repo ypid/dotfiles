@@ -1,0 +1,18 @@
+# Plugins that are modified by ypid.
+# Ypid also uses unmodified plugins. See ../../install.conf.yaml
+
+plugins:
+  node-root-shell:
+    # https://github.com/kvaps/kubectl-node-shell/blob/master/k9s-plugin.yaml
+    shortCut: a
+    description: "Open root shell on node"
+    scopes:
+      - nodes
+    command: kubectl
+    args:
+      - node-shell
+      - $NAME
+      - --context
+      - $CONTEXT
+    background: false
+    confirm: false
