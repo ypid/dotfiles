@@ -398,7 +398,8 @@ alias gcpull='clustergit --recursive --hide-clean --workers 10 --pull'
 ## }}}
 
 ## GnuPG {{{
-alias gpg-check-debian-iso='gpg --no-default-keyring --keyring /usr/share/keyrings/debian-role-keys.gpg --verify'
+# Depends on debian-keyring package being installed.
+alias gpg-check-debian-iso='gpg --no-default-keyring --keyring=/usr/share/keyrings/debian-role-keys.pgp --verify'
 
 # Robin Schneider (Automatic Signing Key)
 alias gpg-sign='gpg --default-key=EF96BC32AC57CFC72DF01D8C489A4D5EC353C98A --armor --detach-sig'
