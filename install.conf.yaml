@@ -150,6 +150,9 @@
     ~/.config/git/global_hooks/pre-commit.d/:
       path: .config/git/global_hooks/pre-commit.d/*
 
+    ~/.config/lazygit/:
+      path: .config/lazygit/*
+
     ~/.gnupg/:
       path: .gnupg/*
 
