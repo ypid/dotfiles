@@ -9,11 +9,11 @@
 # md ~/Downloads/watch && yt-dlp -a ~/Downloads/yt-dlp.list
 
 # 720 res or less. Average audio bitrate 30 KBit/s or less. Smallest file.
---format-sort "res:720,abr:30,+size"
+--format-sort="res:720,abr:30,+size"
 
 # Determine best for video-only and audio-only individually first before checking if a combined file is better.
 # If video-only and audio-only together are smaller than one file with both than download two files files and mux them together.
---format="bestvideo+bestaudio/best"
+--format="bestvideo+(bestaudio[format_note*=original][language^=en]/bestaudio[format_note*=original][language^=de]/bestaudio[language^=en]/bestaudio[language^=de]/bestaudio)/best"
 
 --embed-chapters
 --output="%(uploader)s - %(upload_date>%Y-%m-%d)s - %(title)s [%(id)s].%(ext)s"
