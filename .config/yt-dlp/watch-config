@@ -1,28 +1,6 @@
---verbose
-
---list-formats
---no-simulate
+--config-locations ~/.config/yt-dlp/720p-config
 
 # My https://github.com/TheFrenchGhosty/TheFrenchGhostys-Ultimate-YouTube-DL-Scripts-Collection/tree/master/scripts/Watch%20Scripts/Watch%20on%20PC%20Script equivalent.
 
 # Use the following to download a list:
-# md ~/Downloads/watch && yt-dlp -a ~/Downloads/yt-dlp.list
-
-# 720 res or less. Average audio bitrate 30 KBit/s or less. Smallest file.
---format-sort="res:720,abr:30,+size"
-
-# Determine best for video-only and audio-only individually first before checking if a combined file is better.
-# If video-only and audio-only together are smaller than one file with both than download two files files and mux them together.
---format="bestvideo+(bestaudio[format_note*=original][language^=en]/bestaudio[format_note*=original][language^=de]/bestaudio[language^=en]/bestaudio[language^=de]/bestaudio)/best"
-
---embed-chapters
---output="%(uploader)s - %(upload_date>%Y-%m-%d)s - %(title)s [%(id)s].%(ext)s"
-
-# mp4 container is supported everywhere
-# (https://jellyfin.org/docs/general/clients/codec-support/) but it results in
-# a video file without audio if the audio codec is opus for example.
-# https://wiki.xiph.org/Mp4Opus
-# Slightly related: https://github.com/yt-dlp/yt-dlp/issues/10553
-# --merge-output-format=mp4
-
---download-archive ~/.config/yt-dlp/download-archive.list
+# md ~/Downloads/watch && yt-dlp --batch-file=~/Downloads/yt-dlp.list --config-locations ~/.config/yt-dlp/watch-config

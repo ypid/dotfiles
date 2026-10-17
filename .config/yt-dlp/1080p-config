@@ -1,0 +1,4 @@
+--config-locations ~/.config/yt-dlp/common
+
+# 1080 res or less. Average audio bitrate 150 KBit/s or less. Smallest file.
+--format-sort="res:1080,abr:150,+size"

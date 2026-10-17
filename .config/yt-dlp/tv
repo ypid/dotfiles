@@ -1,0 +1,2 @@
+# TVs might only support FAT32 and NTFS. FAT32 only supports 4 GiB files which only leaves NTFS.
+--windows-filenames
