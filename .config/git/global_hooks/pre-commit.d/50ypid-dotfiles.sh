@@ -31,9 +31,9 @@ function main() {
     # * It allows to easily overwrite this protection/warning that hooks
     #   exist but I have not installed them when I don’t use my alias.
     #   I am so used to using my alias that this will not happen by accident.
-    if [ -e '.pre-commit-config.yaml' ]; then
-        if ! grep --fixed-strings --quiet 'https://pre-commit.com' "$(git rev-parse --git-dir)/hooks/pre-commit"; then
-            echo 'Install pre-commit.com hooks!'
+    if [ -e '.pre-commit-config.yaml' ] || [ -e 'prek.toml' ]; then
+        if ! grep --extended-regexp --quiet 'prek|https://pre-commit.com' "$(git rev-parse --git-dir)/hooks/pre-commit"; then
+            echo 'Install hooks via `GIT_CONFIG=/dev/null prek install` or `GIT_CONFIG=/dev/null pre-commit install`!'
             exit 1
         fi
     fi
