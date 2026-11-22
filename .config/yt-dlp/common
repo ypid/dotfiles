@@ -20,6 +20,6 @@
 
 --check-formats
 
---download-archive ~/.config/yt-dlp/download-archive.list
+--download-archive ~/.local/share/yt-dlp_download-archive.list
 
 --config-locations ~/.config/yt-dlp_local.conf
